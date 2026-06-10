@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EdgeBook — Polymarket Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{
+  --bg:#0F1420; --surface:#171E2E; --surface2:#1D2538; --border:#27314B; --border-soft:#202940;
+  --text:#E9EDF7; --muted:#8C97B0; --faint:#5E6983;
+  --brand:#8B93FF; --brand-soft:rgba(139,147,255,.12);
+  --amber:#F5B544; --amber-soft:rgba(245,181,68,.12);
+  --yes:#3DDC97; --yes-soft:rgba(61,220,151,.12);
+  --no:#FF6B7A; --no-soft:rgba(255,107,122,.12);
+  --radius:14px;
+  --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,monospace;
+  --display:'Archivo',Inter,system-ui,sans-serif;
+  --body:Inter,system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:14px;line-height:1.5;min-height:100vh}
+::selection{background:var(--brand);color:#0F1420}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+a{color:var(--brand);text-decoration:none}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ---------- Header ---------- */
+header{position:sticky;top:0;z-index:50;background:rgba(15,20,32,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border-soft)}
+.head-inner{max-width:1280px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.logo{font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:-.02em;display:flex;align-items:center;gap:9px}
+.logo .mark{width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,var(--brand),#5560D8);display:grid;place-items:center;font-size:13px;color:#fff}
+.logo small{font-family:var(--mono);font-weight:400;font-size:10px;color:var(--faint);letter-spacing:.08em;text-transform:uppercase;margin-top:4px}
+.status-pill{font-family:var(--mono);font-size:11px;padding:4px 10px;border-radius:99px;border:1px solid var(--border);display:flex;align-items:center;gap:6px}
+.status-pill .dot{width:7px;height:7px;border-radius:50%}
+.status-pill.live{color:var(--yes)} .status-pill.live .dot{background:var(--yes);box-shadow:0 0 8px var(--yes)}
+.status-pill.demo{color:var(--amber)} .status-pill.demo .dot{background:var(--amber)}
+.head-spacer{flex:1}
+.refresh-btn{font-family:var(--mono);font-size:11px;color:var(--muted);border:1px solid var(--border);border-radius:8px;padding:6px 12px;transition:.15s}
+.refresh-btn:hover{color:var(--text);border-color:var(--brand)}
+
+/* ---------- Movers tape (signature) ---------- */
+.tape-wrap{border-bottom:1px solid var(--border-soft);overflow:hidden;background:#121828}
+.tape{display:flex;gap:0;white-space:nowrap;animation:tape 60s linear infinite;width:max-content;padding:7px 0}
+.tape:hover{animation-play-state:paused}
+@keyframes tape{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.tape-item{font-family:var(--mono);font-size:11.5px;color:var(--muted);padding:0 26px;border-right:1px solid var(--border-soft);display:inline-flex;gap:8px;align-items:center}
+.tape-item b{color:var(--text);font-weight:500;max-width:300px;overflow:hidden;text-overflow:ellipsis}
+.up{color:var(--yes)} .down{color:var(--no)}
+
+/* ---------- Nav tabs ---------- */
+nav{max-width:1280px;margin:18px auto 0;padding:0 24px;display:flex;gap:8px;flex-wrap:wrap}
+.tab{font-family:var(--display);font-weight:600;font-size:13.5px;letter-spacing:.01em;color:var(--muted);padding:9px 18px;border-radius:10px;border:1px solid transparent;transition:.15s}
+.tab:hover{color:var(--text)}
+.tab.active{color:var(--text);background:var(--surface);border-color:var(--border)}
+.tab .badge{font-family:var(--mono);font-size:10px;background:var(--brand-soft);color:var(--brand);border-radius:99px;padding:1px 7px;margin-left:7px}
+
+main{max-width:1280px;margin:0 auto;padding:20px 24px 80px}
+.page{display:none}.page.active{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+/* ---------- Stat cards ---------- */
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-bottom:22px}
+.stat-card{background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px 18px}
+.stat-card .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:7px}
+.stat-card .val{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:-.01em}
+.stat-card .sub{font-size:11.5px;color:var(--muted);margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* ---------- Controls ---------- */
+.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+.search{flex:1;min-width:220px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:9px 14px;color:var(--text);font-size:13px;font-family:var(--body)}
+.search::placeholder{color:var(--faint)}
+select.ctrl{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:9px 12px;color:var(--text);font-size:12.5px;font-family:var(--mono);cursor:pointer}
+.seg{display:flex;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.seg button{font-family:var(--mono);font-size:11.5px;padding:8px 14px;color:var(--muted);transition:.15s}
+.seg button.on{background:var(--brand-soft);color:var(--brand)}
+
+/* ---------- Market cards ---------- */
+.market-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:14px}
+.mcard{background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;gap:13px;transition:border-color .15s}
+.mcard:hover{border-color:var(--border)}
+.mcard .q{font-family:var(--display);font-weight:600;font-size:14.5px;line-height:1.4;letter-spacing:-.005em;min-height:40px}
+.mcard .meta-row{display:flex;gap:14px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--muted)}
+.mcard .meta-row b{color:var(--text);font-weight:500}
+
+/* probability strip */
+.pstrip{position:relative;height:34px;border-radius:9px;overflow:hidden;display:flex;font-family:var(--mono)}
+.pstrip .yes-side,.pstrip .no-side{display:flex;align-items:center;font-size:11.5px;font-weight:600;min-width:0;transition:width .4s ease}
+.pstrip .yes-side{background:linear-gradient(90deg,rgba(61,220,151,.22),rgba(61,220,151,.10));color:var(--yes);padding-left:10px;border-right:2px solid var(--bg)}
+.pstrip .no-side{background:linear-gradient(90deg,rgba(255,107,122,.10),rgba(255,107,122,.22));color:var(--no);justify-content:flex-end;padding-right:10px}
+.pstrip span{white-space:nowrap;overflow:hidden}
+
+.ret-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ret-box{border:1px solid var(--border-soft);border-radius:10px;padding:9px 11px;font-size:11px;color:var(--muted)}
+.ret-box .big{font-family:var(--mono);font-size:13px;font-weight:600;margin-top:2px}
+.ret-box.y .big{color:var(--yes)} .ret-box.n .big{color:var(--no)}
+
+.chg{font-family:var(--mono);font-size:10.5px;padding:2px 8px;border-radius:99px}
+.chg.up{background:var(--yes-soft);color:var(--yes)} .chg.down{background:var(--no-soft);color:var(--no)} .chg.flat{background:var(--surface2);color:var(--muted)}
+.vol-flag{font-family:var(--mono);font-size:10px;padding:2px 8px;border-radius:99px;background:var(--amber-soft);color:var(--amber)}
+
+.mcard .actions{display:flex;gap:8px;margin-top:auto}
+.btn{flex:1;font-family:var(--mono);font-size:11px;padding:8px 0;border-radius:9px;border:1px solid var(--border);color:var(--muted);text-align:center;transition:.15s}
+.btn:hover{color:var(--text);border-color:var(--brand)}
+.btn.primary{background:var(--brand-soft);border-color:transparent;color:var(--brand)}
+.btn.primary:hover{background:rgba(139,147,255,.2)}
+
+/* ---------- Tables ---------- */
+.tbl-wrap{background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:760px}
+th{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);text-align:left;padding:13px 16px;border-bottom:1px solid var(--border-soft);font-weight:500}
+td{padding:13px 16px;border-bottom:1px solid var(--border-soft);vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tbody tr{transition:background .12s}
+tbody tr.clickable{cursor:pointer}
+tbody tr.clickable:hover{background:var(--surface2)}
+.num{font-family:var(--mono);font-size:12.5px}
+.pos{color:var(--yes)} .neg{color:var(--no)}
+.rank-chip{font-family:var(--mono);font-size:11px;width:30px;height:30px;border-radius:9px;background:var(--surface2);display:inline-grid;place-items:center;color:var(--muted)}
+.rank-chip.top{background:var(--amber-soft);color:var(--amber)}
+.trader{display:flex;align-items:center;gap:10px}
+.trader img,.trader .ph{width:32px;height:32px;border-radius:9px;background:var(--surface2);object-fit:cover;display:grid;place-items:center;font-family:var(--mono);font-size:12px;color:var(--brand)}
+.trader .nm{font-weight:600;font-size:13px}
+.trader .ad{font-family:var(--mono);font-size:10.5px;color:var(--faint)}
+.roi-bar{height:5px;border-radius:99px;background:var(--surface2);width:90px;overflow:hidden;margin-top:4px}
+.roi-bar i{display:block;height:100%;background:var(--brand);border-radius:99px}
+
+/* ---------- Wallet detail panel ---------- */
+.panel-back{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-bottom:16px;display:inline-flex;gap:6px;align-items:center}
+.panel-back:hover{color:var(--text)}
+.wallet-head{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:18px}
+.wallet-head img,.wallet-head .ph{width:54px;height:54px;border-radius:14px;background:var(--surface2);object-fit:cover;display:grid;place-items:center;font-family:var(--mono);font-size:20px;color:var(--brand)}
+.wallet-head h2{font-family:var(--display);font-weight:700;font-size:21px;letter-spacing:-.01em}
+.wallet-head .ad{font-family:var(--mono);font-size:11px;color:var(--faint)}
+.section-h{font-family:var(--display);font-weight:700;font-size:15px;margin:26px 0 12px;display:flex;align-items:center;gap:10px}
+.section-h small{font-family:var(--mono);font-weight:400;font-size:10.5px;color:var(--faint);letter-spacing:.06em;text-transform:uppercase}
+.side-tag{font-family:var(--mono);font-size:10.5px;padding:3px 9px;border-radius:7px;font-weight:600}
+.side-tag.y{background:var(--yes-soft);color:var(--yes)} .side-tag.n{background:var(--no-soft);color:var(--no)}
+.copy-hint{font-size:11px;color:var(--muted)}
+.feed{display:flex;flex-direction:column;gap:8px}
+.feed-item{background:var(--surface);border:1px solid var(--border-soft);border-radius:11px;padding:11px 14px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;font-size:12.5px}
+.feed-item .t{font-family:var(--mono);font-size:10.5px;color:var(--faint);margin-left:auto}
+.res-chip{font-family:var(--mono);font-size:10.5px;font-weight:600;padding:3px 10px;border-radius:99px;white-space:nowrap}
+.res-chip.win{background:var(--yes-soft);color:var(--yes)}
+.res-chip.loss{background:var(--no-soft);color:var(--no)}
+.res-chip.open-up{background:var(--yes-soft);color:var(--yes);opacity:.85}
+.res-chip.open-down{background:var(--no-soft);color:var(--no);opacity:.85}
+.res-chip.neutral{background:var(--surface2);color:var(--muted)}
+
+/* ---------- Copy signals ---------- */
+.sig-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:14px}
+.sig-card{background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;gap:12px}
+.sig-card .consensus{font-family:var(--mono);font-size:11px;color:var(--amber);background:var(--amber-soft);align-self:flex-start;padding:3px 10px;border-radius:99px}
+.sig-card .q{font-family:var(--display);font-weight:600;font-size:14.5px;line-height:1.4}
+.sig-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.sig-stats .cell{border:1px solid var(--border-soft);border-radius:10px;padding:8px 10px}
+.sig-stats .cell .l{font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--faint)}
+.sig-stats .cell .v{font-family:var(--mono);font-size:13.5px;font-weight:600;margin-top:3px}
+.holders-line{font-size:11.5px;color:var(--muted)}
+
+/* ---------- Modal ---------- */
+.modal-bg{position:fixed;inset:0;background:rgba(8,11,18,.7);backdrop-filter:blur(4px);z-index:100;display:none;align-items:flex-start;justify-content:center;padding:6vh 16px;overflow-y:auto}
+.modal-bg.open{display:flex}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:18px;max-width:720px;width:100%;padding:24px;animation:fade .2s ease}
+.modal h3{font-family:var(--display);font-weight:700;font-size:17px;line-height:1.35;margin-bottom:6px;padding-right:36px}
+.modal .close{position:absolute;font-family:var(--mono);color:var(--muted);font-size:18px;padding:6px 10px;border-radius:8px}
+.modal .close:hover{color:var(--text);background:var(--surface2)}
+.modal-top{position:relative}
+.modal-top .close{top:-6px;right:-6px}
+.chart-box{height:260px;margin:16px 0;position:relative}
+.mini-note{font-size:11px;color:var(--faint)}
+
+/* ---------- Misc ---------- */
+.banner{background:var(--amber-soft);border:1px solid rgba(245,181,68,.3);color:var(--amber);border-radius:12px;padding:12px 16px;font-size:12.5px;margin-bottom:18px;line-height:1.55}
+.banner code{font-family:var(--mono);font-size:11px}
+.loading{display:flex;align-items:center;gap:10px;color:var(--muted);font-family:var(--mono);font-size:12px;padding:40px 0;justify-content:center}
+.spinner{width:16px;height:16px;border:2px solid var(--border);border-top-color:var(--brand);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.empty{color:var(--faint);font-family:var(--mono);font-size:12px;padding:30px;text-align:center}
+footer{max-width:1280px;margin:0 auto;padding:0 24px 40px;color:var(--faint);font-size:11px;line-height:1.6;border-top:1px solid var(--border-soft);padding-top:20px}
+.help-tip{font-size:11.5px;color:var(--muted);margin-bottom:16px;line-height:1.6}
+.help-tip b{color:var(--text)}
+@media(max-width:640px){
+  .market-grid,.sig-grid{grid-template-columns:1fr}
+  .head-inner{padding:12px 16px} main{padding:16px 16px 60px} nav{padding:0 16px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="head-inner">
+    <div class="logo"><span class="mark">▲</span>EdgeBook <small>Polymarket Intel</small></div>
+    <div class="status-pill demo" id="statusPill"><span class="dot"></span><span id="statusTxt">CONNECTING…</span></div>
+    <div class="head-spacer"></div>
+    <button class="refresh-btn" onclick="boot(true)">↻ Refresh data</button>
+  </div>
+</header>
+
+<div class="tape-wrap"><div class="tape" id="tape"></div></div>
+
+<nav>
+  <button class="tab active" data-page="markets" onclick="showPage('markets',this)">Markets</button>
+  <button class="tab" data-page="smart" onclick="showPage('smart',this)">Smart Money <span class="badge" id="walletCount"></span></button>
+  <button class="tab" data-page="signals" onclick="showPage('signals',this)">Copy Signals</button>
+  <button class="tab" data-page="bot" onclick="showPage('bot',this)">🐕 EdgeHound Bot <span class="badge" id="botBadge"></span></button>
+</nav>
+
+<main>
+
+<!-- ================= MARKETS ================= -->
+<section class="page active" id="page-markets">
+  <div id="demoBanner" style="display:none" class="banner">
+    <b>Sample data mode.</b> This preview can't reach Polymarket's API from inside the chat sandbox, so it's showing realistic sample data so you can explore every feature. To go live: download this file and open it in your browser, or drag it into <a href="https://app.netlify.com/drop" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Netlify Drop</a> — it will then pull real-time markets, leaderboards and wallets automatically. No API key needed.
+  </div>
+  <div class="stat-row" id="marketStats"></div>
+  <div class="help-tip"><b>How to read this:</b> the green/red strip is the market's implied probability (price in cents = chance in %). "Return if right" shows your payout multiple if that outcome resolves true — e.g. buying YES at 25¢ pays $1.00, a +300% return. Big 24h moves = volatility = where news is hitting.</div>
+  <div class="controls">
+    <input class="search" id="mSearch" placeholder="Search markets… (e.g. Fed, Bitcoin, election)" oninput="renderMarkets()">
+    <select class="ctrl" id="mSort" onchange="renderMarkets()">
+      <option value="vol24">Sort: 24h volume (trending)</option>
+      <option value="volatility">Sort: volatility (biggest movers)</option>
+      <option value="volume">Sort: total volume</option>
+      <option value="liquidity">Sort: liquidity</option>
+      <option value="closest">Sort: closest call (≈50/50)</option>
+      <option value="longshot">Sort: biggest payout (longshots)</option>
+    </select>
+  </div>
+  <div class="market-grid" id="marketGrid"><div class="loading"><span class="spinner"></span>Loading markets…</div></div>
+</section>
+
+<!-- ================= SMART MONEY ================= -->
+<section class="page" id="page-smart">
+  <div id="smartList">
+    <div class="help-tip"><b>Who's here:</b> Polymarket's top traders ranked by realized profit. <b>ROI</b> = profit ÷ volume traded (capital efficiency). Click any trader to see their live positions — entry price vs. current price tells you whether you can still copy the trade at a similar or better level.</div>
+    <div class="controls">
+      <div class="seg" id="lbPeriod">
+        <button data-p="WEEK" onclick="setPeriod('WEEK',this)">7D</button>
+        <button data-p="MONTH" class="on" onclick="setPeriod('MONTH',this)">30D</button>
+        <button data-p="ALL" onclick="setPeriod('ALL',this)">ALL TIME</button>
+      </div>
+      <select class="ctrl" id="lbCategory" onchange="loadLeaderboard()">
+        <option value="OVERALL">All categories</option>
+        <option value="POLITICS">Politics</option>
+        <option value="SPORTS">Sports</option>
+        <option value="CRYPTO">Crypto</option>
+        <option value="ECONOMICS">Economics</option>
+        <option value="TECH">Tech</option>
+      </select>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>#</th><th>Trader</th><th>Profit (PnL)</th><th>Volume traded</th><th>ROI</th><th></th></tr></thead>
+        <tbody id="lbBody"><tr><td colspan="6"><div class="loading"><span class="spinner"></span>Loading leaderboard…</div></td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="walletDetail" style="display:none"></div>
+</section>
+
+<!-- ================= COPY SIGNALS ================= -->
+<section class="page" id="page-signals">
+  <div class="help-tip"><b>What this is:</b> we scan the open positions of the top-ranked profitable wallets. When several of them independently hold the <b>same side of the same market</b>, that's a consensus signal — the strongest copy-trade candidates. "Avg smart entry" vs "price now" shows if you're late or still early.</div>
+  <div id="sigStatus" class="loading"><span class="spinner"></span>Scanning top wallets…</div>
+  <div class="sig-grid" id="sigGrid"></div>
+</section>
+
+<!-- ================= EDGEHOUND BOT ================= -->
+<section class="page" id="page-bot">
+  <div class="help-tip"><b>EdgeHound</b> is a self-managed paper-trading bot. It scans every active market on a cycle, scores them across four signal engines, places 10–20 simulated bets a day ($100–$1000 each, sized by confidence), manages exits with targets / stops / max-hold, and reweights its own signals based on what actually wins. No real money ever moves — this is a live hypothesis tracker.</div>
+
+  <div class="stat-row" id="botStats"></div>
+
+  <div class="controls">
+    <button class="btn primary" style="flex:0 0 auto;padding:9px 18px" id="botToggle" onclick="Bot.toggle()">⏸ Pause</button>
+    <button class="btn" style="flex:0 0 auto;padding:9px 18px" onclick="Bot.scan(true)">🔍 Scan now</button>
+    <button class="btn" style="flex:0 0 auto;padding:9px 18px" id="simBtn" onclick="Bot.simulateDay()" title="Fast-forward one synthetic trading day (sample mode)">⏩ Simulate 1 day</button>
+    <div class="head-spacer"></div>
+    <button class="btn" style="flex:0 0 auto;padding:9px 14px" onclick="Bot.exportJournal()">⬇ Export journal</button>
+    <label class="btn" style="flex:0 0 auto;padding:9px 14px;cursor:pointer">⬆ Import<input type="file" accept=".json" style="display:none" onchange="Bot.importJournal(this)"></label>
+    <button class="btn" style="flex:0 0 auto;padding:9px 14px;color:var(--no)" onclick="Bot.reset()">Reset</button>
+  </div>
+
+  <div id="botLog" class="mini-note" style="margin-bottom:8px;font-family:var(--mono)"></div>
+
+  <div class="controls" id="remoteRow" style="margin-bottom:16px">
+    <input class="search" id="remoteUrl" placeholder="Optional: paste your repo's raw data/state.json URL to watch the cloud bot from anywhere" style="font-family:var(--mono);font-size:11.5px">
+    <button class="btn" style="flex:0 0 auto;padding:9px 16px" onclick="Bot.setRemote()">Connect</button>
+    <button class="btn" style="flex:0 0 auto;padding:9px 16px" onclick="Bot.clearRemote()">Local mode</button>
+  </div>
+
+  <div class="section-h">Equity curve <small>cumulative realized P&L</small></div>
+  <div style="background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px"><div class="chart-box" style="margin:0;height:220px"><canvas id="equityChart"></canvas></div></div>
+
+  <div class="section-h">Signal engines <small>the learning layer — weights shift toward what wins</small></div>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Signal</th><th>What it hunts</th><th>Trades</th><th>Win rate</th><th>P&L</th><th>Weight</th></tr></thead>
+    <tbody id="stratBody"></tbody>
+  </table></div>
+
+  <div class="section-h">Open paper positions <small id="openCount"></small></div>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Market</th><th>Side</th><th>Signal &amp; insight</th><th>Entry</th><th>Now</th><th>Stake</th><th>P&L</th><th>Exit plan</th></tr></thead>
+    <tbody id="openBody"></tbody>
+  </table></div>
+
+  <div class="section-h">Trade journal <small id="closedCount"></small></div>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Closed</th><th>Market</th><th>Side</th><th>Signal</th><th>Entry → Exit</th><th>Stake</th><th>Result</th><th>Why it exited</th></tr></thead>
+    <tbody id="closedBody"></tbody>
+  </table></div>
+
+  <div class="mini-note" style="margin-top:18px;line-height:1.7">
+    Honest caveats: paper fills assume you get the shown price — real trading has spread and slippage, especially on thin markets. The short-favorite engine wins often but loses big when a favorite flips, so judge it on long-run P&L, not win rate. Signal weights need ~30+ settled trades each before they mean much. The bot trades only while this page is open; on every visit it catches up on settlements and exits since you left.
+  </div>
+</section>
+
+</main>
+
+<!-- ================= MARKET MODAL ================= -->
+<div class="modal-bg" id="modalBg" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="modal-top">
+      <button class="close" onclick="closeModal()">✕</button>
+      <h3 id="modalTitle"></h3>
+      <div class="meta-row" id="modalMeta" style="display:flex;gap:14px;font-family:var(--mono);font-size:11px;color:var(--muted)"></div>
+    </div>
+    <div class="chart-box"><canvas id="priceChart"></canvas></div>
+    <div class="mini-note" id="modalNote"></div>
+    <div class="actions" style="display:flex;gap:8px;margin-top:16px">
+      <a class="btn" id="newsBtn" target="_blank" rel="noopener">📰 Research latest news</a>
+      <a class="btn primary" id="pmBtn" target="_blank" rel="noopener">Open on Polymarket ↗</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  EdgeBook reads Polymarket's public Gamma, CLOB and Data APIs (read-only, no keys, no wallet connection). Prices shown in US cents; 1¢ = 1% implied probability.
+  Past trader performance does not guarantee future results — leaderboard PnL can come from size, luck or insider context, not just skill. This is an analytics tool, not financial advice. Trade what you can afford to lose.
+</footer>
+
+<script>
+/* =====================================================
+   EdgeBook — Polymarket intelligence dashboard
+   Live endpoints (all public, CORS-enabled):
+   - Markets:      https://gamma-api.polymarket.com/markets
+   - Leaderboard:  https://data-api.polymarket.com/v1/leaderboard
+   - Positions:    https://data-api.polymarket.com/positions?user=0x…
+   - Activity:     https://data-api.polymarket.com/activity?user=0x…
+   - Price chart:  https://clob.polymarket.com/prices-history
+   Falls back to embedded sample data when the network is blocked
+   (e.g. inside the Claude artifact sandbox).
+===================================================== */
+const GAMMA='https://gamma-api.polymarket.com';
+const DATA='https://data-api.polymarket.com';
+const CLOB='https://clob.polymarket.com';
+
+let LIVE=false;
+let MARKETS=[], LEADERS=[], PERIOD='MONTH';
+let chartInst=null;
+const posCache={}, histCache={};
+
+/* ---------------- helpers ---------------- */
+const $=id=>document.getElementById(id);
+const fmtUSD=n=>{
+  n=Number(n)||0;
+  if(Math.abs(n)>=1e6) return '$'+(n/1e6).toFixed(2)+'M';
+  if(Math.abs(n)>=1e3) return '$'+(n/1e3).toFixed(1)+'K';
+  return '$'+n.toFixed(0);
+};
+const cents=p=>Math.round(p*100)+'¢';
+const pct=p=>(p*100).toFixed(0)+'%';
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const shortAddr=a=>a?a.slice(0,6)+'…'+a.slice(-4):'';
+async function jget(url,timeout=9000){
+  const ctl=new AbortController();const t=setTimeout(()=>ctl.abort(),timeout);
+  try{const r=await fetch(url,{signal:ctl.signal});clearTimeout(t);
+    if(!r.ok)throw new Error(r.status);return await r.json();
+  }catch(e){clearTimeout(t);throw e;}
+}
+function retCalc(price){ if(price<=0||price>=1)return null; return ((1/price)-1)*100; }
+function retLabel(price){ const r=retCalc(price); return r===null?'—':'+'+(r>=1000?(r/100).toFixed(1)+'x':r.toFixed(0)+'%'); }
+
+/* ---------------- boot ---------------- */
+async function boot(force){
+  $('statusTxt').textContent='CONNECTING…';
+  try{
+    const m=await jget(`${GAMMA}/markets?closed=false&active=true&order=volume24hr&ascending=false&limit=120`);
+    if(!Array.isArray(m)||!m.length) throw new Error('empty');
+    MARKETS=m.map(normalizeMarket).filter(x=>x && x.yes>0.005 && x.yes<0.995);
+    LIVE=true;
+    $('statusPill').className='status-pill live';
+    $('statusTxt').textContent='LIVE DATA';
+    $('demoBanner').style.display='none';
+  }catch(e){
+    LIVE=false;
+    MARKETS=DEMO.markets.map(normalizeDemo);
+    $('statusPill').className='status-pill demo';
+    $('statusTxt').textContent='SAMPLE DATA';
+    $('demoBanner').style.display='block';
+  }
+  renderTape(); renderMarketStats(); renderMarkets();
+  await Promise.allSettled([loadLeaderboard(),loadSignals()]);
+  if(typeof Bot!=='undefined') Bot.init();
+}
+
+function normalizeMarket(m){
+  try{
+    const prices=JSON.parse(m.outcomePrices||'[]').map(Number);
+    const outcomes=JSON.parse(m.outcomes||'[]');
+    const tokens=JSON.parse(m.clobTokenIds||'[]');
+    let yi=outcomes.findIndex(o=>/^yes$/i.test(o)); if(yi<0)yi=0;
+    const yes=prices[yi]??0.5;
+    return {
+      id:m.id, q:m.question||m.title||'', slug:m.slug, conditionId:m.conditionId||'',
+      eventSlug:(m.events&&m.events[0]&&m.events[0].slug)||m.slug,
+      yes, no:1-yes,
+      labels:[outcomes[yi]||'Yes', outcomes[yi===0?1:0]||'No'],
+      vol24:Number(m.volume24hr)||0, volume:Number(m.volumeNum||m.volume)||0,
+      liq:Number(m.liquidityNum||m.liquidity)||0,
+      chg:Number(m.oneDayPriceChange)||0,
+      end:m.endDate?new Date(m.endDate):null,
+      token:tokens[yi]||tokens[0]||null
+    };
+  }catch(e){return null;}
+}
+function normalizeDemo(m){ return {...m, no:1-m.yes, labels:['Yes','No'], token:null, end:m.end?new Date(m.end):null}; }
+
+/* ---------------- tape ---------------- */
+function renderTape(){
+  const movers=[...MARKETS].sort((a,b)=>Math.abs(b.chg)-Math.abs(a.chg)).slice(0,12);
+  const items=movers.map(m=>{
+    const dir=m.chg>=0?'up':'down', arrow=m.chg>=0?'▲':'▼';
+    return `<span class="tape-item"><b>${esc(m.q)}</b> <span>${cents(m.yes)}</span> <span class="${dir}">${arrow} ${(Math.abs(m.chg)*100).toFixed(1)}pts</span></span>`;
+  }).join('');
+  $('tape').innerHTML=items+items; /* duplicated for seamless loop */
+}
+
+/* ---------------- markets page ---------------- */
+function renderMarketStats(){
+  const tot24=MARKETS.reduce((s,m)=>s+m.vol24,0);
+  const mover=[...MARKETS].sort((a,b)=>Math.abs(b.chg)-Math.abs(a.chg))[0];
+  const hot=[...MARKETS].sort((a,b)=>b.vol24-a.vol24)[0];
+  const closest=[...MARKETS].sort((a,b)=>Math.abs(a.yes-.5)-Math.abs(b.yes-.5))[0];
+  $('marketStats').innerHTML=`
+    <div class="stat-card"><div class="lbl">Markets tracked</div><div class="val">${MARKETS.length}</div><div class="sub">active, sorted by activity</div></div>
+    <div class="stat-card"><div class="lbl">24h volume (these markets)</div><div class="val">${fmtUSD(tot24)}</div><div class="sub">where the money is flowing</div></div>
+    <div class="stat-card"><div class="lbl">Biggest 24h mover</div><div class="val" style="color:${mover&&mover.chg>=0?'var(--yes)':'var(--no)'}">${mover?(mover.chg>=0?'+':'')+(mover.chg*100).toFixed(1)+'pts':'—'}</div><div class="sub">${mover?esc(mover.q):''}</div></div>
+    <div class="stat-card"><div class="lbl">Closest call right now</div><div class="val">${closest?cents(closest.yes):'—'}</div><div class="sub">${closest?esc(closest.q):''}</div></div>`;
+}
+
+function renderMarkets(){
+  const q=$('mSearch').value.trim().toLowerCase();
+  const sort=$('mSort').value;
+  let list=MARKETS.filter(m=>!q||m.q.toLowerCase().includes(q));
+  const sorters={
+    vol24:(a,b)=>b.vol24-a.vol24,
+    volatility:(a,b)=>Math.abs(b.chg)-Math.abs(a.chg),
+    volume:(a,b)=>b.volume-a.volume,
+    liquidity:(a,b)=>b.liq-a.liq,
+    closest:(a,b)=>Math.abs(a.yes-.5)-Math.abs(b.yes-.5),
+    longshot:(a,b)=>Math.min(a.yes,a.no)-Math.min(b.yes,b.no)
+  };
+  list.sort(sorters[sort]);
+  list=list.slice(0,48);
+  if(!list.length){$('marketGrid').innerHTML='<div class="empty">No markets match that search.</div>';return;}
+  $('marketGrid').innerHTML=list.map((m,i)=>{
+    const yw=Math.max(6,Math.min(94,m.yes*100));
+    const chgCls=m.chg>0.001?'up':m.chg<-0.001?'down':'flat';
+    const chgTxt=(m.chg>=0?'+':'')+(m.chg*100).toFixed(1)+'pts / 24h';
+    const volFlag=Math.abs(m.chg)>=0.05?'<span class="vol-flag">⚡ HIGH VOLATILITY</span>':'';
+    const days=m.end?Math.max(0,Math.round((m.end-Date.now())/864e5)):null;
+    return `<div class="mcard">
+      <div style="display:flex;gap:8px;align-items:flex-start;justify-content:space-between">
+        <div class="q">${esc(m.q)}</div>
+      </div>
+      <div class="pstrip" role="img" aria-label="Yes ${pct(m.yes)}, No ${pct(m.no)}">
+        <div class="yes-side" style="width:${yw}%"><span>YES ${cents(m.yes)} · ${pct(m.yes)}</span></div>
+        <div class="no-side" style="width:${100-yw}%"><span>NO ${cents(m.no)}</span></div>
+      </div>
+      <div class="ret-row">
+        <div class="ret-box y">Return if YES wins<div class="big">${retLabel(m.yes)}</div></div>
+        <div class="ret-box n">Return if NO wins<div class="big">${retLabel(m.no)}</div></div>
+      </div>
+      <div class="meta-row">
+        <span>24h vol <b>${fmtUSD(m.vol24)}</b></span>
+        <span>total <b>${fmtUSD(m.volume)}</b></span>
+        ${days!==null?`<span>ends in <b>${days}d</b></span>`:''}
+        <span class="chg ${chgCls}">${chgTxt}</span>${volFlag}
+      </div>
+      <div class="actions">
+        <button class="btn" onclick="openModal(${i},'${sort}')">📈 Chart</button>
+        <a class="btn" target="_blank" rel="noopener" href="https://news.google.com/search?q=${encodeURIComponent(m.q)}">📰 News</a>
+        <a class="btn primary" target="_blank" rel="noopener" href="https://polymarket.com/event/${esc(m.eventSlug||m.slug||'')}">Trade ↗</a>
+      </div>
+    </div>`;
+  }).join('');
+  window.__viewList=list;
+}
+
+/* ---------------- modal + chart ---------------- */
+async function openModal(idx){
+  const m=window.__viewList[idx]; if(!m)return;
+  $('modalTitle').textContent=m.q;
+  $('modalMeta').innerHTML=`<span>YES <b style="color:var(--yes)">${cents(m.yes)}</b></span><span>NO <b style="color:var(--no)">${cents(m.no)}</b></span><span>24h vol <b>${fmtUSD(m.vol24)}</b></span><span>liquidity <b>${fmtUSD(m.liq)}</b></span>`;
+  $('newsBtn').href='https://news.google.com/search?q='+encodeURIComponent(m.q);
+  $('pmBtn').href='https://polymarket.com/event/'+(m.eventSlug||m.slug||'');
+  $('modalNote').textContent='Loading 30-day YES price history…';
+  $('modalBg').classList.add('open');
+  let hist=null;
+  if(LIVE && m.token){
+    try{
+      if(!histCache[m.token]){
+        const d=await jget(`${CLOB}/prices-history?market=${m.token}&interval=1m&fidelity=180`);
+        histCache[m.token]=(d.history||[]).map(h=>({t:h.t*1000,p:h.p}));
+      }
+      hist=histCache[m.token];
+    }catch(e){hist=null;}
+  }
+  if(!hist||!hist.length) hist=genDemoHistory(m.yes,m.chg);
+  drawChart(hist,m);
+  $('modalNote').textContent='Price of the YES share over the last 30 days (1¢ = 1% implied probability). Sharp jumps = news events — hit "Research latest news" to find out what moved it.';
+}
+function drawChart(hist,m){
+  if(chartInst)chartInst.destroy();
+  const ctx=$('priceChart').getContext('2d');
+  const grad=ctx.createLinearGradient(0,0,0,260);
+  grad.addColorStop(0,'rgba(139,147,255,.28)');grad.addColorStop(1,'rgba(139,147,255,0)');
+  chartInst=new Chart(ctx,{type:'line',data:{
+    labels:hist.map(h=>new Date(h.t).toLocaleDateString(undefined,{month:'short',day:'numeric'})),
+    datasets:[{data:hist.map(h=>h.p*100),borderColor:'#8B93FF',backgroundColor:grad,fill:true,tension:.3,pointRadius:0,borderWidth:2}]
+  },options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y.toFixed(1)+'¢ implied'}}},
+    scales:{x:{ticks:{color:'#5E6983',maxTicksLimit:7,font:{family:'IBM Plex Mono',size:10}},grid:{display:false}},
+            y:{min:0,max:100,ticks:{color:'#5E6983',callback:v=>v+'¢',font:{family:'IBM Plex Mono',size:10}},grid:{color:'rgba(39,49,75,.5)'}}}
+  }});
+}
+function closeModal(){$('modalBg').classList.remove('open');}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+/* ---------------- leaderboard ---------------- */
+function setPeriod(p,btn){PERIOD=p;document.querySelectorAll('#lbPeriod button').forEach(b=>b.classList.toggle('on',b===btn));loadLeaderboard();}
+async function loadLeaderboard(){
+  $('lbBody').innerHTML='<tr><td colspan="6"><div class="loading"><span class="spinner"></span>Loading leaderboard…</div></td></tr>';
+  const cat=$('lbCategory').value;
+  if(LIVE){
+    try{
+      const d=await jget(`${DATA}/v1/leaderboard?category=${cat}&timePeriod=${PERIOD}&orderBy=PNL&limit=50`);
+      LEADERS=(Array.isArray(d)?d:[]).map(x=>({
+        rank:Number(x.rank)||0, wallet:x.proxyWallet, name:x.userName||shortAddr(x.proxyWallet),
+        vol:Number(x.vol)||0, pnl:Number(x.pnl)||0, img:x.profileImage||''
+      }));
+    }catch(e){LEADERS=[];}
+  }
+  if(!LEADERS.length) LEADERS=DEMO.leaders;
+  $('walletCount').textContent=LEADERS.length;
+  renderLeaderboard();
+}
+function renderLeaderboard(){
+  const maxRoi=Math.max(...LEADERS.map(l=>l.vol>0?l.pnl/l.vol:0),0.01);
+  $('lbBody').innerHTML=LEADERS.map((l,i)=>{
+    const roi=l.vol>0?(l.pnl/l.vol)*100:0;
+    const ph=l.img?`<img src="${esc(l.img)}" alt="" onerror="this.outerHTML='<span class=ph>${esc((l.name||'?')[0].toUpperCase())}</span>'">`:`<span class="ph">${esc((l.name||'?')[0].toUpperCase())}</span>`;
+    return `<tr class="clickable" onclick="openWallet(${i})">
+      <td><span class="rank-chip ${i<3?'top':''}">${l.rank||i+1}</span></td>
+      <td><div class="trader">${ph}<div><div class="nm">${esc(l.name)}</div><div class="ad">${shortAddr(l.wallet)}</div></div></div></td>
+      <td class="num ${l.pnl>=0?'pos':'neg'}">${l.pnl>=0?'+':''}${fmtUSD(l.pnl)}</td>
+      <td class="num">${fmtUSD(l.vol)}</td>
+      <td><span class="num">${roi.toFixed(1)}%</span><div class="roi-bar"><i style="width:${Math.min(100,(l.vol>0?(l.pnl/l.vol):0)/maxRoi*100)}%"></i></div></td>
+      <td class="num" style="color:var(--brand)">View positions →</td>
+    </tr>`;
+  }).join('');
+}
+
+/* ---------------- wallet detail ---------------- */
+async function fetchPositions(wallet){
+  if(posCache[wallet])return posCache[wallet];
+  let pos=[];
+  if(LIVE){
+    try{
+      const d=await jget(`${DATA}/positions?user=${wallet}&sortBy=CURRENT&sortDirection=DESC&limit=60`);
+      pos=(Array.isArray(d)?d:[]).map(p=>({
+        title:p.title, outcome:p.outcome, size:Number(p.size)||0,
+        avg:Number(p.avgPrice)||0, cur:Number(p.curPrice)||0,
+        value:Number(p.currentValue)||0, initial:Number(p.initialValue)||0,
+        pnl:Number(p.cashPnl)||0, pnlPct:Number(p.percentPnl)||0,
+        realized:Number(p.realizedPnl)||0, redeemable:!!p.redeemable,
+        conditionId:p.conditionId||'',
+        slug:p.eventSlug||p.slug||''
+      }));
+    }catch(e){pos=[];}
+  }
+  if(!pos.length && !LIVE) pos=DEMO.positions[wallet]||DEMO.positions.default;
+  posCache[wallet]=pos; return pos;
+}
+async function fetchActivity(wallet){
+  if(!LIVE) return DEMO.activity;
+  try{
+    const d=await jget(`${DATA}/activity?user=${wallet}&limit=25&sortDirection=DESC`);
+    return (Array.isArray(d)?d:[]).filter(a=>a.type==='TRADE').map(a=>({
+      side:a.side, title:a.title, outcome:a.outcome,
+      price:Number(a.price)||0, usd:Number(a.usdcSize)||0, t:(a.timestamp||0)*1000,
+      conditionId:a.conditionId||''
+    }));
+  }catch(e){return [];}
+}
+
+/* Match each past trade to its market's current/resolved price.
+   1) Try the wallet's own positions (already fetched).
+   2) For trades whose market is no longer in their positions, look the
+      market up on Gamma by conditionId to get resolved/current prices. */
+async function resolveTradeResults(act,pos){
+  const map={};
+  const key=(cid,title,out)=>((cid||title||'')+'|'+(out||'').toLowerCase());
+  pos.forEach(p=>{
+    map[key(p.conditionId,p.title,p.outcome)]={cur:p.cur,resolved:p.redeemable};
+    if(p.conditionId) map[key('',p.title,p.outcome)]={cur:p.cur,resolved:p.redeemable};
+  });
+  if(LIVE){
+    const missing=[...new Set(act.filter(a=>a.conditionId&&!map[key(a.conditionId,a.title,a.outcome)]).map(a=>a.conditionId))].slice(0,20);
+    if(missing.length){
+      try{
+        const ms=await jget(`${GAMMA}/markets?`+missing.map(c=>'condition_ids='+encodeURIComponent(c)).join('&'));
+        (Array.isArray(ms)?ms:[]).forEach(mk=>{
+          try{
+            const prices=JSON.parse(mk.outcomePrices||'[]').map(Number);
+            const outs=JSON.parse(mk.outcomes||'[]');
+            outs.forEach((o,i)=>{map[key(mk.conditionId,'',o)]={cur:prices[i],resolved:!!mk.closed};});
+          }catch(e){}
+        });
+      }catch(e){}
+    }
+  }
+  return a=>a.result||map[key(a.conditionId,a.title,a.outcome)]||map[key('',a.title,a.outcome)]||null;
+}
+
+/* Turn a trade + market state into a human-readable result chip */
+function tradeResult(a,st){
+  if(!st) return '<span class="res-chip neutral">RESULT N/A</span>';
+  const buy=a.side==='BUY';
+  if(st.resolved){
+    const wonSide=st.cur>0.5; // resolved markets settle at ~100¢ or ~0¢
+    if(buy){
+      if(wonSide){const r=a.price>0?((1-a.price)/a.price)*100:0;
+        return `<span class="res-chip win">✓ WON · +${r>=1000?(r/100).toFixed(1)+'x':r.toFixed(0)+'%'}</span>`;}
+      return '<span class="res-chip loss">✗ LOST · −100%</span>';
+    }
+    /* sells on resolved markets: judged by what they avoided or gave up */
+    if(!wonSide) return `<span class="res-chip win">✓ GOOD EXIT · went to 0¢, sold at ${cents(a.price)}</span>`;
+    return `<span class="res-chip loss">SOLD A WINNER · resolved 100¢, exited at ${cents(a.price)}</span>`;
+  }
+  /* market still open */
+  if(buy){
+    const d=a.price>0?((st.cur-a.price)/a.price)*100:0;
+    const cls=d>=0?'open-up':'open-down';
+    return `<span class="res-chip ${cls}">OPEN · now ${cents(st.cur)} (${d>=0?'+':''}${d.toFixed(0)}%)</span>`;
+  }
+  const diff=(a.price-st.cur)*100;
+  if(diff>=1) return `<span class="res-chip open-up">GOOD EXIT SO FAR · now ${cents(st.cur)}, ${diff.toFixed(0)}¢ below their sell</span>`;
+  if(diff<=-1) return `<span class="res-chip open-down">EARLY EXIT · now ${cents(st.cur)}, ${Math.abs(diff).toFixed(0)}¢ above their sell</span>`;
+  return `<span class="res-chip neutral">FLAT · now ${cents(st.cur)}</span>`;
+}
+
+async function openWallet(i){
+  const l=LEADERS[i]; if(!l)return;
+  $('smartList').style.display='none';
+  const box=$('walletDetail'); box.style.display='block';
+  box.innerHTML=`<button class="panel-back" onclick="closeWallet()">← Back to leaderboard</button>
+    <div class="loading"><span class="spinner"></span>Loading ${esc(l.name)}'s live positions…</div>`;
+  const [pos,act]=await Promise.all([fetchPositions(l.wallet),fetchActivity(l.wallet)]);
+  const roi=l.vol>0?(l.pnl/l.vol)*100:0;
+  const open=pos.filter(p=>!p.redeemable && p.value>1);
+  const decided=pos.filter(p=>p.redeemable || (p.realized&&Math.abs(p.realized)>0.5));
+  const winsArr=decided.length?decided:pos;
+  const wins=winsArr.filter(p=>(p.redeemable?p.value-p.initial:(p.realized||p.pnl))>0).length;
+  const winRate=winsArr.length?Math.round(wins/winsArr.length*100):null;
+  const ph=l.img?`<img src="${esc(l.img)}" alt="">`:`<span class="ph">${esc((l.name||'?')[0].toUpperCase())}</span>`;
+
+  const posRows=open.sort((a,b)=>b.value-a.value).slice(0,15).map(p=>{
+    const sideY=/yes/i.test(p.outcome);
+    const move=p.avg>0?((p.cur-p.avg)/p.avg)*100:0;
+    const copyNote=p.cur<=p.avg*1.03
+      ? `<span class="pos">Still copyable — price ≈ their entry (${cents(p.cur)})</span>`
+      : `<span style="color:var(--amber)">They're up ${move.toFixed(0)}% — you'd enter ${(move).toFixed(0)}% later at ${cents(p.cur)}</span>`;
+    return `<tr>
+      <td style="max-width:280px">${esc(p.title)}</td>
+      <td><span class="side-tag ${sideY?'y':'n'}">${esc((p.outcome||'').toUpperCase())}</span></td>
+      <td class="num">${cents(p.avg)}</td>
+      <td class="num">${cents(p.cur)}</td>
+      <td class="num">${fmtUSD(p.value)}</td>
+      <td class="num ${p.pnl>=0?'pos':'neg'}">${p.pnl>=0?'+':''}${fmtUSD(p.pnl)} (${p.pnlPct>=0?'+':''}${p.pnlPct.toFixed(0)}%)</td>
+      <td class="copy-hint">${copyNote}</td>
+    </tr>`;
+  }).join('');
+
+  const lookup=await resolveTradeResults(act,pos);
+  let tradeWins=0,tradeSettled=0;
+  const feed=act.slice(0,15).map(a=>{
+    const buy=a.side==='BUY';
+    const st=lookup(a);
+    if(st&&st.resolved&&buy){tradeSettled++;if(st.cur>0.5)tradeWins++;}
+    return `<div class="feed-item">
+      <span class="side-tag ${buy?'y':'n'}">${buy?'BOUGHT':'SOLD'}</span>
+      <span><b>${esc(a.outcome)}</b> in ${esc(a.title)}</span>
+      <span class="num">${cents(a.price)} · ${fmtUSD(a.usd)}</span>
+      ${tradeResult(a,st)}
+      <span class="t">${a.t?new Date(a.t).toLocaleDateString(undefined,{month:'short',day:'numeric'}):''}</span>
+    </div>`;
+  }).join('')||'<div class="empty">No recent trades found.</div>';
+  const tradeSummary=tradeSettled?`<small>${tradeWins}/${tradeSettled} settled buys won (${Math.round(tradeWins/tradeSettled*100)}%) · rest still open</small>`:'<small>their live order flow · result shown per trade</small>';
+
+  box.innerHTML=`
+    <button class="panel-back" onclick="closeWallet()">← Back to leaderboard</button>
+    <div class="wallet-head">${ph}
+      <div>
+        <h2>${esc(l.name)}</h2>
+        <div class="ad">${esc(l.wallet)} · <a href="https://polymarket.com/profile/${esc(l.wallet)}" target="_blank" rel="noopener">view on Polymarket ↗</a></div>
+      </div>
+    </div>
+    <div class="stat-row">
+      <div class="stat-card"><div class="lbl">Profit (${PERIOD==='ALL'?'all time':PERIOD==='MONTH'?'30 days':'7 days'})</div><div class="val ${l.pnl>=0?'pos':'neg'}">${l.pnl>=0?'+':''}${fmtUSD(l.pnl)}</div></div>
+      <div class="stat-card"><div class="lbl">Volume traded</div><div class="val">${fmtUSD(l.vol)}</div></div>
+      <div class="stat-card"><div class="lbl">ROI (profit ÷ volume)</div><div class="val">${roi.toFixed(1)}%</div><div class="sub">higher = more edge per dollar</div></div>
+      <div class="stat-card"><div class="lbl">Profitable positions</div><div class="val">${winRate!==null?winRate+'%':'—'}</div><div class="sub">of ${winsArr.length} ${decided.length?'settled/closed':'current'} positions</div></div>
+    </div>
+    <div class="section-h">Open positions you could copy <small>${open.length} live · biggest first</small></div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Market</th><th>Side</th><th>Their entry</th><th>Price now</th><th>Position size</th><th>Their PnL</th><th>Copy read</th></tr></thead>
+      <tbody>${posRows||'<tr><td colspan="7"><div class="empty">No sizable open positions right now.</div></td></tr>'}</tbody>
+    </table></div>
+    <div class="section-h">Recent trades ${tradeSummary}</div>
+    <div class="feed">${feed}</div>`;
+  window.scrollTo({top:0});
+}
+function closeWallet(){$('walletDetail').style.display='none';$('smartList').style.display='block';}
+
+/* ---------------- copy signals ---------------- */
+async function loadSignals(){
+  $('sigStatus').style.display='flex'; $('sigGrid').innerHTML='';
+  let agg={};
+  const top=LEADERS.length?LEADERS.slice(0,8):DEMO.leaders.slice(0,8);
+  if(LIVE){
+    const results=await Promise.allSettled(top.map(l=>fetchPositions(l.wallet)));
+    results.forEach((r,i)=>{
+      if(r.status!=='fulfilled')return;
+      r.value.filter(p=>!p.redeemable&&p.value>50).forEach(p=>{
+        const key=p.title+'|'+p.outcome;
+        agg[key]=agg[key]||{title:p.title,outcome:p.outcome,slug:p.slug,wallets:new Set(),value:0,entrySum:0,entryN:0,cur:p.cur};
+        agg[key].wallets.add(top[i].name); agg[key].value+=p.value;
+        agg[key].entrySum+=p.avg; agg[key].entryN++; agg[key].cur=p.cur;
+      });
+    });
+  }else{
+    DEMO.signals.forEach(s=>{agg[s.title]={...s,wallets:new Set(s.wallets)};});
+  }
+  const sigs=Object.values(agg)
+    .map(s=>({...s,n:s.wallets.size,avgEntry:s.entryN?s.entrySum/s.entryN:s.avgEntry}))
+    .filter(s=>s.n>=2)
+    .sort((a,b)=>b.n-a.n||b.value-a.value)
+    .slice(0,12);
+  window.__lastSignals=sigs;
+  $('sigStatus').style.display='none';
+  if(!sigs.length){
+    $('sigGrid').innerHTML='<div class="empty">No overlapping positions among the top wallets right now — check individual wallets in Smart Money instead.</div>';
+    return;
+  }
+  $('sigGrid').innerHTML=sigs.map(s=>{
+    const sideY=/yes/i.test(s.outcome);
+    const edge=s.avgEntry>0?((s.cur-s.avgEntry)/s.avgEntry)*100:0;
+    const read=s.cur<=s.avgEntry*1.05?'Entry still close to smart-money average — copy window open':'Price has run '+edge.toFixed(0)+'% past their average entry — reduced edge';
+    return `<div class="sig-card">
+      <span class="consensus">★ ${s.n} top traders aligned</span>
+      <div class="q">${esc(s.title)}</div>
+      <div><span class="side-tag ${sideY?'y':'n'}">${esc((s.outcome||'').toUpperCase())}</span></div>
+      <div class="sig-stats">
+        <div class="cell"><div class="l">Avg smart entry</div><div class="v">${cents(s.avgEntry)}</div></div>
+        <div class="cell"><div class="l">Price now</div><div class="v">${cents(s.cur)}</div></div>
+        <div class="cell"><div class="l">Combined stake</div><div class="v">${fmtUSD(s.value)}</div></div>
+      </div>
+      <div class="holders-line">Held by: <b style="color:var(--text)">${[...s.wallets].slice(0,4).map(esc).join(', ')}${s.wallets.size>4?' +'+(s.wallets.size-4):''}</b></div>
+      <div class="holders-line">${read} · payout if right: <b style="color:var(--yes)">${retLabel(s.cur)}</b></div>
+      <div class="actions" style="display:flex;gap:8px">
+        <a class="btn" target="_blank" rel="noopener" href="https://news.google.com/search?q=${encodeURIComponent(s.title)}">📰 News</a>
+        <a class="btn primary" target="_blank" rel="noopener" href="https://polymarket.com/event/${esc(s.slug||'')}">Trade ↗</a>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+/* ---------------- nav ---------------- */
+function showPage(p,btn){
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  $('page-'+p).classList.add('active'); btn.classList.add('active');
+  if(p==='bot'&&typeof Bot!=='undefined'&&Bot.state) Bot.render();
+}
+
+/* ---------------- demo data generators ---------------- */
+function genDemoHistory(endPrice,chg){
+  const pts=[]; let p=Math.min(.95,Math.max(.05,endPrice-(chg*3)-(Math.random()*.1-.05)));
+  const now=Date.now();
+  for(let i=30;i>=0;i--){
+    p+= (endPrice-p)*0.12 + (Math.random()-.5)*.04;
+    p=Math.min(.97,Math.max(.03,p));
+    pts.push({t:now-i*864e5,p:i===0?endPrice:p});
+  }
+  return pts;
+}
+const DEMO={
+  markets:[
+    {id:'d1',q:'Will the Fed cut rates at the July FOMC meeting?',yes:.62,vol24:2840000,volume:48200000,liq:1900000,chg:.071,end:'2026-07-29',eventSlug:''},
+    {id:'d2',q:'Will Bitcoin close above $150,000 on June 30?',yes:.34,vol24:1920000,volume:31500000,liq:1200000,chg:-.052,end:'2026-06-30',eventSlug:''},
+    {id:'d3',q:'Will India win the T20 World Cup 2026?',yes:.41,vol24:1410000,volume:12800000,liq:880000,chg:.038,end:'2026-07-05',eventSlug:''},
+    {id:'d4',q:'Will OpenAI release GPT-6 before September 2026?',yes:.27,vol24:980000,volume:3200000,liq:640000,chg:.094,end:'2026-06-22',eventSlug:''},
+    {id:'d5',q:'Will US CPI (YoY) come in below 2.5% for June?',yes:.55,vol24:760000,volume:6700000,liq:520000,chg:-.021,end:'2026-06-16',eventSlug:''},
+    {id:'d6',q:'Will Ethereum flip $8,000 before August 1?',yes:.18,vol24:690000,volume:9400000,liq:430000,chg:.012,end:'2026-08-01',eventSlug:''},
+    {id:'d7',q:'Will SpaceX complete a fully successful Starship orbital catch this week?',yes:.84,vol24:540000,volume:5200000,liq:390000,chg:.033,end:'2026-06-16',eventSlug:''},
+    {id:'d8',q:'Will Apple announce a foldable iPhone at WWDC follow-up event?',yes:.09,vol24:410000,volume:3800000,liq:280000,chg:-.018,end:'2026-09-15',eventSlug:''},
+    {id:'d9',q:'Will the S&P 500 close above 7,000 by end of Q3?',yes:.48,vol24:1280000,volume:16400000,liq:940000,chg:.026,end:'2026-09-30',eventSlug:''},
+    {id:'d10',q:'Will there be a US TikTok divest-or-ban enforcement before October?',yes:.39,vol24:860000,volume:11200000,liq:610000,chg:-.064,end:'2026-10-01',eventSlug:''},
+    {id:'d11',q:'Will Real Madrid win their Club World Cup group-stage opener?',yes:.76,vol24:1730000,volume:6100000,liq:720000,chg:.047,end:'2026-06-13',eventSlug:''},
+    {id:'d12',q:'Will June 12 set a new daily temperature record in Phoenix?',yes:.82,vol24:220000,volume:1400000,liq:160000,chg:.008,end:'2026-06-13',eventSlug:''},
+    {id:'d13',q:'Will the ECB hold rates at tomorrow\u2019s meeting?',yes:.91,vol24:620000,volume:4100000,liq:350000,chg:.011,end:'2026-06-12',eventSlug:''},
+    {id:'d14',q:'Will the US announce new chip export rules before June 20?',yes:.31,vol24:410000,volume:1200000,liq:240000,chg:-.032,end:'2026-06-20',eventSlug:''}
+  ],
+  leaders:[
+    {rank:1,wallet:'0x8f3a72b1c94d5e6f7a8b9c0d1e2f3a4b5c6d7e8f',name:'Theo4',vol:18400000,pnl:2140000,img:''},
+    {rank:2,wallet:'0x1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c',name:'walletmirror',vol:9800000,pnl:1620000,img:''},
+    {rank:3,wallet:'0x9d8c7b6a5f4e3d2c1b0a9f8e7d6c5b4a3f2e1d0c',name:'gauchito',vol:6200000,pnl:1180000,img:''},
+    {rank:4,wallet:'0x2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f',name:'FedWatcherPro',vol:4100000,pnl:890000,img:''},
+    {rank:5,wallet:'0x7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b',name:'DeepValue',vol:5600000,pnl:740000,img:''},
+    {rank:6,wallet:'0x3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d',name:'sportsbook_exile',vol:7900000,pnl:660000,img:''},
+    {rank:7,wallet:'0x5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f',name:'quietsize',vol:2300000,pnl:540000,img:''},
+    {rank:8,wallet:'0x0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e',name:'macro_anon',vol:3500000,pnl:470000,img:''},
+    {rank:9,wallet:'0x6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a',name:'KalshiRefugee',vol:2900000,pnl:380000,img:''},
+    {rank:10,wallet:'0x4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c',name:'newsfront',vol:1800000,pnl:310000,img:''}
+  ],
+  positions:{default:[
+    {title:'Will the Fed cut rates at the July FOMC meeting?',outcome:'Yes',size:412000,avg:.51,cur:.62,value:255440,initial:210120,pnl:45320,pnlPct:21.6,realized:0,redeemable:false,slug:''},
+    {title:'Will Bitcoin close above $150,000 on June 30?',outcome:'No',size:280000,avg:.58,cur:.66,value:184800,initial:162400,pnl:22400,pnlPct:13.8,realized:0,redeemable:false,slug:''},
+    {title:'Will US CPI (YoY) come in below 2.5% for June?',outcome:'Yes',size:190000,avg:.54,cur:.55,value:104500,initial:102600,pnl:1900,pnlPct:1.9,realized:0,redeemable:false,slug:''},
+    {title:'Will OpenAI release GPT-6 before September 2026?',outcome:'Yes',size:150000,avg:.19,cur:.27,value:40500,initial:28500,pnl:12000,pnlPct:42.1,realized:0,redeemable:false,slug:''},
+    {title:'Will the S&P 500 close above 7,000 by end of Q3?',outcome:'Yes',size:120000,avg:.47,cur:.48,value:57600,initial:56400,pnl:1200,pnlPct:2.1,realized:0,redeemable:false,slug:''},
+    {title:'Will India win the T20 World Cup 2026? (settled example)',outcome:'Yes',size:90000,avg:.36,cur:.41,value:36900,initial:32400,pnl:4500,pnlPct:13.9,realized:8200,redeemable:false,slug:''},
+    {title:'Was May 2026 a record-hot month? (resolved)',outcome:'Yes',size:60000,avg:.62,cur:1,value:60000,initial:37200,pnl:22800,pnlPct:61.3,realized:22800,redeemable:true,slug:''},
+    {title:'Fed pause in June 2026 (resolved)',outcome:'Yes',size:80000,avg:.70,cur:1,value:80000,initial:56000,pnl:24000,pnlPct:42.8,realized:24000,redeemable:true,slug:''},
+    {title:'ETH above $7k by May 31 (resolved)',outcome:'Yes',size:40000,avg:.31,cur:0,value:0,initial:12400,pnl:-12400,pnlPct:-100,realized:-12400,redeemable:true,slug:''}
+  ]},
+  activity:[
+    {side:'BUY',title:'Will the Fed cut rates at the July FOMC meeting?',outcome:'Yes',price:.60,usd:84000,t:Date.now()-3600e3*5,result:{cur:.62,resolved:false}},
+    {side:'BUY',title:'Will OpenAI release GPT-6 before September 2026?',outcome:'Yes',price:.25,usd:21000,t:Date.now()-3600e3*11,result:{cur:.27,resolved:false}},
+    {side:'SELL',title:'Will Ethereum flip $8,000 before August 1?',outcome:'Yes',price:.21,usd:15500,t:Date.now()-864e5,result:{cur:.18,resolved:false}},
+    {side:'BUY',title:'Will Bitcoin close above $150,000 on June 30?',outcome:'No',price:.63,usd:46000,t:Date.now()-864e5*2,result:{cur:.66,resolved:false}},
+    {side:'BUY',title:'Will US CPI (YoY) come in below 2.5% for June?',outcome:'Yes',price:.53,usd:30000,t:Date.now()-864e5*3,result:{cur:.55,resolved:false}},
+    {side:'BUY',title:'Was May 2026 a record-hot month?',outcome:'Yes',price:.62,usd:37200,t:Date.now()-864e5*9,result:{cur:1,resolved:true}},
+    {side:'BUY',title:'Fed pause in June 2026',outcome:'Yes',price:.70,usd:56000,t:Date.now()-864e5*12,result:{cur:1,resolved:true}},
+    {side:'BUY',title:'ETH above $7k by May 31',outcome:'Yes',price:.31,usd:12400,t:Date.now()-864e5*15,result:{cur:0,resolved:true}},
+    {side:'SELL',title:'Will there be a US TikTok divest-or-ban enforcement before October?',outcome:'Yes',price:.46,usd:18800,t:Date.now()-864e5*6,result:{cur:.39,resolved:false}},
+    {side:'BUY',title:'Nvidia beats Q1 earnings consensus',outcome:'Yes',price:.74,usd:41000,t:Date.now()-864e5*20,result:{cur:1,resolved:true}}
+  ],
+  signals:[
+    {title:'Will the Fed cut rates at the July FOMC meeting?',outcome:'Yes',slug:'',wallets:['Theo4','FedWatcherPro','macro_anon','quietsize'],n:4,value:612000,avgEntry:.52,cur:.62,entryN:0,entrySum:0},
+    {title:'Will Bitcoin close above $150,000 on June 30?',outcome:'No',slug:'',wallets:['walletmirror','DeepValue','Theo4'],n:3,value:388000,avgEntry:.59,cur:.66,entryN:0,entrySum:0},
+    {title:'Will OpenAI release GPT-6 before September 2026?',outcome:'Yes',slug:'',wallets:['gauchito','newsfront','quietsize'],n:3,value:97000,avgEntry:.20,cur:.27,entryN:0,entrySum:0},
+    {title:'Will US CPI (YoY) come in below 2.5% for June?',outcome:'Yes',slug:'',wallets:['FedWatcherPro','macro_anon'],n:2,value:151000,avgEntry:.54,cur:.55,entryN:0,entrySum:0}
+  ]
+};
+
+/* =====================================================
+   EDGEHOUND — self-managed paper-trading bot
+   - 4 signal engines score every market each scan
+   - 10–20 trades/day, $100–$1000 sized by confidence
+   - exits via target / stop / max-hold / resolution
+   - learning: signal weights reweighted by realized P&L
+   - persists to localStorage when available (local file /
+     hosted); falls back to in-memory in the chat sandbox
+===================================================== */
+const store={
+  mem:{},
+  get(k){try{const v=localStorage.getItem(k);return v?JSON.parse(v):this.mem[k]??null;}catch(e){return this.mem[k]??null;}},
+  set(k,v){this.mem[k]=v;try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+};
+
+const STRATS={
+  SHORT_FAVORITE:{label:'Short Favorite',desc:'78–94¢ favorites resolving ≤7d (favorite-longshot bias)',hold:8,target:null,stop:.45},
+  MOMENTUM:{label:'Momentum',desc:'≥4pt 24h move on volume — ride trend, exit fast',hold:3,target:.18,stop:.20},
+  SMART_CONSENSUS:{label:'Smart Consensus',desc:'2+ top wallets same side, price near their entry',hold:14,target:.30,stop:.30},
+  VOLUME_SPIKE:{label:'Volume Spike',desc:'Abnormal 24h volume vs lifetime — attention trade',hold:5,target:.22,stop:.25}
+};
+
+const Bot={
+  state:null, equityChart:null, timer:null, remote:false,
+
+  async init(){
+    /* remote mode: watch a cloud-run journal (GitHub Actions).
+       Tries a saved URL, else data/state.json alongside this page
+       (automatic when hosted via GitHub Pages in the bot's repo). */
+    this.remote=false;
+    const saved=store.get('eh_remote');
+    if(saved!==''){ /* '' means user forced local mode */
+      const url=saved||'data/state.json';
+      try{
+        const s=await jget(url+(url.includes('?')?'&':'?')+'_='+Date.now(),6000);
+        if(s&&Array.isArray(s.journal)){ this.remote=true; this.remoteUrl=url; this.state=s; }
+      }catch(e){}
+    }
+    if(this.remote){
+      for(const k in STRATS) this.state.strat[k]=this.state.strat[k]||{trades:0,wins:0,pnl:0,weight:1};
+      clearInterval(this.timer);
+      this.timer=setInterval(async()=>{
+        try{const s=await jget(this.remoteUrl+(this.remoteUrl.includes('?')?'&':'?')+'_='+Date.now(),6000);
+          if(s&&Array.isArray(s.journal)){this.state=s;this.render();}}catch(e){}
+      },5*60*1000);
+      this.render();
+      const el=$('botLog'); if(el) el.innerHTML='☁ Watching cloud journal: '+esc(this.remoteUrl)+'<br>'+(this.state.log||[]).map(esc).join('<br>');
+      return;
+    }
+    this.state=store.get('eh_state')||{
+      running:true, journal:[], strat:{}, created:Date.now(), log:[]
+    };
+    for(const k in STRATS) this.state.strat[k]=this.state.strat[k]||{trades:0,wins:0,pnl:0,weight:1};
+    this.log(LIVE?'Booted on live data. Catching up on open positions…':'Booted in sample mode — use ⏩ Simulate 1 day to watch it trade & learn.');
+    this.catchUp().then(()=>{ this.scan(); this.render(); });
+    clearInterval(this.timer);
+    this.timer=setInterval(()=>{ if(this.state.running){ this.catchUp().then(()=>{this.scan();this.render();}); } }, LIVE?10*60*1000:60*1000);
+  },
+
+  setRemote(){ const v=$('remoteUrl').value.trim(); if(!v)return; store.set('eh_remote',v); this.init(); },
+  clearRemote(){ store.set('eh_remote',''); this.init(); },
+
+  save(){ store.set('eh_state',this.state); },
+  log(msg){
+    this.state.log.unshift(new Date().toLocaleTimeString()+' — '+msg);
+    this.state.log=this.state.log.slice(0,6);
+    const el=$('botLog'); if(el) el.innerHTML=this.state.log.map(esc).join('<br>');
+  },
+  today(){ return new Date().toISOString().slice(0,10); },
+  todayCount(){ return this.state.journal.filter(t=>t.date===this.today()).length; },
+  open(){ return this.state.journal.filter(t=>t.status==='open'); },
+  closed(){ return this.state.journal.filter(t=>t.status==='closed'); },
+
+  /* ---------- price lookup for open trades ---------- */
+  async curPrices(trades){
+    const out={};
+    /* first try the in-memory market list */
+    trades.forEach(t=>{
+      const m=MARKETS.find(x=>x.id===t.mid||(t.conditionId&&x.conditionId===t.conditionId)||x.q===t.title);
+      if(m) out[t.id]={cur:t.side==='YES'?m.yes:m.no,resolved:false};
+    });
+    if(LIVE){
+      const need=trades.filter(t=>!out[t.id]&&t.conditionId).map(t=>t.conditionId);
+      const uniq=[...new Set(need)].slice(0,25);
+      if(uniq.length){
+        try{
+          const ms=await jget(`${GAMMA}/markets?`+uniq.map(c=>'condition_ids='+encodeURIComponent(c)).join('&'));
+          (Array.isArray(ms)?ms:[]).forEach(mk=>{
+            try{
+              const prices=JSON.parse(mk.outcomePrices||'[]').map(Number);
+              const outs=JSON.parse(mk.outcomes||'[]');
+              let yi=outs.findIndex(o=>/^yes$/i.test(o)); if(yi<0)yi=0;
+              trades.filter(t=>t.conditionId===mk.conditionId).forEach(t=>{
+                out[t.id]={cur:t.side==='YES'?prices[yi]:1-prices[yi],resolved:!!mk.closed};
+              });
+            }catch(e){}
+          });
+        }catch(e){}
+      }
+    }
+    return out;
+  },
+
+  /* ---------- settle / exit management ---------- */
+  async catchUp(){
+    const open=this.open(); if(!open.length)return;
+    const px=await this.curPrices(open);
+    const now=Date.now();
+    open.forEach(t=>{
+      const p=px[t.id]; if(!p)return;
+      t.cur=p.cur;
+      if(p.resolved||p.cur>=0.995||p.cur<=0.005){
+        this.close(t, p.cur>=0.5?1:0, p.cur>=0.5?'Resolved in our favor ✓':'Resolved against us ✗'); return;
+      }
+      const move=(p.cur-t.entry)/t.entry;
+      if(t.target && move>=t.target){ this.close(t,p.cur,`Profit target hit (+${(t.target*100).toFixed(0)}%)`); return; }
+      if(move<=-t.stop){ this.close(t,p.cur,`Stop loss hit (−${(t.stop*100).toFixed(0)}%)`); return; }
+      if(now>t.holdUntil){ this.close(t,p.cur,'Max hold time reached — closed at market'); return; }
+    });
+    this.save();
+  },
+
+  close(t,exit,reason){
+    t.status='closed'; t.exit=exit; t.exitTs=Date.now(); t.exitReason=reason;
+    t.pnl=(t.stake/t.entry)*(exit-t.entry);
+    const s=this.state.strat[t.signal];
+    s.trades++; if(t.pnl>0)s.wins++; s.pnl+=t.pnl;
+    /* learning: weight = Laplace-smoothed win quality × ROI tilt, clamped */
+    const wr=(s.wins+2)/(s.trades+4);
+    const roiTilt=1+Math.max(-0.5,Math.min(0.5,s.pnl/Math.max(1000,s.trades*400)));
+    s.weight=Math.max(0.25,Math.min(2.2, wr*2*roiTilt ));
+    this.log(`Closed ${t.side} "${t.title.slice(0,40)}…" → ${t.pnl>=0?'+':''}$${t.pnl.toFixed(0)} (${reason}). ${STRATS[t.signal].label} weight → ${s.weight.toFixed(2)}`);
+  },
+
+  /* ---------- candidate generation & scoring ---------- */
+  candidates(){
+    const cands=[];
+    const now=Date.now();
+    const openKeys=new Set(this.open().map(t=>t.title+'|'+t.side));
+    MARKETS.forEach(m=>{
+      const daysLeft=m.end?(m.end-now)/864e5:99;
+      if(daysLeft<=0)return;
+      /* 1 — SHORT FAVORITE */
+      [['YES',m.yes],['NO',m.no]].forEach(([side,p])=>{
+        if(p>=.78&&p<=.94&&daysLeft<=7&&m.liq>10000&&m.vol24>3000){
+          const score=.55+(7-daysLeft)/7*.15+Math.min(.1,m.liq/2e6)+( (p-.78)/.16 )*.05;
+          cands.push({m,side,price:p,signal:'SHORT_FAVORITE',score,
+            insight:`${cents(p)} favorite resolving in ${daysLeft.toFixed(1)}d. Favorite-longshot bias: markets systematically underprice near-certainties. Hold to resolution; ${(retCalc(p)||0).toFixed(0)}% if it lands.`});
+        }
+      });
+      /* 2 — MOMENTUM */
+      if(Math.abs(m.chg)>=.04&&m.vol24>=50000){
+        const side=m.chg>0?'YES':'NO';
+        const p=side==='YES'?m.yes:m.no;
+        if(p>=.15&&p<=.85){
+          const score=.5+Math.min(.2,Math.abs(m.chg)*2)+Math.min(.15,m.vol24/5e6);
+          cands.push({m,side,price:p,signal:'MOMENTUM',score,
+            insight:`Moved ${(m.chg*100).toFixed(1)}pts in 24h on ${fmtUSD(m.vol24)} volume — news is repricing this. Ride the trend: target +18%, stop −20%, out within 3 days regardless.`});
+        }
+      }
+      /* 4 — VOLUME SPIKE */
+      const spike=m.volume>0?m.vol24/m.volume:0;
+      if(spike>=.25&&m.vol24>=30000&&daysLeft<=14){
+        const side=m.yes<=.5?'YES':'NO'; /* cheap side of a market suddenly in play */
+        const p=side==='YES'?m.yes:m.no;
+        if(p>=.12&&p<=.48){
+          const score=.48+Math.min(.2,spike*.4)+Math.min(.1,m.vol24/3e6);
+          cands.push({m,side,price:p,signal:'VOLUME_SPIKE',score,
+            insight:`${(spike*100).toFixed(0)}% of lifetime volume traded in 24h — sudden attention usually precedes movement. Cheap side at ${cents(p)} pays ${retLabel(p)}; tight risk controls.`});
+        }
+      }
+    });
+    /* 3 — SMART CONSENSUS (from copy-signals aggregation cache) */
+    (window.__lastSignals||[]).forEach(s=>{
+      if(s.n>=2&&s.cur>0&&s.cur<=s.avgEntry*1.06){
+        cands.push({m:{q:s.title,id:'sig:'+s.title,conditionId:'',eventSlug:s.slug,end:null},
+          side:/yes/i.test(s.outcome)?'YES':'NO',price:s.cur,signal:'SMART_CONSENSUS',
+          score:.5+Math.min(.25,s.n*.07)+Math.min(.1,s.value/2e6),
+          insight:`${s.n} top-ranked wallets hold this side (combined ${fmtUSD(s.value)}), avg entry ${cents(s.avgEntry)} vs ${cents(s.cur)} now — still inside the copy window.`});
+      }
+    });
+    /* apply learned weights, dedupe vs open positions */
+    return cands
+      .filter(c=>!openKeys.has(c.m.q+'|'+c.side))
+      .map(c=>({...c,score:c.score*this.state.strat[c.signal].weight}))
+      .sort((a,b)=>b.score-a.score);
+  },
+
+  /* ---------- the scan: pick & place ---------- */
+  scan(manual){
+    if(!this.state.running&&!manual)return;
+    const taken=this.todayCount();
+    if(taken>=20){ if(manual)this.log('Daily cap (20) reached — no new trades today.'); this.render(); return; }
+    const hour=new Date().getHours();
+    /* threshold relaxes late in the day if behind the 10-trade pace */
+    const behind=taken<10&&hour>=17;
+    const threshold=behind?0.42:0.55;
+    const room=Math.min(20-taken, manual?6:4);
+    const picks=this.candidates().filter(c=>c.score>=threshold).slice(0,room);
+    picks.forEach(c=>this.place(c));
+    if(picks.length)this.log(`Scan: placed ${picks.length} trade${picks.length>1?'s':''} (${taken+picks.length}/20 today, threshold ${threshold}).`);
+    else if(manual)this.log('Scan: no candidates cleared the score threshold right now.');
+    this.save(); this.render();
+  },
+
+  place(c){
+    const conf=Math.max(0,Math.min(1,(c.score-.42)/.5));
+    const stake=Math.round((100+900*conf)/50)*50;
+    const sd=STRATS[c.signal];
+    const t={
+      id:'t'+Date.now()+Math.random().toString(36).slice(2,6),
+      date:this.today(), openedTs:Date.now(),
+      title:c.m.q, mid:c.m.id, conditionId:c.m.conditionId||'', slug:c.m.eventSlug||'',
+      side:c.side, entry:c.price, cur:c.price, stake,
+      signal:c.signal, insight:c.insight, score:c.score,
+      target:sd.target, stop:sd.stop,
+      holdUntil:Math.min(Date.now()+sd.hold*864e5, c.m.end?c.m.end.getTime():Infinity),
+      status:'open'
+    };
+    this.state.journal.unshift(t);
+  },
+
+  /* ---------- demo fast-forward: one synthetic day ---------- */
+  _dayN:0,
+  genDailyMarkets(){
+    this._dayN++; const n=this._dayN;
+    const mk=(q,yes,vol24,volume,liq,chg,days)=>({id:'g'+n+'_'+Math.random().toString(36).slice(2,6),q,yes,no:1-yes,labels:['Yes','No'],vol24,volume,liq,chg,end:new Date(Date.now()+days*864e5),token:null,conditionId:'',eventSlug:'',slug:''});
+    const out=[
+      mk(`Will the favorite win tonight's playoff game? (sim day ${n})`,.79+Math.random()*.13,6e5+Math.random()*1e6,4e6,4e5,(Math.random()-.5)*.05,1),
+      mk(`Will the home side win today's T20 fixture? (sim day ${n})`,.80+Math.random()*.12,4e5,2.5e6,3e5,(Math.random()-.5)*.05,1),
+      mk(`Will Bitcoin close green today? (sim day ${n})`,.35+Math.random()*.30,1.5e6,3e6,5e5,(Math.random()-.5)*.14,1),
+      mk(`Will this week's jobs print beat consensus? (sim day ${n})`,.85+Math.random()*.08,3e5,2e6,2.5e5,(Math.random()-.5)*.04,2),
+      mk(`Will the emergency vote pass this week? (sim day ${n})`,.20+Math.random()*.25,4e5,1.1e6,2e5,-(Math.random()*.06),4),
+      mk(`Will the headline match resolve YES by Friday? (sim day ${n})`,.55+(Math.random()-.5)*.3,9e5,5e6,4e5,(Math.random()-.5)*.12,3)
+    ];
+    out[4].vol24=out[4].volume*(.28+Math.random()*.15); /* guaranteed attention spike */
+    return out;
+  },
+  simulateDay(){
+    /* advance open trades along a biased random walk so the learning loop is visible */
+    this.open().forEach(t=>{
+      /* assumed true edges per signal for the simulation only */
+      const edge={SHORT_FAVORITE:.012,MOMENTUM:.02,SMART_CONSENSUS:.018,VOLUME_SPIKE:-.005}[t.signal]||0;
+      let p=t.cur;
+      for(let h=0;h<24;h++){ p+=edge/24+(Math.random()-.5)*.035; p=Math.min(.999,Math.max(.001,p)); }
+      t.cur=p;
+      const move=(p-t.entry)/t.entry;
+      const daysHeld=(Date.now()-t.openedTs)/864e5 + (t._simDays=(t._simDays||0)+1);
+      if(p>=.97&&t.signal==='SHORT_FAVORITE'&&Math.random()<.5){ this.close(t,1,'Resolved in our favor ✓ (sim)'); }
+      else if(p<=.03){ this.close(t,0,'Resolved against us ✗ (sim)'); }
+      else if(t.target&&move>=t.target){ this.close(t,p,`Profit target hit (+${(t.target*100).toFixed(0)}%) (sim)`); }
+      else if(move<=-t.stop){ this.close(t,p,`Stop loss hit (sim)`); }
+      else if(daysHeld>=STRATS[t.signal].hold){ this.close(t,p,'Max hold reached (sim)'); }
+    });
+    /* jitter sample market prices so new candidates appear */
+    MARKETS.forEach(m=>{
+      const d=(Math.random()-.5)*.16;
+      m.chg=d; m.yes=Math.min(.97,Math.max(.03,m.yes+d)); m.no=1-m.yes;
+      m.vol24*= .7+Math.random()*.8;
+      if(Math.random()<.25) m.vol24=m.volume*(0.25+Math.random()*.2); /* synthetic attention spike */
+    });
+    /* rotate in a fresh batch of short-dated markets, like a real new day */
+    MARKETS=MARKETS.filter(m=>!String(m.id).startsWith('g'));
+    MARKETS.push(...this.genDailyMarkets());
+    /* place a fresh batch as the "new day" */
+    const picks=this.candidates().filter(c=>c.score>=.42).slice(0,10+Math.floor(Math.random()*8));
+    picks.forEach(c=>this.place(c));
+    this.log(`Simulated day: settled exits processed, ${picks.length} new paper trades placed.`);
+    this.save(); this.render(); renderTape(); renderMarketStats(); renderMarkets();
+  },
+
+  /* ---------- controls ---------- */
+  toggle(){ this.state.running=!this.state.running; this.save(); this.render();
+    this.log(this.state.running?'Resumed — scanning on schedule.':'Paused — existing positions still tracked, no new entries.'); },
+  reset(){ if(!confirm('Wipe the entire EdgeHound journal and learned weights?'))return;
+    store.set('eh_state',null); this.state=null; this.init(); },
+  exportJournal(){
+    const blob=new Blob([JSON.stringify(this.state,null,2)],{type:'application/json'});
+    const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+    a.download='edgehound-journal-'+this.today()+'.json'; a.click();
+  },
+  importJournal(input){
+    const f=input.files[0]; if(!f)return;
+    const r=new FileReader();
+    r.onload=()=>{ try{ this.state=JSON.parse(r.result); this.save(); this.render(); this.log('Journal imported.'); }catch(e){ this.log('Import failed — not a valid journal file.'); } };
+    r.readAsText(f);
+  },
+
+  /* ---------- render ---------- */
+  render(){
+    const closed=this.closed(), open=this.open();
+    const realized=closed.reduce((s,t)=>s+t.pnl,0);
+    const unreal=open.reduce((s,t)=>s+(t.stake/t.entry)*((t.cur??t.entry)-t.entry),0);
+    const staked=this.state.journal.reduce((s,t)=>s+t.stake,0);
+    const wins=closed.filter(t=>t.pnl>0).length;
+    $('botBadge').textContent=open.length+' open';
+    $('botToggle').innerHTML=this.state.running?'⏸ Pause':'▶ Resume';
+    ['botToggle'].forEach(id=>$(id).style.display=this.remote?'none':'');
+    document.querySelectorAll('#page-bot .controls')[0].querySelectorAll('button,label').forEach(b=>{
+      if(b.id!=='botToggle'&&!b.textContent.includes('Export')) b.style.display=this.remote?'none':'';
+    });
+    $('simBtn').style.display=(this.remote||LIVE)?'none':'';
+    const lastRun=this.state.lastRun?new Date(this.state.lastRun):null;
+    const statusCard=this.remote
+      ?`<div class="stat-card"><div class="lbl">Status</div><div class="val" style="color:var(--brand)">☁ ON GITHUB</div><div class="sub">runs every 15 min in the cloud${lastRun?' · last: '+lastRun.toLocaleTimeString():''}</div></div>`
+      :`<div class="stat-card"><div class="lbl">Status</div><div class="val" style="color:${this.state.running?'var(--yes)':'var(--amber)'}">${this.state.running?'HUNTING':'PAUSED'}</div><div class="sub">${LIVE?'scans every 10 min while open':'sample mode — simulate days'}</div></div>`;
+    $('botStats').innerHTML=statusCard+`
+      <div class="stat-card"><div class="lbl">Realized P&L</div><div class="val ${realized>=0?'pos':'neg'}">${realized>=0?'+':''}$${realized.toFixed(0)}</div><div class="sub">${closed.length} closed trades</div></div>
+      <div class="stat-card"><div class="lbl">Unrealized P&L</div><div class="val ${unreal>=0?'pos':'neg'}">${unreal>=0?'+':''}$${unreal.toFixed(0)}</div><div class="sub">${open.length} open positions</div></div>
+      <div class="stat-card"><div class="lbl">Win rate</div><div class="val">${closed.length?Math.round(wins/closed.length*100)+'%':'—'}</div><div class="sub">${wins}W / ${closed.length-wins}L</div></div>
+      <div class="stat-card"><div class="lbl">Return on stakes</div><div class="val">${staked?((realized/staked)*100).toFixed(1)+'%':'—'}</div><div class="sub">${fmtUSD(staked)} total deployed</div></div>
+      <div class="stat-card"><div class="lbl">Today</div><div class="val">${this.todayCount()}<span style="font-size:13px;color:var(--faint)">/20</span></div><div class="sub">target ≥10 trades/day</div></div>`;
+
+    $('stratBody').innerHTML=Object.entries(STRATS).map(([k,sd])=>{
+      const s=this.state.strat[k];
+      const wr=s.trades?Math.round(s.wins/s.trades*100):null;
+      return `<tr><td><b>${sd.label}</b></td><td style="color:var(--muted);font-size:12px">${sd.desc}</td>
+        <td class="num">${s.trades}</td><td class="num">${wr!==null?wr+'%':'—'}</td>
+        <td class="num ${s.pnl>=0?'pos':'neg'}">${s.pnl>=0?'+':''}$${s.pnl.toFixed(0)}</td>
+        <td><span class="num">${s.weight.toFixed(2)}×</span><div class="roi-bar"><i style="width:${s.weight/2.2*100}%"></i></div></td></tr>`;
+    }).join('');
+
+    $('openCount').textContent=open.length+' positions · '+fmtUSD(open.reduce((s,t)=>s+t.stake,0))+' at work';
+    $('openBody').innerHTML=open.map(t=>{
+      const cur=t.cur??t.entry, pnl=(t.stake/t.entry)*(cur-t.entry), pp=((cur-t.entry)/t.entry)*100;
+      const plan=[t.target?`target +${(t.target*100).toFixed(0)}%`:'hold to resolution',`stop −${(t.stop*100).toFixed(0)}%`,
+        isFinite(t.holdUntil)?`out by ${new Date(t.holdUntil).toLocaleDateString(undefined,{month:'short',day:'numeric'})}`:''].filter(Boolean).join(' · ');
+      return `<tr><td style="max-width:240px">${esc(t.title)}</td>
+        <td><span class="side-tag ${t.side==='YES'?'y':'n'}">${t.side}</span></td>
+        <td style="max-width:300px"><b style="font-size:12px">${STRATS[t.signal].label}</b><div style="color:var(--muted);font-size:11.5px">${esc(t.insight)}</div></td>
+        <td class="num">${cents(t.entry)}</td><td class="num">${cents(cur)}</td><td class="num">$${t.stake}</td>
+        <td class="num ${pnl>=0?'pos':'neg'}">${pnl>=0?'+':''}$${pnl.toFixed(0)} (${pp>=0?'+':''}${pp.toFixed(0)}%)</td>
+        <td style="font-size:11px;color:var(--muted)">${plan}</td></tr>`;
+    }).join('')||'<tr><td colspan="8"><div class="empty">No open positions — next scan will hunt for entries.</div></td></tr>';
+
+    $('closedCount').textContent=closed.length+' settled';
+    $('closedBody').innerHTML=closed.slice(0,40).map(t=>`<tr>
+      <td class="num" style="font-size:11px">${new Date(t.exitTs).toLocaleDateString(undefined,{month:'short',day:'numeric'})}</td>
+      <td style="max-width:240px">${esc(t.title)}</td>
+      <td><span class="side-tag ${t.side==='YES'?'y':'n'}">${t.side}</span></td>
+      <td style="font-size:12px">${STRATS[t.signal].label}</td>
+      <td class="num">${cents(t.entry)} → ${cents(t.exit)}</td>
+      <td class="num">$${t.stake}</td>
+      <td class="num ${t.pnl>=0?'pos':'neg'}">${t.pnl>=0?'+':''}$${t.pnl.toFixed(0)}</td>
+      <td style="font-size:11px;color:var(--muted)">${esc(t.exitReason)}</td></tr>`).join('')||'<tr><td colspan="8"><div class="empty">No settled trades yet.</div></td></tr>';
+
+    /* equity curve */
+    const pts=[...closed].sort((a,b)=>a.exitTs-b.exitTs);
+    let cum=0; const data=pts.map(t=>{cum+=t.pnl;return {x:new Date(t.exitTs).toLocaleDateString(undefined,{month:'short',day:'numeric'}),y:cum};});
+    if(this.equityChart)this.equityChart.destroy();
+    const ctx=$('equityChart').getContext('2d');
+    const grad=ctx.createLinearGradient(0,0,0,220);
+    grad.addColorStop(0,'rgba(61,220,151,.25)');grad.addColorStop(1,'rgba(61,220,151,0)');
+    this.equityChart=new Chart(ctx,{type:'line',data:{labels:data.map(d=>d.x),
+      datasets:[{data:data.map(d=>d.y),borderColor:cum>=0?'#3DDC97':'#FF6B7A',backgroundColor:grad,fill:true,tension:.25,pointRadius:0,borderWidth:2}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},
+        tooltip:{callbacks:{label:c=>'$'+c.parsed.y.toFixed(0)+' cumulative'}}},
+        scales:{x:{ticks:{color:'#5E6983',maxTicksLimit:8,font:{family:'IBM Plex Mono',size:10}},grid:{display:false}},
+                y:{ticks:{color:'#5E6983',callback:v=>'$'+v,font:{family:'IBM Plex Mono',size:10}},grid:{color:'rgba(39,49,75,.5)'}}}}});
+  }
+};
+
+boot();
+</script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+{
+ "running": true,
+ "journal": [
+  {
+   "id": "t17811313543546rwz",
+   "date": "2026-06-10",
+   "openedTs": 1781131354354,
+   "title": "Los Angeles Dodgers vs. Pittsburgh Pirates",
+   "mid": "2435953",
+   "conditionId": "0xe019971a21471bafef51fa115830d095f2c5a28d828d8ee6317efc8cab867bc4",
+   "slug": "mlb-lad-pit-2026-06-10",
+   "side": "NO",
+   "entry": 0.345,
+   "cur": 0.345,
+   "stake": 750,
+   "signal": "VOLUME_SPIKE",
+   "insight": "99% of lifetime volume traded in 24h — sudden attention precedes movement. Cheap side at 35c; tight risk controls.",
+   "score": 0.78,
+   "target": 0.22,
+   "stop": 0.25,
+   "holdUntil": 1781563354354,
+   "status": "open"
+  },
+  {
+   "id": "t1781131354354nsd5",
+   "date": "2026-06-10",
+   "openedTs": 1781131354354,
+   "title": "Cincinnati Reds vs. San Diego Padres",
+   "mid": "2435924",
+   "conditionId": "0xb3d8611a37297d53401111fce7b5d7bcb306e68ea3127ac2aa7abdb86389c5ca",
+   "slug": "mlb-cin-sd-2026-06-10",
+   "side": "YES",
+   "entry": 0.415,
+   "cur": 0.415,
+   "stake": 750,
+   "signal": "VOLUME_SPIKE",
+   "insight": "100% of lifetime volume traded in 24h — sudden attention precedes movement. Cheap side at 42c; tight risk controls.",
+   "score": 0.78,
+   "target": 0.22,
+   "stop": 0.25,
+   "holdUntil": 1781563354354,
+   "status": "open"
+  },
+  {
+   "id": "t17811313543541kh1",
+   "date": "2026-06-10",
+   "openedTs": 1781131354354,
+   "title": "Spurs vs. Knicks",
+   "mid": "2433395",
+   "conditionId": "0xcc5ffe6f0dd2ebbdae948dff2ebb541c17fb03eecd9e152bd0c91646d4e0049a",
+   "slug": "nba-sas-nyk-2026-06-10",
+   "side": "YES",
+   "entry": 0.455,
+   "cur": 0.455,
+   "stake": 750,
+   "signal": "VOLUME_SPIKE",
+   "insight": "84% of lifetime volume traded in 24h — sudden attention precedes movement. Cheap side at 46c; tight risk controls.",
+   "score": 0.78,
+   "target": 0.22,
+   "stop": 0.25,
+   "holdUntil": 1781137800000,
+   "status": "open"
+  },
+  {
+   "id": "t1781131354354y3tq",
+   "date": "2026-06-10",
+   "openedTs": 1781131354354,
+   "title": "Libema Open: Panna Udvardy vs Daria Snigur",
+   "mid": "2471030",
+   "conditionId": "0x8ff3e26ce8b89ae6323241d1139b14712876d0194843f7ff96c63b963f05f50b",
+   "slug": "wta-udvardy-snigur-2026-06-10",
+   "side": "YES",
+   "entry": 0.67,
+   "cur": 0.67,
+   "stake": 750,
+   "signal": "MOMENTUM",
+   "insight": "Moved 38.5pts in 24h on $430.7K volume — news is repricing this. Target +18%, stop -20%, out within 3 days.",
+   "score": 0.786,
+   "target": 0.18,
+   "stop": 0.2,
+   "holdUntil": 1781390554354,
+   "status": "open"
+  }
+ ],
+ "strat": {
+  "SHORT_FAVORITE": {
+   "trades": 0,
+   "wins": 0,
+   "pnl": 0,
+   "weight": 1
+  },
+  "MOMENTUM": {
+   "trades": 0,
+   "wins": 0,
+   "pnl": 0,
+   "weight": 1
+  },
+  "SMART_CONSENSUS": {
+   "trades": 0,
+   "wins": 0,
+   "pnl": 0,
+   "weight": 1
+  },
+  "VOLUME_SPIKE": {
+   "trades": 0,
+   "wins": 0,
+   "pnl": 0,
+   "weight": 1
+  }
+ },
+ "created": 1781131352173,
+ "log": [
+  "2026-06-10 22:42 — Opened NO $750 @ 35c [Volume Spike] \"Los Angeles Dodgers vs. Pittsburgh Pirates\"",
+  "2026-06-10 22:42 — Opened YES $750 @ 42c [Volume Spike] \"Cincinnati Reds vs. San Diego Padres\"",
+  "2026-06-10 22:42 — Opened YES $750 @ 46c [Volume Spike] \"Spurs vs. Knicks\"",
+  "2026-06-10 22:42 — Opened YES $750 @ 67c [Momentum] \"Libema Open: Panna Udvardy vs Daria Snigur\""
+ ],
+ "summary": {
+  "realized": 0,
+  "closed": 0,
+  "wins": 0,
+  "open": 4,
+  "staked": 3000,
+  "updated": "2026-06-10T22:42:34.354Z"
+ },
+ "lastRun": 1781131354355
+}

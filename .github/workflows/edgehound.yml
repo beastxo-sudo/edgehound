@@ -2,8 +2,8 @@ name: EdgeHound paper-trading bot
 
 on:
   schedule:
-    - cron: '*/15 * * * *'
-  workflow_dispatch:
+    - cron: '*/15 * * * *'   # every 15 minutes (GitHub may delay a few min)
+  workflow_dispatch:          # manual trigger from the Actions tab
 
 permissions:
   contents: write
@@ -16,11 +16,11 @@ jobs:
   run:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: 24
 
       - name: Run EdgeHound
         run: node edgehound.js

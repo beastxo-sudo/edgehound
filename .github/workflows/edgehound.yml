@@ -2,8 +2,8 @@ name: EdgeHound paper-trading bot
 
 on:
   schedule:
-    - cron: '*/15 * * * *'   # every 15 minutes (GitHub may delay a few min)
-  workflow_dispatch:          # manual trigger from the Actions tab
+    - cron: '4,19,34,49 * * * *'   # every 15 min on offset minutes (avoids GitHub scheduler congestion at :00/:15/:30/:45)
+  workflow_dispatch:
 
 permissions:
   contents: write

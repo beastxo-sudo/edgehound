@@ -294,6 +294,9 @@ footer{max-width:1280px;margin:0 auto;padding:0 24px 40px;color:var(--faint);fon
     <button class="btn" style="flex:0 0 auto;padding:9px 16px" onclick="Bot.clearRemote()">Local mode</button>
   </div>
 
+  <div class="section-h">Bot run history <small id="nextRun">—</small></div>
+  <div class="feed" id="runHistory" style="margin-bottom:4px"><div class="empty">Run history appears here when watching the cloud bot.</div></div>
+
   <div class="section-h">Equity curve <small>cumulative realized P&L</small></div>
   <div style="background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px"><div class="chart-box" style="margin:0;height:220px"><canvas id="equityChart"></canvas></div></div>
 
@@ -914,9 +917,11 @@ const Bot={
       clearInterval(this.timer);
       this.timer=setInterval(async()=>{
         try{const s=await jget(this.remoteUrl+(this.remoteUrl.includes('?')?'&':'?')+'_='+Date.now(),6000);
-          if(s&&Array.isArray(s.journal)){this.state=s;this.render();}}catch(e){}
+          if(s&&Array.isArray(s.journal)){this.state=s;this.render();this.loadRunHistory();}}catch(e){}
       },5*60*1000);
       this.render();
+      this.loadRunHistory();
+      this.startCountdown();
       const el=$('botLog'); if(el) el.innerHTML='☁ Watching cloud journal: '+esc(this.remoteUrl)+'<br>'+(this.state.log||[]).map(esc).join('<br>');
       return;
     }
@@ -932,6 +937,53 @@ const Bot={
 
   setRemote(){ const v=$('remoteUrl').value.trim(); if(!v)return; store.set('eh_remote',v); this.init(); },
   clearRemote(){ store.set('eh_remote',''); this.init(); },
+
+  /* ---- run history & next-run countdown (cloud mode) ---- */
+  deriveRepo(){
+    /* figure out owner/repo from the page host (GitHub Pages) or the raw URL */
+    try{
+      if(/\.github\.io$/.test(location.hostname)){
+        const owner=location.hostname.split('.')[0];
+        const repo=location.pathname.split('/').filter(Boolean)[0];
+        if(owner&&repo) return owner+'/'+repo;
+      }
+      const m=(this.remoteUrl||'').match(/raw\.githubusercontent\.com\/([^/]+)\/([^/]+)\//);
+      if(m) return m[1]+'/'+m[2];
+    }catch(e){}
+    return null;
+  },
+  async loadRunHistory(){
+    const repo=this.deriveRepo(); const box=$('runHistory'); if(!box)return;
+    if(!repo){ box.innerHTML='<div class="empty">Open this dashboard from your GitHub Pages URL to see run history.</div>'; return; }
+    try{
+      const commits=await jget(`https://api.github.com/repos/${repo}/commits?path=data/state.json&per_page=15&_=${Date.now()}`,8000);
+      const runs=(Array.isArray(commits)?commits:[]).filter(c=>/edgehound run/i.test(c.commit.message));
+      if(!runs.length){ box.innerHTML='<div class="empty">No scheduled runs committed yet — waiting for GitHub\'s scheduler to start ticking.</div>'; return; }
+      box.innerHTML=runs.map((c,i)=>{
+        const d=new Date(c.commit.author.date);
+        const ago=Math.round((Date.now()-d)/60000);
+        const gap=i<runs.length-1?Math.round((d-new Date(runs[i+1].commit.author.date))/60000):null;
+        return `<div class="feed-item"><span class="side-tag y">RUN</span>
+          <span>${d.toLocaleString(undefined,{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'})}</span>
+          <span class="num" style="color:var(--muted)">${ago<60?ago+'m ago':Math.round(ago/60)+'h ago'}</span>
+          ${gap!==null?`<span class="num" style="color:var(--faint)">+${gap}m after previous</span>`:''}
+          <a class="t" href="https://github.com/${repo}/commit/${c.sha}" target="_blank" rel="noopener">${c.sha.slice(0,7)} ↗</a></div>`;
+      }).join('');
+    }catch(e){ box.innerHTML='<div class="empty">Couldn\'t load run history (GitHub API limit) — try again in a few minutes.</div>'; }
+  },
+  startCountdown(){
+    clearInterval(this._cd);
+    const tick=()=>{
+      const el=$('nextRun'); if(!el||!this.state)return;
+      const last=this.state.lastRun; if(!last){el.textContent='no runs yet';return;}
+      const since=(Date.now()-last)/60000;
+      const until=15-since;
+      if(until>0) el.textContent=`last run ${Math.round(since)}m ago · next expected in ~${Math.ceil(until)}m`;
+      else if(until>-15) el.textContent=`last run ${Math.round(since)}m ago · next run due any moment`;
+      else el.textContent=`last run ${Math.round(since)}m ago · OVERDUE — GitHub scheduler delay (usually self-resolves; check the Actions tab if >2h)`;
+    };
+    tick(); this._cd=setInterval(tick,30000);
+  },
 
   save(){ store.set('eh_state',this.state); },
   log(msg){

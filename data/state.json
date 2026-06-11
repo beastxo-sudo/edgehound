@@ -57,7 +57,7 @@
    "slug": "us-announces-new-iran-agreementceasefire-extension-by",
    "side": "YES",
    "entry": 0.81,
-   "cur": 0.695,
+   "cur": 0.685,
    "stake": 100,
    "signal": "MOMENTUM",
    "p": 0.571,
@@ -823,7 +823,7 @@
    "slug": "2026-nba-champion",
    "side": "YES",
    "entry": 0.8215,
-   "cur": 0.8025,
+   "cur": 0.8055,
    "stake": 200,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -865,7 +865,7 @@
    "slug": "2026-nba-champion",
    "side": "NO",
    "entry": 0.8175,
-   "cur": 0.8015,
+   "cur": 0.802,
    "stake": 800,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -1081,7 +1081,7 @@
      75
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/4L (posterior 50%, 90% CI 25-75%) — collecting evidence",
-    "updated": "2026-06-11T23:30:47.553Z"
+    "updated": "2026-06-11T23:45:39.889Z"
    }
   ]
  },
@@ -1103,9 +1103,9 @@
   "modelUpdates": 14,
   "brier": 0.314,
   "hypotheses": 1,
-  "updated": "2026-06-11T23:30:47.556Z"
+  "updated": "2026-06-11T23:45:39.892Z"
  },
- "lastRun": 1781220647556,
+ "lastRun": 1781221539892,
  "elite": {
   "updated": 1781199062938,
   "list": [

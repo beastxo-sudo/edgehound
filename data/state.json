@@ -321,7 +321,7 @@
    "slug": "israel-closes-its-airspace-by",
    "side": "NO",
    "entry": 0.835,
-   "cur": 0.855,
+   "cur": 0.905,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.613,
@@ -673,7 +673,7 @@
    "slug": "trump-announces-us-x-iran-ceasefire-over-byptptpt-20260607232555290",
    "side": "NO",
    "entry": 0.9325,
-   "cur": 0.98,
+   "cur": 0.9785,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.627,
@@ -847,14 +847,14 @@
   "staked": 8100,
   "bankStart": 10000,
   "cash": 3905,
-  "equity": 8578,
-  "returnPct": -14.22,
+  "equity": 8625,
+  "returnPct": -13.75,
   "modelUpdates": 8,
   "brier": 0.317,
   "hypotheses": 0,
-  "updated": "2026-06-11T18:30:56.978Z"
+  "updated": "2026-06-11T18:37:07.252Z"
  },
- "lastRun": 1781202656978,
+ "lastRun": 1781203027252,
  "elite": {
   "updated": 1781199062938,
   "list": [

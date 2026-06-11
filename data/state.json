@@ -53,7 +53,7 @@
    "slug": "atp-trungel-galan-2026-06-10",
    "side": "YES",
    "entry": 0.805,
-   "cur": 0.805,
+   "cur": 0.8,
    "stake": 800,
    "signal": "MOMENTUM",
    "p": 0.619,
@@ -263,7 +263,7 @@
    "slug": "2026-nba-champion",
    "side": "YES",
    "entry": 0.8215,
-   "cur": 0.8185,
+   "cur": 0.8195,
    "stake": 200,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -305,7 +305,7 @@
    "slug": "2026-nba-champion",
    "side": "NO",
    "entry": 0.8175,
-   "cur": 0.8175,
+   "cur": 0.8195,
    "stake": 800,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -484,12 +484,12 @@
   "staked": 6000,
   "bankStart": 10000,
   "cash": 4000,
-  "equity": 10008,
-  "returnPct": 0.08,
+  "equity": 10005,
+  "returnPct": 0.05,
   "modelUpdates": 0,
   "brier": null,
   "hypotheses": 0,
-  "updated": "2026-06-11T08:30:52.362Z"
+  "updated": "2026-06-11T08:45:42.125Z"
  },
- "lastRun": 1781166652362
+ "lastRun": 1781167542125
 }

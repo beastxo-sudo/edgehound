@@ -2,6 +2,48 @@
  "running": true,
  "journal": [
   {
+   "id": "t1781209851510gmjc",
+   "date": "2026-06-12",
+   "openedTs": 1781209851510,
+   "title": "US x Iran permanent peace deal by June 15, 2026?",
+   "mid": "2270330",
+   "conditionId": "0xd86a816093fcd0a0e1ca440bc5ce199bd3c5a8d6139e044b076958164f8c5423",
+   "slug": "us-x-iran-permanent-peace-deal-by",
+   "side": "YES",
+   "entry": 0.1615,
+   "cur": 0.1615,
+   "stake": 200,
+   "signal": "MOMENTUM",
+   "p": 0.575,
+   "pModel": 0.359,
+   "pBucket": 0.625,
+   "bucketN": 6,
+   "bk": "MOMENTUM|low|other",
+   "ev": 0.034,
+   "kelly": 0.021,
+   "x": [
+    0,
+    1,
+    0,
+    0,
+    0.162,
+    0.775,
+    0.647,
+    0.975,
+    0.828,
+    0.23,
+    0,
+    0,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 58% [model 36%, pattern 63% on n=6] · EV +0.03/$1 · 1/4-Kelly 2.1% of equity -> $200. moved 13.0pts/24h on $6.68M — riding repricing, out in <=3d. Drivers: short time to resolution -, 24h move size -, 24h volume -",
+   "target": 0.18,
+   "stop": 0.2,
+   "holdUntil": 1781469051510,
+   "status": "open"
+  },
+  {
    "id": "t1781207142565atsb",
    "date": "2026-06-12",
    "openedTs": 1781207142565,
@@ -11,7 +53,7 @@
    "slug": "us-announces-new-iran-agreementceasefire-extension-by",
    "side": "YES",
    "entry": 0.81,
-   "cur": 0.715,
+   "cur": 0.72,
    "stake": 100,
    "signal": "MOMENTUM",
    "p": 0.571,
@@ -95,7 +137,7 @@
    "slug": "us-x-iran-permanent-peace-deal-by",
    "side": "YES",
    "entry": 0.2125,
-   "cur": 0.1725,
+   "cur": 0.1615,
    "stake": 300,
    "signal": "MOMENTUM",
    "p": 0.618,
@@ -125,7 +167,11 @@
    "target": 0.18,
    "stop": 0.2,
    "holdUntil": 1781466342565,
-   "status": "open"
+   "status": "closed",
+   "exit": 0.1615,
+   "exitTs": 1781209851506,
+   "exitReason": "Stop loss hit (-20%)",
+   "pnl": -71.99999999999999
   },
   {
    "id": "t1781207142564z2k3",
@@ -137,7 +183,7 @@
    "slug": "strait-of-hormuz-traffic-returns-to-normal-by-end-of-june",
    "side": "YES",
    "entry": 0.235,
-   "cur": 0.235,
+   "cur": 0.245,
    "stake": 350,
    "signal": "MOMENTUM",
    "p": 0.625,
@@ -501,7 +547,7 @@
    "slug": "israel-closes-its-airspace-by",
    "side": "NO",
    "entry": 0.835,
-   "cur": 0.9299999999999999,
+   "cur": 0.925,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.613,
@@ -589,7 +635,7 @@
    "slug": "wta-bouzkov-vekic-2026-06-10",
    "side": "NO",
    "entry": 0.495,
-   "cur": 0.475,
+   "cur": 0.485,
    "stake": 800,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -769,7 +815,7 @@
    "slug": "2026-nba-champion",
    "side": "YES",
    "entry": 0.8215,
-   "cur": 0.7895,
+   "cur": 0.7845,
    "stake": 200,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -811,7 +857,7 @@
    "slug": "2026-nba-champion",
    "side": "NO",
    "entry": 0.8175,
-   "cur": 0.7875,
+   "cur": 0.784,
    "stake": 800,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -853,7 +899,7 @@
    "slug": "trump-announces-us-x-iran-ceasefire-over-byptptpt-20260607232555290",
    "side": "NO",
    "entry": 0.9325,
-   "cur": 0.9905,
+   "cur": 0.986,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.627,
@@ -894,9 +940,9 @@
    "weight": 1
   },
   "MOMENTUM": {
-   "trades": 10,
+   "trades": 11,
    "wins": 4,
-   "pnl": -1282.4583205668907,
+   "pnl": -1354.4583205668907,
    "weight": 1
   },
   "SMART_CONSENSUS": {
@@ -920,6 +966,8 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-12 02:00 IST — Opened YES $200 @ 16c P=58% EV=+0.03 [Momentum] \"US x Iran permanent peace deal by June 15, 202\"",
+  "2026-06-12 02:00 IST — Closed YES \"US x Iran permanent peace deal by June 15,\" -> $-72 (Stop loss hit (-20%)) · model said P(win)=62%",
   "2026-06-12 01:15 IST — Opened YES $100 @ 81c P=57% EV=+0.01 [Momentum] \"US announces new Iran agreement/ceasefire exte\"",
   "2026-06-12 01:15 IST — Opened YES $100 @ 77c P=58% EV=+0.02 [Momentum] \"US x Iran permanent peace deal by December 31,\"",
   "2026-06-12 01:15 IST — Opened YES $300 @ 21c P=62% EV=+0.06 [Momentum] \"US x Iran permanent peace deal by June 15, 202\"",
@@ -931,28 +979,26 @@
   "2026-06-11 23:15 IST — Opened YES $250 @ 34c P=56% EV=+0.05 [Momentum] \"US-Iran nuclear deal by June 30?\"",
   "2026-06-11 23:15 IST — Closed NO \"US announces new Iran agreement/ceasefire \" -> $-460 (Stop loss hit (-20%)) · model said P(win)=62%",
   "2026-06-11 23:15 IST — Closed YES \"Will the U.S. invade Iran before 2027?\" -> $-82 (Stop loss hit (-20%)) · model said P(win)=61%",
-  "2026-06-11 23:15 IST — Closed YES \"US-Iran nuclear deal by June 30?\" -> +$56 (Profit target hit (+18%)) · model said P(win)=58%",
-  "2026-06-11 23:01 IST — Opened YES $100 @ 22c P=58% EV=-0.00 [Momentum] \"US-Iran nuclear deal by June 30?\"",
-  "2026-06-11 23:01 IST — Elite pool refreshed: 1 wallets qualify (>=62% win rate over >=15 settled, scalpers excluded): donthackme 89%"
+  "2026-06-11 23:15 IST — Closed YES \"US-Iran nuclear deal by June 30?\" -> +$56 (Profit target hit (+18%)) · model said P(win)=58%"
  ],
  "brain": {
   "w": [
-   -0.05145663977209816,
-   0.034575880729207795,
+   -0.05143091145221211,
+   -0.03463448311567241,
    0,
    0,
-   -0.17002579008973906,
-   -0.15652436107084203,
-   -0.06498272371634403,
-   -0.009392232889108884,
-   -0.019466576746013847,
-   -0.19489005984378865,
+   -0.18460970928645148,
+   -0.20993234656449716,
+   -0.12397192610103766,
+   -0.07678159270366251,
+   -0.07688709645838879,
+   -0.21063782919600083,
    0,
-   -0.2700927061574816,
+   -0.26995765980440284,
    0
   ],
-  "b": -0.017495471821077954,
-  "nUpdates": 11,
+  "b": -0.08668854772559355,
+  "nUpdates": 12,
   "buckets": {
    "MOMENTUM|high|sport": {
     "a": 1,
@@ -960,7 +1006,7 @@
    },
    "MOMENTUM|low|other": {
     "a": 5,
-    "b": 2
+    "b": 3
    },
    "MOMENTUM|low|sport": {
     "a": 1,
@@ -981,8 +1027,8 @@
   },
   "wallets": {},
   "brier": {
-   "sum": 3.298999,
-   "n": 11
+   "sum": 3.680923,
+   "n": 12
   },
   "payoff": {
    "SHORT_FAVORITE": {
@@ -994,8 +1040,8 @@
    "MOMENTUM": {
     "wSum": 1.59624596667165,
     "wN": 4,
-    "lSum": 2.990036067203775,
-    "lN": 6
+    "lSum": 3.2300360672037747,
+    "lN": 7
    },
    "SMART_CONSENSUS": {
     "wSum": 0,
@@ -1016,29 +1062,42 @@
     "lN": 0
    }
   },
-  "hypotheses": []
+  "hypotheses": [
+   {
+    "key": "MOMENTUM|low|other",
+    "status": "FORMING",
+    "n": 6,
+    "winRate": 62.5,
+    "ci": [
+     36,
+     89
+    ],
+    "text": "Momentum on low-priced non-sports markets: 4W/2L (posterior 63%, 90% CI 36-89%) — collecting evidence",
+    "updated": "2026-06-11T20:30:51.507Z"
+   }
+  ]
  },
  "bank": {
   "start": 10000,
-  "cash": 4467.5416794331095,
+  "cash": 4495.5416794331095,
   "created": 1781162132851
  },
  "summary": {
-  "realized": -1282.46,
-  "closed": 11,
+  "realized": -1354.46,
+  "closed": 12,
   "wins": 4,
   "open": 9,
-  "staked": 8950,
+  "staked": 9150,
   "bankStart": 10000,
-  "cash": 4468,
-  "equity": 8721,
-  "returnPct": -12.79,
-  "modelUpdates": 11,
-  "brier": 0.3,
-  "hypotheses": 0,
-  "updated": "2026-06-11T20:15:41.900Z"
+  "cash": 4496,
+  "equity": 8723,
+  "returnPct": -12.77,
+  "modelUpdates": 12,
+  "brier": 0.307,
+  "hypotheses": 1,
+  "updated": "2026-06-11T20:30:51.510Z"
  },
- "lastRun": 1781208941900,
+ "lastRun": 1781209851511,
  "elite": {
   "updated": 1781199062938,
   "list": [

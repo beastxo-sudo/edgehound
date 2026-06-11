@@ -1487,23 +1487,27 @@ const Arb={
         }
       });
 
-      /* 3 — DATE LADDER within an event's deadline series */
-      const dated=mkts.map(m=>({...m,d:parseDeadline(m.q||m.item)})).filter(m=>m.d);
-      if(dated.length>=2){
-        dated.sort((a,b)=>a.d-b.d);
-        for(let i=0;i<dated.length-1;i++){
-          const early=dated[i],late=dated[i+1];
+      /* 3 — DATE LADDER: same condition, different deadlines only */
+      const dated=mkts.map(m=>({...m,d:parseDeadline(m.q||m.item),stem:deadlineStem(m.q||m.item)})).filter(m=>m.d&&m.stem);
+      const stems={};
+      dated.forEach(m=>{(stems[m.stem]=stems[m.stem]||[]).push(m);});
+      Object.values(stems).forEach(series=>{
+        if(series.length<2)return;
+        series.sort((a,b)=>a.d-b.d);
+        for(let i=0;i<series.length-1;i++){
+          const early=series[i],late=series[i+1];
+          if(late.d-early.d<864e5) continue;           /* must be genuinely different deadlines */
           if(late.yes < early.yes-0.015){
             const cost=late.yes+(1-early.yes);
             if(cost<0.995){
               const margin=(1-cost)/cost*100;
               opps.push({type:'DATE LADDER',ev:evMeta,margin,cost,payout:1,
-                why:`Anything true "by ${new Date(early.d).toLocaleDateString(undefined,{month:'short',day:'numeric'})}" is automatically true "by ${new Date(late.d).toLocaleDateString(undefined,{month:'short',day:'numeric'})}" — yet the later deadline is priced CHEAPER. That's impossible. This pair pays at least $1 in every possible scenario.`,
+                why:`Same event, two deadlines: anything true "by ${new Date(early.d).toLocaleDateString(undefined,{month:'short',day:'numeric'})}" is automatically true "by ${new Date(late.d).toLocaleDateString(undefined,{month:'short',day:'numeric'})}" — yet the later deadline is priced CHEAPER. That's impossible, so this pair pays at least $1 in every possible scenario.`,
                 legs:[{label:'YES "'+late.q.slice(0,30)+'"',price:late.yes},{label:'NO "'+early.q.slice(0,30)+'"',price:1-early.yes}]});
             }
           }
         }
-      }
+      });
     });
 
     /* dedupe & sort by edge */
@@ -1530,6 +1534,7 @@ const Arb={
       const sets=stake/o.cost;
       const back=sets*o.payout;
       const profit=back-stake;
+      const sus=o.margin>15; /* real arbs are almost never this generous — flag, don't celebrate */
       const legRows=(o.legs||[]).map(l=>{
         const dollars=l.price*sets;
         return `<div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border-soft)">
@@ -1539,9 +1544,9 @@ const Arb={
       return `<div class="sig-card">
         <span class="consensus" style="${o.margin>=2?'':'background:var(--surface2);color:var(--muted)'}">⚖ ${o.type}</span>
         <div class="q">${esc(o.ev.title)}</div>
-        <div style="background:var(--yes-soft);border:1px solid rgba(61,220,151,.25);border-radius:11px;padding:12px 14px">
-          <div style="font-family:var(--mono);font-size:15px;font-weight:600">Put in <b>$${stake.toFixed(0)}</b> → get back <b style="color:var(--yes)">$${back.toFixed(2)}</b></div>
-          <div style="font-size:11.5px;color:var(--yes);margin-top:3px">+$${profit.toFixed(2)} profit, guaranteed whatever happens (+${o.margin.toFixed(1)}%)</div>
+        <div style="background:${sus?'var(--amber-soft)':'var(--yes-soft)'};border:1px solid ${sus?'rgba(245,181,68,.3)':'rgba(61,220,151,.25)'};border-radius:11px;padding:12px 14px">
+          <div style="font-family:var(--mono);font-size:15px;font-weight:600">Put in <b>$${stake.toFixed(0)}</b> → get back <b style="color:${sus?'var(--amber)':'var(--yes)'}">$${back.toFixed(2)}</b></div>
+          <div style="font-size:11.5px;color:${sus?'var(--amber)':'var(--yes)'};margin-top:3px">${sus?'⚠ '+o.margin.toFixed(1)+'% is implausibly large — likely stale prices, no real depth, or markets that aren\'t truly equivalent. Verify every leg manually before believing it.':'+$'+profit.toFixed(2)+' profit, guaranteed whatever happens (+'+o.margin.toFixed(1)+'%)'}</div>
         </div>
         <div>
           <div style="font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:4px">Your $${stake.toFixed(0)} shopping list — buy ALL of these together:</div>
@@ -1569,6 +1574,13 @@ function parseDeadline(q){
   const d=new Date(y,MONTHS[m[1]],parseInt(m[2],10));
   if(d<now-30*864e5) d.setFullYear(y+1); /* deadlines roll into next year */
   return d.getTime();
+}
+/* the question with its deadline removed — two markets are a true ladder
+   ONLY if these stems match exactly (same condition, different date) */
+function deadlineStem(q){
+  return String(q||'').toLowerCase()
+    .replace(/by\s+(january|february|march|april|may|june|july|august|september|october|november|december)\s+\d{1,2}(,?\s*\d{4})?/,'')
+    .replace(/[^a-z0-9$]/g,'').trim()||null;
 }
 const DEMO_ARB_EVENTS=[
   {title:'2026 NBA Champion',slug:'',volume24hr:2400000,liquidity:900000,negRisk:true,markets:[

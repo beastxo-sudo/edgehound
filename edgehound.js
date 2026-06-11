@@ -46,8 +46,15 @@ async function jget(url){
 }
 const cents = p => Math.round(p*100)+'c';
 const fmtUSD = n => Math.abs(n)>=1e6?'$'+(n/1e6).toFixed(2)+'M':Math.abs(n)>=1e3?'$'+(n/1e3).toFixed(1)+'K':'$'+Number(n).toFixed(0);
-const todayUTC = () => new Date().toISOString().slice(0,10);
-const log = m => console.log(new Date().toISOString()+'  '+m);
+/* ---- IST (Asia/Kolkata, UTC+5:30) timestamps & trading day ---- */
+const IST_OFFSET_MS = 5.5*3600*1000;
+function istNow(){ const d=new Date(Date.now()+IST_OFFSET_MS);
+  return d.toISOString().slice(0,16).replace('T',' ')+' IST'; }
+function istDate(){ return new Date(Date.now()+IST_OFFSET_MS).toISOString().slice(0,10); }
+function istDayFrac(){ const d=new Date(Date.now()+IST_OFFSET_MS);
+  return (d.getUTCHours()*3600+d.getUTCMinutes()*60+d.getUTCSeconds())/86400; }
+const todayKey = istDate;
+const log = m => console.log(istNow()+'  '+m);
 const sigmoid = z => 1/(1+Math.exp(-z));
 const clamp = (x,a,b)=>Math.max(a,Math.min(b,x));
 
@@ -99,6 +106,26 @@ function features(c){
 function priceBand(p){ return p<.35?'low':p<.65?'mid':'high'; }
 function bucketKeyFor(signal,price,isGame){ return signal+'|'+priceBand(price)+'|'+(isGame?'sport':'other'); }
 
+/* ---- same-event correlation guard ----
+   Different markets often share one underlying outcome (e.g. "Will the
+   Knicks win the Finals?" and "Will the Spurs win the Finals?"). Stacking
+   them doubles risk without doubling insight. Two detectors:
+   1) shared Polymarket event slug
+   2) high word overlap between market titles */
+const STOPWORDS=new Set(['will','the','a','an','to','of','in','on','by','be','is','at','for','vs','win','2025','2026','before','after']);
+function titleTokens(q){ return new Set(String(q||'').toLowerCase().replace(/[^a-z0-9 ]/g,' ').split(/\s+/).filter(w=>w.length>2&&!STOPWORDS.has(w))); }
+function titleSim(a,b){
+  const A=titleTokens(a),B=titleTokens(b);
+  if(!A.size||!B.size) return 0;
+  let inter=0; A.forEach(w=>{if(B.has(w))inter++;});
+  return inter/Math.min(A.size,B.size);
+}
+function sameEvent(t1,t2){
+  if(t1.slug&&t2.slug&&t1.slug===t2.slug) return true;
+  return titleSim(t1.title??t1.q, t2.title??t2.q)>=0.7;
+}
+const MAX_EVENT_EXPOSURE = 1000; /* max $ at risk on one underlying event */
+
 /* ============ state & brain ============ */
 function freshBrain(){
   return {
@@ -131,7 +158,7 @@ function saveState(s){
   s.lastRun=Date.now();
   fs.writeFileSync(STATE_FILE, JSON.stringify(s,null,1));
 }
-function note(s,msg){ s.log.unshift(new Date().toISOString().slice(0,16).replace('T',' ')+' — '+msg); s.log=s.log.slice(0,14); log(msg); }
+function note(s,msg){ s.log.unshift(istNow()+' — '+msg); s.log=s.log.slice(0,14); log(msg); }
 
 /* ============ the brain: predict / learn ============ */
 function predict(brain,c){
@@ -346,9 +373,9 @@ function scan(state,markets,consensus){
   const open=state.journal.filter(t=>t.status==='open');
   const equity=state.bank.cash+open.reduce((s,t)=>s+t.stake,0);
   let exposure=open.reduce((s,t)=>s+t.stake,0);
-  const taken=state.journal.filter(t=>t.date===todayUTC()).length;
+  const taken=state.journal.filter(t=>t.date===todayKey()).length;
   if(taken>=DAILY_MAX){ log('Daily cap reached.'); return; }
-  const dayFrac=(Date.now()-new Date(todayUTC()+'T00:00:00Z').getTime())/864e5;
+  const dayFrac=istDayFrac();
   const behind=taken<Math.floor(DAILY_MIN*dayFrac);
   const pMin=behind?0.52:0.56;
   const room=Math.min(DAILY_MAX-taken,4);
@@ -371,20 +398,26 @@ function scan(state,markets,consensus){
     .slice(0,room);
 
   let placed=0;
+  const openLive=()=>state.journal.filter(t=>t.status==='open');
   for(const c of scored){
+    /* event-correlation guard: total $ on one underlying event capped at MAX_EVENT_EXPOSURE */
+    const cand={title:c.m.q,slug:c.m.eventSlug||''};
+    const eventExposure=openLive().filter(t=>sameEvent(t,cand)).reduce((s,t)=>s+t.stake,0);
+    const eventHeadroom=MAX_EVENT_EXPOSURE-eventExposure;
+    if(eventHeadroom<STAKE_MIN){ log(`Event guard: skipping "${c.m.q.slice(0,40)}" — already $${eventExposure} on this underlying event.`); continue; }
     const po=brain.payoff[c.signal];
     const avgWin=po.wN?po.wSum/po.wN:0.45, avgLoss=po.lN?po.lSum/po.lN:0.35;
     const bRatio=avgWin/Math.max(0.05,avgLoss);
     const kelly=Math.max(0,c.p-(1-c.p)/bRatio);
     const frac=clamp(kelly*0.25,0.005,0.08);
-    const stake=Math.round(clamp(frac*equity,STAKE_MIN,STAKE_MAX)/50)*50;
+    const stake=Math.round(clamp(Math.min(frac*equity,eventHeadroom),STAKE_MIN,STAKE_MAX)/50)*50;
     if(exposure+stake>MAX_EXPOSURE*equity){ log(`Exposure cap (${MAX_EXPOSURE*100}% of equity) — skipping remaining candidates.`); break; }
     if(stake>state.bank.cash){ log('Insufficient paper cash — skipping.'); break; }
     const ev=c.p*avgWin-(1-c.p)*avgLoss;
     const sd=STRATS[c.signal];
     const t={
       id:'t'+Date.now()+Math.random().toString(36).slice(2,6),
-      date:todayUTC(),openedTs:Date.now(),
+      date:todayKey(),openedTs:Date.now(),
       title:c.m.q,mid:c.m.id,conditionId:c.m.conditionId||'',slug:c.m.eventSlug||'',
       side:c.side,entry:c.price,cur:c.price,stake,
       signal:c.signal,

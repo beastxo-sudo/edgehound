@@ -451,7 +451,7 @@
    "slug": "2026-nba-champion",
    "side": "YES",
    "entry": 0.8215,
-   "cur": 0.8045,
+   "cur": 0.8025,
    "stake": 200,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -493,7 +493,7 @@
    "slug": "2026-nba-champion",
    "side": "NO",
    "entry": 0.8175,
-   "cur": 0.8035,
+   "cur": 0.8015,
    "stake": 800,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -535,7 +535,7 @@
    "slug": "trump-announces-us-x-iran-ceasefire-over-byptptpt-20260607232555290",
    "side": "NO",
    "entry": 0.9325,
-   "cur": 0.9295,
+   "cur": 0.9299999999999999,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.627,
@@ -693,12 +693,12 @@
   "staked": 7500,
   "bankStart": 10000,
   "cash": 3741,
-  "equity": 8983,
-  "returnPct": -10.17,
+  "equity": 8981,
+  "returnPct": -10.19,
   "modelUpdates": 5,
   "brier": 0.322,
   "hypotheses": 0,
-  "updated": "2026-06-11T17:01:07.188Z"
+  "updated": "2026-06-11T17:15:40.267Z"
  },
- "lastRun": 1781197267188
+ "lastRun": 1781198140267
 }

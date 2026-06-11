@@ -294,6 +294,11 @@ footer{max-width:1280px;margin:0 auto;padding:0 24px 40px;color:var(--faint);fon
     <button class="btn" style="flex:0 0 auto;padding:9px 16px" onclick="Bot.clearRemote()">Local mode</button>
   </div>
 
+  <div class="section-h">AI Analyst <small id="analystStamp">supervisor memos</small></div>
+  <div id="analystPanel" style="background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px 18px;margin-bottom:4px;font-size:12.5px;line-height:1.65;color:var(--muted)">
+    <div class="empty">Analyst memos appear here once the supervisor runs.</div>
+  </div>
+
   <div class="section-h">Bot run history <small id="nextRun">—</small></div>
   <div class="feed" id="runHistory" style="margin-bottom:4px"><div class="empty">Run history appears here when watching the cloud bot.</div></div>
 
@@ -917,10 +922,11 @@ const Bot={
       clearInterval(this.timer);
       this.timer=setInterval(async()=>{
         try{const s=await jget(this.remoteUrl+(this.remoteUrl.includes('?')?'&':'?')+'_='+Date.now(),6000);
-          if(s&&Array.isArray(s.journal)){this.state=s;this.render();this.loadRunHistory();}}catch(e){}
+          if(s&&Array.isArray(s.journal)){this.state=s;this.render();this.loadRunHistory();this.loadAnalyst();}}catch(e){}
       },5*60*1000);
       this.render();
       this.loadRunHistory();
+      this.loadAnalyst();
       this.startCountdown();
       const el=$('botLog'); if(el) el.innerHTML='☁ Watching cloud journal: '+esc(this.remoteUrl)+'<br>'+(this.state.log||[]).map(esc).join('<br>');
       return;
@@ -952,6 +958,26 @@ const Bot={
     }catch(e){}
     return null;
   },
+  async loadAnalyst(){
+    const box=$('analystPanel'); if(!box)return;
+    let url='data/analyst.json';
+    const m=(this.remoteUrl||'').match(/^(https:\/\/raw\.githubusercontent\.com\/[^/]+\/[^/]+\/[^/]+)\//);
+    if(m) url=m[1]+'/data/analyst.json';
+    try{
+      const a=await jget(url+'?_='+Date.now(),6000);
+      $('analystStamp').textContent=a.updatedIST||a.updated||'';
+      if(a.status==='dormant'){ box.innerHTML='<div style="color:var(--amber)">⏳ '+esc(a.memo)+'</div>'; return; }
+      if(a.status==='error'){ box.innerHTML='<div style="color:var(--no)">Analyst error last session: '+esc(a.error||'unknown')+'</div>'; return; }
+      box.innerHTML=
+        '<div style="color:var(--text);margin-bottom:10px">'+esc(a.memo||'')+'</div>'+
+        ((a.observations||[]).length?'<div style="margin-bottom:10px">'+(a.observations||[]).map(o=>'• '+esc(o)).join('<br>')+'</div>':'')+
+        ((a.changesApplied||[]).length
+          ?'<div style="color:var(--brand)"><b>Changes applied:</b> '+(a.changesApplied||[]).map(esc).join(' · ')+'</div><div style="margin-top:6px">'+esc(a.changeReasoning||'')+'</div>'
+          :'<div style="color:var(--yes)">No parameter changes this session.</div>')+
+        ((a.riskFlags||[]).length?'<div style="margin-top:10px;color:var(--amber)"><b>⚠ Risk flags:</b> '+(a.riskFlags||[]).map(esc).join(' · ')+'</div>':'');
+    }catch(e){ box.innerHTML='<div class="empty">No analyst memo yet — the supervisor hasn\'t run.</div>'; }
+  },
+
   async loadRunHistory(){
     const repo=this.deriveRepo(); const box=$('runHistory'); if(!box)return;
     if(!repo){ box.innerHTML='<div class="empty">Open this dashboard from your GitHub Pages URL to see run history.</div>'; return; }

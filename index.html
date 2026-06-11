@@ -204,7 +204,8 @@ footer{max-width:1280px;margin:0 auto;padding:0 24px 40px;color:var(--faint);fon
 <div class="tape-wrap"><div class="tape" id="tape"></div></div>
 
 <nav>
-  <button class="tab active" data-page="markets" onclick="showPage('markets',this)">Markets</button>
+  <button class="tab active" data-page="overview" onclick="showPage('overview',this)">⌂ Overview</button>
+  <button class="tab" data-page="markets" onclick="showPage('markets',this)">Markets</button>
   <button class="tab" data-page="smart" onclick="showPage('smart',this)">Smart Money <span class="badge" id="walletCount"></span></button>
   <button class="tab" data-page="signals" onclick="showPage('signals',this)">Copy Signals</button>
   <button class="tab" data-page="bot" onclick="showPage('bot',this)">🐕 EdgeHound Bot <span class="badge" id="botBadge"></span></button>
@@ -212,8 +213,33 @@ footer{max-width:1280px;margin:0 auto;padding:0 24px 40px;color:var(--faint);fon
 
 <main>
 
+<!-- ================= OVERVIEW ================= -->
+<section class="page active" id="page-overview">
+  <div id="ovStatus" style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px 18px;margin-bottom:14px">
+    <span class="status-pill demo"><span class="dot"></span><span>LOADING…</span></span>
+  </div>
+  <div class="stat-row" id="ovStats"></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px">
+    <div style="background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px 18px">
+      <div class="section-h" style="margin:0 0 10px">What just happened</div>
+      <div id="ovActivity" style="font-size:12.5px;line-height:1.8;color:var(--muted)"><div class="empty">Waiting for data…</div></div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px 18px">
+      <div class="section-h" style="margin:0 0 10px">The Analyst's latest word</div>
+      <div id="ovAnalyst" style="font-size:12.5px;line-height:1.7;color:var(--muted)"><div class="empty">No memo yet.</div></div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px 18px">
+      <div class="section-h" style="margin:0 0 10px">What the brain has learned</div>
+      <div id="ovBrain" style="font-size:12.5px;line-height:1.8;color:var(--muted)"><div class="empty">Still gathering evidence.</div></div>
+    </div>
+  </div>
+  <div class="mini-note" style="margin-top:16px;line-height:1.7">
+    How this works: <b style="color:var(--text)">EdgeHound</b> scans Polymarket every 15 minutes and places 10–20 paper bets a day from a $10,000 virtual bankroll, each with a calculated win probability. Its <b style="color:var(--text)">brain</b> learns from every settled bet. Each morning at 09:07 IST the <b style="color:var(--text)">AI Analyst</b> (Claude) reviews everything like a fund manager and tunes the strategy within safety limits. No real money is involved.
+  </div>
+</section>
+
 <!-- ================= MARKETS ================= -->
-<section class="page active" id="page-markets">
+<section class="page" id="page-markets">
   <div id="demoBanner" style="display:none" class="banner">
     <b>Sample data mode.</b> This preview can't reach Polymarket's API from inside the chat sandbox, so it's showing realistic sample data so you can explore every feature. To go live: download this file and open it in your browser, or drag it into <a href="https://app.netlify.com/drop" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Netlify Drop</a> — it will then pull real-time markets, leaderboards and wallets automatically. No API key needed.
   </div>
@@ -928,6 +954,7 @@ const Bot={
       this.loadRunHistory();
       this.loadAnalyst();
       this.startCountdown();
+      this.renderOverview();
       const el=$('botLog'); if(el) el.innerHTML='☁ Watching cloud journal: '+esc(this.remoteUrl)+'<br>'+(this.state.log||[]).map(esc).join('<br>');
       return;
     }
@@ -965,17 +992,66 @@ const Bot={
     if(m) url=m[1]+'/data/analyst.json';
     try{
       const a=await jget(url+'?_='+Date.now(),6000);
+      this.analyst=a;
       $('analystStamp').textContent=a.updatedIST||a.updated||'';
-      if(a.status==='dormant'){ box.innerHTML='<div style="color:var(--amber)">⏳ '+esc(a.memo)+'</div>'; return; }
-      if(a.status==='error'){ box.innerHTML='<div style="color:var(--no)">Analyst error last session: '+esc(a.error||'unknown')+'</div>'; return; }
-      box.innerHTML=
+      if(a.status==='dormant'){ box.innerHTML='<div style="color:var(--amber)">⏳ '+esc(a.memo)+'</div>'; }
+      else if(a.status==='error'){ box.innerHTML='<div style="color:var(--no)">Analyst error last session: '+esc(a.error||'unknown')+'</div>'; }
+      else box.innerHTML=
         '<div style="color:var(--text);margin-bottom:10px">'+esc(a.memo||'')+'</div>'+
         ((a.observations||[]).length?'<div style="margin-bottom:10px">'+(a.observations||[]).map(o=>'• '+esc(o)).join('<br>')+'</div>':'')+
         ((a.changesApplied||[]).length
           ?'<div style="color:var(--brand)"><b>Changes applied:</b> '+(a.changesApplied||[]).map(esc).join(' · ')+'</div><div style="margin-top:6px">'+esc(a.changeReasoning||'')+'</div>'
           :'<div style="color:var(--yes)">No parameter changes this session.</div>')+
         ((a.riskFlags||[]).length?'<div style="margin-top:10px;color:var(--amber)"><b>⚠ Risk flags:</b> '+(a.riskFlags||[]).map(esc).join(' · ')+'</div>':'');
+      this.renderOverview();
     }catch(e){ box.innerHTML='<div class="empty">No analyst memo yet — the supervisor hasn\'t run.</div>'; }
+  },
+
+  renderOverview(){
+    if(!$('ovStats')||!this.state)return;
+    const s=this.state, sm=s.summary||{};
+    const closed=(s.journal||[]).filter(t=>t.status==='closed');
+    const open=(s.journal||[]).filter(t=>t.status==='open');
+    const wins=closed.filter(t=>t.pnl>0).length;
+    const last=s.lastRun?Math.round((Date.now()-s.lastRun)/60000):null;
+    const alive=last!==null&&last<35;
+    /* status strip */
+    const istToday=new Date(Date.now()+5.5*3600*1000).toISOString().slice(0,10);
+    const todayN=(s.journal||[]).filter(t=>t.date===istToday).length;
+    $('ovStatus').innerHTML=
+      `<span class="status-pill ${alive?'live':'demo'}"><span class="dot"></span><span>${alive?'EDGEHOUND IS RUNNING':'EDGEHOUND '+(last===null?'WAITING FOR FIRST RUN':'DELAYED — last run '+last+'m ago')}</span></span>`+
+      `<span style="font-family:var(--mono);font-size:11.5px;color:var(--muted)">${last!==null?'last scan '+last+'m ago · ':''}scans every 15 min · ${todayN} trades today (target 10–20)</span>`;
+    const ret=sm.returnPct;
+    $('ovStats').innerHTML=`
+      <div class="stat-card"><div class="lbl">Bankroll equity</div><div class="val">$${(sm.equity??10000).toLocaleString()}</div><div class="sub">started at $${(sm.bankStart??10000).toLocaleString()}</div></div>
+      <div class="stat-card"><div class="lbl">Return so far</div><div class="val ${ret>=0?'pos':'neg'}">${ret>=0?'+':''}${ret??0}%</div><div class="sub">${closed.length} bets settled</div></div>
+      <div class="stat-card"><div class="lbl">Win rate</div><div class="val">${closed.length?Math.round(wins/closed.length*100)+'%':'—'}</div><div class="sub">${wins}W / ${closed.length-wins}L</div></div>
+      <div class="stat-card"><div class="lbl">Open bets</div><div class="val">${open.length}</div><div class="sub">$${open.reduce((a,t)=>a+t.stake,0).toLocaleString()} at work</div></div>
+      <div class="stat-card"><div class="lbl">Forecast quality</div><div class="val">${sm.brier!=null?(sm.brier<0.21?'Good':sm.brier<0.25?'Fair':'Poor'):'—'}</div><div class="sub">${sm.brier!=null?'Brier '+sm.brier+' (lower is better)':'needs settled bets'}</div></div>`;
+    /* activity feed in plain sentences */
+    $('ovActivity').innerHTML=(s.log||[]).slice(0,7).map(l=>{
+      let t=esc(l).replace(/^[\d\- :]+IST — /,'');
+      t=t.replace(/Opened (YES|NO) \$(\d+) @ (\d+c) P=(\d+)% EV=[^ ]+ \[([^\]]+)\] &quot;(.+)&quot;/,
+        'Bet <b style="color:var(--text)">$$$2 on $1</b> at $3 on "<i>$6</i>" — $5 signal, $4% confident');
+      t=t.replace(/Closed (YES|NO) &quot;(.+)&quot; -&gt; \+\$(\d+) \((.+)\).*/,'<span class="pos">Won $$$3</span> on "<i>$2</i>" ($4)');
+      t=t.replace(/Closed (YES|NO) &quot;(.+)&quot; -&gt; \$-(\d+) \((.+)\).*/,'<span class="neg">Lost $$$3</span> on "<i>$2</i>" ($4)');
+      return '<div style="margin-bottom:4px">'+t+'</div>';
+    }).join('')||'<div class="empty">Nothing yet.</div>';
+    /* analyst summary */
+    const a=this.analyst;
+    if(a&&a.status==='ok'){
+      $('ovAnalyst').innerHTML='<div style="color:var(--text);margin-bottom:8px">'+esc((a.memo||'').split(/\n+/).filter(x=>x.trim()).slice(-1)[0]||a.memo||'')+'</div>'+
+        ((a.changesApplied||[]).length?'<div style="color:var(--brand)">Adjusted: '+(a.changesApplied||[]).map(esc).join(' · ')+'</div>':'<div style="color:var(--yes)">Verdict: no changes needed.</div>')+
+        ((a.riskFlags||[]).length?'<div style="margin-top:6px;color:var(--amber)">Watching '+a.riskFlags.length+' risk'+(a.riskFlags.length>1?'s':'')+': '+esc(a.riskFlags[0])+(a.riskFlags.length>1?' (+'+(a.riskFlags.length-1)+' more on the bot tab)':'')+'</div>':'')+
+        '<div class="mini-note" style="margin-top:8px">'+esc(a.updatedIST||'')+'</div>';
+    } else if(a&&a.status==='dormant'){ $('ovAnalyst').innerHTML='<div style="color:var(--amber)">Analyst installed, waiting for activation.</div>'; }
+    /* brain learnings */
+    const hyps=(s.brain&&s.brain.hypotheses)||[];
+    const v=hyps.filter(h=>h.status==='VALIDATED'),r=hyps.filter(h=>h.status==='REJECTED');
+    $('ovBrain').innerHTML=
+      `<div>Model trained on <b style="color:var(--text)">${s.brain?s.brain.nUpdates:0}</b> settled bets · <b style="color:var(--yes)">${v.length}</b> proven patterns · <b style="color:var(--no)">${r.length}</b> rejected patterns</div>`+
+      (hyps.length?'<div style="margin-top:8px">'+hyps.slice(0,4).map(h=>`<div style="margin-bottom:5px"><span class="side-tag ${h.status==='VALIDATED'?'y':h.status==='REJECTED'?'n':''}" style="${h.status==='FORMING'?'background:var(--surface2);color:var(--muted)':''}">${h.status}</span> ${esc(h.text.split('—')[0])}</div>`).join('')+'</div>'
+      :'<div style="margin-top:6px">Learnings appear here as bets settle — patterns get PROVEN, REJECTED, or stay FORMING until the evidence is in.</div>');
   },
 
   async loadRunHistory(){
@@ -1247,7 +1323,7 @@ const Bot={
     $('botBadge').textContent=open.length+' open';
     $('botToggle').innerHTML=this.state.running?'⏸ Pause':'▶ Resume';
     ['botToggle'].forEach(id=>$(id).style.display=this.remote?'none':'');
-    document.querySelectorAll('#page-bot .controls')[0].querySelectorAll('button,label').forEach(b=>{
+    (document.querySelectorAll('#page-bot .controls')[0]?.querySelectorAll('button,label')||[]).forEach(b=>{
       if(b.id!=='botToggle'&&!b.textContent.includes('Export')) b.style.display=this.remote?'none':'';
     });
     $('simBtn').style.display=(this.remote||LIVE)?'none':'';

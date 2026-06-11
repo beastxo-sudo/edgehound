@@ -26,13 +26,14 @@ const DATA  = 'https://data-api.polymarket.com';
 const STATE_FILE = path.join(__dirname, 'data', 'state.json');
 const CONFIG_FILE = path.join(__dirname, 'config.json');
 /* Tunable parameters — adjustable by the AI Analyst within hard rails */
-let CFG={engines:{SHORT_FAVORITE:true,MOMENTUM:true,SMART_CONSENSUS:true,VOLUME_SPIKE:true},pMin:0.56,kellyMult:0.25,maxExposure:0.6,maxEventExposure:1000};
+let CFG={engines:{SHORT_FAVORITE:true,MOMENTUM:true,SMART_CONSENSUS:true,VOLUME_SPIKE:true,ELITE_FOLLOW:true},pMin:0.56,kellyMult:0.25,maxExposure:0.6,maxEventExposure:1000};
 try{ CFG={...CFG,...JSON.parse(fs.readFileSync(CONFIG_FILE,'utf8'))}; }catch(e){}
 CFG.kellyMult=Math.max(0.10,Math.min(0.50,Number(CFG.kellyMult)||0.25));
 CFG.pMin=Math.max(0.52,Math.min(0.66,Number(CFG.pMin)||0.56));
 CFG.maxExposure=Math.max(0.30,Math.min(0.60,Number(CFG.maxExposure)||0.6));
 CFG.maxEventExposure=Math.max(500,Math.min(1500,Number(CFG.maxEventExposure)||1000));
-if(!Object.values(CFG.engines||{}).some(v=>v)) CFG.engines={SHORT_FAVORITE:true,MOMENTUM:true,SMART_CONSENSUS:true,VOLUME_SPIKE:true};
+if(!Object.values(CFG.engines||{}).some(v=>v)) CFG.engines={SHORT_FAVORITE:true,MOMENTUM:true,SMART_CONSENSUS:true,VOLUME_SPIKE:true,ELITE_FOLLOW:true};
+if(CFG.engines.ELITE_FOLLOW===undefined) CFG.engines.ELITE_FOLLOW=true;
 
 const BANKROLL_START = 10000;
 const MAX_EXPOSURE = CFG.maxExposure; /* from config.json (Analyst-tunable) */
@@ -43,7 +44,8 @@ const STRATS = {
   SHORT_FAVORITE: { label:'Short Favorite', hold:8,  target:null, stop:.45 },
   MOMENTUM:       { label:'Momentum',       hold:3,  target:.18,  stop:.20 },
   SMART_CONSENSUS:{ label:'Smart Consensus',hold:14, target:.30,  stop:.30 },
-  VOLUME_SPIKE:   { label:'Volume Spike',   hold:5,  target:.22,  stop:.25 }
+  VOLUME_SPIKE:   { label:'Volume Spike',   hold:5,  target:.22,  stop:.25 },
+  ELITE_FOLLOW:   { label:'Elite Follow',   hold:10, target:.25,  stop:.25 }
 };
 const SIGNAL_KEYS = Object.keys(STRATS);
 
@@ -201,7 +203,7 @@ function learn(state,t){
   if(typeof t.p==='number'){ brain.brier.sum+=(t.p-y)**2; brain.brier.n++; }
   const po=brain.payoff[t.signal]; const frac=t.pnl/t.stake;
   if(y){ po.wSum+=frac; po.wN++; } else { po.lSum+=Math.abs(frac); po.lN++; }
-  if(t.signal==='SMART_CONSENSUS'&&Array.isArray(t.walletNames)){
+  if((t.signal==='SMART_CONSENSUS'||t.signal==='ELITE_FOLLOW')&&Array.isArray(t.walletNames)){
     t.walletNames.forEach(wn=>{ const W=brain.wallets[wn]=brain.wallets[wn]||{a:1,b:1}; if(y)W.a++; else W.b++; });
   }
 }
@@ -278,6 +280,65 @@ async function fetchConsensus(){
     });
     return Object.values(agg).map(s=>({...s,n:s.wallets.size,avgEntry:s.entryN?s.entrySum/s.entryN:0,wallets:[...s.wallets]})).filter(s=>s.n>=2);
   }catch(e){ log('consensus fetch failed: '+e.message); return []; }
+}
+
+/* ============ elite wallet pool & fresh-follow signals ============
+   Research-informed filters:
+   - win rate >= 62% over >= 15 SETTLED positions (luck filter)
+   - exclude settlement-scalpers (mostly >=93c entries: great win rate, no edge to copy)
+   - exclude hyperactive bot-like books (cannot replicate their speed)
+   - copy only FRESH buys (<60 min), $200+, price not run >5%, liquid markets only */
+async function buildElitePool(state){
+  if(state.elite && Date.now()-state.elite.updated < 24*3600e3 && (state.elite.list||[]).length) return state.elite.list;
+  let pool=[];
+  try{
+    const lb=await jget(`${DATA}/v1/leaderboard?category=OVERALL&timePeriod=MONTH&orderBy=PNL&limit=30`);
+    const top=(Array.isArray(lb)?lb:[]).slice(0,25);
+    const results=await Promise.allSettled(top.map(l=>jget(`${DATA}/positions?user=${l.proxyWallet}&sortBy=CURRENT&sortDirection=DESC&limit=100`)));
+    results.forEach((r,i)=>{
+      if(r.status!=='fulfilled'||!Array.isArray(r.value))return;
+      const pos=r.value;
+      const decided=pos.filter(p=>p.redeemable||Math.abs(Number(p.realizedPnl)||0)>1);
+      if(decided.length<15) return;
+      const wins=decided.filter(p=>(p.redeemable?(Number(p.currentValue)||0)-(Number(p.initialValue)||0):(Number(p.realizedPnl)||0))>0).length;
+      const winRate=wins/decided.length;
+      const scalps=pos.filter(p=>(Number(p.avgPrice)||0)>=0.93).length;
+      const scalpShare=pos.length?scalps/pos.length:1;
+      if(winRate>=0.62 && scalpShare<0.5){
+        pool.push({wallet:top[i].proxyWallet,name:top[i].userName||top[i].proxyWallet.slice(0,8),
+          winRate:+winRate.toFixed(3),n:decided.length,score:+(winRate*Math.log(1+decided.length)).toFixed(3)});
+      }
+    });
+    pool.sort((a,b)=>b.score-a.score); pool=pool.slice(0,10);
+    state.elite={updated:Date.now(),list:pool};
+    note(state,`Elite pool refreshed: ${pool.length} wallets qualify (>=62% win rate over >=15 settled, scalpers excluded): ${pool.map(w=>w.name+' '+Math.round(w.winRate*100)+'%').join(', ')||'none today'}`);
+  }catch(e){ log('elite pool build failed: '+e.message); pool=(state.elite&&state.elite.list)||[]; }
+  return pool;
+}
+async function fetchEliteSignals(elite,markets){
+  const byCondition={}; markets.forEach(m=>{ if(m.conditionId) byCondition[m.conditionId]=m; });
+  const out=[];
+  const results=await Promise.allSettled(elite.map(w=>jget(`${DATA}/activity?user=${w.wallet}&limit=15&sortDirection=DESC`)));
+  results.forEach((r,i)=>{
+    if(r.status!=='fulfilled'||!Array.isArray(r.value))return;
+    const w=elite[i];
+    r.value.filter(a=>a.type==='TRADE'&&a.side==='BUY').forEach(a=>{
+      const ageMin=(Date.now()-(Number(a.timestamp)||0)*1000)/60000;
+      const fill=Number(a.price)||0, usd=Number(a.usdcSize)||0;
+      if(ageMin>60||ageMin<0||usd<200||fill<0.10||fill>0.88) return;
+      const m=byCondition[a.conditionId]; if(!m) return;            /* must be a liquid top-volume market */
+      if(m.liq<25000||m.vol24<10000) return;                        /* don't become exit liquidity */
+      const cur=/yes/i.test(a.outcome)?m.yes:m.no;
+      if(cur>fill*1.05||cur<=0.02||cur>=0.95) return;               /* price already ran, or pinned */
+      out.push({m,side:/yes/i.test(a.outcome)?'YES':'NO',price:cur,signal:'ELITE_FOLLOW',
+        walletNames:[w.name],
+        prior:Math.min(.64,.55+(w.winRate-.62)*.5+(ageMin<20?.02:0)),
+        why:`Elite wallet "${w.name}" (${Math.round(w.winRate*100)}% win rate over ${w.n} settled positions) bought ${a.outcome} ${Math.round(ageMin)}min ago at ${cents(fill)} — still copyable at ${cents(cur)}`});
+    });
+  });
+  /* dedupe: same market+side keeps the strongest wallet */
+  const seen={};
+  return out.filter(c=>{ const k=c.m.q+'|'+c.side; if(seen[k])return false; seen[k]=1; return true; });
 }
 
 /* ============ exits & settlement ============ */
@@ -377,7 +438,7 @@ function topDrivers(brain,c){
   return contrib.map(d=>`${nice[d.name]||d.name} ${d.val>0?'+':'-'}`).join(', ');
 }
 
-function scan(state,markets,consensus){
+function scan(state,markets,consensus,eliteCands){
   const brain=state.brain;
   const open=state.journal.filter(t=>t.status==='open');
   const equity=state.bank.cash+open.reduce((s,t)=>s+t.stake,0);
@@ -390,7 +451,7 @@ function scan(state,markets,consensus){
   const room=Math.min(DAILY_MAX-taken,4);
   const openKeys=new Set(open.map(t=>t.title+'|'+t.side));
 
-  const scored=rawCandidates(markets,consensus)
+  const scored=rawCandidates(markets,consensus).concat(eliteCands||[])
     .filter(c=>!openKeys.has(c.m.q+'|'+c.side))
     .map(c=>{
       const pred=predict(brain,c);
@@ -458,9 +519,12 @@ function scan(state,markets,consensus){
   catch(e){ log('FATAL: market fetch failed: '+e.message); saveState(state); process.exit(0); }
   const consensus=await fetchConsensus();
   log(`Consensus signals: ${consensus.length}`);
+  const elite=await buildElitePool(state);
+  const eliteCands=elite.length?await fetchEliteSignals(elite,markets):[];
+  log(`Elite pool: ${elite.length} wallets, fresh follow signals: ${eliteCands.length}`);
   await catchUp(state,markets);
   updateHypotheses(state);
-  scan(state,markets,consensus);
+  scan(state,markets,consensus,eliteCands);
   const closed=state.journal.filter(t=>t.status==='closed');
   const openT=state.journal.filter(t=>t.status==='open');
   const equity=state.bank.cash+openT.reduce((s,t)=>s+t.stake+(t.cur&&t.entry?(t.stake/t.entry)*(t.cur-t.entry):0),0);

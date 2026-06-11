@@ -263,7 +263,7 @@
    "slug": "2026-nba-champion",
    "side": "YES",
    "entry": 0.8215,
-   "cur": 0.8215,
+   "cur": 0.818,
    "stake": 200,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -305,7 +305,7 @@
    "slug": "2026-nba-champion",
    "side": "NO",
    "entry": 0.8175,
-   "cur": 0.8175,
+   "cur": 0.8165,
    "stake": 800,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -484,12 +484,12 @@
   "staked": 6000,
   "bankStart": 10000,
   "cash": 4000,
-  "equity": 9994,
-  "returnPct": -0.06,
+  "equity": 9992,
+  "returnPct": -0.08,
   "modelUpdates": 0,
   "brier": null,
   "hypotheses": 0,
-  "updated": "2026-06-11T07:30:55.602Z"
+  "updated": "2026-06-11T07:45:38.704Z"
  },
- "lastRun": 1781163055602
+ "lastRun": 1781163938704
 }

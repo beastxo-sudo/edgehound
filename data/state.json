@@ -11,7 +11,7 @@
    "slug": "strait-of-hormuz-traffic-returns-to-normal-by-end-of-june",
    "side": "YES",
    "entry": 0.17,
-   "cur": 0.175,
+   "cur": 0.165,
    "stake": 250,
    "signal": "MOMENTUM",
    "p": 0.568,
@@ -309,7 +309,11 @@
    "target": null,
    "stop": 0.45,
    "holdUntil": 1781204400000,
-   "status": "open"
+   "status": "closed",
+   "exit": 0.895,
+   "exitTs": 1781204467513,
+   "exitReason": "Max hold reached — closed at market",
+   "pnl": 0
   },
   {
    "id": "t1781163055601wi5t",
@@ -321,7 +325,7 @@
    "slug": "israel-closes-its-airspace-by",
    "side": "NO",
    "entry": 0.835,
-   "cur": 0.925,
+   "cur": 0.915,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.613,
@@ -409,7 +413,7 @@
    "slug": "wta-bouzkov-vekic-2026-06-10",
    "side": "NO",
    "entry": 0.495,
-   "cur": 0.485,
+   "cur": 0.48,
    "stake": 800,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -673,7 +677,7 @@
    "slug": "trump-announces-us-x-iran-ceasefire-over-byptptpt-20260607232555290",
    "side": "NO",
    "entry": 0.9325,
-   "cur": 0.979,
+   "cur": 0.9795,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.627,
@@ -708,7 +712,7 @@
  ],
  "strat": {
   "SHORT_FAVORITE": {
-   "trades": 0,
+   "trades": 1,
    "wins": 0,
    "pnl": 0,
    "weight": 1
@@ -740,6 +744,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-12 00:31 IST — Closed NO \"Will South Africa win on 2026-06-11?\" -> +$0 (Max hold reached — closed at market) · model said P(win)=62%",
   "2026-06-11 23:31 IST — Opened YES $250 @ 17c P=57% EV=+0.05 [Momentum] \"Strait of Hormuz traffic returns to normal by \"",
   "2026-06-11 23:15 IST — Opened YES $250 @ 34c P=56% EV=+0.05 [Momentum] \"US-Iran nuclear deal by June 30?\"",
   "2026-06-11 23:15 IST — Closed NO \"US announces new Iran agreement/ceasefire \" -> $-460 (Stop loss hit (-20%)) · model said P(win)=62%",
@@ -752,27 +757,26 @@
   "2026-06-11 20:00 IST — Closed NO \"Counter-Strike: Vitality vs FUT Esports (B\" -> $-255 (Stop loss hit (-20%)) · model said P(win)=60%",
   "2026-06-11 19:15 IST — Opened NO $300 @ 24c P=60% EV=+0.05 [Momentum] \"Counter-Strike: Vitality vs FUT Esports (BO3) \"",
   "2026-06-11 19:00 IST — Opened YES $350 @ 26c P=61% EV=+0.06 [Momentum] \"Will the U.S. invade Iran before 2027?\"",
-  "2026-06-11 18:00 IST — Closed YES \"Trump announces US x Iran ceasefire over b\" -> +$77 (Profit target hit (+18%)) · model said P(win)=62%",
-  "2026-06-11 17:15 IST — Opened NO $750 @ 90c P=62% EV=+0.15 [Short Favorite] \"Will South Africa win on 2026-06-11?\""
+  "2026-06-11 18:00 IST — Closed YES \"Trump announces US x Iran ceasefire over b\" -> +$77 (Profit target hit (+18%)) · model said P(win)=62%"
  ],
  "brain": {
   "w": [
+   -0.05150813503009449,
+   -0.17996728128846284,
    0,
-   -0.18005730994343455,
    0,
+   -0.22603006804245673,
+   -0.1566810029034948,
+   -0.20023399735422542,
+   -0.18893432153114517,
+   -0.18057924473696782,
+   -0.2096421597122947,
    0,
-   -0.18002029733919175,
-   -0.10635922645729104,
-   -0.20033416443644364,
-   -0.14903852801179773,
-   -0.13464980505762225,
-   -0.18047577690365285,
-   0,
-   -0.27049825069364636,
+   -0.2703630015682995,
    0
   ],
-  "b": -0.1804092014487368,
-  "nUpdates": 8,
+  "b": -0.23191733647883128,
+  "nUpdates": 9,
   "buckets": {
    "MOMENTUM|high|sport": {
     "a": 1,
@@ -793,19 +797,23 @@
    "MOMENTUM|mid|other": {
     "a": 1,
     "b": 2
+   },
+   "SHORT_FAVORITE|high|other": {
+    "a": 1,
+    "b": 2
    }
   },
   "wallets": {},
   "brier": {
-   "sum": 2.53875,
-   "n": 8
+   "sum": 2.9231499999999997,
+   "n": 9
   },
   "payoff": {
    "SHORT_FAVORITE": {
     "wSum": 0,
     "wN": 0,
     "lSum": 0,
-    "lN": 0
+    "lN": 1
    },
    "MOMENTUM": {
     "wSum": 0.9452363090772693,
@@ -836,25 +844,25 @@
  },
  "bank": {
   "start": 10000,
-  "cash": 3904.789265034514,
+  "cash": 4654.789265034514,
   "created": 1781162132851
  },
  "summary": {
   "realized": -1445.21,
-  "closed": 8,
+  "closed": 9,
   "wins": 2,
-  "open": 8,
+  "open": 7,
   "staked": 8100,
   "bankStart": 10000,
-  "cash": 3905,
-  "equity": 8652,
-  "returnPct": -13.48,
-  "modelUpdates": 8,
-  "brier": 0.317,
+  "cash": 4655,
+  "equity": 8620,
+  "returnPct": -13.8,
+  "modelUpdates": 9,
+  "brier": 0.325,
   "hypotheses": 0,
-  "updated": "2026-06-11T18:45:44.533Z"
+  "updated": "2026-06-11T19:01:07.517Z"
  },
- "lastRun": 1781203544533,
+ "lastRun": 1781204467517,
  "elite": {
   "updated": 1781199062938,
   "list": [

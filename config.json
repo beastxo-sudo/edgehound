@@ -1,0 +1,15 @@
+{
+  "comment": "EdgeHound tunable parameters. The AI Analyst may adjust these within hard rails enforced in code. Humans can edit too.",
+  "engines": {
+    "SHORT_FAVORITE": true,
+    "MOMENTUM": true,
+    "SMART_CONSENSUS": true,
+    "VOLUME_SPIKE": true
+  },
+  "pMin": 0.56,
+  "kellyMult": 0.25,
+  "maxExposure": 0.6,
+  "maxEventExposure": 1000,
+  "updatedBy": "initial",
+  "updatedAt": "2026-06-11T07:50:00Z"
+}

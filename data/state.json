@@ -53,7 +53,7 @@
    "slug": "israel-closes-its-airspace-by",
    "side": "NO",
    "entry": 0.835,
-   "cur": 0.8049999999999999,
+   "cur": 0.785,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.613,
@@ -317,7 +317,7 @@
    "slug": "2026-nba-champion",
    "side": "YES",
    "entry": 0.8215,
-   "cur": 0.8145,
+   "cur": 0.813,
    "stake": 200,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -359,7 +359,7 @@
    "slug": "2026-nba-champion",
    "side": "NO",
    "entry": 0.8175,
-   "cur": 0.8135,
+   "cur": 0.8155,
    "stake": 800,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -401,7 +401,7 @@
    "slug": "trump-announces-us-x-iran-ceasefire-over-byptptpt-20260607232555290",
    "side": "NO",
    "entry": 0.9325,
-   "cur": 0.9405,
+   "cur": 0.938,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.627,
@@ -551,12 +551,12 @@
   "staked": 6750,
   "bankStart": 10000,
   "cash": 4387,
-  "equity": 9326,
-  "returnPct": -6.74,
+  "equity": 9307,
+  "returnPct": -6.93,
   "modelUpdates": 3,
   "brier": 0.304,
   "hypotheses": 0,
-  "updated": "2026-06-11T13:01:09.675Z"
+  "updated": "2026-06-11T13:15:45.117Z"
  },
- "lastRun": 1781182869675
+ "lastRun": 1781183745117
 }

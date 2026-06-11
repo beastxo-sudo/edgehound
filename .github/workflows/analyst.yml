@@ -1,0 +1,41 @@
+name: EdgeHound AI Analyst
+
+on:
+  schedule:
+    - cron: '37 3 * * *'    # daily at 03:37 UTC = 09:07 IST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: edgehound          # shares the bot's lock so they never collide
+  cancel-in-progress: false
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+
+      - name: Run AI Analyst
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node analyst.js
+
+      - name: Commit analyst memo and config
+        run: |
+          git config user.name "edgehound-analyst"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/analyst.json config.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Analyst session $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git pull --rebase origin ${GITHUB_REF_NAME} || true
+            git push
+          fi

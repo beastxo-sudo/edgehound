@@ -1,0 +1,5 @@
+{
+ "status": "dormant",
+ "memo": "Analyst installed but waiting for an Anthropic API key (repo secret ANTHROPIC_API_KEY). No analysis performed.",
+ "updated": "2026-06-11T07:21:01.758Z"
+}

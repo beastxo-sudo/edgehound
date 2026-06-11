@@ -32,7 +32,7 @@ const RAILS = {
   maxExposure: [0.30, 0.60],
   maxEventExposure: [500, 1500]
 };
-const ENGINES = ['SHORT_FAVORITE','MOMENTUM','SMART_CONSENSUS','VOLUME_SPIKE'];
+const ENGINES = ['SHORT_FAVORITE','MOMENTUM','SMART_CONSENSUS','VOLUME_SPIKE','ELITE_FOLLOW'];
 
 const clamp=(x,a,b)=>Math.max(a,Math.min(b,Number(x)));
 const log=m=>console.log(new Date(Date.now()+5.5*3600e3).toISOString().slice(0,16).replace('T',' ')+' IST  '+m);
@@ -75,7 +75,7 @@ Your job each session:
 3. EXPLAIN: write a concise professional memo a client could read.
 
 You control ONLY these parameters, within these hard rails (out-of-range values will be clamped):
-- engines: enable/disable each of SHORT_FAVORITE, MOMENTUM, SMART_CONSENSUS, VOLUME_SPIKE (at least one must remain enabled)
+- engines: enable/disable each of SHORT_FAVORITE, MOMENTUM, SMART_CONSENSUS, VOLUME_SPIKE, ELITE_FOLLOW (at least one must remain enabled)
 - pMin (entry probability threshold): 0.52-0.66
 - kellyMult (fraction of full Kelly for sizing): 0.10-0.50
 - maxExposure (max fraction of equity deployed): 0.30-0.60
@@ -85,7 +85,7 @@ Respond ONLY with valid JSON, no markdown fences, in exactly this shape:
 {
  "memo": "professional analysis memo, 150-300 words",
  "observations": ["short bullet", "short bullet", ...],
- "changes": { "engines": {"SHORT_FAVORITE": true, "MOMENTUM": true, "SMART_CONSENSUS": true, "VOLUME_SPIKE": true}, "pMin": 0.56, "kellyMult": 0.25, "maxExposure": 0.6, "maxEventExposure": 1000 },
+ "changes": { "engines": {"SHORT_FAVORITE": true, "MOMENTUM": true, "SMART_CONSENSUS": true, "VOLUME_SPIKE": true, "ELITE_FOLLOW": true}, "pMin": 0.56, "kellyMult": 0.25, "maxExposure": 0.6, "maxEventExposure": 1000 },
  "changeReasoning": "why these changes (or why none)",
  "riskFlags": ["any concerns worth a human's attention"]
 }`;

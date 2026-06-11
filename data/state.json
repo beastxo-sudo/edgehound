@@ -551,7 +551,7 @@
    "slug": "israel-closes-its-airspace-by",
    "side": "NO",
    "entry": 0.835,
-   "cur": 0.92,
+   "cur": 0.935,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.613,
@@ -861,7 +861,7 @@
    "slug": "2026-nba-champion",
    "side": "NO",
    "entry": 0.8175,
-   "cur": 0.79,
+   "cur": 0.792,
    "stake": 800,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -903,7 +903,7 @@
    "slug": "trump-announces-us-x-iran-ceasefire-over-byptptpt-20260607232555290",
    "side": "NO",
    "entry": 0.9325,
-   "cur": 0.9855,
+   "cur": 0.987,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.627,
@@ -1077,7 +1077,7 @@
      81
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/3L (posterior 56%, 90% CI 30-81%) — collecting evidence",
-    "updated": "2026-06-11T21:01:30.240Z"
+    "updated": "2026-06-11T21:15:40.642Z"
    }
   ]
  },
@@ -1094,14 +1094,14 @@
   "staked": 9150,
   "bankStart": 10000,
   "cash": 4650,
-  "equity": 8617,
-  "returnPct": -13.83,
+  "equity": 8634,
+  "returnPct": -13.66,
   "modelUpdates": 13,
   "brier": 0.309,
   "hypotheses": 1,
-  "updated": "2026-06-11T21:01:30.242Z"
+  "updated": "2026-06-11T21:15:40.644Z"
  },
- "lastRun": 1781211690243,
+ "lastRun": 1781212540644,
  "elite": {
   "updated": 1781199062938,
   "list": [

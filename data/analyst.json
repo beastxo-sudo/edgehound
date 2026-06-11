@@ -1,5 +1,39 @@
 {
- "status": "dormant",
- "memo": "Analyst installed but waiting for an Anthropic API key (repo secret ANTHROPIC_API_KEY). No analysis performed.",
- "updated": "2026-06-11T07:21:01.758Z"
+ "status": "ok",
+ "updated": "2026-06-11T07:31:29.229Z",
+ "updatedIST": "2026-06-11 13:01 IST",
+ "memo": "EdgeHound Supervision Memo — 2026-06-11 13:01 IST\n\nThe bot is in its earliest operational phase with zero settled trades across all four signal engines. Nine positions are open, $6,000 staked (60% of starting bank), current equity $9,994 — a negligible -0.06% drawdown, essentially rounding noise from MTM. No realized P&L, no Brier score, no calibration data exist yet. This is a launch-day snapshot, not a performance review.\n\nStructural observations: The portfolio is heavily concentrated in MOMENTUM signals (7 of 9 positions). SHORT_FAVORITE has 2 positions. SMART_CONSENSUS and VOLUME_SPIKE have contributed nothing, which is notable but not yet actionable — it may reflect market availability or entry-threshold filtering rather than engine failure. Several positions cluster around Iran/ceasefire geopolitical outcomes, creating correlated tail risk: positions in 'ceasefire over by June 12 NO', 'ceasefire over by June 15 YES', and 'new Iran agreement NO' are partially offsetting but share the same news catalyst. Entry prices on SHORT_FAVORITE trades (0.835, 0.9325) imply thin edge — these require tight realized calibration going forward.\n\nDecision: No parameter changes are warranted. Zero settled trades means any adjustment would be pure noise-chasing. Current config (pMin 0.56, kellyMult 0.25, maxExposure 0.60) is reasonable for a bootstrapping phase. Maintain all engines enabled to gather signal-level data. Reassess once at least 10-15 trades settle per active engine.",
+ "observations": [
+  "Zero settled trades across all engines — no performance data to act on yet",
+  "MOMENTUM dominates open book (7/9 positions); SHORT_FAVORITE has 2; SMART_CONSENSUS and VOLUME_SPIKE have zero entries",
+  "60% of bank deployed ($6,000 staked), at the maxExposure ceiling — no additional capacity for new entries until positions close",
+  "Iran/ceasefire cluster: at least 3 positions share the same geopolitical catalyst, creating correlation risk not visible in per-signal stats",
+  "SHORT_FAVORITE entries at 0.835 and 0.9325 are high-price NO bets — edge is thin and these are sensitive to any late-breaking news",
+  "HSBC Championships NO at entry 0.495 is essentially a coin-flip entry; warrants scrutiny against pMin threshold of 0.56 — model p=0.62 but market was near 50/50",
+  "No hypotheses or model updates logged — bot is in pure execution mode, no learning loop active yet",
+  "MTM unchanged on almost all positions (only Udvardy/Snigur has ticked -0.005), suggesting illiquid or early-stage markets"
+ ],
+ "changesApplied": [],
+ "changeReasoning": "No changes made. Sample size is zero settled trades — any parameter adjustment would be arbitrary. Current config is within sensible bounds for a startup phase. Will reassess once 15+ trades settle per engine, Brier score is populated, and per-signal win rates are observable.",
+ "riskFlags": [
+  "Geopolitical correlation: three Iran-linked positions (June 12 NO, June 15 YES, new agreement NO) share a single news catalyst — an adverse headline could hit multiple positions simultaneously",
+  "maxExposure ceiling reached: 60% of bank staked, bot cannot add new positions without closes — monitor for forced inactivity if good opportunities arise",
+  "SHORT_FAVORITE entries near 0.83-0.93 on NO side leave almost no margin for error; a single adverse event resolves at significant loss",
+  "SMART_CONSENSUS and VOLUME_SPIKE have generated zero trades — unclear if this is market-condition filtering or a configuration/connectivity issue; worth a technical check"
+ ],
+ "configNow": {
+  "comment": "EdgeHound tunable parameters. The AI Analyst may adjust these within hard rails enforced in code. Humans can edit too.",
+  "engines": {
+   "SHORT_FAVORITE": true,
+   "MOMENTUM": true,
+   "SMART_CONSENSUS": true,
+   "VOLUME_SPIKE": true
+  },
+  "pMin": 0.56,
+  "kellyMult": 0.25,
+  "maxExposure": 0.6,
+  "maxEventExposure": 1000,
+  "updatedBy": "analyst",
+  "updatedAt": "2026-06-11T07:31:29.229Z"
+ }
 }

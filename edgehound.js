@@ -24,9 +24,18 @@ const path = require('node:path');
 const GAMMA = 'https://gamma-api.polymarket.com';
 const DATA  = 'https://data-api.polymarket.com';
 const STATE_FILE = path.join(__dirname, 'data', 'state.json');
+const CONFIG_FILE = path.join(__dirname, 'config.json');
+/* Tunable parameters — adjustable by the AI Analyst within hard rails */
+let CFG={engines:{SHORT_FAVORITE:true,MOMENTUM:true,SMART_CONSENSUS:true,VOLUME_SPIKE:true},pMin:0.56,kellyMult:0.25,maxExposure:0.6,maxEventExposure:1000};
+try{ CFG={...CFG,...JSON.parse(fs.readFileSync(CONFIG_FILE,'utf8'))}; }catch(e){}
+CFG.kellyMult=Math.max(0.10,Math.min(0.50,Number(CFG.kellyMult)||0.25));
+CFG.pMin=Math.max(0.52,Math.min(0.66,Number(CFG.pMin)||0.56));
+CFG.maxExposure=Math.max(0.30,Math.min(0.60,Number(CFG.maxExposure)||0.6));
+CFG.maxEventExposure=Math.max(500,Math.min(1500,Number(CFG.maxEventExposure)||1000));
+if(!Object.values(CFG.engines||{}).some(v=>v)) CFG.engines={SHORT_FAVORITE:true,MOMENTUM:true,SMART_CONSENSUS:true,VOLUME_SPIKE:true};
 
 const BANKROLL_START = 10000;
-const MAX_EXPOSURE = 0.60;        /* max fraction of equity in open positions */
+const MAX_EXPOSURE = CFG.maxExposure; /* from config.json (Analyst-tunable) */
 const STAKE_MIN = 100, STAKE_MAX = 1000;
 const DAILY_MIN = 10, DAILY_MAX = 20;
 
@@ -124,7 +133,7 @@ function sameEvent(t1,t2){
   if(t1.slug&&t2.slug&&t1.slug===t2.slug) return true;
   return titleSim(t1.title??t1.q, t2.title??t2.q)>=0.7;
 }
-const MAX_EVENT_EXPOSURE = 1000; /* max $ at risk on one underlying event */
+const MAX_EVENT_EXPOSURE = CFG.maxEventExposure; /* from config.json (Analyst-tunable) */
 
 /* ============ state & brain ============ */
 function freshBrain(){
@@ -377,7 +386,7 @@ function scan(state,markets,consensus){
   if(taken>=DAILY_MAX){ log('Daily cap reached.'); return; }
   const dayFrac=istDayFrac();
   const behind=taken<Math.floor(DAILY_MIN*dayFrac);
-  const pMin=behind?0.52:0.56;
+  const pMin=behind?Math.max(0.52,CFG.pMin-0.04):CFG.pMin;
   const room=Math.min(DAILY_MAX-taken,4);
   const openKeys=new Set(open.map(t=>t.title+'|'+t.side));
 
@@ -392,6 +401,7 @@ function scan(state,markets,consensus){
       }
       return {...c,...pred,p,rank:0.7*p+0.3*pred.thompson};
     })
+    .filter(c=>CFG.engines[c.signal]!==false)
     .filter(c=>!isRejected(brain,c.bk))
     .filter(c=>c.p>=pMin)
     .sort((a,b)=>b.rank-a.rank)
@@ -409,7 +419,7 @@ function scan(state,markets,consensus){
     const avgWin=po.wN?po.wSum/po.wN:0.45, avgLoss=po.lN?po.lSum/po.lN:0.35;
     const bRatio=avgWin/Math.max(0.05,avgLoss);
     const kelly=Math.max(0,c.p-(1-c.p)/bRatio);
-    const frac=clamp(kelly*0.25,0.005,0.08);
+    const frac=clamp(kelly*CFG.kellyMult,0.005,0.08);
     const stake=Math.round(clamp(Math.min(frac*equity,eventHeadroom),STAKE_MIN,STAKE_MAX)/50)*50;
     if(exposure+stake>MAX_EXPOSURE*equity){ log(`Exposure cap (${MAX_EXPOSURE*100}% of equity) — skipping remaining candidates.`); break; }
     if(stake>state.bank.cash){ log('Insufficient paper cash — skipping.'); break; }
@@ -442,6 +452,7 @@ function scan(state,markets,consensus){
 (async()=>{
   const state=loadState();
   log(`EdgeHound v2 starting. Journal: ${state.journal.length} trades. Cash: $${state.bank.cash.toFixed(0)}. Model updates: ${state.brain.nUpdates}.`);
+  log(`Config: pMin=${CFG.pMin} kelly=${CFG.kellyMult} maxExp=${CFG.maxExposure} eventCap=$${CFG.maxEventExposure} engines=${Object.entries(CFG.engines).filter(([k,v])=>v).map(([k])=>k).join(',')}`);
   let markets=[];
   try{ markets=await fetchMarkets(); log(`Fetched ${markets.length} markets.`); }
   catch(e){ log('FATAL: market fetch failed: '+e.message); saveState(state); process.exit(0); }

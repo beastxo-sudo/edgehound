@@ -53,7 +53,7 @@
    "slug": "atp-trungel-galan-2026-06-10",
    "side": "YES",
    "entry": 0.805,
-   "cur": 0.8,
+   "cur": 0.585,
    "stake": 800,
    "signal": "MOMENTUM",
    "p": 0.619,
@@ -83,7 +83,11 @@
    "target": 0.18,
    "stop": 0.2,
    "holdUntil": 1781421639827,
-   "status": "open"
+   "status": "closed",
+   "exit": 0.585,
+   "exitTs": 1781176542987,
+   "exitReason": "Stop loss hit (-20%)",
+   "pnl": -218.63354037267086
   },
   {
    "id": "t1781162439827a27j",
@@ -221,7 +225,7 @@
    "slug": "wta-udvardy-snigur-2026-06-10",
    "side": "YES",
    "entry": 0.705,
-   "cur": 0.685,
+   "cur": 0.69,
    "stake": 800,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -263,7 +267,7 @@
    "slug": "2026-nba-champion",
    "side": "YES",
    "entry": 0.8215,
-   "cur": 0.8175,
+   "cur": 0.822,
    "stake": 200,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -305,7 +309,7 @@
    "slug": "2026-nba-champion",
    "side": "NO",
    "entry": 0.8175,
-   "cur": 0.8160000000000001,
+   "cur": 0.8180000000000001,
    "stake": 800,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -347,7 +351,7 @@
    "slug": "trump-announces-us-x-iran-ceasefire-over-byptptpt-20260607232555290",
    "side": "NO",
    "entry": 0.9325,
-   "cur": 0.9435,
+   "cur": 0.9445,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.627,
@@ -388,9 +392,9 @@
    "weight": 1
   },
   "MOMENTUM": {
-   "trades": 0,
+   "trades": 1,
    "wins": 0,
-   "pnl": 0,
+   "pnl": -218.63354037267086,
    "weight": 1
   },
   "SMART_CONSENSUS": {
@@ -408,6 +412,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-11 16:45 IST — Closed YES \"Lyon: Marco Trungelliti vs Daniel Galan\" -> $-219 (Stop loss hit (-20%)) · model said P(win)=62%",
   "2026-06-11 13:00 IST — Opened NO $800 @ 84c P=61% EV=+0.14 [Short Favorite] \"Israel closes its airspace by June 15?\"",
   "2026-06-11 12:50 IST — Opened YES $800 @ 81c P=62% EV=+0.14 [Momentum] \"Lyon: Marco Trungelliti vs Daniel Galan\"",
   "2026-06-11 12:50 IST — Opened NO $800 @ 50c P=62% EV=+0.15 [Momentum] \"HSBC Championships: Marie Bouzkova vs Donna Ve\"",
@@ -422,26 +427,31 @@
  "brain": {
   "w": [
    0,
+   -0.09,
    0,
    0,
+   -0.07245,
+   -0.04914,
+   -0.081,
+   -0.06894,
+   -0.061200000000000004,
+   -0.08892,
    0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
+   -0.09,
    0
   ],
-  "b": 0,
-  "nUpdates": 0,
-  "buckets": {},
+  "b": -0.09,
+  "nUpdates": 1,
+  "buckets": {
+   "MOMENTUM|high|sport": {
+    "a": 1,
+    "b": 2
+   }
+  },
   "wallets": {},
   "brier": {
-   "sum": 0,
-   "n": 0
+   "sum": 0.383161,
+   "n": 1
   },
   "payoff": {
    "SHORT_FAVORITE": {
@@ -453,8 +463,8 @@
    "MOMENTUM": {
     "wSum": 0,
     "wN": 0,
-    "lSum": 0,
-    "lN": 0
+    "lSum": 0.2732919254658386,
+    "lN": 1
    },
    "SMART_CONSENSUS": {
     "wSum": 0,
@@ -473,23 +483,23 @@
  },
  "bank": {
   "start": 10000,
-  "cash": 4000,
+  "cash": 4581.366459627329,
   "created": 1781162132851
  },
  "summary": {
-  "realized": 0,
-  "closed": 0,
+  "realized": -218.63,
+  "closed": 1,
   "wins": 0,
-  "open": 9,
+  "open": 8,
   "staked": 6000,
   "bankStart": 10000,
-  "cash": 4000,
-  "equity": 9979,
-  "returnPct": -0.21,
-  "modelUpdates": 0,
-  "brier": null,
+  "cash": 4581,
+  "equity": 9775,
+  "returnPct": -2.25,
+  "modelUpdates": 1,
+  "brier": 0.383,
   "hypotheses": 0,
-  "updated": "2026-06-11T11:01:07.804Z"
+  "updated": "2026-06-11T11:15:42.991Z"
  },
- "lastRun": 1781175667804
+ "lastRun": 1781176542991
 }

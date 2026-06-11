@@ -11,7 +11,7 @@
    "slug": "us-x-iran-permanent-peace-deal-by",
    "side": "YES",
    "entry": 0.1615,
-   "cur": 0.1615,
+   "cur": 0.1585,
    "stake": 200,
    "signal": "MOMENTUM",
    "p": 0.575,
@@ -53,7 +53,7 @@
    "slug": "us-announces-new-iran-agreementceasefire-extension-by",
    "side": "YES",
    "entry": 0.81,
-   "cur": 0.72,
+   "cur": 0.705,
    "stake": 100,
    "signal": "MOMENTUM",
    "p": 0.571,
@@ -95,7 +95,7 @@
    "slug": "us-x-iran-permanent-peace-deal-by",
    "side": "YES",
    "entry": 0.765,
-   "cur": 0.765,
+   "cur": 0.755,
    "stake": 100,
    "signal": "MOMENTUM",
    "p": 0.576,
@@ -183,7 +183,7 @@
    "slug": "strait-of-hormuz-traffic-returns-to-normal-by-end-of-june",
    "side": "YES",
    "entry": 0.235,
-   "cur": 0.245,
+   "cur": 0.235,
    "stake": 350,
    "signal": "MOMENTUM",
    "p": 0.625,
@@ -547,7 +547,7 @@
    "slug": "israel-closes-its-airspace-by",
    "side": "NO",
    "entry": 0.835,
-   "cur": 0.925,
+   "cur": 0.92,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.613,
@@ -857,7 +857,7 @@
    "slug": "2026-nba-champion",
    "side": "NO",
    "entry": 0.8175,
-   "cur": 0.784,
+   "cur": 0.7985,
    "stake": 800,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -899,7 +899,7 @@
    "slug": "trump-announces-us-x-iran-ceasefire-over-byptptpt-20260607232555290",
    "side": "NO",
    "entry": 0.9325,
-   "cur": 0.986,
+   "cur": 0.984,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.627,
@@ -1073,7 +1073,7 @@
      89
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/2L (posterior 63%, 90% CI 36-89%) — collecting evidence",
-    "updated": "2026-06-11T20:30:51.507Z"
+    "updated": "2026-06-11T20:45:39.255Z"
    }
   ]
  },
@@ -1090,14 +1090,14 @@
   "staked": 9150,
   "bankStart": 10000,
   "cash": 4496,
-  "equity": 8723,
-  "returnPct": -12.77,
+  "equity": 8709,
+  "returnPct": -12.91,
   "modelUpdates": 12,
   "brier": 0.307,
   "hypotheses": 1,
-  "updated": "2026-06-11T20:30:51.510Z"
+  "updated": "2026-06-11T20:45:39.258Z"
  },
- "lastRun": 1781209851511,
+ "lastRun": 1781210739258,
  "elite": {
   "updated": 1781199062938,
   "list": [

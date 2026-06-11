@@ -2,6 +2,48 @@
  "running": true,
  "journal": [
   {
+   "id": "t17811783460071g26",
+   "date": "2026-06-11",
+   "openedTs": 1781178346007,
+   "title": "Will South Africa win on 2026-06-11?",
+   "mid": "1897036",
+   "conditionId": "0x17dfc75726fa95d4054d91e80295c8b3e494569617e67a7e620e27562b7952b0",
+   "slug": "fifwc-mex-rsa-2026-06-11",
+   "side": "NO",
+   "entry": 0.895,
+   "cur": 0.895,
+   "stake": 750,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.62,
+   "pModel": 0.352,
+   "pBucket": 0.5,
+   "bucketN": 0,
+   "bk": "SHORT_FAVORITE|high|other",
+   "ev": 0.146,
+   "kelly": 0.08,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.895,
+    0.978,
+    0,
+    0.776,
+    0.893,
+    0.568,
+    0,
+    0,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 62% [model 35%, pattern 50% on n=0] · EV +0.15/$1 · 1/4-Kelly 8.0% of equity -> $750. 90c favorite resolving in 0.3d (favorite-longshot bias); +12% if it lands. Drivers: engine heuristics (model still warming up)",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1781204400000,
+   "status": "open"
+  },
+  {
    "id": "t1781163055601wi5t",
    "date": "2026-06-11",
    "openedTs": 1781163055601,
@@ -11,7 +53,7 @@
    "slug": "israel-closes-its-airspace-by",
    "side": "NO",
    "entry": 0.835,
-   "cur": 0.845,
+   "cur": 0.835,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.613,
@@ -99,7 +141,7 @@
    "slug": "wta-bouzkov-vekic-2026-06-10",
    "side": "NO",
    "entry": 0.495,
-   "cur": 0.485,
+   "cur": 0.495,
    "stake": 800,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -225,7 +267,7 @@
    "slug": "wta-udvardy-snigur-2026-06-10",
    "side": "YES",
    "entry": 0.705,
-   "cur": 0.665,
+   "cur": 0.245,
    "stake": 800,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -255,7 +297,11 @@
    "target": 0.18,
    "stop": 0.2,
    "holdUntil": 1781421334852,
-   "status": "open"
+   "status": "closed",
+   "exit": 0.245,
+   "exitTs": 1781178346004,
+   "exitReason": "Stop loss hit (-20%)",
+   "pnl": -521.9858156028369
   },
   {
    "id": "t1781162134852f3ro",
@@ -309,7 +355,7 @@
    "slug": "2026-nba-champion",
    "side": "NO",
    "entry": 0.8175,
-   "cur": 0.8155,
+   "cur": 0.8160000000000001,
    "stake": 800,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -351,7 +397,7 @@
    "slug": "trump-announces-us-x-iran-ceasefire-over-byptptpt-20260607232555290",
    "side": "NO",
    "entry": 0.9325,
-   "cur": 0.9425,
+   "cur": 0.9435,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.627,
@@ -392,9 +438,9 @@
    "weight": 1
   },
   "MOMENTUM": {
-   "trades": 1,
+   "trades": 2,
    "wins": 0,
-   "pnl": -218.63354037267086,
+   "pnl": -740.6193559755077,
    "weight": 1
   },
   "SMART_CONSENSUS": {
@@ -412,6 +458,8 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-11 17:15 IST — Opened NO $750 @ 90c P=62% EV=+0.15 [Short Favorite] \"Will South Africa win on 2026-06-11?\"",
+  "2026-06-11 17:15 IST — Closed YES \"Libema Open: Panna Udvardy vs Daria Snigur\" -> $-522 (Stop loss hit (-20%)) · model said P(win)=62%",
   "2026-06-11 16:45 IST — Closed YES \"Lyon: Marco Trungelliti vs Daniel Galan\" -> $-219 (Stop loss hit (-20%)) · model said P(win)=62%",
   "2026-06-11 13:00 IST — Opened NO $800 @ 84c P=61% EV=+0.14 [Short Favorite] \"Israel closes its airspace by June 15?\"",
   "2026-06-11 12:50 IST — Opened YES $800 @ 81c P=62% EV=+0.14 [Momentum] \"Lyon: Marco Trungelliti vs Daniel Galan\"",
@@ -427,31 +475,31 @@
  "brain": {
   "w": [
    0,
-   -0.09,
+   -0.15259848472628698,
    0,
    0,
-   -0.07245,
-   -0.04914,
-   -0.081,
-   -0.06894,
-   -0.061200000000000004,
-   -0.08892,
+   -0.11657743173203233,
+   -0.08475957280925729,
+   -0.143602984726287,
+   -0.11908296126575588,
+   -0.10721236127382094,
+   -0.1441897370133114,
    0,
-   -0.09,
+   -0.15259848472628698,
    0
   ],
-  "b": -0.09,
-  "nUpdates": 1,
+  "b": -0.15264348472628697,
+  "nUpdates": 2,
   "buckets": {
    "MOMENTUM|high|sport": {
     "a": 1,
-    "b": 2
+    "b": 3
    }
   },
   "wallets": {},
   "brier": {
-   "sum": 0.383161,
-   "n": 1
+   "sum": 0.7675609999999999,
+   "n": 2
   },
   "payoff": {
    "SHORT_FAVORITE": {
@@ -463,8 +511,8 @@
    "MOMENTUM": {
     "wSum": 0,
     "wN": 0,
-    "lSum": 0.2732919254658386,
-    "lN": 1
+    "lSum": 0.9257741949693846,
+    "lN": 2
    },
    "SMART_CONSENSUS": {
     "wSum": 0,
@@ -483,23 +531,23 @@
  },
  "bank": {
   "start": 10000,
-  "cash": 4581.366459627329,
+  "cash": 4109.3806440244925,
   "created": 1781162132851
  },
  "summary": {
-  "realized": -218.63,
-  "closed": 1,
+  "realized": -740.62,
+  "closed": 2,
   "wins": 0,
   "open": 8,
-  "staked": 6000,
+  "staked": 6750,
   "bankStart": 10000,
-  "cash": 4581,
-  "equity": 9748,
-  "returnPct": -2.52,
-  "modelUpdates": 1,
-  "brier": 0.383,
+  "cash": 4109,
+  "equity": 9279,
+  "returnPct": -7.21,
+  "modelUpdates": 2,
+  "brier": 0.384,
   "hypotheses": 0,
-  "updated": "2026-06-11T11:30:57.259Z"
+  "updated": "2026-06-11T11:45:46.007Z"
  },
- "lastRun": 1781177457259
+ "lastRun": 1781178346007
 }

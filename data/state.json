@@ -11,7 +11,7 @@
    "slug": "cs2-vit-fut-2026-06-11",
    "side": "NO",
    "entry": 0.235,
-   "cur": 0.21499999999999997,
+   "cur": 0.03500000000000003,
    "stake": 300,
    "signal": "MOMENTUM",
    "p": 0.6,
@@ -41,7 +41,11 @@
    "target": 0.18,
    "stop": 0.2,
    "holdUntil": 1781201400000,
-   "status": "open"
+   "status": "closed",
+   "exit": 0.03500000000000003,
+   "exitTs": 1781188259292,
+   "exitReason": "Stop loss hit (-20%)",
+   "pnl": -255.31914893617017
   },
   {
    "id": "t1781184657049pkde",
@@ -53,7 +57,7 @@
    "slug": "will-the-us-invade-iran-before-2027",
    "side": "YES",
    "entry": 0.255,
-   "cur": 0.26,
+   "cur": 0.265,
    "stake": 350,
    "signal": "MOMENTUM",
    "p": 0.61,
@@ -137,7 +141,7 @@
    "slug": "israel-closes-its-airspace-by",
    "side": "NO",
    "entry": 0.835,
-   "cur": 0.79,
+   "cur": 0.795,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.613,
@@ -225,7 +229,7 @@
    "slug": "wta-bouzkov-vekic-2026-06-10",
    "side": "NO",
    "entry": 0.495,
-   "cur": 0.49,
+   "cur": 0.48,
    "stake": 800,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -401,7 +405,7 @@
    "slug": "2026-nba-champion",
    "side": "YES",
    "entry": 0.8215,
-   "cur": 0.8135,
+   "cur": 0.8125,
    "stake": 200,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -443,7 +447,7 @@
    "slug": "2026-nba-champion",
    "side": "NO",
    "entry": 0.8175,
-   "cur": 0.8109999999999999,
+   "cur": 0.812,
    "stake": 800,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -485,7 +489,7 @@
    "slug": "trump-announces-us-x-iran-ceasefire-over-byptptpt-20260607232555290",
    "side": "NO",
    "entry": 0.9325,
-   "cur": 0.9365,
+   "cur": 0.935,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.627,
@@ -526,9 +530,9 @@
    "weight": 1
   },
   "MOMENTUM": {
-   "trades": 3,
+   "trades": 4,
    "wins": 1,
-   "pnl": -663.200001136798,
+   "pnl": -918.5191500729682,
    "weight": 1
   },
   "SMART_CONSENSUS": {
@@ -546,6 +550,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-11 20:00 IST — Closed NO \"Counter-Strike: Vitality vs FUT Esports (B\" -> $-255 (Stop loss hit (-20%)) · model said P(win)=60%",
   "2026-06-11 19:15 IST — Opened NO $300 @ 24c P=60% EV=+0.05 [Momentum] \"Counter-Strike: Vitality vs FUT Esports (BO3) \"",
   "2026-06-11 19:00 IST — Opened YES $350 @ 26c P=61% EV=+0.06 [Momentum] \"Will the U.S. invade Iran before 2027?\"",
   "2026-06-11 18:00 IST — Closed YES \"Trump announces US x Iran ceasefire over b\" -> +$77 (Profit target hit (+18%)) · model said P(win)=62%",
@@ -558,27 +563,26 @@
   "2026-06-11 12:50 IST — Opened NO $800 @ 64c P=62% EV=+0.15 [Momentum] \"US announces new Iran agreement/ceasefire exte\"",
   "2026-06-11 12:50 IST — Opened YES $200 @ 16c P=62% EV=+0.15 [Momentum] \"Trump announces US x Iran ceasefire over by Ju\"",
   "2026-06-11 12:45 IST — Opened YES $800 @ 71c P=62% EV=+0.15 [Momentum] \"Libema Open: Panna Udvardy vs Daria Snigur\"",
-  "2026-06-11 12:45 IST — Opened YES $200 @ 82c P=62% EV=+0.15 [Momentum] \"Will the New York Knicks win the 2026 NBA Fina\"",
-  "2026-06-11 12:45 IST — Opened NO $800 @ 82c P=62% EV=+0.15 [Momentum] \"Will the San Antonio Spurs win the 2026 NBA Fi\""
+  "2026-06-11 12:45 IST — Opened YES $200 @ 82c P=62% EV=+0.15 [Momentum] \"Will the New York Knicks win the 2026 NBA Fina\""
  ],
  "brain": {
   "w": [
    0,
-   -0.035945741897626046,
+   -0.10575310985582934,
    0,
    0,
-   -0.09844979426029016,
-   -0.008592775361000199,
-   -0.10855825015803451,
-   -0.027394335126292926,
-   -0.02893596144677822,
-   -0.06950871824957415,
+   -0.11480952445801076,
+   -0.07750609037169283,
+   -0.1259603062402435,
+   -0.08868728720672533,
+   -0.07835783477309452,
+   -0.13825192460716418,
    0,
-   -0.15252218548392385,
+   -0.222271265220334,
    0
   ],
-  "b": -0.03606704113998918,
-  "nUpdates": 3,
+  "b": -0.10589238196914129,
+  "nUpdates": 4,
   "buckets": {
    "MOMENTUM|high|sport": {
     "a": 1,
@@ -587,12 +591,16 @@
    "MOMENTUM|low|other": {
     "a": 2,
     "b": 1
+   },
+   "MOMENTUM|low|sport": {
+    "a": 1,
+    "b": 2
    }
   },
   "wallets": {},
   "brier": {
-   "sum": 0.9119609999999999,
-   "n": 3
+   "sum": 1.271961,
+   "n": 4
   },
   "payoff": {
    "SHORT_FAVORITE": {
@@ -604,8 +612,8 @@
    "MOMENTUM": {
     "wSum": 0.3870967741935483,
     "wN": 1,
-    "lSum": 0.9257741949693846,
-    "lN": 2
+    "lSum": 1.7768380247566187,
+    "lN": 3
    },
    "SMART_CONSENSUS": {
     "wSum": 0,
@@ -624,23 +632,23 @@
  },
  "bank": {
   "start": 10000,
-  "cash": 3736.799998863202,
+  "cash": 3781.4808499270316,
   "created": 1781162132851
  },
  "summary": {
-  "realized": -663.2,
-  "closed": 3,
+  "realized": -918.52,
+  "closed": 4,
   "wins": 1,
-  "open": 9,
+  "open": 8,
   "staked": 7400,
   "bankStart": 10000,
-  "cash": 3737,
-  "equity": 9287,
-  "returnPct": -7.13,
-  "modelUpdates": 3,
-  "brier": 0.304,
+  "cash": 3781,
+  "equity": 9052,
+  "returnPct": -9.48,
+  "modelUpdates": 4,
+  "brier": 0.318,
   "hypotheses": 0,
-  "updated": "2026-06-11T14:15:40.828Z"
+  "updated": "2026-06-11T14:30:59.296Z"
  },
- "lastRun": 1781187340828
+ "lastRun": 1781188259296
 }

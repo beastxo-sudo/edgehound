@@ -36,6 +36,9 @@ jobs:
             echo "No changes to commit."
           else
             git commit -m "Analyst session $(date -u +'%Y-%m-%d %H:%M UTC')"
-            git pull --rebase origin ${GITHUB_REF_NAME} || true
-            git push
+            for i in 1 2 3 4 5; do
+              git pull --rebase origin ${GITHUB_REF_NAME} || { git rebase --abort 2>/dev/null || true; }
+              if git push; then break; fi
+              echo "push failed, retry $i"; sleep $((i*3))
+            done
           fi

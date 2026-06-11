@@ -209,6 +209,7 @@ footer{max-width:1280px;margin:0 auto;padding:0 24px 40px;color:var(--faint);fon
   <button class="tab" data-page="smart" onclick="showPage('smart',this)">Smart Money <span class="badge" id="walletCount"></span></button>
   <button class="tab" data-page="signals" onclick="showPage('signals',this)">Copy Signals</button>
   <button class="tab" data-page="bot" onclick="showPage('bot',this)">🐕 EdgeHound Bot <span class="badge" id="botBadge"></span></button>
+  <button class="tab" data-page="arb" onclick="showPage('arb',this)">⚖ Arb Scanner <span class="badge" id="arbBadge"></span></button>
 </nav>
 
 <main>
@@ -351,6 +352,29 @@ footer{max-width:1280px;margin:0 auto;padding:0 24px 40px;color:var(--faint);fon
 
   <div class="mini-note" style="margin-top:18px;line-height:1.7">
     Honest caveats: paper fills assume you get the shown price — real trading has spread and slippage, especially on thin markets. The short-favorite engine wins often but loses big when a favorite flips, so judge it on long-run P&L, not win rate. Signal weights need ~30+ settled trades each before they mean much. The bot trades only while this page is open; on every visit it catches up on settlements and exits since you left.
+  </div>
+</section>
+
+<!-- ================= ARB SCANNER ================= -->
+<section class="page" id="page-arb">
+  <div class="help-tip"><b>What this hunts:</b> situations where Polymarket prices are mathematically inconsistent — where you can lock in a guaranteed profit regardless of outcome. Three detectors: <b>Multi-outcome</b> (all possible outcomes of one event sum to less than $1 — buy every YES, exactly one pays $1), <b>Buy-both</b> (YES + NO purchasable for under $1 combined), and <b>Date ladder</b> ("by June 30" priced below "by June 15" — logically impossible, so the pair locks a profit). This scanner is fully separate from EdgeHound.</div>
+  <div class="stat-row" id="arbStats"></div>
+  <div class="controls">
+    <button class="btn primary" style="flex:0 0 auto;padding:9px 18px" onclick="Arb.scan()">🔍 Scan now</button>
+    <label style="display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11.5px;color:var(--muted);cursor:pointer">
+      <input type="checkbox" id="arbAuto" checked onchange="Arb.auto()"> auto-rescan every 60s
+    </label>
+    <div class="head-spacer"></div>
+    <select class="ctrl" id="arbMin" onchange="Arb.render()">
+      <option value="0.5">Show edge ≥ 0.5%</option>
+      <option value="1" selected>Show edge ≥ 1%</option>
+      <option value="2">Show edge ≥ 2%</option>
+      <option value="0.1">Show everything (incl. dust)</option>
+    </select>
+  </div>
+  <div id="arbList" class="sig-grid"><div class="loading"><span class="spinner"></span>Scanning for mispricings…</div></div>
+  <div class="mini-note" style="margin-top:18px;line-height:1.7">
+    Honest caveats: edges are computed from listed prices, not full order-book depth — a 3% edge on $200 of depth is real but tiny, and big edges usually vanish in seconds to faster bots. Multi-outcome math assumes the event's outcomes are mutually exclusive and exhaustive (the scanner prefers events Polymarket flags as such, but always sanity-check the market rules — "other/none of the above" gaps break the math). Locked profit is also locked capital until resolution. Treat this page as a research surface, not an execution promise.
   </div>
 </section>
 
@@ -1386,6 +1410,170 @@ const Bot={
                 y:{ticks:{color:'#5E6983',callback:v=>'$'+v,font:{family:'IBM Plex Mono',size:10}},grid:{color:'rgba(39,49,75,.5)'}}}}});
   }
 };
+
+/* =====================================================
+   ARB SCANNER — hunts mathematically guaranteed mispricings
+   Independent of EdgeHound. Three detectors:
+   1) MULTI-OUTCOME: mutually-exclusive event outcomes whose
+      YES prices sum below $1 (buy all -> one pays $1), or
+      above $1 on neg-risk events (buy all NOs).
+   2) BUY-BOTH: a binary market where YES ask + NO ask < $1.
+   3) DATE LADDER: "by <later date>" priced below "by <earlier
+      date>" in the same series — logically impossible, so
+      buying later-YES + earlier-NO locks a profit.
+===================================================== */
+const Arb={
+  opps:[], scanned:0, lastScan:null, timer:null,
+
+  async scan(){
+    $('arbList').innerHTML='<div class="loading"><span class="spinner"></span>Scanning for mispricings…</div>';
+    let events=[];
+    if(LIVE){
+      try{
+        const batches=await Promise.allSettled([
+          jget(`${GAMMA}/events?closed=false&active=true&order=volume24hr&ascending=false&limit=100`),
+          jget(`${GAMMA}/events?closed=false&active=true&order=volume24hr&ascending=false&limit=100&offset=100`)
+        ]);
+        batches.forEach(b=>{ if(b.status==='fulfilled'&&Array.isArray(b.value)) events.push(...b.value); });
+      }catch(e){}
+    }
+    if(!events.length) events=DEMO_ARB_EVENTS;
+    this.scanned=events.length; this.lastScan=Date.now();
+    const opps=[];
+
+    events.forEach(ev=>{
+      const mkts=(ev.markets||[]).filter(m=>m.active!==false&&!m.closed).map(m=>{
+        let prices=[],outs=[],tokens=[];
+        try{prices=JSON.parse(m.outcomePrices||'[]').map(Number);}catch(e){}
+        try{outs=JSON.parse(m.outcomes||'[]');}catch(e){}
+        let yi=outs.findIndex(o=>/^yes$/i.test(o)); if(yi<0)yi=0;
+        return {q:m.question||m.groupItemTitle||'',item:m.groupItemTitle||'',
+          yes:prices[yi]??NaN, bid:Number(m.bestBid)||null, ask:Number(m.bestAsk)||null,
+          liq:Number(m.liquidityNum||m.liquidity)||0, end:m.endDate};
+      }).filter(m=>!isNaN(m.yes)&&m.yes>0&&m.yes<1);
+      if(!mkts.length)return;
+      const evMeta={title:ev.title||'',slug:ev.slug||'',vol24:Number(ev.volume24hr)||0,liq:Number(ev.liquidity)||0,negRisk:!!(ev.negRisk||ev.enableNegRisk)};
+
+      /* 1 — MULTI-OUTCOME */
+      if(mkts.length>=3 && evMeta.negRisk){
+        const sum=mkts.reduce((s,m)=>s+m.yes,0);
+        const n=mkts.length;
+        if(sum<0.995){
+          const margin=(1-sum)/sum*100;
+          opps.push({type:'MULTI-OUTCOME',ev:evMeta,margin,
+            cost:sum,payout:1,
+            plan:`Buy YES on all ${n} outcomes for ~$${sum.toFixed(3)} total per set. Exactly one resolves YES and pays $1.00 — locked profit ${(1-sum).toFixed(3)} per set (${margin.toFixed(1)}%).`,
+            legs:mkts.slice(0,8).map(m=>`${(m.item||m.q).slice(0,30)} @ ${cents(m.yes)}`)});
+        } else if(sum>1.02){
+          const cost=n-sum, payout=n-1, profit=sum-1, margin=profit/cost*100;
+          opps.push({type:'MULTI-OUTCOME (NO side)',ev:evMeta,margin,
+            cost,payout,
+            plan:`YES prices sum to $${sum.toFixed(3)} — overpriced. Buy NO on all ${n} outcomes for ~$${cost.toFixed(2)}; ${n-1} of them pay $1 — locked profit $${profit.toFixed(3)} per set (${margin.toFixed(1)}%).`,
+            legs:mkts.slice(0,8).map(m=>`NO ${(m.item||m.q).slice(0,28)} @ ${cents(1-m.yes)}`)});
+        }
+      }
+
+      /* 2 — BUY-BOTH (crossed book) per binary market */
+      mkts.forEach(m=>{
+        if(m.bid!==null&&m.ask!==null&&m.ask>0&&m.bid>0){
+          const both=m.ask+(1-m.bid); /* buy YES at ask + buy NO at (1 - YES bid) */
+          if(both<0.995){
+            const margin=(1-both)/both*100;
+            opps.push({type:'BUY-BOTH',ev:{...evMeta,title:m.q||evMeta.title},margin,
+              cost:both,payout:1,
+              plan:`YES ask ${cents(m.ask)} + NO ask ~${cents(1-m.bid)} = $${both.toFixed(3)} for a guaranteed $1.00 — book is crossed. Locked ${(1-both).toFixed(3)} per set (${margin.toFixed(1)}%). Act fast; these close in seconds.`,
+              legs:[`YES @ ${cents(m.ask)}`,`NO @ ${cents(1-m.bid)}`]});
+          }
+        }
+      });
+
+      /* 3 — DATE LADDER within an event's deadline series */
+      const dated=mkts.map(m=>({...m,d:parseDeadline(m.q||m.item)})).filter(m=>m.d);
+      if(dated.length>=2){
+        dated.sort((a,b)=>a.d-b.d);
+        for(let i=0;i<dated.length-1;i++){
+          const early=dated[i],late=dated[i+1];
+          if(late.yes < early.yes-0.015){
+            const cost=late.yes+(1-early.yes); /* later-YES + earlier-NO; min payout $1 */
+            if(cost<0.995){
+              const margin=(1-cost)/cost*100;
+              opps.push({type:'DATE LADDER',ev:evMeta,margin,
+                cost,payout:1,
+                plan:`"${late.q.slice(0,40)}" (${cents(late.yes)}) is priced BELOW the earlier deadline "${early.q.slice(0,40)}" (${cents(early.yes)}) — logically impossible. Buy later-YES + earlier-NO for $${cost.toFixed(3)}; payout is $1 minimum in every scenario (${margin.toFixed(1)}%+ locked).`,
+                legs:[`YES "${late.q.slice(0,34)}" @ ${cents(late.yes)}`,`NO "${early.q.slice(0,34)}" @ ${cents(1-early.yes)}`]});
+            }
+          }
+        }
+      }
+    });
+
+    /* dedupe & sort by edge */
+    this.opps=opps.sort((a,b)=>b.margin-a.margin).slice(0,40);
+    this.render();
+  },
+
+  render(){
+    const min=Number($('arbMin').value);
+    const show=this.opps.filter(o=>o.margin>=min);
+    $('arbBadge').textContent=show.length||'';
+    const best=this.opps[0];
+    $('arbStats').innerHTML=`
+      <div class="stat-card"><div class="lbl">Events scanned</div><div class="val">${this.scanned}</div><div class="sub">${LIVE?'live Polymarket data':'sample data'} · ${this.lastScan?new Date(this.lastScan).toLocaleTimeString():''}</div></div>
+      <div class="stat-card"><div class="lbl">Opportunities ≥ ${min}%</div><div class="val" style="color:${show.length?'var(--yes)':'var(--muted)'}">${show.length}</div><div class="sub">of ${this.opps.length} total detected</div></div>
+      <div class="stat-card"><div class="lbl">Best locked edge</div><div class="val ${best?'pos':''}">${best?best.margin.toFixed(1)+'%':'—'}</div><div class="sub">${best?esc(best.ev.title.slice(0,40)):'no mispricings right now'}</div></div>
+      <div class="stat-card"><div class="lbl">Market reality</div><div class="val" style="font-size:15px;line-height:1.3;padding-top:4px">${show.length?'⚡ act-fast territory':'✓ prices consistent'}</div><div class="sub">arbs are normally rare & brief</div></div>`;
+    if(!show.length){
+      $('arbList').innerHTML='<div class="empty" style="grid-column:1/-1">No opportunities above '+min+'% right now — that\'s the normal state of an efficient market. The scanner keeps watching.</div>';
+      return;
+    }
+    $('arbList').innerHTML=show.map(o=>{
+      const cls=o.margin>=2?'y':'';
+      return `<div class="sig-card">
+        <span class="consensus" style="${o.margin>=2?'':'background:var(--surface2);color:var(--muted)'}">⚖ ${o.type} · +${o.margin.toFixed(1)}% locked</span>
+        <div class="q">${esc(o.ev.title)}</div>
+        <div class="sig-stats">
+          <div class="cell"><div class="l">Cost to lock</div><div class="v">$${o.cost.toFixed(3)}</div></div>
+          <div class="cell"><div class="l">Guaranteed payout</div><div class="v" style="color:var(--yes)">$${o.payout.toFixed(2)}${o.payout>1?'+':''}</div></div>
+          <div class="cell"><div class="l">24h volume</div><div class="v">${fmtUSD(o.ev.vol24)}</div></div>
+        </div>
+        <div class="holders-line">${esc(o.plan)}</div>
+        ${o.legs&&o.legs.length?'<div class="holders-line" style="font-family:var(--mono);font-size:10.5px">'+o.legs.map(esc).join(' · ')+'</div>':''}
+        <div class="actions" style="display:flex;gap:8px">
+          <a class="btn primary" target="_blank" rel="noopener" href="https://polymarket.com/event/${esc(o.ev.slug)}">Inspect on Polymarket ↗</a>
+        </div>
+      </div>`;
+    }).join('');
+  },
+
+  auto(){
+    clearInterval(this.timer);
+    if($('arbAuto').checked) this.timer=setInterval(()=>{ if($('page-arb').classList.contains('active')) this.scan(); },60000);
+  }
+};
+function parseDeadline(q){
+  const MONTHS={january:0,february:1,march:2,april:3,may:4,june:5,july:6,august:7,september:8,october:9,november:10,december:11};
+  const m=String(q||'').toLowerCase().match(/by\s+(january|february|march|april|may|june|july|august|september|october|november|december)\s+(\d{1,2})/);
+  if(!m)return null;
+  const now=new Date(); let y=now.getFullYear();
+  const d=new Date(y,MONTHS[m[1]],parseInt(m[2],10));
+  if(d<now-30*864e5) d.setFullYear(y+1); /* deadlines roll into next year */
+  return d.getTime();
+}
+const DEMO_ARB_EVENTS=[
+  {title:'2026 NBA Champion',slug:'',volume24hr:2400000,liquidity:900000,negRisk:true,markets:[
+    {question:'Knicks',groupItemTitle:'Knicks',outcomes:'["Yes","No"]',outcomePrices:'["0.41","0.59"]',bestBid:.40,bestAsk:.42,liquidityNum:300000},
+    {question:'Spurs',groupItemTitle:'Spurs',outcomes:'["Yes","No"]',outcomePrices:'["0.36","0.64"]',bestBid:.35,bestAsk:.37,liquidityNum:280000},
+    {question:'Thunder',groupItemTitle:'Thunder',outcomes:'["Yes","No"]',outcomePrices:'["0.12","0.88"]',bestBid:.11,bestAsk:.13,liquidityNum:120000},
+    {question:'Field (any other team)',groupItemTitle:'Other',outcomes:'["Yes","No"]',outcomePrices:'["0.08","0.92"]',bestBid:.07,bestAsk:.09,liquidityNum:90000}]},
+  {title:'Will BTC hit $160K?',slug:'',volume24hr:1800000,liquidity:600000,negRisk:false,markets:[
+    {question:'Will BTC hit $160K by June 15?',outcomes:'["Yes","No"]',outcomePrices:'["0.22","0.78"]',bestBid:.21,bestAsk:.23,liquidityNum:200000},
+    {question:'Will BTC hit $160K by June 30?',outcomes:'["Yes","No"]',outcomePrices:'["0.19","0.81"]',bestBid:.18,bestAsk:.20,liquidityNum:180000}]},
+  {title:'Fed decision July',slug:'',volume24hr:900000,liquidity:400000,negRisk:false,markets:[
+    {question:'Will the Fed cut rates in July?',outcomes:'["Yes","No"]',outcomePrices:'["0.62","0.38"]',bestBid:.64,bestAsk:.61,liquidityNum:350000}]}
+];
+/* wire scanner into tab switching */
+const _origShowPage=showPage;
+showPage=function(p,btn){ _origShowPage(p,btn); if(p==='arb'){ if(!Arb.lastScan)Arb.scan(); Arb.auto(); } };
 
 boot();
 </script>

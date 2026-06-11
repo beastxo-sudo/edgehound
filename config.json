@@ -4,12 +4,13 @@
     "SHORT_FAVORITE": true,
     "MOMENTUM": true,
     "SMART_CONSENSUS": true,
-    "VOLUME_SPIKE": true
+    "VOLUME_SPIKE": true,
+    "ELITE_FOLLOW": true
   },
   "pMin": 0.56,
   "kellyMult": 0.25,
   "maxExposure": 0.6,
   "maxEventExposure": 1000,
-  "updatedBy": "analyst",
-  "updatedAt": "2026-06-11T07:31:29.229Z"
+  "updatedBy": "initial",
+  "updatedAt": "2026-06-11T07:50:00Z"
 }

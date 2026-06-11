@@ -11,7 +11,7 @@
    "slug": "atp-landalu-fritz-2026-06-10",
    "side": "YES",
    "entry": 0.645,
-   "cur": 0.645,
+   "cur": 0.385,
    "stake": 100,
    "signal": "MOMENTUM",
    "p": 0.58,
@@ -41,7 +41,11 @@
    "target": 0.18,
    "stop": 0.2,
    "holdUntil": 1781453742608,
-   "status": "open"
+   "status": "closed",
+   "exit": 0.385,
+   "exitTs": 1781195457761,
+   "exitReason": "Stop loss hit (-20%)",
+   "pnl": -40.310077519379846
   },
   {
    "id": "t1781185546037dpgs",
@@ -447,7 +451,7 @@
    "slug": "2026-nba-champion",
    "side": "YES",
    "entry": 0.8215,
-   "cur": 0.8075,
+   "cur": 0.8045,
    "stake": 200,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -531,7 +535,7 @@
    "slug": "trump-announces-us-x-iran-ceasefire-over-byptptpt-20260607232555290",
    "side": "NO",
    "entry": 0.9325,
-   "cur": 0.9375,
+   "cur": 0.9325,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.627,
@@ -572,9 +576,9 @@
    "weight": 1
   },
   "MOMENTUM": {
-   "trades": 4,
+   "trades": 5,
    "wins": 1,
-   "pnl": -918.5191500729682,
+   "pnl": -958.829227592348,
    "weight": 1
   },
   "SMART_CONSENSUS": {
@@ -592,6 +596,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-11 22:00 IST — Closed YES \"Stuttgart Open: Martin Landaluce vs Taylor\" -> $-40 (Stop loss hit (-20%)) · model said P(win)=58%",
   "2026-06-11 21:45 IST — Opened YES $100 @ 65c P=58% EV=-0.02 [Momentum] \"Stuttgart Open: Martin Landaluce vs Taylor Fri\"",
   "2026-06-11 20:00 IST — Closed NO \"Counter-Strike: Vitality vs FUT Esports (B\" -> $-255 (Stop loss hit (-20%)) · model said P(win)=60%",
   "2026-06-11 19:15 IST — Opened NO $300 @ 24c P=60% EV=+0.05 [Momentum] \"Counter-Strike: Vitality vs FUT Esports (BO3) \"",
@@ -604,27 +609,26 @@
   "2026-06-11 12:50 IST — Opened YES $800 @ 81c P=62% EV=+0.14 [Momentum] \"Lyon: Marco Trungelliti vs Daniel Galan\"",
   "2026-06-11 12:50 IST — Opened NO $800 @ 50c P=62% EV=+0.15 [Momentum] \"HSBC Championships: Marie Bouzkova vs Donna Ve\"",
   "2026-06-11 12:50 IST — Opened NO $800 @ 64c P=62% EV=+0.15 [Momentum] \"US announces new Iran agreement/ceasefire exte\"",
-  "2026-06-11 12:50 IST — Opened YES $200 @ 16c P=62% EV=+0.15 [Momentum] \"Trump announces US x Iran ceasefire over by Ju\"",
-  "2026-06-11 12:45 IST — Opened YES $800 @ 71c P=62% EV=+0.15 [Momentum] \"Libema Open: Panna Udvardy vs Daria Snigur\""
+  "2026-06-11 12:50 IST — Opened YES $200 @ 16c P=62% EV=+0.15 [Momentum] \"Trump announces US x Iran ceasefire over by Ju\""
  ],
  "brain": {
   "w": [
    0,
-   -0.10575310985582934,
+   -0.154444507868617,
    0,
    0,
-   -0.11480952445801076,
-   -0.07750609037169283,
-   -0.1259603062402435,
-   -0.08868728720672533,
-   -0.07835783477309452,
-   -0.13825192460716418,
+   -0.1461921767919583,
+   -0.10651892496886547,
+   -0.17464160065483897,
+   -0.128223294512107,
+   -0.11302457934792146,
+   -0.17932296638001255,
    0,
-   -0.222271265220334,
+   -0.2709044041554394,
    0
   ],
-  "b": -0.10589238196914129,
-  "nUpdates": 4,
+  "b": -0.15463665653685688,
+  "nUpdates": 5,
   "buckets": {
    "MOMENTUM|high|sport": {
     "a": 1,
@@ -637,12 +641,16 @@
    "MOMENTUM|low|sport": {
     "a": 1,
     "b": 2
+   },
+   "MOMENTUM|mid|sport": {
+    "a": 1,
+    "b": 2
    }
   },
   "wallets": {},
   "brier": {
-   "sum": 1.271961,
-   "n": 4
+   "sum": 1.608361,
+   "n": 5
   },
   "payoff": {
    "SHORT_FAVORITE": {
@@ -654,8 +662,8 @@
    "MOMENTUM": {
     "wSum": 0.3870967741935483,
     "wN": 1,
-    "lSum": 1.7768380247566187,
-    "lN": 3
+    "lSum": 2.179938799950417,
+    "lN": 4
    },
    "SMART_CONSENSUS": {
     "wSum": 0,
@@ -674,23 +682,23 @@
  },
  "bank": {
   "start": 10000,
-  "cash": 3681.4808499270316,
+  "cash": 3741.170772407652,
   "created": 1781162132851
  },
  "summary": {
-  "realized": -918.52,
-  "closed": 4,
+  "realized": -958.83,
+  "closed": 5,
   "wins": 1,
-  "open": 9,
+  "open": 8,
   "staked": 7500,
   "bankStart": 10000,
-  "cash": 3681,
-  "equity": 9018,
-  "returnPct": -9.82,
-  "modelUpdates": 4,
-  "brier": 0.318,
+  "cash": 3741,
+  "equity": 8973,
+  "returnPct": -10.27,
+  "modelUpdates": 5,
+  "brier": 0.322,
   "hypotheses": 0,
-  "updated": "2026-06-11T16:15:42.609Z"
+  "updated": "2026-06-11T16:30:57.764Z"
  },
- "lastRun": 1781194542609
+ "lastRun": 1781195457764
 }

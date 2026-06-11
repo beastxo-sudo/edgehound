@@ -2,13 +2,8 @@ name: EdgeHound paper-trading bot
 
 on:
   schedule:
-    - cron: '4,19,34,49 * * * *'   # every 15 min on offset minutes (avoids scheduler congestion)
-  workflow_dispatch:
-  push:
-    branches: [ main ]
-    paths-ignore:
-      - 'data/**'                  # the bot's own journal commits must not re-trigger it
-      - '**.md'
+    - cron: '*/15 * * * *'   # every 15 minutes (GitHub may delay a few min)
+  workflow_dispatch:          # lets you trigger a run manually from the Actions tab
 
 permissions:
   contents: write
@@ -21,11 +16,11 @@ jobs:
   run:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 20
 
       - name: Run EdgeHound
         run: node edgehound.js
@@ -39,6 +34,9 @@ jobs:
             echo "No changes to commit."
           else
             git commit -m "EdgeHound run $(date -u +'%Y-%m-%d %H:%M UTC')"
-            git pull --rebase origin ${GITHUB_REF_NAME} || true
-            git push
+            for i in 1 2 3 4 5; do
+              git pull --rebase origin ${GITHUB_REF_NAME} || { git rebase --abort 2>/dev/null || true; }
+              if git push; then break; fi
+              echo "push failed, retry $i"; sleep $((i*3))
+            done
           fi

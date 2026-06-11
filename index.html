@@ -364,6 +364,9 @@ footer{max-width:1280px;margin:0 auto;padding:0 24px 40px;color:var(--faint);fon
     <label style="display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11.5px;color:var(--muted);cursor:pointer">
       <input type="checkbox" id="arbAuto" checked onchange="Arb.auto()"> auto-rescan every 60s
     </label>
+    <label style="display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11.5px;color:var(--muted)">
+      Example with $<input id="arbStake" type="number" value="10" min="1" max="10000" oninput="Arb.render()" style="width:70px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:6px 8px;color:var(--text);font-family:var(--mono);font-size:12px">
+    </label>
     <div class="head-spacer"></div>
     <select class="ctrl" id="arbMin" onchange="Arb.render()">
       <option value="0.5">Show edge ≥ 0.5%</option>
@@ -1460,29 +1463,26 @@ const Arb={
         const n=mkts.length;
         if(sum<0.995){
           const margin=(1-sum)/sum*100;
-          opps.push({type:'MULTI-OUTCOME',ev:evMeta,margin,
-            cost:sum,payout:1,
-            plan:`Buy YES on all ${n} outcomes for ~$${sum.toFixed(3)} total per set. Exactly one resolves YES and pays $1.00 — locked profit ${(1-sum).toFixed(3)} per set (${margin.toFixed(1)}%).`,
-            legs:mkts.slice(0,8).map(m=>`${(m.item||m.q).slice(0,30)} @ ${cents(m.yes)}`)});
+          opps.push({type:'MULTI-OUTCOME',ev:evMeta,margin,cost:sum,payout:1,
+            why:`One of these ${n} outcomes MUST win and pay $1 — but buying ALL of them costs only $${sum.toFixed(2)}. Whatever happens, you collect more than you spent.`,
+            legs:mkts.map(m=>({label:'YES '+(m.item||m.q).slice(0,28),price:m.yes}))});
         } else if(sum>1.02){
-          const cost=n-sum, payout=n-1, profit=sum-1, margin=profit/cost*100;
-          opps.push({type:'MULTI-OUTCOME (NO side)',ev:evMeta,margin,
-            cost,payout,
-            plan:`YES prices sum to $${sum.toFixed(3)} — overpriced. Buy NO on all ${n} outcomes for ~$${cost.toFixed(2)}; ${n-1} of them pay $1 — locked profit $${profit.toFixed(3)} per set (${margin.toFixed(1)}%).`,
-            legs:mkts.slice(0,8).map(m=>`NO ${(m.item||m.q).slice(0,28)} @ ${cents(1-m.yes)}`)});
+          const cost=n-sum, payout=n-1, margin=(sum-1)/cost*100;
+          opps.push({type:'MULTI-OUTCOME',ev:evMeta,margin,cost,payout,
+            why:`These outcomes are collectively OVERPRICED (they sum to $${sum.toFixed(2)} when only one can win). So bet NO on all ${n}: exactly ${n-1} of those NOs win and pay $1 each — more than the $${cost.toFixed(2)} they cost.`,
+            legs:mkts.map(m=>({label:'NO '+(m.item||m.q).slice(0,28),price:1-m.yes}))});
         }
       }
 
       /* 2 — BUY-BOTH (crossed book) per binary market */
       mkts.forEach(m=>{
         if(m.bid!==null&&m.ask!==null&&m.ask>0&&m.bid>0){
-          const both=m.ask+(1-m.bid); /* buy YES at ask + buy NO at (1 - YES bid) */
+          const both=m.ask+(1-m.bid);
           if(both<0.995){
             const margin=(1-both)/both*100;
-            opps.push({type:'BUY-BOTH',ev:{...evMeta,title:m.q||evMeta.title},margin,
-              cost:both,payout:1,
-              plan:`YES ask ${cents(m.ask)} + NO ask ~${cents(1-m.bid)} = $${both.toFixed(3)} for a guaranteed $1.00 — book is crossed. Locked ${(1-both).toFixed(3)} per set (${margin.toFixed(1)}%). Act fast; these close in seconds.`,
-              legs:[`YES @ ${cents(m.ask)}`,`NO @ ${cents(1-m.bid)}`]});
+            opps.push({type:'BUY-BOTH',ev:{...evMeta,title:m.q||evMeta.title},margin,cost:both,payout:1,
+              why:`YES and NO together cost only $${both.toFixed(2)} — but one of them ALWAYS pays $1. Buy both sides and the profit is locked regardless of the outcome. These vanish in seconds.`,
+              legs:[{label:'YES',price:m.ask},{label:'NO',price:1-m.bid}]});
           }
         }
       });
@@ -1494,13 +1494,12 @@ const Arb={
         for(let i=0;i<dated.length-1;i++){
           const early=dated[i],late=dated[i+1];
           if(late.yes < early.yes-0.015){
-            const cost=late.yes+(1-early.yes); /* later-YES + earlier-NO; min payout $1 */
+            const cost=late.yes+(1-early.yes);
             if(cost<0.995){
               const margin=(1-cost)/cost*100;
-              opps.push({type:'DATE LADDER',ev:evMeta,margin,
-                cost,payout:1,
-                plan:`"${late.q.slice(0,40)}" (${cents(late.yes)}) is priced BELOW the earlier deadline "${early.q.slice(0,40)}" (${cents(early.yes)}) — logically impossible. Buy later-YES + earlier-NO for $${cost.toFixed(3)}; payout is $1 minimum in every scenario (${margin.toFixed(1)}%+ locked).`,
-                legs:[`YES "${late.q.slice(0,34)}" @ ${cents(late.yes)}`,`NO "${early.q.slice(0,34)}" @ ${cents(1-early.yes)}`]});
+              opps.push({type:'DATE LADDER',ev:evMeta,margin,cost,payout:1,
+                why:`Anything true "by ${new Date(early.d).toLocaleDateString(undefined,{month:'short',day:'numeric'})}" is automatically true "by ${new Date(late.d).toLocaleDateString(undefined,{month:'short',day:'numeric'})}" — yet the later deadline is priced CHEAPER. That's impossible. This pair pays at least $1 in every possible scenario.`,
+                legs:[{label:'YES "'+late.q.slice(0,30)+'"',price:late.yes},{label:'NO "'+early.q.slice(0,30)+'"',price:1-early.yes}]});
             }
           }
         }
@@ -1526,18 +1525,30 @@ const Arb={
       $('arbList').innerHTML='<div class="empty" style="grid-column:1/-1">No opportunities above '+min+'% right now — that\'s the normal state of an efficient market. The scanner keeps watching.</div>';
       return;
     }
+    const stake=Math.max(1,Math.min(10000,Number($('arbStake').value)||10));
     $('arbList').innerHTML=show.map(o=>{
-      const cls=o.margin>=2?'y':'';
+      const sets=stake/o.cost;
+      const back=sets*o.payout;
+      const profit=back-stake;
+      const legRows=(o.legs||[]).map(l=>{
+        const dollars=l.price*sets;
+        return `<div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border-soft)">
+          <span style="font-size:12px">${esc(l.label)}</span>
+          <span class="num" style="white-space:nowrap">$${dollars.toFixed(2)} <span style="color:var(--faint)">@ ${cents(l.price)}</span></span></div>`;
+      }).join('');
       return `<div class="sig-card">
-        <span class="consensus" style="${o.margin>=2?'':'background:var(--surface2);color:var(--muted)'}">⚖ ${o.type} · +${o.margin.toFixed(1)}% locked</span>
+        <span class="consensus" style="${o.margin>=2?'':'background:var(--surface2);color:var(--muted)'}">⚖ ${o.type}</span>
         <div class="q">${esc(o.ev.title)}</div>
-        <div class="sig-stats">
-          <div class="cell"><div class="l">Cost to lock</div><div class="v">$${o.cost.toFixed(3)}</div></div>
-          <div class="cell"><div class="l">Guaranteed payout</div><div class="v" style="color:var(--yes)">$${o.payout.toFixed(2)}${o.payout>1?'+':''}</div></div>
-          <div class="cell"><div class="l">24h volume</div><div class="v">${fmtUSD(o.ev.vol24)}</div></div>
+        <div style="background:var(--yes-soft);border:1px solid rgba(61,220,151,.25);border-radius:11px;padding:12px 14px">
+          <div style="font-family:var(--mono);font-size:15px;font-weight:600">Put in <b>$${stake.toFixed(0)}</b> → get back <b style="color:var(--yes)">$${back.toFixed(2)}</b></div>
+          <div style="font-size:11.5px;color:var(--yes);margin-top:3px">+$${profit.toFixed(2)} profit, guaranteed whatever happens (+${o.margin.toFixed(1)}%)</div>
         </div>
-        <div class="holders-line">${esc(o.plan)}</div>
-        ${o.legs&&o.legs.length?'<div class="holders-line" style="font-family:var(--mono);font-size:10.5px">'+o.legs.map(esc).join(' · ')+'</div>':''}
+        <div>
+          <div style="font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:4px">Your $${stake.toFixed(0)} shopping list — buy ALL of these together:</div>
+          ${legRows}
+        </div>
+        <div class="holders-line">💡 ${esc(o.why)}</div>
+        <div class="holders-line" style="color:var(--faint)">Money comes back when the event resolves · 24h volume ${fmtUSD(o.ev.vol24)}</div>
         <div class="actions" style="display:flex;gap:8px">
           <a class="btn primary" target="_blank" rel="noopener" href="https://polymarket.com/event/${esc(o.ev.slug)}">Inspect on Polymarket ↗</a>
         </div>

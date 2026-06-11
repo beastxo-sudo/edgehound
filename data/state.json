@@ -53,7 +53,7 @@
    "slug": "us-iran-nuclear-deal-by-june-30",
    "side": "YES",
    "entry": 0.335,
-   "cur": 0.325,
+   "cur": 0.425,
    "stake": 250,
    "signal": "MOMENTUM",
    "p": 0.565,
@@ -83,7 +83,11 @@
    "target": 0.18,
    "stop": 0.2,
    "holdUntil": 1781459143645,
-   "status": "open"
+   "status": "closed",
+   "exit": 0.425,
+   "exitTs": 1781206253318,
+   "exitReason": "Profit target hit (+18%)",
+   "pnl": 67.16417910447758
   },
   {
    "id": "t1781199064784xwr7",
@@ -413,7 +417,7 @@
    "slug": "wta-bouzkov-vekic-2026-06-10",
    "side": "NO",
    "entry": 0.495,
-   "cur": 0.485,
+   "cur": 0.475,
    "stake": 800,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -593,7 +597,7 @@
    "slug": "2026-nba-champion",
    "side": "YES",
    "entry": 0.8215,
-   "cur": 0.7945,
+   "cur": 0.793,
    "stake": 200,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -635,7 +639,7 @@
    "slug": "2026-nba-champion",
    "side": "NO",
    "entry": 0.8175,
-   "cur": 0.7995,
+   "cur": 0.7985,
    "stake": 800,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -677,7 +681,7 @@
    "slug": "trump-announces-us-x-iran-ceasefire-over-byptptpt-20260607232555290",
    "side": "NO",
    "entry": 0.9325,
-   "cur": 0.9885,
+   "cur": 0.9865,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.627,
@@ -718,9 +722,9 @@
    "weight": 1
   },
   "MOMENTUM": {
-   "trades": 8,
-   "wins": 2,
-   "pnl": -1445.210734965486,
+   "trades": 9,
+   "wins": 3,
+   "pnl": -1378.0465558610083,
    "weight": 1
   },
   "SMART_CONSENSUS": {
@@ -744,6 +748,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-12 01:00 IST — Closed YES \"US-Iran nuclear deal by June 30?\" -> +$67 (Profit target hit (+18%)) · model said P(win)=56%",
   "2026-06-12 00:31 IST — Closed NO \"Will South Africa win on 2026-06-11?\" -> +$0 (Max hold reached — closed at market) · model said P(win)=62%",
   "2026-06-11 23:31 IST — Opened YES $250 @ 17c P=57% EV=+0.05 [Momentum] \"Strait of Hormuz traffic returns to normal by \"",
   "2026-06-11 23:15 IST — Opened YES $250 @ 34c P=56% EV=+0.05 [Momentum] \"US-Iran nuclear deal by June 30?\"",
@@ -756,34 +761,33 @@
   "2026-06-11 21:45 IST — Opened YES $100 @ 65c P=58% EV=-0.02 [Momentum] \"Stuttgart Open: Martin Landaluce vs Taylor Fri\"",
   "2026-06-11 20:00 IST — Closed NO \"Counter-Strike: Vitality vs FUT Esports (B\" -> $-255 (Stop loss hit (-20%)) · model said P(win)=60%",
   "2026-06-11 19:15 IST — Opened NO $300 @ 24c P=60% EV=+0.05 [Momentum] \"Counter-Strike: Vitality vs FUT Esports (BO3) \"",
-  "2026-06-11 19:00 IST — Opened YES $350 @ 26c P=61% EV=+0.06 [Momentum] \"Will the U.S. invade Iran before 2027?\"",
-  "2026-06-11 18:00 IST — Closed YES \"Trump announces US x Iran ceasefire over b\" -> +$77 (Profit target hit (+18%)) · model said P(win)=62%"
+  "2026-06-11 19:00 IST — Opened YES $350 @ 26c P=61% EV=+0.06 [Momentum] \"Will the U.S. invade Iran before 2027?\""
  ],
  "brain": {
   "w": [
-   -0.05150813503009449,
-   -0.17996728128846284,
+   -0.05148238096257945,
+   -0.06262743854615992,
    0,
    0,
-   -0.22603006804245673,
-   -0.1566810029034948,
-   -0.20023399735422542,
-   -0.18893432153114517,
-   -0.18057924473696782,
-   -0.2096421597122947,
+   -0.18663835020937983,
+   -0.15660266240204304,
+   -0.10633399307422135,
+   -0.09281221976612114,
+   -0.09560005712499844,
+   -0.2006263493407125,
    0,
-   -0.2703630015682995,
+   -0.27022782006751533,
    0
   ],
-  "b": -0.23191733647883128,
-  "nUpdates": 9,
+  "b": -0.11466747737717259,
+  "nUpdates": 10,
   "buckets": {
    "MOMENTUM|high|sport": {
     "a": 1,
     "b": 3
    },
    "MOMENTUM|low|other": {
-    "a": 3,
+    "a": 4,
     "b": 2
    },
    "MOMENTUM|low|sport": {
@@ -805,8 +809,8 @@
   },
   "wallets": {},
   "brier": {
-   "sum": 2.9231499999999997,
-   "n": 9
+   "sum": 3.1123749999999997,
+   "n": 10
   },
   "payoff": {
    "SHORT_FAVORITE": {
@@ -816,8 +820,8 @@
     "lN": 1
    },
    "MOMENTUM": {
-    "wSum": 0.9452363090772693,
-    "wN": 2,
+    "wSum": 1.2138930254951796,
+    "wN": 3,
     "lSum": 2.990036067203775,
     "lN": 6
    },
@@ -844,25 +848,25 @@
  },
  "bank": {
   "start": 10000,
-  "cash": 4654.789265034514,
+  "cash": 4971.9534441389915,
   "created": 1781162132851
  },
  "summary": {
-  "realized": -1445.21,
-  "closed": 9,
-  "wins": 2,
-  "open": 7,
+  "realized": -1378.05,
+  "closed": 10,
+  "wins": 3,
+  "open": 6,
   "staked": 8100,
   "bankStart": 10000,
-  "cash": 4655,
-  "equity": 8624,
-  "returnPct": -13.76,
-  "modelUpdates": 9,
-  "brier": 0.325,
+  "cash": 4972,
+  "equity": 8680,
+  "returnPct": -13.2,
+  "modelUpdates": 10,
+  "brier": 0.311,
   "hypotheses": 0,
-  "updated": "2026-06-11T19:15:41.962Z"
+  "updated": "2026-06-11T19:30:53.322Z"
  },
- "lastRun": 1781205341963,
+ "lastRun": 1781206253322,
  "elite": {
   "updated": 1781199062938,
   "list": [

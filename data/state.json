@@ -263,7 +263,7 @@
    "slug": "2026-nba-champion",
    "side": "YES",
    "entry": 0.8215,
-   "cur": 0.818,
+   "cur": 0.817,
    "stake": 200,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -489,7 +489,7 @@
   "modelUpdates": 0,
   "brier": null,
   "hypotheses": 0,
-  "updated": "2026-06-11T07:45:38.704Z"
+  "updated": "2026-06-11T08:01:06.545Z"
  },
- "lastRun": 1781163938704
+ "lastRun": 1781164866545
 }

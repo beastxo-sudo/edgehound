@@ -275,7 +275,7 @@
    "slug": "wta-bouzkov-vekic-2026-06-10",
    "side": "NO",
    "entry": 0.495,
-   "cur": 0.485,
+   "cur": 0.48,
    "stake": 800,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -693,12 +693,12 @@
   "staked": 7500,
   "bankStart": 10000,
   "cash": 3741,
-  "equity": 8991,
-  "returnPct": -10.09,
+  "equity": 8983,
+  "returnPct": -10.17,
   "modelUpdates": 5,
   "brier": 0.322,
   "hypotheses": 0,
-  "updated": "2026-06-11T16:45:50.542Z"
+  "updated": "2026-06-11T17:01:07.188Z"
  },
- "lastRun": 1781196350542
+ "lastRun": 1781197267188
 }

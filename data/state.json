@@ -40,7 +40,7 @@
     "ferrariChampions2026",
     "0xcF609D3256f0f37f0595E5Dc64012Fa3a8fEa6f5-1771809916847"
    ],
-   "insight": "P(win) 62% [model 50%, pattern 50% on n=0] \u00b7 EV +124.08/$1 \u00b7 1/4-Kelly 8.0% of equity -> $1000. 2 top wallets aligned ($73.1K combined), avg entry 62c vs 55c now. Drivers: smart-money setup +, price level -, sports market -",
+   "insight": "P(win) 62% [model 50%, pattern 50% on n=0] · EV +124.08/$1 · 1/4-Kelly 8.0% of equity -> $1000. 2 top wallets aligned ($73.1K combined), avg entry 62c vs 55c now. Drivers: smart-money setup +, price level -, sports market -",
    "target": 0.3,
    "stop": 0.3,
    "holdUntil": 1782471666158,
@@ -60,7 +60,7 @@
    "slug": "trump-announces-us-blockade-of-hormuz-lifted-by",
    "side": "YES",
    "entry": 0.655,
-   "cur": 0.655,
+   "cur": 0.665,
    "stake": 250,
    "signal": "MOMENTUM",
    "p": 0.542,
@@ -86,7 +86,7 @@
     0
    ],
    "walletNames": null,
-   "insight": "P(win) 54% [model 39%, pattern 50% on n=0] \u00b7 EV +0.05/$1 \u00b7 1/4-Kelly 2.6% of equity -> $250. moved 37.0pts/24h on $340.3K \u2014 riding repricing, out in <=3d. Drivers: 24h move size -, price level -, 24h volume -",
+   "insight": "P(win) 54% [model 39%, pattern 50% on n=0] · EV +0.05/$1 · 1/4-Kelly 2.6% of equity -> $250. moved 37.0pts/24h on $340.3K — riding repricing, out in <=3d. Drivers: 24h move size -, price level -, 24h volume -",
    "target": 0.18,
    "stop": 0.2,
    "holdUntil": 1781520340984,
@@ -102,7 +102,7 @@
    "slug": "spacex-ipo-closing-market-cap-above",
    "side": "YES",
    "entry": 0.745,
-   "cur": 0.775,
+   "cur": 0.805,
    "stake": 250,
    "signal": "MOMENTUM",
    "p": 0.546,
@@ -128,7 +128,7 @@
     0
    ],
    "walletNames": null,
-   "insight": "P(win) 55% [model 40%, pattern 50% on n=0] \u00b7 EV +0.05/$1 \u00b7 1/4-Kelly 2.8% of equity -> $250. moved 11.0pts/24h on $311.4K \u2014 riding repricing, out in <=3d. Drivers: price level -, 24h move size -, 24h volume -",
+   "insight": "P(win) 55% [model 40%, pattern 50% on n=0] · EV +0.05/$1 · 1/4-Kelly 2.8% of equity -> $250. moved 11.0pts/24h on $311.4K — riding repricing, out in <=3d. Drivers: price level -, 24h move size -, 24h volume -",
    "target": 0.18,
    "stop": 0.2,
    "holdUntil": 1781520340984,
@@ -144,7 +144,7 @@
    "slug": "us-x-iran-permanent-peace-deal-by",
    "side": "YES",
    "entry": 0.1615,
-   "cur": 0.149,
+   "cur": 0.154,
    "stake": 150,
    "signal": "MOMENTUM",
    "p": 0.521,
@@ -170,7 +170,7 @@
     0
    ],
    "walletNames": null,
-   "insight": "P(win) 52% [model 38%, pattern 50% on n=8] \u00b7 EV +0.03/$1 \u00b7 1/4-Kelly 1.6% of equity -> $150. moved 10.8pts/24h on $6.19M \u2014 riding repricing, out in <=3d. Drivers: short time to resolution -, 24h volume -, 24h move size -",
+   "insight": "P(win) 52% [model 38%, pattern 50% on n=8] · EV +0.03/$1 · 1/4-Kelly 1.6% of equity -> $150. moved 10.8pts/24h on $6.19M — riding repricing, out in <=3d. Drivers: short time to resolution -, 24h volume -, 24h move size -",
    "target": 0.18,
    "stop": 0.2,
    "holdUntil": 1781481600000,
@@ -212,7 +212,7 @@
     0
    ],
    "walletNames": null,
-   "insight": "P(win) 58% [model 36%, pattern 63% on n=6] \u00b7 EV +0.03/$1 \u00b7 1/4-Kelly 2.1% of equity -> $200. moved 13.0pts/24h on $6.68M \u2014 riding repricing, out in <=3d. Drivers: short time to resolution -, 24h move size -, 24h volume -",
+   "insight": "P(win) 58% [model 36%, pattern 63% on n=6] · EV +0.03/$1 · 1/4-Kelly 2.1% of equity -> $200. moved 13.0pts/24h on $6.68M — riding repricing, out in <=3d. Drivers: short time to resolution -, 24h move size -, 24h volume -",
    "target": 0.18,
    "stop": 0.2,
    "holdUntil": 1781469051510,
@@ -232,7 +232,7 @@
    "slug": "us-announces-new-iran-agreementceasefire-extension-by",
    "side": "YES",
    "entry": 0.81,
-   "cur": 0.75,
+   "cur": 0.735,
    "stake": 100,
    "signal": "MOMENTUM",
    "p": 0.571,
@@ -258,7 +258,7 @@
     0
    ],
    "walletNames": null,
-   "insight": "P(win) 57% [model 44%, pattern 50% on n=0] \u00b7 EV +0.01/$1 \u00b7 1/4-Kelly 0.9% of equity -> $100. moved 43.5pts/24h on $568.7K \u2014 riding repricing, out in <=3d. Drivers: price level -, 24h move size -, attention spike -",
+   "insight": "P(win) 57% [model 44%, pattern 50% on n=0] · EV +0.01/$1 · 1/4-Kelly 0.9% of equity -> $100. moved 43.5pts/24h on $568.7K — riding repricing, out in <=3d. Drivers: price level -, 24h move size -, attention spike -",
    "target": 0.18,
    "stop": 0.2,
    "holdUntil": 1781466342565,
@@ -300,7 +300,7 @@
     0
    ],
    "walletNames": null,
-   "insight": "P(win) 58% [model 45%, pattern 50% on n=0] \u00b7 EV +0.02/$1 \u00b7 1/4-Kelly 1.1% of equity -> $100. moved 11.0pts/24h on $546.3K \u2014 riding repricing, out in <=3d. Drivers: price level -, 24h move size -, momentum setup +",
+   "insight": "P(win) 58% [model 45%, pattern 50% on n=0] · EV +0.02/$1 · 1/4-Kelly 1.1% of equity -> $100. moved 11.0pts/24h on $546.3K — riding repricing, out in <=3d. Drivers: price level -, 24h move size -, momentum setup +",
    "target": 0.18,
    "stop": 0.2,
    "holdUntil": 1781466342565,
@@ -342,7 +342,7 @@
     0
    ],
    "walletNames": null,
-   "insight": "P(win) 62% [model 43%, pattern 71% on n=5] \u00b7 EV +0.06/$1 \u00b7 1/4-Kelly 3.5% of equity -> $300. moved 17.1pts/24h on $6.58M \u2014 riding repricing, out in <=3d. Drivers: short time to resolution -, 24h move size -, attention spike -",
+   "insight": "P(win) 62% [model 43%, pattern 71% on n=5] · EV +0.06/$1 · 1/4-Kelly 3.5% of equity -> $300. moved 17.1pts/24h on $6.58M — riding repricing, out in <=3d. Drivers: short time to resolution -, 24h move size -, attention spike -",
    "target": 0.18,
    "stop": 0.2,
    "holdUntil": 1781466342565,
@@ -388,7 +388,7 @@
     0
    ],
    "walletNames": null,
-   "insight": "P(win) 63% [model 47%, pattern 71% on n=5] \u00b7 EV +0.06/$1 \u00b7 1/4-Kelly 3.9% of equity -> $350. moved 14.0pts/24h on $1.51M \u2014 riding repricing, out in <=3d. Drivers: 24h move size -, price level -, momentum setup +",
+   "insight": "P(win) 63% [model 47%, pattern 71% on n=5] · EV +0.06/$1 · 1/4-Kelly 3.9% of equity -> $350. moved 14.0pts/24h on $1.51M — riding repricing, out in <=3d. Drivers: 24h move size -, price level -, momentum setup +",
    "target": 0.18,
    "stop": 0.2,
    "holdUntil": 1781466342564,
@@ -434,7 +434,7 @@
     0
    ],
    "walletNames": null,
-   "insight": "P(win) 57% [model 33%, pattern 60% on n=3] \u00b7 EV +0.05/$1 \u00b7 1/4-Kelly 2.8% of equity -> $250. moved 8.5pts/24h on $1.01M \u2014 riding repricing, out in <=3d. Drivers: engine heuristics (model still warming up)",
+   "insight": "P(win) 57% [model 33%, pattern 60% on n=3] · EV +0.05/$1 · 1/4-Kelly 2.8% of equity -> $250. moved 8.5pts/24h on $1.01M — riding repricing, out in <=3d. Drivers: engine heuristics (model still warming up)",
    "target": 0.18,
    "stop": 0.2,
    "holdUntil": 1781460075444,
@@ -480,7 +480,7 @@
     0
    ],
    "walletNames": null,
-   "insight": "P(win) 56% [model 31%, pattern 60% on n=3] \u00b7 EV +0.05/$1 \u00b7 1/4-Kelly 2.6% of equity -> $250. moved 16.0pts/24h on $542.7K \u2014 riding repricing, out in <=3d. Drivers: engine heuristics (model still warming up)",
+   "insight": "P(win) 56% [model 31%, pattern 60% on n=3] · EV +0.05/$1 · 1/4-Kelly 2.6% of equity -> $250. moved 16.0pts/24h on $542.7K — riding repricing, out in <=3d. Drivers: engine heuristics (model still warming up)",
    "target": 0.18,
    "stop": 0.2,
    "holdUntil": 1781459143645,
@@ -526,7 +526,7 @@
     0
    ],
    "walletNames": null,
-   "insight": "P(win) 58% [model 36%, pattern 67% on n=1] \u00b7 EV -0.00/$1 \u00b7 1/4-Kelly 0.5% of equity -> $100. moved 4.0pts/24h on $506.0K \u2014 riding repricing, out in <=3d. Drivers: engine heuristics (model still warming up)",
+   "insight": "P(win) 58% [model 36%, pattern 67% on n=1] · EV -0.00/$1 · 1/4-Kelly 0.5% of equity -> $100. moved 4.0pts/24h on $506.0K — riding repricing, out in <=3d. Drivers: engine heuristics (model still warming up)",
    "target": 0.18,
    "stop": 0.2,
    "holdUntil": 1781458264784,
@@ -572,7 +572,7 @@
     0
    ],
    "walletNames": null,
-   "insight": "P(win) 58% [model 28%, pattern 50% on n=0] \u00b7 EV -0.02/$1 \u00b7 1/4-Kelly 0.5% of equity -> $100. moved 33.5pts/24h on $480.7K \u2014 riding repricing, out in <=3d. Drivers: engine heuristics (model still warming up)",
+   "insight": "P(win) 58% [model 28%, pattern 50% on n=0] · EV -0.02/$1 · 1/4-Kelly 0.5% of equity -> $100. moved 33.5pts/24h on $480.7K — riding repricing, out in <=3d. Drivers: engine heuristics (model still warming up)",
    "target": 0.18,
    "stop": 0.2,
    "holdUntil": 1781453742608,
@@ -618,7 +618,7 @@
     0
    ],
    "walletNames": null,
-   "insight": "P(win) 60% [model 40%, pattern 50% on n=0] \u00b7 EV +0.05/$1 \u00b7 1/4-Kelly 3.1% of equity -> $300. moved -5.0pts/24h on $1.40M \u2014 riding repricing, out in <=3d. Drivers: engine heuristics (model still warming up)",
+   "insight": "P(win) 60% [model 40%, pattern 50% on n=0] · EV +0.05/$1 · 1/4-Kelly 3.1% of equity -> $300. moved -5.0pts/24h on $1.40M — riding repricing, out in <=3d. Drivers: engine heuristics (model still warming up)",
    "target": 0.18,
    "stop": 0.2,
    "holdUntil": 1781201400000,
@@ -664,7 +664,7 @@
     0
    ],
    "walletNames": null,
-   "insight": "P(win) 61% [model 45%, pattern 67% on n=1] \u00b7 EV +0.06/$1 \u00b7 1/4-Kelly 3.6% of equity -> $350. moved 8.0pts/24h on $870.2K \u2014 riding repricing, out in <=3d. Drivers: engine heuristics (model still warming up)",
+   "insight": "P(win) 61% [model 45%, pattern 67% on n=1] · EV +0.06/$1 · 1/4-Kelly 3.6% of equity -> $350. moved 8.0pts/24h on $870.2K — riding repricing, out in <=3d. Drivers: engine heuristics (model still warming up)",
    "target": 0.18,
    "stop": 0.2,
    "holdUntil": 1781443857050,
@@ -710,14 +710,14 @@
     0
    ],
    "walletNames": null,
-   "insight": "P(win) 62% [model 35%, pattern 50% on n=0] \u00b7 EV +0.15/$1 \u00b7 1/4-Kelly 8.0% of equity -> $750. 90c favorite resolving in 0.3d (favorite-longshot bias); +12% if it lands. Drivers: engine heuristics (model still warming up)",
+   "insight": "P(win) 62% [model 35%, pattern 50% on n=0] · EV +0.15/$1 · 1/4-Kelly 8.0% of equity -> $750. 90c favorite resolving in 0.3d (favorite-longshot bias); +12% if it lands. Drivers: engine heuristics (model still warming up)",
    "target": null,
    "stop": 0.45,
    "holdUntil": 1781204400000,
    "status": "closed",
    "exit": 0.895,
    "exitTs": 1781204467513,
-   "exitReason": "Max hold reached \u2014 closed at market",
+   "exitReason": "Max hold reached — closed at market",
    "pnl": 0
   },
   {
@@ -730,7 +730,7 @@
    "slug": "israel-closes-its-airspace-by",
    "side": "NO",
    "entry": 0.835,
-   "cur": 0.963,
+   "cur": 0.9665,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.613,
@@ -756,7 +756,7 @@
     0
    ],
    "walletNames": null,
-   "insight": "P(win) 61% [model 50%, pattern 50% on n=0] \u00b7 EV +0.14/$1 \u00b7 1/4-Kelly 7.8% of equity -> $800. 84c favorite resolving in 3.7d (favorite-longshot bias); +20% if it lands. Drivers: engine heuristics (model still warming up)",
+   "insight": "P(win) 61% [model 50%, pattern 50% on n=0] · EV +0.14/$1 · 1/4-Kelly 7.8% of equity -> $800. 84c favorite resolving in 3.7d (favorite-longshot bias); +20% if it lands. Drivers: engine heuristics (model still warming up)",
    "target": null,
    "stop": 0.45,
    "holdUntil": 1781481600000,
@@ -798,7 +798,7 @@
     0
    ],
    "walletNames": null,
-   "insight": "P(win) 62% [model 50%, pattern 50% on n=0] \u00b7 EV +0.14/$1 \u00b7 1/4-Kelly 8.0% of equity -> $800. moved 18.0pts/24h on $228.8K \u2014 riding repricing, out in <=3d. Drivers: engine heuristics (model still warming up)",
+   "insight": "P(win) 62% [model 50%, pattern 50% on n=0] · EV +0.14/$1 · 1/4-Kelly 8.0% of equity -> $800. moved 18.0pts/24h on $228.8K — riding repricing, out in <=3d. Drivers: engine heuristics (model still warming up)",
    "target": 0.18,
    "stop": 0.2,
    "holdUntil": 1781421639827,
@@ -844,7 +844,7 @@
     0
    ],
    "walletNames": null,
-   "insight": "P(win) 62% [model 50%, pattern 50% on n=0] \u00b7 EV +0.15/$1 \u00b7 1/4-Kelly 8.0% of equity -> $800. moved -9.0pts/24h on $242.1K \u2014 riding repricing, out in <=3d. Drivers: engine heuristics (model still warming up)",
+   "insight": "P(win) 62% [model 50%, pattern 50% on n=0] · EV +0.15/$1 · 1/4-Kelly 8.0% of equity -> $800. moved -9.0pts/24h on $242.1K — riding repricing, out in <=3d. Drivers: engine heuristics (model still warming up)",
    "target": 0.18,
    "stop": 0.2,
    "holdUntil": 1781421639827,
@@ -890,7 +890,7 @@
     0
    ],
    "walletNames": null,
-   "insight": "P(win) 62% [model 50%, pattern 50% on n=0] \u00b7 EV +0.15/$1 \u00b7 1/4-Kelly 8.0% of equity -> $800. moved -6.0pts/24h on $259.3K \u2014 riding repricing, out in <=3d. Drivers: engine heuristics (model still warming up)",
+   "insight": "P(win) 62% [model 50%, pattern 50% on n=0] · EV +0.15/$1 · 1/4-Kelly 8.0% of equity -> $800. moved -6.0pts/24h on $259.3K — riding repricing, out in <=3d. Drivers: engine heuristics (model still warming up)",
    "target": 0.18,
    "stop": 0.2,
    "holdUntil": 1781421639827,
@@ -936,7 +936,7 @@
     0
    ],
    "walletNames": null,
-   "insight": "P(win) 62% [model 50%, pattern 50% on n=0] \u00b7 EV +0.15/$1 \u00b7 1/4-Kelly 8.0% of equity -> $200. moved 6.0pts/24h on $316.0K \u2014 riding repricing, out in <=3d. Drivers: engine heuristics (model still warming up)",
+   "insight": "P(win) 62% [model 50%, pattern 50% on n=0] · EV +0.15/$1 · 1/4-Kelly 8.0% of equity -> $200. moved 6.0pts/24h on $316.0K — riding repricing, out in <=3d. Drivers: engine heuristics (model still warming up)",
    "target": 0.18,
    "stop": 0.2,
    "holdUntil": 1781421639827,
@@ -982,7 +982,7 @@
     0
    ],
    "walletNames": null,
-   "insight": "P(win) 62% [model 50%, pattern 50% on n=0] \u00b7 EV +0.15/$1 \u00b7 1/4-Kelly 8.0% of equity -> $800. moved 44.0pts/24h on $405.2K \u2014 riding repricing, out in <=3d. Drivers: engine heuristics (model still warming up)",
+   "insight": "P(win) 62% [model 50%, pattern 50% on n=0] · EV +0.15/$1 · 1/4-Kelly 8.0% of equity -> $800. moved 44.0pts/24h on $405.2K — riding repricing, out in <=3d. Drivers: engine heuristics (model still warming up)",
    "target": 0.18,
    "stop": 0.2,
    "holdUntil": 1781421334852,
@@ -1002,7 +1002,7 @@
    "slug": "2026-nba-champion",
    "side": "YES",
    "entry": 0.8215,
-   "cur": 0.8135,
+   "cur": 0.8125,
    "stake": 200,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -1028,7 +1028,7 @@
     0
    ],
    "walletNames": null,
-   "insight": "P(win) 62% [model 50%, pattern 50% on n=0] \u00b7 EV +0.15/$1 \u00b7 1/4-Kelly 8.0% of equity -> $200. moved 19.8pts/24h on $932.7K \u2014 riding repricing, out in <=3d. Drivers: engine heuristics (model still warming up)",
+   "insight": "P(win) 62% [model 50%, pattern 50% on n=0] · EV +0.15/$1 · 1/4-Kelly 8.0% of equity -> $200. moved 19.8pts/24h on $932.7K — riding repricing, out in <=3d. Drivers: engine heuristics (model still warming up)",
    "target": 0.18,
    "stop": 0.2,
    "holdUntil": 1781421334852,
@@ -1044,7 +1044,7 @@
    "slug": "2026-nba-champion",
    "side": "NO",
    "entry": 0.8175,
-   "cur": 0.812,
+   "cur": 0.8109999999999999,
    "stake": 800,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -1070,7 +1070,7 @@
     0
    ],
    "walletNames": null,
-   "insight": "P(win) 62% [model 50%, pattern 50% on n=0] \u00b7 EV +0.15/$1 \u00b7 1/4-Kelly 8.0% of equity -> $800. moved -19.4pts/24h on $1.04M \u2014 riding repricing, out in <=3d. Drivers: engine heuristics (model still warming up)",
+   "insight": "P(win) 62% [model 50%, pattern 50% on n=0] · EV +0.15/$1 · 1/4-Kelly 8.0% of equity -> $800. moved -19.4pts/24h on $1.04M — riding repricing, out in <=3d. Drivers: engine heuristics (model still warming up)",
    "target": 0.18,
    "stop": 0.2,
    "holdUntil": 1781421334851,
@@ -1086,7 +1086,7 @@
    "slug": "trump-announces-us-x-iran-ceasefire-over-byptptpt-20260607232555290",
    "side": "NO",
    "entry": 0.9325,
-   "cur": 0.9905,
+   "cur": 0.9895,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.627,
@@ -1112,7 +1112,7 @@
     0
    ],
    "walletNames": null,
-   "insight": "P(win) 63% [model 50%, pattern 50% on n=0] \u00b7 EV +0.15/$1 \u00b7 1/4-Kelly 8.0% of equity -> $800. 93c favorite resolving in 1.9d (favorite-longshot bias); +7% if it lands. Drivers: engine heuristics (model still warming up)",
+   "insight": "P(win) 63% [model 50%, pattern 50% on n=0] · EV +0.15/$1 · 1/4-Kelly 8.0% of equity -> $800. 93c favorite resolving in 1.9d (favorite-longshot bias); +7% if it lands. Drivers: engine heuristics (model still warming up)",
    "target": null,
    "stop": 0.45,
    "holdUntil": 1781323140000,
@@ -1153,21 +1153,21 @@
  },
  "created": 1781161817640,
  "log": [
-  "2026-06-12 (repair) \u2014 Voided corrupted CS map trade (+$79,600 was a data artifact: collapsed price + team-name outcome mapping). Books, learning stats and wallet records surgically restored.",
-  "2026-06-12 16:45 IST \u2014 Closed NO \"Counter-Strike: FURIA vs MOUZ (BO3) - IEM \" -> $-385 (Stop loss hit (-30%)) \u00b7 model said P(win)=62%",
-  "2026-06-12 16:31 IST \u2014 Opened NO $1000 @ 55c P=62% EV=+124.08 [Smart Consensus] \"Counter-Strike: FURIA vs MOUZ (BO3) - IEM Colo\"",
-  "2026-06-12 16:31 IST \u2014 Closed NO \"Counter-Strike: FURIA vs MOUZ - Map 2 Winn\" -> +$79600 (Resolved in our favor) \u00b7 model said P(win)=54%",
-  "2026-06-12 16:15 IST \u2014 Opened NO $400 @ 1c P=54% EV=+0.08 [Smart Consensus] \"Counter-Strike: FURIA vs MOUZ - Map 2 Winner\"",
-  "2026-06-12 16:15 IST \u2014 Opened YES $250 @ 66c P=54% EV=+0.05 [Momentum] \"Will Donald Trump announce that the United Sta\"",
-  "2026-06-12 16:15 IST \u2014 Opened YES $250 @ 75c P=55% EV=+0.05 [Momentum] \"SpaceX IPO closing market cap above $2T?\"",
-  "2026-06-12 16:15 IST \u2014 Opened YES $150 @ 16c P=52% EV=+0.03 [Momentum] \"US x Iran permanent peace deal by June 15, 202\"",
-  "2026-06-12 16:15 IST \u2014 Closed NO \"HSBC Championships: Marie Bouzkova vs Donn\" -> +$469 (Profit target hit (+18%)) \u00b7 model said P(win)=62%",
-  "2026-06-12 03:00 IST \u2014 Closed YES \"Strait of Hormuz traffic returns to normal\" -> $-104 (Stop loss hit (-20%)) \u00b7 model said P(win)=63%",
-  "2026-06-12 02:31 IST \u2014 Closed YES \"US x Iran permanent peace deal by June 15,\" -> $-45 (Stop loss hit (-20%)) \u00b7 model said P(win)=57%",
-  "2026-06-12 02:00 IST \u2014 Opened YES $200 @ 16c P=58% EV=+0.03 [Momentum] \"US x Iran permanent peace deal by June 15, 202\"",
-  "2026-06-12 02:00 IST \u2014 Closed YES \"US x Iran permanent peace deal by June 15,\" -> $-72 (Stop loss hit (-20%)) \u00b7 model said P(win)=62%",
-  "2026-06-12 01:15 IST \u2014 Opened YES $100 @ 81c P=57% EV=+0.01 [Momentum] \"US announces new Iran agreement/ceasefire exte\"",
-  "2026-06-12 01:15 IST \u2014 Opened YES $100 @ 77c P=58% EV=+0.02 [Momentum] \"US x Iran permanent peace deal by December 31,\""
+  "2026-06-12 (repair) — Voided corrupted CS map trade (+$79,600 was a data artifact: collapsed price + team-name outcome mapping). Books, learning stats and wallet records surgically restored.",
+  "2026-06-12 16:45 IST — Closed NO \"Counter-Strike: FURIA vs MOUZ (BO3) - IEM \" -> $-385 (Stop loss hit (-30%)) · model said P(win)=62%",
+  "2026-06-12 16:31 IST — Opened NO $1000 @ 55c P=62% EV=+124.08 [Smart Consensus] \"Counter-Strike: FURIA vs MOUZ (BO3) - IEM Colo\"",
+  "2026-06-12 16:31 IST — Closed NO \"Counter-Strike: FURIA vs MOUZ - Map 2 Winn\" -> +$79600 (Resolved in our favor) · model said P(win)=54%",
+  "2026-06-12 16:15 IST — Opened NO $400 @ 1c P=54% EV=+0.08 [Smart Consensus] \"Counter-Strike: FURIA vs MOUZ - Map 2 Winner\"",
+  "2026-06-12 16:15 IST — Opened YES $250 @ 66c P=54% EV=+0.05 [Momentum] \"Will Donald Trump announce that the United Sta\"",
+  "2026-06-12 16:15 IST — Opened YES $250 @ 75c P=55% EV=+0.05 [Momentum] \"SpaceX IPO closing market cap above $2T?\"",
+  "2026-06-12 16:15 IST — Opened YES $150 @ 16c P=52% EV=+0.03 [Momentum] \"US x Iran permanent peace deal by June 15, 202\"",
+  "2026-06-12 16:15 IST — Closed NO \"HSBC Championships: Marie Bouzkova vs Donn\" -> +$469 (Profit target hit (+18%)) · model said P(win)=62%",
+  "2026-06-12 03:00 IST — Closed YES \"Strait of Hormuz traffic returns to normal\" -> $-104 (Stop loss hit (-20%)) · model said P(win)=63%",
+  "2026-06-12 02:31 IST — Closed YES \"US x Iran permanent peace deal by June 15,\" -> $-45 (Stop loss hit (-20%)) · model said P(win)=57%",
+  "2026-06-12 02:00 IST — Opened YES $200 @ 16c P=58% EV=+0.03 [Momentum] \"US x Iran permanent peace deal by June 15, 202\"",
+  "2026-06-12 02:00 IST — Closed YES \"US x Iran permanent peace deal by June 15,\" -> $-72 (Stop loss hit (-20%)) · model said P(win)=62%",
+  "2026-06-12 01:15 IST — Opened YES $100 @ 81c P=57% EV=+0.01 [Momentum] \"US announces new Iran agreement/ceasefire exte\"",
+  "2026-06-12 01:15 IST — Opened YES $100 @ 77c P=58% EV=+0.02 [Momentum] \"US x Iran permanent peace deal by December 31,\""
  ],
  "brain": {
   "w": [
@@ -1249,7 +1249,7 @@
     "lN": 9
    },
    "SMART_CONSENSUS": {
-    "wSum": 0.0,
+    "wSum": 0,
     "wN": 0,
     "lSum": 0.38532110091743127,
     "lN": 1
@@ -1277,8 +1277,8 @@
      25,
      75
     ],
-    "text": "Momentum on low-priced non-sports markets: 4W/4L (posterior 50%, 90% CI 25-75%) \u2014 collecting evidence",
-    "updated": "2026-06-12T11:30:53.393Z"
+    "text": "Momentum on low-priced non-sports markets: 4W/4L (posterior 50%, 90% CI 25-75%) — collecting evidence",
+    "updated": "2026-06-12T11:45:49.522Z"
    }
   ]
  },
@@ -1292,17 +1292,17 @@
   "closed": 16,
   "wins": 5,
   "open": 9,
-  "staked": 11200,
+  "staked": 10800,
   "bankStart": 10000,
   "cash": 5129,
-  "equity": 8734,
-  "returnPct": -12.66,
-  "modelUpdates": 17,
-  "brier": 0.303,
+  "equity": 8752,
+  "returnPct": -12.48,
+  "modelUpdates": 16,
+  "brier": 0.308,
   "hypotheses": 1,
-  "updated": "2026-06-12T11:30:53.395Z"
+  "updated": "2026-06-12T11:45:49.524Z"
  },
- "lastRun": 1781263853395,
+ "lastRun": 1781264749524,
  "elite": {
   "updated": 1781199062938,
   "list": [

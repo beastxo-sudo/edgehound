@@ -106,7 +106,7 @@
    "slug": "spacex-ipo-closing-market-cap-above",
    "side": "YES",
    "entry": 0.745,
-   "cur": 0.735,
+   "cur": 0.71,
    "stake": 250,
    "signal": "MOMENTUM",
    "p": 0.546,
@@ -742,7 +742,7 @@
    "slug": "israel-closes-its-airspace-by",
    "side": "NO",
    "entry": 0.835,
-   "cur": 0.963,
+   "cur": 0.9615,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.613,
@@ -1014,7 +1014,7 @@
    "slug": "2026-nba-champion",
    "side": "YES",
    "entry": 0.8215,
-   "cur": 0.8105,
+   "cur": 0.8115,
    "stake": 200,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -1056,7 +1056,7 @@
    "slug": "2026-nba-champion",
    "side": "NO",
    "entry": 0.8175,
-   "cur": 0.808,
+   "cur": 0.8075,
    "stake": 800,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -1297,7 +1297,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-12T15:30:58.337Z"
+    "updated": "2026-06-12T15:43:27.849Z"
    }
   ]
  },
@@ -1314,15 +1314,15 @@
   "staked": 10800,
   "bankStart": 10000,
   "cash": 6334,
-  "equity": 8590,
-  "returnPct": -14.1,
+  "equity": 8580,
+  "returnPct": -14.2,
   "modelUpdates": 20,
   "brier": 0.298,
   "hypotheses": 1,
   "integrityOk": true,
-  "updated": "2026-06-12T15:30:58.339Z"
+  "updated": "2026-06-12T15:43:27.851Z"
  },
- "lastRun": 1781278258339,
+ "lastRun": 1781279007852,
  "elite": {
   "updated": 1781199062938,
   "list": [
@@ -1338,7 +1338,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-12T15:30:58.339Z",
+  "checkedAt": "2026-06-12T15:43:27.851Z",
   "tradesChecked": 25
  }
 }

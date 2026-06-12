@@ -60,7 +60,7 @@
    "slug": "trump-announces-us-blockade-of-hormuz-lifted-by",
    "side": "YES",
    "entry": 0.655,
-   "cur": 0.665,
+   "cur": 0.655,
    "stake": 250,
    "signal": "MOMENTUM",
    "p": 0.542,
@@ -102,7 +102,7 @@
    "slug": "spacex-ipo-closing-market-cap-above",
    "side": "YES",
    "entry": 0.745,
-   "cur": 0.805,
+   "cur": 0.79,
    "stake": 250,
    "signal": "MOMENTUM",
    "p": 0.546,
@@ -144,7 +144,7 @@
    "slug": "us-x-iran-permanent-peace-deal-by",
    "side": "YES",
    "entry": 0.1615,
-   "cur": 0.154,
+   "cur": 0.169,
    "stake": 150,
    "signal": "MOMENTUM",
    "p": 0.521,
@@ -1044,7 +1044,7 @@
    "slug": "2026-nba-champion",
    "side": "NO",
    "entry": 0.8175,
-   "cur": 0.8109999999999999,
+   "cur": 0.8105,
    "stake": 800,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -1278,7 +1278,7 @@
      75
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/4L (posterior 50%, 90% CI 25-75%) — collecting evidence",
-    "updated": "2026-06-12T11:45:49.522Z"
+    "updated": "2026-06-12T11:51:55.893Z"
    }
   ]
  },
@@ -1295,14 +1295,15 @@
   "staked": 10800,
   "bankStart": 10000,
   "cash": 5129,
-  "equity": 8752,
-  "returnPct": -12.48,
+  "equity": 8757,
+  "returnPct": -12.43,
   "modelUpdates": 16,
   "brier": 0.308,
   "hypotheses": 1,
-  "updated": "2026-06-12T11:45:49.524Z"
+  "integrityOk": true,
+  "updated": "2026-06-12T11:51:55.895Z"
  },
- "lastRun": 1781264749524,
+ "lastRun": 1781265115895,
  "elite": {
   "updated": 1781199062938,
   "list": [
@@ -1314,5 +1315,11 @@
     "score": 3.586
    }
   ]
+ },
+ "integrity": {
+  "ok": true,
+  "errors": [],
+  "checkedAt": "2026-06-12T11:51:55.895Z",
+  "tradesChecked": 25
  }
 }

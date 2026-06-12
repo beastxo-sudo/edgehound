@@ -70,10 +70,21 @@ function summarize(lab) {
   };
 }
 
-/* find the live "Bitcoin Up or Down" market ending at boundary B */
+/* find the live "Bitcoin Up or Down" market ending at boundary B.
+   These series have deterministic slugs (btc-updown-5m-{unixStart}),
+   so address the event directly; fall back to scanning the listing. */
 async function findWindowMarket(B) {
-  const evs = await jget(`${GAMMA}/events?closed=false&active=true&order=endDate&ascending=true&limit=60`);
-  const ev = (evs || []).find(e => /bitcoin up or down/i.test(e.title || '') && Math.abs(new Date(e.endDate || 0).getTime() - B) < 15000);
+  let ev = null;
+  for (const sec of [B / 1000 - 300, B / 1000]) {
+    try {
+      const r = await jget(`${GAMMA}/events?slug=btc-updown-5m-${sec}`, 5000);
+      if (Array.isArray(r) && r[0] && r[0].markets) { ev = r[0]; break; }
+    } catch (e) {}
+  }
+  if (!ev) {
+    const evs = await jget(`${GAMMA}/events?closed=false&active=true&order=endDate&ascending=true&limit=100`);
+    ev = (evs || []).find(e => /bitcoin up or down/i.test(e.title || '') && Math.abs(new Date(e.endDate || 0).getTime() - B) < 15000);
+  }
   if (!ev || !ev.markets || !ev.markets[0]) return null;
   const m = ev.markets[0];
   let outs = [], tokens = [], prices = [];
@@ -113,14 +124,17 @@ async function sampleBoundary(B, lab) {
     const dir = spot >= open ? 'UP' : 'DOWN';
     const leadPct = ((spot - open) / open) * 100;
 
-    let paid = 0, mktTitle = '';
+    let paid = 0, mktTitle = '', mktNote = 'not found';
     try {
       const mkt = await findWindowMarket(B);
       if (mkt) {
         mktTitle = mkt.title;
-        paid = await bestAsk(dir === 'UP' ? mkt.upToken : mkt.downToken, dir === 'UP' ? mkt.upPrice : mkt.downPrice);
+        const tok = dir === 'UP' ? mkt.upToken : mkt.downToken;
+        const fb = dir === 'UP' ? mkt.upPrice : mkt.downPrice;
+        paid = await bestAsk(tok, fb);
+        mktNote = paid > 0 ? 'ok' : ('found but no price (token ' + (tok ? 'present' : 'missing') + ', gamma price ' + fb + ')');
       }
-    } catch (e) { log('market lookup failed: ' + e.message); }
+    } catch (e) { mktNote = 'lookup error: ' + e.message.slice(0, 60); log('market lookup failed: ' + e.message); }
 
     log(`T-5s ${new Date(B).toISOString().slice(11, 19)}Z dir=${dir} (${leadPct >= 0 ? '+' : ''}${leadPct.toFixed(3)}%) ask=${paid ? (paid * 100).toFixed(1) + 'c' : 'n/a'} ${mktTitle.slice(0, 40)}`);
 
@@ -133,7 +147,7 @@ async function sampleBoundary(B, lab) {
 
     lab.samples.push({
       win: candleStart, t: new Date(B).toISOString(), dir, leadPct: +leadPct.toFixed(4),
-      paid: +(+paid).toFixed(4), actual, won,
+      paid: +(+paid).toFixed(4), mkt: mktNote, actual, won,
       flips: !won && Math.abs(leadPct) < 0.02 ? 'knife-edge flip' : (!won ? 'reversed in final seconds' : null)
     });
     lab.samples = lab.samples.slice(-5000);

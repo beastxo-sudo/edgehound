@@ -106,7 +106,7 @@
    "slug": "spacex-ipo-closing-market-cap-above",
    "side": "YES",
    "entry": 0.745,
-   "cur": 0.775,
+   "cur": 0.765,
    "stake": 250,
    "signal": "MOMENTUM",
    "p": 0.546,
@@ -742,7 +742,7 @@
    "slug": "israel-closes-its-airspace-by",
    "side": "NO",
    "entry": 0.835,
-   "cur": 0.962,
+   "cur": 0.963,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.613,
@@ -1297,7 +1297,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-12T15:01:07.030Z"
+    "updated": "2026-06-12T15:15:41.122Z"
    }
   ]
  },
@@ -1314,15 +1314,15 @@
   "staked": 10800,
   "bankStart": 10000,
   "cash": 6334,
-  "equity": 8602,
-  "returnPct": -13.98,
+  "equity": 8599,
+  "returnPct": -14.01,
   "modelUpdates": 20,
   "brier": 0.298,
   "hypotheses": 1,
   "integrityOk": true,
-  "updated": "2026-06-12T15:01:07.032Z"
+  "updated": "2026-06-12T15:15:41.124Z"
  },
- "lastRun": 1781276467032,
+ "lastRun": 1781277341125,
  "elite": {
   "updated": 1781199062938,
   "list": [
@@ -1338,7 +1338,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-12T15:01:07.032Z",
+  "checkedAt": "2026-06-12T15:15:41.124Z",
   "tradesChecked": 25
  }
 }

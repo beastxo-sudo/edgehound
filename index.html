@@ -393,6 +393,10 @@ footer{max-width:1280px;margin:0 auto;padding:0 24px 40px;color:var(--faint);fon
     <div class="empty">Connecting to Binance & Polymarket…</div>
   </div>
 
+  <div class="section-h">🎯 Last-5s Sniper Lab <small>autonomous hypothesis test, running 24/7</small></div>
+  <div class="help-tip"><b>The hypothesis being tested:</b> in the final 5 seconds of each 5-minute BTC window, the outcome is already visible on Binance — so betting the current direction should be right almost every time. The catch this lab measures: by then the winning side is expensive (often 90–99¢). The bot samples every window around the clock: at T−5s it records the direction <b>and the real ask price on Polymarket's order book</b>, then settles against the actual candle. Profitable only if <b>accuracy beats the average price paid</b> — e.g. paying an average of 96¢ requires winning 96%+ just to break even.</div>
+  <div id="sniperPanel" style="background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px 18px;margin-bottom:18px"><div class="empty">Loading lab results…</div></div>
+
   <div class="section-h">Locked-profit scanner</div>
   <div id="arbList" class="sig-grid"><div class="loading"><span class="spinner"></span>Scanning for mispricings…</div></div>
   <div class="mini-note" style="margin-top:18px;line-height:1.7">
@@ -2041,6 +2045,44 @@ function erf(x){const s=x<0?-1:1;x=Math.abs(x);const t=1/(1+.3275911*x);
   const y=1-(((((1.061405429*t-1.453152027)*t)+1.421413741)*t-.284496736)*t+.254829592)*t*Math.exp(-x*x);
   return s*y;}
 
+/* ============ Sniper Lab results loader ============ */
+const Sniper={
+  async load(){
+    const box=$('sniperPanel'); if(!box)return;
+    let lab=null;
+    const urls=[];
+    if(location.hostname.endsWith('github.io')) urls.push('data/sniper.json?_='+Date.now());
+    urls.push('https://raw.githubusercontent.com/beastxo-sudo/edgehound/main/data/sniper.json?_='+Date.now());
+    for(const u of urls){ try{ lab=await jget(u,7000); break; }catch(e){} }
+    if(!lab||!lab.summary||!lab.summary.samples){
+      box.innerHTML='<div class="empty">No samples yet — the lab starts collecting on the next 15-minute cycle and needs a few hours for a meaningful read.</div>'; return;
+    }
+    const s=lab.summary;
+    const acc=s.directionAccuracy, be=s.breakEvenAccuracy;
+    const edge=acc!=null&&be!=null?(acc-be)*100:null;
+    const verdict=edge==null?'collecting…'
+      :s.samples<30?'too early to judge — need 30+ samples'
+      :edge>1.5?'✅ HYPOTHESIS HOLDS: accuracy beats the price paid — the last-second edge survives':
+       edge>-1.5?'➖ WASH: you win almost exactly as often as the price implies — no free money':
+       '❌ HYPOTHESIS FAILS: the ask price already over-charges for the visible direction';
+    const rows=(lab.samples||[]).slice(-12).reverse().map(x=>
+      `<tr><td class="num">${new Date(x.win).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}</td>
+      <td><span class="side-tag ${x.dir==='UP'?'y':'n'}">${x.dir}</span></td>
+      <td class="num">${(x.leadPct>=0?'+':'')+x.leadPct.toFixed(3)}%</td>
+      <td class="num">${x.paid?cents(x.paid):'—'}</td>
+      <td>${x.won?'<span class="pos">✓ correct</span>':'<span class="neg">✗ '+(x.flips||'wrong')+'</span>'}</td>
+      <td class="num ${x.won?'pos':'neg'}">${x.paid?(x.won?'+$'+(10*(1-x.paid)/x.paid).toFixed(2):'-$10.00'):'—'}</td></tr>`).join('');
+    box.innerHTML=`
+      <div class="stat-row" style="margin-bottom:12px">
+        <div class="stat-card"><div class="lbl">Windows sampled</div><div class="val">${s.samples}</div><div class="sub">around the clock, T−5s each</div></div>
+        <div class="stat-card"><div class="lbl">Direction accuracy</div><div class="val">${acc!=null?(acc*100).toFixed(1)+'%':'—'}</div><div class="sub">how often last-5s direction held</div></div>
+        <div class="stat-card"><div class="lbl">Avg price paid</div><div class="val">${s.avgPricePaid?cents(s.avgPricePaid):'—'}</div><div class="sub">break-even needs ${be?(be*100).toFixed(1)+'%':'—'} accuracy</div></div>
+        <div class="stat-card"><div class="lbl">P&L at $10 flat</div><div class="val ${s.pnlPer10Flat>=0?'pos':'neg'}">${s.pnlPer10Flat>=0?'+':''}$${s.pnlPer10Flat}</div><div class="sub">EV $${s.evPerTrade??'—'} per trade</div></div>
+      </div>
+      <div style="background:var(--surface2);border-radius:10px;padding:10px 14px;font-family:var(--mono);font-size:12.5px;margin-bottom:12px">${verdict}${edge!=null&&s.samples>=30?' ('+(edge>=0?'+':'')+edge.toFixed(1)+' pts vs break-even)':''}</div>
+      <table class="tbl"><thead><tr><th>Window</th><th>Bet</th><th>Lead at T−5s</th><th>Paid</th><th>Result</th><th>$10 P&L</th></tr></thead><tbody>${rows}</tbody></table>`;
+  }
+};
 /* wire scanner into tab switching */
 const _origShowPage=showPage;
 showPage=function(p,btn){ _origShowPage(p,btn); if(p==='arb'){ if(!Arb.lastScan)Arb.scan(); Arb.auto(); } if(p==='cx'){ Cx.start(); } };

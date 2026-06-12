@@ -290,7 +290,7 @@
    "slug": "us-x-iran-permanent-peace-deal-by",
    "side": "YES",
    "entry": 0.765,
-   "cur": 0.76,
+   "cur": 0.765,
    "stake": 100,
    "signal": "MOMENTUM",
    "p": 0.576,
@@ -746,7 +746,7 @@
    "slug": "israel-closes-its-airspace-by",
    "side": "NO",
    "entry": 0.835,
-   "cur": 0.963,
+   "cur": 0.9585,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.613,
@@ -1060,7 +1060,7 @@
    "slug": "2026-nba-champion",
    "side": "NO",
    "entry": 0.8175,
-   "cur": 0.8085,
+   "cur": 0.808,
    "stake": 800,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -1173,6 +1173,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-12 23:15 IST — Elite pool refreshed: 2 wallets qualify (>=62% win rate over >=15 settled, scalpers excluded): donthackme 86%, aenews2 71%",
   "2026-06-12 21:25 IST — Closed YES \"SpaceX IPO closing market cap above $2T?\" -> $-60 (Stop loss hit (-20%)) · model said P(win)=55%",
   "2026-06-12 20:00 IST — Closed YES \"Will Donald Trump announce that the United\" -> $-71 (Stop loss hit (-20%)) · model said P(win)=54%",
   "2026-06-12 19:45 IST — Closed NO \"Trump announces US x Iran ceasefire over b\" -> +$58 (Resolved in our favor) · model said P(win)=63%",
@@ -1185,8 +1186,7 @@
   "2026-06-12 16:15 IST — Opened NO $400 @ 1c P=54% EV=+0.08 [Smart Consensus] \"Counter-Strike: FURIA vs MOUZ - Map 2 Winner\"",
   "2026-06-12 16:15 IST — Opened YES $250 @ 66c P=54% EV=+0.05 [Momentum] \"Will Donald Trump announce that the United Sta\"",
   "2026-06-12 16:15 IST — Opened YES $250 @ 75c P=55% EV=+0.05 [Momentum] \"SpaceX IPO closing market cap above $2T?\"",
-  "2026-06-12 16:15 IST — Opened YES $150 @ 16c P=52% EV=+0.03 [Momentum] \"US x Iran permanent peace deal by June 15, 202\"",
-  "2026-06-12 16:15 IST — Closed NO \"HSBC Championships: Marie Bouzkova vs Donn\" -> +$469 (Profit target hit (+18%)) · model said P(win)=62%"
+  "2026-06-12 16:15 IST — Opened YES $150 @ 16c P=52% EV=+0.03 [Momentum] \"US x Iran permanent peace deal by June 15, 202\""
  ],
  "brain": {
   "w": [
@@ -1301,7 +1301,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-12T17:30:56.146Z"
+    "updated": "2026-06-12T17:45:42.400Z"
    }
   ]
  },
@@ -1318,31 +1318,38 @@
   "staked": 10800,
   "bankStart": 10000,
   "cash": 6524,
-  "equity": 8534,
-  "returnPct": -14.66,
+  "equity": 8530,
+  "returnPct": -14.7,
   "modelUpdates": 21,
   "brier": 0.298,
   "hypotheses": 1,
   "integrityOk": true,
-  "updated": "2026-06-12T17:30:56.149Z"
+  "updated": "2026-06-12T17:45:42.402Z"
  },
- "lastRun": 1781285456149,
+ "lastRun": 1781286342402,
  "elite": {
-  "updated": 1781199062938,
+  "updated": 1781286342056,
   "list": [
    {
     "wallet": "0x03805a13a0b3e058f55f6c6af95389d4f431073d",
     "name": "donthackme",
-    "winRate": 0.891,
-    "n": 55,
-    "score": 3.586
+    "winRate": 0.857,
+    "n": 56,
+    "score": 3.465
+   },
+   {
+    "wallet": "0x44c1dfe43260c94ed4f1d00de2e1f80fb113ebc1",
+    "name": "aenews2",
+    "winRate": 0.707,
+    "n": 41,
+    "score": 2.644
    }
   ]
  },
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-12T17:30:56.149Z",
+  "checkedAt": "2026-06-12T17:45:42.402Z",
   "tradesChecked": 25
  }
 }

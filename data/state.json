@@ -60,7 +60,7 @@
    "slug": "trump-announces-us-blockade-of-hormuz-lifted-by",
    "side": "YES",
    "entry": 0.655,
-   "cur": 0.655,
+   "cur": 0.66,
    "stake": 250,
    "signal": "MOMENTUM",
    "p": 0.542,
@@ -102,7 +102,7 @@
    "slug": "spacex-ipo-closing-market-cap-above",
    "side": "YES",
    "entry": 0.745,
-   "cur": 0.79,
+   "cur": 0.795,
    "stake": 250,
    "signal": "MOMENTUM",
    "p": 0.546,
@@ -144,7 +144,7 @@
    "slug": "us-x-iran-permanent-peace-deal-by",
    "side": "YES",
    "entry": 0.1615,
-   "cur": 0.1655,
+   "cur": 0.1785,
    "stake": 150,
    "signal": "MOMENTUM",
    "p": 0.521,
@@ -274,7 +274,7 @@
    "slug": "us-x-iran-permanent-peace-deal-by",
    "side": "YES",
    "entry": 0.765,
-   "cur": 0.755,
+   "cur": 0.765,
    "stake": 100,
    "signal": "MOMENTUM",
    "p": 0.576,
@@ -730,7 +730,7 @@
    "slug": "israel-closes-its-airspace-by",
    "side": "NO",
    "entry": 0.835,
-   "cur": 0.9685,
+   "cur": 0.969,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.613,
@@ -1086,7 +1086,7 @@
    "slug": "trump-announces-us-x-iran-ceasefire-over-byptptpt-20260607232555290",
    "side": "NO",
    "entry": 0.9325,
-   "cur": 0.988,
+   "cur": 0.9885,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.627,
@@ -1278,7 +1278,7 @@
      75
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/4L (posterior 50%, 90% CI 25-75%) — collecting evidence",
-    "updated": "2026-06-12T12:01:06.615Z"
+    "updated": "2026-06-12T12:15:42.327Z"
    }
   ]
  },
@@ -1295,15 +1295,15 @@
   "staked": 10800,
   "bankStart": 10000,
   "cash": 5129,
-  "equity": 8753,
-  "returnPct": -12.47,
+  "equity": 8771,
+  "returnPct": -12.29,
   "modelUpdates": 16,
   "brier": 0.308,
   "hypotheses": 1,
   "integrityOk": true,
-  "updated": "2026-06-12T12:01:06.618Z"
+  "updated": "2026-06-12T12:15:42.330Z"
  },
- "lastRun": 1781265666618,
+ "lastRun": 1781266542330,
  "elite": {
   "updated": 1781199062938,
   "list": [
@@ -1319,7 +1319,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-12T12:01:06.618Z",
+  "checkedAt": "2026-06-12T12:15:42.330Z",
   "tradesChecked": 25
  }
 }

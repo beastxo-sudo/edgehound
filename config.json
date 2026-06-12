@@ -3,14 +3,14 @@
   "engines": {
     "SHORT_FAVORITE": true,
     "MOMENTUM": true,
-    "SMART_CONSENSUS": true,
+    "SMART_CONSENSUS": false,
     "VOLUME_SPIKE": true,
     "ELITE_FOLLOW": true
   },
-  "pMin": 0.56,
-  "kellyMult": 0.25,
-  "maxExposure": 0.6,
-  "maxEventExposure": 1000,
-  "updatedBy": "initial",
-  "updatedAt": "2026-06-11T07:50:00Z"
+  "pMin": 0.6,
+  "kellyMult": 0.15,
+  "maxExposure": 0.45,
+  "maxEventExposure": 600,
+  "updatedBy": "analyst",
+  "updatedAt": "2026-06-12T14:22:09.097Z"
 }

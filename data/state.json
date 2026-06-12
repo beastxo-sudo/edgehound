@@ -57,7 +57,7 @@
    "slug": "us-announces-new-iran-agreementceasefire-extension-by",
    "side": "YES",
    "entry": 0.81,
-   "cur": 0.785,
+   "cur": 0.78,
    "stake": 100,
    "signal": "MOMENTUM",
    "p": 0.571,
@@ -643,7 +643,7 @@
    "slug": "wta-bouzkov-vekic-2026-06-10",
    "side": "NO",
    "entry": 0.495,
-   "cur": 0.475,
+   "cur": 0.51,
    "stake": 800,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -1081,7 +1081,7 @@
      75
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/4L (posterior 50%, 90% CI 25-75%) — collecting evidence",
-    "updated": "2026-06-12T10:01:07.567Z"
+    "updated": "2026-06-12T10:15:43.437Z"
    }
   ]
  },
@@ -1098,14 +1098,14 @@
   "staked": 9150,
   "bankStart": 10000,
   "cash": 4896,
-  "equity": 8623,
-  "returnPct": -13.77,
+  "equity": 8679,
+  "returnPct": -13.21,
   "modelUpdates": 14,
   "brier": 0.314,
   "hypotheses": 1,
-  "updated": "2026-06-12T10:01:07.570Z"
+  "updated": "2026-06-12T10:15:43.440Z"
  },
- "lastRun": 1781258467570,
+ "lastRun": 1781259343440,
  "elite": {
   "updated": 1781199062938,
   "list": [

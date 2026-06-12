@@ -555,7 +555,7 @@
    "slug": "israel-closes-its-airspace-by",
    "side": "NO",
    "entry": 0.835,
-   "cur": 0.945,
+   "cur": 0.9299999999999999,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.613,
@@ -907,7 +907,7 @@
    "slug": "trump-announces-us-x-iran-ceasefire-over-byptptpt-20260607232555290",
    "side": "NO",
    "entry": 0.9325,
-   "cur": 0.987,
+   "cur": 0.9865,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.627,
@@ -1081,7 +1081,7 @@
      75
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/4L (posterior 50%, 90% CI 25-75%) — collecting evidence",
-    "updated": "2026-06-12T00:01:04.735Z"
+    "updated": "2026-06-12T00:08:42.993Z"
    }
   ]
  },
@@ -1098,14 +1098,14 @@
   "staked": 9150,
   "bankStart": 10000,
   "cash": 4896,
-  "equity": 8599,
-  "returnPct": -14.01,
+  "equity": 8584,
+  "returnPct": -14.16,
   "modelUpdates": 14,
   "brier": 0.314,
   "hypotheses": 1,
-  "updated": "2026-06-12T00:01:04.738Z"
+  "updated": "2026-06-12T00:08:42.996Z"
  },
- "lastRun": 1781222464738,
+ "lastRun": 1781222922996,
  "elite": {
   "updated": 1781199062938,
   "list": [

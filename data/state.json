@@ -1278,7 +1278,7 @@
      75
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/4L (posterior 50%, 90% CI 25-75%) — collecting evidence",
-    "updated": "2026-06-12T12:41:19.394Z"
+    "updated": "2026-06-12T12:45:38.101Z"
    }
   ]
  },
@@ -1301,9 +1301,9 @@
   "brier": 0.308,
   "hypotheses": 1,
   "integrityOk": true,
-  "updated": "2026-06-12T12:41:19.396Z"
+  "updated": "2026-06-12T12:45:38.103Z"
  },
- "lastRun": 1781268079396,
+ "lastRun": 1781268338103,
  "elite": {
   "updated": 1781199062938,
   "list": [
@@ -1319,7 +1319,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-12T12:41:19.396Z",
+  "checkedAt": "2026-06-12T12:45:38.103Z",
   "tradesChecked": 25
  }
 }

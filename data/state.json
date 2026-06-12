@@ -144,7 +144,7 @@
    "slug": "us-x-iran-permanent-peace-deal-by",
    "side": "YES",
    "entry": 0.1615,
-   "cur": 0.169,
+   "cur": 0.1655,
    "stake": 150,
    "signal": "MOMENTUM",
    "p": 0.521,
@@ -232,7 +232,7 @@
    "slug": "us-announces-new-iran-agreementceasefire-extension-by",
    "side": "YES",
    "entry": 0.81,
-   "cur": 0.735,
+   "cur": 0.725,
    "stake": 100,
    "signal": "MOMENTUM",
    "p": 0.571,
@@ -730,7 +730,7 @@
    "slug": "israel-closes-its-airspace-by",
    "side": "NO",
    "entry": 0.835,
-   "cur": 0.9665,
+   "cur": 0.9685,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.613,
@@ -1086,7 +1086,7 @@
    "slug": "trump-announces-us-x-iran-ceasefire-over-byptptpt-20260607232555290",
    "side": "NO",
    "entry": 0.9325,
-   "cur": 0.9895,
+   "cur": 0.988,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.627,
@@ -1278,7 +1278,7 @@
      75
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/4L (posterior 50%, 90% CI 25-75%) — collecting evidence",
-    "updated": "2026-06-12T11:51:55.893Z"
+    "updated": "2026-06-12T12:01:06.615Z"
    }
   ]
  },
@@ -1295,15 +1295,15 @@
   "staked": 10800,
   "bankStart": 10000,
   "cash": 5129,
-  "equity": 8757,
-  "returnPct": -12.43,
+  "equity": 8753,
+  "returnPct": -12.47,
   "modelUpdates": 16,
   "brier": 0.308,
   "hypotheses": 1,
   "integrityOk": true,
-  "updated": "2026-06-12T11:51:55.895Z"
+  "updated": "2026-06-12T12:01:06.618Z"
  },
- "lastRun": 1781265115895,
+ "lastRun": 1781265666618,
  "elite": {
   "updated": 1781199062938,
   "list": [
@@ -1319,7 +1319,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-12T11:51:55.895Z",
+  "checkedAt": "2026-06-12T12:01:06.618Z",
   "tradesChecked": 25
  }
 }

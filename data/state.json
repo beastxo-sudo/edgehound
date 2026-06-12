@@ -1060,7 +1060,7 @@
    "slug": "2026-nba-champion",
    "side": "NO",
    "entry": 0.8175,
-   "cur": 0.8065,
+   "cur": 0.8069999999999999,
    "stake": 800,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -1301,7 +1301,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-12T23:31:00.350Z"
+    "updated": "2026-06-12T23:45:48.911Z"
    }
   ]
  },
@@ -1324,9 +1324,9 @@
   "brier": 0.298,
   "hypotheses": 1,
   "integrityOk": true,
-  "updated": "2026-06-12T23:31:00.353Z"
+  "updated": "2026-06-12T23:45:48.913Z"
  },
- "lastRun": 1781307060353,
+ "lastRun": 1781307948913,
  "elite": {
   "updated": 1781286342056,
   "list": [
@@ -1349,7 +1349,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-12T23:31:00.353Z",
+  "checkedAt": "2026-06-12T23:45:48.913Z",
   "tradesChecked": 25
  }
 }

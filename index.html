@@ -292,7 +292,7 @@ footer{max-width:1280px;margin:0 auto;padding:0 24px 40px;color:var(--faint);fon
 
 <!-- ================= COPY SIGNALS ================= -->
 <section class="page" id="page-signals">
-  <div class="help-tip"><b>What this is:</b> we scan the open positions of the top-ranked profitable wallets. When several of them independently hold the <b>same side of the same market</b>, that's a consensus signal — the strongest copy-trade candidates. "Avg smart entry" vs "price now" shows if you're late or still early.</div>
+  <div class="help-tip"><b>What this is:</b> a vetted smart-money radar. First we filter the leaderboard down to <b>elite wallets only</b> — ≥62% win rate over 15+ settled positions, with settlement-scalpers and bots excluded (a 98% win rate farming 2¢ spreads is a trap, not a signal). Then three signal tiers: <b>⚡ Fresh buys</b> (an elite wallet just entered — the strongest, most time-sensitive signal), <b>★ Consensus</b> (2+ elite wallets on the same side), and <b>💪 Big conviction</b> ($10K+ single positions). Every card gets a <b>copy grade</b>: A = price still at their entry, B = slightly late, C = the move already happened.</div>
   <div id="sigStatus" class="loading"><span class="spinner"></span>Scanning top wallets…</div>
   <div class="sig-grid" id="sigGrid"></div>
 </section>
@@ -810,48 +810,42 @@ function closeWallet(){$('walletDetail').style.display='none';$('smartList').sty
 /* ---------------- copy signals ---------------- */
 async function loadSignals(){
   $('sigStatus').style.display='flex'; $('sigGrid').innerHTML='';
-  let agg={};
-  const top=LEADERS.length?LEADERS.slice(0,8):DEMO.leaders.slice(0,8);
+  let signals=[];
   if(LIVE){
-    const results=await Promise.allSettled(top.map(l=>fetchPositions(l.wallet)));
-    results.forEach((r,i)=>{
-      if(r.status!=='fulfilled')return;
-      r.value.filter(p=>!p.redeemable&&p.value>50).forEach(p=>{
-        const key=p.title+'|'+p.outcome;
-        agg[key]=agg[key]||{title:p.title,outcome:p.outcome,slug:p.slug,wallets:new Set(),value:0,entrySum:0,entryN:0,cur:p.cur};
-        agg[key].wallets.add(top[i].name); agg[key].value+=p.value;
-        agg[key].entrySum+=p.avg; agg[key].entryN++; agg[key].cur=p.cur;
-      });
-    });
-  }else{
-    DEMO.signals.forEach(s=>{agg[s.title]={...s,wallets:new Set(s.wallets)};});
+    try{ signals=await buildSmartSignals(); }catch(e){ signals=[]; }
+  } else {
+    signals=DEMO_SMART_SIGNALS;
   }
-  const sigs=Object.values(agg)
-    .map(s=>({...s,n:s.wallets.size,avgEntry:s.entryN?s.entrySum/s.entryN:s.avgEntry}))
-    .filter(s=>s.n>=2)
-    .sort((a,b)=>b.n-a.n||b.value-a.value)
-    .slice(0,12);
-  window.__lastSignals=sigs;
+  /* keep the bot's local-mode consensus feed alive (compat shape) */
+  window.__lastSignals=signals.filter(s=>s.type==='CONSENSUS').map(s=>({
+    title:s.title,outcome:s.outcome,slug:s.slug,n:s.n||2,value:s.value||0,
+    avgEntry:s.entry,cur:s.cur,wallets:s.wallets||[],entryN:0,entrySum:0,conditionId:s.conditionId||''}));
   $('sigStatus').style.display='none';
-  if(!sigs.length){
-    $('sigGrid').innerHTML='<div class="empty">No overlapping positions among the top wallets right now — check individual wallets in Smart Money instead.</div>';
+  if(!signals.length){
+    $('sigGrid').innerHTML='<div class="empty">No qualifying smart-money signals right now. The bar is deliberately high: only wallets with ≥62% win rate over 15+ settled positions count, and stale or already-run entries are filtered out. Check back — fresh elite buys appear within minutes of happening.</div>';
     return;
   }
-  $('sigGrid').innerHTML=sigs.map(s=>{
+  $('sigGrid').innerHTML=signals.slice(0,18).map(s=>{
     const sideY=/yes/i.test(s.outcome);
-    const edge=s.avgEntry>0?((s.cur-s.avgEntry)/s.avgEntry)*100:0;
-    const read=s.cur<=s.avgEntry*1.05?'Entry still close to smart-money average — copy window open':'Price has run '+edge.toFixed(0)+'% past their average entry — reduced edge';
+    const run=s.entry>0&&s.cur>0?((s.cur-s.entry)/s.entry)*100:0;
+    const grade=s.cur<=0? 'C' : run<=3?'A':run<=8?'B':'C';
+    const gradeTxt={A:'A — copy window wide open (price ≈ their entry)',B:'B — slightly late, still reasonable',C:'C — price has run; most of the edge is gone'}[grade];
+    const gradeColor={A:'var(--yes)',B:'var(--amber)',C:'var(--no)'}[grade];
+    const typeChip={FRESH_BUY:'⚡ FRESH ELITE BUY',CONSENSUS:'★ ELITE CONSENSUS',BIG_POSITION:'💪 BIG CONVICTION'}[s.type]||s.type;
     return `<div class="sig-card">
-      <span class="consensus">★ ${s.n} top traders aligned</span>
-      <div class="q">${esc(s.title)}</div>
-      <div><span class="side-tag ${sideY?'y':'n'}">${esc((s.outcome||'').toUpperCase())}</span></div>
-      <div class="sig-stats">
-        <div class="cell"><div class="l">Avg smart entry</div><div class="v">${cents(s.avgEntry)}</div></div>
-        <div class="cell"><div class="l">Price now</div><div class="v">${cents(s.cur)}</div></div>
-        <div class="cell"><div class="l">Combined stake</div><div class="v">${fmtUSD(s.value)}</div></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+        <span class="consensus">${typeChip}</span>
+        <span class="side-tag" style="background:rgba(255,255,255,.04);color:${gradeColor};border:1px solid ${gradeColor}">Copy grade ${grade}</span>
       </div>
-      <div class="holders-line">Held by: <b style="color:var(--text)">${[...s.wallets].slice(0,4).map(esc).join(', ')}${s.wallets.size>4?' +'+(s.wallets.size-4):''}</b></div>
-      <div class="holders-line">${read} · payout if right: <b style="color:var(--yes)">${retLabel(s.cur)}</b></div>
+      <div class="q">${esc(s.title)}</div>
+      <div><span class="side-tag ${sideY?'y':'n'}">${esc((s.outcome||'').toUpperCase())}</span> ${s.fresh?'<span class="vol-flag">'+esc(s.fresh)+'</span>':''}</div>
+      <div class="sig-stats">
+        <div class="cell"><div class="l">Their entry</div><div class="v">${cents(s.entry)}</div></div>
+        <div class="cell"><div class="l">Price now</div><div class="v">${s.cur>0?cents(s.cur):'—'}</div></div>
+        <div class="cell"><div class="l">${s.type==='CONSENSUS'?'Combined stake':'Their stake'}</div><div class="v">${fmtUSD(s.value)}</div></div>
+      </div>
+      <div class="holders-line"><b style="color:var(--text)">${esc(s.who)}</b></div>
+      <div class="holders-line">${esc(gradeTxt)} · payout if right: <b style="color:var(--yes)">${retLabel(s.cur>0?s.cur:s.entry)}</b></div>
       <div class="actions" style="display:flex;gap:8px">
         <a class="btn" target="_blank" rel="noopener" href="https://news.google.com/search?q=${encodeURIComponent(s.title)}">📰 News</a>
         <a class="btn primary" target="_blank" rel="noopener" href="https://polymarket.com/event/${esc(s.slug||'')}">Trade ↗</a>
@@ -859,6 +853,100 @@ async function loadSignals(){
     </div>`;
   }).join('');
 }
+
+/* Research-backed smart-money signal builder:
+   1) vet a pool of elite wallets (>=62% win rate over >=15 settled, settlement-scalpers excluded), cached 24h
+   2) tier 1: FRESH BUYS by elite wallets in the last 24h
+   3) tier 2: CONSENSUS — 2+ elite wallets holding the same side
+   4) tier 3: BIG CONVICTION — an elite wallet with $10K+ on one outcome
+   Every signal graded A/B/C by how far price has run past their entry. */
+async function buildSmartSignals(){
+  /* --- elite pool (cached) --- */
+  let pool=null;
+  const cached=store.get('eb_elite');
+  if(cached && Date.now()-cached.updated<24*3600e3 && (cached.pool||[]).length) pool=cached.pool;
+  if(!pool){
+    const lb=await jget(`${DATA}/v1/leaderboard?category=OVERALL&timePeriod=MONTH&orderBy=PNL&limit=30`);
+    const top=(Array.isArray(lb)?lb:[]).slice(0,25);
+    const res=await Promise.allSettled(top.map(l=>jget(`${DATA}/positions?user=${l.proxyWallet}&sortBy=CURRENT&sortDirection=DESC&limit=100`)));
+    pool=[];
+    res.forEach((r,i)=>{
+      if(r.status!=='fulfilled'||!Array.isArray(r.value))return;
+      const pos=r.value;
+      const decided=pos.filter(p=>p.redeemable||Math.abs(Number(p.realizedPnl)||0)>1);
+      if(decided.length<15)return;
+      const wins=decided.filter(p=>(p.redeemable?(Number(p.currentValue)||0)-(Number(p.initialValue)||0):(Number(p.realizedPnl)||0))>0).length;
+      const winRate=wins/decided.length;
+      const scalpShare=pos.length?pos.filter(p=>(Number(p.avgPrice)||0)>=0.93).length/pos.length:1;
+      if(winRate>=0.62&&scalpShare<0.5)
+        pool.push({wallet:top[i].proxyWallet,name:top[i].userName||top[i].proxyWallet.slice(0,8),winRate:+winRate.toFixed(3),n:decided.length});
+    });
+    pool.sort((a,b)=>b.winRate*Math.log(1+b.n)-a.winRate*Math.log(1+a.n));
+    pool=pool.slice(0,12);
+    store.set('eb_elite',{updated:Date.now(),pool});
+  }
+  if(!pool.length) return [];
+  const cred=w=>`${w.name} — ${Math.round(w.winRate*100)}% win rate over ${w.n} settled positions`;
+
+  /* --- positions + activity for the pool --- */
+  const [posRes,actRes]=await Promise.all([
+    Promise.allSettled(pool.map(w=>jget(`${DATA}/positions?user=${w.wallet}&sortBy=CURRENT&sortDirection=DESC&limit=60`))),
+    Promise.allSettled(pool.map(w=>jget(`${DATA}/activity?user=${w.wallet}&limit=20&sortDirection=DESC`)))
+  ]);
+  const sigs=[]; const agg={};
+  const curOf={}; /* conditionId|outcome -> current price (from positions payloads) */
+  posRes.forEach((r,i)=>{
+    if(r.status!=='fulfilled'||!Array.isArray(r.value))return;
+    const w=pool[i];
+    r.value.filter(p=>!p.redeemable&&Number(p.currentValue)>100&&(Number(p.avgPrice)||1)<0.93).forEach(p=>{
+      const cur=Number(p.curPrice)||0, avg=Number(p.avgPrice)||0, val=Number(p.currentValue)||0;
+      curOf[(p.conditionId||p.title)+'|'+String(p.outcome).toLowerCase()]=cur;
+      /* consensus aggregation */
+      const k=p.title+'|'+p.outcome;
+      agg[k]=agg[k]||{title:p.title,outcome:p.outcome,slug:p.eventSlug||'',conditionId:p.conditionId||'',wallets:[],value:0,entrySum:0,entryN:0,cur};
+      agg[k].wallets.push(w); agg[k].value+=val; agg[k].entrySum+=avg; agg[k].entryN++; agg[k].cur=cur;
+      /* big conviction singles */
+      if(val>=10000 && cur>0.03 && cur<0.95){
+        sigs.push({type:'BIG_POSITION',title:p.title,outcome:p.outcome,slug:p.eventSlug||'',conditionId:p.conditionId||'',
+          entry:avg,cur,value:val,who:cred(w),score:2+Math.min(1,val/1e5)*w.winRate});
+      }
+    });
+  });
+  /* consensus tier */
+  Object.values(agg).filter(a=>a.wallets.length>=2).forEach(a=>{
+    sigs.push({type:'CONSENSUS',title:a.title,outcome:a.outcome,slug:a.slug,conditionId:a.conditionId,
+      entry:a.entryN?a.entrySum/a.entryN:0,cur:a.cur,value:a.value,n:a.wallets.length,
+      wallets:a.wallets.map(w=>w.name),
+      who:a.wallets.length+' elite wallets aligned: '+a.wallets.map(w=>w.name+' ('+Math.round(w.winRate*100)+'%)').join(', '),
+      score:2.5+a.wallets.length*0.3});
+  });
+  /* fresh buys tier */
+  actRes.forEach((r,i)=>{
+    if(r.status!=='fulfilled'||!Array.isArray(r.value))return;
+    const w=pool[i];
+    r.value.filter(a=>a.type==='TRADE'&&a.side==='BUY').forEach(a=>{
+      const ageH=(Date.now()-(Number(a.timestamp)||0)*1000)/3600e3;
+      const fill=Number(a.price)||0, usd=Number(a.usdcSize)||0;
+      if(ageH>24||ageH<0||usd<200||fill<0.05||fill>0.92)return;
+      const cur=curOf[(a.conditionId||a.title)+'|'+String(a.outcome).toLowerCase()]||0;
+      sigs.push({type:'FRESH_BUY',title:a.title,outcome:a.outcome,slug:a.eventSlug||a.slug||'',conditionId:a.conditionId||'',
+        entry:fill,cur,value:usd,who:cred(w),
+        fresh:ageH<1?Math.round(ageH*60)+' min ago':Math.round(ageH)+'h ago',
+        score:3.5-Math.min(1.5,ageH/16)+w.winRate});
+    });
+  });
+  /* dedupe (same market+side keeps highest score) and rank */
+  const seen={};
+  return sigs.sort((a,b)=>b.score-a.score).filter(s=>{
+    const k=s.title+'|'+s.outcome+'|'+s.type; if(seen[k])return false; seen[k]=1; return true;
+  });
+}
+const DEMO_SMART_SIGNALS=[
+  {type:'FRESH_BUY',title:'Will the Fed cut rates at the July FOMC meeting?',outcome:'Yes',slug:'',entry:.58,cur:.59,value:14000,fresh:'22 min ago',who:'FedWatcherPro — 71% win rate over 64 settled positions',score:4},
+  {type:'CONSENSUS',title:'Will US CPI (YoY) come in below 2.5% for June?',outcome:'Yes',slug:'',entry:.52,cur:.55,value:96000,n:3,wallets:['FedWatcherPro','macro_anon','quietsize'],who:'3 elite wallets aligned: FedWatcherPro (71%), macro_anon (66%), quietsize (64%)',score:3.4},
+  {type:'BIG_POSITION',title:'Will the S&P 500 close above 7,000 by end of Q3?',outcome:'Yes',slug:'',entry:.44,cur:.48,value:52000,who:'DeepValue — 68% win rate over 41 settled positions',score:2.7},
+  {type:'FRESH_BUY',title:'Will OpenAI release GPT-6 before September 2026?',outcome:'Yes',slug:'',entry:.27,cur:.31,value:8000,fresh:'5h ago',who:'gauchito — 64% win rate over 88 settled positions',score:2.6}
+];
 
 /* ---------------- nav ---------------- */
 function showPage(p,btn){

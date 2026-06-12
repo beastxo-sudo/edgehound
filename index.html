@@ -2047,16 +2047,29 @@ function erf(x){const s=x<0?-1:1;x=Math.abs(x);const t=1/(1+.3275911*x);
 
 /* ============ Sniper Lab results loader ============ */
 const Sniper={
+  tmr:null,
+  start(){ this.load(); clearInterval(this.tmr); this.tmr=setInterval(()=>this.load(),60000); },
+  stop(){ clearInterval(this.tmr); this.tmr=null; },
   async load(){
     const box=$('sniperPanel'); if(!box)return;
-    let lab=null;
-    const urls=[];
-    if(location.hostname.endsWith('github.io')) urls.push('data/sniper.json?_='+Date.now());
-    urls.push('https://raw.githubusercontent.com/beastxo-sudo/edgehound/main/data/sniper.json?_='+Date.now());
-    for(const u of urls){ try{ lab=await jget(u,7000); break; }catch(e){} }
+    let lab=null, freshest=null;
+    /* try all sources, keep the freshest copy (CDNs lag at different rates) */
+    const tries=[];
+    if(location.hostname.endsWith('github.io')) tries.push(jget('data/sniper.json?_='+Date.now(),7000));
+    tries.push(jget('https://raw.githubusercontent.com/beastxo-sudo/edgehound/main/data/sniper.json?_='+Date.now(),7000));
+    tries.push(jget('https://api.github.com/repos/beastxo-sudo/edgehound/contents/data/sniper.json?_='+Date.now(),8000)
+      .then(d=>JSON.parse(atob((d.content||'').replace(/\n/g,'')))));
+    const results=await Promise.allSettled(tries);
+    results.forEach(r=>{
+      if(r.status==='fulfilled'&&r.value&&r.value.summary){
+        const u=new Date(r.value.summary.updated||0).getTime();
+        if(!freshest||u>freshest){ freshest=u; lab=r.value; }
+      }
+    });
     if(!lab||!lab.summary||!lab.summary.samples){
-      box.innerHTML='<div class="empty">No samples yet — the lab starts collecting on the next 15-minute cycle and needs a few hours for a meaningful read.</div>'; return;
+      box.innerHTML='<div class="empty">No samples yet — the lab collects one sample per 5-minute window and commits in ~14-minute batches. If this persists beyond 30 minutes, the lab job may be failing.</div>'; return;
     }
+    const ageMin=Math.round((Date.now()-new Date(lab.summary.updated).getTime())/60000);
     const s=lab.summary;
     const acc=s.directionAccuracy, be=s.breakEvenAccuracy;
     const edge=acc!=null&&be!=null?(acc-be)*100:null;
@@ -2080,6 +2093,7 @@ const Sniper={
         <div class="stat-card"><div class="lbl">P&L at $10 flat</div><div class="val ${s.pnlPer10Flat>=0?'pos':'neg'}">${s.pnlPer10Flat>=0?'+':''}$${s.pnlPer10Flat}</div><div class="sub">EV $${s.evPerTrade??'—'} per trade</div></div>
       </div>
       <div style="background:var(--surface2);border-radius:10px;padding:10px 14px;font-family:var(--mono);font-size:12.5px;margin-bottom:12px">${verdict}${edge!=null&&s.samples>=30?' ('+(edge>=0?'+':'')+edge.toFixed(1)+' pts vs break-even)':''}</div>
+      <div class="mini-note" style="margin-bottom:10px">data ${ageMin<=1?'just updated':ageMin+' min old'} · auto-refreshes every minute · lab commits in ~14-min batches</div>
       <table class="tbl"><thead><tr><th>Window</th><th>Bet</th><th>Lead at T−5s</th><th>Paid</th><th>Result</th><th>$10 P&L</th></tr></thead><tbody>${rows}</tbody></table>`;
   }
 };

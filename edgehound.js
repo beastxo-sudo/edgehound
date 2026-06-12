@@ -325,6 +325,7 @@ async function fetchEliteSignals(elite,markets){
     r.value.filter(a=>a.type==='TRADE'&&a.side==='BUY').forEach(a=>{
       const ageMin=(Date.now()-(Number(a.timestamp)||0)*1000)/60000;
       const fill=Number(a.price)||0, usd=Number(a.usdcSize)||0;
+      if(!/^(yes|no)$/i.test(String(a.outcome||'').trim())) return;
       if(ageMin>60||ageMin<0||usd<200||fill<0.10||fill>0.88) return;
       const m=byCondition[a.conditionId]; if(!m) return;            /* must be a liquid top-volume market */
       if(m.liq<25000||m.vol24<10000) return;                        /* don't become exit liquidity */
@@ -379,7 +380,14 @@ async function catchUp(state,markets){
   });
 }
 function closeTrade(state,t,exit,reason){
-  t.status='closed'; t.exit=exit; t.exitTs=Date.now(); t.exitReason=reason;
+  t.status='closed'; t.exit=exit; t.exitTs=Date.now();
+  if(t.entry<0.02||t.entry>0.98){ /* impossible entry = corrupted data; void at zero P&L, learn nothing */
+    t.pnl=0; t.exitReason='VOIDED — bad entry data ('+cents(t.entry)+')';
+    state.bank.cash+=t.stake;
+    note(state,`Voided "${t.title.slice(0,40)}" — entry ${cents(t.entry)} is a data error, no P&L booked.`);
+    return;
+  }
+  t.exitReason=reason;
   t.pnl=(t.stake/t.entry)*(exit-t.entry);
   state.bank.cash+=t.stake+t.pnl;
   const s=state.strat[t.signal];
@@ -415,7 +423,8 @@ function rawCandidates(markets,consensus){
     }
   });
   consensus.forEach(s=>{
-    if(s.cur>0&&s.cur<=s.avgEntry*1.06)
+    if(!/^(yes|no)$/i.test(String(s.outcome||'').trim())) return; /* team-name outcome markets break side mapping — skip */
+    if(s.cur>0 && s.cur<=s.avgEntry*1.06 && s.cur>=s.avgEntry*0.7)  /* not run up, and NOT collapsed (falling knife != copy window) */
       cands.push({m:{q:s.title,id:'sig:'+s.title,conditionId:s.conditionId,eventSlug:s.slug,end:null,vol24:0,volume:0,liq:0,chg:0},
         side:/yes/i.test(s.outcome)?'YES':'NO',price:s.cur,signal:'SMART_CONSENSUS',
         consensusN:s.n,walletNames:s.wallets,
@@ -471,6 +480,7 @@ function scan(state,markets,consensus,eliteCands){
   let placed=0;
   const openLive=()=>state.journal.filter(t=>t.status==='open');
   for(const c of scored){
+    if(!(c.price>=0.05&&c.price<=0.95)){ log(`Sanity guard: rejected entry at ${cents(c.price)} on "${(c.m.q||'').slice(0,40)}"`); continue; }
     /* event-correlation guard: total $ on one underlying event capped at MAX_EVENT_EXPOSURE */
     const cand={title:c.m.q,slug:c.m.eventSlug||''};
     const eventExposure=openLive().filter(t=>sameEvent(t,cand)).reduce((s,t)=>s+t.stake,0);

@@ -99,7 +99,7 @@
    "slug": "us-x-iran-permanent-peace-deal-by",
    "side": "YES",
    "entry": 0.765,
-   "cur": 0.765,
+   "cur": 0.755,
    "stake": 100,
    "signal": "MOMENTUM",
    "p": 0.576,
@@ -555,7 +555,7 @@
    "slug": "israel-closes-its-airspace-by",
    "side": "NO",
    "entry": 0.835,
-   "cur": 0.94,
+   "cur": 0.935,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.613,
@@ -643,7 +643,7 @@
    "slug": "wta-bouzkov-vekic-2026-06-10",
    "side": "NO",
    "entry": 0.495,
-   "cur": 0.48,
+   "cur": 0.475,
    "stake": 800,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -865,7 +865,7 @@
    "slug": "2026-nba-champion",
    "side": "NO",
    "entry": 0.8175,
-   "cur": 0.7995,
+   "cur": 0.7985,
    "stake": 800,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -907,7 +907,7 @@
    "slug": "trump-announces-us-x-iran-ceasefire-over-byptptpt-20260607232555290",
    "side": "NO",
    "entry": 0.9325,
-   "cur": 0.9895,
+   "cur": 0.9905,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.627,
@@ -1081,7 +1081,7 @@
      75
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/4L (posterior 50%, 90% CI 25-75%) — collecting evidence",
-    "updated": "2026-06-12T03:15:38.356Z"
+    "updated": "2026-06-12T03:30:53.259Z"
    }
   ]
  },
@@ -1098,14 +1098,14 @@
   "staked": 9150,
   "bankStart": 10000,
   "cash": 4896,
-  "equity": 8580,
-  "returnPct": -14.2,
+  "equity": 8566,
+  "returnPct": -14.34,
   "modelUpdates": 14,
   "brier": 0.314,
   "hypotheses": 1,
-  "updated": "2026-06-12T03:15:38.359Z"
+  "updated": "2026-06-12T03:30:53.262Z"
  },
- "lastRun": 1781234138359,
+ "lastRun": 1781235053262,
  "elite": {
   "updated": 1781199062938,
   "list": [

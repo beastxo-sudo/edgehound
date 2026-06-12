@@ -102,7 +102,7 @@
    "slug": "spacex-ipo-closing-market-cap-above",
    "side": "YES",
    "entry": 0.745,
-   "cur": 0.765,
+   "cur": 0.76,
    "stake": 250,
    "signal": "MOMENTUM",
    "p": 0.546,
@@ -144,7 +144,7 @@
    "slug": "us-x-iran-permanent-peace-deal-by",
    "side": "YES",
    "entry": 0.1615,
-   "cur": 0.151,
+   "cur": 0.152,
    "stake": 150,
    "signal": "MOMENTUM",
    "p": 0.521,
@@ -730,7 +730,7 @@
    "slug": "israel-closes-its-airspace-by",
    "side": "NO",
    "entry": 0.835,
-   "cur": 0.966,
+   "cur": 0.942,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.613,
@@ -1002,7 +1002,7 @@
    "slug": "2026-nba-champion",
    "side": "YES",
    "entry": 0.8215,
-   "cur": 0.8045,
+   "cur": 0.809,
    "stake": 200,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -1278,7 +1278,7 @@
      75
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/4L (posterior 50%, 90% CI 25-75%) — collecting evidence",
-    "updated": "2026-06-12T13:15:42.437Z"
+    "updated": "2026-06-12T13:30:52.534Z"
    }
   ]
  },
@@ -1295,15 +1295,15 @@
   "staked": 10800,
   "bankStart": 10000,
   "cash": 5129,
-  "equity": 8733,
-  "returnPct": -12.67,
+  "equity": 8710,
+  "returnPct": -12.9,
   "modelUpdates": 16,
   "brier": 0.308,
   "hypotheses": 1,
   "integrityOk": true,
-  "updated": "2026-06-12T13:15:42.440Z"
+  "updated": "2026-06-12T13:30:52.536Z"
  },
- "lastRun": 1781270142440,
+ "lastRun": 1781271052536,
  "elite": {
   "updated": 1781199062938,
   "list": [
@@ -1319,7 +1319,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-12T13:15:42.440Z",
+  "checkedAt": "2026-06-12T13:30:52.536Z",
   "tradesChecked": 25
  }
 }

@@ -823,7 +823,7 @@
    "slug": "2026-nba-champion",
    "side": "YES",
    "entry": 0.8215,
-   "cur": 0.821,
+   "cur": 0.8205,
    "stake": 200,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -865,7 +865,7 @@
    "slug": "2026-nba-champion",
    "side": "NO",
    "entry": 0.8175,
-   "cur": 0.8155,
+   "cur": 0.8185,
    "stake": 800,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -907,7 +907,7 @@
    "slug": "trump-announces-us-x-iran-ceasefire-over-byptptpt-20260607232555290",
    "side": "NO",
    "entry": 0.9325,
-   "cur": 0.9865,
+   "cur": 0.9875,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.627,
@@ -1081,7 +1081,7 @@
      75
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/4L (posterior 50%, 90% CI 25-75%) — collecting evidence",
-    "updated": "2026-06-12T07:01:06.369Z"
+    "updated": "2026-06-12T07:15:41.695Z"
    }
   ]
  },
@@ -1098,14 +1098,14 @@
   "staked": 9150,
   "bankStart": 10000,
   "cash": 4896,
-  "equity": 8607,
-  "returnPct": -13.93,
+  "equity": 8611,
+  "returnPct": -13.89,
   "modelUpdates": 14,
   "brier": 0.314,
   "hypotheses": 1,
-  "updated": "2026-06-12T07:01:06.372Z"
+  "updated": "2026-06-12T07:15:41.697Z"
  },
- "lastRun": 1781247666372,
+ "lastRun": 1781248541698,
  "elite": {
   "updated": 1781199062938,
   "list": [

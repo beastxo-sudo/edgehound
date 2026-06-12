@@ -2,6 +2,51 @@
  "running": true,
  "journal": [
   {
+   "id": "t17812620661588lon",
+   "date": "2026-06-12",
+   "openedTs": 1781262066158,
+   "title": "Counter-Strike: FURIA vs MOUZ (BO3) - IEM Cologne Major Stage 3",
+   "mid": "sig:Counter-Strike: FURIA vs MOUZ (BO3) - IEM Cologne Major Stage 3",
+   "conditionId": "0xe78c3540ed47815d10c18544b749ee61211c8038be5ecc009dff2784f8bad1bd",
+   "slug": "cs2-furia-mouz-2026-06-12",
+   "side": "NO",
+   "entry": 0.545,
+   "cur": 0.545,
+   "stake": 1000,
+   "signal": "SMART_CONSENSUS",
+   "p": 0.624,
+   "pModel": 0.496,
+   "pBucket": 0.5,
+   "bucketN": 0,
+   "bk": "SMART_CONSENSUS|mid|sport",
+   "ev": 124.081,
+   "kelly": 0.08,
+   "x": [
+    0,
+    0,
+    1,
+    0,
+    0.545,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0.4,
+    1,
+    -0.127
+   ],
+   "walletNames": [
+    "ferrariChampions2026",
+    "0xcF609D3256f0f37f0595E5Dc64012Fa3a8fEa6f5-1771809916847"
+   ],
+   "insight": "P(win) 62% [model 50%, pattern 50% on n=0] · EV +124.08/$1 · 1/4-Kelly 8.0% of equity -> $1000. 2 top wallets aligned ($73.1K combined), avg entry 62c vs 55c now. Drivers: smart-money setup +, price level -, sports market -",
+   "target": 0.3,
+   "stop": 0.3,
+   "holdUntil": 1782471666158,
+   "status": "open"
+  },
+  {
    "id": "t1781261140985zfsy",
    "date": "2026-06-12",
    "openedTs": 1781261140985,
@@ -11,7 +56,7 @@
    "slug": "cs2-furia-mouz-2026-06-12",
    "side": "NO",
    "entry": 0.005,
-   "cur": 0.005,
+   "cur": 0.9995,
    "stake": 400,
    "signal": "SMART_CONSENSUS",
    "p": 0.535,
@@ -44,7 +89,11 @@
    "target": 0.3,
    "stop": 0.3,
    "holdUntil": 1782470740985,
-   "status": "open"
+   "status": "closed",
+   "exit": 1,
+   "exitTs": 1781262066155,
+   "exitReason": "Resolved in our favor",
+   "pnl": 79600
   },
   {
    "id": "t1781261140984s0cw",
@@ -56,7 +105,7 @@
    "slug": "trump-announces-us-blockade-of-hormuz-lifted-by",
    "side": "YES",
    "entry": 0.655,
-   "cur": 0.655,
+   "cur": 0.65,
    "stake": 250,
    "signal": "MOMENTUM",
    "p": 0.542,
@@ -98,7 +147,7 @@
    "slug": "spacex-ipo-closing-market-cap-above",
    "side": "YES",
    "entry": 0.745,
-   "cur": 0.745,
+   "cur": 0.76,
    "stake": 250,
    "signal": "MOMENTUM",
    "p": 0.546,
@@ -140,7 +189,7 @@
    "slug": "us-x-iran-permanent-peace-deal-by",
    "side": "YES",
    "entry": 0.1615,
-   "cur": 0.1615,
+   "cur": 0.154,
    "stake": 150,
    "signal": "MOMENTUM",
    "p": 0.521,
@@ -228,7 +277,7 @@
    "slug": "us-announces-new-iran-agreementceasefire-extension-by",
    "side": "YES",
    "entry": 0.81,
-   "cur": 0.775,
+   "cur": 0.755,
    "stake": 100,
    "signal": "MOMENTUM",
    "p": 0.571,
@@ -726,7 +775,7 @@
    "slug": "israel-closes-its-airspace-by",
    "side": "NO",
    "entry": 0.835,
-   "cur": 0.9625,
+   "cur": 0.963,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.613,
@@ -1040,7 +1089,7 @@
    "slug": "2026-nba-champion",
    "side": "NO",
    "entry": 0.8175,
-   "cur": 0.8065,
+   "cur": 0.808,
    "stake": 800,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -1129,9 +1178,9 @@
    "weight": 1
   },
   "SMART_CONSENSUS": {
-   "trades": 0,
-   "wins": 0,
-   "pnl": 0,
+   "trades": 1,
+   "wins": 1,
+   "pnl": 79600,
    "weight": 1
   },
   "VOLUME_SPIKE": {
@@ -1149,6 +1198,8 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-12 16:31 IST — Opened NO $1000 @ 55c P=62% EV=+124.08 [Smart Consensus] \"Counter-Strike: FURIA vs MOUZ (BO3) - IEM Colo\"",
+  "2026-06-12 16:31 IST — Closed NO \"Counter-Strike: FURIA vs MOUZ - Map 2 Winn\" -> +$79600 (Resolved in our favor) · model said P(win)=54%",
   "2026-06-12 16:15 IST — Opened NO $400 @ 1c P=54% EV=+0.08 [Smart Consensus] \"Counter-Strike: FURIA vs MOUZ - Map 2 Winner\"",
   "2026-06-12 16:15 IST — Opened YES $250 @ 66c P=54% EV=+0.05 [Momentum] \"Will Donald Trump announce that the United Sta\"",
   "2026-06-12 16:15 IST — Opened YES $250 @ 75c P=55% EV=+0.05 [Momentum] \"SpaceX IPO closing market cap above $2T?\"",
@@ -1160,28 +1211,26 @@
   "2026-06-12 02:00 IST — Closed YES \"US x Iran permanent peace deal by June 15,\" -> $-72 (Stop loss hit (-20%)) · model said P(win)=62%",
   "2026-06-12 01:15 IST — Opened YES $100 @ 81c P=57% EV=+0.01 [Momentum] \"US announces new Iran agreement/ceasefire exte\"",
   "2026-06-12 01:15 IST — Opened YES $100 @ 77c P=58% EV=+0.02 [Momentum] \"US x Iran permanent peace deal by December 31,\"",
-  "2026-06-12 01:15 IST — Opened YES $300 @ 21c P=62% EV=+0.06 [Momentum] \"US x Iran permanent peace deal by June 15, 202\"",
-  "2026-06-12 01:15 IST — Opened YES $350 @ 24c P=63% EV=+0.06 [Momentum] \"Strait of Hormuz traffic returns to normal by \"",
-  "2026-06-12 01:15 IST — Closed YES \"Strait of Hormuz traffic returns to normal\" -> +$96 (Profit target hit (+18%)) · model said P(win)=57%"
+  "2026-06-12 01:15 IST — Opened YES $300 @ 21c P=62% EV=+0.06 [Momentum] \"US x Iran permanent peace deal by June 15, 202\""
  ],
  "brain": {
   "w": [
-   -0.051353803651788515,
-   -0.020743203621586492,
+   -0.05132812674996262,
+   -0.020732832019775698,
+   0.0850953099329247,
    0,
-   0,
-   -0.14446582859850804,
-   -0.18548834770991207,
-   -0.14233636664256705,
-   -0.08389417830317102,
-   -0.07586180090250431,
-   -0.10377410646680917,
-   0,
-   -0.1446091022708176,
-   0
+   -0.14396811913454416,
+   -0.1853956035360571,
+   -0.14226519845924576,
+   -0.08385223121401943,
+   -0.07582387000205307,
+   -0.10372221941357576,
+   0.03403812397316988,
+   -0.059441487786757494,
+   -0.08424435683359545
   ],
-  "b": -0.07293308630327042,
-  "nUpdates": 15,
+  "b": 0.012162223629654287,
+  "nUpdates": 16,
   "buckets": {
    "MOMENTUM|high|sport": {
     "a": 1,
@@ -1206,12 +1255,25 @@
    "SHORT_FAVORITE|high|other": {
     "a": 1,
     "b": 2
+   },
+   "SMART_CONSENSUS|low|sport": {
+    "a": 2,
+    "b": 1
    }
   },
-  "wallets": {},
+  "wallets": {
+   "ferrariChampions2026": {
+    "a": 2,
+    "b": 1
+   },
+   "0xcF609D3256f0f37f0595E5Dc64012Fa3a8fEa6f5-1771809916847": {
+    "a": 2,
+    "b": 1
+   }
+  },
   "brier": {
-   "sum": 4.5465729999999995,
-   "n": 15
+   "sum": 4.762797999999999,
+   "n": 16
   },
   "payoff": {
    "SHORT_FAVORITE": {
@@ -1227,8 +1289,8 @@
     "lN": 9
    },
    "SMART_CONSENSUS": {
-    "wSum": 0,
-    "wN": 0,
+    "wSum": 199,
+    "wN": 1,
     "lSum": 0,
     "lN": 0
    },
@@ -1256,31 +1318,31 @@
      75
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/4L (posterior 50%, 90% CI 25-75%) — collecting evidence",
-    "updated": "2026-06-12T10:45:40.980Z"
+    "updated": "2026-06-12T11:01:06.155Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 5114.77199058095,
+  "cash": 84114.77199058095,
   "created": 1781162132851
  },
  "summary": {
-  "realized": -1035.23,
-  "closed": 15,
-  "wins": 5,
+  "realized": 78564.77,
+  "closed": 16,
+  "wins": 6,
   "open": 10,
-  "staked": 10200,
+  "staked": 11200,
   "bankStart": 10000,
-  "cash": 5115,
-  "equity": 9119,
-  "returnPct": -8.81,
-  "modelUpdates": 15,
-  "brier": 0.303,
+  "cash": 84115,
+  "equity": 88715,
+  "returnPct": 787.15,
+  "modelUpdates": 16,
+  "brier": 0.298,
   "hypotheses": 1,
-  "updated": "2026-06-12T10:45:40.985Z"
+  "updated": "2026-06-12T11:01:06.159Z"
  },
- "lastRun": 1781261140985,
+ "lastRun": 1781262066159,
  "elite": {
   "updated": 1781199062938,
   "list": [

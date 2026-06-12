@@ -19,7 +19,8 @@ const path = require('path');
 
 const GAMMA = 'https://gamma-api.polymarket.com';
 const CLOB = 'https://clob.polymarket.com';
-const BIN = 'https://api.binance.com/api/v3';
+const BIN_HOSTS = ['https://api.binance.com/api/v3', 'https://api.binance.us/api/v3'];
+let BIN = BIN_HOSTS[0];
 const OUT_FILE = path.join(__dirname, 'data', 'sniper.json');
 
 const DURATION_MS = Number(process.env.SNIPER_DURATION_MS || 13.5 * 60e3);
@@ -34,6 +35,16 @@ async function jget(url, t = 8000) {
   const res = await fetch(url, { headers: { accept: 'application/json' }, signal: AbortSignal.timeout ? AbortSignal.timeout(t) : undefined });
   if (!res.ok) throw new Error(`${res.status} ${url.slice(0, 90)}`);
   return res.json();
+}
+/* Binance geo-blocks US IPs (HTTP 451) and GitHub runners are US-based —
+   fail over between binance.com and binance.us, remember what works */
+async function binGet(pathQ, t = 6000) {
+  let lastErr;
+  for (const h of [BIN, ...BIN_HOSTS.filter(x => x !== BIN)]) {
+    try { const r = await jget(h + pathQ, t); BIN = h; return r; }
+    catch (e) { lastErr = e; }
+  }
+  throw lastErr;
 }
 
 function loadLab() {
@@ -94,8 +105,8 @@ async function sampleBoundary(B, lab) {
   try {
     /* T-5s snapshot */
     const [px, k] = await Promise.all([
-      jget(`${BIN}/ticker/price?symbol=BTCUSDT`, 5000),
-      jget(`${BIN}/klines?symbol=BTCUSDT&interval=5m&startTime=${candleStart}&limit=1`, 6000)
+      binGet(`/ticker/price?symbol=BTCUSDT`, 5000),
+      binGet(`/klines?symbol=BTCUSDT&interval=5m&startTime=${candleStart}&limit=1`, 6000)
     ]);
     const spot = Number(px.price);
     const open = Number(k[0][1]);
@@ -115,7 +126,7 @@ async function sampleBoundary(B, lab) {
 
     /* wait for resolution */
     await sleep(Math.max(0, B + SETTLE_DELAY - Date.now()));
-    const k2 = await jget(`${BIN}/klines?symbol=BTCUSDT&interval=5m&startTime=${candleStart}&limit=1`, 6000);
+    const k2 = await binGet(`/klines?symbol=BTCUSDT&interval=5m&startTime=${candleStart}&limit=1`, 6000);
     const actualUp = Number(k2[0][4]) >= Number(k2[0][1]);
     const actual = actualUp ? 'UP' : 'DOWN';
     const won = dir === actual;

@@ -290,7 +290,7 @@
    "slug": "us-x-iran-permanent-peace-deal-by",
    "side": "YES",
    "entry": 0.765,
-   "cur": 0.775,
+   "cur": 0.77,
    "stake": 100,
    "signal": "MOMENTUM",
    "p": 0.576,
@@ -746,7 +746,7 @@
    "slug": "israel-closes-its-airspace-by",
    "side": "NO",
    "entry": 0.835,
-   "cur": 0.96,
+   "cur": 0.961,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.613,
@@ -1018,7 +1018,7 @@
    "slug": "2026-nba-champion",
    "side": "YES",
    "entry": 0.8215,
-   "cur": 0.8095,
+   "cur": 0.8105,
    "stake": 200,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -1301,7 +1301,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-12T17:00:59.429Z"
+    "updated": "2026-06-12T17:15:39.144Z"
    }
   ]
  },
@@ -1318,15 +1318,15 @@
   "staked": 10800,
   "bankStart": 10000,
   "cash": 6524,
-  "equity": 8533,
-  "returnPct": -14.67,
+  "equity": 8534,
+  "returnPct": -14.66,
   "modelUpdates": 21,
   "brier": 0.298,
   "hypotheses": 1,
   "integrityOk": true,
-  "updated": "2026-06-12T17:00:59.431Z"
+  "updated": "2026-06-12T17:15:39.147Z"
  },
- "lastRun": 1781283659432,
+ "lastRun": 1781284539147,
  "elite": {
   "updated": 1781199062938,
   "list": [
@@ -1342,7 +1342,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-12T17:00:59.431Z",
+  "checkedAt": "2026-06-12T17:15:39.147Z",
   "tradesChecked": 25
  }
 }

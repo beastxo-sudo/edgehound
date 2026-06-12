@@ -40,3 +40,16 @@ jobs:
               echo "push failed, retry $i"; sleep $((i*3))
             done
           fi
+
+      - name: Verify ledger integrity
+        run: |
+          node -e "
+          const s=require('./data/state.json');
+          if(s.integrity&&s.integrity.ok===false){
+            console.error('LEDGER INTEGRITY FAILURE:');
+            s.integrity.errors.forEach(e=>console.error(' -',e));
+            process.exit(1);
+          }
+          console.log('Ledger integrity OK —',(s.integrity&&s.integrity.tradesChecked)||0,'trades verified.');
+          "
+

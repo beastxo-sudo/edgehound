@@ -63,6 +63,7 @@ function buildBriefing(state,config){
     recentClosedTrades:recent,
     openPositions:openBrief,
     currentConfig:config,
+    integrity:state.integrity||null,
     rails:RAILS
   };
 }

@@ -60,7 +60,7 @@
    "slug": "trump-announces-us-blockade-of-hormuz-lifted-by",
    "side": "YES",
    "entry": 0.655,
-   "cur": 0.66,
+   "cur": 0.655,
    "stake": 250,
    "signal": "MOMENTUM",
    "p": 0.542,
@@ -102,7 +102,7 @@
    "slug": "spacex-ipo-closing-market-cap-above",
    "side": "YES",
    "entry": 0.745,
-   "cur": 0.795,
+   "cur": 0.785,
    "stake": 250,
    "signal": "MOMENTUM",
    "p": 0.546,
@@ -144,7 +144,7 @@
    "slug": "us-x-iran-permanent-peace-deal-by",
    "side": "YES",
    "entry": 0.1615,
-   "cur": 0.1785,
+   "cur": 0.1625,
    "stake": 150,
    "signal": "MOMENTUM",
    "p": 0.521,
@@ -232,7 +232,7 @@
    "slug": "us-announces-new-iran-agreementceasefire-extension-by",
    "side": "YES",
    "entry": 0.81,
-   "cur": 0.725,
+   "cur": 0.715,
    "stake": 100,
    "signal": "MOMENTUM",
    "p": 0.571,
@@ -730,7 +730,7 @@
    "slug": "israel-closes-its-airspace-by",
    "side": "NO",
    "entry": 0.835,
-   "cur": 0.969,
+   "cur": 0.9695,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.613,
@@ -1086,7 +1086,7 @@
    "slug": "trump-announces-us-x-iran-ceasefire-over-byptptpt-20260607232555290",
    "side": "NO",
    "entry": 0.9325,
-   "cur": 0.9885,
+   "cur": 0.9925,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.627,
@@ -1278,7 +1278,7 @@
      75
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/4L (posterior 50%, 90% CI 25-75%) — collecting evidence",
-    "updated": "2026-06-12T12:15:42.327Z"
+    "updated": "2026-06-12T12:30:52.738Z"
    }
   ]
  },
@@ -1295,15 +1295,15 @@
   "staked": 10800,
   "bankStart": 10000,
   "cash": 5129,
-  "equity": 8771,
-  "returnPct": -12.29,
+  "equity": 8753,
+  "returnPct": -12.47,
   "modelUpdates": 16,
   "brier": 0.308,
   "hypotheses": 1,
   "integrityOk": true,
-  "updated": "2026-06-12T12:15:42.330Z"
+  "updated": "2026-06-12T12:30:52.741Z"
  },
- "lastRun": 1781266542330,
+ "lastRun": 1781267452741,
  "elite": {
   "updated": 1781199062938,
   "list": [
@@ -1319,7 +1319,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-12T12:15:42.330Z",
+  "checkedAt": "2026-06-12T12:30:52.741Z",
   "tradesChecked": 25
  }
 }

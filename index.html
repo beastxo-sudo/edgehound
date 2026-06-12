@@ -2034,7 +2034,7 @@ const Btc5={
       <div style="font-family:var(--mono);font-size:11.5px;color:var(--muted)">
         📒 Paper scoreboard: <b style="color:var(--text)">${this.log.length}</b> signals logged · <b style="color:var(--text)">${settled.length}</b> settled · hit rate <b style="color:${settled.length&&wins.length/settled.length>=.55?'var(--yes)':'var(--text)'}">${settled.length?Math.round(wins.length/settled.length*100)+'%':'—'}</b> · simulated P&L at $10 flat: <b style="color:${pnl>=0?'var(--yes)':'var(--no)'}">${pnl>=0?'+':''}$${pnl.toFixed(2)}</b>
       </div>
-      <div class="mini-note" style="margin-top:8px">Honest caveats: Polymarket prices here refresh on a few-second delay, real snipers use websockets and still fight for fills; Polymarket resolves on the Pyth feed which can differ from Binance by a hair; and a detected lead doesn't mean an order would fill at that price. The scoreboard exists to measure whether the lead survives those frictions on paper first.</div>`;
+      <div class="mini-note" style="margin-top:8px">Honest caveats: Polymarket prices here refresh on a few-second delay, real snipers use websockets and still fight for fills; Polymarket resolves these on the Chainlink BTC/USD data stream — an aggregate across many exchanges — which can differ from Binance by a hair, so knife-edge windows may settle against the Binance read; and a detected lead doesn't mean an order would fill at that price. The scoreboard exists to measure whether the lead survives those frictions on paper first.</div>`;
   }
 };
 function erf(x){const s=x<0?-1:1;x=Math.abs(x);const t=1/(1+.3275911*x);

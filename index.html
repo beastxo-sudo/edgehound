@@ -210,6 +210,7 @@ footer{max-width:1280px;margin:0 auto;padding:0 24px 40px;color:var(--faint);fon
   <button class="tab" data-page="signals" onclick="showPage('signals',this)">Copy Signals</button>
   <button class="tab" data-page="bot" onclick="showPage('bot',this)">🐕 EdgeHound Bot <span class="badge" id="botBadge"></span></button>
   <button class="tab" data-page="arb" onclick="showPage('arb',this)">⚖ Arb Scanner <span class="badge" id="arbBadge"></span></button>
+  <button class="tab" data-page="cx" onclick="showPage('cx',this)">₿ Crypto Edge <span class="badge" id="cxBadge"></span></button>
 </nav>
 
 <main>
@@ -390,6 +391,23 @@ footer{max-width:1280px;margin:0 auto;padding:0 24px 40px;color:var(--faint);fon
   <div class="mini-note" style="margin-top:18px;line-height:1.7">
     Honest caveats: edges are computed from listed prices, not full order-book depth — a 3% edge on $200 of depth is real but tiny, and big edges usually vanish in seconds to faster bots. Multi-outcome math assumes the event's outcomes are mutually exclusive and exhaustive (the scanner prefers events Polymarket flags as such, but always sanity-check the market rules — "other/none of the above" gaps break the math). Locked profit is also locked capital until resolution. Treat this page as a research surface, not an execution promise.
   </div>
+</section>
+
+<!-- ================= CRYPTO EDGE ================= -->
+<section class="page" id="page-cx">
+  <div class="help-tip"><b>What this hunts:</b> Polymarket runs recurring <b>"Up or Down"</b> windows on BTC/ETH/SOL/XRP that resolve against the real exchange price at window close vs window open. This monitor streams <b>live Binance spot</b>, reconstructs each window's strike (the open price it must beat), and computes the <b>mathematically fair probability</b> from distance-to-strike, time remaining, and live volatility. When Polymarket's price disagrees with the math by enough, that's a discrepancy — captured below as a lead. ⚠ Be honest with yourself about this arena: it's where the fastest bots on the platform live. Discrepancies last seconds; by the time a human clicks, most are gone. Use it to learn the rhythm and catch the occasional slow repricing — not as a money printer.</div>
+  <div class="stat-row" id="cxStats"></div>
+  <div id="cxTableWrap" style="background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);overflow:auto;margin-bottom:16px">
+    <table style="width:100%;border-collapse:collapse;font-size:12px">
+      <thead><tr style="text-align:left;color:var(--faint);font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.06em">
+        <th style="padding:10px 12px">Window</th><th style="padding:10px 8px">Strike (open)</th><th style="padding:10px 8px">Spot now</th><th style="padding:10px 8px">Distance</th><th style="padding:10px 8px">Time left</th><th style="padding:10px 8px">Market says UP</th><th style="padding:10px 8px">Math says UP</th><th style="padding:10px 8px">Edge</th><th style="padding:10px 8px"></th>
+      </tr></thead>
+      <tbody id="cxRows"><tr><td colspan="9" style="padding:18px;color:var(--muted)">Scanning for live Up/Down windows…</td></tr></tbody>
+    </table>
+  </div>
+  <div class="section-h">📡 Captured leads <small>moments when the market lagged the math by ≥6 points</small></div>
+  <div id="cxLeads" style="font-family:var(--mono);font-size:11.5px;line-height:2;color:var(--muted);background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:14px 16px;max-height:300px;overflow:auto"><div class="empty">No discrepancies captured yet this session.</div></div>
+  <div class="mini-note" style="margin-top:14px;line-height:1.7">Model: fair P(up) = Φ( ln(spot/strike) / (σ·√τ) ) — a binary-option pricing using live per-minute volatility σ from the last 30 one-minute Binance candles, and τ = minutes remaining. Caveats: some 5-minute windows resolve on Pyth rather than Binance (tiny source differences matter near the strike); the model assumes no drift and log-normal moves, which breaks during news; and spread/depth on Polymarket eats small edges. Leads ≥10 points with >1 minute left are the only ones realistically actionable by a human.</div>
 </section>
 
 </main>
@@ -1775,9 +1793,135 @@ const DEMO_ARB_EVENTS=[
   {title:'Fed decision July',slug:'',volume24hr:900000,liquidity:400000,negRisk:false,markets:[
     {question:'Will the Fed cut rates in July?',outcomes:'["Yes","No"]',outcomePrices:'["0.62","0.38"]',bestBid:.64,bestAsk:.61,liquidityNum:350000,endDate:new Date(Date.now()+2*864e5).toISOString()}]}
 ];
+/* =====================================================
+   CRYPTO EDGE — Binance spot vs Polymarket Up/Down windows
+===================================================== */
+const BINANCE='https://data-api.binance.vision/api/v3';
+function normCdf(z){ /* Φ via Abramowitz-Stegun erf approx */
+  const t=1/(1+0.2316419*Math.abs(z));
+  const d=0.3989423*Math.exp(-z*z/2);
+  let p=d*t*(0.3193815+t*(-0.3565638+t*(1.781478+t*(-1.821256+t*1.330274))));
+  return z>0?1-p:p;
+}
+const Cx={
+  wins:[], spot:{}, vol:{}, leads:[], timer:null, klTimer:null, lastFind:0,
+  SYM:{bitcoin:'BTCUSDT',btc:'BTCUSDT',ethereum:'ETHUSDT',eth:'ETHUSDT',solana:'SOLUSDT',sol:'SOLUSDT',xrp:'XRPUSDT'},
+
+  async findWindows(){
+    if(!LIVE){ this.demo(); return; }
+    try{
+      const evs=await jget(`${GAMMA}/events?closed=false&active=true&order=volume24hr&ascending=false&limit=200`);
+      const out=[];
+      (Array.isArray(evs)?evs:[]).forEach(ev=>{
+        const m=(ev.title||'').match(/\b(bitcoin|btc|ethereum|eth|solana|sol|xrp)\b.*up or down/i);
+        if(!m)return;
+        const sym=this.SYM[m[1].toLowerCase()]; if(!sym)return;
+        const mk=(ev.markets||[]).find(x=>!x.closed); if(!mk)return;
+        const end=new Date(mk.endDate||ev.endDate||0).getTime();
+        const left=(end-Date.now())/60000;
+        if(!(left>0.2&&left<=65))return;
+        let outs=[],prices=[];
+        try{outs=JSON.parse(mk.outcomes||'[]');prices=JSON.parse(mk.outcomePrices||'[]').map(Number);}catch(e){}
+        let ui=outs.findIndex(o=>/up/i.test(o)); if(ui<0)ui=0;
+        const start=new Date(mk.startDate||ev.startDate||0).getTime();
+        const dur=end-start;
+        const startTs=(dur>0&&dur<=2*3600e3)?start:end-3600e3; /* fall back: assume hourly */
+        out.push({key:ev.slug||ev.title,title:ev.title,slug:ev.slug||'',sym,end,startTs,upPrice:prices[ui]??NaN,strike:null});
+      });
+      /* strikes: exact 1-minute candle open at window start */
+      await Promise.allSettled(out.map(async w=>{
+        try{ const k=await jget(`${BINANCE}/klines?symbol=${w.sym}&interval=1m&startTime=${Math.floor(w.startTs/60000)*60000}&limit=1`);
+          if(Array.isArray(k)&&k[0]) w.strike=Number(k[0][1]); }catch(e){}
+      }));
+      this.wins=out.filter(w=>w.strike&&w.upPrice>0&&w.upPrice<1);
+    }catch(e){ this.wins=[]; }
+  },
+  async refreshVol(){
+    const syms=[...new Set(this.wins.map(w=>w.sym))];
+    await Promise.allSettled(syms.map(async s=>{
+      try{ const k=await jget(`${BINANCE}/klines?symbol=${s}&interval=1m&limit=31`);
+        const closes=k.map(c=>Number(c[4]));
+        const rets=[]; for(let i=1;i<closes.length;i++) rets.push(Math.log(closes[i]/closes[i-1]));
+        const mu=rets.reduce((a,b)=>a+b,0)/rets.length;
+        const sd=Math.sqrt(rets.reduce((a,b)=>a+(b-mu)*(b-mu),0)/(rets.length-1));
+        this.vol[s]=Math.max(sd,1e-5);
+      }catch(e){}
+    }));
+  },
+  async tick(){
+    if(!LIVE){ this.render(); return; }
+    if(Date.now()-this.lastFind>60000){ this.lastFind=Date.now(); await this.findWindows(); await this.refreshVol(); }
+    const syms=[...new Set(this.wins.map(w=>w.sym))];
+    if(syms.length){
+      try{ const t=await jget(`${BINANCE}/ticker/price?symbols=${encodeURIComponent(JSON.stringify(syms))}`);
+        (Array.isArray(t)?t:[t]).forEach(x=>{this.spot[x.symbol]=Number(x.price);});
+      }catch(e){}
+    }
+    this.render();
+  },
+  evalWindow(w){
+    const S=this.spot[w.sym], K=w.strike, sd=this.vol[w.sym]||0.0005;
+    const tau=Math.max(0.05,(w.end-Date.now())/60000);
+    if(!S||!K)return null;
+    const z=Math.log(S/K)/(sd*Math.sqrt(tau));
+    const pUp=normCdf(z);
+    return {S,K,tau,pUp,edge:(pUp-w.upPrice)*100,distBps:(S/K-1)*10000};
+  },
+  render(){
+    const rows=$('cxRows'); if(!rows)return;
+    if(!this.wins.length){
+      rows.innerHTML='<tr><td colspan="9" style="padding:18px;color:var(--muted)">'+(LIVE?'No live Up/Down windows found right now — they run on BTC/ETH/SOL/XRP in 5-minute and hourly cycles; check back shortly.':'Sample mode — open the hosted dashboard for live data.')+'</td></tr>';
+      $('cxStats').innerHTML=''; return;
+    }
+    let best=null;
+    rows.innerHTML=this.wins.map(w=>{
+      const e=this.evalWindow(w); if(!e)return '';
+      if(!best||Math.abs(e.edge)>Math.abs(best.e.edge))best={w,e};
+      const mins=Math.floor(e.tau), secs=Math.round((e.tau-mins)*60);
+      const sideUp=e.edge>0;
+      const strong=Math.abs(e.edge)>=6;
+      if(strong) this.capture(w,e);
+      return `<tr style="border-top:1px solid var(--border-soft);${strong?'background:rgba(245,181,68,.06)':''}">
+        <td style="padding:9px 12px;max-width:230px">${esc(w.title.slice(0,45))}</td>
+        <td class="num" style="padding:9px 8px">${e.K.toLocaleString(undefined,{maximumFractionDigits:2})}</td>
+        <td class="num" style="padding:9px 8px">${e.S.toLocaleString(undefined,{maximumFractionDigits:2})}</td>
+        <td class="num ${e.distBps>=0?'pos':'neg'}" style="padding:9px 8px">${e.distBps>=0?'+':''}${e.distBps.toFixed(1)} bps</td>
+        <td class="num" style="padding:9px 8px">${mins}m ${secs}s</td>
+        <td class="num" style="padding:9px 8px">${Math.round(w.upPrice*100)}%</td>
+        <td class="num" style="padding:9px 8px">${Math.round(e.pUp*100)}%</td>
+        <td class="num" style="padding:9px 8px;color:${strong?'var(--amber)':'var(--muted)'};font-weight:${strong?'700':'400'}">${e.edge>=0?'+':''}${e.edge.toFixed(1)}pts</td>
+        <td style="padding:9px 8px">${strong?`<span class="side-tag ${sideUp?'y':'n'}">${sideUp?'UP cheap':'DOWN cheap'}</span>`:''} <a class="btn" style="padding:4px 9px;font-size:10px" target="_blank" rel="noopener" href="https://polymarket.com/event/${esc(w.slug)}">↗</a></td>
+      </tr>`;
+    }).join('');
+    const nStrong=this.wins.filter(w=>{const e=this.evalWindow(w);return e&&Math.abs(e.edge)>=6;}).length;
+    $('cxBadge').textContent=nStrong||'';
+    $('cxStats').innerHTML=`
+      <div class="stat-card"><div class="lbl">Live windows</div><div class="val">${this.wins.length}</div><div class="sub">BTC/ETH/SOL/XRP up-or-down</div></div>
+      <div class="stat-card"><div class="lbl">Binance spot feed</div><div class="val" style="font-size:16px;padding-top:3px">${Object.keys(this.spot).length?Object.entries(this.spot).slice(0,2).map(([s,p])=>s.replace('USDT','')+' $'+p.toLocaleString(undefined,{maximumFractionDigits:0})).join(' · '):'—'}</div><div class="sub">refreshes every 5s</div></div>
+      <div class="stat-card"><div class="lbl">Discrepancies now</div><div class="val" style="color:${nStrong?'var(--amber)':'var(--muted)'}">${nStrong}</div><div class="sub">market vs math gap ≥6 pts</div></div>
+      <div class="stat-card"><div class="lbl">Leads captured</div><div class="val">${this.leads.length}</div><div class="sub">this session</div></div>`;
+  },
+  capture(w,e){
+    const last=this.leads[0];
+    if(last&&last.key===w.key&&Date.now()-last.ts<120000)return; /* don't spam same window */
+    this.leads.unshift({key:w.key,ts:Date.now(),txt:`${new Date().toLocaleTimeString()} — ${w.title.slice(0,40)}: market priced UP at ${Math.round(w.upPrice*100)}%, math said ${Math.round(e.pUp*100)}% (spot ${e.distBps>=0?'+':''}${e.distBps.toFixed(0)}bps vs strike, ${e.tau.toFixed(1)}min left) → ${e.edge>0?'UP':'DOWN'} was ${Math.abs(e.edge).toFixed(0)}pts cheap`});
+    this.leads=this.leads.slice(0,50);
+    $('cxLeads').innerHTML=this.leads.map(l=>'<div>📍 '+esc(l.txt)+'</div>').join('');
+  },
+  demo(){
+    this.wins=[{key:'d1',title:'Bitcoin Up or Down — June 12, 9PM ET',slug:'',sym:'BTCUSDT',end:Date.now()+14*60000,startTs:Date.now()-46*60000,upPrice:.58,strike:142100}];
+    this.spot={BTCUSDT:142480}; this.vol={BTCUSDT:.0006};
+  },
+  start(){
+    clearInterval(this.timer);
+    this.tick();
+    this.timer=setInterval(()=>{ if($('page-cx').classList.contains('active')) this.tick(); },5000);
+  }
+};
+
 /* wire scanner into tab switching */
 const _origShowPage=showPage;
-showPage=function(p,btn){ _origShowPage(p,btn); if(p==='arb'){ if(!Arb.lastScan)Arb.scan(); Arb.auto(); } };
+showPage=function(p,btn){ _origShowPage(p,btn); if(p==='arb'){ if(!Arb.lastScan)Arb.scan(); Arb.auto(); } if(p==='cx'){ Cx.start(); } };
 
 boot();
 </script>

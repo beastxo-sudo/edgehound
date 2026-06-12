@@ -1,0 +1,152 @@
+/* ============================================================
+   SNIPER LAB — tests the "last 5 seconds" hypothesis on
+   Polymarket's 5-minute BTC Up/Down markets.
+
+   Hypothesis: in the final seconds of a window the outcome is
+   already visible on the exchange — betting the current
+   direction should win almost every time. The open question is
+   whether it's PROFITABLE after the price you must pay.
+
+   Method, every 5-minute boundary while this job is alive:
+     T-5s : Binance spot vs candle open -> direction
+            Polymarket CLOB best ask for that direction -> price paid
+     T+8s : Binance 5m candle close vs open -> actual outcome
+     log  : direction correct? PnL at $10 if filled at that ask
+   Paper only. No orders are ever placed.
+   ============================================================ */
+const fs = require('fs');
+const path = require('path');
+
+const GAMMA = 'https://gamma-api.polymarket.com';
+const CLOB = 'https://clob.polymarket.com';
+const BIN = 'https://api.binance.com/api/v3';
+const OUT_FILE = path.join(__dirname, 'data', 'sniper.json');
+
+const DURATION_MS = Number(process.env.SNIPER_DURATION_MS || 13.5 * 60e3);
+const LEAD_MS = 5000;     /* sample 5s before the boundary */
+const SETTLE_DELAY = 8000;/* read the closed candle 8s after */
+
+const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+const ist = () => new Date(Date.now() + 5.5 * 3600e3).toISOString().replace('T', ' ').slice(0, 19) + ' IST';
+const log = (m) => console.log(`${ist()}  ${m}`);
+
+async function jget(url, t = 8000) {
+  const res = await fetch(url, { headers: { accept: 'application/json' }, signal: AbortSignal.timeout ? AbortSignal.timeout(t) : undefined });
+  if (!res.ok) throw new Error(`${res.status} ${url.slice(0, 90)}`);
+  return res.json();
+}
+
+function loadLab() {
+  try { return JSON.parse(fs.readFileSync(OUT_FILE, 'utf8')); } catch (e) {}
+  return { hypothesis: 'Bet the visible direction in the last 5 seconds of each 5-min BTC window', created: Date.now(), samples: [] };
+}
+
+function summarize(lab) {
+  const s = lab.samples.filter(x => x.actual !== null);
+  const correct = s.filter(x => x.won);
+  const withPx = s.filter(x => x.paid > 0);
+  const pnl = withPx.reduce((a, x) => a + (x.won ? 10 * (1 - x.paid) / x.paid : -10), 0);
+  const avgPaid = withPx.length ? withPx.reduce((a, x) => a + x.paid, 0) / withPx.length : null;
+  lab.summary = {
+    samples: s.length,
+    directionAccuracy: s.length ? +(correct.length / s.length).toFixed(4) : null,
+    avgPricePaid: avgPaid ? +avgPaid.toFixed(4) : null,
+    pnlPer10Flat: +pnl.toFixed(2),
+    evPerTrade: withPx.length ? +(pnl / withPx.length).toFixed(3) : null,
+    /* break-even accuracy given avg price: must win paid/1 of the time */
+    breakEvenAccuracy: avgPaid ? +avgPaid.toFixed(4) : null,
+    updated: new Date().toISOString()
+  };
+}
+
+/* find the live "Bitcoin Up or Down" market ending at boundary B */
+async function findWindowMarket(B) {
+  const evs = await jget(`${GAMMA}/events?closed=false&active=true&order=endDate&ascending=true&limit=60`);
+  const ev = (evs || []).find(e => /bitcoin up or down/i.test(e.title || '') && Math.abs(new Date(e.endDate || 0).getTime() - B) < 15000);
+  if (!ev || !ev.markets || !ev.markets[0]) return null;
+  const m = ev.markets[0];
+  let outs = [], tokens = [], prices = [];
+  try { outs = JSON.parse(m.outcomes || '[]'); } catch (e) {}
+  try { tokens = JSON.parse(m.clobTokenIds || '[]'); } catch (e) {}
+  try { prices = JSON.parse(m.outcomePrices || '[]').map(Number); } catch (e) {}
+  const ui = outs.findIndex(o => /up/i.test(o));
+  const di = outs.findIndex(o => /down/i.test(o));
+  return {
+    title: ev.title, slug: ev.slug,
+    upToken: tokens[ui] || null, downToken: tokens[di] || null,
+    upPrice: prices[ui] ?? null, downPrice: prices[di] ?? null
+  };
+}
+
+/* the price you would actually pay: CLOB best ask for that token */
+async function bestAsk(tokenId, fallback) {
+  if (!tokenId) return fallback ?? 0;
+  try {
+    const r = await jget(`${CLOB}/price?token_id=${tokenId}&side=BUY`, 5000);
+    const p = Number(r.price);
+    if (p > 0 && p < 1) return p;
+  } catch (e) {}
+  return fallback ?? 0;
+}
+
+async function sampleBoundary(B, lab) {
+  const candleStart = B - 300000;
+  try {
+    /* T-5s snapshot */
+    const [px, k] = await Promise.all([
+      jget(`${BIN}/ticker/price?symbol=BTCUSDT`, 5000),
+      jget(`${BIN}/klines?symbol=BTCUSDT&interval=5m&startTime=${candleStart}&limit=1`, 6000)
+    ]);
+    const spot = Number(px.price);
+    const open = Number(k[0][1]);
+    const dir = spot >= open ? 'UP' : 'DOWN';
+    const leadPct = ((spot - open) / open) * 100;
+
+    let paid = 0, mktTitle = '';
+    try {
+      const mkt = await findWindowMarket(B);
+      if (mkt) {
+        mktTitle = mkt.title;
+        paid = await bestAsk(dir === 'UP' ? mkt.upToken : mkt.downToken, dir === 'UP' ? mkt.upPrice : mkt.downPrice);
+      }
+    } catch (e) { log('market lookup failed: ' + e.message); }
+
+    log(`T-5s ${new Date(B).toISOString().slice(11, 19)}Z dir=${dir} (${leadPct >= 0 ? '+' : ''}${leadPct.toFixed(3)}%) ask=${paid ? (paid * 100).toFixed(1) + 'c' : 'n/a'} ${mktTitle.slice(0, 40)}`);
+
+    /* wait for resolution */
+    await sleep(Math.max(0, B + SETTLE_DELAY - Date.now()));
+    const k2 = await jget(`${BIN}/klines?symbol=BTCUSDT&interval=5m&startTime=${candleStart}&limit=1`, 6000);
+    const actualUp = Number(k2[0][4]) >= Number(k2[0][1]);
+    const actual = actualUp ? 'UP' : 'DOWN';
+    const won = dir === actual;
+
+    lab.samples.push({
+      win: candleStart, t: new Date(B).toISOString(), dir, leadPct: +leadPct.toFixed(4),
+      paid: +(+paid).toFixed(4), actual, won,
+      flips: !won && Math.abs(leadPct) < 0.02 ? 'knife-edge flip' : (!won ? 'reversed in final seconds' : null)
+    });
+    lab.samples = lab.samples.slice(-5000);
+    summarize(lab);
+    fs.writeFileSync(OUT_FILE, JSON.stringify(lab));
+    log(`settled: actual=${actual} -> ${won ? 'CORRECT' : 'WRONG'} | running accuracy ${(lab.summary.directionAccuracy * 100).toFixed(1)}% over ${lab.summary.samples}, EV/trade $${lab.summary.evPerTrade ?? '—'}`);
+  } catch (e) {
+    log(`boundary ${new Date(B).toISOString()} skipped: ${e.message}`);
+  }
+}
+
+(async () => {
+  fs.mkdirSync(path.dirname(OUT_FILE), { recursive: true });
+  const lab = loadLab();
+  const endAt = Date.now() + DURATION_MS;
+  log(`Sniper Lab alive for ${(DURATION_MS / 60000).toFixed(1)} min. Samples so far: ${lab.samples.length}.`);
+  while (Date.now() < endAt) {
+    const nextB = (Math.floor(Date.now() / 300000) + 1) * 300000;
+    const wake = nextB - LEAD_MS;
+    if (wake > endAt) break;
+    await sleep(Math.max(0, wake - Date.now()));
+    await sampleBoundary(nextB, lab);
+  }
+  summarize(lab);
+  fs.writeFileSync(OUT_FILE, JSON.stringify(lab));
+  log(`Lab run done. ${JSON.stringify(lab.summary)}`);
+})();

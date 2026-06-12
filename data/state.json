@@ -555,7 +555,7 @@
    "slug": "israel-closes-its-airspace-by",
    "side": "NO",
    "entry": 0.835,
-   "cur": 0.962,
+   "cur": 0.963,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.613,
@@ -823,7 +823,7 @@
    "slug": "2026-nba-champion",
    "side": "YES",
    "entry": 0.8215,
-   "cur": 0.81,
+   "cur": 0.8115,
    "stake": 200,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -865,7 +865,7 @@
    "slug": "2026-nba-champion",
    "side": "NO",
    "entry": 0.8175,
-   "cur": 0.8105,
+   "cur": 0.8115,
    "stake": 800,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -907,7 +907,7 @@
    "slug": "trump-announces-us-x-iran-ceasefire-over-byptptpt-20260607232555290",
    "side": "NO",
    "entry": 0.9325,
-   "cur": 0.9885,
+   "cur": 0.9915,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.627,
@@ -1081,7 +1081,7 @@
      75
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/4L (posterior 50%, 90% CI 25-75%) — collecting evidence",
-    "updated": "2026-06-12T09:01:04.288Z"
+    "updated": "2026-06-12T09:15:41.184Z"
    }
   ]
  },
@@ -1098,14 +1098,14 @@
   "staked": 9150,
   "bankStart": 10000,
   "cash": 4896,
-  "equity": 8618,
-  "returnPct": -13.82,
+  "equity": 8622,
+  "returnPct": -13.78,
   "modelUpdates": 14,
   "brier": 0.314,
   "hypotheses": 1,
-  "updated": "2026-06-12T09:01:04.291Z"
+  "updated": "2026-06-12T09:15:41.186Z"
  },
- "lastRun": 1781254864291,
+ "lastRun": 1781255741186,
  "elite": {
   "updated": 1781199062938,
   "list": [

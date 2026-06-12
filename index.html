@@ -387,6 +387,13 @@ footer{max-width:1280px;margin:0 auto;padding:0 24px 40px;color:var(--faint);fon
       <option value="0.1">Show everything (incl. dust)</option>
     </select>
   </div>
+  <div class="section-h" style="margin-top:6px">⚡ BTC 5-Min Lead <small>Binance moves first — Polymarket reprices late</small></div>
+  <div class="help-tip">Polymarket runs 5-minute "Bitcoin Up or Down" markets. The underlying answer lives on the spot exchanges in real time — so when BTC moves sharply mid-window, Polymarket's odds lag for seconds to a minute. This panel watches both feeds: it computes the <b>fair probability</b> that the candle closes UP (from Binance's live price, the candle open, time remaining, and recent volatility) and compares it to Polymarket's price. A gap ≥ 6 points = the lead. Every signal is <b>paper-logged and settled against the real candle close</b>, so the scoreboard below measures whether this edge actually exists — before anyone risks a cent on it.</div>
+  <div id="btc5Panel" style="background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px 18px;margin-bottom:18px">
+    <div class="empty">Connecting to Binance & Polymarket…</div>
+  </div>
+
+  <div class="section-h">Locked-profit scanner</div>
   <div id="arbList" class="sig-grid"><div class="loading"><span class="spinner"></span>Scanning for mispricings…</div></div>
   <div class="mini-note" style="margin-top:18px;line-height:1.7">
     Honest caveats: edges are computed from listed prices, not full order-book depth — a 3% edge on $200 of depth is real but tiny, and big edges usually vanish in seconds to faster bots. Multi-outcome math assumes the event's outcomes are mutually exclusive and exhaustive (the scanner prefers events Polymarket flags as such, but always sanity-check the market rules — "other/none of the above" gaps break the math). Locked profit is also locked capital until resolution. Treat this page as a research surface, not an execution promise.
@@ -1918,6 +1925,121 @@ const Cx={
     this.timer=setInterval(()=>{ if($('page-cx').classList.contains('active')) this.tick(); },5000);
   }
 };
+
+/* ============ BTC 5-min lead: Binance vs Polymarket ============ */
+const Btc5={
+  tmr:null, spot:null, candleOpen:null, candleStart:null, vol1m:null,
+  market:null, log:store.get('eb_btc5')||[], lastSignalWin:null,
+
+  start(){ if(this.tmr)return; this.tick(); this.tmr=setInterval(()=>this.tick(),4000); },
+  stop(){ clearInterval(this.tmr); this.tmr=null; },
+
+  async tick(){
+    try{
+      /* Binance: live price + current 5m candle + 1m vol (refresh candle/vol on window change) */
+      const winStart=Math.floor(Date.now()/300000)*300000;
+      const newWin=winStart!==this.candleStart;
+      const [px,kl]=await Promise.all([
+        jget('https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT',5000),
+        newWin?jget('https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1m&limit=31',6000):Promise.resolve(null)
+      ]);
+      this.spot=Number(px.price);
+      if(newWin){
+        const k5=await jget(`https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=5m&startTime=${winStart}&limit=1`,6000);
+        this.candleOpen=Number(k5[0][1]); this.candleStart=winStart;
+        if(kl){const cl=kl.map(k=>Number(k[4]));const rets=[];for(let i=1;i<cl.length;i++)rets.push(Math.log(cl[i]/cl[i-1]));
+          const mu=rets.reduce((a,b)=>a+b,0)/rets.length;
+          this.vol1m=Math.sqrt(rets.reduce((a,b)=>a+(b-mu)**2,0)/rets.length)||1e-5;}
+        this.market=null; /* force market rediscovery for new window */
+        this.settleOld();
+      }
+      /* Polymarket: find the live Up-or-Down market for this window */
+      if(!this.market&&LIVE){
+        const evs=await jget(`${GAMMA}/events?closed=false&active=true&order=endDate&ascending=true&limit=60`,7000);
+        const ev=(evs||[]).find(e=>/bitcoin up or down/i.test(e.title||'')&&new Date(e.endDate||0).getTime()>Date.now());
+        if(ev&&ev.markets&&ev.markets[0]){
+          const m=ev.markets[0];
+          let prices=[],outs=[];
+          try{prices=JSON.parse(m.outcomePrices||'[]').map(Number);outs=JSON.parse(m.outcomes||'[]');}catch(e){}
+          const ui=outs.findIndex(o=>/up/i.test(o));
+          this.market={title:ev.title,slug:ev.slug,up:prices[ui<0?0:ui]||0,end:new Date(ev.endDate).getTime(),mid:m};
+        }
+      } else if(this.market&&LIVE){
+        /* cheap refresh of just the price */
+        try{const mm=await jget(`${GAMMA}/markets/${this.market.mid.id}`,5000);
+          const prices=JSON.parse(mm.outcomePrices||'[]').map(Number);const outs=JSON.parse(mm.outcomes||'[]');
+          const ui=outs.findIndex(o=>/up/i.test(o)); this.market.up=prices[ui<0?0:ui]||this.market.up;}catch(e){}
+      }
+      this.evaluate(); this.render();
+    }catch(e){ $('btc5Panel').innerHTML='<div class="empty">Feed error: '+esc(e.message)+' — retrying…</div>'; }
+  },
+
+  fairP(){
+    if(!this.spot||!this.candleOpen||!this.vol1m)return null;
+    const tau=Math.max(.05,(this.candleStart+300000-Date.now())/60000);
+    const z=Math.log(this.spot/this.candleOpen)/(this.vol1m*Math.sqrt(tau));
+    return 0.5*(1+erf(z/Math.SQRT2));
+  },
+
+  evaluate(){
+    const f=this.fairP(); if(f==null||!this.market)return;
+    const mkt=this.market.up; if(!(mkt>0.02&&mkt<0.98))return;
+    const edge=(f-mkt)*100;
+    const secsLeft=(this.candleStart+300000-Date.now())/1000;
+    /* log at most one signal per window, only with >=6pt edge and 20s+ left */
+    if(Math.abs(edge)>=6&&secsLeft>20&&this.lastSignalWin!==this.candleStart){
+      this.lastSignalWin=this.candleStart;
+      this.log.push({win:this.candleStart,side:edge>0?'UP':'DOWN',mkt:edge>0?mkt:1-mkt,fair:edge>0?f:1-f,
+        edge:+Math.abs(edge).toFixed(1),ts:Date.now(),resolved:false,won:null});
+      this.log=this.log.slice(-200); store.set('eb_btc5',this.log);
+    }
+  },
+
+  async settleOld(){
+    const open=this.log.filter(l=>!l.resolved&&l.win+300000<Date.now()-15000);
+    for(const l of open.slice(0,5)){
+      try{
+        const k=await jget(`https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=5m&startTime=${l.win}&limit=1`,6000);
+        if(k&&k[0]){
+          const up=Number(k[0][4])>=Number(k[0][1]);
+          l.resolved=true; l.won=(l.side==='UP')===up;
+        }
+      }catch(e){}
+    }
+    store.set('eb_btc5',this.log);
+  },
+
+  render(){
+    const f=this.fairP();
+    const move=this.spot&&this.candleOpen?((this.spot-this.candleOpen)/this.candleOpen)*100:null;
+    const secs=this.candleStart?Math.max(0,Math.round((this.candleStart+300000-Date.now())/1000)):null;
+    const settled=this.log.filter(l=>l.resolved);
+    const wins=settled.filter(l=>l.won);
+    const pnl=settled.reduce((s,l)=>s+(l.won?10*(1-l.mkt)/l.mkt:-10),0);
+    const edge=f!=null&&this.market?(f-this.market.up)*100:null;
+    const sig=edge!=null&&Math.abs(edge)>=6;
+    $('btc5Panel').innerHTML=`
+      <div class="stat-row" style="margin-bottom:12px">
+        <div class="stat-card"><div class="lbl">Binance BTC (live)</div><div class="val">${this.spot?'$'+this.spot.toLocaleString(undefined,{maximumFractionDigits:0}):'—'}</div><div class="sub">candle open $${this.candleOpen?this.candleOpen.toLocaleString(undefined,{maximumFractionDigits:0}):'—'} · ${move!=null?(move>=0?'+':'')+move.toFixed(3)+'% this window':''}</div></div>
+        <div class="stat-card"><div class="lbl">Window closes in</div><div class="val">${secs!=null?Math.floor(secs/60)+':'+String(secs%60).padStart(2,'0'):'—'}</div><div class="sub">5-minute candle</div></div>
+        <div class="stat-card"><div class="lbl">Fair P(UP) from Binance</div><div class="val">${f!=null?Math.round(f*100)+'%':'—'}</div><div class="sub">price position + vol + time left</div></div>
+        <div class="stat-card"><div class="lbl">Polymarket P(UP)</div><div class="val">${this.market?Math.round(this.market.up*100)+'%':'—'}</div><div class="sub">${this.market?esc(this.market.title.slice(0,34)):'finding live market…'}</div></div>
+      </div>
+      ${edge!=null?`<div style="background:${sig?'var(--yes-soft)':'var(--surface2)'};border:1px solid ${sig?'rgba(61,220,151,.3)':'var(--border-soft)'};border-radius:11px;padding:12px 14px;margin-bottom:12px">
+        <div style="font-family:var(--mono);font-size:14px;font-weight:600;color:${sig?'var(--yes)':'var(--muted)'}">
+          ${sig?('⚡ LEAD DETECTED: Binance implies '+Math.round((edge>0?f:1-f)*100)+'% '+(edge>0?'UP':'DOWN')+' — Polymarket prices it '+Math.round((edge>0?this.market.up:1-this.market.up)*100)+'¢ ('+Math.abs(edge).toFixed(1)+' pts cheap)'):'No lead right now — Polymarket is tracking Binance within '+Math.abs(edge).toFixed(1)+' pts'}
+        </div>
+        ${sig?'<div style="font-size:11.5px;color:var(--muted);margin-top:4px">The exchange already moved; the odds haven\'t caught up. Logged to the scoreboard — settlement against the real candle close decides if the lead was real.</div>':''}
+      </div>`:''}
+      <div style="font-family:var(--mono);font-size:11.5px;color:var(--muted)">
+        📒 Paper scoreboard: <b style="color:var(--text)">${this.log.length}</b> signals logged · <b style="color:var(--text)">${settled.length}</b> settled · hit rate <b style="color:${settled.length&&wins.length/settled.length>=.55?'var(--yes)':'var(--text)'}">${settled.length?Math.round(wins.length/settled.length*100)+'%':'—'}</b> · simulated P&L at $10 flat: <b style="color:${pnl>=0?'var(--yes)':'var(--no)'}">${pnl>=0?'+':''}$${pnl.toFixed(2)}</b>
+      </div>
+      <div class="mini-note" style="margin-top:8px">Honest caveats: Polymarket prices here refresh on a few-second delay, real snipers use websockets and still fight for fills; Polymarket resolves on the Pyth feed which can differ from Binance by a hair; and a detected lead doesn't mean an order would fill at that price. The scoreboard exists to measure whether the lead survives those frictions on paper first.</div>`;
+  }
+};
+function erf(x){const s=x<0?-1:1;x=Math.abs(x);const t=1/(1+.3275911*x);
+  const y=1-(((((1.061405429*t-1.453152027)*t)+1.421413741)*t-.284496736)*t+.254829592)*t*Math.exp(-x*x);
+  return s*y;}
 
 /* wire scanner into tab switching */
 const _origShowPage=showPage;

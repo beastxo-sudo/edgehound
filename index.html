@@ -1211,9 +1211,14 @@ const Bot={
     /* status strip */
     const istToday=new Date(Date.now()+5.5*3600*1000).toISOString().slice(0,10);
     const todayN=(s.journal||[]).filter(t=>t.date===istToday).length;
+    const integ=s.integrity;
     $('ovStatus').innerHTML=
       `<span class="status-pill ${alive?'live':'demo'}"><span class="dot"></span><span>${alive?'EDGEHOUND IS RUNNING':'EDGEHOUND '+(last===null?'WAITING FOR FIRST RUN':'DELAYED — last run '+last+'m ago')}</span></span>`+
-      `<span style="font-family:var(--mono);font-size:11.5px;color:var(--muted)">${last!==null?'last scan '+last+'m ago · ':''}scans every 15 min · ${todayN} trades today (target 10–20)</span>`;
+      (integ?(integ.ok
+        ?`<span class="status-pill live" title="Every trade and the bankroll re-verified against hard invariants on every run"><span class="dot"></span><span>✓ LEDGER VERIFIED (${integ.tradesChecked} trades)</span></span>`
+        :`<span class="status-pill" style="color:var(--no);border-color:var(--no)"><span class="dot" style="background:var(--no)"></span><span>🛑 DATA INTEGRITY FAILURE — TRADING FROZEN</span></span>`):'')+
+      `<span style="font-family:var(--mono);font-size:11.5px;color:var(--muted)">${last!==null?'last scan '+last+'m ago · ':''}scans every 15 min · ${todayN} trades today (target 10–20)</span>`+
+      (integ&&!integ.ok?`<div style="width:100%;color:var(--no);font-size:12px;margin-top:6px">${(integ.errors||[]).slice(0,3).map(esc).join(' · ')}</div>`:'');
     const ret=sm.returnPct;
     $('ovStats').innerHTML=`
       <div class="stat-card"><div class="lbl">Bankroll equity</div><div class="val">$${(sm.equity??10000).toLocaleString()}</div><div class="sub">started at $${(sm.bankStart??10000).toLocaleString()}</div></div>
@@ -1540,16 +1545,18 @@ const Bot={
         <td><span class="num">${s.weight.toFixed(2)}×</span><div class="roi-bar"><i style="width:${s.weight/2.2*100}%"></i></div></td></tr>`;
     }).join('');
 
+    const sanePnl=(t,p)=>{const mx=t.stake*((1/Math.max(.001,t.entry))-1)+1; return (p>mx||p<-t.stake-1)?null:p;};
     $('openCount').textContent=open.length+' positions · '+fmtUSD(open.reduce((s,t)=>s+t.stake,0))+' at work';
     $('openBody').innerHTML=open.map(t=>{
-      const cur=t.cur??t.entry, pnl=(t.stake/t.entry)*(cur-t.entry), pp=((cur-t.entry)/t.entry)*100;
+      const cur=t.cur??t.entry; let pnl=(t.stake/t.entry)*(cur-t.entry); const pp=((cur-t.entry)/t.entry)*100;
+      const bad=sanePnl(t,pnl)===null; if(bad)pnl=0;
       const plan=[t.target?`target +${(t.target*100).toFixed(0)}%`:'hold to resolution',`stop −${(t.stop*100).toFixed(0)}%`,
         isFinite(t.holdUntil)?`out by ${new Date(t.holdUntil).toLocaleDateString(undefined,{month:'short',day:'numeric'})}`:''].filter(Boolean).join(' · ');
       return `<tr><td style="max-width:240px">${esc(t.title)}</td>
         <td><span class="side-tag ${t.side==='YES'?'y':'n'}">${t.side}</span></td>
         <td style="max-width:300px"><b style="font-size:12px">${STRATS[t.signal].label}</b><div style="color:var(--muted);font-size:11.5px">${esc(t.insight)}</div></td>
         <td class="num">${cents(t.entry)}</td><td class="num">${cents(cur)}</td><td class="num">$${t.stake}</td>
-        <td class="num ${pnl>=0?'pos':'neg'}">${pnl>=0?'+':''}$${pnl.toFixed(0)} (${pp>=0?'+':''}${pp.toFixed(0)}%)</td>
+        <td class="num ${pnl>=0?'pos':'neg'}">${bad?'<span style="color:var(--no)">⚠ data error</span>':(pnl>=0?'+':'')+'$'+pnl.toFixed(0)+' ('+(pp>=0?'+':'')+pp.toFixed(0)+'%)'}</td>
         <td style="font-size:11px;color:var(--muted)">${plan}</td></tr>`;
     }).join('')||'<tr><td colspan="8"><div class="empty">No open positions — next scan will hunt for entries.</div></td></tr>';
 
@@ -1561,7 +1568,7 @@ const Bot={
       <td style="font-size:12px">${STRATS[t.signal].label}</td>
       <td class="num">${cents(t.entry)} → ${cents(t.exit)}</td>
       <td class="num">$${t.stake}</td>
-      <td class="num ${t.pnl>=0?'pos':'neg'}">${t.pnl>=0?'+':''}$${t.pnl.toFixed(0)}</td>
+      <td class="num ${t.pnl>=0?'pos':'neg'}">${sanePnl(t,t.pnl)===null?'<span style="color:var(--no)">⚠ data error</span>':(t.pnl>=0?'+':'')+'$'+t.pnl.toFixed(0)}</td>
       <td style="font-size:11px;color:var(--muted)">${esc(t.exitReason)}</td></tr>`).join('')||'<tr><td colspan="8"><div class="empty">No settled trades yet.</div></td></tr>';
 
     /* equity curve */

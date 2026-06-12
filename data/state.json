@@ -99,7 +99,7 @@
    "slug": "us-x-iran-permanent-peace-deal-by",
    "side": "YES",
    "entry": 0.765,
-   "cur": 0.745,
+   "cur": 0.735,
    "stake": 100,
    "signal": "MOMENTUM",
    "p": 0.576,
@@ -823,7 +823,7 @@
    "slug": "2026-nba-champion",
    "side": "YES",
    "entry": 0.8215,
-   "cur": 0.815,
+   "cur": 0.813,
    "stake": 200,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -865,7 +865,7 @@
    "slug": "2026-nba-champion",
    "side": "NO",
    "entry": 0.8175,
-   "cur": 0.8185,
+   "cur": 0.8115,
    "stake": 800,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -1081,7 +1081,7 @@
      75
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/4L (posterior 50%, 90% CI 25-75%) — collecting evidence",
-    "updated": "2026-06-12T07:30:52.532Z"
+    "updated": "2026-06-12T07:45:39.384Z"
    }
   ]
  },
@@ -1098,14 +1098,14 @@
   "staked": 9150,
   "bankStart": 10000,
   "cash": 4896,
-  "equity": 8610,
-  "returnPct": -13.9,
+  "equity": 8601,
+  "returnPct": -13.99,
   "modelUpdates": 14,
   "brier": 0.314,
   "hypotheses": 1,
-  "updated": "2026-06-12T07:30:52.534Z"
+  "updated": "2026-06-12T07:45:39.386Z"
  },
- "lastRun": 1781249452534,
+ "lastRun": 1781250339386,
  "elite": {
   "updated": 1781199062938,
   "list": [

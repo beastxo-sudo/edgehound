@@ -295,6 +295,10 @@ footer{max-width:1280px;margin:0 auto;padding:0 24px 40px;color:var(--faint);fon
   <div class="help-tip"><b>What this is:</b> a vetted smart-money radar. First we filter the leaderboard down to <b>elite wallets only</b> — ≥62% win rate over 15+ settled positions, with settlement-scalpers and bots excluded (a 98% win rate farming 2¢ spreads is a trap, not a signal). Then three signal tiers: <b>⚡ Fresh buys</b> (an elite wallet just entered — the strongest, most time-sensitive signal), <b>★ Consensus</b> (2+ elite wallets on the same side), and <b>💪 Big conviction</b> ($10K+ single positions). Every card gets a <b>copy grade</b>: A = price still at their entry, B = slightly late, C = the move already happened.</div>
   <div id="sigStatus" class="loading"><span class="spinner"></span>Scanning top wallets…</div>
   <div class="sig-grid" id="sigGrid"></div>
+
+  <div class="section-h" style="margin-top:30px">🎲 Longshot Lab <small>high risk · asymmetric payout · most of these lose</small></div>
+  <div class="help-tip">These are NOT safe bets — they're cheap outcomes (usually under 35¢) where one historical pattern justifies a small punt: either <b>elite accumulation</b> (vetted winning wallets quietly buying a cheap side — the documented signature of informed money is entering at 25–30¢ what later trades at 40¢+) or <b>ignition</b> (a cheap outcome repricing fast on real volume — early innings of a developing story). The honest math: expect most to lose; the hypothesis is that the winners' 3–8x payouts outweigh the losers. Size accordingly — think ≤1% of bankroll per punt, never more.</div>
+  <div class="sig-grid" id="sigGrid2"><div class="empty">Longshot signals appear when the patterns fire.</div></div>
 </section>
 
 <!-- ================= EDGEHOUND BOT ================= -->
@@ -810,12 +814,13 @@ function closeWallet(){$('walletDetail').style.display='none';$('smartList').sty
 /* ---------------- copy signals ---------------- */
 async function loadSignals(){
   $('sigStatus').style.display='flex'; $('sigGrid').innerHTML='';
-  let signals=[];
+  let signals=[],longshots=[];
   if(LIVE){
-    try{ signals=await buildSmartSignals(); }catch(e){ signals=[]; }
+    try{ const r=await buildSmartSignals(); signals=r.signals||[]; longshots=r.longshots||[]; }catch(e){ signals=[];longshots=[]; }
   } else {
-    signals=DEMO_SMART_SIGNALS;
+    signals=DEMO_SMART_SIGNALS; longshots=DEMO_LONGSHOTS;
   }
+  renderLongshots(longshots);
   /* keep the bot's local-mode consensus feed alive (compat shape) */
   window.__lastSignals=signals.filter(s=>s.type==='CONSENSUS').map(s=>({
     title:s.title,outcome:s.outcome,slug:s.slug,n:s.n||2,value:s.value||0,
@@ -935,12 +940,77 @@ async function buildSmartSignals(){
         score:3.5-Math.min(1.5,ageH/16)+w.winRate});
     });
   });
+  /* --- longshot lab: tier L1 elite accumulation of cheap outcomes --- */
+  const longs=[];
+  posRes.forEach((r,i)=>{
+    if(r.status!=='fulfilled'||!Array.isArray(r.value))return;
+    const w=pool[i];
+    r.value.filter(p=>!p.redeemable&&(Number(p.avgPrice)||1)<=0.35&&Number(p.currentValue)>=2000&&(Number(p.curPrice)||0)>0.02&&(Number(p.curPrice)||1)<0.55).forEach(p=>{
+      const avg=Number(p.avgPrice)||0,cur=Number(p.curPrice)||0,val=Number(p.currentValue)||0;
+      longs.push({type:'ELITE_LONGSHOT',title:p.title,outcome:p.outcome,slug:p.eventSlug||'',
+        entry:avg,cur,value:val,mult:cur>0?1/cur:0,
+        who:cred(w),
+        hypothesis:`${w.name} (${Math.round(w.winRate*100)}% win rate) has $${Math.round(val/1000)}K on this at avg ${cents(avg)}${cur>avg*1.05?' — and the market is already moving their way ('+cents(cur)+' now)':' — entered before consensus, classic informed-accumulation shape'}. Historically, elite wallets' cheap entries are their highest-edge trades.`,
+        score:1+w.winRate+Math.min(1,val/3e4)});
+    });
+  });
+  /* --- tier L2: ignition — cheap outcome repricing fast on volume --- */
+  (typeof MARKETS!=='undefined'?MARKETS:[]).forEach(m=>{
+    const sides=[['Yes',m.yes,m.chg],['No',m.no,-m.chg]];
+    sides.forEach(([out,p,d])=>{
+      if(p>0.04&&p<=0.30&&d>=0.05&&m.vol24>=100000){
+        longs.push({type:'IGNITION',title:m.q,outcome:out,slug:m.eventSlug||m.slug||'',
+          entry:p,cur:p,value:m.vol24,mult:1/p,
+          who:'Market signal — no single wallet',
+          hypothesis:`This side has jumped ${(d*100).toFixed(1)} points in 24h on ${fmtUSD(m.vol24)} of volume while still cheap at ${cents(p)}. Cheap outcomes that reprice fast on heavy volume are often the first leg of a developing story — the bet is the story keeps developing. Payout ${(1/p).toFixed(1)}x if it completes.`,
+          score:0.8+d*4+Math.min(.5,m.vol24/3e6)});
+      }
+    });
+  });
+  const lseen={};
+  const longshots=longs.sort((a,b)=>b.score-a.score).filter(s=>{
+    const k=s.title+'|'+s.outcome; if(lseen[k])return false; lseen[k]=1; return true;
+  }).slice(0,8);
+
   /* dedupe (same market+side keeps highest score) and rank */
   const seen={};
-  return sigs.sort((a,b)=>b.score-a.score).filter(s=>{
+  const signals=sigs.sort((a,b)=>b.score-a.score).filter(s=>{
     const k=s.title+'|'+s.outcome+'|'+s.type; if(seen[k])return false; seen[k]=1; return true;
   });
+  return {signals,longshots};
 }
+function renderLongshots(longs){
+  const box=$('sigGrid2'); if(!box)return;
+  if(!longs.length){ box.innerHTML='<div class="empty">No longshot patterns firing right now — elite wallets aren\'t accumulating anything cheap, and nothing cheap is repricing on volume.</div>'; return; }
+  box.innerHTML=longs.map(s=>{
+    const sideY=/yes/i.test(s.outcome);
+    const chip=s.type==='ELITE_LONGSHOT'?'🧠 ELITE ACCUMULATION':'🔥 IGNITION';
+    return `<div class="sig-card" style="border-color:rgba(245,181,68,.35)">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+        <span class="consensus" style="background:var(--amber-soft);color:var(--amber)">${chip}</span>
+        <span class="vol-flag">HIGH RISK</span>
+      </div>
+      <div class="q">${esc(s.title)}</div>
+      <div><span class="side-tag ${sideY?'y':'n'}">${esc((s.outcome||'').toUpperCase())}</span></div>
+      <div class="sig-stats">
+        <div class="cell"><div class="l">Price</div><div class="v">${cents(s.cur||s.entry)}</div></div>
+        <div class="cell"><div class="l">Pays if right</div><div class="v" style="color:var(--amber)">${s.mult?s.mult.toFixed(1)+'x':'—'}</div></div>
+        <div class="cell"><div class="l">${s.type==='ELITE_LONGSHOT'?'Elite stake':'24h volume'}</div><div class="v">${fmtUSD(s.value)}</div></div>
+      </div>
+      <div class="holders-line"><b style="color:var(--text)">${esc(s.who)}</b></div>
+      <div class="holders-line">💡 ${esc(s.hypothesis)}</div>
+      <div class="holders-line" style="color:var(--no)">⚠ Implied odds say this loses ${Math.round((1-(s.cur||s.entry))*100)}% of the time — punt-sized stakes only.</div>
+      <div class="actions" style="display:flex;gap:8px">
+        <a class="btn" target="_blank" rel="noopener" href="https://news.google.com/search?q=${encodeURIComponent(s.title)}">📰 News</a>
+        <a class="btn primary" target="_blank" rel="noopener" href="https://polymarket.com/event/${esc(s.slug||'')}">Trade ↗</a>
+      </div>
+    </div>`;
+  }).join('');
+}
+const DEMO_LONGSHOTS=[
+  {type:'ELITE_LONGSHOT',title:'Will OpenAI release GPT-6 before September 2026?',outcome:'Yes',slug:'',entry:.21,cur:.27,value:18000,mult:3.7,who:'gauchito — 64% win rate over 88 settled positions',hypothesis:'gauchito (64% win rate) has $18K on this at avg 21¢ — and the market is already moving their way (27¢ now). Historically, elite wallets\' cheap entries are their highest-edge trades.'},
+  {type:'IGNITION',title:'Will there be a US TikTok divest-or-ban enforcement before October?',outcome:'Yes',slug:'',entry:.18,cur:.18,value:860000,mult:5.6,who:'Market signal — no single wallet',hypothesis:'This side has jumped 6.4 points in 24h on $860.0K of volume while still cheap at 18¢. Cheap outcomes that reprice fast on heavy volume are often the first leg of a developing story. Payout 5.6x if it completes.'}
+];
 const DEMO_SMART_SIGNALS=[
   {type:'FRESH_BUY',title:'Will the Fed cut rates at the July FOMC meeting?',outcome:'Yes',slug:'',entry:.58,cur:.59,value:14000,fresh:'22 min ago',who:'FedWatcherPro — 71% win rate over 64 settled positions',score:4},
   {type:'CONSENSUS',title:'Will US CPI (YoY) come in below 2.5% for June?',outcome:'Yes',slug:'',entry:.52,cur:.55,value:96000,n:3,wallets:['FedWatcherPro','macro_anon','quietsize'],who:'3 elite wallets aligned: FedWatcherPro (71%), macro_anon (66%), quietsize (64%)',score:3.4},

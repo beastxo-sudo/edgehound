@@ -109,7 +109,7 @@
    "slug": "trump-announces-us-blockade-of-hormuz-lifted-by",
    "side": "YES",
    "entry": 0.655,
-   "cur": 0.645,
+   "cur": 0.655,
    "stake": 250,
    "signal": "MOMENTUM",
    "p": 0.542,
@@ -151,7 +151,7 @@
    "slug": "spacex-ipo-closing-market-cap-above",
    "side": "YES",
    "entry": 0.745,
-   "cur": 0.765,
+   "cur": 0.775,
    "stake": 250,
    "signal": "MOMENTUM",
    "p": 0.546,
@@ -193,7 +193,7 @@
    "slug": "us-x-iran-permanent-peace-deal-by",
    "side": "YES",
    "entry": 0.1615,
-   "cur": 0.1515,
+   "cur": 0.149,
    "stake": 150,
    "signal": "MOMENTUM",
    "p": 0.521,
@@ -281,7 +281,7 @@
    "slug": "us-announces-new-iran-agreementceasefire-extension-by",
    "side": "YES",
    "entry": 0.81,
-   "cur": 0.755,
+   "cur": 0.75,
    "stake": 100,
    "signal": "MOMENTUM",
    "p": 0.571,
@@ -323,7 +323,7 @@
    "slug": "us-x-iran-permanent-peace-deal-by",
    "side": "YES",
    "entry": 0.765,
-   "cur": 0.765,
+   "cur": 0.755,
    "stake": 100,
    "signal": "MOMENTUM",
    "p": 0.576,
@@ -1051,7 +1051,7 @@
    "slug": "2026-nba-champion",
    "side": "YES",
    "entry": 0.8215,
-   "cur": 0.812,
+   "cur": 0.8135,
    "stake": 200,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -1093,7 +1093,7 @@
    "slug": "2026-nba-champion",
    "side": "NO",
    "entry": 0.8175,
-   "cur": 0.8105,
+   "cur": 0.812,
    "stake": 800,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -1326,7 +1326,7 @@
      75
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/4L (posterior 50%, 90% CI 25-75%) — collecting evidence",
-    "updated": "2026-06-12T11:15:43.764Z"
+    "updated": "2026-06-12T11:30:53.393Z"
    }
   ]
  },
@@ -1343,14 +1343,14 @@
   "staked": 11200,
   "bankStart": 10000,
   "cash": 84729,
-  "equity": 88329,
-  "returnPct": 783.29,
+  "equity": 88334,
+  "returnPct": 783.34,
   "modelUpdates": 17,
   "brier": 0.303,
   "hypotheses": 1,
-  "updated": "2026-06-12T11:15:43.768Z"
+  "updated": "2026-06-12T11:30:53.395Z"
  },
- "lastRun": 1781262943769,
+ "lastRun": 1781263853395,
  "elite": {
   "updated": 1781199062938,
   "list": [

@@ -24,6 +24,7 @@ const path = require('node:path');
 const GAMMA = 'https://gamma-api.polymarket.com';
 const DATA  = 'https://data-api.polymarket.com';
 const STATE_FILE = path.join(__dirname, 'data', 'state.json');
+const BACKUP_FILE = path.join(__dirname, 'data', 'state.backup.json');
 const CONFIG_FILE = path.join(__dirname, 'config.json');
 /* Tunable parameters — adjustable by the AI Analyst within hard rails */
 let CFG={engines:{SHORT_FAVORITE:true,MOMENTUM:true,SMART_CONSENSUS:true,VOLUME_SPIKE:true,ELITE_FOLLOW:true},pMin:0.56,kellyMult:0.25,maxExposure:0.6,maxEventExposure:1000};
@@ -148,9 +149,9 @@ function freshBrain(){
     hypotheses: []
   };
 }
-function loadState(){
-  let s=null; try{ s=JSON.parse(fs.readFileSync(STATE_FILE,'utf8')); }catch(e){}
+function normalizeState(s){
   s = s || { running:true, journal:[], strat:{}, created:Date.now(), log:[] };
+  s.journal=s.journal||[]; s.log=s.log||[]; s.strat=s.strat||{};
   for(const k of SIGNAL_KEYS) s.strat[k]=s.strat[k]||{trades:0,wins:0,pnl:0,weight:1};
   if(!s.brain) s.brain=freshBrain();
   if(!Array.isArray(s.brain.w)||s.brain.w.length!==FEATURE_NAMES.length){ s.brain.w=new Array(FEATURE_NAMES.length).fill(0); s.brain.b=0; }
@@ -160,9 +161,13 @@ function loadState(){
   for(const k of SIGNAL_KEYS) s.brain.payoff[k]=s.brain.payoff[k]||{wSum:0,wN:0,lSum:0,lN:0};
   if(!s.bank){
     s.bank={ start:BANKROLL_START, cash:BANKROLL_START, created:Date.now() };
-    s.journal.filter(t=>t.status==='open').forEach(t=>{ s.bank.cash-=t.stake; }); /* migrate v1 open trades */
+    s.journal.filter(t=>t.status==='open').forEach(t=>{ s.bank.cash-=t.stake; });
   }
   return s;
+}
+function loadState(){
+  let s=null; try{ s=JSON.parse(fs.readFileSync(STATE_FILE,'utf8')); }catch(e){}
+  return normalizeState(s);
 }
 function saveState(s){
   fs.mkdirSync(path.dirname(STATE_FILE),{recursive:true});
@@ -342,6 +347,51 @@ async function fetchEliteSignals(elite,markets){
   return out.filter(c=>{ const k=c.m.q+'|'+c.side; if(seen[k])return false; seen[k]=1; return true; });
 }
 
+/* ============ data integrity ============
+   Every run, the entire ledger is re-verified against hard invariants:
+   - every stake within configured bounds; every price within (0,1)
+   - every closed pnl exactly recomputable from stake/entry/exit
+   - no profit beyond the mathematical maximum (stake*(1/entry-1)),
+     no loss beyond the stake
+   - bankroll reconstructs exactly: start + closed pnl - open stakes = cash
+   - engine stats match the journal; no duplicate trade ids
+   On failure: trading freezes, last verified-good backup is restored if
+   clean, the run fails loudly, and the dashboard shows a red alert. */
+function verifyIntegrity(state){
+  const errs=[]; const ids=new Set();
+  let sumClosed=0, sumOpenStake=0;
+  (state.journal||[]).forEach(t=>{
+    const tag=(t.title||t.id||'?').slice(0,38);
+    if(ids.has(t.id)) errs.push('duplicate trade id on "'+tag+'"'); ids.add(t.id);
+    if(!(t.stake>=STAKE_MIN&&t.stake<=STAKE_MAX)) errs.push(`stake $${t.stake} outside $${STAKE_MIN}-$${STAKE_MAX} on "${tag}"`);
+    if(!(t.entry>0&&t.entry<1)) errs.push(`entry price ${t.entry} outside (0,1) on "${tag}"`);
+    if(t.status==='open'){
+      sumOpenStake+=t.stake;
+      if(t.cur!=null&&!(t.cur>=0&&t.cur<=1)) errs.push(`current price ${t.cur} outside [0,1] on "${tag}"`);
+    }else{
+      if(!(t.exit>=0&&t.exit<=1)) errs.push(`exit price ${t.exit} outside [0,1] on "${tag}"`);
+      const expect=(t.stake/t.entry)*((t.exit??0)-t.entry);
+      if(Math.abs((t.pnl??0)-expect)>0.05) errs.push(`pnl mismatch on "${tag}": stored ${Number(t.pnl).toFixed(2)}, recomputed ${expect.toFixed(2)}`);
+      const maxWin=t.stake*((1/t.entry)-1)+0.05;
+      if((t.pnl??0)>maxWin) errs.push(`IMPOSSIBLE PROFIT $${Number(t.pnl).toFixed(0)} (max possible $${maxWin.toFixed(0)}) on "${tag}"`);
+      if((t.pnl??0)<-t.stake-0.05) errs.push(`IMPOSSIBLE LOSS beyond stake on "${tag}"`);
+      sumClosed+=t.pnl||0;
+    }
+  });
+  if(state.bank){
+    const expectedCash=state.bank.start+sumClosed-sumOpenStake;
+    if(Math.abs(expectedCash-state.bank.cash)>1)
+      errs.push(`bankroll mismatch: cash $${state.bank.cash.toFixed(2)} but ledger reconstructs $${expectedCash.toFixed(2)}`);
+  }
+  const stratN=Object.values(state.strat||{}).reduce((s,x)=>s+(x.trades||0),0);
+  const closedN=(state.journal||[]).filter(t=>t.status==='closed').length;
+  if(stratN!==closedN) errs.push(`engine stats count ${stratN} != settled trades ${closedN}`);
+  state.integrity={ok:errs.length===0,errors:errs.slice(0,12),checkedAt:new Date().toISOString(),tradesChecked:(state.journal||[]).length};
+  return state.integrity;
+}
+function loadBackup(){ try{ return JSON.parse(fs.readFileSync(BACKUP_FILE,'utf8')); }catch(e){ return null; } }
+function writeBackup(state){ try{ fs.writeFileSync(BACKUP_FILE,JSON.stringify(state)); }catch(e){ log('backup write failed: '+e.message); } }
+
 /* ============ exits & settlement ============ */
 async function catchUp(state,markets){
   const open=state.journal.filter(t=>t.status==='open');
@@ -448,6 +498,7 @@ function topDrivers(brain,c){
 }
 
 function scan(state,markets,consensus,eliteCands){
+  if(state.integrity&&state.integrity.ok===false){ log('INTEGRITY FREEZE — no new trades while the ledger fails verification.'); return; }
   const brain=state.brain;
   const open=state.journal.filter(t=>t.status==='open');
   const equity=state.bank.cash+open.reduce((s,t)=>s+t.stake,0);
@@ -521,8 +572,25 @@ function scan(state,markets,consensus,eliteCands){
 
 /* ============ main ============ */
 (async()=>{
-  const state=loadState();
-  log(`EdgeHound v2 starting. Journal: ${state.journal.length} trades. Cash: $${state.bank.cash.toFixed(0)}. Model updates: ${state.brain.nUpdates}.`);
+  let state=loadState();
+  /* --- integrity gate (pre-run) --- */
+  let pre=verifyIntegrity(state);
+  if(!pre.ok){
+    log('PRE-RUN INTEGRITY FAILURE: '+pre.errors.join(' | '));
+    const backup=loadBackup();
+    if(backup&&verifyIntegrity(backup).ok){
+      state=normalizeState(backup);
+      note(state,'⛑ Integrity failure detected in ledger — restored last verified-good backup. Errors were: '+pre.errors.slice(0,3).join('; '));
+      pre=verifyIntegrity(state);
+    } else {
+      note(state,'🛑 INTEGRITY FAILURE — trading frozen. Errors: '+pre.errors.slice(0,3).join('; '));
+      saveState(state);
+      process.exit(0); /* commit the evidence; the verify workflow step will fail the run loudly */
+    }
+  }
+  writeBackup(state); /* this state is verified good — it becomes the restore point */
+  const preSnapshot=JSON.stringify(state);
+  log(`EdgeHound v2 starting. Journal: ${state.journal.length} trades. Cash: $${state.bank.cash.toFixed(0)}. Model updates: ${state.brain.nUpdates}. Integrity: OK (${pre.tradesChecked} trades verified).`);
   log(`Config: pMin=${CFG.pMin} kelly=${CFG.kellyMult} maxExp=${CFG.maxExposure} eventCap=$${CFG.maxEventExposure} engines=${Object.entries(CFG.engines).filter(([k,v])=>v).map(([k])=>k).join(',')}`);
   let markets=[];
   try{ markets=await fetchMarkets(); log(`Fetched ${markets.length} markets.`); }
@@ -547,8 +615,17 @@ function scan(state,markets,consensus,eliteCands){
     modelUpdates:state.brain.nUpdates,
     brier:state.brain.brier.n?+(state.brain.brier.sum/state.brain.brier.n).toFixed(3):null,
     hypotheses:state.brain.hypotheses.length,
+    integrityOk:state.integrity?state.integrity.ok:null,
     updated:new Date().toISOString()
   };
+  /* --- integrity gate (post-run): if this run itself corrupted the ledger, roll back --- */
+  const post=verifyIntegrity(state);
+  if(!post.ok){
+    log('POST-RUN INTEGRITY FAILURE — rolling back this run. Errors: '+post.errors.join(' | '));
+    state=JSON.parse(preSnapshot);
+    verifyIntegrity(state);
+    note(state,'⛑ This run produced inconsistent data and was rolled back automatically. Errors: '+post.errors.slice(0,3).join('; '));
+  }
   saveState(state);
   log(`Run done. Equity $${state.summary.equity} (${state.summary.returnPct>=0?'+':''}${state.summary.returnPct}%). Hypotheses: ${state.summary.hypotheses}. Brier: ${state.summary.brier??'n/a'}.`);
 })();

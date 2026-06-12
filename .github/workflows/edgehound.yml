@@ -53,3 +53,30 @@ jobs:
           console.log('Ledger integrity OK —',(s.integrity&&s.integrity.tradesChecked)||0,'trades verified.');
           "
 
+
+  sniper:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    concurrency:
+      group: sniper-lab
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+      - name: Run Sniper Lab (last-5s hypothesis)
+        run: node sniper.js
+      - name: Commit lab results
+        run: |
+          git config user.name "edgehound-bot"
+          git config user.email "bot@edgehound"
+          git add data/sniper.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Sniper Lab samples $(date -u +'%Y-%m-%d %H:%M UTC')"
+            for i in 1 2 3 4 5; do
+              git pull --rebase origin ${GITHUB_REF_NAME} || { git rebase --abort 2>/dev/null || true; }
+              if git push; then break; fi
+              echo "push failed, retry $i"; sleep $((i*3))
+            done
+          fi

@@ -57,7 +57,7 @@
    "slug": "us-announces-new-iran-agreementceasefire-extension-by",
    "side": "YES",
    "entry": 0.81,
-   "cur": 0.67,
+   "cur": 0.665,
    "stake": 100,
    "signal": "MOMENTUM",
    "p": 0.571,
@@ -643,7 +643,7 @@
    "slug": "wta-bouzkov-vekic-2026-06-10",
    "side": "NO",
    "entry": 0.495,
-   "cur": 0.485,
+   "cur": 0.48,
    "stake": 800,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -823,7 +823,7 @@
    "slug": "2026-nba-champion",
    "side": "YES",
    "entry": 0.8215,
-   "cur": 0.8035,
+   "cur": 0.7995,
    "stake": 200,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -1081,7 +1081,7 @@
      75
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/4L (posterior 50%, 90% CI 25-75%) — collecting evidence",
-    "updated": "2026-06-12T03:01:03.630Z"
+    "updated": "2026-06-12T03:15:38.356Z"
    }
   ]
  },
@@ -1098,14 +1098,14 @@
   "staked": 9150,
   "bankStart": 10000,
   "cash": 4896,
-  "equity": 8590,
-  "returnPct": -14.1,
+  "equity": 8580,
+  "returnPct": -14.2,
   "modelUpdates": 14,
   "brier": 0.314,
   "hypotheses": 1,
-  "updated": "2026-06-12T03:01:03.632Z"
+  "updated": "2026-06-12T03:15:38.359Z"
  },
- "lastRun": 1781233263632,
+ "lastRun": 1781234138359,
  "elite": {
   "updated": 1781199062938,
   "list": [

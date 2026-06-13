@@ -132,9 +132,46 @@ function titleSim(a,b){
   let inter=0; A.forEach(w=>{if(B.has(w))inter++;});
   return inter/Math.min(A.size,B.size);
 }
+/* ---- topic-cluster correlation ----
+   The Analyst caught two leaks the slug/title checks miss:
+   (1) thematic clusters — "invade Iran", "Hormuz closure", "Iran peace
+       deal" are different slugs AND different titles, yet all ride one
+       real-world situation; a sentiment reversal sinks them together.
+   (2) same multi-market event under per-outcome slugs (NBA Finals: a
+       Knicks market and a Spurs market are one championship).
+   We tag each market with the real-world TOPICS it references (known
+   actors + any salient proper-noun/ticker tokens) and treat positions
+   that share a dominant topic as correlated for exposure purposes. */
+const TOPIC_LEXICON={
+  iran:['iran','irani','tehran','hormuz','khamenei','ayatollah','persian'],
+  israel:['israel','israeli','idf','netanyahu','gaza','hamas','hezbollah'],
+  russia:['russia','russian','putin','kremlin','moscow'],
+  ukraine:['ukraine','ukrainian','zelensky','kyiv','kiev'],
+  china:['china','chinese','beijing','taiwan','xi','taipei'],
+  trump:['trump'], biden:['biden'], fed:['fed','fomc','rate','rates','powell','cpi','inflation'],
+  btc:['bitcoin','btc'], eth:['ethereum','eth'], election:['election','primary','nominee','president'],
+  nba:['nba','playoffs','finals'], nfl:['nfl','superbowl'],
+};
+function marketTopics(title){
+  const toks=titleTokens(title);
+  const topics=new Set();
+  for(const [topic,words] of Object.entries(TOPIC_LEXICON))
+    if(words.some(w=>toks.has(w))) topics.add(topic);
+  /* salient proper-noun fallback: the longest non-stopword token (>=6 chars)
+     lets us cluster recurring named entities not in the lexicon */
+  let longest=''; toks.forEach(w=>{ if(w.length>longest.length) longest=w; });
+  if(longest.length>=6) topics.add('kw:'+longest);
+  return topics;
+}
+function sharedTopic(t1,t2){
+  const A=marketTopics(t1.title??t1.q), B=marketTopics(t2.title??t2.q);
+  for(const x of A) if(B.has(x)) return x;
+  return null;
+}
 function sameEvent(t1,t2){
   if(t1.slug&&t2.slug&&t1.slug===t2.slug) return true;
-  return titleSim(t1.title??t1.q, t2.title??t2.q)>=0.7;
+  if(titleSim(t1.title??t1.q, t2.title??t2.q)>=0.7) return true;
+  return !!sharedTopic(t1,t2);  /* thematic correlation */
 }
 const MAX_EVENT_EXPOSURE = CFG.maxEventExposure; /* from config.json (Analyst-tunable) */
 
@@ -534,9 +571,14 @@ function scan(state,markets,consensus,eliteCands){
     if(!(c.price>=0.05&&c.price<=0.95)){ log(`Sanity guard: rejected entry at ${cents(c.price)} on "${(c.m.q||'').slice(0,40)}"`); continue; }
     /* event-correlation guard: total $ on one underlying event capped at MAX_EVENT_EXPOSURE */
     const cand={title:c.m.q,slug:c.m.eventSlug||''};
-    const eventExposure=openLive().filter(t=>sameEvent(t,cand)).reduce((s,t)=>s+t.stake,0);
+    const correlated=openLive().filter(t=>sameEvent(t,cand));
+    const eventExposure=correlated.reduce((s,t)=>s+t.stake,0);
     const eventHeadroom=MAX_EVENT_EXPOSURE-eventExposure;
-    if(eventHeadroom<STAKE_MIN){ log(`Event guard: skipping "${c.m.q.slice(0,40)}" — already $${eventExposure} on this underlying event.`); continue; }
+    if(eventHeadroom<STAKE_MIN){
+      const topic=correlated.length?sharedTopic(correlated[0],cand):null;
+      log(`Event guard: skipping "${c.m.q.slice(0,40)}" — already $${eventExposure} exposed on ${topic?'topic "'+topic.replace('kw:','')+'"':'this underlying event'}.`);
+      continue;
+    }
     const po=brain.payoff[c.signal];
     const avgWin=po.wN?po.wSum/po.wN:0.45, avgLoss=po.lN?po.lSum/po.lN:0.35;
     const bRatio=avgWin/Math.max(0.05,avgLoss);

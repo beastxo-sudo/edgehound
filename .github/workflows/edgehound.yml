@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: edgehound
@@ -39,6 +40,40 @@ jobs:
               if git push; then break; fi
               echo "push failed, retry $i"; sleep $((i*3))
             done
+          fi
+
+
+      - name: Trigger daily Analyst (reliable, piggybacks 15-min cadence)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # IST = UTC + 5:30. Analyst should run once per day after 09:07 IST (03:37 UTC).
+          NOW_UTC_MIN=$(( $(date -u +%H) * 60 + $(date -u +%M) ))
+          TRIGGER_MIN=$(( 3 * 60 + 37 ))   # 03:37 UTC
+          TODAY=$(date -u +%Y-%m-%d)
+          MARKER="data/.analyst-last-run"
+          LAST=$(cat "$MARKER" 2>/dev/null || echo "none")
+          if [ "$NOW_UTC_MIN" -ge "$TRIGGER_MIN" ] && [ "$LAST" != "$TODAY" ]; then
+            echo "Triggering Analyst for $TODAY (last ran: $LAST)"
+            HTTP=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
+              -H "Authorization: Bearer $GH_TOKEN" \
+              -H "Accept: application/vnd.github+json" \
+              "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/workflows/analyst.yml/dispatches" \
+              -d '{"ref":"main"}')
+            if [ "$HTTP" = "204" ]; then
+              echo "$TODAY" > "$MARKER"
+              git add "$MARKER"
+              git -c user.name=edgehound-bot -c user.email=bot@edgehound commit -m "Analyst triggered $TODAY" || true
+              for i in 1 2 3 4 5; do
+                git pull --rebase origin ${GITHUB_REF_NAME} || { git rebase --abort 2>/dev/null || true; }
+                if git push; then break; fi
+                sleep $((i*3))
+              done
+            else
+              echo "Dispatch returned HTTP $HTTP — will retry next cycle"
+            fi
+          else
+            echo "Analyst trigger skipped (now=${NOW_UTC_MIN}min UTC, trigger=${TRIGGER_MIN}min, last=$LAST)"
           fi
 
       - name: Verify ledger integrity

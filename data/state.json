@@ -746,7 +746,7 @@
    "slug": "israel-closes-its-airspace-by",
    "side": "NO",
    "entry": 0.835,
-   "cur": 0.965,
+   "cur": 0.9665,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.613,
@@ -1018,7 +1018,7 @@
    "slug": "2026-nba-champion",
    "side": "YES",
    "entry": 0.8215,
-   "cur": 0.8115,
+   "cur": 0.814,
    "stake": 200,
    "signal": "MOMENTUM",
    "p": 0.62,
@@ -1301,7 +1301,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-13T01:45:44.579Z"
+    "updated": "2026-06-13T02:01:02.341Z"
    }
   ]
  },
@@ -1318,15 +1318,15 @@
   "staked": 10800,
   "bankStart": 10000,
   "cash": 6524,
-  "equity": 8539,
-  "returnPct": -14.61,
+  "equity": 8541,
+  "returnPct": -14.59,
   "modelUpdates": 21,
   "brier": 0.298,
   "hypotheses": 1,
   "integrityOk": true,
-  "updated": "2026-06-13T01:45:44.581Z"
+  "updated": "2026-06-13T02:01:02.343Z"
  },
- "lastRun": 1781315144581,
+ "lastRun": 1781316062344,
  "elite": {
   "updated": 1781286342056,
   "list": [
@@ -1349,7 +1349,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-13T01:45:44.581Z",
+  "checkedAt": "2026-06-13T02:01:02.344Z",
   "tradesChecked": 25
  }
 }

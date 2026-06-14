@@ -290,7 +290,7 @@
    "slug": "us-x-iran-permanent-peace-deal-by",
    "side": "YES",
    "entry": 0.765,
-   "cur": 0.85,
+   "cur": 0.835,
    "stake": 100,
    "signal": "MOMENTUM",
    "p": 0.576,
@@ -746,7 +746,7 @@
    "slug": "israel-closes-its-airspace-by",
    "side": "NO",
    "entry": 0.835,
-   "cur": 0.887,
+   "cur": 0.879,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.613,
@@ -1309,7 +1309,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-14T18:01:18.276Z"
+    "updated": "2026-06-14T18:15:49.533Z"
    }
   ]
  },
@@ -1326,15 +1326,15 @@
   "staked": 10800,
   "bankStart": 10000,
   "cash": 7746,
-  "equity": 8707,
-  "returnPct": -12.93,
+  "equity": 8697,
+  "returnPct": -13.03,
   "modelUpdates": 23,
   "brier": 0.285,
   "hypotheses": 1,
   "integrityOk": true,
-  "updated": "2026-06-14T18:01:18.278Z"
+  "updated": "2026-06-14T18:15:49.535Z"
  },
- "lastRun": 1781460078279,
+ "lastRun": 1781460949535,
  "elite": {
   "updated": 1781459147464,
   "list": [
@@ -1350,7 +1350,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-14T18:01:18.279Z",
+  "checkedAt": "2026-06-14T18:15:49.535Z",
   "tradesChecked": 25
  }
 }

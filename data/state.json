@@ -290,7 +290,7 @@
    "slug": "us-x-iran-permanent-peace-deal-by",
    "side": "YES",
    "entry": 0.765,
-   "cur": 0.835,
+   "cur": 0.87,
    "stake": 100,
    "signal": "MOMENTUM",
    "p": 0.576,
@@ -746,7 +746,7 @@
    "slug": "israel-closes-its-airspace-by",
    "side": "NO",
    "entry": 0.835,
-   "cur": 0.8945,
+   "cur": 0.9155,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.613,
@@ -1181,6 +1181,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-14 23:15 IST — Elite pool refreshed: 1 wallets qualify (>=62% win rate over >=15 settled, scalpers excluded): donthackme 80%",
   "2026-06-14 09:15 IST — Closed NO \"Will the San Antonio Spurs win the 2026 NB\" -> +$179 (Resolved in our favor) · model said P(win)=62%",
   "2026-06-14 09:15 IST — Closed YES \"Will the New York Knicks win the 2026 NBA \" -> +$43 (Resolved in our favor) · model said P(win)=62%",
   "2026-06-13 23:15 IST — Elite pool refreshed: 2 wallets qualify (>=62% win rate over >=15 settled, scalpers excluded): donthackme 83%, aenews2 71%",
@@ -1193,8 +1194,7 @@
   "2026-06-12 (repair) — Voided corrupted CS map trade (+$79,600 was a data artifact: collapsed price + team-name outcome mapping). Books, learning stats and wallet records surgically restored.",
   "2026-06-12 16:45 IST — Closed NO \"Counter-Strike: FURIA vs MOUZ (BO3) - IEM \" -> $-385 (Stop loss hit (-30%)) · model said P(win)=62%",
   "2026-06-12 16:31 IST — Opened NO $1000 @ 55c P=62% EV=+124.08 [Smart Consensus] \"Counter-Strike: FURIA vs MOUZ (BO3) - IEM Colo\"",
-  "2026-06-12 16:31 IST — Closed NO \"Counter-Strike: FURIA vs MOUZ - Map 2 Winn\" -> +$79600 (Resolved in our favor) · model said P(win)=54%",
-  "2026-06-12 16:15 IST — Opened NO $400 @ 1c P=54% EV=+0.08 [Smart Consensus] \"Counter-Strike: FURIA vs MOUZ - Map 2 Winner\""
+  "2026-06-12 16:31 IST — Closed NO \"Counter-Strike: FURIA vs MOUZ - Map 2 Winn\" -> +$79600 (Resolved in our favor) · model said P(win)=54%"
  ],
  "brain": {
   "w": [
@@ -1309,7 +1309,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-14T17:31:08.287Z"
+    "updated": "2026-06-14T17:45:47.672Z"
    }
   ]
  },
@@ -1326,38 +1326,31 @@
   "staked": 10800,
   "bankStart": 10000,
   "cash": 7746,
-  "equity": 8712,
-  "returnPct": -12.88,
+  "equity": 8737,
+  "returnPct": -12.63,
   "modelUpdates": 23,
   "brier": 0.285,
   "hypotheses": 1,
   "integrityOk": true,
-  "updated": "2026-06-14T17:31:08.290Z"
+  "updated": "2026-06-14T17:45:47.674Z"
  },
- "lastRun": 1781458268290,
+ "lastRun": 1781459147674,
  "elite": {
-  "updated": 1781372744749,
+  "updated": 1781459147464,
   "list": [
    {
     "wallet": "0x03805a13a0b3e058f55f6c6af95389d4f431073d",
     "name": "donthackme",
-    "winRate": 0.833,
-    "n": 60,
-    "score": 3.426
-   },
-   {
-    "wallet": "0x44c1dfe43260c94ed4f1d00de2e1f80fb113ebc1",
-    "name": "aenews2",
-    "winRate": 0.705,
-    "n": 44,
-    "score": 2.682
+    "winRate": 0.797,
+    "n": 64,
+    "score": 3.326
    }
   ]
  },
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-14T17:31:08.290Z",
+  "checkedAt": "2026-06-14T17:45:47.674Z",
   "tradesChecked": 25
  }
 }

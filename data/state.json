@@ -11,7 +11,7 @@
    "slug": "fifwc-civ-ecu-2026-06-14",
    "side": "NO",
    "entry": 0.605,
-   "cur": 0.605,
+   "cur": 0.655,
    "stake": 200,
    "signal": "ELITE_FOLLOW",
    "p": 0.582,
@@ -43,7 +43,11 @@
    "target": 0.25,
    "stop": 0.25,
    "holdUntil": 1781478000000,
-   "status": "open"
+   "status": "closed",
+   "exit": 0.655,
+   "exitTs": 1781479856989,
+   "exitReason": "Max hold reached — closed at market",
+   "pnl": 16.528925619834727
   },
   {
    "id": "t1781478945014lyg9",
@@ -55,7 +59,7 @@
    "slug": "fifwc-civ-ecu-2026-06-14",
    "side": "NO",
    "entry": 0.725,
-   "cur": 0.725,
+   "cur": 0.685,
    "stake": 250,
    "signal": "ELITE_FOLLOW",
    "p": 0.584,
@@ -87,7 +91,11 @@
    "target": 0.25,
    "stop": 0.25,
    "holdUntil": 1781478000000,
-   "status": "open"
+   "status": "closed",
+   "exit": 0.685,
+   "exitTs": 1781479856989,
+   "exitReason": "Max hold reached — closed at market",
+   "pnl": -13.793103448275836
   },
   {
    "id": "t17812620661588lon",
@@ -838,7 +846,7 @@
    "slug": "israel-closes-its-airspace-by",
    "side": "NO",
    "entry": 0.835,
-   "cur": 0.992,
+   "cur": 0.9875,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.613,
@@ -1265,14 +1273,16 @@
    "weight": 1
   },
   "ELITE_FOLLOW": {
-   "trades": 0,
-   "wins": 0,
-   "pnl": 0,
+   "trades": 2,
+   "wins": 1,
+   "pnl": 2.7358221715588904,
    "weight": 1
   }
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-15 05:00 IST — Closed NO \"Will Côte d'Ivoire win on 2026-06-14?\" -> $-14 (Max hold reached — closed at market) · model said P(win)=58%",
+  "2026-06-15 05:00 IST — Closed NO \"Will Ecuador win on 2026-06-14?\" -> +$17 (Max hold reached — closed at market) · model said P(win)=58%",
   "2026-06-15 04:45 IST — Opened NO $200 @ 61c P=58% EV=+0.12 [Elite Follow] \"Will Ecuador win on 2026-06-14?\"",
   "2026-06-15 04:45 IST — Opened NO $250 @ 73c P=58% EV=+0.12 [Elite Follow] \"Will Côte d'Ivoire win on 2026-06-14?\"",
   "2026-06-15 01:15 IST — Closed YES \"US x Iran permanent peace deal by December\" -> +$8 (Max hold reached — closed at market) · model said P(win)=58%",
@@ -1284,28 +1294,26 @@
   "2026-06-12 21:25 IST — Closed YES \"SpaceX IPO closing market cap above $2T?\" -> $-60 (Stop loss hit (-20%)) · model said P(win)=55%",
   "2026-06-12 20:00 IST — Closed YES \"Will Donald Trump announce that the United\" -> $-71 (Stop loss hit (-20%)) · model said P(win)=54%",
   "2026-06-12 19:45 IST — Closed NO \"Trump announces US x Iran ceasefire over b\" -> +$58 (Resolved in our favor) · model said P(win)=63%",
-  "2026-06-12 19:31 IST — Closed YES \"US announces new Iran agreement/ceasefire \" -> $-24 (Stop loss hit (-20%)) · model said P(win)=57%",
-  "2026-06-12 19:31 IST — Closed YES \"US x Iran permanent peace deal by June 15,\" -> $-59 (Stop loss hit (-20%)) · model said P(win)=52%",
-  "2026-06-12 (repair) — Voided corrupted CS map trade (+$79,600 was a data artifact: collapsed price + team-name outcome mapping). Books, learning stats and wallet records surgically restored."
+  "2026-06-12 19:31 IST — Closed YES \"US announces new Iran agreement/ceasefire \" -> $-24 (Stop loss hit (-20%)) · model said P(win)=57%"
  ],
  "brain": {
   "w": [
-   0.05779796281460344,
-   0.04962524117752741,
-   0.009571641625161767,
+   0.05774017930127954,
+   0.049575628342660175,
+   0.00956207237644701,
    0,
-   0.02089766398558507,
-   -0.13677524569800306,
-   -0.051462379557882194,
-   0.06514233013103775,
-   0.0674653792959554,
-   -0.0627554850367153,
-   0.0038286566500647023,
-   -0.13431603981946266,
-   -0.07432304348714418
+   0.002524480080634238,
+   -0.15041674841824532,
+   -0.0479263197395076,
+   0.05499280869793981,
+   0.05893792764601403,
+   -0.053343105042634904,
+   0.0038248289505788,
+   -0.13418175735865318,
+   -0.0742487390244179
   ],
-  "b": 0.11578907208702996,
-  "nUpdates": 24,
+  "b": 0.10204569184971264,
+  "nUpdates": 26,
   "buckets": {
    "MOMENTUM|high|sport": {
     "a": 1,
@@ -1342,6 +1350,14 @@
    "MOMENTUM|high|other": {
     "a": 4,
     "b": 4
+   },
+   "ELITE_FOLLOW|mid|other": {
+    "a": 2,
+    "b": 1
+   },
+   "ELITE_FOLLOW|high|other": {
+    "a": 1,
+    "b": 2
    }
   },
   "wallets": {
@@ -1352,11 +1368,15 @@
    "0xcF609D3256f0f37f0595E5Dc64012Fa3a8fEa6f5-1771809916847": {
     "a": 1,
     "b": 2
+   },
+   "donthackme": {
+    "a": 2,
+    "b": 2
    }
   },
   "brier": {
-   "sum": 6.733016000000001,
-   "n": 24
+   "sum": 7.248796000000001,
+   "n": 26
   },
   "payoff": {
    "SHORT_FAVORITE": {
@@ -1384,10 +1404,10 @@
     "lN": 0
    },
    "ELITE_FOLLOW": {
-    "wSum": 0,
-    "wN": 0,
-    "lSum": 0,
-    "lN": 0
+    "wSum": 0.08264462809917364,
+    "wN": 1,
+    "lSum": 0.05517241379310334,
+    "lN": 1
    }
   },
   "hypotheses": [
@@ -1401,7 +1421,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-14T23:15:45.011Z"
+    "updated": "2026-06-14T23:30:56.989Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -1413,32 +1433,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-14T23:15:45.011Z"
+    "updated": "2026-06-14T23:30:56.989Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 7403.651859413154,
+  "cash": 7856.3876815847125,
   "created": 1781162132851
  },
  "summary": {
-  "realized": -1346.35,
-  "closed": 24,
-  "wins": 9,
-  "open": 3,
+  "realized": -1343.61,
+  "closed": 26,
+  "wins": 10,
+  "open": 1,
   "staked": 11250,
   "bankStart": 10000,
-  "cash": 7404,
-  "equity": 8804,
-  "returnPct": -11.96,
-  "modelUpdates": 24,
-  "brier": 0.281,
+  "cash": 7856,
+  "equity": 8802,
+  "returnPct": -11.98,
+  "modelUpdates": 26,
+  "brier": 0.279,
   "hypotheses": 2,
   "integrityOk": true,
-  "updated": "2026-06-14T23:15:45.015Z"
+  "updated": "2026-06-14T23:30:56.991Z"
  },
- "lastRun": 1781478945015,
+ "lastRun": 1781479856992,
  "elite": {
   "updated": 1781459147464,
   "list": [
@@ -1454,7 +1474,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-14T23:15:45.015Z",
+  "checkedAt": "2026-06-14T23:30:56.991Z",
   "tradesChecked": 27
  }
 }

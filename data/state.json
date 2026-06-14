@@ -746,7 +746,7 @@
    "slug": "israel-closes-its-airspace-by",
    "side": "NO",
    "entry": 0.835,
-   "cur": 0.808,
+   "cur": 0.8225,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.613,
@@ -1309,7 +1309,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-14T19:15:47.417Z"
+    "updated": "2026-06-14T19:31:10.546Z"
    }
   ]
  },
@@ -1326,15 +1326,15 @@
   "staked": 10800,
   "bankStart": 10000,
   "cash": 7746,
-  "equity": 8628,
-  "returnPct": -13.72,
+  "equity": 8642,
+  "returnPct": -13.58,
   "modelUpdates": 23,
   "brier": 0.285,
   "hypotheses": 1,
   "integrityOk": true,
-  "updated": "2026-06-14T19:15:47.420Z"
+  "updated": "2026-06-14T19:31:10.549Z"
  },
- "lastRun": 1781464547420,
+ "lastRun": 1781465470549,
  "elite": {
   "updated": 1781459147464,
   "list": [
@@ -1350,7 +1350,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-14T19:15:47.420Z",
+  "checkedAt": "2026-06-14T19:31:10.549Z",
   "tradesChecked": 25
  }
 }

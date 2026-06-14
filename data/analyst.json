@@ -1,28 +1,30 @@
 {
  "status": "ok",
- "updated": "2026-06-14T03:55:48.830Z",
- "updatedIST": "2026-06-14 09:25 IST",
- "memo": "EdgeHound Performance Review — June 14, 2026\n\nPortfolio is down 12.1% since inception with equity at $8,794 vs $10,000 start. The dominant driver of losses is MOMENTUM, which has generated -$1,027 across 20 trades (7W/13L, 35% win rate). This is materially below the break-even rate required given the asymmetric stop/profit structure (~20% stop, ~18% profit target), which mathematically needs roughly 53% wins to break even. The engine is demonstrably unprofitable and was correctly disabled in the prior session.\n\nCritical pattern: MOMENTUM repeatedly entered geopolitical YES positions (Iran deal, Hormuz, US invasion) that reversed hard — suggesting the signal is chasing news-driven pumps into thin, mean-reverting markets. Additionally, the SMART_CONSENSUS trade on a CS:GO esports match lost $385 on a $1,000 stake, implying dangerously oversized single bets relative to current bank.\n\nSHORT_FAVORITE shows small positive PnL ($58 realized) on limited trades and merits continued operation. The Israel airspace open position (-$147 unrealized at current price 0.982) is a concern — entry was 0.835 on a NO, and the market has moved strongly against us.\n\nCurrent config (MOMENTUM/SMART_CONSENSUS disabled, kellyMult at floor 0.10, maxEventExposure at 500) is appropriate given the drawdown. No changes warranted this session. Patience is the discipline — wait for VOLUME_SPIKE and ELITE_FOLLOW to generate trades before drawing conclusions on those engines.",
+ "updated": "2026-06-14T11:40:54.433Z",
+ "updatedIST": "2026-06-14 17:10 IST",
+ "memo": "EdgeHound Performance Review — 14 June 2026\n\nThe fund is down 12.47% on 23 settled trades, with realized losses of -$1,354. The dominant driver is MOMENTUM, which has produced -$1,027 on 20 trades (7 wins, 35% win rate). Critically, the Brier score of 0.285 indicates poor probability calibration — the model is systematically overconfident, entering positions where pPredicted clusters tightly around 0.62 regardless of true edge. This mechanical pPredicted uniformity is a red flag: the signal appears to be stamping a fixed confidence rather than discriminating market-specific edge.\n\nA structural pattern in the losses is notable: MOMENTUM has repeatedly taken YES positions on geopolitical/low-probability markets (Iran peace deal, Strait of Hormuz, US invasion) at entries of 0.16–0.26, with pPredicted of 0.54–0.62. These are low-probability, high-uncertainty events where momentum signals are particularly unreliable — price spikes here often reflect noise, not informed flow. The two large sports losses (Udvardy -$522, Vitality CS2 -$255, Trungelliti -$219) suggest MOMENTUM is also misfiring on live-event markets where prices move on outcomes the model cannot access.\n\nSMART_CONSENSUS placed one trade at $1,000 stake — far too large for an unvalidated signal — and lost -$385 immediately. SHORT_FAVORITE is the only profitable engine (+$58, 1W/1L/1 flat).\n\nCurrent config already has MOMENTUM, SMART_CONSENSUS disabled. I will maintain this and keep parameters conservative: pMin elevated, kellyMult at floor, maxEventExposure capped. VOLUME_SPIKE and ELITE_FOLLOW remain enabled with zero trades — they need data before judgment.",
  "observations": [
-  "MOMENTUM engine: 35% win rate across 20 trades, -$1,027 PnL — structurally loss-making at current stop/target ratio, correctly disabled",
-  "SMART_CONSENSUS: 1 trade, -$385 — $1,000 stake on a single esports match was irresponsible sizing; engine disabled",
-  "SHORT_FAVORITE: 2 trades, 1W/1L, +$58 — small edge visible, insufficient sample to conclude",
-  "VOLUME_SPIKE and ELITE_FOLLOW: zero trades — no data to evaluate, engines are enabled but not firing",
-  "Brier score 0.285 indicates meaningful calibration gap — model predicted ~60-62% on most MOMENTUM losers but realized win rate was 35%",
-  "Geopolitical event clustering: multiple Iran/Hormuz trades all stopped out, suggesting regime-blind momentum entry into news-pump reversals",
-  "Open position 'Israel closes airspace NO' at entry 0.835, current 0.982 — significant mark-to-market loss (~$118) with binary resolution risk",
-  "MaxEventExposure at $500 and kellyMult at 0.10 are appropriate floors given -12% drawdown",
-  "Prior large stakes ($800 on individual sports matches) contributed disproportionately to losses — sizing discipline has improved",
-  "Hypothesis FORMING on MOMENTUM low-priced non-sports: 45.5% win rate, CI [22-69%] — insufficient to act on yet"
+  "MOMENTUM win rate 35% on 20 trades — statistically below breakeven; responsible for -$1,027 (75% of total loss)",
+  "pPredicted is suspiciously uniform (~0.62 across nearly all trades regardless of market type) — suggests model miscalibration, not genuine edge discrimination",
+  "Repeated YES entries on geopolitical low-probability markets (Iran peace deal 3x, invasion, Hormuz 2x) — MOMENTUM signal unreliable on thin, news-driven markets",
+  "Large individual stakes ($800) on MOMENTUM and SMART_CONSENSUS early in bot's life drove outsized losses before Kelly discipline was tightened",
+  "Brier score 0.285 is materially above a well-calibrated model (target <0.20); predictions are too far from outcomes",
+  "SHORT_FAVORITE profitable but tiny sample (2 settled trades) — not actionable yet",
+  "SMART_CONSENSUS $1,000 stake on a single esports match is a position-sizing failure — 10% of starting bank on one signal's debut",
+  "VOLUME_SPIKE and ELITE_FOLLOW have zero trades — cannot evaluate; keep enabled to accumulate data",
+  "Open Israel airspace SHORT_FAVORITE position ($800 at 0.835) currently underwater (cur 0.9385) — monitor for stop",
+  "Concentration risk: multiple trades on same Iran narrative simultaneously amplified drawdown"
  ],
- "changesApplied": [],
- "changeReasoning": "No changes from prior session config. MOMENTUM and SMART_CONSENSUS remain disabled — both have demonstrated negative expected value over meaningful sample sizes and disabling them is data-justified, not reactive. SHORT_FAVORITE remains on with positive PnL. VOLUME_SPIKE and ELITE_FOLLOW remain enabled to allow evidence to accumulate. All sizing parameters (kellyMult 0.10, maxExposure 0.35, maxEventExposure 500) remain at conservative levels appropriate for a portfolio in 12% drawdown. Increasing any sizing parameter now would be premature given no new positive evidence. Await at least 10-15 settled trades from active engines before reconsidering.",
+ "changesApplied": [
+  "maxExposure: 0.35 -> 0.3"
+ ],
+ "changeReasoning": "Maintaining the previous session's MOMENTUM and SMART_CONSENSUS disable — the evidence for both being loss-generating is now statistically meaningful (20 trades for MOMENTUM). No justification to re-enable either. pMin stays at 0.62 given poor Brier calibration; raising it further would risk starving all engines of trades. kellyMult held at floor (0.10) to minimize damage while calibration is assessed. maxExposure tightened to hard floor (0.30) to reduce equity at risk during the diagnostic period. maxEventExposure remains at 500 cap to prevent repeat of the $1,000 SMART_CONSENSUS single-trade disaster. No changes to engine enablement beyond confirming current state.",
  "riskFlags": [
-  "Open SHORT_FAVORITE position 'Israel closes airspace NO' has moved from entry 0.835 to current 0.982 — near-certain binary resolution against us; $800 stake at risk of near-total loss if resolves YES",
-  "VOLUME_SPIKE and ELITE_FOLLOW have never fired — unclear if they are misconfigured, finding no qualifying signals, or simply waiting; operator should verify signal generation logic is functioning",
-  "With only SHORT_FAVORITE active and generating few trades, the bot may remain nearly idle for extended periods — verify minimum activity expectations are met",
-  "Brier score of 0.285 represents poor probabilistic calibration; model confidence (~62%) is systematically overstated relative to realized outcomes — consider whether pMin should be raised further to require higher-conviction entries only",
-  "Bank erosion to $8,794 means dollar position limits are shrinking — maxEventExposure of $500 now represents 5.7% of equity, which is reasonable but should be monitored if drawdown continues"
+  "Open SHORT_FAVORITE position on Israel airspace ($800) is currently showing adverse price movement (0.835 entry vs 0.9385 current) — approaching or at stop-loss territory; review immediately",
+  "Brier score 0.285 suggests the probability model is fundamentally miscalibrated — pPredicted values near 0.62 across all market types indicate a hardcoded or weakly-fitted output, not genuine probabilistic reasoning",
+  "Bot took 3 separate YES positions on the same Iran peace deal market — event-level exposure controls appear to have failed or were not active at the time; verify maxEventExposure enforcement in code",
+  "VOLUME_SPIKE and ELITE_FOLLOW have generated zero trades despite being enabled — investigate whether signal generators are functioning or if market conditions are suppressing triggers",
+  "With equity at $8,753 and cash at $7,746, continued losses at this rate will breach meaningful capital preservation thresholds within 2-3 more losing streaks; consider a human review gate before re-enabling MOMENTUM"
  ],
  "configNow": {
   "comment": "EdgeHound tunable parameters. The AI Analyst may adjust these within hard rails enforced in code. Humans can edit too.",
@@ -35,9 +37,9 @@
   },
   "pMin": 0.62,
   "kellyMult": 0.1,
-  "maxExposure": 0.35,
+  "maxExposure": 0.3,
   "maxEventExposure": 500,
   "updatedBy": "analyst",
-  "updatedAt": "2026-06-14T03:55:48.830Z"
+  "updatedAt": "2026-06-14T11:40:54.432Z"
  }
 }

@@ -9,8 +9,8 @@
   },
   "pMin": 0.62,
   "kellyMult": 0.1,
-  "maxExposure": 0.35,
+  "maxExposure": 0.3,
   "maxEventExposure": 500,
   "updatedBy": "analyst",
-  "updatedAt": "2026-06-14T03:55:48.830Z"
+  "updatedAt": "2026-06-14T11:40:54.432Z"
 }

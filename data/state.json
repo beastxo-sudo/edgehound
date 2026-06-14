@@ -2,6 +2,94 @@
  "running": true,
  "journal": [
   {
+   "id": "t1781478945014p9hw",
+   "date": "2026-06-15",
+   "openedTs": 1781478945014,
+   "title": "Will Ecuador win on 2026-06-14?",
+   "mid": "1897066",
+   "conditionId": "0x3150ba668d15e1c248c71bcff71c67f1adf87063db7047f27f15ebbc9a1a6a0d",
+   "slug": "fifwc-civ-ecu-2026-06-14",
+   "side": "NO",
+   "entry": 0.605,
+   "cur": 0.605,
+   "stake": 200,
+   "signal": "ELITE_FOLLOW",
+   "p": 0.582,
+   "pModel": 0.51,
+   "pBucket": 0.5,
+   "bucketN": 0,
+   "bk": "ELITE_FOLLOW|mid|other",
+   "ev": 0.116,
+   "kelly": 0.0257,
+   "x": [
+    0,
+    0,
+    0,
+    0,
+    0.605,
+    1,
+    0.05,
+    0.95,
+    0.717,
+    0.945,
+    0,
+    0,
+    0
+   ],
+   "walletNames": [
+    "donthackme"
+   ],
+   "insight": "P(win) 58% [model 51%, pattern 50% on n=0] · EV +0.12/$1 · 1/4-Kelly 2.6% of equity -> $200. Elite wallet \"donthackme\" (80% win rate over 64 settled positions) bought No 2min ago at 62c — still copyable at 61c. Drivers: short time to resolution -, 24h volume +, attention spike -",
+   "target": 0.25,
+   "stop": 0.25,
+   "holdUntil": 1781478000000,
+   "status": "open"
+  },
+  {
+   "id": "t1781478945014lyg9",
+   "date": "2026-06-15",
+   "openedTs": 1781478945014,
+   "title": "Will Côte d'Ivoire win on 2026-06-14?",
+   "mid": "1897064",
+   "conditionId": "0x8f92746709a4fc82f4d454e162046ac3590e3a5a7564540806a6c5f8a87e6738",
+   "slug": "fifwc-civ-ecu-2026-06-14",
+   "side": "NO",
+   "entry": 0.725,
+   "cur": 0.725,
+   "stake": 250,
+   "signal": "ELITE_FOLLOW",
+   "p": 0.584,
+   "pModel": 0.515,
+   "pBucket": 0.5,
+   "bucketN": 0,
+   "bk": "ELITE_FOLLOW|high|other",
+   "ev": 0.117,
+   "kelly": 0.0261,
+   "x": [
+    0,
+    0,
+    0,
+    0,
+    0.725,
+    1,
+    0,
+    0.914,
+    0.7,
+    0.677,
+    0,
+    0,
+    0
+   ],
+   "walletNames": [
+    "donthackme"
+   ],
+   "insight": "P(win) 58% [model 51%, pattern 50% on n=0] · EV +0.12/$1 · 1/4-Kelly 2.6% of equity -> $250. Elite wallet \"donthackme\" (80% win rate over 64 settled positions) bought No 2min ago at 71c — still copyable at 73c. Drivers: short time to resolution -, 24h volume +, liquidity +",
+   "target": 0.25,
+   "stop": 0.25,
+   "holdUntil": 1781478000000,
+   "status": "open"
+  },
+  {
    "id": "t17812620661588lon",
    "date": "2026-06-12",
    "openedTs": 1781262066158,
@@ -750,7 +838,7 @@
    "slug": "israel-closes-its-airspace-by",
    "side": "NO",
    "entry": 0.835,
-   "cur": 0.987,
+   "cur": 0.992,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.613,
@@ -1185,6 +1273,8 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-15 04:45 IST — Opened NO $200 @ 61c P=58% EV=+0.12 [Elite Follow] \"Will Ecuador win on 2026-06-14?\"",
+  "2026-06-15 04:45 IST — Opened NO $250 @ 73c P=58% EV=+0.12 [Elite Follow] \"Will Côte d'Ivoire win on 2026-06-14?\"",
   "2026-06-15 01:15 IST — Closed YES \"US x Iran permanent peace deal by December\" -> +$8 (Max hold reached — closed at market) · model said P(win)=58%",
   "2026-06-14 23:15 IST — Elite pool refreshed: 1 wallets qualify (>=62% win rate over >=15 settled, scalpers excluded): donthackme 80%",
   "2026-06-14 09:15 IST — Closed NO \"Will the San Antonio Spurs win the 2026 NB\" -> +$179 (Resolved in our favor) · model said P(win)=62%",
@@ -1196,9 +1286,7 @@
   "2026-06-12 19:45 IST — Closed NO \"Trump announces US x Iran ceasefire over b\" -> +$58 (Resolved in our favor) · model said P(win)=63%",
   "2026-06-12 19:31 IST — Closed YES \"US announces new Iran agreement/ceasefire \" -> $-24 (Stop loss hit (-20%)) · model said P(win)=57%",
   "2026-06-12 19:31 IST — Closed YES \"US x Iran permanent peace deal by June 15,\" -> $-59 (Stop loss hit (-20%)) · model said P(win)=52%",
-  "2026-06-12 (repair) — Voided corrupted CS map trade (+$79,600 was a data artifact: collapsed price + team-name outcome mapping). Books, learning stats and wallet records surgically restored.",
-  "2026-06-12 16:45 IST — Closed NO \"Counter-Strike: FURIA vs MOUZ (BO3) - IEM \" -> $-385 (Stop loss hit (-30%)) · model said P(win)=62%",
-  "2026-06-12 16:31 IST — Opened NO $1000 @ 55c P=62% EV=+124.08 [Smart Consensus] \"Counter-Strike: FURIA vs MOUZ (BO3) - IEM Colo\""
+  "2026-06-12 (repair) — Voided corrupted CS map trade (+$79,600 was a data artifact: collapsed price + team-name outcome mapping). Books, learning stats and wallet records surgically restored."
  ],
  "brain": {
   "w": [
@@ -1313,7 +1401,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-14T23:01:07.717Z"
+    "updated": "2026-06-14T23:15:45.011Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -1325,32 +1413,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-14T23:01:07.717Z"
+    "updated": "2026-06-14T23:15:45.011Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 7853.651859413154,
+  "cash": 7403.651859413154,
   "created": 1781162132851
  },
  "summary": {
   "realized": -1346.35,
   "closed": 24,
   "wins": 9,
-  "open": 1,
-  "staked": 10800,
+  "open": 3,
+  "staked": 11250,
   "bankStart": 10000,
-  "cash": 7854,
-  "equity": 8799,
-  "returnPct": -12.01,
+  "cash": 7404,
+  "equity": 8804,
+  "returnPct": -11.96,
   "modelUpdates": 24,
   "brier": 0.281,
   "hypotheses": 2,
   "integrityOk": true,
-  "updated": "2026-06-14T23:01:07.719Z"
+  "updated": "2026-06-14T23:15:45.015Z"
  },
- "lastRun": 1781478067720,
+ "lastRun": 1781478945015,
  "elite": {
   "updated": 1781459147464,
   "list": [
@@ -1366,7 +1454,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-14T23:01:07.719Z",
-  "tradesChecked": 25
+  "checkedAt": "2026-06-14T23:15:45.015Z",
+  "tradesChecked": 27
  }
 }

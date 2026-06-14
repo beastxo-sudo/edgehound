@@ -750,7 +750,7 @@
    "slug": "israel-closes-its-airspace-by",
    "side": "NO",
    "entry": 0.835,
-   "cur": 0.9095,
+   "cur": 0.9335,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.613,
@@ -1313,7 +1313,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-14T20:31:03.575Z"
+    "updated": "2026-06-14T20:46:04.854Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -1325,7 +1325,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-14T20:31:03.575Z"
+    "updated": "2026-06-14T20:46:04.854Z"
    }
   ]
  },
@@ -1342,15 +1342,15 @@
   "staked": 10800,
   "bankStart": 10000,
   "cash": 7854,
-  "equity": 8725,
-  "returnPct": -12.75,
+  "equity": 8748,
+  "returnPct": -12.52,
   "modelUpdates": 24,
   "brier": 0.281,
   "hypotheses": 2,
   "integrityOk": true,
-  "updated": "2026-06-14T20:31:03.578Z"
+  "updated": "2026-06-14T20:46:04.858Z"
  },
- "lastRun": 1781469063578,
+ "lastRun": 1781469964859,
  "elite": {
   "updated": 1781459147464,
   "list": [
@@ -1366,7 +1366,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-14T20:31:03.578Z",
+  "checkedAt": "2026-06-14T20:46:04.858Z",
   "tradesChecked": 25
  }
 }

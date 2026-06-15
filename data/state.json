@@ -846,7 +846,7 @@
    "slug": "israel-closes-its-airspace-by",
    "side": "NO",
    "entry": 0.835,
-   "cur": 0.992,
+   "cur": 0.991,
    "stake": 800,
    "signal": "SHORT_FAVORITE",
    "p": 0.613,
@@ -876,7 +876,11 @@
    "target": null,
    "stop": 0.45,
    "holdUntil": 1781481600000,
-   "status": "open"
+   "status": "closed",
+   "exit": 0.991,
+   "exitTs": 1781481672712,
+   "exitReason": "Max hold reached — closed at market",
+   "pnl": 149.4610778443114
   },
   {
    "id": "t1781162439827c8ht",
@@ -1249,9 +1253,9 @@
  ],
  "strat": {
   "SHORT_FAVORITE": {
-   "trades": 2,
-   "wins": 1,
-   "pnl": 57.9088471849866,
+   "trades": 3,
+   "wins": 2,
+   "pnl": 207.369925029298,
    "weight": 1
   },
   "MOMENTUM": {
@@ -1281,6 +1285,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-15 05:31 IST — Closed NO \"Israel closes its airspace by June 15?\" -> +$149 (Max hold reached — closed at market) · model said P(win)=61%",
   "2026-06-15 05:00 IST — Closed NO \"Will Côte d'Ivoire win on 2026-06-14?\" -> $-14 (Max hold reached — closed at market) · model said P(win)=58%",
   "2026-06-15 05:00 IST — Closed NO \"Will Ecuador win on 2026-06-14?\" -> +$17 (Max hold reached — closed at market) · model said P(win)=58%",
   "2026-06-15 04:45 IST — Opened NO $200 @ 61c P=58% EV=+0.12 [Elite Follow] \"Will Ecuador win on 2026-06-14?\"",
@@ -1293,27 +1298,26 @@
   "2026-06-12 23:15 IST — Elite pool refreshed: 2 wallets qualify (>=62% win rate over >=15 settled, scalpers excluded): donthackme 86%, aenews2 71%",
   "2026-06-12 21:25 IST — Closed YES \"SpaceX IPO closing market cap above $2T?\" -> $-60 (Stop loss hit (-20%)) · model said P(win)=55%",
   "2026-06-12 20:00 IST — Closed YES \"Will Donald Trump announce that the United\" -> $-71 (Stop loss hit (-20%)) · model said P(win)=54%",
-  "2026-06-12 19:45 IST — Closed NO \"Trump announces US x Iran ceasefire over b\" -> +$58 (Resolved in our favor) · model said P(win)=63%",
-  "2026-06-12 19:31 IST — Closed YES \"US announces new Iran agreement/ceasefire \" -> $-24 (Stop loss hit (-20%)) · model said P(win)=57%"
+  "2026-06-12 19:45 IST — Closed NO \"Trump announces US x Iran ceasefire over b\" -> +$58 (Resolved in our favor) · model said P(win)=63%"
  ],
  "brain": {
   "w": [
-   0.05774017930127954,
-   0.049575628342660175,
-   0.00956207237644701,
+   0.12341153074478184,
+   0.04955084052848884,
+   0.009557291340258787,
    0,
-   0.002524480080634238,
-   -0.15041674841824532,
-   -0.0479263197395076,
-   0.05499280869793981,
-   0.05893792764601403,
-   -0.053343105042634904,
-   0.0038248289505788,
-   -0.13418175735865318,
-   -0.0742487390244179
+   0.05738290282077663,
+   -0.10192047677410249,
+   -0.03804732334966491,
+   0.10535738220951915,
+   0.10522711486306385,
+   -0.04983432174885648,
+   0.0038229165361035105,
+   -0.13411466647997386,
+   -0.0742116146549057
   ],
-  "b": 0.10204569184971264,
-  "nUpdates": 26,
+  "b": 0.1677459133828656,
+  "nUpdates": 27,
   "buckets": {
    "MOMENTUM|high|sport": {
     "a": 1,
@@ -1336,7 +1340,7 @@
     "b": 2
    },
    "SHORT_FAVORITE|high|other": {
-    "a": 2,
+    "a": 3,
     "b": 2
    },
    "SMART_CONSENSUS|low|sport": {
@@ -1375,13 +1379,13 @@
    }
   },
   "brier": {
-   "sum": 7.248796000000001,
-   "n": 26
+   "sum": 7.398565000000001,
+   "n": 27
   },
   "payoff": {
    "SHORT_FAVORITE": {
-    "wSum": 0.07238605898123325,
-    "wN": 1,
+    "wSum": 0.2592124062866225,
+    "wN": 2,
     "lSum": 0,
     "lN": 1
    },
@@ -1421,7 +1425,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-14T23:45:44.326Z"
+    "updated": "2026-06-15T00:01:12.712Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -1433,32 +1437,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-14T23:45:44.326Z"
+    "updated": "2026-06-15T00:01:12.712Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 7856.3876815847125,
+  "cash": 8805.848759429024,
   "created": 1781162132851
  },
  "summary": {
-  "realized": -1343.61,
-  "closed": 26,
-  "wins": 10,
-  "open": 1,
+  "realized": -1194.15,
+  "closed": 27,
+  "wins": 11,
+  "open": 0,
   "staked": 11250,
   "bankStart": 10000,
-  "cash": 7856,
-  "equity": 8807,
-  "returnPct": -11.93,
-  "modelUpdates": 26,
-  "brier": 0.279,
+  "cash": 8806,
+  "equity": 8806,
+  "returnPct": -11.94,
+  "modelUpdates": 27,
+  "brier": 0.274,
   "hypotheses": 2,
   "integrityOk": true,
-  "updated": "2026-06-14T23:45:44.328Z"
+  "updated": "2026-06-15T00:01:12.715Z"
  },
- "lastRun": 1781480744328,
+ "lastRun": 1781481672715,
  "elite": {
   "updated": 1781459147464,
   "list": [
@@ -1474,7 +1478,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-14T23:45:44.328Z",
+  "checkedAt": "2026-06-15T00:01:12.715Z",
   "tradesChecked": 27
  }
 }

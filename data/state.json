@@ -1469,6 +1469,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-15 23:16 IST — Elite pool refreshed: 3 wallets qualify (>=58% win rate over >=10 settled, scalpers excluded): Panteras 77%, aenews2 71%, denizz 61%",
   "2026-06-15 21:31 IST — Closed YES \"Will Spain win on 2026-06-15?\" -> $-4 (Max hold reached — closed at market) · model said P(win)=61%",
   "2026-06-15 09:31 IST — Closed NO \"UFC Freedom 250: Justin Gaethje vs. Ilia T\" -> +$0 (Max hold reached — closed at market) · model said P(win)=60%",
   "2026-06-15 08:45 IST — Closed NO \"UFC Freedom 250: Derrick Lewis vs. Josh Ho\" -> +$103 (Resolved in our favor) · model said P(win)=60%",
@@ -1481,8 +1482,7 @@
   "2026-06-15 05:00 IST — Closed NO \"Will Côte d'Ivoire win on 2026-06-14?\" -> $-14 (Max hold reached — closed at market) · model said P(win)=58%",
   "2026-06-15 05:00 IST — Closed NO \"Will Ecuador win on 2026-06-14?\" -> +$17 (Max hold reached — closed at market) · model said P(win)=58%",
   "2026-06-15 04:45 IST — Opened NO $200 @ 61c P=58% EV=+0.12 [Elite Follow] \"Will Ecuador win on 2026-06-14?\"",
-  "2026-06-15 04:45 IST — Opened NO $250 @ 73c P=58% EV=+0.12 [Elite Follow] \"Will Côte d'Ivoire win on 2026-06-14?\"",
-  "2026-06-15 01:15 IST — Closed YES \"US x Iran permanent peace deal by December\" -> +$8 (Max hold reached — closed at market) · model said P(win)=58%"
+  "2026-06-15 04:45 IST — Opened NO $250 @ 73c P=58% EV=+0.12 [Elite Follow] \"Will Côte d'Ivoire win on 2026-06-14?\""
  ],
  "brain": {
   "w": [
@@ -1613,7 +1613,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-15T17:32:40.013Z"
+    "updated": "2026-06-15T17:46:34.824Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -1625,7 +1625,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-15T17:32:40.013Z"
+    "updated": "2026-06-15T17:46:34.824Z"
    }
   ]
  },
@@ -1648,25 +1648,39 @@
   "brier": 0.28,
   "hypotheses": 2,
   "integrityOk": true,
-  "updated": "2026-06-15T17:32:40.016Z"
+  "updated": "2026-06-15T17:46:34.827Z"
  },
- "lastRun": 1781544760016,
+ "lastRun": 1781545594827,
  "elite": {
-  "updated": 1781459147464,
+  "updated": 1781545591279,
   "list": [
    {
-    "wallet": "0x03805a13a0b3e058f55f6c6af95389d4f431073d",
-    "name": "donthackme",
-    "winRate": 0.797,
-    "n": 64,
-    "score": 3.326
+    "wallet": "0xdf17f4a8dd01a4cfa6fc3da323a2baee5f8697d1",
+    "name": "Panteras",
+    "winRate": 0.767,
+    "n": 43,
+    "score": 2.904
+   },
+   {
+    "wallet": "0x44c1dfe43260c94ed4f1d00de2e1f80fb113ebc1",
+    "name": "aenews2",
+    "winRate": 0.714,
+    "n": 42,
+    "score": 2.687
+   },
+   {
+    "wallet": "0xbaa2bcb5439e985ce4ccf815b4700027d1b92c73",
+    "name": "denizz",
+    "winRate": 0.606,
+    "n": 33,
+    "score": 2.137
    }
   ]
  },
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-15T17:32:40.016Z",
+  "checkedAt": "2026-06-15T17:46:34.827Z",
   "tradesChecked": 31
  }
 }

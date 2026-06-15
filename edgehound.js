@@ -580,10 +580,13 @@ function scan(state,markets,consensus,eliteCands){
     .sort((a,b)=>b.rank-a.rank)
     .slice(0,room);
 
+  const rawCount = rawCandidates(markets,consensus).concat(eliteCands||[]).length;
+  const afterEngine = scored.length;
   let placed=0;
+  let blockedExposure=0, blockedEvent=0, blockedCash=0, blockedSanity=0;
   const openLive=()=>state.journal.filter(t=>t.status==='open');
   for(const c of scored){
-    if(!(c.price>=0.05&&c.price<=0.95)){ log(`Sanity guard: rejected entry at ${cents(c.price)} on "${(c.m.q||'').slice(0,40)}"`); continue; }
+    if(!(c.price>=0.05&&c.price<=0.95)){ blockedSanity++; log(`Sanity guard: rejected entry at ${cents(c.price)} on "${(c.m.q||'').slice(0,40)}"`); continue; }
     /* event-correlation guard: total $ on one underlying event capped at MAX_EVENT_EXPOSURE */
     const cand={title:c.m.q,slug:c.m.eventSlug||''};
     const correlated=openLive().filter(t=>sameEvent(t,cand));
@@ -591,6 +594,7 @@ function scan(state,markets,consensus,eliteCands){
     const eventHeadroom=MAX_EVENT_EXPOSURE-eventExposure;
     if(eventHeadroom<STAKE_MIN){
       const topic=correlated.length?sharedTopic(correlated[0],cand):null;
+      blockedEvent++;
       log(`Event guard: skipping "${c.m.q.slice(0,40)}" — already $${eventExposure} exposed on ${topic?'topic "'+topic.replace('kw:','')+'"':'this underlying event'}.`);
       continue;
     }
@@ -600,8 +604,8 @@ function scan(state,markets,consensus,eliteCands){
     const kelly=Math.max(0,c.p-(1-c.p)/bRatio);
     const frac=clamp(kelly*CFG.kellyMult,0.005,0.08);
     const stake=Math.round(clamp(Math.min(frac*equity,eventHeadroom),STAKE_MIN,STAKE_MAX)/50)*50;
-    if(exposure+stake>MAX_EXPOSURE*equity){ log(`Exposure cap (${MAX_EXPOSURE*100}% of equity) — skipping remaining candidates.`); break; }
-    if(stake>state.bank.cash){ log('Insufficient paper cash — skipping.'); break; }
+    if(exposure+stake>MAX_EXPOSURE*equity){ blockedExposure++; log(`Exposure cap (${MAX_EXPOSURE*100}% of equity) — skipping remaining candidates.`); break; }
+    if(stake>state.bank.cash){ blockedCash++; log('Insufficient paper cash — skipping.'); break; }
     const ev=c.p*avgWin-(1-c.p)*avgLoss;
     const sd=STRATS[c.signal];
     const t={
@@ -625,6 +629,21 @@ function scan(state,markets,consensus,eliteCands){
     note(state,`Opened ${c.side} $${stake} @ ${cents(c.price)} P=${(c.p*100).toFixed(0)}% EV=${ev>=0?'+':''}${ev.toFixed(2)} [${STRATS[c.signal].label}] "${c.m.q.slice(0,46)}"`);
   }
   if(!placed) log(`No candidates cleared P(win) >= ${pMin} after learned filters (${taken}/${DAILY_MAX} today).`);
+  state.lastScan={
+    at:new Date().toISOString(),
+    marketsFetched:markets.length,
+    rawCandidates:rawCount,
+    clearedThreshold:afterEngine,
+    placed,
+    pMin:+pMin.toFixed(3),
+    blocked:{exposure:blockedExposure,event:blockedEvent,cash:blockedCash,sanity:blockedSanity},
+    reason: placed>0 ? 'traded'
+      : afterEngine===0 ? `no candidates cleared P(win)>=${pMin.toFixed(2)} (engines produce ~0.58-0.64; lower pMin or wait for better setups)`
+      : blockedExposure ? 'exposure cap reached'
+      : blockedEvent ? 'all remaining candidates blocked by event-correlation guard'
+      : blockedCash ? 'insufficient paper cash'
+      : 'candidates cleared but none placed (check guards)'
+  };
 }
 
 /* ============ main ============ */

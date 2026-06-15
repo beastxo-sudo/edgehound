@@ -56,7 +56,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(15,20,32,.92);backdrop-f
 nav{max-width:1280px;margin:18px auto 0;padding:0 24px;display:flex;gap:8px;flex-wrap:wrap}
 .tab{font-family:var(--display);font-weight:600;font-size:13.5px;letter-spacing:.01em;color:var(--muted);padding:9px 18px;border-radius:10px;border:1px solid transparent;transition:.15s}
 .tab:hover{color:var(--text)}
-.tab.active{color:var(--text);background:var(--surface);border-color:var(--border)}
+.tab.active{color:var(--text);background:var(--surface);border-color:var(--border);box-shadow:0 0 0 1px var(--brand-soft),0 4px 14px -8px var(--brand)}
 .tab .badge{font-family:var(--mono);font-size:10px;background:var(--brand-soft);color:var(--brand);border-radius:99px;padding:1px 7px;margin-left:7px}
 
 main{max-width:1280px;margin:0 auto;padding:20px 24px 80px}
@@ -65,7 +65,8 @@ main{max-width:1280px;margin:0 auto;padding:20px 24px 80px}
 
 /* ---------- Stat cards ---------- */
 .stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-bottom:22px}
-.stat-card{background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px 18px}
+.stat-card{background:linear-gradient(180deg,var(--surface),var(--surface) 60%,rgba(139,147,255,.02));border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px 18px;position:relative;overflow:hidden}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--brand-soft),transparent);opacity:.6}
 .stat-card .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:7px}
 .stat-card .val{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:-.01em}
 .stat-card .sub{font-size:11.5px;color:var(--muted);margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -196,6 +197,7 @@ footer{max-width:1280px;margin:0 auto;padding:0 24px 40px;color:var(--faint);fon
   <div class="head-inner">
     <div class="logo"><span class="mark">▲</span>EdgeBook <small>Polymarket Intel</small></div>
     <div class="status-pill demo" id="statusPill"><span class="dot"></span><span id="statusTxt">CONNECTING…</span></div>
+    <div id="hdrBot" style="display:none;align-items:center;gap:8px;font-family:var(--mono);font-size:11.5px;padding:5px 11px;border:1px solid var(--border-soft);border-radius:8px"></div>
     <div class="head-spacer"></div>
     <button class="refresh-btn" onclick="boot(true)">↻ Refresh data</button>
   </div>
@@ -210,7 +212,6 @@ footer{max-width:1280px;margin:0 auto;padding:0 24px 40px;color:var(--faint);fon
   <button class="tab" data-page="signals" onclick="showPage('signals',this)">Copy Signals</button>
   <button class="tab" data-page="bot" onclick="showPage('bot',this)">🐕 EdgeHound Bot <span class="badge" id="botBadge"></span></button>
   <button class="tab" data-page="arb" onclick="showPage('arb',this)">⚖ Arb Scanner <span class="badge" id="arbBadge"></span></button>
-  <button class="tab" data-page="cx" onclick="showPage('cx',this)">₿ Crypto Edge <span class="badge" id="cxBadge"></span></button>
 </nav>
 
 <main>
@@ -387,14 +388,8 @@ footer{max-width:1280px;margin:0 auto;padding:0 24px 40px;color:var(--faint);fon
       <option value="0.1">Show everything (incl. dust)</option>
     </select>
   </div>
-  <div class="section-h" style="margin-top:6px">⚡ BTC 5-Min Lead <small>Binance moves first — Polymarket reprices late</small></div>
-  <div class="help-tip">Polymarket runs 5-minute "Bitcoin Up or Down" markets. The underlying answer lives on the spot exchanges in real time — so when BTC moves sharply mid-window, Polymarket's odds lag for seconds to a minute. This panel watches both feeds: it computes the <b>fair probability</b> that the candle closes UP (from Binance's live price, the candle open, time remaining, and recent volatility) and compares it to Polymarket's price. A gap ≥ 6 points = the lead. Every signal is <b>paper-logged and settled against the real candle close</b>, so the scoreboard below measures whether this edge actually exists — before anyone risks a cent on it.</div>
-  <div id="btc5Panel" style="background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px 18px;margin-bottom:18px">
-    <div class="empty">Connecting to Binance & Polymarket…</div>
-  </div>
-
-  <div class="section-h">🎯 Last-5s Sniper Lab <small>autonomous hypothesis test, running 24/7</small></div>
-  <div class="help-tip"><b>The hypothesis being tested:</b> in the final 5 seconds of each 5-minute BTC window, the outcome is already visible on Binance — so betting the current direction should be right almost every time. The catch this lab measures: by then the winning side is expensive (often 90–99¢). The bot samples every window around the clock: at T−5s it records the direction <b>and the real ask price on Polymarket's order book</b>, then settles against the actual candle. Profitable only if <b>accuracy beats the average price paid</b> — e.g. paying an average of 96¢ requires winning 96%+ just to break even.</div>
+  <div class="section-h" style="margin-top:6px">🎯 Last-5s Sniper Lab <small>autonomous hypothesis test — measuring whether last-second direction is tradeable</small></div>
+  <div class="help-tip"><b>The hypothesis:</b> in the final 5 seconds of a 5-min BTC window the outcome is already visible on Binance — so betting the current direction should win almost every time. The lab samples every window around the clock, records the direction <b>and the real Polymarket ask</b>, then settles against the actual candle. Profitable only if accuracy beats the price paid. (We retired the separate live "lead detector" — that edge is too fast for a polling dashboard; this measured test is the honest version.)</div>
   <div id="sniperPanel" style="background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px 18px;margin-bottom:18px"><div class="empty">Loading lab results…</div></div>
 
   <div class="section-h">Locked-profit scanner</div>
@@ -405,21 +400,7 @@ footer{max-width:1280px;margin:0 auto;padding:0 24px 40px;color:var(--faint);fon
 </section>
 
 <!-- ================= CRYPTO EDGE ================= -->
-<section class="page" id="page-cx">
-  <div class="help-tip"><b>What this hunts:</b> Polymarket runs recurring <b>"Up or Down"</b> windows on BTC/ETH/SOL/XRP that resolve against the real exchange price at window close vs window open. This monitor streams <b>live Binance spot</b>, reconstructs each window's strike (the open price it must beat), and computes the <b>mathematically fair probability</b> from distance-to-strike, time remaining, and live volatility. When Polymarket's price disagrees with the math by enough, that's a discrepancy — captured below as a lead. ⚠ Be honest with yourself about this arena: it's where the fastest bots on the platform live. Discrepancies last seconds; by the time a human clicks, most are gone. Use it to learn the rhythm and catch the occasional slow repricing — not as a money printer.</div>
-  <div class="stat-row" id="cxStats"></div>
-  <div id="cxTableWrap" style="background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);overflow:auto;margin-bottom:16px">
-    <table style="width:100%;border-collapse:collapse;font-size:12px">
-      <thead><tr style="text-align:left;color:var(--faint);font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.06em">
-        <th style="padding:10px 12px">Window</th><th style="padding:10px 8px">Strike (open)</th><th style="padding:10px 8px">Spot now</th><th style="padding:10px 8px">Distance</th><th style="padding:10px 8px">Time left</th><th style="padding:10px 8px">Market says UP</th><th style="padding:10px 8px">Math says UP</th><th style="padding:10px 8px">Edge</th><th style="padding:10px 8px"></th>
-      </tr></thead>
-      <tbody id="cxRows"><tr><td colspan="9" style="padding:18px;color:var(--muted)">Scanning for live Up/Down windows…</td></tr></tbody>
-    </table>
-  </div>
-  <div class="section-h">📡 Captured leads <small>moments when the market lagged the math by ≥6 points</small></div>
-  <div id="cxLeads" style="font-family:var(--mono);font-size:11.5px;line-height:2;color:var(--muted);background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:14px 16px;max-height:300px;overflow:auto"><div class="empty">No discrepancies captured yet this session.</div></div>
-  <div class="mini-note" style="margin-top:14px;line-height:1.7">Model: fair P(up) = Φ( ln(spot/strike) / (σ·√τ) ) — a binary-option pricing using live per-minute volatility σ from the last 30 one-minute Binance candles, and τ = minutes remaining. Caveats: some 5-minute windows resolve on Pyth rather than Binance (tiny source differences matter near the strike); the model assumes no drift and log-normal moves, which breaks during news; and spread/depth on Polymarket eats small edges. Leads ≥10 points with >1 minute left are the only ones realistically actionable by a human.</div>
-</section>
+
 
 </main>
 
@@ -1237,6 +1218,15 @@ const Bot={
     const wins=closed.filter(t=>t.pnl>0).length;
     const last=s.lastRun?Math.round((Date.now()-s.lastRun)/60000):null;
     const alive=last!==null&&last<35;
+    /* global header readout (visible on every tab) */
+    const hb=$('hdrBot');
+    if(hb&&sm.equity!=null){
+      const ret=sm.returnPct||0;
+      hb.style.display='flex';
+      hb.innerHTML=`<span style="color:var(--faint)">🐕 BOT</span><span style="color:var(--text)">$${sm.equity.toLocaleString()}</span><span style="color:${ret>=0?'var(--yes)':'var(--no)'}">${ret>=0?'+':''}${ret}%</span><span style="width:6px;height:6px;border-radius:50%;background:${alive?'var(--yes)':'var(--amber)'};box-shadow:0 0 6px ${alive?'var(--yes)':'var(--amber)'}"></span>`;
+      hb.style.cursor='pointer';
+      hb.onclick=()=>showPage('bot',document.querySelector('[data-page=bot]'));
+    }
     /* status strip */
     const istToday=new Date(Date.now()+5.5*3600*1000).toISOString().slice(0,10);
     const todayN=(s.journal||[]).filter(t=>t.date===istToday).length;
@@ -1814,237 +1804,6 @@ function normCdf(z){ /* Φ via Abramowitz-Stegun erf approx */
   let p=d*t*(0.3193815+t*(-0.3565638+t*(1.781478+t*(-1.821256+t*1.330274))));
   return z>0?1-p:p;
 }
-const Cx={
-  wins:[], spot:{}, vol:{}, leads:[], timer:null, klTimer:null, lastFind:0,
-  SYM:{bitcoin:'BTCUSDT',btc:'BTCUSDT',ethereum:'ETHUSDT',eth:'ETHUSDT',solana:'SOLUSDT',sol:'SOLUSDT',xrp:'XRPUSDT'},
-
-  async findWindows(){
-    if(!LIVE){ this.demo(); return; }
-    try{
-      const evs=await jget(`${GAMMA}/events?closed=false&active=true&order=volume24hr&ascending=false&limit=200`);
-      const out=[];
-      (Array.isArray(evs)?evs:[]).forEach(ev=>{
-        const m=(ev.title||'').match(/\b(bitcoin|btc|ethereum|eth|solana|sol|xrp)\b.*up or down/i);
-        if(!m)return;
-        const sym=this.SYM[m[1].toLowerCase()]; if(!sym)return;
-        const mk=(ev.markets||[]).find(x=>!x.closed); if(!mk)return;
-        const end=new Date(mk.endDate||ev.endDate||0).getTime();
-        const left=(end-Date.now())/60000;
-        if(!(left>0.2&&left<=65))return;
-        let outs=[],prices=[];
-        try{outs=JSON.parse(mk.outcomes||'[]');prices=JSON.parse(mk.outcomePrices||'[]').map(Number);}catch(e){}
-        let ui=outs.findIndex(o=>/up/i.test(o)); if(ui<0)ui=0;
-        const start=new Date(mk.startDate||ev.startDate||0).getTime();
-        const dur=end-start;
-        const startTs=(dur>0&&dur<=2*3600e3)?start:end-3600e3; /* fall back: assume hourly */
-        out.push({key:ev.slug||ev.title,title:ev.title,slug:ev.slug||'',sym,end,startTs,upPrice:prices[ui]??NaN,strike:null});
-      });
-      /* strikes: exact 1-minute candle open at window start */
-      await Promise.allSettled(out.map(async w=>{
-        try{ const k=await jget(`${BINANCE}/klines?symbol=${w.sym}&interval=1m&startTime=${Math.floor(w.startTs/60000)*60000}&limit=1`);
-          if(Array.isArray(k)&&k[0]) w.strike=Number(k[0][1]); }catch(e){}
-      }));
-      this.wins=out.filter(w=>w.strike&&w.upPrice>0&&w.upPrice<1);
-    }catch(e){ this.wins=[]; }
-  },
-  async refreshVol(){
-    const syms=[...new Set(this.wins.map(w=>w.sym))];
-    await Promise.allSettled(syms.map(async s=>{
-      try{ const k=await jget(`${BINANCE}/klines?symbol=${s}&interval=1m&limit=31`);
-        const closes=k.map(c=>Number(c[4]));
-        const rets=[]; for(let i=1;i<closes.length;i++) rets.push(Math.log(closes[i]/closes[i-1]));
-        const mu=rets.reduce((a,b)=>a+b,0)/rets.length;
-        const sd=Math.sqrt(rets.reduce((a,b)=>a+(b-mu)*(b-mu),0)/(rets.length-1));
-        this.vol[s]=Math.max(sd,1e-5);
-      }catch(e){}
-    }));
-  },
-  async tick(){
-    if(!LIVE){ this.render(); return; }
-    if(Date.now()-this.lastFind>60000){ this.lastFind=Date.now(); await this.findWindows(); await this.refreshVol(); }
-    const syms=[...new Set(this.wins.map(w=>w.sym))];
-    if(syms.length){
-      try{ const t=await jget(`${BINANCE}/ticker/price?symbols=${encodeURIComponent(JSON.stringify(syms))}`);
-        (Array.isArray(t)?t:[t]).forEach(x=>{this.spot[x.symbol]=Number(x.price);});
-      }catch(e){}
-    }
-    this.render();
-  },
-  evalWindow(w){
-    const S=this.spot[w.sym], K=w.strike, sd=this.vol[w.sym]||0.0005;
-    const tau=Math.max(0.05,(w.end-Date.now())/60000);
-    if(!S||!K)return null;
-    const z=Math.log(S/K)/(sd*Math.sqrt(tau));
-    const pUp=normCdf(z);
-    return {S,K,tau,pUp,edge:(pUp-w.upPrice)*100,distBps:(S/K-1)*10000};
-  },
-  render(){
-    const rows=$('cxRows'); if(!rows)return;
-    if(!this.wins.length){
-      rows.innerHTML='<tr><td colspan="9" style="padding:18px;color:var(--muted)">'+(LIVE?'No live Up/Down windows found right now — they run on BTC/ETH/SOL/XRP in 5-minute and hourly cycles; check back shortly.':'Sample mode — open the hosted dashboard for live data.')+'</td></tr>';
-      $('cxStats').innerHTML=''; return;
-    }
-    let best=null;
-    rows.innerHTML=this.wins.map(w=>{
-      const e=this.evalWindow(w); if(!e)return '';
-      if(!best||Math.abs(e.edge)>Math.abs(best.e.edge))best={w,e};
-      const mins=Math.floor(e.tau), secs=Math.round((e.tau-mins)*60);
-      const sideUp=e.edge>0;
-      const strong=Math.abs(e.edge)>=6;
-      if(strong) this.capture(w,e);
-      return `<tr style="border-top:1px solid var(--border-soft);${strong?'background:rgba(245,181,68,.06)':''}">
-        <td style="padding:9px 12px;max-width:230px">${esc(w.title.slice(0,45))}</td>
-        <td class="num" style="padding:9px 8px">${e.K.toLocaleString(undefined,{maximumFractionDigits:2})}</td>
-        <td class="num" style="padding:9px 8px">${e.S.toLocaleString(undefined,{maximumFractionDigits:2})}</td>
-        <td class="num ${e.distBps>=0?'pos':'neg'}" style="padding:9px 8px">${e.distBps>=0?'+':''}${e.distBps.toFixed(1)} bps</td>
-        <td class="num" style="padding:9px 8px">${mins}m ${secs}s</td>
-        <td class="num" style="padding:9px 8px">${Math.round(w.upPrice*100)}%</td>
-        <td class="num" style="padding:9px 8px">${Math.round(e.pUp*100)}%</td>
-        <td class="num" style="padding:9px 8px;color:${strong?'var(--amber)':'var(--muted)'};font-weight:${strong?'700':'400'}">${e.edge>=0?'+':''}${e.edge.toFixed(1)}pts</td>
-        <td style="padding:9px 8px">${strong?`<span class="side-tag ${sideUp?'y':'n'}">${sideUp?'UP cheap':'DOWN cheap'}</span>`:''} <a class="btn" style="padding:4px 9px;font-size:10px" target="_blank" rel="noopener" href="https://polymarket.com/event/${esc(w.slug)}">↗</a></td>
-      </tr>`;
-    }).join('');
-    const nStrong=this.wins.filter(w=>{const e=this.evalWindow(w);return e&&Math.abs(e.edge)>=6;}).length;
-    $('cxBadge').textContent=nStrong||'';
-    $('cxStats').innerHTML=`
-      <div class="stat-card"><div class="lbl">Live windows</div><div class="val">${this.wins.length}</div><div class="sub">BTC/ETH/SOL/XRP up-or-down</div></div>
-      <div class="stat-card"><div class="lbl">Binance spot feed</div><div class="val" style="font-size:16px;padding-top:3px">${Object.keys(this.spot).length?Object.entries(this.spot).slice(0,2).map(([s,p])=>s.replace('USDT','')+' $'+p.toLocaleString(undefined,{maximumFractionDigits:0})).join(' · '):'—'}</div><div class="sub">refreshes every 5s</div></div>
-      <div class="stat-card"><div class="lbl">Discrepancies now</div><div class="val" style="color:${nStrong?'var(--amber)':'var(--muted)'}">${nStrong}</div><div class="sub">market vs math gap ≥6 pts</div></div>
-      <div class="stat-card"><div class="lbl">Leads captured</div><div class="val">${this.leads.length}</div><div class="sub">this session</div></div>`;
-  },
-  capture(w,e){
-    const last=this.leads[0];
-    if(last&&last.key===w.key&&Date.now()-last.ts<120000)return; /* don't spam same window */
-    this.leads.unshift({key:w.key,ts:Date.now(),txt:`${new Date().toLocaleTimeString()} — ${w.title.slice(0,40)}: market priced UP at ${Math.round(w.upPrice*100)}%, math said ${Math.round(e.pUp*100)}% (spot ${e.distBps>=0?'+':''}${e.distBps.toFixed(0)}bps vs strike, ${e.tau.toFixed(1)}min left) → ${e.edge>0?'UP':'DOWN'} was ${Math.abs(e.edge).toFixed(0)}pts cheap`});
-    this.leads=this.leads.slice(0,50);
-    $('cxLeads').innerHTML=this.leads.map(l=>'<div>📍 '+esc(l.txt)+'</div>').join('');
-  },
-  demo(){
-    this.wins=[{key:'d1',title:'Bitcoin Up or Down — June 12, 9PM ET',slug:'',sym:'BTCUSDT',end:Date.now()+14*60000,startTs:Date.now()-46*60000,upPrice:.58,strike:142100}];
-    this.spot={BTCUSDT:142480}; this.vol={BTCUSDT:.0006};
-  },
-  start(){
-    clearInterval(this.timer);
-    this.tick();
-    this.timer=setInterval(()=>{ if($('page-cx').classList.contains('active')) this.tick(); },5000);
-  }
-};
-
-/* ============ BTC 5-min lead: Binance vs Polymarket ============ */
-const Btc5={
-  tmr:null, spot:null, candleOpen:null, candleStart:null, vol1m:null,
-  market:null, log:store.get('eb_btc5')||[], lastSignalWin:null,
-
-  start(){ if(this.tmr)return; this.tick(); this.tmr=setInterval(()=>this.tick(),4000); },
-  stop(){ clearInterval(this.tmr); this.tmr=null; },
-
-  async tick(){
-    try{
-      /* Binance: live price + current 5m candle + 1m vol (refresh candle/vol on window change) */
-      const winStart=Math.floor(Date.now()/300000)*300000;
-      const newWin=winStart!==this.candleStart;
-      const [px,kl]=await Promise.all([
-        jget('https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT',5000),
-        newWin?jget('https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1m&limit=31',6000):Promise.resolve(null)
-      ]);
-      this.spot=Number(px.price);
-      if(newWin){
-        const k5=await jget(`https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=5m&startTime=${winStart}&limit=1`,6000);
-        this.candleOpen=Number(k5[0][1]); this.candleStart=winStart;
-        if(kl){const cl=kl.map(k=>Number(k[4]));const rets=[];for(let i=1;i<cl.length;i++)rets.push(Math.log(cl[i]/cl[i-1]));
-          const mu=rets.reduce((a,b)=>a+b,0)/rets.length;
-          this.vol1m=Math.sqrt(rets.reduce((a,b)=>a+(b-mu)**2,0)/rets.length)||1e-5;}
-        this.market=null; /* force market rediscovery for new window */
-        this.settleOld();
-      }
-      /* Polymarket: find the live Up-or-Down market for this window */
-      if(!this.market&&LIVE){
-        const evs=await jget(`${GAMMA}/events?closed=false&active=true&order=endDate&ascending=true&limit=60`,7000);
-        const ev=(evs||[]).find(e=>/bitcoin up or down/i.test(e.title||'')&&new Date(e.endDate||0).getTime()>Date.now());
-        if(ev&&ev.markets&&ev.markets[0]){
-          const m=ev.markets[0];
-          let prices=[],outs=[];
-          try{prices=JSON.parse(m.outcomePrices||'[]').map(Number);outs=JSON.parse(m.outcomes||'[]');}catch(e){}
-          const ui=outs.findIndex(o=>/up/i.test(o));
-          this.market={title:ev.title,slug:ev.slug,up:prices[ui<0?0:ui]||0,end:new Date(ev.endDate).getTime(),mid:m};
-        }
-      } else if(this.market&&LIVE){
-        /* cheap refresh of just the price */
-        try{const mm=await jget(`${GAMMA}/markets/${this.market.mid.id}`,5000);
-          const prices=JSON.parse(mm.outcomePrices||'[]').map(Number);const outs=JSON.parse(mm.outcomes||'[]');
-          const ui=outs.findIndex(o=>/up/i.test(o)); this.market.up=prices[ui<0?0:ui]||this.market.up;}catch(e){}
-      }
-      this.evaluate(); this.render();
-    }catch(e){ $('btc5Panel').innerHTML='<div class="empty">Feed error: '+esc(e.message)+' — retrying…</div>'; }
-  },
-
-  fairP(){
-    if(!this.spot||!this.candleOpen||!this.vol1m)return null;
-    const tau=Math.max(.05,(this.candleStart+300000-Date.now())/60000);
-    const z=Math.log(this.spot/this.candleOpen)/(this.vol1m*Math.sqrt(tau));
-    return 0.5*(1+erf(z/Math.SQRT2));
-  },
-
-  evaluate(){
-    const f=this.fairP(); if(f==null||!this.market)return;
-    const mkt=this.market.up; if(!(mkt>0.02&&mkt<0.98))return;
-    const edge=(f-mkt)*100;
-    const secsLeft=(this.candleStart+300000-Date.now())/1000;
-    /* log at most one signal per window, only with >=6pt edge and 20s+ left */
-    if(Math.abs(edge)>=6&&secsLeft>20&&this.lastSignalWin!==this.candleStart){
-      this.lastSignalWin=this.candleStart;
-      this.log.push({win:this.candleStart,side:edge>0?'UP':'DOWN',mkt:edge>0?mkt:1-mkt,fair:edge>0?f:1-f,
-        edge:+Math.abs(edge).toFixed(1),ts:Date.now(),resolved:false,won:null});
-      this.log=this.log.slice(-200); store.set('eb_btc5',this.log);
-    }
-  },
-
-  async settleOld(){
-    const open=this.log.filter(l=>!l.resolved&&l.win+300000<Date.now()-15000);
-    for(const l of open.slice(0,5)){
-      try{
-        const k=await jget(`https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=5m&startTime=${l.win}&limit=1`,6000);
-        if(k&&k[0]){
-          const up=Number(k[0][4])>=Number(k[0][1]);
-          l.resolved=true; l.won=(l.side==='UP')===up;
-        }
-      }catch(e){}
-    }
-    store.set('eb_btc5',this.log);
-  },
-
-  render(){
-    const f=this.fairP();
-    const move=this.spot&&this.candleOpen?((this.spot-this.candleOpen)/this.candleOpen)*100:null;
-    const secs=this.candleStart?Math.max(0,Math.round((this.candleStart+300000-Date.now())/1000)):null;
-    const settled=this.log.filter(l=>l.resolved);
-    const wins=settled.filter(l=>l.won);
-    const pnl=settled.reduce((s,l)=>s+(l.won?10*(1-l.mkt)/l.mkt:-10),0);
-    const edge=f!=null&&this.market?(f-this.market.up)*100:null;
-    const sig=edge!=null&&Math.abs(edge)>=6;
-    $('btc5Panel').innerHTML=`
-      <div class="stat-row" style="margin-bottom:12px">
-        <div class="stat-card"><div class="lbl">Binance BTC (live)</div><div class="val">${this.spot?'$'+this.spot.toLocaleString(undefined,{maximumFractionDigits:0}):'—'}</div><div class="sub">candle open $${this.candleOpen?this.candleOpen.toLocaleString(undefined,{maximumFractionDigits:0}):'—'} · ${move!=null?(move>=0?'+':'')+move.toFixed(3)+'% this window':''}</div></div>
-        <div class="stat-card"><div class="lbl">Window closes in</div><div class="val">${secs!=null?Math.floor(secs/60)+':'+String(secs%60).padStart(2,'0'):'—'}</div><div class="sub">5-minute candle</div></div>
-        <div class="stat-card"><div class="lbl">Fair P(UP) from Binance</div><div class="val">${f!=null?Math.round(f*100)+'%':'—'}</div><div class="sub">price position + vol + time left</div></div>
-        <div class="stat-card"><div class="lbl">Polymarket P(UP)</div><div class="val">${this.market?Math.round(this.market.up*100)+'%':'—'}</div><div class="sub">${this.market?esc(this.market.title.slice(0,34)):'finding live market…'}</div></div>
-      </div>
-      ${edge!=null?`<div style="background:${sig?'var(--yes-soft)':'var(--surface2)'};border:1px solid ${sig?'rgba(61,220,151,.3)':'var(--border-soft)'};border-radius:11px;padding:12px 14px;margin-bottom:12px">
-        <div style="font-family:var(--mono);font-size:14px;font-weight:600;color:${sig?'var(--yes)':'var(--muted)'}">
-          ${sig?('⚡ LEAD DETECTED: Binance implies '+Math.round((edge>0?f:1-f)*100)+'% '+(edge>0?'UP':'DOWN')+' — Polymarket prices it '+Math.round((edge>0?this.market.up:1-this.market.up)*100)+'¢ ('+Math.abs(edge).toFixed(1)+' pts cheap)'):'No lead right now — Polymarket is tracking Binance within '+Math.abs(edge).toFixed(1)+' pts'}
-        </div>
-        ${sig?'<div style="font-size:11.5px;color:var(--muted);margin-top:4px">The exchange already moved; the odds haven\'t caught up. Logged to the scoreboard — settlement against the real candle close decides if the lead was real.</div>':''}
-      </div>`:''}
-      <div style="font-family:var(--mono);font-size:11.5px;color:var(--muted)">
-        📒 Paper scoreboard: <b style="color:var(--text)">${this.log.length}</b> signals logged · <b style="color:var(--text)">${settled.length}</b> settled · hit rate <b style="color:${settled.length&&wins.length/settled.length>=.55?'var(--yes)':'var(--text)'}">${settled.length?Math.round(wins.length/settled.length*100)+'%':'—'}</b> · simulated P&L at $10 flat: <b style="color:${pnl>=0?'var(--yes)':'var(--no)'}">${pnl>=0?'+':''}$${pnl.toFixed(2)}</b>
-      </div>
-      <div class="mini-note" style="margin-top:8px">Honest caveats: Polymarket prices here refresh on a few-second delay, real snipers use websockets and still fight for fills; Polymarket resolves these on the Chainlink BTC/USD data stream — an aggregate across many exchanges — which can differ from Binance by a hair, so knife-edge windows may settle against the Binance read; and a detected lead doesn't mean an order would fill at that price. The scoreboard exists to measure whether the lead survives those frictions on paper first.</div>`;
-  }
-};
-function erf(x){const s=x<0?-1:1;x=Math.abs(x);const t=1/(1+.3275911*x);
-  const y=1-(((((1.061405429*t-1.453152027)*t)+1.421413741)*t-.284496736)*t+.254829592)*t*Math.exp(-x*x);
-  return s*y;}
-
 /* ============ Sniper Lab results loader ============ */
 const Sniper={
   tmr:null,
@@ -2104,7 +1863,7 @@ const Sniper={
 };
 /* wire scanner into tab switching */
 const _origShowPage=showPage;
-showPage=function(p,btn){ _origShowPage(p,btn); if(p==='arb'){ if(!Arb.lastScan)Arb.scan(); Arb.auto(); } if(p==='cx'){ Cx.start(); } };
+showPage=function(p,btn){ _origShowPage(p,btn); if(p==='arb'){ if(!Arb.lastScan)Arb.scan(); Arb.auto(); Sniper.start(); } else { Sniper.stop(); } };
 
 boot();
 </script>

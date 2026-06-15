@@ -58,14 +58,23 @@ function summarize(lab) {
   const withPx = s.filter(x => x.paid > 0);
   const pnl = withPx.reduce((a, x) => a + (x.won ? 10 * (1 - x.paid) / x.paid : -10), 0);
   const avgPaid = withPx.length ? withPx.reduce((a, x) => a + x.paid, 0) / withPx.length : null;
+  /* "decided" = genuinely resolved direction (favorite priced >=85c); the
+     real hypothesis test. Mid-priced samples are near-coin-flip windows. */
+  const decided = withPx.filter(x => x.paid >= 0.85);
+  const dPnl = decided.reduce((a, x) => a + (x.won ? 10 * (1 - x.paid) / x.paid : -10), 0);
+  const dAvg = decided.length ? decided.reduce((a, x) => a + x.paid, 0) / decided.length : null;
   lab.summary = {
     samples: s.length,
+    pricedSamples: withPx.length,
     directionAccuracy: s.length ? +(correct.length / s.length).toFixed(4) : null,
     avgPricePaid: avgPaid ? +avgPaid.toFixed(4) : null,
     pnlPer10Flat: +pnl.toFixed(2),
     evPerTrade: withPx.length ? +(pnl / withPx.length).toFixed(3) : null,
-    /* break-even accuracy given avg price: must win paid/1 of the time */
     breakEvenAccuracy: avgPaid ? +avgPaid.toFixed(4) : null,
+    decidedSamples: decided.length,
+    decidedAccuracy: decided.length ? +(decided.filter(x=>x.won).length/decided.length).toFixed(4) : null,
+    decidedAvgPaid: dAvg ? +dAvg.toFixed(4) : null,
+    decidedEvPerTrade: decided.length ? +(dPnl/decided.length).toFixed(3) : null,
     updated: new Date().toISOString()
   };
 }
@@ -132,7 +141,15 @@ async function sampleBoundary(B, lab) {
         const tok = dir === 'UP' ? mkt.upToken : mkt.downToken;
         const fb = dir === 'UP' ? mkt.upPrice : mkt.downPrice;
         paid = await bestAsk(tok, fb);
-        mktNote = paid > 0 ? 'ok' : ('found but no price (token ' + (tok ? 'present' : 'missing') + ', gamma price ' + fb + ')');
+        /* GUARD: at T-5s the visible-direction side is the favorite. A price
+           below ~0.35 means we grabbed the wrong token or a market that has
+           already started resolving (prices snapping toward 0/1). Reject it
+           rather than logging a fake 100x payout. Also require the opposite
+           side to be cheaper than our side (sanity on token orientation). */
+        const opp = dir === 'UP' ? mkt.downPrice : mkt.upPrice;
+        if (paid > 0 && paid < 0.35) { mktNote = 'rejected: paid ' + paid + ' implausible for decided side (late/wrong-token)'; paid = 0; }
+        else if (paid > 0 && opp != null && opp > paid + 0.001) { mktNote = 'rejected: token orientation suspect (our side ' + paid + ' > opp ' + opp + ')'; paid = 0; }
+        else { mktNote = paid > 0 ? 'ok' : ('found but no price (token ' + (tok ? 'present' : 'missing') + ', gamma price ' + fb + ')'); }
       }
     } catch (e) { mktNote = 'lookup error: ' + e.message.slice(0, 60); log('market lookup failed: ' + e.message); }
 

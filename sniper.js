@@ -153,7 +153,6 @@ async function sampleBoundary(B, lab) {
            those rather than logging a fake 100x payout. We do NOT require the
            opposite side to be cheaper here (at 30s the two sides can be close). */
         if (paid > 0 && paid < 0.20) { mktNote = 'rejected: paid ' + paid + ' implausible (late/wrong-token)'; paid = 0; }
-        else if (paid > 0 && opp != null && opp > paid + 0.001) { mktNote = 'rejected: token orientation suspect (our side ' + paid + ' > opp ' + opp + ')'; paid = 0; }
         else { mktNote = paid > 0 ? 'ok' : ('found but no price (token ' + (tok ? 'present' : 'missing') + ', gamma price ' + fb + ')'); }
       }
     } catch (e) { mktNote = 'lookup error: ' + e.message.slice(0, 60); log('market lookup failed: ' + e.message); }

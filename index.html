@@ -389,7 +389,7 @@ footer{max-width:1280px;margin:0 auto;padding:0 24px 40px;color:var(--faint);fon
     </select>
   </div>
   <div class="section-h" style="margin-top:6px">🎯 60-Second Sniper Lab <small>bet $10 each window — do we come out ahead?</small></div>
-  <div class="help-tip"><b>The test in plain terms:</b> 60 seconds before each 5-minute Bitcoin window closes, the bot bets <b>$10</b> on whichever direction the price is currently moving, at the real Polymarket price. Then it checks if that bet won. The scorecard below shows exactly what you'd have if you'd done this every time: how much you put in, how much came back, and your % return. <b>If "every $10 returns more than $10," there's an edge. If less, there isn't.</b> We moved from 5s → 60s because at 5s the price was already 98¢ (no room for profit); 60s out it should be cheaper.
+  <div class="help-tip"><b>The test in plain terms:</b> 60 seconds before each 5-minute Bitcoin window closes, the bot bets <b>$10</b> on whichever direction the price is currently moving, at the real Polymarket price. Then it checks if that bet won. The scorecard below shows exactly what you'd have if you'd done this every time: how much you put in, how much came back, and your % return. <b>If "every $10 returns more than $10," there's an edge. If less, there isn't.</b> We moved from 5s → 60s because at 5s the price was already 98¢ (no room for profit); 60s out it should be cheaper. <b>Every bet is double-verified:</b> the win/loss is confirmed against 2+ independent price feeds (Binance 5-min, Binance 1-min, and Coinbase) — and any bet where they disagree, or where the price closed exactly where it opened, is thrown out rather than guessed.
   <span id="snip5sArchive"></span></div>
   <div id="sniperPanel" style="background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px 18px;margin-bottom:18px"><div class="empty">Loading lab results…</div></div>
 
@@ -1847,14 +1847,16 @@ const Sniper={
       :'❌ LOSES MONEY: the price you pay already cancels the high hit-rate';
     const verdictColor=ev==null||nDec<30?'var(--muted)':ev>0.5?'var(--yes)':ev>0.05?'var(--amber)':ev>-0.5?'var(--muted)':'var(--no)';
 
-    const rows=(lab.samples||[]).filter(x=>x.priceSrc==='clob').slice(-10).reverse().map(x=>{
+    const rows=(lab.samples||[]).filter(x=>x.priceSrc==='clob'&&x.verified===true).slice(-10).reverse().map(x=>{
       const back=x.won?(10/x.paid):0;
+      const srcStr=(x.sources||[]).map(sv=>sv.src.replace('binance','bnc').replace('coinbase','cb')+'·'+sv.dir).join(' ');
       return `<tr><td class="num">${new Date(x.win).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}</td>
       <td><span class="side-tag ${x.dir==='UP'?'y':'n'}">${x.dir}</span></td>
       <td class="num">${cents(x.paid)}</td>
       <td>${x.won?'<span class="pos">✓ won</span>':'<span class="neg">✗ lost</span>'}</td>
       <td class="num ${x.won?'pos':'neg'}">${x.won?'$'+back.toFixed(2):'$0.00'}</td>
-      <td class="num ${x.won?'pos':'neg'}">${x.won?'+$'+(back-10).toFixed(2):'−$10.00'}</td></tr>`;
+      <td class="num ${x.won?'pos':'neg'}">${x.won?'+$'+(back-10).toFixed(2):'−$10.00'}</td>
+      <td style="font-family:var(--mono);font-size:10px;color:var(--yes)" title="${esc(x.settleNote||'')}">✓✓ ${esc(srcStr)}</td></tr>`;
     }).join('');
 
     box.innerHTML=`
@@ -1882,8 +1884,9 @@ const Sniper={
       <div class="mini-note" style="margin-bottom:6px">How it works: 60 seconds before each 5-min Bitcoin window closes, the bot bets $10 on whichever way the price is currently moving, paying the live Polymarket price. Win rate so far: <b style="color:var(--text)">${acc!=null?(acc*100).toFixed(0)+'%</b> of '+nDec+' bets':'—'} · average price paid <b style="color:var(--text)">${be?cents(be):'—'}</b> · all-time: invested $${(allt.invested||0).toLocaleString()}, got back $${(allt.returned||0).toLocaleString(undefined,{maximumFractionDigits:0})} (${(allt.returnPct||0)>=0?'+':''}${allt.returnPct!=null?allt.returnPct:'—'}%).</div>
       <div class="mini-note" style="margin-bottom:12px;color:var(--faint)">data ${ageMin<=1?'just updated':ageMin+' min old'} · updates every minute · only counts bets where we got the real live price</div>
 
-      <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:8px">Recent bets</div>
-      <table class="tbl"><thead><tr><th>Time</th><th>Bet</th><th>Price paid</th><th>Result</th><th>$10 → got back</th><th>Profit</th></tr></thead><tbody>${rows||'<tr><td colspan=6 style="color:var(--faint);padding:14px">No live-priced bets yet.</td></tr>'}</tbody></table>`;
+      <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:8px">Recent bets <span style="color:var(--yes)">· each double-verified</span></div>
+      <table class="tbl"><thead><tr><th>Time</th><th>Bet</th><th>Price paid</th><th>Result</th><th>$10 → got back</th><th>Profit</th><th>Verified by</th></tr></thead><tbody>${rows||'<tr><td colspan=7 style="color:var(--faint);padding:14px">No verified bets yet.</td></tr>'}</tbody></table>
+      ${s.excludedUnverified?`<div class="mini-note" style="margin-top:8px;color:var(--amber)">⊘ ${s.excludedUnverified} bet${s.excludedUnverified>1?'s':''} excluded as unverified (exact ties where price closed = opened, or sources disagreed). These never count toward the stats above — only bets confirmed by 2+ independent price feeds are tallied.</div>`:''}`;
   }
 };
 /* wire scanner into tab switching */

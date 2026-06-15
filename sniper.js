@@ -224,25 +224,21 @@ async function sampleBoundary(B, lab) {
       return verdicts;
     };
 
-    /* Polymarket's OWN resolved outcome — the ground truth that actually pays
-       the bet. After a 5-min market settles, outcomePrices snap to [1,0]/[0,1].
-       Poll a few times since resolution lags the candle close by some seconds. */
+    /* Polymarket's OWN resolved outcome — ground truth that pays the bet.
+       SINGLE quick check (no retry loop) so it never stalls the sampling loop.
+       If not yet resolved, the sample is committed with exchange verification and
+       UPGRADED to Polymarket-confirmed on a later run by upgradePending(). */
     const polyResolve = async (mkt) => {
       if (!mkt || !mkt.id) return null;
-      for (let attempt = 0; attempt < 4; attempt++) {
-        try {
-          const m = await jget(`${GAMMA}/markets/${mkt.id}`, 6000);
-          const closed = m.closed === true || m.umaResolutionStatus === 'resolved';
-          let prices = []; try { prices = JSON.parse(m.outcomePrices || '[]').map(Number); } catch (e) {}
-          let outs = []; try { outs = JSON.parse(m.outcomes || '[]'); } catch (e) {}
-          const ui = outs.findIndex(o => /up/i.test(o));
-          const upP = prices[ui < 0 ? 0 : ui];
-          if (closed && (upP === 1 || upP === 0)) {
-            return { src: 'polymarket', up: upP === 1, resolved: true };
-          }
-        } catch (e) {}
-        if (attempt < 3) await sleep(8000);
-      }
+      try {
+        const m = await jget(`${GAMMA}/markets/${mkt.id}`, 5000);
+        const closed = m.closed === true || m.umaResolutionStatus === 'resolved';
+        let prices = []; try { prices = JSON.parse(m.outcomePrices || '[]').map(Number); } catch (e) {}
+        let outs = []; try { outs = JSON.parse(m.outcomes || '[]'); } catch (e) {}
+        const ui = outs.findIndex(o => /up/i.test(o));
+        const upP = prices[ui < 0 ? 0 : ui];
+        if (closed && (upP === 1 || upP === 0)) return { src: 'polymarket', up: upP === 1, resolved: true };
+      } catch (e) {}
       return null;
     };
 
@@ -292,6 +288,7 @@ async function sampleBoundary(B, lab) {
 
     lab.samples.push({
       win: candleStart, t: new Date(B).toISOString(), dir, leadPct: +leadPct.toFixed(4),
+      marketId: mktObj && mktObj.id ? mktObj.id : null,
       btcAtBet: +spot.toFixed(2), btcAtClose: closePrice != null ? +closePrice.toFixed(2) : null,
       btcChange: priceChange != null ? +priceChange.toFixed(2) : null,
       btcChangePct: priceChangePct != null ? +priceChangePct.toFixed(4) : null,
@@ -313,6 +310,36 @@ async function sampleBoundary(B, lab) {
 (async () => {
   fs.mkdirSync(path.dirname(OUT_FILE), { recursive: true });
   const lab = loadLab();
+
+  /* UPGRADE PASS: any committed sample not yet Polymarket-confirmed gets one
+     more shot at the ground-truth resolution now (the market has since settled).
+     This is how exchange-verified samples become Polymarket-confirmed without
+     ever blocking the time-critical sampling loop. */
+  const pending = lab.samples.filter(x => x.actual !== null && !x.polyConfirmed && x.marketId).slice(-40);
+  let upgraded = 0;
+  for (const x of pending) {
+    try {
+      const m = await jget(`${GAMMA}/markets/${x.marketId}`, 5000);
+      const closed = m.closed === true || m.umaResolutionStatus === 'resolved';
+      let prices = []; try { prices = JSON.parse(m.outcomePrices || '[]').map(Number); } catch (e) {}
+      let outs = []; try { outs = JSON.parse(m.outcomes || '[]'); } catch (e) {}
+      const ui = outs.findIndex(o => /up/i.test(o));
+      const upP = prices[ui < 0 ? 0 : ui];
+      if (closed && (upP === 1 || upP === 0)) {
+        const polyActual = upP === 1 ? 'UP' : 'DOWN';
+        const exchAgree = x.actual === polyActual;
+        x.actual = polyActual;
+        x.won = x.dir === polyActual;
+        x.verified = true;
+        x.polyConfirmed = true;
+        x.settleNote = exchAgree ? 'resolved by Polymarket (exchanges agreed)' : 'resolved by Polymarket (corrected from exchange guess)';
+        (x.sources = x.sources || []).push({ src: 'polymarket', dir: polyActual });
+        upgraded++;
+      }
+    } catch (e) {}
+  }
+  if (upgraded) { summarize(lab); fs.writeFileSync(OUT_FILE, JSON.stringify(lab)); log(`Upgraded ${upgraded} sample(s) to Polymarket-confirmed.`); }
+
   const endAt = Date.now() + DURATION_MS;
   log(`Sniper Lab alive for ${(DURATION_MS / 60000).toFixed(1)} min. Samples so far: ${lab.samples.length}.`);
   while (Date.now() < endAt) {

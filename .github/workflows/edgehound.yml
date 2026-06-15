@@ -26,6 +26,9 @@ jobs:
       - name: Run EdgeHound
         run: node edgehound.js
 
+      - name: Self-audit (invariant checks + auto-fix safe classes)
+        run: node audit.js || echo "audit completed with findings"
+
       - name: Commit journal
         run: |
           git config user.name "edgehound-bot"
@@ -87,6 +90,39 @@ jobs:
           }
           console.log('Ledger integrity OK —',(s.integrity&&s.integrity.tradesChecked)||0,'trades verified.');
           "
+
+      - name: Trigger AI Reviewer every ~2 hours (piggybacks 15-min cadence)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Run on even hours (00,02,04,...). Marker stores the last YYYY-MM-DD-HH bucket
+          # so it fires once per 2-hour window even though the bot runs every 15 min.
+          HOUR=$(date -u +%H); HOUR=$((10#$HOUR))
+          BUCKET="$(date -u +%Y-%m-%d)-$((HOUR/2))"
+          MARKER="data/.reviewer-last-run"
+          LAST=$(cat "$MARKER" 2>/dev/null || echo "none")
+          if [ $((HOUR % 2)) -eq 0 ] && [ "$LAST" != "$BUCKET" ]; then
+            echo "Triggering reviewer for bucket $BUCKET (last: $LAST)"
+            HTTP=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
+              -H "Authorization: Bearer $GH_TOKEN" \
+              -H "Accept: application/vnd.github+json" \
+              "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/workflows/reviewer.yml/dispatches" \
+              -d '{"ref":"main"}')
+            if [ "$HTTP" = "204" ]; then
+              echo "$BUCKET" > "$MARKER"
+              git add "$MARKER"
+              git -c user.name=edgehound-bot -c user.email=bot@edgehound commit -m "Reviewer triggered $BUCKET" || true
+              for i in 1 2 3 4 5; do
+                git pull --rebase origin ${GITHUB_REF_NAME} || { git rebase --abort 2>/dev/null || true; }
+                if git push; then break; fi
+                sleep $((i*3))
+              done
+            else
+              echo "Reviewer dispatch returned HTTP $HTTP — retry next cycle"
+            fi
+          else
+            echo "Reviewer trigger skipped (hour=$HOUR, bucket=$BUCKET, last=$LAST)"
+          fi
 
 
   sniper:

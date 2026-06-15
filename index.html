@@ -388,8 +388,8 @@ footer{max-width:1280px;margin:0 auto;padding:0 24px 40px;color:var(--faint);fon
       <option value="0.1">Show everything (incl. dust)</option>
     </select>
   </div>
-  <div class="section-h" style="margin-top:6px">🎯 30-Second Sniper Lab <small>does a better entry price beat lower accuracy?</small></div>
-  <div class="help-tip"><b>The hypothesis:</b> at 5 seconds out, the direction was 99% certain but cost ~98¢ — right almost always, but no reward. So now we sample <b>30 seconds before close</b>: the direction is less certain (accuracy will drop) but the favorite side is <b>cheaper</b> (each win pays more). The real question this measures: <b>does the better price more than make up for the extra misses?</b> The lab records the direction and the real Polymarket ask 30s out, then settles against the actual candle. Watch the <b>EV per trade</b> — that's the whole answer.
+  <div class="section-h" style="margin-top:6px">🎯 60-Second Sniper Lab <small>bet $10 each window — do we come out ahead?</small></div>
+  <div class="help-tip"><b>The test in plain terms:</b> 60 seconds before each 5-minute Bitcoin window closes, the bot bets <b>$10</b> on whichever direction the price is currently moving, at the real Polymarket price. Then it checks if that bet won. The scorecard below shows exactly what you'd have if you'd done this every time: how much you put in, how much came back, and your % return. <b>If "every $10 returns more than $10," there's an edge. If less, there isn't.</b> We moved from 5s → 60s because at 5s the price was already 98¢ (no room for profit); 60s out it should be cheaper.
   <span id="snip5sArchive"></span></div>
   <div id="sniperPanel" style="background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px 18px;margin-bottom:18px"><div class="empty">Loading lab results…</div></div>
 
@@ -1832,37 +1832,58 @@ const Sniper={
     }
     const ageMin=Math.round((Date.now()-new Date(lab.summary.updated).getTime())/60000);
     const arch=lab.archive_5s; const ax=$('snip5sArchive');
-    if(arch&&ax) ax.innerHTML=` <br><span style="color:var(--faint)">Prior 5-second test (concluded, ${arch.samples} windows): ${(arch.decidedAccuracy*100).toFixed(0)}% accurate but paid ${cents(arch.decidedAvgPaid)} → only +$${arch.decidedEvPerTrade}/trade. The 30s test asks if a cheaper entry does better.</span>`;
+    if(arch&&ax) ax.innerHTML=` <br><span style="color:var(--faint)">For comparison — the earlier 5-second test: ${(arch.decidedAccuracy*100).toFixed(0)}% win rate but paid ${cents(arch.decidedAvgPaid)}, so every $10 returned about $${(10+arch.decidedEvPerTrade).toFixed(2)} — basically break-even. This 60s test is checking if an earlier, cheaper entry does better.</span>`;
     const s=lab.summary;
-    /* the honest test is the DECIDED windows (favorite priced >=85c), not
-       the near-coin-flip mid-priced samples which are noise, not the hypothesis */
     const acc=s.decidedAccuracy??s.directionAccuracy, be=s.decidedAvgPaid??s.breakEvenAccuracy;
     const ev=s.decidedEvPerTrade??s.evPerTrade;
     const nDec=s.decidedSamples??s.pricedSamples??s.samples;
-    const edge=acc!=null&&be!=null?(acc-be)*100:null;
-    const verdict=edge==null?'collecting…'
-      :nDec<30?'too early to judge — need 30+ decided windows':
-       ev>0.5?'✅ HYPOTHESIS HOLDS: a real, tradeable edge survives the price you pay':
-       ev>0.05?'⚠ MARGINAL: technically positive ('+(ev>0?'+':'')+'$'+ev+'/trade) but too thin to survive real fills, fees & slippage':
-       ev>-0.5?'➖ WASH: the 98¢ price already charges for the near-certain direction — no free money':
-       '❌ HYPOTHESIS FAILS: paying for the visible direction loses money';
-    const rows=(lab.samples||[]).slice(-12).reverse().map(x=>
-      `<tr><td class="num">${new Date(x.win).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}</td>
+    const perTen=s.perTenDollar!=null?s.perTenDollar:(ev!=null?10+ev:null);
+    const l50=s.last50||{}, allt=s.allTime||{};
+    const verdict=ev==null?'Collecting data…'
+      :nDec<30?'Too early to call — need 30+ trades for a real read'
+      :ev>0.5?'✅ WORTH IT: you reliably get back more than you put in'
+      :ev>0.05?'⚠ BARELY POSITIVE: technically up, but too thin to survive real fees & slippage'
+      :ev>-0.5?'➖ BREAK-EVEN: you get back about what you put in — no real edge'
+      :'❌ LOSES MONEY: the price you pay already cancels the high hit-rate';
+    const verdictColor=ev==null||nDec<30?'var(--muted)':ev>0.5?'var(--yes)':ev>0.05?'var(--amber)':ev>-0.5?'var(--muted)':'var(--no)';
+
+    const rows=(lab.samples||[]).filter(x=>x.priceSrc==='clob').slice(-10).reverse().map(x=>{
+      const back=x.won?(10/x.paid):0;
+      return `<tr><td class="num">${new Date(x.win).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}</td>
       <td><span class="side-tag ${x.dir==='UP'?'y':'n'}">${x.dir}</span></td>
-      <td class="num">${(x.leadPct>=0?'+':'')+x.leadPct.toFixed(3)}%</td>
-      <td class="num">${x.paid?cents(x.paid):'—'}</td>
-      <td>${x.won?'<span class="pos">✓ correct</span>':'<span class="neg">✗ '+(x.flips||'wrong')+'</span>'}</td>
-      <td class="num ${x.won?'pos':'neg'}">${x.paid?(x.won?'+$'+(10*(1-x.paid)/x.paid).toFixed(2):'-$10.00'):'—'}</td></tr>`).join('');
+      <td class="num">${cents(x.paid)}</td>
+      <td>${x.won?'<span class="pos">✓ won</span>':'<span class="neg">✗ lost</span>'}</td>
+      <td class="num ${x.won?'pos':'neg'}">${x.won?'$'+back.toFixed(2):'$0.00'}</td>
+      <td class="num ${x.won?'pos':'neg'}">${x.won?'+$'+(back-10).toFixed(2):'−$10.00'}</td></tr>`;
+    }).join('');
+
     box.innerHTML=`
-      <div class="stat-row" style="margin-bottom:12px">
-        <div class="stat-card"><div class="lbl">Windows sampled</div><div class="val">${s.samples}</div><div class="sub">around the clock, 30s before close</div></div>
-        <div class="stat-card"><div class="lbl">Direction accuracy</div><div class="val">${acc!=null?(acc*100).toFixed(1)+'%':'—'}</div><div class="sub">on ${nDec} genuinely-decided windows</div></div>
-        <div class="stat-card"><div class="lbl">Avg price paid</div><div class="val">${be?cents(be):'—'}</div><div class="sub">break-even needs ${be?(be*100).toFixed(1)+'%':'—'} accuracy</div></div>
-        <div class="stat-card"><div class="lbl">EV per trade</div><div class="val ${ev>=0?'pos':'neg'}">${ev>=0?'+':''}$${ev??'—'}</div><div class="sub">at $10 flat, before real-world fills</div></div>
+      <!-- HERO: the plain-money answer -->
+      <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;background:linear-gradient(135deg,var(--surface2),var(--surface));border:1px solid var(--border);border-radius:14px;padding:18px 22px;margin-bottom:16px">
+        <div>
+          <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)">Every $10 bet returns on average</div>
+          <div style="font-family:var(--display);font-weight:800;font-size:34px;letter-spacing:-.02em;color:${perTen>=10?'var(--yes)':'var(--no)'};line-height:1.1">$${perTen!=null?perTen.toFixed(2):'—'}</div>
+          <div style="font-size:12px;color:${perTen>=10?'var(--yes)':'var(--no)'}">${perTen!=null?(perTen>=10?'+$'+(perTen-10).toFixed(2)+' profit':'−$'+(10-perTen).toFixed(2)+' loss')+' per $10':'gathering data'}</div>
+        </div>
+        <div style="flex:1;min-width:200px;text-align:right">
+          <div style="display:inline-block;text-align:left;background:var(--surface);border-radius:10px;padding:8px 14px;font-family:var(--mono);font-size:12.5px;color:${verdictColor}">${verdict}</div>
+        </div>
       </div>
-      <div style="background:var(--surface2);border-radius:10px;padding:10px 14px;font-family:var(--mono);font-size:12.5px;margin-bottom:12px">${verdict}${edge!=null&&s.samples>=30?' ('+(edge>=0?'+':'')+edge.toFixed(1)+' pts vs break-even)':''}</div>
-      <div class="mini-note" style="margin-bottom:10px">data ${ageMin<=1?'just updated':ageMin+' min old'} · auto-refreshes every minute · lab commits in ~14-min batches</div>
-      <table class="tbl"><thead><tr><th>Window</th><th>Bet</th><th>Lead at T−30s</th><th>Paid</th><th>Result</th><th>$10 P&L</th></tr></thead><tbody>${rows}</tbody></table>`;
+
+      <!-- LAST 50 SCORECARD -->
+      <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:8px">Last ${l50.trades||0} trades · $10 each</div>
+      <div class="stat-row" style="margin-bottom:16px">
+        <div class="stat-card"><div class="lbl">Invested</div><div class="val">$${(l50.invested||0).toLocaleString()}</div><div class="sub">${l50.trades||0} bets @ $10</div></div>
+        <div class="stat-card"><div class="lbl">Got back</div><div class="val">$${(l50.returned||0).toLocaleString(undefined,{maximumFractionDigits:0})}</div><div class="sub">${l50.wins||0} winners paid out</div></div>
+        <div class="stat-card"><div class="lbl">Profit / loss</div><div class="val ${(l50.profit||0)>=0?'pos':'neg'}">${(l50.profit||0)>=0?'+':'−'}$${Math.abs(l50.profit||0).toFixed(0)}</div><div class="sub">net result</div></div>
+        <div class="stat-card"><div class="lbl">Return</div><div class="val ${(l50.returnPct||0)>=0?'pos':'neg'}">${(l50.returnPct||0)>=0?'+':''}${l50.returnPct!=null?l50.returnPct:'—'}%</div><div class="sub">on money risked</div></div>
+      </div>
+
+      <div class="mini-note" style="margin-bottom:6px">How it works: 60 seconds before each 5-min Bitcoin window closes, the bot bets $10 on whichever way the price is currently moving, paying the live Polymarket price. Win rate so far: <b style="color:var(--text)">${acc!=null?(acc*100).toFixed(0)+'%</b> of '+nDec+' bets':'—'} · average price paid <b style="color:var(--text)">${be?cents(be):'—'}</b> · all-time: invested $${(allt.invested||0).toLocaleString()}, got back $${(allt.returned||0).toLocaleString(undefined,{maximumFractionDigits:0})} (${(allt.returnPct||0)>=0?'+':''}${allt.returnPct!=null?allt.returnPct:'—'}%).</div>
+      <div class="mini-note" style="margin-bottom:12px;color:var(--faint)">data ${ageMin<=1?'just updated':ageMin+' min old'} · updates every minute · only counts bets where we got the real live price</div>
+
+      <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:8px">Recent bets</div>
+      <table class="tbl"><thead><tr><th>Time</th><th>Bet</th><th>Price paid</th><th>Result</th><th>$10 → got back</th><th>Profit</th></tr></thead><tbody>${rows||'<tr><td colspan=6 style="color:var(--faint);padding:14px">No live-priced bets yet.</td></tr>'}</tbody></table>`;
   }
 };
 /* wire scanner into tab switching */

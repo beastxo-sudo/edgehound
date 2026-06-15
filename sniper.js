@@ -65,7 +65,11 @@ function summarize(lab) {
      real instance of the hypothesis (no near-certain subset to isolate). The
      "decided*" fields therefore mirror the full priced-sample population — the
      dashboard reads these names, and here they ARE the headline result. */
-  const decided = withPx;
+  /* Only CLOB-sourced prices reflect the true 30s-out ask; gamma fallback
+     updates slowly and shows near-settlement values, so exclude it from the
+     headline EV. We keep direction accuracy across all samples (that only
+     needs Binance), but price-dependent stats use trustworthy prices only. */
+  const decided = withPx.filter(x => x.priceSrc === 'clob');
   const dPnl = decided.reduce((a, x) => a + (x.won ? 10 * (1 - x.paid) / x.paid : -10), 0);
   const dAvg = decided.length ? decided.reduce((a, x) => a + x.paid, 0) / decided.length : null;
   lab.summary = {
@@ -116,13 +120,14 @@ async function findWindowMarket(B) {
 
 /* the price you would actually pay: CLOB best ask for that token */
 async function bestAsk(tokenId, fallback) {
-  if (!tokenId) return fallback ?? 0;
-  try {
-    const r = await jget(`${CLOB}/price?token_id=${tokenId}&side=BUY`, 5000);
-    const p = Number(r.price);
-    if (p > 0 && p < 1) return p;
-  } catch (e) {}
-  return fallback ?? 0;
+  if (tokenId) {
+    try {
+      const r = await jget(`${CLOB}/price?token_id=${tokenId}&side=BUY`, 5000);
+      const p = Number(r.price);
+      if (p > 0 && p < 1) return { price: p, source: 'clob' };  /* the real live ask */
+    } catch (e) {}
+  }
+  return { price: fallback ?? 0, source: 'gamma' };             /* slower-updating fallback */
 }
 
 async function sampleBoundary(B, lab) {
@@ -138,14 +143,15 @@ async function sampleBoundary(B, lab) {
     const dir = spot >= open ? 'UP' : 'DOWN';
     const leadPct = ((spot - open) / open) * 100;
 
-    let paid = 0, mktTitle = '', mktNote = 'not found';
+    let paid = 0, mktTitle = '', mktNote = 'not found', priceSrc = null;
     try {
       const mkt = await findWindowMarket(B);
       if (mkt) {
         mktTitle = mkt.title;
         const tok = dir === 'UP' ? mkt.upToken : mkt.downToken;
         const fb = dir === 'UP' ? mkt.upPrice : mkt.downPrice;
-        paid = await bestAsk(tok, fb);
+        const ask = await bestAsk(tok, fb);
+        paid = ask.price; priceSrc = ask.source;
         /* GUARD: at T-30s the visible-direction side is the favorite but only
            mildly so — it can legitimately price anywhere from ~0.50 to ~0.95.
            A price below ~0.20 means we grabbed the wrong token or a market that
@@ -168,7 +174,7 @@ async function sampleBoundary(B, lab) {
 
     lab.samples.push({
       win: candleStart, t: new Date(B).toISOString(), dir, leadPct: +leadPct.toFixed(4),
-      paid: +(+paid).toFixed(4), mkt: mktNote, actual, won,
+      paid: +(+paid).toFixed(4), priceSrc, mkt: mktNote, actual, won,
       flips: !won && Math.abs(leadPct) < 0.02 ? 'knife-edge flip' : (!won ? 'reversed in final seconds' : null)
     });
     lab.samples = lab.samples.slice(-5000);

@@ -2,6 +2,174 @@
  "running": true,
  "journal": [
   {
+   "id": "t1781561469254h0px",
+   "date": "2026-06-16",
+   "openedTs": 1781561469254,
+   "title": "Kansas City Royals vs. Washington Nationals",
+   "mid": "2478809",
+   "conditionId": "0x76ddb1214cec71e2c162aa9823405bd778d4d62f6e493e3f532c09da3c3bac0a",
+   "slug": "mlb-kc-wsh-2026-06-15",
+   "side": "YES",
+   "entry": 0.445,
+   "cur": 0.445,
+   "stake": 100,
+   "signal": "VOLUME_SPIKE",
+   "p": 0.57,
+   "pModel": 0.353,
+   "pBucket": 0.5,
+   "bucketN": 0,
+   "bk": "VOLUME_SPIKE|mid|sport",
+   "ev": 0.017,
+   "kelly": 0.005,
+   "x": [
+    0,
+    0,
+    0,
+    1,
+    0.445,
+    0.498,
+    0,
+    0.776,
+    0.761,
+    0.999,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 57% [model 35%, pattern 50% on n=0] · EV +0.02/$1 · 1/4-Kelly 0.5% of equity -> $100. 100% of lifetime volume in 24h — attention precedes movement. Drivers: attention spike -, sports market -, short time to resolution -",
+   "target": 0.22,
+   "stop": 0.25,
+   "holdUntil": 1781993469254,
+   "status": "open"
+  },
+  {
+   "id": "t17815614692530g3x",
+   "date": "2026-06-16",
+   "openedTs": 1781561469253,
+   "title": "HSBC Championships: Giovanni Mpetshi Perricard vs Corentin Moutet",
+   "mid": "2546685",
+   "conditionId": "0xadc078b4cae4d1b47e985cbf79f512314485d54ff617909db98f5a28bfb31dfa",
+   "slug": "atp-perrica-moutet-2026-06-15",
+   "side": "NO",
+   "entry": 0.475,
+   "cur": 0.475,
+   "stake": 100,
+   "signal": "VOLUME_SPIKE",
+   "p": 0.57,
+   "pModel": 0.352,
+   "pBucket": 0.5,
+   "bucketN": 0,
+   "bk": "VOLUME_SPIKE|mid|sport",
+   "ev": 0.017,
+   "kelly": 0.005,
+   "x": [
+    0,
+    0,
+    0,
+    1,
+    0.475,
+    0.521,
+    0,
+    0.831,
+    0.646,
+    1,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 57% [model 35%, pattern 50% on n=0] · EV +0.02/$1 · 1/4-Kelly 0.5% of equity -> $100. 100% of lifetime volume in 24h — attention precedes movement. Drivers: attention spike -, sports market -, short time to resolution -",
+   "target": 0.22,
+   "stop": 0.25,
+   "holdUntil": 1781993469253,
+   "status": "open"
+  },
+  {
+   "id": "t1781561469253z2d3",
+   "date": "2026-06-16",
+   "openedTs": 1781561469253,
+   "title": "Will New Zealand win on 2026-06-15?",
+   "mid": "1897081",
+   "conditionId": "0x4d32282db59ec449edbc191b4b487b7f8218c07d6f94b0c01e2e7ddf6964c26d",
+   "slug": "fifwc-irn-nzl-2026-06-15",
+   "side": "YES",
+   "entry": 0.185,
+   "cur": 0.185,
+   "stake": 100,
+   "signal": "VOLUME_SPIKE",
+   "p": 0.579,
+   "pModel": 0.375,
+   "pBucket": 0.667,
+   "bucketN": 1,
+   "bk": "VOLUME_SPIKE|low|other",
+   "ev": 0.017,
+   "kelly": 0.005,
+   "x": [
+    0,
+    0,
+    0,
+    1,
+    0.185,
+    0.992,
+    0.1,
+    0.797,
+    0.877,
+    0.858,
+    0,
+    0,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 58% [model 37%, pattern 67% on n=1] · EV +0.02/$1 · 1/4-Kelly 0.5% of equity -> $100. 86% of lifetime volume in 24h — attention precedes movement. Drivers: short time to resolution -, attention spike -, 24h volume -",
+   "target": 0.22,
+   "stop": 0.25,
+   "holdUntil": 1781571600000,
+   "status": "open"
+  },
+  {
+   "id": "t1781561469253hw4h",
+   "date": "2026-06-16",
+   "openedTs": 1781561469253,
+   "title": "Will France win on 2026-06-16?",
+   "mid": "1897082",
+   "conditionId": "0x04b6d6630d49e6513355ff045c96439c929335cb0d18da7792dea6c2fc717ead",
+   "slug": "fifwc-fra-sen-2026-06-16",
+   "side": "NO",
+   "entry": 0.33499999999999996,
+   "cur": 0.33499999999999996,
+   "stake": 100,
+   "signal": "VOLUME_SPIKE",
+   "p": 0.579,
+   "pModel": 0.385,
+   "pBucket": 0.667,
+   "bucketN": 1,
+   "bk": "VOLUME_SPIKE|low|other",
+   "ev": 0.017,
+   "kelly": 0.005,
+   "x": [
+    0,
+    0,
+    0,
+    1,
+    0.335,
+    0.938,
+    0,
+    0.847,
+    0.863,
+    0.669,
+    0,
+    0,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 58% [model 39%, pattern 67% on n=1] · EV +0.02/$1 · 1/4-Kelly 0.5% of equity -> $100. 67% of lifetime volume in 24h — attention precedes movement. Drivers: short time to resolution -, attention spike -, 24h volume -",
+   "target": 0.22,
+   "stop": 0.25,
+   "holdUntil": 1781636400000,
+   "status": "open"
+  },
+  {
    "id": "t1781560552753tg46",
    "date": "2026-06-16",
    "openedTs": 1781560552753,
@@ -83,7 +251,11 @@
    "target": 0.22,
    "stop": 0.25,
    "holdUntil": 1781560800000,
-   "status": "open"
+   "status": "closed",
+   "exit": 0.385,
+   "exitTs": 1781561469249,
+   "exitReason": "Max hold reached — closed at market",
+   "pnl": 0
   },
   {
    "id": "t17815605527528elf",
@@ -95,7 +267,7 @@
    "slug": "fifwc-ksa-ury-2026-06-15",
    "side": "NO",
    "entry": 0.345,
-   "cur": 0.345,
+   "cur": 0.355,
    "stake": 200,
    "signal": "VOLUME_SPIKE",
    "p": 0.57,
@@ -125,7 +297,11 @@
    "target": 0.22,
    "stop": 0.25,
    "holdUntil": 1781560800000,
-   "status": "open"
+   "status": "closed",
+   "exit": 0.355,
+   "exitTs": 1781561469249,
+   "exitReason": "Max hold reached — closed at market",
+   "pnl": 5.797101449275368
   },
   {
    "id": "t1781560552751wzmy",
@@ -167,7 +343,11 @@
    "target": 0.22,
    "stop": 0.25,
    "holdUntil": 1781560800000,
-   "status": "open"
+   "status": "closed",
+   "exit": 0.235,
+   "exitTs": 1781561469249,
+   "exitReason": "Max hold reached — closed at market",
+   "pnl": 0
   },
   {
    "id": "t1781487943162jlty",
@@ -1623,9 +1803,9 @@
    "weight": 0.49174311926605885
   },
   "VOLUME_SPIKE": {
-   "trades": 0,
-   "wins": 0,
-   "pnl": 0,
+   "trades": 3,
+   "wins": 1,
+   "pnl": 5.797101449275368,
    "weight": 1
   },
   "ELITE_FOLLOW": {
@@ -1637,39 +1817,39 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-16 03:41 IST — Opened YES $100 @ 45c P=57% EV=+0.02 [Volume Spike] \"Kansas City Royals vs. Washington Nationals\"",
+  "2026-06-16 03:41 IST — Opened NO $100 @ 48c P=57% EV=+0.02 [Volume Spike] \"HSBC Championships: Giovanni Mpetshi Perricard\"",
+  "2026-06-16 03:41 IST — Opened YES $100 @ 19c P=58% EV=+0.02 [Volume Spike] \"Will New Zealand win on 2026-06-15?\"",
+  "2026-06-16 03:41 IST — Opened NO $100 @ 34c P=58% EV=+0.02 [Volume Spike] \"Will France win on 2026-06-16?\"",
+  "2026-06-16 03:41 IST — Closed YES \"Will Saudi Arabia vs. Uruguay end in a dra\" -> +$0 (Max hold reached — closed at market) · model said P(win)=57%",
+  "2026-06-16 03:41 IST — Closed NO \"Will Uruguay win on 2026-06-15?\" -> +$6 (Max hold reached — closed at market) · model said P(win)=57%",
+  "2026-06-16 03:41 IST — Closed YES \"Spread: Uruguay (-1.5)\" -> +$0 (Max hold reached — closed at market) · model said P(win)=57%",
   "2026-06-16 03:25 IST — Opened NO $200 @ 45c P=57% EV=+0.11 [Volume Spike] \"Will IR Iran win on 2026-06-15?\"",
   "2026-06-16 03:25 IST — Opened YES $100 @ 39c P=57% EV=+0.11 [Volume Spike] \"Spread: Uruguay (-1.5)\"",
   "2026-06-16 03:25 IST — Opened NO $200 @ 35c P=57% EV=+0.11 [Volume Spike] \"Will Uruguay win on 2026-06-15?\"",
   "2026-06-16 03:25 IST — Opened YES $200 @ 24c P=57% EV=+0.11 [Volume Spike] \"Will Saudi Arabia vs. Uruguay end in a draw?\"",
   "2026-06-15 23:16 IST — Elite pool refreshed: 3 wallets qualify (>=58% win rate over >=10 settled, scalpers excluded): Panteras 77%, aenews2 71%, denizz 61%",
   "2026-06-15 21:31 IST — Closed YES \"Will Spain win on 2026-06-15?\" -> $-4 (Max hold reached — closed at market) · model said P(win)=61%",
-  "2026-06-15 09:31 IST — Closed NO \"UFC Freedom 250: Justin Gaethje vs. Ilia T\" -> +$0 (Max hold reached — closed at market) · model said P(win)=60%",
-  "2026-06-15 08:45 IST — Closed NO \"UFC Freedom 250: Derrick Lewis vs. Josh Ho\" -> +$103 (Resolved in our favor) · model said P(win)=60%",
-  "2026-06-15 07:31 IST — Closed NO \"Will Tunisia win on 2026-06-14?\" -> $-5 (Max hold reached — closed at market) · model said P(win)=61%",
-  "2026-06-15 07:15 IST — Opened NO $400 @ 80c P=60% EV=+0.08 [Short Favorite] \"UFC Freedom 250: Derrick Lewis vs. Josh Hokit \"",
-  "2026-06-15 07:15 IST — Opened NO $400 @ 80c P=60% EV=+0.08 [Short Favorite] \"UFC Freedom 250: Justin Gaethje vs. Ilia Topur\"",
-  "2026-06-15 07:15 IST — Opened YES $400 @ 92c P=61% EV=+0.08 [Short Favorite] \"Will Spain win on 2026-06-15?\"",
-  "2026-06-15 07:15 IST — Opened NO $400 @ 81c P=61% EV=+0.08 [Short Favorite] \"Will Tunisia win on 2026-06-14?\"",
-  "2026-06-15 05:31 IST — Closed NO \"Israel closes its airspace by June 15?\" -> +$149 (Max hold reached — closed at market) · model said P(win)=61%"
+  "2026-06-15 09:31 IST — Closed NO \"UFC Freedom 250: Justin Gaethje vs. Ilia T\" -> +$0 (Max hold reached — closed at market) · model said P(win)=60%"
  ],
  "brain": {
   "w": [
-   -0.024519765659629683,
-   0.04945181314892033,
-   0.009538191088737233,
-   0,
-   -0.06871460577675054,
-   -0.24659886059858546,
-   -0.049459169534679694,
-   -0.024124225966376686,
-   -0.023886753560558464,
-   -0.1665881723372963,
-   0.0038152764354948882,
-   -0.1348516524643,
-   -0.0740633027059167
+   -0.024483004397899515,
+   0.04937767251187534,
+   0.00952389095455517,
+   -0.01579464098082993,
+   -0.07016612037116152,
+   -0.26202378820683814,
+   -0.05743264145253855,
+   -0.03740619973438979,
+   -0.03245719402305128,
+   -0.18970458054025327,
+   0.0038095563818220626,
+   -0.18903218679089762,
+   -0.07395226329007693
   ],
-  "b": 0.01997615315872797,
-  "nUpdates": 31,
+  "b": 0.00417469622632808,
+  "nUpdates": 34,
   "buckets": {
    "MOMENTUM|high|sport": {
     "a": 1,
@@ -1718,6 +1898,18 @@
    "SHORT_FAVORITE|high|sport": {
     "a": 2,
     "b": 2
+   },
+   "VOLUME_SPIKE|mid|other": {
+    "a": 1,
+    "b": 2
+   },
+   "VOLUME_SPIKE|low|other": {
+    "a": 2,
+    "b": 1
+   },
+   "VOLUME_SPIKE|low|sport": {
+    "a": 1,
+    "b": 2
    }
   },
   "wallets": {
@@ -1735,8 +1927,8 @@
    }
   },
   "brier": {
-   "sum": 8.672913000000001,
-   "n": 31
+   "sum": 9.507613000000001,
+   "n": 34
   },
   "payoff": {
    "SHORT_FAVORITE": {
@@ -1758,10 +1950,10 @@
     "lN": 1
    },
    "VOLUME_SPIKE": {
-    "wSum": 0,
-    "wN": 0,
+    "wSum": 0.02898550724637684,
+    "wN": 1,
     "lSum": 0,
-    "lN": 0
+    "lN": 2
    },
    "ELITE_FOLLOW": {
     "wSum": 0.08264462809917364,
@@ -1781,7 +1973,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-15T21:55:52.748Z"
+    "updated": "2026-06-15T22:11:09.249Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -1793,32 +1985,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-15T21:55:52.748Z"
+    "updated": "2026-06-15T22:11:09.249Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 8199.652884718242,
+  "cash": 8305.449986167518,
   "created": 1781162132851
  },
  "summary": {
-  "realized": -1100.35,
-  "closed": 31,
-  "wins": 12,
-  "open": 4,
-  "staked": 13550,
+  "realized": -1094.55,
+  "closed": 34,
+  "wins": 13,
+  "open": 5,
+  "staked": 13950,
   "bankStart": 10000,
-  "cash": 8200,
-  "equity": 8900,
-  "returnPct": -11,
-  "modelUpdates": 31,
+  "cash": 8305,
+  "equity": 8905,
+  "returnPct": -10.95,
+  "modelUpdates": 34,
   "brier": 0.28,
   "hypotheses": 2,
   "integrityOk": true,
-  "updated": "2026-06-15T21:55:52.753Z"
+  "updated": "2026-06-15T22:11:09.254Z"
  },
- "lastRun": 1781560552753,
+ "lastRun": 1781561469254,
  "elite": {
   "updated": 1781545591279,
   "list": [
@@ -1848,16 +2040,16 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-15T21:55:52.753Z",
-  "tradesChecked": 35
+  "checkedAt": "2026-06-15T22:11:09.254Z",
+  "tradesChecked": 39
  },
  "lastScan": {
-  "at": "2026-06-15T21:55:52.753Z",
+  "at": "2026-06-15T22:11:09.254Z",
   "marketsFetched": 67,
-  "rawCandidates": 21,
+  "rawCandidates": 16,
   "clearedThreshold": 4,
   "placed": 4,
-  "pMin": 0.53,
+  "pMin": 0.57,
   "blocked": {
    "exposure": 0,
    "event": 0,

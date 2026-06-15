@@ -2,6 +2,174 @@
  "running": true,
  "journal": [
   {
+   "id": "t1781560552753tg46",
+   "date": "2026-06-16",
+   "openedTs": 1781560552753,
+   "title": "Will IR Iran win on 2026-06-15?",
+   "mid": "1897079",
+   "conditionId": "0xe70fd51f42e61fc309d8e57019a7b76c8dc7bd19b473351d56ff1e125ae0d9d4",
+   "slug": "fifwc-irn-nzl-2026-06-15",
+   "side": "NO",
+   "entry": 0.45499999999999996,
+   "cur": 0.45499999999999996,
+   "stake": 200,
+   "signal": "VOLUME_SPIKE",
+   "p": 0.57,
+   "pModel": 0.391,
+   "pBucket": 0.5,
+   "bucketN": 0,
+   "bk": "VOLUME_SPIKE|mid|other",
+   "ev": 0.106,
+   "kelly": 0.0236,
+   "x": [
+    0,
+    0,
+    0,
+    1,
+    0.455,
+    0.991,
+    0.2,
+    0.88,
+    0.905,
+    0.806,
+    0,
+    0,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 57% [model 39%, pattern 50% on n=0] · EV +0.11/$1 · 1/4-Kelly 2.4% of equity -> $200. 81% of lifetime volume in 24h — attention precedes movement. Drivers: short time to resolution -, attention spike -, price level -",
+   "target": 0.22,
+   "stop": 0.25,
+   "holdUntil": 1781571600000,
+   "status": "open"
+  },
+  {
+   "id": "t1781560552752mju6",
+   "date": "2026-06-16",
+   "openedTs": 1781560552752,
+   "title": "Spread: Uruguay (-1.5)",
+   "mid": "2326687",
+   "conditionId": "0xa16a7269a25f746cd0aa5d85910de766d940d4dea9bf0cdb6423158b24149be1",
+   "slug": "fifwc-ksa-ury-2026-06-15-more-markets",
+   "side": "YES",
+   "entry": 0.385,
+   "cur": 0.385,
+   "stake": 100,
+   "signal": "VOLUME_SPIKE",
+   "p": 0.57,
+   "pModel": 0.387,
+   "pBucket": 0.5,
+   "bucketN": 0,
+   "bk": "VOLUME_SPIKE|mid|other",
+   "ev": 0.106,
+   "kelly": 0.0236,
+   "x": [
+    0,
+    0,
+    0,
+    1,
+    0.385,
+    1,
+    0.05,
+    0.902,
+    0.844,
+    0.984,
+    0,
+    0,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 57% [model 39%, pattern 50% on n=0] · EV +0.11/$1 · 1/4-Kelly 2.4% of equity -> $100. 98% of lifetime volume in 24h — attention precedes movement. Drivers: short time to resolution -, attention spike -, price level -",
+   "target": 0.22,
+   "stop": 0.25,
+   "holdUntil": 1781560800000,
+   "status": "open"
+  },
+  {
+   "id": "t17815605527528elf",
+   "date": "2026-06-16",
+   "openedTs": 1781560552752,
+   "title": "Will Uruguay win on 2026-06-15?",
+   "mid": "1897078",
+   "conditionId": "0xbc54d73527785bdc7b443cfdf3b0d59558c5ac2bbffca23425ecfbd161b07317",
+   "slug": "fifwc-ksa-ury-2026-06-15",
+   "side": "NO",
+   "entry": 0.345,
+   "cur": 0.345,
+   "stake": 200,
+   "signal": "VOLUME_SPIKE",
+   "p": 0.57,
+   "pModel": 0.391,
+   "pBucket": 0.5,
+   "bucketN": 0,
+   "bk": "VOLUME_SPIKE|low|other",
+   "ev": 0.106,
+   "kelly": 0.0236,
+   "x": [
+    0,
+    0,
+    0,
+    1,
+    0.345,
+    1,
+    0,
+    0.932,
+    0.926,
+    0.902,
+    0,
+    0,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 57% [model 39%, pattern 50% on n=0] · EV +0.11/$1 · 1/4-Kelly 2.4% of equity -> $200. 90% of lifetime volume in 24h — attention precedes movement. Drivers: short time to resolution -, attention spike -, price level -",
+   "target": 0.22,
+   "stop": 0.25,
+   "holdUntil": 1781560800000,
+   "status": "open"
+  },
+  {
+   "id": "t1781560552751wzmy",
+   "date": "2026-06-16",
+   "openedTs": 1781560552751,
+   "title": "Will Saudi Arabia vs. Uruguay end in a draw?",
+   "mid": "1897077",
+   "conditionId": "0x344327632a0ab1c28b40003f14bfe75cb7d5bd65c58b4e34199cfc17a77104fe",
+   "slug": "fifwc-ksa-ury-2026-06-15",
+   "side": "YES",
+   "entry": 0.235,
+   "cur": 0.235,
+   "stake": 200,
+   "signal": "VOLUME_SPIKE",
+   "p": 0.57,
+   "pModel": 0.356,
+   "pBucket": 0.5,
+   "bucketN": 0,
+   "bk": "VOLUME_SPIKE|low|sport",
+   "ev": 0.106,
+   "kelly": 0.0236,
+   "x": [
+    0,
+    0,
+    0,
+    1,
+    0.235,
+    1,
+    0.1,
+    0.935,
+    0.894,
+    0.991,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 57% [model 36%, pattern 50% on n=0] · EV +0.11/$1 · 1/4-Kelly 2.4% of equity -> $200. 99% of lifetime volume in 24h — attention precedes movement. Drivers: short time to resolution -, attention spike -, sports market -",
+   "target": 0.22,
+   "stop": 0.25,
+   "holdUntil": 1781560800000,
+   "status": "open"
+  },
+  {
    "id": "t1781487943162jlty",
    "date": "2026-06-15",
    "openedTs": 1781487943162,
@@ -1469,6 +1637,10 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-16 03:25 IST — Opened NO $200 @ 45c P=57% EV=+0.11 [Volume Spike] \"Will IR Iran win on 2026-06-15?\"",
+  "2026-06-16 03:25 IST — Opened YES $100 @ 39c P=57% EV=+0.11 [Volume Spike] \"Spread: Uruguay (-1.5)\"",
+  "2026-06-16 03:25 IST — Opened NO $200 @ 35c P=57% EV=+0.11 [Volume Spike] \"Will Uruguay win on 2026-06-15?\"",
+  "2026-06-16 03:25 IST — Opened YES $200 @ 24c P=57% EV=+0.11 [Volume Spike] \"Will Saudi Arabia vs. Uruguay end in a draw?\"",
   "2026-06-15 23:16 IST — Elite pool refreshed: 3 wallets qualify (>=58% win rate over >=10 settled, scalpers excluded): Panteras 77%, aenews2 71%, denizz 61%",
   "2026-06-15 21:31 IST — Closed YES \"Will Spain win on 2026-06-15?\" -> $-4 (Max hold reached — closed at market) · model said P(win)=61%",
   "2026-06-15 09:31 IST — Closed NO \"UFC Freedom 250: Justin Gaethje vs. Ilia T\" -> +$0 (Max hold reached — closed at market) · model said P(win)=60%",
@@ -1478,11 +1650,7 @@
   "2026-06-15 07:15 IST — Opened NO $400 @ 80c P=60% EV=+0.08 [Short Favorite] \"UFC Freedom 250: Justin Gaethje vs. Ilia Topur\"",
   "2026-06-15 07:15 IST — Opened YES $400 @ 92c P=61% EV=+0.08 [Short Favorite] \"Will Spain win on 2026-06-15?\"",
   "2026-06-15 07:15 IST — Opened NO $400 @ 81c P=61% EV=+0.08 [Short Favorite] \"Will Tunisia win on 2026-06-14?\"",
-  "2026-06-15 05:31 IST — Closed NO \"Israel closes its airspace by June 15?\" -> +$149 (Max hold reached — closed at market) · model said P(win)=61%",
-  "2026-06-15 05:00 IST — Closed NO \"Will Côte d'Ivoire win on 2026-06-14?\" -> $-14 (Max hold reached — closed at market) · model said P(win)=58%",
-  "2026-06-15 05:00 IST — Closed NO \"Will Ecuador win on 2026-06-14?\" -> +$17 (Max hold reached — closed at market) · model said P(win)=58%",
-  "2026-06-15 04:45 IST — Opened NO $200 @ 61c P=58% EV=+0.12 [Elite Follow] \"Will Ecuador win on 2026-06-14?\"",
-  "2026-06-15 04:45 IST — Opened NO $250 @ 73c P=58% EV=+0.12 [Elite Follow] \"Will Côte d'Ivoire win on 2026-06-14?\""
+  "2026-06-15 05:31 IST — Closed NO \"Israel closes its airspace by June 15?\" -> +$149 (Max hold reached — closed at market) · model said P(win)=61%"
  ],
  "brain": {
   "w": [
@@ -1613,7 +1781,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-15T21:41:11.329Z"
+    "updated": "2026-06-15T21:55:52.748Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -1625,32 +1793,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-15T21:41:11.329Z"
+    "updated": "2026-06-15T21:55:52.748Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 8899.652884718242,
+  "cash": 8199.652884718242,
   "created": 1781162132851
  },
  "summary": {
   "realized": -1100.35,
   "closed": 31,
   "wins": 12,
-  "open": 0,
-  "staked": 12850,
+  "open": 4,
+  "staked": 13550,
   "bankStart": 10000,
-  "cash": 8900,
+  "cash": 8200,
   "equity": 8900,
   "returnPct": -11,
   "modelUpdates": 31,
   "brier": 0.28,
   "hypotheses": 2,
   "integrityOk": true,
-  "updated": "2026-06-15T21:41:11.332Z"
+  "updated": "2026-06-15T21:55:52.753Z"
  },
- "lastRun": 1781559671332,
+ "lastRun": 1781560552753,
  "elite": {
   "updated": 1781545591279,
   "list": [
@@ -1680,15 +1848,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-15T21:41:11.332Z",
-  "tradesChecked": 31
+  "checkedAt": "2026-06-15T21:55:52.753Z",
+  "tradesChecked": 35
  },
  "lastScan": {
-  "at": "2026-06-15T21:41:11.331Z",
-  "marketsFetched": 66,
-  "rawCandidates": 20,
-  "clearedThreshold": 0,
-  "placed": 0,
+  "at": "2026-06-15T21:55:52.753Z",
+  "marketsFetched": 67,
+  "rawCandidates": 21,
+  "clearedThreshold": 4,
+  "placed": 4,
   "pMin": 0.53,
   "blocked": {
    "exposure": 0,
@@ -1696,6 +1864,6 @@
    "cash": 0,
    "sanity": 0
   },
-  "reason": "no candidates cleared P(win)>=0.53 (engines produce ~0.58-0.64; lower pMin or wait for better setups)"
+  "reason": "traded"
  }
 }

@@ -1936,6 +1936,33 @@ const Sniper={
       </div>
 
       <div class="mini-note" style="margin-bottom:6px">How it works: 60 seconds before each 5-min Bitcoin window closes, the bot bets $10 on whichever way the price is currently moving, paying the live Polymarket price. Win rate so far: <b style="color:var(--text)">${acc!=null?(acc*100).toFixed(0)+'%</b> of '+nDec+' bets':'—'} · average price paid <b style="color:var(--text)">${be?cents(be):'—'}</b> · all-time: invested $${(allt.invested||0).toLocaleString()}, got back $${(allt.returned||0).toLocaleString(undefined,{maximumFractionDigits:0})} (${(allt.returnPct||0)>=0?'+':''}${allt.returnPct!=null?allt.returnPct:'—'}%).</div>
+      ${(()=>{
+        const mp=s.mispricing; if(!mp) return '';
+        const beats=mp.modelBeatsMarket;
+        const per=mp.perTenDollar;
+        const verdict = mp.trades<20 ? 'Collecting — need 20+ disagreement windows to judge'
+          : per>10.5 ? '✅ EDGE FOUND: betting against the market overshoot returns more than $10'
+          : per>10.05 ? '⚠ THIN EDGE: positive but small — watch if it survives more samples'
+          : per>9.5 ? '➖ NO EDGE: the model and market price probability about equally well'
+          : '❌ MARKET WINS: the market prices these better than our model';
+        const vColor = mp.trades<20?'var(--muted)':per>10.5?'var(--yes)':per>10.05?'var(--amber)':per>9.5?'var(--muted)':'var(--no)';
+        return `
+        <div style="margin:18px 0 6px;padding:16px 18px;background:linear-gradient(135deg,var(--surface2),var(--surface));border:1px solid var(--border);border-radius:12px">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px">
+            <span style="font-family:var(--display);font-weight:700;font-size:14px">🎯 The mispricing edge</span>
+            <span style="font-family:var(--mono);font-size:10px;color:var(--faint)">betting AGAINST overshoots, not with the move</span>
+          </div>
+          <div style="font-size:12px;color:var(--muted);margin-bottom:12px">When our volatility model says the market has over/under-priced a window by 5+ points, we bet the model's side at the market price. This is the only bet that can't be copied by just following the move.</div>
+          <div class="stat-row" style="margin-bottom:10px">
+            <div class="stat-card"><div class="lbl">Edge bets</div><div class="val">${mp.trades||0}</div><div class="sub">windows model disagreed 5+ pts</div></div>
+            <div class="stat-card"><div class="lbl">Win rate</div><div class="val">${mp.winRate!=null?(mp.winRate*100).toFixed(0)+'%':'—'}</div><div class="sub">avg price ${mp.avgEdgePaid?cents(mp.avgEdgePaid):'—'}</div></div>
+            <div class="stat-card"><div class="lbl">$10 → returns</div><div class="val ${per>=10?'pos':'neg'}">$${per!=null?per.toFixed(2):'—'}</div><div class="sub">${(mp.returnPct||0)>=0?'+':''}${mp.returnPct!=null?mp.returnPct:'—'}% on $${(mp.invested||0).toLocaleString()}</div></div>
+            <div class="stat-card"><div class="lbl">Model vs market</div><div class="val" style="font-size:15px;color:${beats===true?'var(--yes)':beats===false?'var(--no)':'var(--muted)'}">${beats===true?'model wins':beats===false?'market wins':'—'}</div><div class="sub">Brier ${mp.modelBrier??'—'} vs ${mp.marketBrier??'—'}</div></div>
+          </div>
+          <div style="background:var(--surface);border-radius:8px;padding:10px 14px;font-family:var(--mono);font-size:12px;color:${vColor}">${verdict}</div>
+          <div class="mini-note" style="margin-top:8px;color:var(--faint)">"Model vs market" compares calibration over ${mp.windowsCompared||0} windows — lower Brier = better probability estimates. If our model isn't beating the market's, no edge is possible.</div>
+        </div>`;
+      })()}
       <div class="mini-note" style="margin-bottom:12px;color:var(--faint)">data ${ageMin<=1?'just updated':ageMin+' min old'} · updates every minute · only counts bets where we got the real live price</div>
 
       <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:8px">Recent bets <span style="color:var(--yes)">· each double-verified</span></div>

@@ -53,7 +53,7 @@
    "slug": "iran-agrees-to-end-enrichment-of-uranium-by-june-30",
    "side": "YES",
    "entry": 0.38,
-   "cur": 0.38,
+   "cur": 0.405,
    "stake": 300,
    "signal": "ELITE_FOLLOW",
    "p": 0.642,
@@ -97,7 +97,7 @@
    "slug": "mlb-mia-phi-2026-06-15",
    "side": "YES",
    "entry": 0.385,
-   "cur": 0.355,
+   "cur": 0.235,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.57,
@@ -127,7 +127,11 @@
    "target": 0.22,
    "stop": 0.25,
    "holdUntil": 1781996471015,
-   "status": "open"
+   "status": "closed",
+   "exit": 0.235,
+   "exitTs": 1781565976826,
+   "exitReason": "Stop loss hit (-25%)",
+   "pnl": -38.961038961038966
   },
   {
    "id": "t17815638256926w3o",
@@ -181,7 +185,7 @@
    "slug": "mlb-kc-wsh-2026-06-15",
    "side": "YES",
    "entry": 0.445,
-   "cur": 0.415,
+   "cur": 0.395,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.57,
@@ -223,7 +227,7 @@
    "slug": "atp-perrica-moutet-2026-06-15",
    "side": "NO",
    "entry": 0.475,
-   "cur": 0.48,
+   "cur": 0.475,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.57,
@@ -265,7 +269,7 @@
    "slug": "fifwc-irn-nzl-2026-06-15",
    "side": "YES",
    "entry": 0.185,
-   "cur": 0.185,
+   "cur": 0.195,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.579,
@@ -1973,9 +1977,9 @@
    "weight": 0.49174311926605885
   },
   "VOLUME_SPIKE": {
-   "trades": 3,
+   "trades": 4,
    "wins": 1,
-   "pnl": 5.797101449275368,
+   "pnl": -33.1639375117636,
    "weight": 1
   },
   "ELITE_FOLLOW": {
@@ -1987,6 +1991,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-16 04:56 IST — Closed YES \"Miami Marlins vs. Philadelphia Phillies\" -> $-39 (Stop loss hit (-25%)) · model said P(win)=57%",
   "2026-06-16 04:45 IST — Opened YES $100 @ 45c P=57% EV=+0.02 [Volume Spike] \"New York Mets vs. Cincinnati Reds\"",
   "2026-06-16 04:45 IST — Opened YES $300 @ 38c P=64% EV=+0.03 [Elite Follow] \" Iran agrees to end enrichment of uranium by J\"",
   "2026-06-16 04:31 IST — Opened YES $100 @ 39c P=57% EV=+0.02 [Volume Spike] \"Miami Marlins vs. Philadelphia Phillies\"",
@@ -1999,27 +2004,26 @@
   "2026-06-16 03:41 IST — Closed NO \"Will Uruguay win on 2026-06-15?\" -> +$6 (Max hold reached — closed at market) · model said P(win)=57%",
   "2026-06-16 03:41 IST — Closed YES \"Spread: Uruguay (-1.5)\" -> +$0 (Max hold reached — closed at market) · model said P(win)=57%",
   "2026-06-16 03:25 IST — Opened NO $200 @ 45c P=57% EV=+0.11 [Volume Spike] \"Will IR Iran win on 2026-06-15?\"",
-  "2026-06-16 03:25 IST — Opened YES $100 @ 39c P=57% EV=+0.11 [Volume Spike] \"Spread: Uruguay (-1.5)\"",
-  "2026-06-16 03:25 IST — Opened NO $200 @ 35c P=57% EV=+0.11 [Volume Spike] \"Will Uruguay win on 2026-06-15?\""
+  "2026-06-16 03:25 IST — Opened YES $100 @ 39c P=57% EV=+0.11 [Volume Spike] \"Spread: Uruguay (-1.5)\""
  ],
  "brain": {
   "w": [
-   -0.024483004397899515,
-   0.04937767251187534,
-   0.00952389095455517,
-   -0.01579464098082993,
-   -0.07016612037116152,
-   -0.26202378820683814,
-   -0.05743264145253855,
-   -0.03740619973438979,
-   -0.03245719402305128,
-   -0.18970458054025327,
-   0.0038095563818220626,
-   -0.18903218679089762,
-   -0.07395226329007693
+   -0.024470762895700566,
+   0.049352983675619404,
+   0.009519129009077892,
+   -0.062473590433691856,
+   -0.08810547331871658,
+   -0.2852828865461842,
+   -0.06440695214781512,
+   -0.0733363686500039,
+   -0.06367446591741246,
+   -0.23606314078946872,
+   0.0038076516036311516,
+   -0.2356245174708545,
+   -0.07391528715843189
   ],
-  "b": 0.00417469622632808,
-  "nUpdates": 34,
+  "b": -0.04251215054702426,
+  "nUpdates": 35,
   "buckets": {
    "MOMENTUM|high|sport": {
     "a": 1,
@@ -2080,6 +2084,10 @@
    "VOLUME_SPIKE|low|sport": {
     "a": 1,
     "b": 2
+   },
+   "VOLUME_SPIKE|mid|sport": {
+    "a": 1,
+    "b": 2
    }
   },
   "wallets": {
@@ -2097,8 +2105,8 @@
    }
   },
   "brier": {
-   "sum": 9.507613000000001,
-   "n": 34
+   "sum": 9.832513,
+   "n": 35
   },
   "payoff": {
    "SHORT_FAVORITE": {
@@ -2122,8 +2130,8 @@
    "VOLUME_SPIKE": {
     "wSum": 0.02898550724637684,
     "wN": 1,
-    "lSum": 0,
-    "lN": 2
+    "lSum": 0.3896103896103897,
+    "lN": 3
    },
    "ELITE_FOLLOW": {
     "wSum": 0.08264462809917364,
@@ -2143,7 +2151,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-15T23:15:27.264Z"
+    "updated": "2026-06-15T23:26:16.826Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -2155,32 +2163,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-15T23:15:27.264Z"
+    "updated": "2026-06-15T23:26:16.826Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 7705.449986167518,
+  "cash": 7766.488947206479,
   "created": 1781162132851
  },
  "summary": {
-  "realized": -1094.55,
-  "closed": 34,
+  "realized": -1133.51,
+  "closed": 35,
   "wins": 13,
-  "open": 9,
+  "open": 8,
   "staked": 14550,
   "bankStart": 10000,
-  "cash": 7705,
-  "equity": 8892,
-  "returnPct": -11.08,
-  "modelUpdates": 34,
-  "brier": 0.28,
+  "cash": 7766,
+  "equity": 8880,
+  "returnPct": -11.2,
+  "modelUpdates": 35,
+  "brier": 0.281,
   "hypotheses": 2,
   "integrityOk": true,
-  "updated": "2026-06-15T23:15:27.268Z"
+  "updated": "2026-06-15T23:26:16.829Z"
  },
- "lastRun": 1781565327268,
+ "lastRun": 1781565976829,
  "elite": {
   "updated": 1781545591279,
   "list": [
@@ -2210,15 +2218,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-15T23:15:27.268Z",
+  "checkedAt": "2026-06-15T23:26:16.829Z",
   "tradesChecked": 43
  },
  "lastScan": {
-  "at": "2026-06-15T23:15:27.268Z",
+  "at": "2026-06-15T23:26:16.829Z",
   "marketsFetched": 68,
-  "rawCandidates": 18,
-  "clearedThreshold": 2,
-  "placed": 2,
+  "rawCandidates": 17,
+  "clearedThreshold": 0,
+  "placed": 0,
   "pMin": 0.57,
   "blocked": {
    "exposure": 0,
@@ -2226,6 +2234,6 @@
    "cash": 0,
    "sanity": 0
   },
-  "reason": "traded"
+  "reason": "no candidates cleared P(win)>=0.57 (engines produce ~0.58-0.64; lower pMin or wait for better setups)"
  }
 }

@@ -11,7 +11,7 @@
    "slug": "ufc-der-jos52-2026-06-14",
    "side": "NO",
    "entry": 0.795,
-   "cur": 0.795,
+   "cur": 0.785,
    "stake": 400,
    "signal": "SHORT_FAVORITE",
    "p": 0.601,
@@ -1597,7 +1597,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-15T02:01:03.866Z"
+    "updated": "2026-06-15T02:15:44.345Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -1609,7 +1609,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-15T02:01:03.866Z"
+    "updated": "2026-06-15T02:15:44.345Z"
    }
   ]
  },
@@ -1626,15 +1626,15 @@
   "staked": 12850,
   "bankStart": 10000,
   "cash": 7601,
-  "equity": 8801,
-  "returnPct": -11.99,
+  "equity": 8796,
+  "returnPct": -12.04,
   "modelUpdates": 28,
   "brier": 0.278,
   "hypotheses": 2,
   "integrityOk": true,
-  "updated": "2026-06-15T02:01:03.869Z"
+  "updated": "2026-06-15T02:15:44.347Z"
  },
- "lastRun": 1781488863869,
+ "lastRun": 1781489744347,
  "elite": {
   "updated": 1781459147464,
   "list": [
@@ -1650,7 +1650,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-15T02:01:03.869Z",
+  "checkedAt": "2026-06-15T02:15:44.347Z",
   "tradesChecked": 31
  }
 }

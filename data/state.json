@@ -2,6 +2,92 @@
  "running": true,
  "journal": [
   {
+   "id": "t1781565327268h2jc",
+   "date": "2026-06-16",
+   "openedTs": 1781565327268,
+   "title": "New York Mets vs. Cincinnati Reds",
+   "mid": "2478811",
+   "conditionId": "0x189f32fc838f82489b6878d3027435478dadf892fd284ff6a446063ba28cc8f6",
+   "slug": "mlb-nym-cin-2026-06-15",
+   "side": "YES",
+   "entry": 0.445,
+   "cur": 0.445,
+   "stake": 100,
+   "signal": "VOLUME_SPIKE",
+   "p": 0.57,
+   "pModel": 0.352,
+   "pBucket": 0.5,
+   "bucketN": 0,
+   "bk": "VOLUME_SPIKE|mid|sport",
+   "ev": 0.017,
+   "kelly": 0.005,
+   "x": [
+    0,
+    0,
+    0,
+    1,
+    0.445,
+    0.5,
+    0.05,
+    0.773,
+    0.799,
+    0.999,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 57% [model 35%, pattern 50% on n=0] · EV +0.02/$1 · 1/4-Kelly 0.5% of equity -> $100. 100% of lifetime volume in 24h — attention precedes movement. Drivers: attention spike -, sports market -, short time to resolution -",
+   "target": 0.22,
+   "stop": 0.25,
+   "holdUntil": 1781997327268,
+   "status": "open"
+  },
+  {
+   "id": "t1781565327267ix2j",
+   "date": "2026-06-16",
+   "openedTs": 1781565327267,
+   "title": " Iran agrees to end enrichment of uranium by June 30?",
+   "mid": "1370652",
+   "conditionId": "0x9d3f02264a94bafc676afd7add8b11442e6ec72dabaa69cefef835f0672275c7",
+   "slug": "iran-agrees-to-end-enrichment-of-uranium-by-june-30",
+   "side": "YES",
+   "entry": 0.38,
+   "cur": 0.38,
+   "stake": 300,
+   "signal": "ELITE_FOLLOW",
+   "p": 0.642,
+   "pModel": 0.47,
+   "pBucket": 0.667,
+   "bucketN": 1,
+   "bk": "ELITE_FOLLOW|mid|other",
+   "ev": 0.033,
+   "kelly": 0.0404,
+   "x": [
+    0,
+    0,
+    0,
+    0,
+    0.38,
+    0,
+    0.325,
+    0.806,
+    0.674,
+    0.132,
+    0,
+    0,
+    0
+   ],
+   "walletNames": [
+    "Panteras"
+   ],
+   "insight": "P(win) 64% [model 47%, pattern 67% on n=1] · EV +0.03/$1 · 1/4-Kelly 4.0% of equity -> $300. Elite wallet \"Panteras\" (77% win rate over 43 settled positions) bought Yes 4min ago at 41c — still copyable at 38c. Drivers: 24h volume -, price level -, attention spike -",
+   "target": 0.25,
+   "stop": 0.25,
+   "holdUntil": 1782429327267,
+   "status": "open"
+  },
+  {
    "id": "t17815644710157oxh",
    "date": "2026-06-16",
    "openedTs": 1781564471015,
@@ -11,7 +97,7 @@
    "slug": "mlb-mia-phi-2026-06-15",
    "side": "YES",
    "entry": 0.385,
-   "cur": 0.385,
+   "cur": 0.355,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.57,
@@ -137,7 +223,7 @@
    "slug": "atp-perrica-moutet-2026-06-15",
    "side": "NO",
    "entry": 0.475,
-   "cur": 0.485,
+   "cur": 0.48,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.57,
@@ -1901,6 +1987,8 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-16 04:45 IST — Opened YES $100 @ 45c P=57% EV=+0.02 [Volume Spike] \"New York Mets vs. Cincinnati Reds\"",
+  "2026-06-16 04:45 IST — Opened YES $300 @ 38c P=64% EV=+0.03 [Elite Follow] \" Iran agrees to end enrichment of uranium by J\"",
   "2026-06-16 04:31 IST — Opened YES $100 @ 39c P=57% EV=+0.02 [Volume Spike] \"Miami Marlins vs. Philadelphia Phillies\"",
   "2026-06-16 04:20 IST — Opened YES $100 @ 44c P=57% EV=+0.02 [Volume Spike] \"Los Angeles Angels vs. Arizona Diamondbacks\"",
   "2026-06-16 03:41 IST — Opened YES $100 @ 45c P=57% EV=+0.02 [Volume Spike] \"Kansas City Royals vs. Washington Nationals\"",
@@ -1912,9 +2000,7 @@
   "2026-06-16 03:41 IST — Closed YES \"Spread: Uruguay (-1.5)\" -> +$0 (Max hold reached — closed at market) · model said P(win)=57%",
   "2026-06-16 03:25 IST — Opened NO $200 @ 45c P=57% EV=+0.11 [Volume Spike] \"Will IR Iran win on 2026-06-15?\"",
   "2026-06-16 03:25 IST — Opened YES $100 @ 39c P=57% EV=+0.11 [Volume Spike] \"Spread: Uruguay (-1.5)\"",
-  "2026-06-16 03:25 IST — Opened NO $200 @ 35c P=57% EV=+0.11 [Volume Spike] \"Will Uruguay win on 2026-06-15?\"",
-  "2026-06-16 03:25 IST — Opened YES $200 @ 24c P=57% EV=+0.11 [Volume Spike] \"Will Saudi Arabia vs. Uruguay end in a draw?\"",
-  "2026-06-15 23:16 IST — Elite pool refreshed: 3 wallets qualify (>=58% win rate over >=10 settled, scalpers excluded): Panteras 77%, aenews2 71%, denizz 61%"
+  "2026-06-16 03:25 IST — Opened NO $200 @ 35c P=57% EV=+0.11 [Volume Spike] \"Will Uruguay win on 2026-06-15?\""
  ],
  "brain": {
   "w": [
@@ -2057,7 +2143,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-15T23:01:11.012Z"
+    "updated": "2026-06-15T23:15:27.264Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -2069,32 +2155,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-15T23:01:11.012Z"
+    "updated": "2026-06-15T23:15:27.264Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 8105.449986167518,
+  "cash": 7705.449986167518,
   "created": 1781162132851
  },
  "summary": {
   "realized": -1094.55,
   "closed": 34,
   "wins": 13,
-  "open": 7,
-  "staked": 14150,
+  "open": 9,
+  "staked": 14550,
   "bankStart": 10000,
-  "cash": 8105,
-  "equity": 8901,
-  "returnPct": -10.99,
+  "cash": 7705,
+  "equity": 8892,
+  "returnPct": -11.08,
   "modelUpdates": 34,
   "brier": 0.28,
   "hypotheses": 2,
   "integrityOk": true,
-  "updated": "2026-06-15T23:01:11.015Z"
+  "updated": "2026-06-15T23:15:27.268Z"
  },
- "lastRun": 1781564471016,
+ "lastRun": 1781565327268,
  "elite": {
   "updated": 1781545591279,
   "list": [
@@ -2124,15 +2210,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-15T23:01:11.015Z",
-  "tradesChecked": 41
+  "checkedAt": "2026-06-15T23:15:27.268Z",
+  "tradesChecked": 43
  },
  "lastScan": {
-  "at": "2026-06-15T23:01:11.015Z",
+  "at": "2026-06-15T23:15:27.268Z",
   "marketsFetched": 68,
-  "rawCandidates": 15,
-  "clearedThreshold": 1,
-  "placed": 1,
+  "rawCandidates": 18,
+  "clearedThreshold": 2,
+  "placed": 2,
   "pMin": 0.57,
   "blocked": {
    "exposure": 0,

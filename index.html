@@ -1237,6 +1237,7 @@ const Bot={
         ?`<span class="status-pill live" title="Every trade and the bankroll re-verified against hard invariants on every run"><span class="dot"></span><span>✓ LEDGER VERIFIED (${integ.tradesChecked} trades)</span></span>`
         :`<span class="status-pill" style="color:var(--no);border-color:var(--no)"><span class="dot" style="background:var(--no)"></span><span>🛑 DATA INTEGRITY FAILURE — TRADING FROZEN</span></span>`):'')+
       `<span style="font-family:var(--mono);font-size:11.5px;color:var(--muted)">${last!==null?'last scan '+last+'m ago · ':''}scans every 15 min · ${todayN} trades today (target 10–20)</span>`+
+      (s.lastScan&&s.lastScan.placed===0&&todayN<3?`<div style="width:100%;color:var(--amber);font-size:11.5px;margin-top:6px;font-family:var(--mono)">⊘ Not trading: ${esc(s.lastScan.reason||'no qualifying setups')} · ${s.lastScan.rawCandidates||0} candidates seen, ${s.lastScan.clearedThreshold||0} cleared threshold</div>`:'')+
       (integ&&!integ.ok?`<div style="width:100%;color:var(--no);font-size:12px;margin-top:6px">${(integ.errors||[]).slice(0,3).map(esc).join(' · ')}</div>`:'');
     const ret=sm.returnPct;
     $('ovStats').innerHTML=`

@@ -87,7 +87,11 @@
    "target": null,
    "stop": 0.45,
    "holdUntil": 1781495999999,
-   "status": "open"
+   "status": "closed",
+   "exit": 0.795,
+   "exitTs": 1781496069899,
+   "exitReason": "Max hold reached — closed at market",
+   "pnl": 0
   },
   {
    "id": "t178148794316294fk",
@@ -1429,7 +1433,7 @@
  ],
  "strat": {
   "SHORT_FAVORITE": {
-   "trades": 5,
+   "trades": 6,
    "wins": 3,
    "pnl": 305.54563501796946,
    "weight": 1
@@ -1461,6 +1465,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-15 09:31 IST — Closed NO \"UFC Freedom 250: Justin Gaethje vs. Ilia T\" -> +$0 (Max hold reached — closed at market) · model said P(win)=60%",
   "2026-06-15 08:45 IST — Closed NO \"UFC Freedom 250: Derrick Lewis vs. Josh Ho\" -> +$103 (Resolved in our favor) · model said P(win)=60%",
   "2026-06-15 07:31 IST — Closed NO \"Will Tunisia win on 2026-06-14?\" -> $-5 (Max hold reached — closed at market) · model said P(win)=61%",
   "2026-06-15 07:15 IST — Opened NO $400 @ 80c P=60% EV=+0.08 [Short Favorite] \"UFC Freedom 250: Derrick Lewis vs. Josh Hokit \"",
@@ -1473,27 +1478,26 @@
   "2026-06-15 04:45 IST — Opened NO $200 @ 61c P=58% EV=+0.12 [Elite Follow] \"Will Ecuador win on 2026-06-14?\"",
   "2026-06-15 04:45 IST — Opened NO $250 @ 73c P=58% EV=+0.12 [Elite Follow] \"Will Côte d'Ivoire win on 2026-06-14?\"",
   "2026-06-15 01:15 IST — Closed YES \"US x Iran permanent peace deal by December\" -> +$8 (Max hold reached — closed at market) · model said P(win)=58%",
-  "2026-06-14 23:15 IST — Elite pool refreshed: 1 wallets qualify (>=62% win rate over >=15 settled, scalpers excluded): donthackme 80%",
-  "2026-06-14 09:15 IST — Closed NO \"Will the San Antonio Spurs win the 2026 NB\" -> +$179 (Resolved in our favor) · model said P(win)=62%"
+  "2026-06-14 23:15 IST — Elite pool refreshed: 1 wallets qualify (>=62% win rate over >=15 settled, scalpers excluded): donthackme 80%"
  ],
  "brain": {
   "w": [
-   0.1184003399706183,
-   0.04950130207567049,
-   0.009547736438241364,
+   0.04010691478746131,
+   0.04947655142463265,
+   0.009542962570022243,
    0,
-   0.05261817371902682,
-   -0.10716510811393196,
-   -0.042361433633436606,
-   0.10288527468422295,
-   0.09430480779601567,
-   -0.06589582548174802,
-   0.003819094575296541,
-   -0.05671324362895294,
-   -0.07413742159315445
+   -0.009604344253304177,
+   -0.18479811099795446,
+   -0.04625196416727847,
+   0.0339094798102766,
+   0.03104440158147495,
+   -0.11256870990187064,
+   0.003817185028008893,
+   -0.13491911202031015,
+   -0.07410035288235788
   ],
-  "b": 0.16281700516159692,
-  "nUpdates": 29,
+  "b": 0.08458278014842524,
+  "nUpdates": 30,
   "buckets": {
    "MOMENTUM|high|sport": {
     "a": 1,
@@ -1541,7 +1545,7 @@
    },
    "SHORT_FAVORITE|high|sport": {
     "a": 2,
-    "b": 1
+    "b": 2
    }
   },
   "wallets": {
@@ -1559,15 +1563,15 @@
    }
   },
   "brier": {
-   "sum": 7.933535000000002,
-   "n": 29
+   "sum": 8.297144000000001,
+   "n": 30
   },
   "payoff": {
    "SHORT_FAVORITE": {
     "wSum": 0.5170740415067483,
     "wN": 3,
     "lSum": 0.012422360248447077,
-    "lN": 2
+    "lN": 3
    },
    "MOMENTUM": {
     "wSum": 2.701062968732154,
@@ -1605,7 +1609,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-15T03:45:47.794Z"
+    "updated": "2026-06-15T04:01:09.899Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -1617,32 +1621,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-15T03:45:47.794Z"
+    "updated": "2026-06-15T04:01:09.899Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 8104.024469417695,
+  "cash": 8504.024469417694,
   "created": 1781162132851
  },
  "summary": {
   "realized": -1095.98,
-  "closed": 29,
+  "closed": 30,
   "wins": 12,
-  "open": 2,
+  "open": 1,
   "staked": 12850,
   "bankStart": 10000,
-  "cash": 8104,
+  "cash": 8504,
   "equity": 8904,
   "returnPct": -10.96,
-  "modelUpdates": 29,
-  "brier": 0.274,
+  "modelUpdates": 30,
+  "brier": 0.277,
   "hypotheses": 2,
   "integrityOk": true,
-  "updated": "2026-06-15T03:45:47.796Z"
+  "updated": "2026-06-15T04:01:09.901Z"
  },
- "lastRun": 1781495147796,
+ "lastRun": 1781496069901,
  "elite": {
   "updated": 1781459147464,
   "list": [
@@ -1658,7 +1662,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-15T03:45:47.796Z",
+  "checkedAt": "2026-06-15T04:01:09.901Z",
   "tradesChecked": 31
  }
 }

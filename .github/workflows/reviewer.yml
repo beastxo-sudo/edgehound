@@ -1,0 +1,39 @@
+name: EdgeHound AI Reviewer
+
+on:
+  workflow_dispatch:        # triggered every ~2h by the bot workflow (reliable cadence)
+
+permissions:
+  contents: write
+
+concurrency:
+  group: edgehound          # shares the bot's lock so they never collide
+  cancel-in-progress: false
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+
+      - name: Run AI Reviewer
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node reviewer.js
+
+      - name: Commit review
+        run: |
+          git config user.name "edgehound-bot"
+          git config user.email "bot@edgehound"
+          git add data/review.json
+          if ! git diff --cached --quiet; then
+            git commit -m "AI review $(date -u +'%Y-%m-%d %H:%M UTC')"
+            for i in 1 2 3 4 5; do
+              git pull --rebase origin ${GITHUB_REF_NAME} || { git rebase --abort 2>/dev/null || true; }
+              if git push; then break; fi
+              sleep $((i*3))
+            done
+          fi

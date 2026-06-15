@@ -222,9 +222,15 @@ function predict(brain,c){
   const B=brain.buckets[bk]||{a:1,b:1};
   const n=B.a+B.b-2;
   const pBucket=betaMean(B.a,B.b);
-  /* blend prior -> pattern posterior -> model, by how much evidence each has */
+  /* blend prior -> pattern posterior -> model, by how much evidence each has.
+     The model is capped at a modest weight: trained on a small, losing-start
+     sample it tends to be over-pessimistic and can drag EVERY candidate below
+     threshold, starving the bot of the new data it needs to correct itself.
+     We let it refine the prior, not veto it — and only let it grow influential
+     once it's both well-trained AND calibrated (low Brier). */
   const wBucket=n/(n+10);
-  const wModel=clamp(brain.nUpdates/(brain.nUpdates+30),0,0.6)*(1-wBucket);
+  const brierOk = brain.brier && brain.brier.n>20 ? clamp((0.25-(brain.brier.sum/brain.brier.n))/0.10,0,1) : 0.3;
+  const wModel=clamp(brain.nUpdates/(brain.nUpdates+80),0,0.35)*brierOk*(1-wBucket);
   const pPrior=c.prior??0.54;
   const wPrior=1-wBucket-wModel;
   const p=clamp(wPrior*pPrior + wBucket*pBucket + wModel*pModel, .05,.95);

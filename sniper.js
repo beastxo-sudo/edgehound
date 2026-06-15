@@ -31,6 +31,13 @@ const LEAD_MS = 60000;    /* sample 60s before the boundary */
 const SETTLE_DELAY = 8000;/* read the closed candle 8s after */
 
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+/* Abramowitz-Stegun erf approximation, for the binary-option fair-value model */
+function erf(x) {
+  const s = x < 0 ? -1 : 1; x = Math.abs(x);
+  const t = 1 / (1 + 0.3275911 * x);
+  const y = 1 - (((((1.061405429 * t - 1.453152027) * t) + 1.421413741) * t - 0.284496736) * t + 0.254829592) * t * Math.exp(-x * x);
+  return s * y;
+}
 const ist = () => new Date(Date.now() + 5.5 * 3600e3).toISOString().replace('T', ' ').slice(0, 19) + ' IST';
 const log = (m) => console.log(`${ist()}  ${m}`);
 
@@ -107,6 +114,38 @@ function summarize(lab) {
     last50: rollWindow(50),
     allTime: rollWindow(100000),
     perTenDollar: decided.length ? +(10 + dPnl / decided.length).toFixed(2) : null, /* avg $ back per $10 staked */
+    /* === MISPRICING EDGE: the real question ===
+       Across windows where the model disagreed with the market by >5pts and we
+       bet the model's side at the market price — did it win, and did $10 flat
+       come back as more than $10? Also: is the model better CALIBRATED than the
+       market (lower Brier vs actual outcome)? */
+    mispricing: (() => {
+      const edge = lab.samples.filter(x => x.actual != null && x.edgeSide && x.edgePaid > 0 && x.edgePaid < 1);
+      const wins = edge.filter(x => x.edgeWon).length;
+      const pnl = edge.reduce((a, x) => a + (x.edgeWon ? 10 * (1 - x.edgePaid) / x.edgePaid : -10), 0);
+      const invested = edge.length * 10;
+      const returned = edge.reduce((a, x) => a + (x.edgeWon ? 10 / x.edgePaid : 0), 0);
+      /* calibration: Brier score of model vs market across ALL windows with both */
+      const both = lab.samples.filter(x => x.actual != null && x.fairUp != null && x.mktImpliedUp != null);
+      const y = (x) => x.actual === 'UP' ? 1 : 0;
+      const brierModel = both.length ? both.reduce((a, x) => a + (x.fairUp - y(x)) ** 2, 0) / both.length : null;
+      const brierMarket = both.length ? both.reduce((a, x) => a + (x.mktImpliedUp - y(x)) ** 2, 0) / both.length : null;
+      return {
+        trades: edge.length,
+        wins,
+        winRate: edge.length ? +(wins / edge.length).toFixed(4) : null,
+        invested: +invested.toFixed(2),
+        returned: +returned.toFixed(2),
+        profit: +(returned - invested).toFixed(2),
+        returnPct: invested ? +((returned - invested) / invested * 100).toFixed(1) : null,
+        avgEdgePaid: edge.length ? +(edge.reduce((a, x) => a + x.edgePaid, 0) / edge.length).toFixed(4) : null,
+        perTenDollar: edge.length ? +(10 + pnl / edge.length).toFixed(2) : null,
+        modelBrier: brierModel != null ? +brierModel.toFixed(4) : null,
+        marketBrier: brierMarket != null ? +brierMarket.toFixed(4) : null,
+        modelBeatsMarket: (brierModel != null && brierMarket != null) ? brierModel < brierMarket : null,
+        windowsCompared: both.length
+      };
+    })(),
     updated: new Date().toISOString()
   };
 }
@@ -166,12 +205,43 @@ async function sampleBoundary(B, lab) {
     const dir = spot >= open ? 'UP' : 'DOWN';
     const leadPct = ((spot - open) / open) * 100;
 
-    let paid = 0, mktTitle = '', mktNote = 'not found', priceSrc = null, mktObj = null;
+    /* === FAIR-VALUE MODEL (the mispricing detector) ===
+       Treat the window as a binary option. Fair P(up) = Phi( ln(spot/open) /
+       (sigma * sqrt(tau)) ), where sigma = per-minute volatility from the last
+       30 one-minute candles, tau = minutes left. This is what the price SHOULD
+       be. We compare it to what the market actually charges; a persistent gap
+       is the only place a tradeable edge can live. */
+    let sigma = null, fairUp = null, tauMin = (B - Date.now()) / 60000;
+    try {
+      const vk = await binGet(`/klines?symbol=BTCUSDT&interval=1m&limit=30`, 6000);
+      if (Array.isArray(vk) && vk.length > 5) {
+        const rets = [];
+        for (let i = 1; i < vk.length; i++) {
+          const p0 = Number(vk[i - 1][4]), p1 = Number(vk[i][4]);
+          if (p0 > 0 && p1 > 0) rets.push(Math.log(p1 / p0));
+        }
+        const mean = rets.reduce((a, r) => a + r, 0) / rets.length;
+        sigma = Math.sqrt(rets.reduce((a, r) => a + (r - mean) ** 2, 0) / rets.length); /* per-minute stdev of log returns */
+      }
+    } catch (e) {}
+    if (sigma != null && sigma > 0 && tauMin > 0.01) {
+      const z = Math.log(spot / open) / (sigma * Math.sqrt(tauMin));
+      fairUp = 0.5 * (1 + erf(z / Math.SQRT2));
+    }
+
+    let paid = 0, mktTitle = '', mktNote = 'not found', priceSrc = null, mktObj = null, mktImpliedUp = null;
     try {
       const mkt = await findWindowMarket(B);
       mktObj = mkt;
       if (mkt) {
         mktTitle = mkt.title;
+        /* market's own implied P(up): the live UP-side price. Prefer the real
+           CLOB ask for the UP token; fall back to gamma's upPrice. */
+        try {
+          const upAsk = await bestAsk(mkt.upToken, mkt.upPrice);
+          if (upAsk.price > 0 && upAsk.price < 1) mktImpliedUp = upAsk.price;
+          else if (mkt.upPrice != null) mktImpliedUp = mkt.upPrice;
+        } catch (e) { if (mkt.upPrice != null) mktImpliedUp = mkt.upPrice; }
         const tok = dir === 'UP' ? mkt.upToken : mkt.downToken;
         const fb = dir === 'UP' ? mkt.upPrice : mkt.downPrice;
         const ask = await bestAsk(tok, fb);
@@ -293,11 +363,33 @@ async function sampleBoundary(B, lab) {
       btcChange: priceChange != null ? +priceChange.toFixed(2) : null,
       btcChangePct: priceChangePct != null ? +priceChangePct.toFixed(4) : null,
       candleOpen: +open.toFixed(2),
+      /* === mispricing detector fields === */
+      sigma: sigma != null ? +sigma.toFixed(6) : null,           /* per-min volatility */
+      fairUp: fairUp != null ? +fairUp.toFixed(4) : null,        /* model P(up) */
+      mktImpliedUp: mktImpliedUp != null ? +mktImpliedUp.toFixed(4) : null, /* market P(up) */
+      gap: (fairUp != null && mktImpliedUp != null) ? +(fairUp - mktImpliedUp).toFixed(4) : null, /* +ve: market underprices UP */
+      /* the edge signal: if model and market disagree by >5 pts, bet the side the
+         MODEL favors over the market (i.e. fade the overshoot). Records which side
+         and whether that side actually won — the real test of the edge. */
+      edgeSide: null, edgeWon: null,  /* filled below once we know fairUp/mkt/actual */
       paid: +(+paid).toFixed(4), priceSrc, mkt: mktNote,
       actual, won, verified, settleNote, polyConfirmed,
       sources: verdicts.map(v => ({ src: v.src, dir: v.tie ? 'TIE' : (v.up ? 'UP' : 'DOWN'), open: v.open != null ? +v.open.toFixed(2) : null, close: v.close != null ? +v.close.toFixed(2) : null })),
       flips: won === false && Math.abs(leadPct) < 0.02 ? 'knife-edge flip' : (won === false ? 'reversed in final seconds' : null)
     });
+    /* compute the mispricing-edge outcome on the just-pushed sample */
+    const smp = lab.samples[lab.samples.length - 1];
+    if (smp.fairUp != null && smp.mktImpliedUp != null && smp.actual != null) {
+      const GAP_MIN = 0.05;                       /* only act when model disagrees by >5 pts */
+      if (Math.abs(smp.gap) >= GAP_MIN) {
+        /* gap > 0: model thinks UP more likely than market prices -> bet UP.
+           gap < 0: model thinks UP less likely -> bet DOWN (fade the overshoot). */
+        smp.edgeSide = smp.gap > 0 ? 'UP' : 'DOWN';
+        smp.edgeWon = smp.edgeSide === smp.actual;
+        /* price we'd pay for the edge side: UP side = mktImpliedUp, DOWN = 1-mktImpliedUp */
+        smp.edgePaid = +(smp.edgeSide === 'UP' ? smp.mktImpliedUp : (1 - smp.mktImpliedUp)).toFixed(4);
+      }
+    }
     lab.samples = lab.samples.slice(-5000);
     summarize(lab);
     fs.writeFileSync(OUT_FILE, JSON.stringify(lab));

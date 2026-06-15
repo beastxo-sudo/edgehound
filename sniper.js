@@ -56,7 +56,10 @@ function loadLab() {
 }
 
 function summarize(lab) {
-  const s = lab.samples.filter(x => x.actual !== null);
+  /* ONLY double-verified bets count — unverified (ties / source disagreement /
+     missing second source) are excluded from every stat. */
+  const s = lab.samples.filter(x => x.verified === true && x.actual !== null);
+  const excluded = lab.samples.filter(x => x.actual !== null && x.verified !== true).length;
   const correct = s.filter(x => x.won);
   const withPx = s.filter(x => x.paid > 0);
   const pnl = withPx.reduce((a, x) => a + (x.won ? 10 * (1 - x.paid) / x.paid : -10), 0);
@@ -90,6 +93,7 @@ function summarize(lab) {
   };
   lab.summary = {
     samples: s.length,
+    excludedUnverified: excluded,
     pricedSamples: withPx.length,
     directionAccuracy: s.length ? +(correct.length / s.length).toFixed(4) : null,
     avgPricePaid: avgPaid ? +avgPaid.toFixed(4) : null,
@@ -186,20 +190,68 @@ async function sampleBoundary(B, lab) {
 
     /* wait for resolution */
     await sleep(Math.max(0, B + SETTLE_DELAY - Date.now()));
-    const k2 = await binGet(`/klines?symbol=BTCUSDT&interval=5m&startTime=${candleStart}&limit=1`, 6000);
-    const actualUp = Number(k2[0][4]) >= Number(k2[0][1]);
-    const actual = actualUp ? 'UP' : 'DOWN';
-    const won = dir === actual;
+
+    /* === DOUBLE-VERIFIED SETTLEMENT ===
+       A bet only counts if two INDEPENDENT data paths agree on the outcome:
+        source 1: Binance 5-minute candle (open vs close)
+        source 2: Binance 1-minute candles for the window, re-aggregated
+        source 3: Coinbase 1-minute candles (independent exchange)
+       If close == open exactly (a true tie), or the sources disagree, the bet
+       is flagged 'unverified' and EXCLUDED from all stats — never guessed. */
+    const settle = async () => {
+      const verdicts = [];
+      try {
+        const k5 = await binGet(`/klines?symbol=BTCUSDT&interval=5m&startTime=${candleStart}&limit=1`, 6000);
+        const o = Number(k5[0][1]), c = Number(k5[0][4]);
+        verdicts.push({ src: 'binance5m', open: o, close: c, up: c > o, tie: c === o });
+      } catch (e) {}
+      try {
+        const k1 = await binGet(`/klines?symbol=BTCUSDT&interval=1m&startTime=${candleStart}&endTime=${B - 1}&limit=5`, 6000);
+        if (k1 && k1.length) {
+          const o = Number(k1[0][1]), c = Number(k1[k1.length - 1][4]);
+          verdicts.push({ src: 'binance1m', open: o, close: c, up: c > o, tie: c === o });
+        }
+      } catch (e) {}
+      try {
+        const cb = await jget(`https://api.exchange.coinbase.com/products/BTC-USD/candles?granularity=60&start=${Math.floor(candleStart/1000)}&end=${Math.floor(B/1000)}`, 6000);
+        if (Array.isArray(cb) && cb.length) {
+          const sorted = cb.slice().sort((a,b)=>a[0]-b[0]);
+          const o = Number(sorted[0][3]), c = Number(sorted[sorted.length-1][4]);
+          verdicts.push({ src: 'coinbase1m', open: o, close: c, up: c > o, tie: c === o });
+        }
+      } catch (e) {}
+      return verdicts;
+    };
+
+    const verdicts = await settle();
+    const ups = verdicts.filter(v => !v.tie).map(v => v.up);
+    const anyTie = verdicts.some(v => v.tie);
+    const allAgree = ups.length >= 2 && ups.every(v => v === ups[0]);
+    let actual = null, won = null, verified = false, settleNote;
+    if (allAgree && !anyTie) {
+      actual = ups[0] ? 'UP' : 'DOWN';
+      won = dir === actual;
+      verified = true;
+      settleNote = `verified by ${verdicts.length} sources`;
+    } else if (anyTie) {
+      settleNote = 'EXCLUDED: exact tie (close == open) — Polymarket resolution ambiguous';
+    } else if (ups.length < 2) {
+      settleNote = `EXCLUDED: only ${ups.length} source(s) available, need 2+ to verify`;
+    } else {
+      settleNote = `EXCLUDED: sources disagree (${verdicts.map(v=>v.src+':'+(v.up?'UP':'DOWN')).join(', ')})`;
+    }
 
     lab.samples.push({
       win: candleStart, t: new Date(B).toISOString(), dir, leadPct: +leadPct.toFixed(4),
-      paid: +(+paid).toFixed(4), priceSrc, mkt: mktNote, actual, won,
-      flips: !won && Math.abs(leadPct) < 0.02 ? 'knife-edge flip' : (!won ? 'reversed in final seconds' : null)
+      paid: +(+paid).toFixed(4), priceSrc, mkt: mktNote,
+      actual, won, verified, settleNote,
+      sources: verdicts.map(v => ({ src: v.src, dir: v.tie ? 'TIE' : (v.up ? 'UP' : 'DOWN'), open: +v.open.toFixed(2), close: +v.close.toFixed(2) })),
+      flips: won === false && Math.abs(leadPct) < 0.02 ? 'knife-edge flip' : (won === false ? 'reversed in final seconds' : null)
     });
     lab.samples = lab.samples.slice(-5000);
     summarize(lab);
     fs.writeFileSync(OUT_FILE, JSON.stringify(lab));
-    log(`settled: actual=${actual} -> ${won ? 'CORRECT' : 'WRONG'} | running accuracy ${(lab.summary.directionAccuracy * 100).toFixed(1)}% over ${lab.summary.samples}, EV/trade $${lab.summary.evPerTrade ?? '—'}`);
+    log(`settled: ${verified ? actual + ' -> ' + (won ? 'CORRECT' : 'WRONG') + ' (' + settleNote + ')' : settleNote}`);
   } catch (e) {
     log(`boundary ${new Date(B).toISOString()} skipped: ${e.message}`);
   }

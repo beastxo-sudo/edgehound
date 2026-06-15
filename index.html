@@ -222,6 +222,7 @@ footer{max-width:1280px;margin:0 auto;padding:0 24px 40px;color:var(--faint);fon
     <span class="status-pill demo"><span class="dot"></span><span>LOADING…</span></span>
   </div>
   <div class="stat-row" id="ovStats"></div>
+  <div id="ovAudit" style="margin-bottom:14px"></div>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px">
     <div style="background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px 18px">
       <div class="section-h" style="margin:0 0 10px">What just happened</div>
@@ -1152,13 +1153,14 @@ const Bot={
       clearInterval(this.timer);
       this.timer=setInterval(async()=>{
         try{const s=await jget(this.remoteUrl+(this.remoteUrl.includes('?')?'&':'?')+'_='+Date.now(),6000);
-          if(s&&Array.isArray(s.journal)){this.state=s;this.render();this.loadRunHistory();this.loadAnalyst();}}catch(e){}
+          if(s&&Array.isArray(s.journal)){this.state=s;this.render();this.loadRunHistory();this.loadAnalyst();this.loadAudit();}}catch(e){}
       },5*60*1000);
       this.render();
       this.loadRunHistory();
       this.loadAnalyst();
       this.startCountdown();
       this.renderOverview();
+      this.loadAudit();
       const el=$('botLog'); if(el) el.innerHTML='☁ Watching cloud journal: '+esc(this.remoteUrl)+'<br>'+(this.state.log||[]).map(esc).join('<br>');
       return;
     }
@@ -1189,6 +1191,41 @@ const Bot={
     }catch(e){}
     return null;
   },
+  async loadAudit(){
+    const box=$('ovAudit'); if(!box)return;
+    const base=(this.remoteUrl||'').match(/^(https:\/\/raw\.githubusercontent\.com\/[^/]+\/[^/]+\/[^/]+)\//);
+    const u=(f)=>base?base[1]+'/data/'+f:'data/'+f;
+    let audit=null, review=null;
+    try{ audit=await jget(u('audit.json')+'?_='+Date.now(),6000); }catch(e){}
+    try{ review=await jget(u('review.json')+'?_='+Date.now(),6000); }catch(e){}
+    if(!audit&&!review){ box.innerHTML=''; return; }
+    const health=(review&&review.overallHealth)||'healthy';
+    const hColor=health==='healthy'?'var(--yes)':health==='minor-issues'?'var(--amber)':'var(--no)';
+    const hLabel=health==='healthy'?'✓ All systems healthy':health==='minor-issues'?'⚠ Minor issues':'⚠ Needs attention';
+    const af=audit&&audit.summary?audit.summary.autoFixed:0;
+    const code=(review&&review.openCodeIssues)||[];
+    const detCode=(audit&&audit.openCodeIssues)||[];
+    box.innerHTML=`
+      <div style="background:var(--surface);border:1px solid var(--border-soft);border-left:3px solid ${hColor};border-radius:var(--radius);padding:14px 18px">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px">
+          <span style="font-family:var(--display);font-weight:700;font-size:14px;color:${hColor}">${hLabel}</span>
+          <span style="font-family:var(--mono);font-size:10.5px;color:var(--faint)">self-audit runs every cycle · AI review every 2h</span>
+          ${af?`<span style="font-family:var(--mono);font-size:10.5px;color:var(--yes);background:var(--yes-soft);padding:2px 8px;border-radius:99px">${af} auto-fixed</span>`:''}
+        </div>
+        ${review&&review.headline?`<div style="font-size:12.5px;color:var(--text);margin-bottom:${code.length||detCode.length?'10px':'0'}">${esc(review.headline)}</div>`:''}
+        ${code.length?`<div style="font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin-bottom:6px">Open issues flagged for a fix</div>
+          <div style="display:flex;flex-direction:column;gap:6px">${code.slice(0,5).map(f=>`
+            <div style="background:var(--surface2);border-radius:8px;padding:8px 11px;font-size:12px">
+              <span style="color:${f.severity==='critical'?'var(--no)':f.severity==='warn'?'var(--amber)':'var(--muted)'};font-family:var(--mono);font-size:10px">[${esc(f.severity)}]</span>
+              <b style="color:var(--text)"> ${esc(f.title||f.area)}</b>
+              <div style="color:var(--muted);margin-top:3px">${esc(f.fix||f.diagnosis||'')}</div>
+            </div>`).join('')}</div>`
+        :(detCode.length?`<div style="color:var(--muted);font-size:12px">${detCode.length} item(s) flagged by invariant checks — see review for detail.</div>`
+        :`<div style="color:var(--yes);font-size:12px">No open code issues. Everything the auditor checked is consistent.</div>`)}
+        ${review&&review.ranAtIST?`<div class="mini-note" style="margin-top:10px">last AI review ${esc(review.ranAtIST)}</div>`:''}
+      </div>`;
+  },
+
   async loadAnalyst(){
     const box=$('analystPanel'); if(!box)return;
     let url='data/analyst.json';

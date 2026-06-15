@@ -11,7 +11,7 @@
    "slug": "ufc-der-jos52-2026-06-14",
    "side": "NO",
    "entry": 0.795,
-   "cur": 0.625,
+   "cur": 0.995,
    "stake": 400,
    "signal": "SHORT_FAVORITE",
    "p": 0.601,
@@ -41,7 +41,11 @@
    "target": null,
    "stop": 0.45,
    "holdUntil": 1781495999999,
-   "status": "open"
+   "status": "closed",
+   "exit": 1,
+   "exitTs": 1781493343011,
+   "exitReason": "Resolved in our favor",
+   "pnl": 103.14465408805029
   },
   {
    "id": "t1781487943162fb05",
@@ -53,7 +57,7 @@
    "slug": "ufc-jus3-ili1-2026-06-14",
    "side": "NO",
    "entry": 0.795,
-   "cur": 0.785,
+   "cur": 0.795,
    "stake": 400,
    "signal": "SHORT_FAVORITE",
    "p": 0.603,
@@ -1425,9 +1429,9 @@
  ],
  "strat": {
   "SHORT_FAVORITE": {
-   "trades": 4,
-   "wins": 2,
-   "pnl": 202.40098092991917,
+   "trades": 5,
+   "wins": 3,
+   "pnl": 305.54563501796946,
    "weight": 1
   },
   "MOMENTUM": {
@@ -1457,6 +1461,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-15 08:45 IST — Closed NO \"UFC Freedom 250: Derrick Lewis vs. Josh Ho\" -> +$103 (Resolved in our favor) · model said P(win)=60%",
   "2026-06-15 07:31 IST — Closed NO \"Will Tunisia win on 2026-06-14?\" -> $-5 (Max hold reached — closed at market) · model said P(win)=61%",
   "2026-06-15 07:15 IST — Opened NO $400 @ 80c P=60% EV=+0.08 [Short Favorite] \"UFC Freedom 250: Derrick Lewis vs. Josh Hokit \"",
   "2026-06-15 07:15 IST — Opened NO $400 @ 80c P=60% EV=+0.08 [Short Favorite] \"UFC Freedom 250: Justin Gaethje vs. Ilia Topur\"",
@@ -1469,27 +1474,26 @@
   "2026-06-15 04:45 IST — Opened NO $250 @ 73c P=58% EV=+0.12 [Elite Follow] \"Will Côte d'Ivoire win on 2026-06-14?\"",
   "2026-06-15 01:15 IST — Closed YES \"US x Iran permanent peace deal by December\" -> +$8 (Max hold reached — closed at market) · model said P(win)=58%",
   "2026-06-14 23:15 IST — Elite pool refreshed: 1 wallets qualify (>=62% win rate over >=15 settled, scalpers excluded): donthackme 80%",
-  "2026-06-14 09:15 IST — Closed NO \"Will the San Antonio Spurs win the 2026 NB\" -> +$179 (Resolved in our favor) · model said P(win)=62%",
-  "2026-06-14 09:15 IST — Closed YES \"Will the New York Knicks win the 2026 NBA \" -> +$43 (Resolved in our favor) · model said P(win)=62%"
+  "2026-06-14 09:15 IST — Closed NO \"Will the San Antonio Spurs win the 2026 NB\" -> +$179 (Resolved in our favor) · model said P(win)=62%"
  ],
  "brain": {
   "w": [
-   0.04115357504493322,
-   0.0495260651082246,
-   0.009552512694588658,
+   0.1184003399706183,
+   0.04950130207567049,
+   0.009547736438241364,
    0,
-   -0.008813769827887133,
-   -0.1839835702202572,
-   -0.0462479246814377,
-   0.036917423572930166,
-   0.031115680114669225,
-   -0.12584093577737257,
-   0.0038210050778354587,
-   -0.13404760914673386,
-   -0.07417450884757824
+   0.05261817371902682,
+   -0.10716510811393196,
+   -0.042361433633436606,
+   0.10288527468422295,
+   0.09430480779601567,
+   -0.06589582548174802,
+   0.003819094575296541,
+   -0.05671324362895294,
+   -0.07413742159315445
   ],
-  "b": 0.08554966344838937,
-  "nUpdates": 28,
+  "b": 0.16281700516159692,
+  "nUpdates": 29,
   "buckets": {
    "MOMENTUM|high|sport": {
     "a": 1,
@@ -1534,6 +1538,10 @@
    "ELITE_FOLLOW|high|other": {
     "a": 1,
     "b": 2
+   },
+   "SHORT_FAVORITE|high|sport": {
+    "a": 2,
+    "b": 1
    }
   },
   "wallets": {
@@ -1551,13 +1559,13 @@
    }
   },
   "brier": {
-   "sum": 7.774334000000001,
-   "n": 28
+   "sum": 7.933535000000002,
+   "n": 29
   },
   "payoff": {
    "SHORT_FAVORITE": {
-    "wSum": 0.2592124062866225,
-    "wN": 2,
+    "wSum": 0.5170740415067483,
+    "wN": 3,
     "lSum": 0.012422360248447077,
     "lN": 2
    },
@@ -1597,7 +1605,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-15T03:01:13.802Z"
+    "updated": "2026-06-15T03:15:43.011Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -1609,32 +1617,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-15T03:01:13.802Z"
+    "updated": "2026-06-15T03:15:43.012Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 7600.879815329645,
+  "cash": 8104.024469417695,
   "created": 1781162132851
  },
  "summary": {
-  "realized": -1199.12,
-  "closed": 28,
-  "wins": 11,
-  "open": 3,
+  "realized": -1095.98,
+  "closed": 29,
+  "wins": 12,
+  "open": 2,
   "staked": 12850,
   "bankStart": 10000,
-  "cash": 7601,
-  "equity": 8710,
-  "returnPct": -12.9,
-  "modelUpdates": 28,
-  "brier": 0.278,
+  "cash": 8104,
+  "equity": 8904,
+  "returnPct": -10.96,
+  "modelUpdates": 29,
+  "brier": 0.274,
   "hypotheses": 2,
   "integrityOk": true,
-  "updated": "2026-06-15T03:01:13.805Z"
+  "updated": "2026-06-15T03:15:43.014Z"
  },
- "lastRun": 1781492473805,
+ "lastRun": 1781493343014,
  "elite": {
   "updated": 1781459147464,
   "list": [
@@ -1650,7 +1658,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-15T03:01:13.805Z",
+  "checkedAt": "2026-06-15T03:15:43.014Z",
   "tradesChecked": 31
  }
 }

@@ -53,7 +53,7 @@
    "slug": "atp-perrica-moutet-2026-06-15",
    "side": "NO",
    "entry": 0.475,
-   "cur": 0.475,
+   "cur": 0.485,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.57,
@@ -1973,7 +1973,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-15T22:11:09.249Z"
+    "updated": "2026-06-15T22:25:22.156Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -1985,7 +1985,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-15T22:11:09.249Z"
+    "updated": "2026-06-15T22:25:22.156Z"
    }
   ]
  },
@@ -2002,15 +2002,15 @@
   "staked": 13950,
   "bankStart": 10000,
   "cash": 8305,
-  "equity": 8905,
-  "returnPct": -10.95,
+  "equity": 8908,
+  "returnPct": -10.92,
   "modelUpdates": 34,
   "brier": 0.28,
   "hypotheses": 2,
   "integrityOk": true,
-  "updated": "2026-06-15T22:11:09.254Z"
+  "updated": "2026-06-15T22:25:22.159Z"
  },
- "lastRun": 1781561469254,
+ "lastRun": 1781562322160,
  "elite": {
   "updated": 1781545591279,
   "list": [
@@ -2040,15 +2040,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-15T22:11:09.254Z",
+  "checkedAt": "2026-06-15T22:25:22.159Z",
   "tradesChecked": 39
  },
  "lastScan": {
-  "at": "2026-06-15T22:11:09.254Z",
-  "marketsFetched": 67,
+  "at": "2026-06-15T22:25:22.159Z",
+  "marketsFetched": 65,
   "rawCandidates": 16,
-  "clearedThreshold": 4,
-  "placed": 4,
+  "clearedThreshold": 0,
+  "placed": 0,
   "pMin": 0.57,
   "blocked": {
    "exposure": 0,
@@ -2056,6 +2056,6 @@
    "cash": 0,
    "sanity": 0
   },
-  "reason": "traded"
+  "reason": "no candidates cleared P(win)>=0.57 (engines produce ~0.58-0.64; lower pMin or wait for better setups)"
  }
 }

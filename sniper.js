@@ -241,8 +241,17 @@ async function sampleBoundary(B, lab) {
       settleNote = `EXCLUDED: sources disagree (${verdicts.map(v=>v.src+':'+(v.up?'UP':'DOWN')).join(', ')})`;
     }
 
+    /* prices for a clear picture: what BTC was when we bet vs at window close */
+    const closePrice = (verdicts.find(v => v.src === 'binance5m') || verdicts[0] || {}).close ?? null;
+    const priceChange = closePrice != null ? closePrice - spot : null;
+    const priceChangePct = closePrice != null && spot ? ((closePrice - spot) / spot) * 100 : null;
+
     lab.samples.push({
       win: candleStart, t: new Date(B).toISOString(), dir, leadPct: +leadPct.toFixed(4),
+      btcAtBet: +spot.toFixed(2), btcAtClose: closePrice != null ? +closePrice.toFixed(2) : null,
+      btcChange: priceChange != null ? +priceChange.toFixed(2) : null,
+      btcChangePct: priceChangePct != null ? +priceChangePct.toFixed(4) : null,
+      candleOpen: +open.toFixed(2),
       paid: +(+paid).toFixed(4), priceSrc, mkt: mktNote,
       actual, won, verified, settleNote,
       sources: verdicts.map(v => ({ src: v.src, dir: v.tie ? 'TIE' : (v.up ? 'UP' : 'DOWN'), open: +v.open.toFixed(2), close: +v.close.toFixed(2) })),

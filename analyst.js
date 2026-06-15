@@ -8,7 +8,7 @@
 
    Powers (bounded):
    - enable/disable individual signal engines (>=1 must stay on)
-   - tune entry threshold pMin within [0.52, 0.66]
+   - tune entry threshold pMin within [0.54, 0.66] (auto-capped at 0.60 when momentum/consensus are off)
    - tune Kelly multiplier within [0.10, 0.50]
    - tune max portfolio exposure within [0.30, 0.60]
    - tune max per-event exposure within [500, 1500]
@@ -27,7 +27,7 @@ const CONFIG_FILE = path.join(__dirname, 'config.json');
 const MEMO_FILE   = path.join(__dirname, 'data', 'analyst.json');
 
 const RAILS = {
-  pMin: [0.52, 0.66],
+  pMin: [0.54, 0.66],
   kellyMult: [0.10, 0.50],
   maxExposure: [0.30, 0.60],
   maxEventExposure: [500, 1500]
@@ -128,7 +128,17 @@ function applyChanges(config,decision){
   }
   for(const key of ['pMin','kellyMult','maxExposure','maxEventExposure']){
     if(ch[key]!==undefined&&!isNaN(Number(ch[key]))){
-      const v=clamp(ch[key],RAILS[key][0],RAILS[key][1]);
+      let v=clamp(ch[key],RAILS[key][0],RAILS[key][1]);
+      /* Dynamic pMin ceiling: the surviving engines have bounded priors.
+         SHORT_FAVORITE/VOLUME_SPIKE/ELITE_FOLLOW top out around 0.61-0.64;
+         only MOMENTUM/SMART_CONSENSUS reach higher. If the high-prior engines
+         are OFF, a pMin above ~0.60 silently blocks ALL trades. Cap it so the
+         Analyst can't strangle the bot the way it did on 2026-06-15. */
+      if(key==='pMin'){
+        const hiPrior = config.engines.MOMENTUM || config.engines.SMART_CONSENSUS;
+        const ceiling = hiPrior ? 0.66 : 0.60;
+        if(v>ceiling){ applied.push(`pMin capped at ${ceiling} (high-prior engines off; ${v} would block all trades)`); v=ceiling; }
+      }
       if(Math.abs(v-config[key])>1e-9){ applied.push(`${key}: ${config[key]} -> ${v}`); config[key]=v; }
     }
   }

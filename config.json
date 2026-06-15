@@ -1,5 +1,5 @@
 {
-  "comment": "EdgeHound tunable parameters. The AI Analyst may adjust these within hard rails enforced in code. Humans can edit too.",
+  "comment": "EdgeHound tunable parameters. The AI Analyst may adjust these within hard rails enforced in code. Humans can edit too. [pMin lowered to match surviving engines after momentum block]",
   "engines": {
     "SHORT_FAVORITE": true,
     "MOMENTUM": false,
@@ -7,10 +7,10 @@
     "VOLUME_SPIKE": true,
     "ELITE_FOLLOW": true
   },
-  "pMin": 0.62,
+  "pMin": 0.57,
   "kellyMult": 0.1,
-  "maxExposure": 0.3,
+  "maxExposure": 0.4,
   "maxEventExposure": 500,
-  "updatedBy": "analyst",
-  "updatedAt": "2026-06-15T03:55:52.868Z"
+  "updatedBy": "human-himanshu",
+  "updatedAt": "2026-06-15T18:00:00.000Z"
 }

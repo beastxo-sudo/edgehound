@@ -388,8 +388,9 @@ footer{max-width:1280px;margin:0 auto;padding:0 24px 40px;color:var(--faint);fon
       <option value="0.1">Show everything (incl. dust)</option>
     </select>
   </div>
-  <div class="section-h" style="margin-top:6px">🎯 Last-5s Sniper Lab <small>autonomous hypothesis test — measuring whether last-second direction is tradeable</small></div>
-  <div class="help-tip"><b>The hypothesis:</b> in the final 5 seconds of a 5-min BTC window the outcome is already visible on Binance — so betting the current direction should win almost every time. The lab samples every window around the clock, records the direction <b>and the real Polymarket ask</b>, then settles against the actual candle. Profitable only if accuracy beats the price paid. (We retired the separate live "lead detector" — that edge is too fast for a polling dashboard; this measured test is the honest version.)</div>
+  <div class="section-h" style="margin-top:6px">🎯 30-Second Sniper Lab <small>does a better entry price beat lower accuracy?</small></div>
+  <div class="help-tip"><b>The hypothesis:</b> at 5 seconds out, the direction was 99% certain but cost ~98¢ — right almost always, but no reward. So now we sample <b>30 seconds before close</b>: the direction is less certain (accuracy will drop) but the favorite side is <b>cheaper</b> (each win pays more). The real question this measures: <b>does the better price more than make up for the extra misses?</b> The lab records the direction and the real Polymarket ask 30s out, then settles against the actual candle. Watch the <b>EV per trade</b> — that's the whole answer.
+  <span id="snip5sArchive"></span></div>
   <div id="sniperPanel" style="background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px 18px;margin-bottom:18px"><div class="empty">Loading lab results…</div></div>
 
   <div class="section-h">Locked-profit scanner</div>
@@ -1830,6 +1831,8 @@ const Sniper={
       box.innerHTML='<div class="empty">No samples yet — the lab collects one sample per 5-minute window and commits in ~14-minute batches. If this persists beyond 30 minutes, the lab job may be failing.</div>'; return;
     }
     const ageMin=Math.round((Date.now()-new Date(lab.summary.updated).getTime())/60000);
+    const arch=lab.archive_5s; const ax=$('snip5sArchive');
+    if(arch&&ax) ax.innerHTML=` <br><span style="color:var(--faint)">Prior 5-second test (concluded, ${arch.samples} windows): ${(arch.decidedAccuracy*100).toFixed(0)}% accurate but paid ${cents(arch.decidedAvgPaid)} → only +$${arch.decidedEvPerTrade}/trade. The 30s test asks if a cheaper entry does better.</span>`;
     const s=lab.summary;
     /* the honest test is the DECIDED windows (favorite priced >=85c), not
        the near-coin-flip mid-priced samples which are noise, not the hypothesis */
@@ -1852,14 +1855,14 @@ const Sniper={
       <td class="num ${x.won?'pos':'neg'}">${x.paid?(x.won?'+$'+(10*(1-x.paid)/x.paid).toFixed(2):'-$10.00'):'—'}</td></tr>`).join('');
     box.innerHTML=`
       <div class="stat-row" style="margin-bottom:12px">
-        <div class="stat-card"><div class="lbl">Windows sampled</div><div class="val">${s.samples}</div><div class="sub">around the clock, T−5s each</div></div>
+        <div class="stat-card"><div class="lbl">Windows sampled</div><div class="val">${s.samples}</div><div class="sub">around the clock, 30s before close</div></div>
         <div class="stat-card"><div class="lbl">Direction accuracy</div><div class="val">${acc!=null?(acc*100).toFixed(1)+'%':'—'}</div><div class="sub">on ${nDec} genuinely-decided windows</div></div>
         <div class="stat-card"><div class="lbl">Avg price paid</div><div class="val">${be?cents(be):'—'}</div><div class="sub">break-even needs ${be?(be*100).toFixed(1)+'%':'—'} accuracy</div></div>
         <div class="stat-card"><div class="lbl">EV per trade</div><div class="val ${ev>=0?'pos':'neg'}">${ev>=0?'+':''}$${ev??'—'}</div><div class="sub">at $10 flat, before real-world fills</div></div>
       </div>
       <div style="background:var(--surface2);border-radius:10px;padding:10px 14px;font-family:var(--mono);font-size:12.5px;margin-bottom:12px">${verdict}${edge!=null&&s.samples>=30?' ('+(edge>=0?'+':'')+edge.toFixed(1)+' pts vs break-even)':''}</div>
       <div class="mini-note" style="margin-bottom:10px">data ${ageMin<=1?'just updated':ageMin+' min old'} · auto-refreshes every minute · lab commits in ~14-min batches</div>
-      <table class="tbl"><thead><tr><th>Window</th><th>Bet</th><th>Lead at T−5s</th><th>Paid</th><th>Result</th><th>$10 P&L</th></tr></thead><tbody>${rows}</tbody></table>`;
+      <table class="tbl"><thead><tr><th>Window</th><th>Bet</th><th>Lead at T−30s</th><th>Paid</th><th>Result</th><th>$10 P&L</th></tr></thead><tbody>${rows}</tbody></table>`;
   }
 };
 /* wire scanner into tab switching */

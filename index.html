@@ -1853,13 +1853,18 @@ const Sniper={
         ? '⬤ Polymarket'+((x.sources||[]).filter(sv=>sv.src!=='polymarket').length?' +'+(x.sources||[]).filter(sv=>sv.src!=='polymarket').length+' exch':'')
         : (x.sources||[]).map(sv=>sv.src.replace('binance','bnc').replace('coinbase','cb')+'·'+sv.dir).join(' ');
       const srcColor=x.polyConfirmed?'var(--yes)':'var(--amber)';
-      const chg=x.btcChange, chgPct=x.btcChangePct;
-      const chgColor=chg>0?'var(--yes)':chg<0?'var(--no)':'var(--muted)';
-      const priceCell=x.btcAtBet!=null
-        ? `<span style="color:var(--muted)">$${x.btcAtBet.toLocaleString(undefined,{maximumFractionDigits:0})}</span> → <span style="color:var(--text)">$${x.btcAtClose!=null?x.btcAtClose.toLocaleString(undefined,{maximumFractionDigits:0}):'—'}</span>`
+      /* The bet is decided by candle OPEN vs CLOSE — show that, not bet-time→close.
+         (Bet-time→close was misleading: a bet can win on open→close while the
+         last 60s drifted the other way.) */
+      const openP=x.candleOpen, closeP=x.btcAtClose;
+      const decisiveChg=(openP!=null&&closeP!=null)?closeP-openP:null;
+      const decisivePct=(openP!=null&&closeP!=null&&openP)?((closeP-openP)/openP)*100:null;
+      const chgColor=decisiveChg>0?'var(--yes)':decisiveChg<0?'var(--no)':'var(--muted)';
+      const priceCell=(openP!=null)
+        ? `<span style="color:var(--faint)">open</span> $${openP.toLocaleString(undefined,{maximumFractionDigits:0})} <span style="color:var(--faint)">→ close</span> $${closeP!=null?closeP.toLocaleString(undefined,{maximumFractionDigits:0}):'—'}`
         : '—';
-      const moveCell=chg!=null
-        ? `<span style="color:${chgColor}">${chg>0?'▲':chg<0?'▼':'■'} $${Math.abs(chg).toFixed(0)}<span style="color:var(--faint)"> (${chgPct>0?'+':''}${chgPct.toFixed(3)}%)</span></span>`
+      const moveCell=decisiveChg!=null
+        ? `<span style="color:${chgColor}">${decisiveChg>0?'▲ UP':decisiveChg<0?'▼ DOWN':'■ flat'} $${Math.abs(decisiveChg).toFixed(0)}<span style="color:var(--faint)"> (${decisivePct>0?'+':''}${decisivePct.toFixed(3)}%)</span></span>`
         : '—';
       return `<tr><td class="num">${new Date(x.win).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}</td>
       <td><span class="side-tag ${x.dir==='UP'?'y':'n'}">${x.dir}</span></td>
@@ -1897,7 +1902,7 @@ const Sniper={
       <div class="mini-note" style="margin-bottom:12px;color:var(--faint)">data ${ageMin<=1?'just updated':ageMin+' min old'} · updates every minute · only counts bets where we got the real live price</div>
 
       <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:8px">Recent bets <span style="color:var(--yes)">· each double-verified</span></div>
-      <table class="tbl"><thead><tr><th>Time</th><th>Bet</th><th>BTC: bet → close</th><th>Move</th><th>Price paid</th><th>Result</th><th>Profit</th><th>Verified by</th></tr></thead><tbody>${rows||'<tr><td colspan=8 style="color:var(--faint);padding:14px">No verified bets yet.</td></tr>'}</tbody></table>
+      <table class="tbl"><thead><tr><th>Time</th><th>Bet</th><th>BTC: open → close</th><th>Outcome move</th><th>Price paid</th><th>Result</th><th>Profit</th><th>Verified by</th></tr></thead><tbody>${rows||'<tr><td colspan=8 style="color:var(--faint);padding:14px">No verified bets yet.</td></tr>'}</tbody></table>
       ${s.excludedUnverified?`<div class="mini-note" style="margin-top:8px;color:var(--amber)">⊘ ${s.excludedUnverified} bet${s.excludedUnverified>1?'s':''} excluded as unverified (exact ties where price closed = opened, or sources disagreed). These never count toward the stats above — only bets confirmed by 2+ independent price feeds are tallied.</div>`:''}`;
   }
 };

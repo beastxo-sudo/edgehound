@@ -334,26 +334,30 @@ async function buildElitePool(state){
   if(state.elite && Date.now()-state.elite.updated < 24*3600e3 && (state.elite.list||[]).length) return state.elite.list;
   let pool=[];
   try{
-    const lb=await jget(`${DATA}/v1/leaderboard?category=OVERALL&timePeriod=MONTH&orderBy=PNL&limit=30`);
-    const top=(Array.isArray(lb)?lb:[]).slice(0,25);
-    const results=await Promise.allSettled(top.map(l=>jget(`${DATA}/positions?user=${l.proxyWallet}&sortBy=CURRENT&sortDirection=DESC&limit=100`)));
+    const lbs=await Promise.allSettled([
+      jget(`${DATA}/v1/leaderboard?category=OVERALL&timePeriod=MONTH&orderBy=PNL&limit=40`),
+      jget(`${DATA}/v1/leaderboard?category=OVERALL&timePeriod=ALL&orderBy=PNL&limit=20`)
+    ]);
+    const seen=new Set(); const top=[];
+    lbs.forEach(r=>{ if(r.status==='fulfilled'&&Array.isArray(r.value)) r.value.forEach(l=>{ if(l.proxyWallet&&!seen.has(l.proxyWallet)){ seen.add(l.proxyWallet); top.push(l); } }); });
+    const results=await Promise.allSettled(top.slice(0,45).map(l=>jget(`${DATA}/positions?user=${l.proxyWallet}&sortBy=CURRENT&sortDirection=DESC&limit=100`)));
     results.forEach((r,i)=>{
       if(r.status!=='fulfilled'||!Array.isArray(r.value))return;
       const pos=r.value;
       const decided=pos.filter(p=>p.redeemable||Math.abs(Number(p.realizedPnl)||0)>1);
-      if(decided.length<15) return;
+      if(decided.length<10) return;                       /* was 15 — too strict on a thin board */
       const wins=decided.filter(p=>(p.redeemable?(Number(p.currentValue)||0)-(Number(p.initialValue)||0):(Number(p.realizedPnl)||0))>0).length;
       const winRate=wins/decided.length;
       const scalps=pos.filter(p=>(Number(p.avgPrice)||0)>=0.93).length;
       const scalpShare=pos.length?scalps/pos.length:1;
-      if(winRate>=0.62 && scalpShare<0.5){
+      if(winRate>=0.58 && scalpShare<0.5){                /* was 0.62 — 58% over >=10 still real skill */
         pool.push({wallet:top[i].proxyWallet,name:top[i].userName||top[i].proxyWallet.slice(0,8),
           winRate:+winRate.toFixed(3),n:decided.length,score:+(winRate*Math.log(1+decided.length)).toFixed(3)});
       }
     });
-    pool.sort((a,b)=>b.score-a.score); pool=pool.slice(0,10);
+    pool.sort((a,b)=>b.score-a.score); pool=pool.slice(0,12);
     state.elite={updated:Date.now(),list:pool};
-    note(state,`Elite pool refreshed: ${pool.length} wallets qualify (>=62% win rate over >=15 settled, scalpers excluded): ${pool.map(w=>w.name+' '+Math.round(w.winRate*100)+'%').join(', ')||'none today'}`);
+    note(state,`Elite pool refreshed: ${pool.length} wallets qualify (>=58% win rate over >=10 settled, scalpers excluded): ${pool.map(w=>w.name+' '+Math.round(w.winRate*100)+'%').join(', ')||'none today'}`);
   }catch(e){ log('elite pool build failed: '+e.message); pool=(state.elite&&state.elite.list)||[]; }
   return pool;
 }
@@ -486,6 +490,17 @@ function closeTrade(state,t,exit,reason){
 /* ============ candidates ============ */
 function rawCandidates(markets,consensus){
   const cands=[]; const now=Date.now();
+  /* The bot's single worst pattern: MOMENTUM on live/in-play sports. 13 of its
+     stop-losses came from chasing point-by-point swings in tennis/CS:GO/UFC
+     matches that mean-revert within minutes. A "4-point move" in a live match
+     is scoreboard noise, not news being priced in. Block momentum there outright,
+     regardless of engine toggles — the model kept re-learning this the hard way. */
+  const isLiveSport = (m) => {
+    const q = String(m.q||'');
+    const sportRe = /\b(vs\.?|match|\bgame\b|tennis|open:|championship|UFC|MMA|counter-strike|cs:?go|esports|league|cup|BO\d|set \d|quarterfinal|semifinal|final:|grand prix|race)\b/i;
+    const teamWinRe = /\bwin (tonight|today|on \d|the match|game \d)\b/i;
+    return sportRe.test(q) || teamWinRe.test(q);
+  };
   markets.forEach(m=>{
     const daysLeft=m.end?(m.end-now)/864e5:99;
     if(daysLeft<=0)return;
@@ -495,7 +510,7 @@ function rawCandidates(markets,consensus){
           prior:clamp(.56+(7-daysLeft)/7*.05+Math.min(.03,m.liq/3e6),.5,.64),
           why:`${cents(p)} favorite resolving in ${daysLeft.toFixed(1)}d (favorite-longshot bias); +${(((1/p)-1)*100).toFixed(0)}% if it lands`});
     });
-    if(Math.abs(m.chg)>=.04&&m.vol24>=50000){
+    if(Math.abs(m.chg)>=.04&&m.vol24>=50000&&!isLiveSport(m)){
       const side=m.chg>0?'YES':'NO'; const p=side==='YES'?m.yes:m.no;
       if(p>=.15&&p<=.85) cands.push({m,side,price:p,signal:'MOMENTUM',
         prior:clamp(.54+Math.min(.05,Math.abs(m.chg))+Math.min(.03,m.vol24/8e6),.5,.62),

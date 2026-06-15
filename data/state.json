@@ -1613,7 +1613,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-15T16:25:25.345Z"
+    "updated": "2026-06-15T16:36:13.584Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -1625,7 +1625,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-15T16:25:25.345Z"
+    "updated": "2026-06-15T16:36:13.584Z"
    }
   ]
  },
@@ -1648,9 +1648,9 @@
   "brier": 0.28,
   "hypotheses": 2,
   "integrityOk": true,
-  "updated": "2026-06-15T16:25:25.347Z"
+  "updated": "2026-06-15T16:36:13.588Z"
  },
- "lastRun": 1781540725348,
+ "lastRun": 1781541373589,
  "elite": {
   "updated": 1781459147464,
   "list": [
@@ -1666,7 +1666,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-15T16:25:25.347Z",
+  "checkedAt": "2026-06-15T16:36:13.588Z",
   "tradesChecked": 31
  }
 }

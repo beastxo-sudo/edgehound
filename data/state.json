@@ -1613,7 +1613,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-15T18:55:29.251Z"
+    "updated": "2026-06-15T19:06:16.449Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -1625,7 +1625,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-15T18:55:29.251Z"
+    "updated": "2026-06-15T19:06:16.449Z"
    }
   ]
  },
@@ -1648,9 +1648,9 @@
   "brier": 0.28,
   "hypotheses": 2,
   "integrityOk": true,
-  "updated": "2026-06-15T18:55:29.256Z"
+  "updated": "2026-06-15T19:06:16.453Z"
  },
- "lastRun": 1781549729256,
+ "lastRun": 1781550376453,
  "elite": {
   "updated": 1781545591279,
   "list": [
@@ -1680,7 +1680,22 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-15T18:55:29.256Z",
+  "checkedAt": "2026-06-15T19:06:16.453Z",
   "tradesChecked": 31
+ },
+ "lastScan": {
+  "at": "2026-06-15T19:06:16.452Z",
+  "marketsFetched": 66,
+  "rawCandidates": 15,
+  "clearedThreshold": 0,
+  "placed": 0,
+  "pMin": 0.57,
+  "blocked": {
+   "exposure": 0,
+   "event": 0,
+   "cash": 0,
+   "sanity": 0
+  },
+  "reason": "no candidates cleared P(win)>=0.57 (engines produce ~0.58-0.64; lower pMin or wait for better setups)"
  }
 }

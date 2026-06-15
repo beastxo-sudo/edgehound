@@ -135,7 +135,7 @@ async function findWindowMarket(B) {
   const ui = outs.findIndex(o => /up/i.test(o));
   const di = outs.findIndex(o => /down/i.test(o));
   return {
-    title: ev.title, slug: ev.slug,
+    id: m.id, title: ev.title, slug: ev.slug,
     upToken: tokens[ui] || null, downToken: tokens[di] || null,
     upPrice: prices[ui] ?? null, downPrice: prices[di] ?? null
   };
@@ -166,9 +166,10 @@ async function sampleBoundary(B, lab) {
     const dir = spot >= open ? 'UP' : 'DOWN';
     const leadPct = ((spot - open) / open) * 100;
 
-    let paid = 0, mktTitle = '', mktNote = 'not found', priceSrc = null;
+    let paid = 0, mktTitle = '', mktNote = 'not found', priceSrc = null, mktObj = null;
     try {
       const mkt = await findWindowMarket(B);
+      mktObj = mkt;
       if (mkt) {
         mktTitle = mkt.title;
         const tok = dir === 'UP' ? mkt.upToken : mkt.downToken;
@@ -223,23 +224,66 @@ async function sampleBoundary(B, lab) {
       return verdicts;
     };
 
+    /* Polymarket's OWN resolved outcome — the ground truth that actually pays
+       the bet. After a 5-min market settles, outcomePrices snap to [1,0]/[0,1].
+       Poll a few times since resolution lags the candle close by some seconds. */
+    const polyResolve = async (mkt) => {
+      if (!mkt || !mkt.id) return null;
+      for (let attempt = 0; attempt < 4; attempt++) {
+        try {
+          const m = await jget(`${GAMMA}/markets/${mkt.id}`, 6000);
+          const closed = m.closed === true || m.umaResolutionStatus === 'resolved';
+          let prices = []; try { prices = JSON.parse(m.outcomePrices || '[]').map(Number); } catch (e) {}
+          let outs = []; try { outs = JSON.parse(m.outcomes || '[]'); } catch (e) {}
+          const ui = outs.findIndex(o => /up/i.test(o));
+          const upP = prices[ui < 0 ? 0 : ui];
+          if (closed && (upP === 1 || upP === 0)) {
+            return { src: 'polymarket', up: upP === 1, resolved: true };
+          }
+        } catch (e) {}
+        if (attempt < 3) await sleep(8000);
+      }
+      return null;
+    };
+
     const verdicts = await settle();
+    const poly = await polyResolve(mktObj);   /* the ground-truth result that pays the bet */
+    if (poly) verdicts.push({ src: 'polymarket', up: poly.up, tie: false, authoritative: true });
+
     const ups = verdicts.filter(v => !v.tie).map(v => v.up);
     const anyTie = verdicts.some(v => v.tie);
-    const allAgree = ups.length >= 2 && ups.every(v => v === ups[0]);
     let actual = null, won = null, verified = false, settleNote;
-    if (allAgree && !anyTie) {
-      actual = ups[0] ? 'UP' : 'DOWN';
+
+    if (poly) {
+      /* Polymarket has officially resolved — this is THE answer that pays out.
+         Exchanges become a cross-check: we still record whether they agreed. */
+      actual = poly.up ? 'UP' : 'DOWN';
       won = dir === actual;
       verified = true;
-      settleNote = `verified by ${verdicts.length} sources`;
-    } else if (anyTie) {
-      settleNote = 'EXCLUDED: exact tie (close == open) — Polymarket resolution ambiguous';
-    } else if (ups.length < 2) {
-      settleNote = `EXCLUDED: only ${ups.length} source(s) available, need 2+ to verify`;
+      const exchUps = verdicts.filter(v => v.src !== 'polymarket' && !v.tie).map(v => v.up);
+      const exchAgree = exchUps.length && exchUps.every(u => u === poly.up);
+      settleNote = exchUps.length
+        ? (exchAgree ? `resolved by Polymarket (exchanges agree)` : `resolved by Polymarket — NOTE: exchanges disagreed (${verdicts.filter(v=>v.src!=='polymarket').map(v=>v.src+':'+(v.tie?'TIE':(v.up?'UP':'DOWN'))).join(', ')})`)
+        : `resolved by Polymarket (no exchange cross-check available)`;
     } else {
-      settleNote = `EXCLUDED: sources disagree (${verdicts.map(v=>v.src+':'+(v.up?'UP':'DOWN')).join(', ')})`;
+      /* Polymarket result not available — fall back to requiring 2+ exchanges
+         to agree, and clearly mark that this wasn't confirmed against the payout
+         source. Excluded cases (ties / disagreement / too few) never count. */
+      const allAgree = ups.length >= 2 && ups.every(v => v === ups[0]);
+      if (allAgree && !anyTie) {
+        actual = ups[0] ? 'UP' : 'DOWN';
+        won = dir === actual;
+        verified = true;
+        settleNote = `verified by ${verdicts.length} exchanges (Polymarket resolution unavailable)`;
+      } else if (anyTie) {
+        settleNote = 'EXCLUDED: exact tie (close == open) — resolution ambiguous';
+      } else if (ups.length < 2) {
+        settleNote = `EXCLUDED: only ${ups.length} source(s), need Polymarket or 2+ exchanges`;
+      } else {
+        settleNote = `EXCLUDED: exchanges disagree (${verdicts.map(v=>v.src+':'+(v.up?'UP':'DOWN')).join(', ')})`;
+      }
     }
+    const polyConfirmed = !!poly;
 
     /* prices for a clear picture: what BTC was when we bet vs at window close */
     const closePrice = (verdicts.find(v => v.src === 'binance5m') || verdicts[0] || {}).close ?? null;
@@ -253,8 +297,8 @@ async function sampleBoundary(B, lab) {
       btcChangePct: priceChangePct != null ? +priceChangePct.toFixed(4) : null,
       candleOpen: +open.toFixed(2),
       paid: +(+paid).toFixed(4), priceSrc, mkt: mktNote,
-      actual, won, verified, settleNote,
-      sources: verdicts.map(v => ({ src: v.src, dir: v.tie ? 'TIE' : (v.up ? 'UP' : 'DOWN'), open: +v.open.toFixed(2), close: +v.close.toFixed(2) })),
+      actual, won, verified, settleNote, polyConfirmed,
+      sources: verdicts.map(v => ({ src: v.src, dir: v.tie ? 'TIE' : (v.up ? 'UP' : 'DOWN'), open: v.open != null ? +v.open.toFixed(2) : null, close: v.close != null ? +v.close.toFixed(2) : null })),
       flips: won === false && Math.abs(leadPct) < 0.02 ? 'knife-edge flip' : (won === false ? 'reversed in final seconds' : null)
     });
     lab.samples = lab.samples.slice(-5000);

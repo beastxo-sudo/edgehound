@@ -1,17 +1,17 @@
 /* ============================================================
-   SNIPER LAB — tests the "last 30 seconds" hypothesis on
+   SNIPER LAB — tests the "last 60 seconds" hypothesis on
    Polymarket's 5-minute BTC Up/Down markets.
 
    The earlier 5-second test confirmed the direction is ~99%
    knowable that late — but you pay ~98c for it, so there's no
    reward. This 30-second version trades certainty for price:
-   30s out the direction is less certain (so accuracy drops) but
+   60s out the direction is less certain (so accuracy drops) but
    the favorite side is cheaper (so each win pays more). The real
    question: does the better entry price more than make up for
    the lower hit rate? That's where any real edge would live.
 
    Method, every 5-minute boundary while this job is alive:
-     T-30s : Binance spot vs candle open -> direction
+     T-60s : Binance spot vs candle open -> direction
              Polymarket CLOB best ask for that direction -> price paid
      T+8s  : Binance 5m candle close vs open -> actual outcome
      log   : direction correct? PnL at $10 if filled at that ask
@@ -27,7 +27,7 @@ let BIN = BIN_HOSTS[0];
 const OUT_FILE = path.join(__dirname, 'data', 'sniper.json');
 
 const DURATION_MS = Number(process.env.SNIPER_DURATION_MS || 13.5 * 60e3);
-const LEAD_MS = 30000;    /* sample 30s before the boundary */
+const LEAD_MS = 60000;    /* sample 60s before the boundary */
 const SETTLE_DELAY = 8000;/* read the closed candle 8s after */
 
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
@@ -61,7 +61,7 @@ function summarize(lab) {
   const withPx = s.filter(x => x.paid > 0);
   const pnl = withPx.reduce((a, x) => a + (x.won ? 10 * (1 - x.paid) / x.paid : -10), 0);
   const avgPaid = withPx.length ? withPx.reduce((a, x) => a + x.paid, 0) / withPx.length : null;
-  /* At T-30s the favorite is only mildly favored, so EVERY priced sample is a
+  /* At T-60s the favorite is only mildly favored, so EVERY priced sample is a
      real instance of the hypothesis (no near-certain subset to isolate). The
      "decided*" fields therefore mirror the full priced-sample population — the
      dashboard reads these names, and here they ARE the headline result. */
@@ -72,6 +72,22 @@ function summarize(lab) {
   const decided = withPx.filter(x => x.priceSrc === 'clob');
   const dPnl = decided.reduce((a, x) => a + (x.won ? 10 * (1 - x.paid) / x.paid : -10), 0);
   const dAvg = decided.length ? decided.reduce((a, x) => a + x.paid, 0) / decided.length : null;
+  /* Rolling "last N trades" money view, $10 staked each, CLOB-priced only —
+     the plain-English scorecard: invested vs returned vs profit vs % return. */
+  const rollWindow = (n) => {
+    const last = decided.slice(-n);
+    const invested = last.length * 10;
+    const returned = last.reduce((a, x) => a + (x.won ? 10 / x.paid : 0), 0); /* $10/price shares, each pays $1 -> $10/price back if won */
+    const profit = returned - invested;
+    return {
+      trades: last.length,
+      invested: +invested.toFixed(2),
+      returned: +returned.toFixed(2),
+      profit: +profit.toFixed(2),
+      returnPct: invested ? +((profit / invested) * 100).toFixed(1) : null,
+      wins: last.filter(x => x.won).length
+    };
+  };
   lab.summary = {
     samples: s.length,
     pricedSamples: withPx.length,
@@ -84,6 +100,9 @@ function summarize(lab) {
     decidedAccuracy: decided.length ? +(decided.filter(x=>x.won).length/decided.length).toFixed(4) : null,
     decidedAvgPaid: dAvg ? +dAvg.toFixed(4) : null,
     decidedEvPerTrade: decided.length ? +(dPnl/decided.length).toFixed(3) : null,
+    last50: rollWindow(50),
+    allTime: rollWindow(100000),
+    perTenDollar: decided.length ? +(10 + dPnl / decided.length).toFixed(2) : null, /* avg $ back per $10 staked */
     updated: new Date().toISOString()
   };
 }
@@ -152,7 +171,7 @@ async function sampleBoundary(B, lab) {
         const fb = dir === 'UP' ? mkt.upPrice : mkt.downPrice;
         const ask = await bestAsk(tok, fb);
         paid = ask.price; priceSrc = ask.source;
-        /* GUARD: at T-30s the visible-direction side is the favorite but only
+        /* GUARD: at T-60s the visible-direction side is the favorite but only
            mildly so — it can legitimately price anywhere from ~0.50 to ~0.95.
            A price below ~0.20 means we grabbed the wrong token or a market that
            has already started resolving (prices snapping toward 0/1). Reject
@@ -163,7 +182,7 @@ async function sampleBoundary(B, lab) {
       }
     } catch (e) { mktNote = 'lookup error: ' + e.message.slice(0, 60); log('market lookup failed: ' + e.message); }
 
-    log(`T-30s ${new Date(B).toISOString().slice(11, 19)}Z dir=${dir} (${leadPct >= 0 ? '+' : ''}${leadPct.toFixed(3)}%) ask=${paid ? (paid * 100).toFixed(1) + 'c' : 'n/a'} ${mktTitle.slice(0, 40)}`);
+    log(`T-60s ${new Date(B).toISOString().slice(11, 19)}Z dir=${dir} (${leadPct >= 0 ? '+' : ''}${leadPct.toFixed(3)}%) ask=${paid ? (paid * 100).toFixed(1) + 'c' : 'n/a'} ${mktTitle.slice(0, 40)}`);
 
     /* wait for resolution */
     await sleep(Math.max(0, B + SETTLE_DELAY - Date.now()));

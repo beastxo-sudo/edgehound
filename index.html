@@ -2071,13 +2071,18 @@ const Sniper={
     }
     const ageMin=Math.round((Date.now()-new Date(lab.summary.updated).getTime())/60000);
     const s=lab.summary;
-    const acc=s.directionAccuracy, be=s.breakEvenAccuracy;
+    /* the honest test is the DECIDED windows (favorite priced >=85c), not
+       the near-coin-flip mid-priced samples which are noise, not the hypothesis */
+    const acc=s.decidedAccuracy??s.directionAccuracy, be=s.decidedAvgPaid??s.breakEvenAccuracy;
+    const ev=s.decidedEvPerTrade??s.evPerTrade;
+    const nDec=s.decidedSamples??s.pricedSamples??s.samples;
     const edge=acc!=null&&be!=null?(acc-be)*100:null;
     const verdict=edge==null?'collecting…'
-      :s.samples<30?'too early to judge — need 30+ samples'
-      :edge>1.5?'✅ HYPOTHESIS HOLDS: accuracy beats the price paid — the last-second edge survives':
-       edge>-1.5?'➖ WASH: you win almost exactly as often as the price implies — no free money':
-       '❌ HYPOTHESIS FAILS: the ask price already over-charges for the visible direction';
+      :nDec<30?'too early to judge — need 30+ decided windows':
+       ev>0.5?'✅ HYPOTHESIS HOLDS: a real, tradeable edge survives the price you pay':
+       ev>0.05?'⚠ MARGINAL: technically positive ('+(ev>0?'+':'')+'$'+ev+'/trade) but too thin to survive real fills, fees & slippage':
+       ev>-0.5?'➖ WASH: the 98¢ price already charges for the near-certain direction — no free money':
+       '❌ HYPOTHESIS FAILS: paying for the visible direction loses money';
     const rows=(lab.samples||[]).slice(-12).reverse().map(x=>
       `<tr><td class="num">${new Date(x.win).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}</td>
       <td><span class="side-tag ${x.dir==='UP'?'y':'n'}">${x.dir}</span></td>
@@ -2088,9 +2093,9 @@ const Sniper={
     box.innerHTML=`
       <div class="stat-row" style="margin-bottom:12px">
         <div class="stat-card"><div class="lbl">Windows sampled</div><div class="val">${s.samples}</div><div class="sub">around the clock, T−5s each</div></div>
-        <div class="stat-card"><div class="lbl">Direction accuracy</div><div class="val">${acc!=null?(acc*100).toFixed(1)+'%':'—'}</div><div class="sub">how often last-5s direction held</div></div>
-        <div class="stat-card"><div class="lbl">Avg price paid</div><div class="val">${s.avgPricePaid?cents(s.avgPricePaid):'—'}</div><div class="sub">break-even needs ${be?(be*100).toFixed(1)+'%':'—'} accuracy</div></div>
-        <div class="stat-card"><div class="lbl">P&L at $10 flat</div><div class="val ${s.pnlPer10Flat>=0?'pos':'neg'}">${s.pnlPer10Flat>=0?'+':''}$${s.pnlPer10Flat}</div><div class="sub">EV $${s.evPerTrade??'—'} per trade</div></div>
+        <div class="stat-card"><div class="lbl">Direction accuracy</div><div class="val">${acc!=null?(acc*100).toFixed(1)+'%':'—'}</div><div class="sub">on ${nDec} genuinely-decided windows</div></div>
+        <div class="stat-card"><div class="lbl">Avg price paid</div><div class="val">${be?cents(be):'—'}</div><div class="sub">break-even needs ${be?(be*100).toFixed(1)+'%':'—'} accuracy</div></div>
+        <div class="stat-card"><div class="lbl">EV per trade</div><div class="val ${ev>=0?'pos':'neg'}">${ev>=0?'+':''}$${ev??'—'}</div><div class="sub">at $10 flat, before real-world fills</div></div>
       </div>
       <div style="background:var(--surface2);border-radius:10px;padding:10px 14px;font-family:var(--mono);font-size:12.5px;margin-bottom:12px">${verdict}${edge!=null&&s.samples>=30?' ('+(edge>=0?'+':'')+edge.toFixed(1)+' pts vs break-even)':''}</div>
       <div class="mini-note" style="margin-bottom:10px">data ${ageMin<=1?'just updated':ageMin+' min old'} · auto-refreshes every minute · lab commits in ~14-min batches</div>

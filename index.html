@@ -389,7 +389,7 @@ footer{max-width:1280px;margin:0 auto;padding:0 24px 40px;color:var(--faint);fon
     </select>
   </div>
   <div class="section-h" style="margin-top:6px">🎯 60-Second Sniper Lab <small>bet $10 each window — do we come out ahead?</small></div>
-  <div class="help-tip"><b>The test in plain terms:</b> 60 seconds before each 5-minute Bitcoin window closes, the bot bets <b>$10</b> on whichever direction the price is currently moving, at the real Polymarket price. Then it checks if that bet won. The scorecard below shows exactly what you'd have if you'd done this every time: how much you put in, how much came back, and your % return. <b>If "every $10 returns more than $10," there's an edge. If less, there isn't.</b> We moved from 5s → 60s because at 5s the price was already 98¢ (no room for profit); 60s out it should be cheaper. <b>Every bet is double-verified:</b> the win/loss is confirmed against 2+ independent price feeds (Binance 5-min, Binance 1-min, and Coinbase) — and any bet where they disagree, or where the price closed exactly where it opened, is thrown out rather than guessed.
+  <div class="help-tip"><b>The test in plain terms:</b> 60 seconds before each 5-minute Bitcoin window closes, the bot bets <b>$10</b> on whichever direction the price is currently moving, at the real Polymarket price. Then it checks if that bet won. The scorecard below shows exactly what you'd have if you'd done this every time: how much you put in, how much came back, and your % return. <b>If "every $10 returns more than $10," there's an edge. If less, there isn't.</b> We moved from 5s → 60s because at 5s the price was already 98¢ (no room for profit); 60s out it should be cheaper. <b>Every bet is settled against Polymarket itself</b> — the actual market that pays the bet, read after it officially resolves (shown as ⬤ Polymarket). Binance and Coinbase are kept as a cross-check; if they ever disagree with Polymarket's result, the bet still counts as Polymarket scored it (that's what your money would do) but the disagreement is flagged. Bets that close exactly flat, or can't be confirmed, are excluded rather than guessed.
   <span id="snip5sArchive"></span></div>
   <div id="sniperPanel" style="background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px 18px;margin-bottom:18px"><div class="empty">Loading lab results…</div></div>
 
@@ -1849,7 +1849,10 @@ const Sniper={
 
     const rows=(lab.samples||[]).filter(x=>x.priceSrc==='clob'&&x.verified===true).slice(-10).reverse().map(x=>{
       const back=x.won?(10/x.paid):0;
-      const srcStr=(x.sources||[]).map(sv=>sv.src.replace('binance','bnc').replace('coinbase','cb')+'·'+sv.dir).join(' ');
+      const srcStr=x.polyConfirmed
+        ? '⬤ Polymarket'+((x.sources||[]).filter(sv=>sv.src!=='polymarket').length?' +'+(x.sources||[]).filter(sv=>sv.src!=='polymarket').length+' exch':'')
+        : (x.sources||[]).map(sv=>sv.src.replace('binance','bnc').replace('coinbase','cb')+'·'+sv.dir).join(' ');
+      const srcColor=x.polyConfirmed?'var(--yes)':'var(--amber)';
       const chg=x.btcChange, chgPct=x.btcChangePct;
       const chgColor=chg>0?'var(--yes)':chg<0?'var(--no)':'var(--muted)';
       const priceCell=x.btcAtBet!=null
@@ -1865,7 +1868,7 @@ const Sniper={
       <td class="num">${cents(x.paid)}</td>
       <td>${x.won?'<span class="pos">✓ won</span>':'<span class="neg">✗ lost</span>'}</td>
       <td class="num ${x.won?'pos':'neg'}">${x.won?'+$'+(back-10).toFixed(2):'−$10.00'}</td>
-      <td style="font-family:var(--mono);font-size:10px;color:var(--yes)" title="${esc(x.settleNote||'')}">✓✓ ${esc(srcStr)}</td></tr>`;
+      <td style="font-family:var(--mono);font-size:10px;color:${srcColor}" title="${esc(x.settleNote||'')}">${x.polyConfirmed?'✓':'✓✓'} ${esc(srcStr)}</td></tr>`;
     }).join('');
 
     box.innerHTML=`

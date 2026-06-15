@@ -133,7 +133,11 @@
    "target": null,
    "stop": 0.45,
    "holdUntil": 1781539200000,
-   "status": "open"
+   "status": "closed",
+   "exit": 0.905,
+   "exitTs": 1781539277096,
+   "exitReason": "Max hold reached — closed at market",
+   "pnl": -4.371584699453556
   },
   {
    "id": "t1781487943161y0t6",
@@ -1433,9 +1437,9 @@
  ],
  "strat": {
   "SHORT_FAVORITE": {
-   "trades": 6,
+   "trades": 7,
    "wins": 3,
-   "pnl": 305.54563501796946,
+   "pnl": 301.1740503185159,
    "weight": 1
   },
   "MOMENTUM": {
@@ -1465,6 +1469,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-15 21:31 IST — Closed YES \"Will Spain win on 2026-06-15?\" -> $-4 (Max hold reached — closed at market) · model said P(win)=61%",
   "2026-06-15 09:31 IST — Closed NO \"UFC Freedom 250: Justin Gaethje vs. Ilia T\" -> +$0 (Max hold reached — closed at market) · model said P(win)=60%",
   "2026-06-15 08:45 IST — Closed NO \"UFC Freedom 250: Derrick Lewis vs. Josh Ho\" -> +$103 (Resolved in our favor) · model said P(win)=60%",
   "2026-06-15 07:31 IST — Closed NO \"Will Tunisia win on 2026-06-14?\" -> $-5 (Max hold reached — closed at market) · model said P(win)=61%",
@@ -1477,27 +1482,26 @@
   "2026-06-15 05:00 IST — Closed NO \"Will Ecuador win on 2026-06-14?\" -> +$17 (Max hold reached — closed at market) · model said P(win)=58%",
   "2026-06-15 04:45 IST — Opened NO $200 @ 61c P=58% EV=+0.12 [Elite Follow] \"Will Ecuador win on 2026-06-14?\"",
   "2026-06-15 04:45 IST — Opened NO $250 @ 73c P=58% EV=+0.12 [Elite Follow] \"Will Côte d'Ivoire win on 2026-06-14?\"",
-  "2026-06-15 01:15 IST — Closed YES \"US x Iran permanent peace deal by December\" -> +$8 (Max hold reached — closed at market) · model said P(win)=58%",
-  "2026-06-14 23:15 IST — Elite pool refreshed: 1 wallets qualify (>=62% win rate over >=15 settled, scalpers excluded): donthackme 80%"
+  "2026-06-15 01:15 IST — Closed YES \"US x Iran permanent peace deal by December\" -> +$8 (Max hold reached — closed at market) · model said P(win)=58%"
  ],
  "brain": {
   "w": [
-   0.04010691478746131,
-   0.04947655142463265,
-   0.009542962570022243,
+   -0.024519765659629683,
+   0.04945181314892033,
+   0.009538191088737233,
    0,
-   -0.009604344253304177,
-   -0.18479811099795446,
-   -0.04625196416727847,
-   0.0339094798102766,
-   0.03104440158147495,
-   -0.11256870990187064,
-   0.003817185028008893,
-   -0.13491911202031015,
-   -0.07410035288235788
+   -0.06871460577675054,
+   -0.24659886059858546,
+   -0.049459169534679694,
+   -0.024124225966376686,
+   -0.023886753560558464,
+   -0.1665881723372963,
+   0.0038152764354948882,
+   -0.1348516524643,
+   -0.0740633027059167
   ],
-  "b": 0.08458278014842524,
-  "nUpdates": 30,
+  "b": 0.01997615315872797,
+  "nUpdates": 31,
   "buckets": {
    "MOMENTUM|high|sport": {
     "a": 1,
@@ -1521,7 +1525,7 @@
    },
    "SHORT_FAVORITE|high|other": {
     "a": 3,
-    "b": 3
+    "b": 4
    },
    "SMART_CONSENSUS|low|sport": {
     "a": 1,
@@ -1563,15 +1567,15 @@
    }
   },
   "brier": {
-   "sum": 8.297144000000001,
-   "n": 30
+   "sum": 8.672913000000001,
+   "n": 31
   },
   "payoff": {
    "SHORT_FAVORITE": {
     "wSum": 0.5170740415067483,
     "wN": 3,
-    "lSum": 0.012422360248447077,
-    "lN": 3
+    "lSum": 0.023351321997080968,
+    "lN": 4
    },
    "MOMENTUM": {
     "wSum": 2.701062968732154,
@@ -1609,7 +1613,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-15T15:46:03.686Z"
+    "updated": "2026-06-15T16:01:17.096Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -1621,32 +1625,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-15T15:46:03.686Z"
+    "updated": "2026-06-15T16:01:17.096Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 8504.024469417694,
+  "cash": 8899.652884718242,
   "created": 1781162132851
  },
  "summary": {
-  "realized": -1095.98,
-  "closed": 30,
+  "realized": -1100.35,
+  "closed": 31,
   "wins": 12,
-  "open": 1,
+  "open": 0,
   "staked": 12850,
   "bankStart": 10000,
-  "cash": 8504,
+  "cash": 8900,
   "equity": 8900,
   "returnPct": -11,
-  "modelUpdates": 30,
-  "brier": 0.277,
+  "modelUpdates": 31,
+  "brier": 0.28,
   "hypotheses": 2,
   "integrityOk": true,
-  "updated": "2026-06-15T15:46:03.689Z"
+  "updated": "2026-06-15T16:01:17.099Z"
  },
- "lastRun": 1781538363689,
+ "lastRun": 1781539277099,
  "elite": {
   "updated": 1781459147464,
   "list": [
@@ -1662,7 +1666,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-15T15:46:03.689Z",
+  "checkedAt": "2026-06-15T16:01:17.099Z",
   "tradesChecked": 31
  }
 }

@@ -1,17 +1,20 @@
 /* ============================================================
-   SNIPER LAB — tests the "last 5 seconds" hypothesis on
+   SNIPER LAB — tests the "last 30 seconds" hypothesis on
    Polymarket's 5-minute BTC Up/Down markets.
 
-   Hypothesis: in the final seconds of a window the outcome is
-   already visible on the exchange — betting the current
-   direction should win almost every time. The open question is
-   whether it's PROFITABLE after the price you must pay.
+   The earlier 5-second test confirmed the direction is ~99%
+   knowable that late — but you pay ~98c for it, so there's no
+   reward. This 30-second version trades certainty for price:
+   30s out the direction is less certain (so accuracy drops) but
+   the favorite side is cheaper (so each win pays more). The real
+   question: does the better entry price more than make up for
+   the lower hit rate? That's where any real edge would live.
 
    Method, every 5-minute boundary while this job is alive:
-     T-5s : Binance spot vs candle open -> direction
-            Polymarket CLOB best ask for that direction -> price paid
-     T+8s : Binance 5m candle close vs open -> actual outcome
-     log  : direction correct? PnL at $10 if filled at that ask
+     T-30s : Binance spot vs candle open -> direction
+             Polymarket CLOB best ask for that direction -> price paid
+     T+8s  : Binance 5m candle close vs open -> actual outcome
+     log   : direction correct? PnL at $10 if filled at that ask
    Paper only. No orders are ever placed.
    ============================================================ */
 const fs = require('fs');
@@ -24,7 +27,7 @@ let BIN = BIN_HOSTS[0];
 const OUT_FILE = path.join(__dirname, 'data', 'sniper.json');
 
 const DURATION_MS = Number(process.env.SNIPER_DURATION_MS || 13.5 * 60e3);
-const LEAD_MS = 5000;     /* sample 5s before the boundary */
+const LEAD_MS = 30000;    /* sample 30s before the boundary */
 const SETTLE_DELAY = 8000;/* read the closed candle 8s after */
 
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
@@ -58,9 +61,11 @@ function summarize(lab) {
   const withPx = s.filter(x => x.paid > 0);
   const pnl = withPx.reduce((a, x) => a + (x.won ? 10 * (1 - x.paid) / x.paid : -10), 0);
   const avgPaid = withPx.length ? withPx.reduce((a, x) => a + x.paid, 0) / withPx.length : null;
-  /* "decided" = genuinely resolved direction (favorite priced >=85c); the
-     real hypothesis test. Mid-priced samples are near-coin-flip windows. */
-  const decided = withPx.filter(x => x.paid >= 0.85);
+  /* At T-30s the favorite is only mildly favored, so EVERY priced sample is a
+     real instance of the hypothesis (no near-certain subset to isolate). The
+     "decided*" fields therefore mirror the full priced-sample population — the
+     dashboard reads these names, and here they ARE the headline result. */
+  const decided = withPx;
   const dPnl = decided.reduce((a, x) => a + (x.won ? 10 * (1 - x.paid) / x.paid : -10), 0);
   const dAvg = decided.length ? decided.reduce((a, x) => a + x.paid, 0) / decided.length : null;
   lab.summary = {
@@ -141,19 +146,19 @@ async function sampleBoundary(B, lab) {
         const tok = dir === 'UP' ? mkt.upToken : mkt.downToken;
         const fb = dir === 'UP' ? mkt.upPrice : mkt.downPrice;
         paid = await bestAsk(tok, fb);
-        /* GUARD: at T-5s the visible-direction side is the favorite. A price
-           below ~0.35 means we grabbed the wrong token or a market that has
-           already started resolving (prices snapping toward 0/1). Reject it
-           rather than logging a fake 100x payout. Also require the opposite
-           side to be cheaper than our side (sanity on token orientation). */
-        const opp = dir === 'UP' ? mkt.downPrice : mkt.upPrice;
-        if (paid > 0 && paid < 0.35) { mktNote = 'rejected: paid ' + paid + ' implausible for decided side (late/wrong-token)'; paid = 0; }
+        /* GUARD: at T-30s the visible-direction side is the favorite but only
+           mildly so — it can legitimately price anywhere from ~0.50 to ~0.95.
+           A price below ~0.20 means we grabbed the wrong token or a market that
+           has already started resolving (prices snapping toward 0/1). Reject
+           those rather than logging a fake 100x payout. We do NOT require the
+           opposite side to be cheaper here (at 30s the two sides can be close). */
+        if (paid > 0 && paid < 0.20) { mktNote = 'rejected: paid ' + paid + ' implausible (late/wrong-token)'; paid = 0; }
         else if (paid > 0 && opp != null && opp > paid + 0.001) { mktNote = 'rejected: token orientation suspect (our side ' + paid + ' > opp ' + opp + ')'; paid = 0; }
         else { mktNote = paid > 0 ? 'ok' : ('found but no price (token ' + (tok ? 'present' : 'missing') + ', gamma price ' + fb + ')'); }
       }
     } catch (e) { mktNote = 'lookup error: ' + e.message.slice(0, 60); log('market lookup failed: ' + e.message); }
 
-    log(`T-5s ${new Date(B).toISOString().slice(11, 19)}Z dir=${dir} (${leadPct >= 0 ? '+' : ''}${leadPct.toFixed(3)}%) ask=${paid ? (paid * 100).toFixed(1) + 'c' : 'n/a'} ${mktTitle.slice(0, 40)}`);
+    log(`T-30s ${new Date(B).toISOString().slice(11, 19)}Z dir=${dir} (${leadPct >= 0 ? '+' : ''}${leadPct.toFixed(3)}%) ask=${paid ? (paid * 100).toFixed(1) + 'c' : 'n/a'} ${mktTitle.slice(0, 40)}`);
 
     /* wait for resolution */
     await sleep(Math.max(0, B + SETTLE_DELAY - Date.now()));

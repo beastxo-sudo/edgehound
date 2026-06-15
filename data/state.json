@@ -2,6 +2,48 @@
  "running": true,
  "journal": [
   {
+   "id": "t17815644710157oxh",
+   "date": "2026-06-16",
+   "openedTs": 1781564471015,
+   "title": "Miami Marlins vs. Philadelphia Phillies",
+   "mid": "2478807",
+   "conditionId": "0xe1624aae66ef1ad781d288473c3af5ebe7029fef268d049555d629a756073c5d",
+   "slug": "mlb-mia-phi-2026-06-15",
+   "side": "YES",
+   "entry": 0.385,
+   "cur": 0.385,
+   "stake": 100,
+   "signal": "VOLUME_SPIKE",
+   "p": 0.57,
+   "pModel": 0.353,
+   "pBucket": 0.5,
+   "bucketN": 0,
+   "bk": "VOLUME_SPIKE|mid|sport",
+   "ev": 0.017,
+   "kelly": 0.005,
+   "x": [
+    0,
+    0,
+    0,
+    1,
+    0.385,
+    0.501,
+    0.15,
+    0.77,
+    0.669,
+    0.995,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 57% [model 35%, pattern 50% on n=0] · EV +0.02/$1 · 1/4-Kelly 0.5% of equity -> $100. 99% of lifetime volume in 24h — attention precedes movement. Drivers: sports market -, attention spike -, short time to resolution -",
+   "target": 0.22,
+   "stop": 0.25,
+   "holdUntil": 1781996471015,
+   "status": "open"
+  },
+  {
    "id": "t17815638256926w3o",
    "date": "2026-06-16",
    "openedTs": 1781563825692,
@@ -53,7 +95,7 @@
    "slug": "mlb-kc-wsh-2026-06-15",
    "side": "YES",
    "entry": 0.445,
-   "cur": 0.445,
+   "cur": 0.415,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.57,
@@ -95,7 +137,7 @@
    "slug": "atp-perrica-moutet-2026-06-15",
    "side": "NO",
    "entry": 0.475,
-   "cur": 0.475,
+   "cur": 0.485,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.57,
@@ -1859,6 +1901,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-16 04:31 IST — Opened YES $100 @ 39c P=57% EV=+0.02 [Volume Spike] \"Miami Marlins vs. Philadelphia Phillies\"",
   "2026-06-16 04:20 IST — Opened YES $100 @ 44c P=57% EV=+0.02 [Volume Spike] \"Los Angeles Angels vs. Arizona Diamondbacks\"",
   "2026-06-16 03:41 IST — Opened YES $100 @ 45c P=57% EV=+0.02 [Volume Spike] \"Kansas City Royals vs. Washington Nationals\"",
   "2026-06-16 03:41 IST — Opened NO $100 @ 48c P=57% EV=+0.02 [Volume Spike] \"HSBC Championships: Giovanni Mpetshi Perricard\"",
@@ -1871,8 +1914,7 @@
   "2026-06-16 03:25 IST — Opened YES $100 @ 39c P=57% EV=+0.11 [Volume Spike] \"Spread: Uruguay (-1.5)\"",
   "2026-06-16 03:25 IST — Opened NO $200 @ 35c P=57% EV=+0.11 [Volume Spike] \"Will Uruguay win on 2026-06-15?\"",
   "2026-06-16 03:25 IST — Opened YES $200 @ 24c P=57% EV=+0.11 [Volume Spike] \"Will Saudi Arabia vs. Uruguay end in a draw?\"",
-  "2026-06-15 23:16 IST — Elite pool refreshed: 3 wallets qualify (>=58% win rate over >=10 settled, scalpers excluded): Panteras 77%, aenews2 71%, denizz 61%",
-  "2026-06-15 21:31 IST — Closed YES \"Will Spain win on 2026-06-15?\" -> $-4 (Max hold reached — closed at market) · model said P(win)=61%"
+  "2026-06-15 23:16 IST — Elite pool refreshed: 3 wallets qualify (>=58% win rate over >=10 settled, scalpers excluded): Panteras 77%, aenews2 71%, denizz 61%"
  ],
  "brain": {
   "w": [
@@ -2015,7 +2057,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-15T22:50:25.687Z"
+    "updated": "2026-06-15T23:01:11.012Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -2027,32 +2069,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-15T22:50:25.687Z"
+    "updated": "2026-06-15T23:01:11.012Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 8205.449986167518,
+  "cash": 8105.449986167518,
   "created": 1781162132851
  },
  "summary": {
   "realized": -1094.55,
   "closed": 34,
   "wins": 13,
-  "open": 6,
-  "staked": 14050,
+  "open": 7,
+  "staked": 14150,
   "bankStart": 10000,
-  "cash": 8205,
-  "equity": 8905,
-  "returnPct": -10.95,
+  "cash": 8105,
+  "equity": 8901,
+  "returnPct": -10.99,
   "modelUpdates": 34,
   "brier": 0.28,
   "hypotheses": 2,
   "integrityOk": true,
-  "updated": "2026-06-15T22:50:25.692Z"
+  "updated": "2026-06-15T23:01:11.015Z"
  },
- "lastRun": 1781563825693,
+ "lastRun": 1781564471016,
  "elite": {
   "updated": 1781545591279,
   "list": [
@@ -2082,13 +2124,13 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-15T22:50:25.692Z",
-  "tradesChecked": 40
+  "checkedAt": "2026-06-15T23:01:11.015Z",
+  "tradesChecked": 41
  },
  "lastScan": {
-  "at": "2026-06-15T22:50:25.692Z",
+  "at": "2026-06-15T23:01:11.015Z",
   "marketsFetched": 68,
-  "rawCandidates": 13,
+  "rawCandidates": 15,
   "clearedThreshold": 1,
   "placed": 1,
   "pMin": 0.57,

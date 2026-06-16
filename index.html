@@ -1858,6 +1858,11 @@ const Imbalance={
     const u=base?base[1]+'/data/imbalance.json':'data/imbalance.json';
     let lab; try{ lab=await jget(u+'?_='+Date.now(),6000); }catch(e){ box.innerHTML='<div class="empty">No imbalance data yet — the lab populates every cycle.</div>'; return; }
     const s=lab.summary||{};
+    if((lab.probes||[]).length===0){
+      const d=s.diag;
+      box.innerHTML=`<div class="empty">No probes recorded yet.${d?` <br><span style="font-family:var(--mono);font-size:11px;color:var(--faint)">diagnostic: ${d.attempts||0} attempts · ${d.ok||0} ok · ${d.noMarket||0} no-market · ${d.bookFail||0} book-fetch-failed · ${d.emptyBook||0} empty-book</span>`:' Waiting for the first run to complete.'}</div>`;
+      return;
+    }
     const lopHit=s.lopsidedHitRate, balHit=s.balancedHitRate, edge=s.edgeVsBaselinePts, trHit=s.tradeableHitRate;
     const n=s.lopsidedProbes||0;
     const verdict = n<30 ? 'Collecting — need 30+ lopsided-book probes to judge'

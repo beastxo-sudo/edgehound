@@ -401,7 +401,7 @@
    "slug": "what-iranian-demands-will-trump-agree-to-by-june-30",
    "side": "YES",
    "entry": 0.1635,
-   "cur": 0.1235,
+   "cur": 0.116,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.589,
@@ -431,7 +431,11 @@
    "target": 0.22,
    "stop": 0.25,
    "holdUntil": 1782004430185,
-   "status": "open"
+   "status": "closed",
+   "exit": 0.116,
+   "exitTs": 1781639156392,
+   "exitReason": "Stop loss hit (-25%)",
+   "pnl": -29.051987767584095
   },
   {
    "id": "t1781572430184qlcp",
@@ -2617,9 +2621,9 @@
    "weight": 0.49174311926605885
   },
   "VOLUME_SPIKE": {
-   "trades": 11,
+   "trades": 12,
    "wins": 5,
-   "pnl": -35.85443687344726,
+   "pnl": -64.90642464103135,
    "weight": 1
   },
   "ELITE_FOLLOW": {
@@ -2631,6 +2635,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-17 01:15 IST — Closed YES \"Will Trump agree to Iranian transit fees i\" -> $-29 (Stop loss hit (-25%)) · model said P(win)=59%",
   "2026-06-17 00:31 IST — Opened YES $200 @ 35c P=62% EV=+0.05 [Volume Spike] \"Spread: Norway (-2.5)\"",
   "2026-06-17 00:31 IST — Closed NO \"Will France win on 2026-06-16?\" -> +$3 (Max hold reached — closed at market) · model said P(win)=58%",
   "2026-06-17 00:31 IST — Closed NO \"Will France vs. Senegal end in a draw?\" -> +$0 (Max hold reached — closed at market) · model said P(win)=68%",
@@ -2643,27 +2648,26 @@
   "2026-06-16 20:13 IST — Closed NO \"HSBC Championships: Giovanni Mpetshi Perri\" -> +$111 (Resolved in our favor) · model said P(win)=57%",
   "2026-06-16 08:51 IST — Closed YES \"Detroit Tigers vs. Houston Astros\" -> +$47 (Resolved in our favor) · model said P(win)=57%",
   "2026-06-16 08:36 IST — Closed YES \"Los Angeles Angels vs. Arizona Diamondback\" -> $-34 (Stop loss hit (-25%)) · model said P(win)=57%",
-  "2026-06-16 08:08 IST — Closed YES \" Iran agrees to end enrichment of uranium \" -> $-75 (Stop loss hit (-25%)) · model said P(win)=64%",
-  "2026-06-16 07:40 IST — Opened YES $500 @ 85c P=62% EV=+0.12 [Short Favorite] \"Minnesota Twins vs. Texas Rangers\""
+  "2026-06-16 08:08 IST — Closed YES \" Iran agrees to end enrichment of uranium \" -> $-75 (Stop loss hit (-25%)) · model said P(win)=64%"
  ],
  "brain": {
   "w": [
-   0.14035989863764944,
-   0.049033149902743864,
-   0.009457439953650705,
-   0.08456145183121212,
-   0.060266437232465386,
-   -0.05443958707882953,
-   0.15506226533205003,
-   0.12024720500133447,
-   0.1117701750073552,
-   0.02131019893018169,
-   0.0037829759814602764,
-   -0.15700336920975078,
-   -0.07343627650083026
+   0.14028971868833062,
+   0.04900863332779249,
+   0.00945271123367388,
+   0.008065486610097664,
+   0.04769789975663654,
+   -0.05471818202327091,
+   0.11752242879673658,
+   0.06154710539101628,
+   0.06117840446852508,
+   -0.004694708897651011,
+   0.003781084493469546,
+   -0.1569248675251459,
+   -0.07339955836257984
   ],
-  "b": 0.1886332549583724,
-  "nUpdates": 48,
+  "b": 0.11217957046317356,
+  "nUpdates": 49,
   "buckets": {
    "MOMENTUM|high|sport": {
     "a": 1,
@@ -2719,7 +2723,7 @@
    },
    "VOLUME_SPIKE|low|other": {
     "a": 4,
-    "b": 1
+    "b": 2
    },
    "VOLUME_SPIKE|low|sport": {
     "a": 1,
@@ -2749,8 +2753,8 @@
    }
   },
   "brier": {
-   "sum": 13.137611000000005,
-   "n": 48
+   "sum": 13.484532000000005,
+   "n": 49
   },
   "payoff": {
    "SHORT_FAVORITE": {
@@ -2774,8 +2778,8 @@
    "VOLUME_SPIKE": {
     "wSum": 1.3601196074299666,
     "wN": 5,
-    "lSum": 1.835561571322904,
-    "lN": 6
+    "lSum": 2.126081448998745,
+    "lN": 7
    },
    "ELITE_FOLLOW": {
     "wSum": 0.08264462809917364,
@@ -2795,7 +2799,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-16T19:31:13.351Z"
+    "updated": "2026-06-16T19:45:56.393Z"
    },
    {
     "key": "SHORT_FAVORITE|high|sport",
@@ -2807,7 +2811,7 @@
      91
     ],
     "text": "Short Favorite on high-priced sports markets: 5W/2L (posterior 67%, 90% CI 42-91%) — collecting evidence",
-    "updated": "2026-06-16T19:31:13.351Z"
+    "updated": "2026-06-16T19:45:56.393Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -2819,32 +2823,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-16T19:31:13.351Z"
+    "updated": "2026-06-16T19:45:56.393Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 5908.567445931491,
+  "cash": 5979.515458163907,
   "created": 1781162132851
  },
  "summary": {
-  "realized": -891.43,
-  "closed": 48,
+  "realized": -920.48,
+  "closed": 49,
   "wins": 21,
-  "open": 9,
+  "open": 8,
   "staked": 19750,
   "bankStart": 10000,
-  "cash": 5909,
-  "equity": 9180,
-  "returnPct": -8.2,
-  "modelUpdates": 48,
-  "brier": 0.274,
+  "cash": 5980,
+  "equity": 9175,
+  "returnPct": -8.25,
+  "modelUpdates": 49,
+  "brier": 0.275,
   "hypotheses": 3,
   "integrityOk": true,
-  "updated": "2026-06-16T19:31:13.356Z"
+  "updated": "2026-06-16T19:45:56.397Z"
  },
- "lastRun": 1781638273356,
+ "lastRun": 1781639156397,
  "elite": {
   "updated": 1781632184277,
   "list": [
@@ -2888,13 +2892,13 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-16T19:31:13.356Z",
+  "checkedAt": "2026-06-16T19:45:56.397Z",
   "tradesChecked": 57
  },
  "lastScan": {
-  "at": "2026-06-16T19:31:13.355Z",
-  "marketsFetched": 62,
-  "rawCandidates": 21,
+  "at": "2026-06-16T19:45:56.397Z",
+  "marketsFetched": 63,
+  "rawCandidates": 22,
   "clearedThreshold": 2,
   "placed": 0,
   "pMin": 0.57,

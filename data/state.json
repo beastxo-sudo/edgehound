@@ -145,7 +145,7 @@
    "slug": "what-iranian-demands-will-trump-agree-to-by-june-30",
    "side": "YES",
    "entry": 0.1635,
-   "cur": 0.1435,
+   "cur": 0.1425,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.589,
@@ -595,7 +595,7 @@
    "slug": "atp-perrica-moutet-2026-06-15",
    "side": "NO",
    "entry": 0.475,
-   "cur": 0.485,
+   "cur": 0.49,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.57,
@@ -2531,7 +2531,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-16T04:35:23.989Z"
+    "updated": "2026-06-16T04:49:15.882Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -2543,7 +2543,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-16T04:35:23.989Z"
+    "updated": "2026-06-16T04:49:15.882Z"
    },
    {
     "key": "SHORT_FAVORITE|high|sport",
@@ -2555,7 +2555,7 @@
      99
     ],
     "text": "Short Favorite on high-priced sports markets: 5W/1L (posterior 75%, 90% CI 51-99%) — collecting evidence",
-    "updated": "2026-06-16T04:35:23.989Z"
+    "updated": "2026-06-16T04:49:15.882Z"
    }
   ]
  },
@@ -2578,9 +2578,9 @@
   "brier": 0.274,
   "hypotheses": 3,
   "integrityOk": true,
-  "updated": "2026-06-16T04:35:23.990Z"
+  "updated": "2026-06-16T04:49:15.883Z"
  },
- "lastRun": 1781584523990,
+ "lastRun": 1781585355884,
  "elite": {
   "updated": 1781545591279,
   "list": [
@@ -2610,7 +2610,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-16T04:35:23.990Z",
+  "checkedAt": "2026-06-16T04:49:15.884Z",
   "tradesChecked": 51
  },
  "lastScan": {

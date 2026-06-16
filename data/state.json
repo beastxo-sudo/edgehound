@@ -2,6 +2,132 @@
  "running": true,
  "journal": [
   {
+   "id": "t1781634714997dywt",
+   "date": "2026-06-17",
+   "openedTs": 1781634714997,
+   "title": "Will Iraq vs. Norway end in a draw?",
+   "mid": "1897086",
+   "conditionId": "0x947996d016c91c138f34eb5ebf0a67a27af1254fb93e603e48889c2f178ddd0a",
+   "slug": "fifwc-irq-nor-2026-06-16",
+   "side": "NO",
+   "entry": 0.865,
+   "cur": 0.865,
+   "stake": 500,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.681,
+   "pModel": 0.678,
+   "pBucket": 0.75,
+   "bucketN": 6,
+   "bk": "SHORT_FAVORITE|high|sport",
+   "ev": 0.126,
+   "kelly": 0.0596,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.865,
+    0.99,
+    0.05,
+    0.804,
+    0.875,
+    0.937,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 68% [model 68%, pattern 75% on n=6] · EV +0.13/$1 · 1/4-Kelly 6.0% of equity -> $500. 87c favorite resolving in 0.1d (favorite-longshot bias); +16% if it lands. Drivers: favorite setup +, liquidity +, 24h volume +",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1781647200000,
+   "status": "open"
+  },
+  {
+   "id": "t17816347149959jsn",
+   "date": "2026-06-17",
+   "openedTs": 1781634714995,
+   "title": "Will France vs. Senegal end in a draw?",
+   "mid": "1897083",
+   "conditionId": "0xbd175757f12ecc85b7aae7f1f35c8637e350227dd2967abd6e1373e245c51f49",
+   "slug": "fifwc-fra-sen-2026-06-16",
+   "side": "NO",
+   "entry": 0.785,
+   "cur": 0.785,
+   "stake": 400,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.681,
+   "pModel": 0.677,
+   "pBucket": 0.75,
+   "bucketN": 6,
+   "bk": "SHORT_FAVORITE|high|sport",
+   "ev": 0.126,
+   "kelly": 0.0596,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.785,
+    0.999,
+    0,
+    0.834,
+    0.944,
+    0.96,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 68% [model 68%, pattern 75% on n=6] · EV +0.13/$1 · 1/4-Kelly 6.0% of equity -> $400. 79c favorite resolving in 0.0d (favorite-longshot bias); +27% if it lands. Drivers: favorite setup +, liquidity +, 24h volume +",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1781636400000,
+   "status": "open"
+  },
+  {
+   "id": "t1781634714994trub",
+   "date": "2026-06-17",
+   "openedTs": 1781634714995,
+   "title": "Will Austria vs. Jordan end in a draw?",
+   "mid": "1897092",
+   "conditionId": "0x2d17b7b5c8701296c4348f016076a948f25cb83e23c8b863bfa1e22ed493ae53",
+   "slug": "fifwc-aut-jor-2026-06-17",
+   "side": "NO",
+   "entry": 0.815,
+   "cur": 0.815,
+   "stake": 500,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.679,
+   "pModel": 0.674,
+   "pBucket": 0.75,
+   "bucketN": 6,
+   "bk": "SHORT_FAVORITE|high|sport",
+   "ev": 0.126,
+   "kelly": 0.0594,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.815,
+    0.972,
+    0.05,
+    0.766,
+    0.849,
+    0.937,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 68% [model 67%, pattern 75% on n=6] · EV +0.13/$1 · 1/4-Kelly 5.9% of equity -> $500. 82c favorite resolving in 0.4d (favorite-longshot bias); +23% if it lands. Drivers: favorite setup +, liquidity +, 24h volume +",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1781668800000,
+   "status": "open"
+  },
+  {
    "id": "t1781575836261r26j",
    "date": "2026-06-16",
    "openedTs": 1781575836261,
@@ -145,7 +271,7 @@
    "slug": "what-iranian-demands-will-trump-agree-to-by-june-30",
    "side": "YES",
    "entry": 0.1635,
-   "cur": 0.155,
+   "cur": 0.1545,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.589,
@@ -687,7 +813,7 @@
    "slug": "fifwc-fra-sen-2026-06-16",
    "side": "NO",
    "entry": 0.33499999999999996,
-   "cur": 0.33499999999999996,
+   "cur": 0.345,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.579,
@@ -2371,6 +2497,9 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-17 00:01 IST — Opened NO $500 @ 87c P=68% EV=+0.13 [Short Favorite] \"Will Iraq vs. Norway end in a draw?\"",
+  "2026-06-17 00:01 IST — Opened NO $400 @ 79c P=68% EV=+0.13 [Short Favorite] \"Will France vs. Senegal end in a draw?\"",
+  "2026-06-17 00:01 IST — Opened NO $500 @ 82c P=68% EV=+0.13 [Short Favorite] \"Will Austria vs. Jordan end in a draw?\"",
   "2026-06-16 23:19 IST — Elite pool refreshed: 5 wallets qualify (>=58% win rate over >=10 settled, scalpers excluded): donthackme 83%, aenews2 74%, PatrocIus 72%, cigarettes 58%, denizz 63%",
   "2026-06-16 20:13 IST — Closed NO \"HSBC Championships: Giovanni Mpetshi Perri\" -> +$111 (Resolved in our favor) · model said P(win)=57%",
   "2026-06-16 08:51 IST — Closed YES \"Detroit Tigers vs. Houston Astros\" -> +$47 (Resolved in our favor) · model said P(win)=57%",
@@ -2381,10 +2510,7 @@
   "2026-06-16 07:12 IST — Closed NO \"Miami Marlins vs. Philadelphia Phillies\" -> +$103 (Resolved in our favor) · model said P(win)=57%",
   "2026-06-16 07:12 IST — Closed NO \"New York Mets vs. Cincinnati Reds\" -> +$85 (Resolved in our favor) · model said P(win)=57%",
   "2026-06-16 06:57 IST — Opened YES $400 @ 90c P=58% EV=+0.10 [Short Favorite] \"Detroit Tigers vs. Houston Astros\"",
-  "2026-06-16 06:43 IST — Opened NO $400 @ 83c P=57% EV=+0.10 [Short Favorite] \"San Diego Padres vs. St. Louis Cardinals\"",
-  "2026-06-16 06:43 IST — Opened YES $100 @ 16c P=59% EV=-0.08 [Volume Spike] \"Will Trump agree to Iranian transit fees in th\"",
-  "2026-06-16 06:43 IST — Opened NO $100 @ 30c P=59% EV=-0.08 [Volume Spike] \"Will Argentina win on 2026-06-16?\"",
-  "2026-06-16 06:43 IST — Closed NO \"Will IR Iran win on 2026-06-15?\" -> +$18 (Max hold reached — closed at market) · model said P(win)=57%"
+  "2026-06-16 06:43 IST — Opened NO $400 @ 83c P=57% EV=+0.10 [Short Favorite] \"San Diego Padres vs. St. Louis Cardinals\""
  ],
  "brain": {
   "w": [
@@ -2535,7 +2661,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-16T18:18:14.634Z"
+    "updated": "2026-06-16T18:31:54.991Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -2547,7 +2673,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-16T18:18:14.634Z"
+    "updated": "2026-06-16T18:31:54.991Z"
    },
    {
     "key": "SHORT_FAVORITE|high|sport",
@@ -2559,32 +2685,32 @@
      99
     ],
     "text": "Short Favorite on high-priced sports markets: 5W/1L (posterior 75%, 90% CI 51-99%) — collecting evidence",
-    "updated": "2026-06-16T18:18:14.634Z"
+    "updated": "2026-06-16T18:31:54.991Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 7905.582371304626,
+  "cash": 6505.582371304626,
   "created": 1781162132851
  },
  "summary": {
   "realized": -894.42,
   "closed": 46,
   "wins": 20,
-  "open": 5,
-  "staked": 17250,
+  "open": 8,
+  "staked": 18650,
   "bankStart": 10000,
-  "cash": 7906,
-  "equity": 9196,
-  "returnPct": -8.04,
+  "cash": 6506,
+  "equity": 9199,
+  "returnPct": -8.01,
   "modelUpdates": 46,
   "brier": 0.272,
   "hypotheses": 3,
   "integrityOk": true,
-  "updated": "2026-06-16T18:18:14.635Z"
+  "updated": "2026-06-16T18:31:54.997Z"
  },
- "lastRun": 1781633894635,
+ "lastRun": 1781634714998,
  "elite": {
   "updated": 1781632184277,
   "list": [
@@ -2628,19 +2754,19 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-16T18:18:14.635Z",
-  "tradesChecked": 51
+  "checkedAt": "2026-06-16T18:31:54.997Z",
+  "tradesChecked": 54
  },
  "lastScan": {
-  "at": "2026-06-16T02:10:36.261Z",
-  "marketsFetched": 62,
-  "rawCandidates": 15,
-  "clearedThreshold": 1,
-  "placed": 1,
+  "at": "2026-06-16T18:31:54.997Z",
+  "marketsFetched": 61,
+  "rawCandidates": 35,
+  "clearedThreshold": 4,
+  "placed": 3,
   "pMin": 0.57,
   "blocked": {
    "exposure": 0,
-   "event": 0,
+   "event": 1,
    "cash": 0,
    "sanity": 0
   },

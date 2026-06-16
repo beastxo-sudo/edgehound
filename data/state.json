@@ -2799,7 +2799,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-16T19:45:56.393Z"
+    "updated": "2026-06-16T20:01:21.996Z"
    },
    {
     "key": "SHORT_FAVORITE|high|sport",
@@ -2811,7 +2811,7 @@
      91
     ],
     "text": "Short Favorite on high-priced sports markets: 5W/2L (posterior 67%, 90% CI 42-91%) — collecting evidence",
-    "updated": "2026-06-16T19:45:56.393Z"
+    "updated": "2026-06-16T20:01:21.996Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -2823,7 +2823,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-16T19:45:56.393Z"
+    "updated": "2026-06-16T20:01:21.996Z"
    }
   ]
  },
@@ -2846,9 +2846,9 @@
   "brier": 0.275,
   "hypotheses": 3,
   "integrityOk": true,
-  "updated": "2026-06-16T19:45:56.397Z"
+  "updated": "2026-06-16T20:01:22.000Z"
  },
- "lastRun": 1781639156397,
+ "lastRun": 1781640082000,
  "elite": {
   "updated": 1781632184277,
   "list": [
@@ -2892,13 +2892,13 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-16T19:45:56.397Z",
+  "checkedAt": "2026-06-16T20:01:22.000Z",
   "tradesChecked": 57
  },
  "lastScan": {
-  "at": "2026-06-16T19:45:56.397Z",
-  "marketsFetched": 63,
-  "rawCandidates": 22,
+  "at": "2026-06-16T20:01:22.000Z",
+  "marketsFetched": 61,
+  "rawCandidates": 20,
   "clearedThreshold": 2,
   "placed": 0,
   "pMin": 0.57,

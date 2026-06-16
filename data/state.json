@@ -401,7 +401,7 @@
    "slug": "what-iranian-demands-will-trump-agree-to-by-june-30",
    "side": "YES",
    "entry": 0.1635,
-   "cur": 0.124,
+   "cur": 0.1235,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.589,
@@ -2795,7 +2795,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-16T19:15:55.422Z"
+    "updated": "2026-06-16T19:31:13.351Z"
    },
    {
     "key": "SHORT_FAVORITE|high|sport",
@@ -2807,7 +2807,7 @@
      91
     ],
     "text": "Short Favorite on high-priced sports markets: 5W/2L (posterior 67%, 90% CI 42-91%) — collecting evidence",
-    "updated": "2026-06-16T19:15:55.422Z"
+    "updated": "2026-06-16T19:31:13.351Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -2819,7 +2819,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-16T19:15:55.422Z"
+    "updated": "2026-06-16T19:31:13.351Z"
    }
   ]
  },
@@ -2842,9 +2842,9 @@
   "brier": 0.274,
   "hypotheses": 3,
   "integrityOk": true,
-  "updated": "2026-06-16T19:15:55.427Z"
+  "updated": "2026-06-16T19:31:13.356Z"
  },
- "lastRun": 1781637355427,
+ "lastRun": 1781638273356,
  "elite": {
   "updated": 1781632184277,
   "list": [
@@ -2888,22 +2888,22 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-16T19:15:55.427Z",
+  "checkedAt": "2026-06-16T19:31:13.356Z",
   "tradesChecked": 57
  },
  "lastScan": {
-  "at": "2026-06-16T19:15:55.426Z",
-  "marketsFetched": 65,
-  "rawCandidates": 23,
-  "clearedThreshold": 3,
+  "at": "2026-06-16T19:31:13.355Z",
+  "marketsFetched": 62,
+  "rawCandidates": 21,
+  "clearedThreshold": 2,
   "placed": 0,
   "pMin": 0.57,
   "blocked": {
-   "exposure": 1,
-   "event": 1,
+   "exposure": 0,
+   "event": 2,
    "cash": 0,
    "sanity": 0
   },
-  "reason": "exposure cap reached"
+  "reason": "all remaining candidates blocked by event-correlation guard"
  }
 }

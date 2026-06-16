@@ -11,7 +11,7 @@
    "slug": "what-iranian-demands-will-trump-agree-to-by-june-30",
    "side": "NO",
    "entry": 0.30000000000000004,
-   "cur": 0.30000000000000004,
+   "cur": 0.30500000000000005,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.591,
@@ -2841,7 +2841,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-16T21:31:04.491Z"
+    "updated": "2026-06-16T21:45:52.181Z"
    },
    {
     "key": "SHORT_FAVORITE|high|sport",
@@ -2853,7 +2853,7 @@
      91
     ],
     "text": "Short Favorite on high-priced sports markets: 5W/2L (posterior 67%, 90% CI 42-91%) — collecting evidence",
-    "updated": "2026-06-16T21:31:04.491Z"
+    "updated": "2026-06-16T21:45:52.181Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -2865,7 +2865,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-16T21:31:04.491Z"
+    "updated": "2026-06-16T21:45:52.181Z"
    }
   ]
  },
@@ -2882,15 +2882,15 @@
   "staked": 19850,
   "bankStart": 10000,
   "cash": 5880,
-  "equity": 8998,
-  "returnPct": -10.02,
+  "equity": 9000,
+  "returnPct": -10,
   "modelUpdates": 49,
   "brier": 0.275,
   "hypotheses": 3,
   "integrityOk": true,
-  "updated": "2026-06-16T21:31:04.496Z"
+  "updated": "2026-06-16T21:45:52.186Z"
  },
- "lastRun": 1781645464496,
+ "lastRun": 1781646352186,
  "elite": {
   "updated": 1781632184277,
   "list": [
@@ -2934,15 +2934,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-16T21:31:04.496Z",
+  "checkedAt": "2026-06-16T21:45:52.186Z",
   "tradesChecked": 58
  },
  "lastScan": {
-  "at": "2026-06-16T21:31:04.496Z",
-  "marketsFetched": 61,
-  "rawCandidates": 31,
-  "clearedThreshold": 3,
-  "placed": 1,
+  "at": "2026-06-16T21:45:52.186Z",
+  "marketsFetched": 62,
+  "rawCandidates": 32,
+  "clearedThreshold": 2,
+  "placed": 0,
   "pMin": 0.57,
   "blocked": {
    "exposure": 0,
@@ -2950,6 +2950,6 @@
    "cash": 0,
    "sanity": 0
   },
-  "reason": "traded"
+  "reason": "all remaining candidates blocked by event-correlation guard"
  }
 }

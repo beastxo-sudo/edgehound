@@ -11,7 +11,7 @@
    "slug": "mlb-det-hou-2026-06-15",
    "side": "YES",
    "entry": 0.895,
-   "cur": 0.725,
+   "cur": 0.735,
    "stake": 400,
    "signal": "SHORT_FAVORITE",
    "p": 0.575,
@@ -53,7 +53,7 @@
    "slug": "mlb-sd-stl-2026-06-15",
    "side": "NO",
    "entry": 0.825,
-   "cur": 0.95,
+   "cur": 0.965,
    "stake": 400,
    "signal": "SHORT_FAVORITE",
    "p": 0.571,
@@ -449,7 +449,7 @@
    "slug": "mlb-laa-ari-2026-06-15",
    "side": "YES",
    "entry": 0.435,
-   "cur": 0.435,
+   "cur": 0.425,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.57,
@@ -2469,7 +2469,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-16T01:42:12.758Z"
+    "updated": "2026-06-16T01:56:12.979Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -2481,7 +2481,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-16T01:42:12.758Z"
+    "updated": "2026-06-16T01:56:12.979Z"
    }
   ]
  },
@@ -2498,15 +2498,15 @@
   "staked": 16750,
   "bankStart": 10000,
   "cash": 6973,
-  "equity": 8937,
-  "returnPct": -10.63,
+  "equity": 8947,
+  "returnPct": -10.53,
   "modelUpdates": 41,
   "brier": 0.273,
   "hypotheses": 2,
   "integrityOk": true,
-  "updated": "2026-06-16T01:42:12.760Z"
+  "updated": "2026-06-16T01:56:12.982Z"
  },
- "lastRun": 1781574132760,
+ "lastRun": 1781574972982,
  "elite": {
   "updated": 1781545591279,
   "list": [
@@ -2536,13 +2536,13 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-16T01:42:12.760Z",
+  "checkedAt": "2026-06-16T01:56:12.982Z",
   "tradesChecked": 50
  },
  "lastScan": {
-  "at": "2026-06-16T01:42:12.760Z",
+  "at": "2026-06-16T01:56:12.982Z",
   "marketsFetched": 62,
-  "rawCandidates": 11,
+  "rawCandidates": 13,
   "clearedThreshold": 0,
   "placed": 0,
   "pMin": 0.57,

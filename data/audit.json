@@ -1,6 +1,6 @@
 {
-  "ranAt": "2026-06-16T15:56:10.362Z",
-  "ranAtIST": "2026-06-16 21:26:10 IST",
+  "ranAt": "2026-06-16T16:10:29.019Z",
+  "ranAtIST": "2026-06-16 21:40:29 IST",
   "summary": {
     "total": 1,
     "critical": 0,
@@ -16,11 +16,18 @@
       "msg": "Sample 2026-06-16T14:00:00.000Z: Polymarket resolved UP but the Binance candle moved DOWN (open 66100.61 -> close 66093.63). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-16T15:56:10.362Z"
+      "at": "2026-06-16T16:10:29.019Z"
     }
   ],
   "openCodeIssues": [],
   "history": [
+    {
+      "at": "2026-06-16T16:10:29.019Z",
+      "critical": 0,
+      "warn": 1,
+      "autoFixed": 0,
+      "total": 1
+    },
     {
       "at": "2026-06-16T15:56:10.362Z",
       "critical": 0,

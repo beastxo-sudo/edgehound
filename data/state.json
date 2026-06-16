@@ -187,7 +187,7 @@
    "slug": "fifwc-arg-alg-2026-06-16",
    "side": "NO",
    "entry": 0.29500000000000004,
-   "cur": 0.30500000000000005,
+   "cur": 0.31499999999999995,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.594,
@@ -595,7 +595,7 @@
    "slug": "atp-perrica-moutet-2026-06-15",
    "side": "NO",
    "entry": 0.475,
-   "cur": 0.525,
+   "cur": 0.515,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.57,
@@ -2531,7 +2531,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-16T06:16:23.197Z"
+    "updated": "2026-06-16T06:31:12.925Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -2543,7 +2543,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-16T06:16:23.197Z"
+    "updated": "2026-06-16T06:31:12.925Z"
    },
    {
     "key": "SHORT_FAVORITE|high|sport",
@@ -2555,7 +2555,7 @@
      99
     ],
     "text": "Short Favorite on high-priced sports markets: 5W/1L (posterior 75%, 90% CI 51-99%) — collecting evidence",
-    "updated": "2026-06-16T06:16:23.197Z"
+    "updated": "2026-06-16T06:31:12.925Z"
    }
   ]
  },
@@ -2572,15 +2572,15 @@
   "staked": 17250,
   "bankStart": 10000,
   "cash": 7695,
-  "equity": 9085,
-  "returnPct": -9.15,
+  "equity": 9086,
+  "returnPct": -9.14,
   "modelUpdates": 45,
   "brier": 0.274,
   "hypotheses": 3,
   "integrityOk": true,
-  "updated": "2026-06-16T06:16:23.197Z"
+  "updated": "2026-06-16T06:31:12.925Z"
  },
- "lastRun": 1781590583197,
+ "lastRun": 1781591472926,
  "elite": {
   "updated": 1781545591279,
   "list": [
@@ -2610,7 +2610,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-16T06:16:23.197Z",
+  "checkedAt": "2026-06-16T06:31:12.925Z",
   "tradesChecked": 51
  },
  "lastScan": {

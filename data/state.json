@@ -145,7 +145,7 @@
    "slug": "what-iranian-demands-will-trump-agree-to-by-june-30",
    "side": "YES",
    "entry": 0.1635,
-   "cur": 0.152,
+   "cur": 0.1425,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.589,
@@ -2371,6 +2371,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-16 23:19 IST — Elite pool refreshed: 5 wallets qualify (>=58% win rate over >=10 settled, scalpers excluded): donthackme 83%, aenews2 74%, PatrocIus 72%, cigarettes 58%, denizz 63%",
   "2026-06-16 20:13 IST — Closed NO \"HSBC Championships: Giovanni Mpetshi Perri\" -> +$111 (Resolved in our favor) · model said P(win)=57%",
   "2026-06-16 08:51 IST — Closed YES \"Detroit Tigers vs. Houston Astros\" -> +$47 (Resolved in our favor) · model said P(win)=57%",
   "2026-06-16 08:36 IST — Closed YES \"Los Angeles Angels vs. Arizona Diamondback\" -> $-34 (Stop loss hit (-25%)) · model said P(win)=57%",
@@ -2383,8 +2384,7 @@
   "2026-06-16 06:43 IST — Opened NO $400 @ 83c P=57% EV=+0.10 [Short Favorite] \"San Diego Padres vs. St. Louis Cardinals\"",
   "2026-06-16 06:43 IST — Opened YES $100 @ 16c P=59% EV=-0.08 [Volume Spike] \"Will Trump agree to Iranian transit fees in th\"",
   "2026-06-16 06:43 IST — Opened NO $100 @ 30c P=59% EV=-0.08 [Volume Spike] \"Will Argentina win on 2026-06-16?\"",
-  "2026-06-16 06:43 IST — Closed NO \"Will IR Iran win on 2026-06-15?\" -> +$18 (Max hold reached — closed at market) · model said P(win)=57%",
-  "2026-06-16 06:43 IST — Closed YES \"Will New Zealand win on 2026-06-15?\" -> +$11 (Max hold reached — closed at market) · model said P(win)=58%"
+  "2026-06-16 06:43 IST — Closed NO \"Will IR Iran win on 2026-06-15?\" -> +$18 (Max hold reached — closed at market) · model said P(win)=57%"
  ],
  "brain": {
   "w": [
@@ -2535,7 +2535,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-16T17:35:27.390Z"
+    "updated": "2026-06-16T17:49:44.628Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -2547,7 +2547,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-16T17:35:27.390Z"
+    "updated": "2026-06-16T17:49:44.628Z"
    },
    {
     "key": "SHORT_FAVORITE|high|sport",
@@ -2559,7 +2559,7 @@
      99
     ],
     "text": "Short Favorite on high-priced sports markets: 5W/1L (posterior 75%, 90% CI 51-99%) — collecting evidence",
-    "updated": "2026-06-16T17:35:27.390Z"
+    "updated": "2026-06-16T17:49:44.628Z"
    }
   ]
  },
@@ -2576,45 +2576,59 @@
   "staked": 17250,
   "bankStart": 10000,
   "cash": 7906,
-  "equity": 9194,
-  "returnPct": -8.06,
+  "equity": 9188,
+  "returnPct": -8.12,
   "modelUpdates": 46,
   "brier": 0.272,
   "hypotheses": 3,
   "integrityOk": true,
-  "updated": "2026-06-16T17:35:27.390Z"
+  "updated": "2026-06-16T17:49:44.628Z"
  },
- "lastRun": 1781631327391,
+ "lastRun": 1781632184629,
  "elite": {
-  "updated": 1781545591279,
+  "updated": 1781632184277,
   "list": [
    {
-    "wallet": "0xdf17f4a8dd01a4cfa6fc3da323a2baee5f8697d1",
-    "name": "Panteras",
-    "winRate": 0.767,
-    "n": 43,
-    "score": 2.904
+    "wallet": "0x03805a13a0b3e058f55f6c6af95389d4f431073d",
+    "name": "donthackme",
+    "winRate": 0.833,
+    "n": 60,
+    "score": 3.426
    },
    {
     "wallet": "0x44c1dfe43260c94ed4f1d00de2e1f80fb113ebc1",
     "name": "aenews2",
-    "winRate": 0.714,
-    "n": 42,
-    "score": 2.687
+    "winRate": 0.744,
+    "n": 43,
+    "score": 2.816
+   },
+   {
+    "wallet": "0xdf17f4a8dd01a4cfa6fc3da323a2baee5f8697d1",
+    "name": "PatrocIus",
+    "winRate": 0.718,
+    "n": 39,
+    "score": 2.648
+   },
+   {
+    "wallet": "0xd218e474776403a330142299f7796e8ba32eb5c9",
+    "name": "cigarettes",
+    "winRate": 0.583,
+    "n": 72,
+    "score": 2.503
    },
    {
     "wallet": "0xbaa2bcb5439e985ce4ccf815b4700027d1b92c73",
     "name": "denizz",
-    "winRate": 0.606,
-    "n": 33,
-    "score": 2.137
+    "winRate": 0.632,
+    "n": 38,
+    "score": 2.314
    }
   ]
  },
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-16T17:35:27.391Z",
+  "checkedAt": "2026-06-16T17:49:44.629Z",
   "tradesChecked": 51
  },
  "lastScan": {

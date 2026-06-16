@@ -1,26 +1,23 @@
 {
-  "ranAt": "2026-06-16T00:59:15.803Z",
-  "ranAtIST": "2026-06-16 06:29:15 IST",
+  "ranAt": "2026-06-16T01:13:50.227Z",
+  "ranAtIST": "2026-06-16 06:43:50 IST",
   "summary": {
-    "total": 1,
+    "total": 0,
     "critical": 0,
-    "warn": 1,
+    "warn": 0,
     "autoFixed": 0,
     "needsCodeReview": 0
   },
-  "findings": [
-    {
-      "area": "bot",
-      "id": "possible_deadlock",
-      "severity": "warn",
-      "msg": "Last scan saw 17 candidates but 0 cleared P(win) >= 0.57. If this persists, the model is over-suppressing (pessimism deadlock) or pMin is set above what active engines produce. Check Brier (0.283) and consider lowering pMin or down-weighting the model.",
-      "autoFixed": false,
-      "needsCode": false,
-      "at": "2026-06-16T00:59:15.802Z"
-    }
-  ],
+  "findings": [],
   "openCodeIssues": [],
   "history": [
+    {
+      "at": "2026-06-16T01:13:50.227Z",
+      "critical": 0,
+      "warn": 0,
+      "autoFixed": 0,
+      "total": 0
+    },
     {
       "at": "2026-06-16T00:59:15.803Z",
       "critical": 0,

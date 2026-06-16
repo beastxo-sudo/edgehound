@@ -2,6 +2,48 @@
  "running": true,
  "journal": [
   {
+   "id": "t178157325151405x6",
+   "date": "2026-06-16",
+   "openedTs": 1781573251514,
+   "title": "Detroit Tigers vs. Houston Astros",
+   "mid": "2478819",
+   "conditionId": "0x26039b14d07c9770f7b6395b1f3ac3111763e279589c894445f5471f7b6effc1",
+   "slug": "mlb-det-hou-2026-06-15",
+   "side": "YES",
+   "entry": 0.895,
+   "cur": 0.895,
+   "stake": 400,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.575,
+   "pModel": 0.367,
+   "pBucket": 0.5,
+   "bucketN": 2,
+   "bk": "SHORT_FAVORITE|high|sport",
+   "ev": 0.097,
+   "kelly": 0.0452,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.895,
+    0.504,
+    1,
+    0.781,
+    0.727,
+    0.998,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 58% [model 37%, pattern 50% on n=2] · EV +0.10/$1 · 1/4-Kelly 4.5% of equity -> $400. 90c favorite resolving in 6.9d (favorite-longshot bias); +12% if it lands. Drivers: sports market -, attention spike -, short time to resolution -",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1782173400000,
+   "status": "open"
+  },
+  {
    "id": "t17815724301851yxt",
    "date": "2026-06-16",
    "openedTs": 1781572430185,
@@ -11,7 +53,7 @@
    "slug": "mlb-sd-stl-2026-06-15",
    "side": "NO",
    "entry": 0.825,
-   "cur": 0.825,
+   "cur": 0.915,
    "stake": 400,
    "signal": "SHORT_FAVORITE",
    "p": 0.571,
@@ -53,7 +95,7 @@
    "slug": "what-iranian-demands-will-trump-agree-to-by-june-30",
    "side": "YES",
    "entry": 0.1635,
-   "cur": 0.1635,
+   "cur": 0.163,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.589,
@@ -137,7 +179,7 @@
    "slug": "mlb-kc-wsh-2026-06-15",
    "side": "NO",
    "entry": 0.935,
-   "cur": 0.9735,
+   "cur": 0.9765,
    "stake": 400,
    "signal": "SHORT_FAVORITE",
    "p": 0.572,
@@ -179,7 +221,7 @@
    "slug": "mlb-nym-cin-2026-06-15",
    "side": "NO",
    "entry": 0.825,
-   "cur": 0.9855,
+   "cur": 0.994,
    "stake": 400,
    "signal": "SHORT_FAVORITE",
    "p": 0.575,
@@ -221,7 +263,7 @@
    "slug": "mlb-mia-phi-2026-06-15",
    "side": "NO",
    "entry": 0.795,
-   "cur": 0.9625,
+   "cur": 0.9935,
    "stake": 400,
    "signal": "SHORT_FAVORITE",
    "p": 0.57,
@@ -309,7 +351,7 @@
    "slug": "iran-agrees-to-end-enrichment-of-uranium-by-june-30",
    "side": "YES",
    "entry": 0.38,
-   "cur": 0.375,
+   "cur": 0.345,
    "stake": 300,
    "signal": "ELITE_FOLLOW",
    "p": 0.642,
@@ -2259,6 +2301,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-16 06:57 IST — Opened YES $400 @ 90c P=58% EV=+0.10 [Short Favorite] \"Detroit Tigers vs. Houston Astros\"",
   "2026-06-16 06:43 IST — Opened NO $400 @ 83c P=57% EV=+0.10 [Short Favorite] \"San Diego Padres vs. St. Louis Cardinals\"",
   "2026-06-16 06:43 IST — Opened YES $100 @ 16c P=59% EV=-0.08 [Volume Spike] \"Will Trump agree to Iranian transit fees in th\"",
   "2026-06-16 06:43 IST — Opened NO $100 @ 30c P=59% EV=-0.08 [Volume Spike] \"Will Argentina win on 2026-06-16?\"",
@@ -2271,8 +2314,7 @@
   "2026-06-16 05:21 IST — Closed YES \"New York Mets vs. Cincinnati Reds\" -> $-61 (Stop loss hit (-25%)) · model said P(win)=57%",
   "2026-06-16 04:56 IST — Closed YES \"Miami Marlins vs. Philadelphia Phillies\" -> $-39 (Stop loss hit (-25%)) · model said P(win)=57%",
   "2026-06-16 04:45 IST — Opened YES $100 @ 45c P=57% EV=+0.02 [Volume Spike] \"New York Mets vs. Cincinnati Reds\"",
-  "2026-06-16 04:45 IST — Opened YES $300 @ 38c P=64% EV=+0.03 [Elite Follow] \" Iran agrees to end enrichment of uranium by J\"",
-  "2026-06-16 04:31 IST — Opened YES $100 @ 39c P=57% EV=+0.02 [Volume Spike] \"Miami Marlins vs. Philadelphia Phillies\""
+  "2026-06-16 04:45 IST — Opened YES $300 @ 38c P=64% EV=+0.03 [Elite Follow] \" Iran agrees to end enrichment of uranium by J\""
  ],
  "brain": {
   "w": [
@@ -2419,7 +2461,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-16T01:13:50.180Z"
+    "updated": "2026-06-16T01:27:31.511Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -2431,32 +2473,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-16T01:13:50.180Z"
+    "updated": "2026-06-16T01:27:31.511Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 6384.769816049145,
+  "cash": 5984.769816049145,
   "created": 1781162132851
  },
  "summary": {
   "realized": -1215.23,
   "closed": 39,
   "wins": 15,
-  "open": 10,
-  "staked": 16350,
+  "open": 11,
+  "staked": 16750,
   "bankStart": 10000,
-  "cash": 6385,
-  "equity": 8961,
-  "returnPct": -10.39,
+  "cash": 5985,
+  "equity": 9002,
+  "returnPct": -9.98,
   "modelUpdates": 39,
   "brier": 0.278,
   "hypotheses": 2,
   "integrityOk": true,
-  "updated": "2026-06-16T01:13:50.185Z"
+  "updated": "2026-06-16T01:27:31.514Z"
  },
- "lastRun": 1781572430186,
+ "lastRun": 1781573251515,
  "elite": {
   "updated": 1781545591279,
   "list": [
@@ -2486,15 +2528,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-16T01:13:50.185Z",
-  "tradesChecked": 49
+  "checkedAt": "2026-06-16T01:27:31.514Z",
+  "tradesChecked": 50
  },
  "lastScan": {
-  "at": "2026-06-16T01:13:50.185Z",
-  "marketsFetched": 66,
-  "rawCandidates": 15,
-  "clearedThreshold": 3,
-  "placed": 3,
+  "at": "2026-06-16T01:27:31.514Z",
+  "marketsFetched": 67,
+  "rawCandidates": 12,
+  "clearedThreshold": 1,
+  "placed": 1,
   "pMin": 0.57,
   "blocked": {
    "exposure": 0,

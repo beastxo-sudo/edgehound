@@ -11,7 +11,7 @@
    "slug": "mlb-min-tex-2026-06-15",
    "side": "YES",
    "entry": 0.845,
-   "cur": 0.845,
+   "cur": 0.885,
    "stake": 500,
    "signal": "SHORT_FAVORITE",
    "p": 0.621,
@@ -53,7 +53,7 @@
    "slug": "mlb-det-hou-2026-06-15",
    "side": "YES",
    "entry": 0.895,
-   "cur": 0.785,
+   "cur": 0.855,
    "stake": 400,
    "signal": "SHORT_FAVORITE",
    "p": 0.575,
@@ -141,7 +141,7 @@
    "slug": "what-iranian-demands-will-trump-agree-to-by-june-30",
    "side": "YES",
    "entry": 0.1635,
-   "cur": 0.1735,
+   "cur": 0.174,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.589,
@@ -495,7 +495,7 @@
    "slug": "mlb-laa-ari-2026-06-15",
    "side": "YES",
    "entry": 0.435,
-   "cur": 0.475,
+   "cur": 0.395,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.57,
@@ -2515,7 +2515,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-16T02:10:36.258Z"
+    "updated": "2026-06-16T02:24:20.683Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -2527,7 +2527,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-16T02:10:36.258Z"
+    "updated": "2026-06-16T02:24:20.683Z"
    }
   ]
  },
@@ -2544,15 +2544,15 @@
   "staked": 17250,
   "bankStart": 10000,
   "cash": 6958,
-  "equity": 8992,
-  "returnPct": -10.08,
+  "equity": 9029,
+  "returnPct": -9.71,
   "modelUpdates": 42,
   "brier": 0.271,
   "hypotheses": 2,
   "integrityOk": true,
-  "updated": "2026-06-16T02:10:36.261Z"
+  "updated": "2026-06-16T02:24:20.684Z"
  },
- "lastRun": 1781575836261,
+ "lastRun": 1781576660684,
  "elite": {
   "updated": 1781545591279,
   "list": [
@@ -2582,7 +2582,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-16T02:10:36.261Z",
+  "checkedAt": "2026-06-16T02:24:20.684Z",
   "tradesChecked": 51
  },
  "lastScan": {

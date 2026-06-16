@@ -11,7 +11,7 @@
    "slug": "fifwc-irq-nor-2026-06-16-more-markets",
    "side": "YES",
    "entry": 0.345,
-   "cur": 0.345,
+   "cur": 0.355,
    "stake": 200,
    "signal": "VOLUME_SPIKE",
    "p": 0.623,
@@ -447,7 +447,7 @@
    "slug": "fifwc-arg-alg-2026-06-16",
    "side": "NO",
    "entry": 0.29500000000000004,
-   "cur": 0.31499999999999995,
+   "cur": 0.32499999999999996,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.594,
@@ -2799,7 +2799,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-16T21:01:15.527Z"
+    "updated": "2026-06-16T21:15:58.853Z"
    },
    {
     "key": "SHORT_FAVORITE|high|sport",
@@ -2811,7 +2811,7 @@
      91
     ],
     "text": "Short Favorite on high-priced sports markets: 5W/2L (posterior 67%, 90% CI 42-91%) — collecting evidence",
-    "updated": "2026-06-16T21:01:15.527Z"
+    "updated": "2026-06-16T21:15:58.853Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -2823,7 +2823,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-16T21:01:15.527Z"
+    "updated": "2026-06-16T21:15:58.853Z"
    }
   ]
  },
@@ -2840,15 +2840,15 @@
   "staked": 19750,
   "bankStart": 10000,
   "cash": 5980,
-  "equity": 9175,
-  "returnPct": -8.25,
+  "equity": 9184,
+  "returnPct": -8.16,
   "modelUpdates": 49,
   "brier": 0.275,
   "hypotheses": 3,
   "integrityOk": true,
-  "updated": "2026-06-16T21:01:15.531Z"
+  "updated": "2026-06-16T21:15:58.856Z"
  },
- "lastRun": 1781643675531,
+ "lastRun": 1781644558856,
  "elite": {
   "updated": 1781632184277,
   "list": [
@@ -2892,13 +2892,13 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-16T21:01:15.531Z",
+  "checkedAt": "2026-06-16T21:15:58.856Z",
   "tradesChecked": 57
  },
  "lastScan": {
-  "at": "2026-06-16T21:01:15.530Z",
-  "marketsFetched": 53,
-  "rawCandidates": 19,
+  "at": "2026-06-16T21:15:58.856Z",
+  "marketsFetched": 46,
+  "rawCandidates": 21,
   "clearedThreshold": 2,
   "placed": 0,
   "pMin": 0.57,

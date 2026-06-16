@@ -11,7 +11,7 @@
    "slug": "mlb-kc-wsh-2026-06-15",
    "side": "NO",
    "entry": 0.935,
-   "cur": 0.945,
+   "cur": 0.965,
    "stake": 400,
    "signal": "SHORT_FAVORITE",
    "p": 0.572,
@@ -53,7 +53,7 @@
    "slug": "mlb-nym-cin-2026-06-15",
    "side": "NO",
    "entry": 0.825,
-   "cur": 0.9645,
+   "cur": 0.987,
    "stake": 400,
    "signal": "SHORT_FAVORITE",
    "p": 0.575,
@@ -95,7 +95,7 @@
    "slug": "mlb-mia-phi-2026-06-15",
    "side": "NO",
    "entry": 0.795,
-   "cur": 0.9725,
+   "cur": 0.9695,
    "stake": 400,
    "signal": "SHORT_FAVORITE",
    "p": 0.57,
@@ -183,7 +183,7 @@
    "slug": "iran-agrees-to-end-enrichment-of-uranium-by-june-30",
    "side": "YES",
    "entry": 0.38,
-   "cur": 0.355,
+   "cur": 0.38,
    "stake": 300,
    "signal": "ELITE_FOLLOW",
    "p": 0.642,
@@ -2285,7 +2285,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-16T00:45:27.022Z"
+    "updated": "2026-06-16T00:59:15.755Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -2297,7 +2297,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-16T00:45:27.022Z"
+    "updated": "2026-06-16T00:59:15.755Z"
    }
   ]
  },
@@ -2314,15 +2314,15 @@
   "staked": 15750,
   "bankStart": 10000,
   "cash": 6656,
-  "equity": 8914,
-  "returnPct": -10.86,
+  "equity": 8952,
+  "returnPct": -10.48,
   "modelUpdates": 37,
   "brier": 0.283,
   "hypotheses": 2,
   "integrityOk": true,
-  "updated": "2026-06-16T00:45:27.025Z"
+  "updated": "2026-06-16T00:59:15.758Z"
  },
- "lastRun": 1781570727025,
+ "lastRun": 1781571555758,
  "elite": {
   "updated": 1781545591279,
   "list": [
@@ -2352,13 +2352,13 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-16T00:45:27.025Z",
+  "checkedAt": "2026-06-16T00:59:15.758Z",
   "tradesChecked": 46
  },
  "lastScan": {
-  "at": "2026-06-16T00:45:27.025Z",
+  "at": "2026-06-16T00:59:15.758Z",
   "marketsFetched": 66,
-  "rawCandidates": 16,
+  "rawCandidates": 17,
   "clearedThreshold": 0,
   "placed": 0,
   "pMin": 0.57,

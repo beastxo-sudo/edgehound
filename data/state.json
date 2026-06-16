@@ -11,7 +11,7 @@
    "slug": "what-iranian-demands-will-trump-agree-to-by-june-30",
    "side": "NO",
    "entry": 0.30000000000000004,
-   "cur": 0.31000000000000005,
+   "cur": 0.30500000000000005,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.591,
@@ -2849,7 +2849,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-16T22:31:09.989Z"
+    "updated": "2026-06-16T22:45:55.071Z"
    },
    {
     "key": "SHORT_FAVORITE|high|sport",
@@ -2861,7 +2861,7 @@
      84
     ],
     "text": "Short Favorite on high-priced sports markets: 5W/3L (posterior 60%, 90% CI 36-84%) — collecting evidence",
-    "updated": "2026-06-16T22:31:09.989Z"
+    "updated": "2026-06-16T22:45:55.071Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -2873,7 +2873,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-16T22:31:09.989Z"
+    "updated": "2026-06-16T22:45:55.071Z"
    }
   ]
  },
@@ -2890,15 +2890,15 @@
   "staked": 19850,
   "bankStart": 10000,
   "cash": 6580,
-  "equity": 9001,
-  "returnPct": -9.99,
+  "equity": 9000,
+  "returnPct": -10,
   "modelUpdates": 51,
   "brier": 0.276,
   "hypotheses": 3,
   "integrityOk": true,
-  "updated": "2026-06-16T22:31:09.992Z"
+  "updated": "2026-06-16T22:45:55.074Z"
  },
- "lastRun": 1781649069993,
+ "lastRun": 1781649955074,
  "elite": {
   "updated": 1781632184277,
   "list": [
@@ -2942,13 +2942,13 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-16T22:31:09.992Z",
+  "checkedAt": "2026-06-16T22:45:55.074Z",
   "tradesChecked": 58
  },
  "lastScan": {
-  "at": "2026-06-16T22:31:09.992Z",
-  "marketsFetched": 65,
-  "rawCandidates": 21,
+  "at": "2026-06-16T22:45:55.074Z",
+  "marketsFetched": 62,
+  "rawCandidates": 17,
   "clearedThreshold": 1,
   "placed": 0,
   "pMin": 0.57,

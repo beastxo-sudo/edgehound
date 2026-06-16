@@ -2,6 +2,92 @@
  "running": true,
  "journal": [
   {
+   "id": "t17816517450471t7c",
+   "date": "2026-06-17",
+   "openedTs": 1781651745047,
+   "title": "Miami Marlins vs. Philadelphia Phillies",
+   "mid": "2490305",
+   "conditionId": "0x235fd15196fb5fa1189dad3f3b4c0296217949b7a4f95dcb9d5e8521eb5f5e28",
+   "slug": "mlb-mia-phi-2026-06-16",
+   "side": "NO",
+   "entry": 0.875,
+   "cur": 0.875,
+   "stake": 450,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.581,
+   "pModel": 0.515,
+   "pBucket": 0.6,
+   "bucketN": 8,
+   "bk": "SHORT_FAVORITE|high|sport",
+   "ev": 0.107,
+   "kelly": 0.0469,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.875,
+    0.502,
+    1,
+    0.811,
+    0.601,
+    0.971,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 58% [model 52%, pattern 60% on n=8] · EV +0.11/$1 · 1/4-Kelly 4.7% of equity -> $450. 88c favorite resolving in 7.0d (favorite-longshot bias); +14% if it lands. Drivers: sports market -, 24h move size +, favorite setup +",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1782254400000,
+   "status": "open"
+  },
+  {
+   "id": "t17816517450464kzp",
+   "date": "2026-06-17",
+   "openedTs": 1781651745046,
+   "title": " Iran agrees to end enrichment of uranium by June 30?",
+   "mid": "1370652",
+   "conditionId": "0x9d3f02264a94bafc676afd7add8b11442e6ec72dabaa69cefef835f0672275c7",
+   "slug": "iran-agrees-to-end-enrichment-of-uranium-by-june-30",
+   "side": "YES",
+   "entry": 0.425,
+   "cur": 0.425,
+   "stake": 100,
+   "signal": "ELITE_FOLLOW",
+   "p": 0.61,
+   "pModel": 0.542,
+   "pBucket": 0.5,
+   "bucketN": 2,
+   "bk": "ELITE_FOLLOW|mid|other",
+   "ev": -0.009,
+   "kelly": 0.005,
+   "x": [
+    0,
+    0,
+    0,
+    0,
+    0.425,
+    0.069,
+    0.125,
+    0.831,
+    0.703,
+    0.166,
+    0,
+    0,
+    0
+   ],
+   "walletNames": [
+    "aenews2"
+   ],
+   "insight": "P(win) 61% [model 54%, pattern 50% on n=2] · EV -0.01/$1 · 1/4-Kelly 0.5% of equity -> $100. Elite wallet \"aenews2\" (74% win rate over 43 settled positions) bought Yes 3min ago at 44c — still copyable at 43c. Drivers: 24h volume +, liquidity +",
+   "target": 0.25,
+   "stop": 0.25,
+   "holdUntil": 1782515745047,
+   "status": "open"
+  },
+  {
    "id": "t1781645464496h9oy",
    "date": "2026-06-17",
    "openedTs": 1781645464496,
@@ -11,7 +97,7 @@
    "slug": "what-iranian-demands-will-trump-agree-to-by-june-30",
    "side": "NO",
    "entry": 0.30000000000000004,
-   "cur": 0.31000000000000005,
+   "cur": 0.29500000000000004,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.591,
@@ -539,7 +625,7 @@
    "slug": "mlb-kc-wsh-2026-06-15",
    "side": "NO",
    "entry": 0.935,
-   "cur": 0.605,
+   "cur": 0.565,
    "stake": 400,
    "signal": "SHORT_FAVORITE",
    "p": 0.572,
@@ -2685,6 +2771,8 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-17 04:45 IST — Opened NO $450 @ 88c P=58% EV=+0.11 [Short Favorite] \"Miami Marlins vs. Philadelphia Phillies\"",
+  "2026-06-17 04:45 IST — Opened YES $100 @ 43c P=61% EV=-0.01 [Elite Follow] \" Iran agrees to end enrichment of uranium by J\"",
   "2026-06-17 03:31 IST — Closed NO \"Will Iraq vs. Norway end in a draw?\" -> $-6 (Max hold reached — closed at market) · model said P(win)=68%",
   "2026-06-17 03:31 IST — Closed YES \"Spread: Norway (-2.5)\" -> +$6 (Max hold reached — closed at market) · model said P(win)=62%",
   "2026-06-17 03:01 IST — Opened NO $100 @ 30c P=59% EV=+0.04 [Volume Spike] \"Will Trump agree to withdraw troops from the I\"",
@@ -2696,9 +2784,7 @@
   "2026-06-17 00:16 IST — Opened NO $500 @ 84c P=68% EV=+0.13 [Short Favorite] \"Will Portugal vs. DR Congo end in a draw?\"",
   "2026-06-17 00:01 IST — Opened NO $500 @ 87c P=68% EV=+0.13 [Short Favorite] \"Will Iraq vs. Norway end in a draw?\"",
   "2026-06-17 00:01 IST — Opened NO $400 @ 79c P=68% EV=+0.13 [Short Favorite] \"Will France vs. Senegal end in a draw?\"",
-  "2026-06-17 00:01 IST — Opened NO $500 @ 82c P=68% EV=+0.13 [Short Favorite] \"Will Austria vs. Jordan end in a draw?\"",
-  "2026-06-16 23:19 IST — Elite pool refreshed: 5 wallets qualify (>=58% win rate over >=10 settled, scalpers excluded): donthackme 83%, aenews2 74%, PatrocIus 72%, cigarettes 58%, denizz 63%",
-  "2026-06-16 20:13 IST — Closed NO \"HSBC Championships: Giovanni Mpetshi Perri\" -> +$111 (Resolved in our favor) · model said P(win)=57%"
+  "2026-06-17 00:01 IST — Opened NO $500 @ 82c P=68% EV=+0.13 [Short Favorite] \"Will Austria vs. Jordan end in a draw?\""
  ],
  "brain": {
   "w": [
@@ -2849,7 +2935,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-16T23:01:16.757Z"
+    "updated": "2026-06-16T23:15:45.043Z"
    },
    {
     "key": "SHORT_FAVORITE|high|sport",
@@ -2861,7 +2947,7 @@
      84
     ],
     "text": "Short Favorite on high-priced sports markets: 5W/3L (posterior 60%, 90% CI 36-84%) — collecting evidence",
-    "updated": "2026-06-16T23:01:16.757Z"
+    "updated": "2026-06-16T23:15:45.043Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -2873,32 +2959,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-16T23:01:16.757Z"
+    "updated": "2026-06-16T23:15:45.043Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 6579.532212792373,
+  "cash": 6029.532212792373,
   "created": 1781162132851
  },
  "summary": {
   "realized": -920.47,
   "closed": 51,
   "wins": 22,
-  "open": 7,
-  "staked": 19850,
+  "open": 9,
+  "staked": 20400,
   "bankStart": 10000,
-  "cash": 6580,
-  "equity": 9023,
-  "returnPct": -9.77,
+  "cash": 6030,
+  "equity": 9001,
+  "returnPct": -9.99,
   "modelUpdates": 51,
   "brier": 0.276,
   "hypotheses": 3,
   "integrityOk": true,
-  "updated": "2026-06-16T23:01:16.761Z"
+  "updated": "2026-06-16T23:15:45.048Z"
  },
- "lastRun": 1781650876761,
+ "lastRun": 1781651745048,
  "elite": {
   "updated": 1781632184277,
   "list": [
@@ -2942,15 +3028,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-16T23:01:16.761Z",
-  "tradesChecked": 58
+  "checkedAt": "2026-06-16T23:15:45.048Z",
+  "tradesChecked": 60
  },
  "lastScan": {
-  "at": "2026-06-16T23:01:16.760Z",
+  "at": "2026-06-16T23:15:45.048Z",
   "marketsFetched": 61,
-  "rawCandidates": 17,
-  "clearedThreshold": 1,
-  "placed": 0,
+  "rawCandidates": 20,
+  "clearedThreshold": 3,
+  "placed": 2,
   "pMin": 0.57,
   "blocked": {
    "exposure": 0,
@@ -2958,6 +3044,6 @@
    "cash": 0,
    "sanity": 0
   },
-  "reason": "all remaining candidates blocked by event-correlation guard"
+  "reason": "traded"
  }
 }

@@ -56,20 +56,31 @@ function loadLab() {
   return { hypothesis: 'Order-book imbalance leads price by seconds on BTC up/down', mode: 'imbalance', created: Date.now(), probes: [], summary: {} };
 }
 
-/* find the live BTC up/down market and its UP token (we measure that book) */
+/* find the live BTC up/down market and its UP token (we measure that book).
+   Uses the SAME proven slug-first lookup the sniper uses (the title-regex
+   fallback alone was unreliable and left the lab with 0 probes). */
 async function findUpToken(B) {
-  try {
-    const evs = await jget(`${GAMMA}/events?closed=false&active=true&order=endDate&ascending=true&limit=100`);
-    const ev = (evs || []).find(e => /bitcoin up or down/i.test(e.title || '') && Math.abs(new Date(e.endDate || 0).getTime() - B) < 15000)
-      || (evs || []).find(e => /bitcoin up or down/i.test(e.title || ''));
-    if (!ev || !ev.markets || !ev.markets[0]) return null;
-    const m = ev.markets[0];
-    let outs = [], tokens = [];
-    try { outs = JSON.parse(m.outcomes || '[]'); } catch (e) {}
-    try { tokens = JSON.parse(m.clobTokenIds || '[]'); } catch (e) {}
-    const ui = outs.findIndex(o => /up/i.test(o));
-    return { token: tokens[ui] || tokens[0] || null, title: ev.title, marketId: m.id, endDate: ev.endDate };
-  } catch (e) { return null; }
+  let ev = null;
+  for (const sec of [B / 1000 - 300, B / 1000]) {
+    try {
+      const r = await jget(`${GAMMA}/events?slug=btc-updown-5m-${sec}`, 5000);
+      if (Array.isArray(r) && r[0] && r[0].markets) { ev = r[0]; break; }
+    } catch (e) {}
+  }
+  if (!ev) {
+    try {
+      const evs = await jget(`${GAMMA}/events?closed=false&active=true&order=endDate&ascending=true&limit=100`);
+      ev = (evs || []).find(e => /bitcoin up or down/i.test(e.title || '') && Math.abs(new Date(e.endDate || 0).getTime() - B) < 15000)
+        || (evs || []).find(e => /bitcoin up or down/i.test(e.title || ''));
+    } catch (e) {}
+  }
+  if (!ev || !ev.markets || !ev.markets[0]) return null;
+  const m = ev.markets[0];
+  let outs = [], tokens = [];
+  try { outs = JSON.parse(m.outcomes || '[]'); } catch (e) {}
+  try { tokens = JSON.parse(m.clobTokenIds || '[]'); } catch (e) {}
+  const ui = outs.findIndex(o => /up/i.test(o));
+  return { token: tokens[ui] || tokens[0] || null, title: ev.title, marketId: m.id, endDate: ev.endDate };
 }
 
 /* snapshot the L2 book -> total depth each side, mid, spread, imbalance */
@@ -91,16 +102,17 @@ async function snapshot(token) {
   return { mid, spread, bestBid, bestAsk, bidDepth, askDepth, imbalance };
 }
 
-async function probe(token, lab) {
+async function probe(token, lab, diag) {
   let s0;
-  try { s0 = await snapshot(token); } catch (e) { return; }
-  if (!s0) return;
+  try { s0 = await snapshot(token); } catch (e) { if (diag) diag.bookFail++; return; }
+  if (!s0) { if (diag) diag.emptyBook++; return; }
 
   await sleep(LAG_MS);
 
   let s1;
-  try { s1 = await snapshot(token); } catch (e) { return; }
-  if (!s1) return;
+  try { s1 = await snapshot(token); } catch (e) { if (diag) diag.bookFail++; return; }
+  if (!s1) { if (diag) diag.emptyBook++; return; }
+  if (diag) diag.ok++;
 
   const move = s1.mid - s0.mid;                            /* price change over the lag */
   const predUp = s0.imbalance >= 0.5;                      /* book-implied direction */
@@ -126,7 +138,7 @@ async function probe(token, lab) {
   log(`probe imb=${(s0.imbalance * 100).toFixed(0)}% spread=${(s0.spread * 100).toFixed(1)}c move=${(move * 100).toFixed(2)}c ${followed == null ? '(flat)' : followed ? 'FOLLOWED' : 'against'}${lopsided ? ' [lopsided]' : ''}${tradeable ? ' [tradeable]' : ''}`);
 }
 
-function summarize(lab) {
+function summarize(lab, diag) {
   const P = lab.probes.filter(p => p.followed != null);       /* only probes where price actually moved */
   const lop = P.filter(p => p.lopsided);                       /* the signal: lopsided book */
   const bal = P.filter(p => !p.lopsided);                      /* the baseline: balanced book */
@@ -151,6 +163,7 @@ function summarize(lab) {
     avgSpread: P.length ? round(P.reduce((a, p) => a + p.spread, 0) / P.length, 4) : null,
     avgAbsMove: P.length ? round(P.reduce((a, p) => a + Math.abs(p.move), 0) / P.length, 5) : null,
     lagSeconds: LAG_MS / 1000,
+    diag: diag || lab.summary?.diag || null,
     updated: new Date().toISOString()
   };
 }
@@ -161,21 +174,22 @@ function summarize(lab) {
   const endAt = Date.now() + DURATION_MS;
   log(`Imbalance Lab alive ${(DURATION_MS / 60000).toFixed(1)} min. Probes so far: ${lab.probes.length}.`);
 
+  const diag = { attempts: 0, noMarket: 0, noToken: 0, bookFail: 0, emptyBook: 0, ok: 0 };
   let token = null, tokenAt = 0;
   while (Date.now() < endAt - LAG_MS) {
-    /* refresh the market token every ~5 min (windows roll over) */
     if (!token || Date.now() - tokenAt > 300000) {
       const B = (Math.floor(Date.now() / 300000) + 1) * 300000;
       const m = await findUpToken(B);
-      if (m && m.token) { token = m.token; tokenAt = Date.now(); }
-      else { log('no BTC up/down market found, retrying'); await sleep(15000); continue; }
+      if (m && m.token) { token = m.token; tokenAt = Date.now(); log(`market: ${m.title} token ${String(m.token).slice(0, 10)}…`); }
+      else { diag.noMarket++; log('no BTC up/down market found, retrying'); await sleep(15000); continue; }
     }
-    await probe(token, lab);
-    summarize(lab);
+    diag.attempts++;
+    await probe(token, lab, diag);
+    summarize(lab, diag);
     fs.writeFileSync(OUT_FILE, JSON.stringify(lab));
     await sleep(Math.max(0, PROBE_EVERY_MS - LAG_MS));
   }
-  summarize(lab);
+  summarize(lab, diag);
   fs.writeFileSync(OUT_FILE, JSON.stringify(lab));
-  log(`Lab run done. ${JSON.stringify(lab.summary)}`);
+  log(`Lab run done. probes=${lab.probes.length} diag=${JSON.stringify(diag)}`);
 })();

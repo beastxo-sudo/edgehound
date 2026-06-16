@@ -11,7 +11,7 @@
    "slug": "mlb-nym-cin-2026-06-16",
    "side": "NO",
    "entry": 0.8049999999999999,
-   "cur": 0.8049999999999999,
+   "cur": 0.875,
    "stake": 450,
    "signal": "SHORT_FAVORITE",
    "p": 0.589,
@@ -53,7 +53,7 @@
    "slug": "what-iranian-demands-will-trump-agree-to-by-june-30",
    "side": "YES",
    "entry": 0.1995,
-   "cur": 0.1995,
+   "cur": 0.1915,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.608,
@@ -95,7 +95,7 @@
    "slug": "mlb-mia-phi-2026-06-16",
    "side": "NO",
    "entry": 0.875,
-   "cur": 0.975,
+   "cur": 0.974,
    "stake": 450,
    "signal": "SHORT_FAVORITE",
    "p": 0.581,
@@ -137,7 +137,7 @@
    "slug": "iran-agrees-to-end-enrichment-of-uranium-by-june-30",
    "side": "YES",
    "entry": 0.425,
-   "cur": 0.475,
+   "cur": 0.515,
    "stake": 100,
    "signal": "ELITE_FOLLOW",
    "p": 0.61,
@@ -667,7 +667,7 @@
    "slug": "fifwc-arg-alg-2026-06-16",
    "side": "NO",
    "entry": 0.29500000000000004,
-   "cur": 0.32499999999999996,
+   "cur": 0.345,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.594,
@@ -709,7 +709,7 @@
    "slug": "mlb-kc-wsh-2026-06-15",
    "side": "NO",
    "entry": 0.935,
-   "cur": 0.755,
+   "cur": 0.8049999999999999,
    "stake": 400,
    "signal": "SHORT_FAVORITE",
    "p": 0.572,
@@ -3019,7 +3019,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-16T23:30:56.272Z"
+    "updated": "2026-06-16T23:45:48.510Z"
    },
    {
     "key": "SHORT_FAVORITE|high|sport",
@@ -3031,7 +3031,7 @@
      84
     ],
     "text": "Short Favorite on high-priced sports markets: 5W/3L (posterior 60%, 90% CI 36-84%) — collecting evidence",
-    "updated": "2026-06-16T23:30:56.272Z"
+    "updated": "2026-06-16T23:45:48.510Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -3043,7 +3043,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-16T23:30:56.272Z"
+    "updated": "2026-06-16T23:45:48.510Z"
    }
   ]
  },
@@ -3060,15 +3060,15 @@
   "staked": 20950,
   "bankStart": 10000,
   "cash": 5480,
-  "equity": 9147,
-  "returnPct": -8.53,
+  "equity": 9219,
+  "returnPct": -7.81,
   "modelUpdates": 51,
   "brier": 0.276,
   "hypotheses": 3,
   "integrityOk": true,
-  "updated": "2026-06-16T23:30:56.277Z"
+  "updated": "2026-06-16T23:45:48.514Z"
  },
- "lastRun": 1781652656278,
+ "lastRun": 1781653548514,
  "elite": {
   "updated": 1781632184277,
   "list": [
@@ -3112,15 +3112,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-16T23:30:56.278Z",
+  "checkedAt": "2026-06-16T23:45:48.514Z",
   "tradesChecked": 62
  },
  "lastScan": {
-  "at": "2026-06-16T23:30:56.277Z",
-  "marketsFetched": 64,
-  "rawCandidates": 19,
-  "clearedThreshold": 3,
-  "placed": 2,
+  "at": "2026-06-16T23:45:48.513Z",
+  "marketsFetched": 59,
+  "rawCandidates": 24,
+  "clearedThreshold": 1,
+  "placed": 0,
   "pMin": 0.57,
   "blocked": {
    "exposure": 0,
@@ -3128,6 +3128,6 @@
    "cash": 0,
    "sanity": 0
   },
-  "reason": "traded"
+  "reason": "all remaining candidates blocked by event-correlation guard"
  }
 }

@@ -2,6 +2,90 @@
  "running": true,
  "journal": [
   {
+   "id": "t17816355815332d6s",
+   "date": "2026-06-17",
+   "openedTs": 1781635581533,
+   "title": "Will Argentina vs. Algeria end in a draw?",
+   "mid": "1897089",
+   "conditionId": "0x353bfdea6f2cae034f1cef73064086e6c904d60d58f96c69644789b510ba862f",
+   "slug": "fifwc-arg-alg-2026-06-16",
+   "side": "NO",
+   "entry": 0.795,
+   "cur": 0.795,
+   "stake": 400,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.68,
+   "pModel": 0.673,
+   "pBucket": 0.75,
+   "bucketN": 6,
+   "bk": "SHORT_FAVORITE|high|sport",
+   "ev": 0.126,
+   "kelly": 0.0595,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.795,
+    0.981,
+    0,
+    0.778,
+    0.871,
+    0.908,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 68% [model 67%, pattern 75% on n=6] · EV +0.13/$1 · 1/4-Kelly 6.0% of equity -> $400. 80c favorite resolving in 0.3d (favorite-longshot bias); +26% if it lands. Drivers: favorite setup +, liquidity +, 24h volume +",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1781658000000,
+   "status": "open"
+  },
+  {
+   "id": "t1781635581532ab1i",
+   "date": "2026-06-17",
+   "openedTs": 1781635581532,
+   "title": "Will Portugal vs. DR Congo end in a draw?",
+   "mid": "1897095",
+   "conditionId": "0xff1afdef47475128b85467bd1a3a4a3182da0c27409d81c2dc6c7d55b5467dad",
+   "slug": "fifwc-prt-cdr-2026-06-17",
+   "side": "NO",
+   "entry": 0.835,
+   "cur": 0.835,
+   "stake": 500,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.677,
+   "pModel": 0.675,
+   "pBucket": 0.75,
+   "bucketN": 6,
+   "bk": "SHORT_FAVORITE|high|sport",
+   "ev": 0.125,
+   "kelly": 0.0591,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.835,
+    0.934,
+    0,
+    0.793,
+    0.85,
+    0.977,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 68% [model 67%, pattern 75% on n=6] · EV +0.13/$1 · 1/4-Kelly 5.9% of equity -> $500. 84c favorite resolving in 0.9d (favorite-longshot bias); +20% if it lands. Drivers: favorite setup +, liquidity +, 24h volume +",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1781715600000,
+   "status": "open"
+  },
+  {
    "id": "t1781634714997dywt",
    "date": "2026-06-17",
    "openedTs": 1781634714997,
@@ -271,7 +355,7 @@
    "slug": "what-iranian-demands-will-trump-agree-to-by-june-30",
    "side": "YES",
    "entry": 0.1635,
-   "cur": 0.1545,
+   "cur": 0.1435,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.589,
@@ -2497,6 +2581,8 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-17 00:16 IST — Opened NO $400 @ 80c P=68% EV=+0.13 [Short Favorite] \"Will Argentina vs. Algeria end in a draw?\"",
+  "2026-06-17 00:16 IST — Opened NO $500 @ 84c P=68% EV=+0.13 [Short Favorite] \"Will Portugal vs. DR Congo end in a draw?\"",
   "2026-06-17 00:01 IST — Opened NO $500 @ 87c P=68% EV=+0.13 [Short Favorite] \"Will Iraq vs. Norway end in a draw?\"",
   "2026-06-17 00:01 IST — Opened NO $400 @ 79c P=68% EV=+0.13 [Short Favorite] \"Will France vs. Senegal end in a draw?\"",
   "2026-06-17 00:01 IST — Opened NO $500 @ 82c P=68% EV=+0.13 [Short Favorite] \"Will Austria vs. Jordan end in a draw?\"",
@@ -2508,9 +2594,7 @@
   "2026-06-16 07:40 IST — Opened YES $500 @ 85c P=62% EV=+0.12 [Short Favorite] \"Minnesota Twins vs. Texas Rangers\"",
   "2026-06-16 07:40 IST — Closed NO \"San Diego Padres vs. St. Louis Cardinals\" -> +$85 (Resolved in our favor) · model said P(win)=57%",
   "2026-06-16 07:12 IST — Closed NO \"Miami Marlins vs. Philadelphia Phillies\" -> +$103 (Resolved in our favor) · model said P(win)=57%",
-  "2026-06-16 07:12 IST — Closed NO \"New York Mets vs. Cincinnati Reds\" -> +$85 (Resolved in our favor) · model said P(win)=57%",
-  "2026-06-16 06:57 IST — Opened YES $400 @ 90c P=58% EV=+0.10 [Short Favorite] \"Detroit Tigers vs. Houston Astros\"",
-  "2026-06-16 06:43 IST — Opened NO $400 @ 83c P=57% EV=+0.10 [Short Favorite] \"San Diego Padres vs. St. Louis Cardinals\""
+  "2026-06-16 07:12 IST — Closed NO \"New York Mets vs. Cincinnati Reds\" -> +$85 (Resolved in our favor) · model said P(win)=57%"
  ],
  "brain": {
   "w": [
@@ -2661,7 +2745,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-16T18:31:54.991Z"
+    "updated": "2026-06-16T18:46:21.528Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -2673,7 +2757,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-16T18:31:54.991Z"
+    "updated": "2026-06-16T18:46:21.528Z"
    },
    {
     "key": "SHORT_FAVORITE|high|sport",
@@ -2685,32 +2769,32 @@
      99
     ],
     "text": "Short Favorite on high-priced sports markets: 5W/1L (posterior 75%, 90% CI 51-99%) — collecting evidence",
-    "updated": "2026-06-16T18:31:54.991Z"
+    "updated": "2026-06-16T18:46:21.528Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 6505.582371304626,
+  "cash": 5605.582371304626,
   "created": 1781162132851
  },
  "summary": {
   "realized": -894.42,
   "closed": 46,
   "wins": 20,
-  "open": 8,
-  "staked": 18650,
+  "open": 10,
+  "staked": 19550,
   "bankStart": 10000,
-  "cash": 6506,
-  "equity": 9199,
-  "returnPct": -8.01,
+  "cash": 5606,
+  "equity": 9192,
+  "returnPct": -8.08,
   "modelUpdates": 46,
   "brier": 0.272,
   "hypotheses": 3,
   "integrityOk": true,
-  "updated": "2026-06-16T18:31:54.997Z"
+  "updated": "2026-06-16T18:46:21.534Z"
  },
- "lastRun": 1781634714998,
+ "lastRun": 1781635581535,
  "elite": {
   "updated": 1781632184277,
   "list": [
@@ -2754,19 +2838,19 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-16T18:31:54.997Z",
-  "tradesChecked": 54
+  "checkedAt": "2026-06-16T18:46:21.535Z",
+  "tradesChecked": 56
  },
  "lastScan": {
-  "at": "2026-06-16T18:31:54.997Z",
+  "at": "2026-06-16T18:46:21.533Z",
   "marketsFetched": 61,
-  "rawCandidates": 35,
+  "rawCandidates": 34,
   "clearedThreshold": 4,
-  "placed": 3,
+  "placed": 2,
   "pMin": 0.57,
   "blocked": {
-   "exposure": 0,
-   "event": 1,
+   "exposure": 1,
+   "event": 0,
    "cash": 0,
    "sanity": 0
   },

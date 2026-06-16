@@ -56,7 +56,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(15,20,32,.92);backdrop-f
 nav{max-width:1280px;margin:18px auto 0;padding:0 24px;display:flex;gap:8px;flex-wrap:wrap}
 .tab{font-family:var(--display);font-weight:600;font-size:13.5px;letter-spacing:.01em;color:var(--muted);padding:9px 18px;border-radius:10px;border:1px solid transparent;transition:.15s}
 .tab:hover{color:var(--text)}
-.tab.active{color:var(--text);background:var(--surface);border-color:var(--border);box-shadow:0 0 0 1px var(--brand-soft),0 4px 14px -8px var(--brand)}
+.tab.active{color:var(--text);background:var(--surface);border-color:var(--border)}
 .tab .badge{font-family:var(--mono);font-size:10px;background:var(--brand-soft);color:var(--brand);border-radius:99px;padding:1px 7px;margin-left:7px}
 
 main{max-width:1280px;margin:0 auto;padding:20px 24px 80px}
@@ -65,8 +65,7 @@ main{max-width:1280px;margin:0 auto;padding:20px 24px 80px}
 
 /* ---------- Stat cards ---------- */
 .stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-bottom:22px}
-.stat-card{background:linear-gradient(180deg,var(--surface),var(--surface) 60%,rgba(139,147,255,.02));border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px 18px;position:relative;overflow:hidden}
-.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--brand-soft),transparent);opacity:.6}
+.stat-card{background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px 18px}
 .stat-card .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:7px}
 .stat-card .val{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:-.01em}
 .stat-card .sub{font-size:11.5px;color:var(--muted);margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -197,7 +196,6 @@ footer{max-width:1280px;margin:0 auto;padding:0 24px 40px;color:var(--faint);fon
   <div class="head-inner">
     <div class="logo"><span class="mark">▲</span>EdgeBook <small>Polymarket Intel</small></div>
     <div class="status-pill demo" id="statusPill"><span class="dot"></span><span id="statusTxt">CONNECTING…</span></div>
-    <div id="hdrBot" style="display:none;align-items:center;gap:8px;font-family:var(--mono);font-size:11.5px;padding:5px 11px;border:1px solid var(--border-soft);border-radius:8px"></div>
     <div class="head-spacer"></div>
     <button class="refresh-btn" onclick="boot(true)">↻ Refresh data</button>
   </div>
@@ -206,44 +204,16 @@ footer{max-width:1280px;margin:0 auto;padding:0 24px 40px;color:var(--faint);fon
 <div class="tape-wrap"><div class="tape" id="tape"></div></div>
 
 <nav>
-  <button class="tab active" data-page="overview" onclick="showPage('overview',this)">⌂ Overview</button>
-  <button class="tab" data-page="markets" onclick="showPage('markets',this)">Markets</button>
+  <button class="tab active" data-page="markets" onclick="showPage('markets',this)">Markets</button>
   <button class="tab" data-page="smart" onclick="showPage('smart',this)">Smart Money <span class="badge" id="walletCount"></span></button>
   <button class="tab" data-page="signals" onclick="showPage('signals',this)">Copy Signals</button>
   <button class="tab" data-page="bot" onclick="showPage('bot',this)">🐕 EdgeHound Bot <span class="badge" id="botBadge"></span></button>
-  <button class="tab" data-page="arb" onclick="showPage('arb',this)">⚖ Arb Scanner <span class="badge" id="arbBadge"></span></button>
 </nav>
 
 <main>
 
-<!-- ================= OVERVIEW ================= -->
-<section class="page active" id="page-overview">
-  <div id="ovStatus" style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px 18px;margin-bottom:14px">
-    <span class="status-pill demo"><span class="dot"></span><span>LOADING…</span></span>
-  </div>
-  <div class="stat-row" id="ovStats"></div>
-  <div id="ovAudit" style="margin-bottom:14px"></div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px">
-    <div style="background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px 18px">
-      <div class="section-h" style="margin:0 0 10px">What just happened</div>
-      <div id="ovActivity" style="font-size:12.5px;line-height:1.8;color:var(--muted)"><div class="empty">Waiting for data…</div></div>
-    </div>
-    <div style="background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px 18px">
-      <div class="section-h" style="margin:0 0 10px">The Analyst's latest word</div>
-      <div id="ovAnalyst" style="font-size:12.5px;line-height:1.7;color:var(--muted)"><div class="empty">No memo yet.</div></div>
-    </div>
-    <div style="background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px 18px">
-      <div class="section-h" style="margin:0 0 10px">What the brain has learned</div>
-      <div id="ovBrain" style="font-size:12.5px;line-height:1.8;color:var(--muted)"><div class="empty">Still gathering evidence.</div></div>
-    </div>
-  </div>
-  <div class="mini-note" style="margin-top:16px;line-height:1.7">
-    How this works: <b style="color:var(--text)">EdgeHound</b> scans Polymarket every 15 minutes and places 10–20 paper bets a day from a $10,000 virtual bankroll, each with a calculated win probability. Its <b style="color:var(--text)">brain</b> learns from every settled bet. Each morning at 09:07 IST the <b style="color:var(--text)">AI Analyst</b> (Claude) reviews everything like a fund manager and tunes the strategy within safety limits. No real money is involved.
-  </div>
-</section>
-
 <!-- ================= MARKETS ================= -->
-<section class="page" id="page-markets">
+<section class="page active" id="page-markets">
   <div id="demoBanner" style="display:none" class="banner">
     <b>Sample data mode.</b> This preview can't reach Polymarket's API from inside the chat sandbox, so it's showing realistic sample data so you can explore every feature. To go live: download this file and open it in your browser, or drag it into <a href="https://app.netlify.com/drop" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Netlify Drop</a> — it will then pull real-time markets, leaderboards and wallets automatically. No API key needed.
   </div>
@@ -295,13 +265,9 @@ footer{max-width:1280px;margin:0 auto;padding:0 24px 40px;color:var(--faint);fon
 
 <!-- ================= COPY SIGNALS ================= -->
 <section class="page" id="page-signals">
-  <div class="help-tip"><b>What this is:</b> a vetted smart-money radar. First we filter the leaderboard down to <b>elite wallets only</b> — ≥62% win rate over 15+ settled positions, with settlement-scalpers and bots excluded (a 98% win rate farming 2¢ spreads is a trap, not a signal). Then three signal tiers: <b>⚡ Fresh buys</b> (an elite wallet just entered — the strongest, most time-sensitive signal), <b>★ Consensus</b> (2+ elite wallets on the same side), and <b>💪 Big conviction</b> ($10K+ single positions). Every card gets a <b>copy grade</b>: A = price still at their entry, B = slightly late, C = the move already happened.</div>
+  <div class="help-tip"><b>What this is:</b> we scan the open positions of the top-ranked profitable wallets. When several of them independently hold the <b>same side of the same market</b>, that's a consensus signal — the strongest copy-trade candidates. "Avg smart entry" vs "price now" shows if you're late or still early.</div>
   <div id="sigStatus" class="loading"><span class="spinner"></span>Scanning top wallets…</div>
   <div class="sig-grid" id="sigGrid"></div>
-
-  <div class="section-h" style="margin-top:30px">🎲 Longshot Lab <small>high risk · asymmetric payout · most of these lose</small></div>
-  <div class="help-tip">These are NOT safe bets — they're cheap outcomes (usually under 35¢) where one historical pattern justifies a small punt: either <b>elite accumulation</b> (vetted winning wallets quietly buying a cheap side — the documented signature of informed money is entering at 25–30¢ what later trades at 40¢+) or <b>ignition</b> (a cheap outcome repricing fast on real volume — early innings of a developing story). The honest math: expect most to lose; the hypothesis is that the winners' 3–8x payouts outweigh the losers. Size accordingly — think ≤1% of bankroll per punt, never more.</div>
-  <div class="sig-grid" id="sigGrid2"><div class="empty">Longshot signals appear when the patterns fire.</div></div>
 </section>
 
 <!-- ================= EDGEHOUND BOT ================= -->
@@ -328,14 +294,6 @@ footer{max-width:1280px;margin:0 auto;padding:0 24px 40px;color:var(--faint);fon
     <button class="btn" style="flex:0 0 auto;padding:9px 16px" onclick="Bot.clearRemote()">Local mode</button>
   </div>
 
-  <div class="section-h">AI Analyst <small id="analystStamp">supervisor memos</small></div>
-  <div id="analystPanel" style="background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px 18px;margin-bottom:4px;font-size:12.5px;line-height:1.65;color:var(--muted)">
-    <div class="empty">Analyst memos appear here once the supervisor runs.</div>
-  </div>
-
-  <div class="section-h">Bot run history <small id="nextRun">—</small></div>
-  <div class="feed" id="runHistory" style="margin-bottom:4px"><div class="empty">Run history appears here when watching the cloud bot.</div></div>
-
   <div class="section-h">Equity curve <small>cumulative realized P&L</small></div>
   <div style="background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px"><div class="chart-box" style="margin:0;height:220px"><canvas id="equityChart"></canvas></div></div>
 
@@ -361,48 +319,6 @@ footer{max-width:1280px;margin:0 auto;padding:0 24px 40px;color:var(--faint);fon
     Honest caveats: paper fills assume you get the shown price — real trading has spread and slippage, especially on thin markets. The short-favorite engine wins often but loses big when a favorite flips, so judge it on long-run P&L, not win rate. Signal weights need ~30+ settled trades each before they mean much. The bot trades only while this page is open; on every visit it catches up on settlements and exits since you left.
   </div>
 </section>
-
-<!-- ================= ARB SCANNER ================= -->
-<section class="page" id="page-arb">
-  <div class="help-tip"><b>What this hunts:</b> situations where Polymarket prices are mathematically inconsistent — where you can lock in a guaranteed profit regardless of outcome. Three detectors: <b>Multi-outcome</b> (all possible outcomes of one event sum to less than $1 — buy every YES, exactly one pays $1), <b>Buy-both</b> (YES + NO purchasable for under $1 combined), and <b>Date ladder</b> ("by June 30" priced below "by June 15" — logically impossible, so the pair locks a profit). This scanner is fully separate from EdgeHound.</div>
-  <div class="stat-row" id="arbStats"></div>
-  <div class="controls">
-    <button class="btn primary" style="flex:0 0 auto;padding:9px 18px" onclick="Arb.scan()">🔍 Scan now</button>
-    <label style="display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11.5px;color:var(--muted);cursor:pointer">
-      <input type="checkbox" id="arbAuto" checked onchange="Arb.auto()"> auto-rescan every 60s
-    </label>
-    <label style="display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11.5px;color:var(--muted)">
-      Example with $<input id="arbStake" type="number" value="10" min="1" max="10000" oninput="Arb.render()" style="width:70px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:6px 8px;color:var(--text);font-family:var(--mono);font-size:12px">
-    </label>
-    <div class="head-spacer"></div>
-    <select class="ctrl" id="arbDays" onchange="Arb.render()">
-      <option value="1">Resolves within: 24 hours</option>
-      <option value="3">Resolves within: 3 days</option>
-      <option value="7" selected>Resolves within: 1 week</option>
-      <option value="30">Resolves within: 1 month</option>
-      <option value="9999">Resolves: anytime</option>
-    </select>
-    <select class="ctrl" id="arbMin" onchange="Arb.render()">
-      <option value="0.5">Show edge ≥ 0.5%</option>
-      <option value="1" selected>Show edge ≥ 1%</option>
-      <option value="2">Show edge ≥ 2%</option>
-      <option value="0.1">Show everything (incl. dust)</option>
-    </select>
-  </div>
-  <div class="section-h" style="margin-top:6px">🎯 60-Second Sniper Lab <small>bet $10 each window — do we come out ahead?</small></div>
-  <div class="help-tip"><b>The test in plain terms:</b> 60 seconds before each 5-minute Bitcoin window closes, the bot bets <b>$10</b> on whichever direction the price is currently moving, at the real Polymarket price. Then it checks if that bet won. The scorecard below shows exactly what you'd have if you'd done this every time: how much you put in, how much came back, and your % return. <b>If "every $10 returns more than $10," there's an edge. If less, there isn't.</b> We moved from 5s → 60s because at 5s the price was already 98¢ (no room for profit); 60s out it should be cheaper. <b>Every bet is settled against Polymarket itself</b> — the actual market that pays the bet, read after it officially resolves (shown as ⬤ Polymarket). Binance and Coinbase are kept as a cross-check; if they ever disagree with Polymarket's result, the bet still counts as Polymarket scored it (that's what your money would do) but the disagreement is flagged. Bets that close exactly flat, or can't be confirmed, are excluded rather than guessed.
-  <span id="snip5sArchive"></span></div>
-  <div id="sniperPanel" style="background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px 18px;margin-bottom:18px"><div class="empty">Loading lab results…</div></div>
-
-  <div class="section-h">Locked-profit scanner</div>
-  <div id="arbList" class="sig-grid"><div class="loading"><span class="spinner"></span>Scanning for mispricings…</div></div>
-  <div class="mini-note" style="margin-top:18px;line-height:1.7">
-    Honest caveats: edges are computed from listed prices, not full order-book depth — a 3% edge on $200 of depth is real but tiny, and big edges usually vanish in seconds to faster bots. Multi-outcome math assumes the event's outcomes are mutually exclusive and exhaustive (the scanner prefers events Polymarket flags as such, but always sanity-check the market rules — "other/none of the above" gaps break the math). Locked profit is also locked capital until resolution. Treat this page as a research surface, not an execution promise.
-  </div>
-</section>
-
-<!-- ================= CRYPTO EDGE ================= -->
-
 
 </main>
 
@@ -826,192 +742,48 @@ function closeWallet(){$('walletDetail').style.display='none';$('smartList').sty
 /* ---------------- copy signals ---------------- */
 async function loadSignals(){
   $('sigStatus').style.display='flex'; $('sigGrid').innerHTML='';
-  let signals=[],longshots=[];
+  let agg={};
+  const top=LEADERS.length?LEADERS.slice(0,8):DEMO.leaders.slice(0,8);
   if(LIVE){
-    try{ const r=await buildSmartSignals(); signals=r.signals||[]; longshots=r.longshots||[]; }catch(e){ signals=[];longshots=[]; }
-  } else {
-    signals=DEMO_SMART_SIGNALS; longshots=DEMO_LONGSHOTS;
+    const results=await Promise.allSettled(top.map(l=>fetchPositions(l.wallet)));
+    results.forEach((r,i)=>{
+      if(r.status!=='fulfilled')return;
+      r.value.filter(p=>!p.redeemable&&p.value>50).forEach(p=>{
+        const key=p.title+'|'+p.outcome;
+        agg[key]=agg[key]||{title:p.title,outcome:p.outcome,slug:p.slug,wallets:new Set(),value:0,entrySum:0,entryN:0,cur:p.cur};
+        agg[key].wallets.add(top[i].name); agg[key].value+=p.value;
+        agg[key].entrySum+=p.avg; agg[key].entryN++; agg[key].cur=p.cur;
+      });
+    });
+  }else{
+    DEMO.signals.forEach(s=>{agg[s.title]={...s,wallets:new Set(s.wallets)};});
   }
-  renderLongshots(longshots);
-  /* keep the bot's local-mode consensus feed alive (compat shape) */
-  window.__lastSignals=signals.filter(s=>s.type==='CONSENSUS').map(s=>({
-    title:s.title,outcome:s.outcome,slug:s.slug,n:s.n||2,value:s.value||0,
-    avgEntry:s.entry,cur:s.cur,wallets:s.wallets||[],entryN:0,entrySum:0,conditionId:s.conditionId||''}));
+  const sigs=Object.values(agg)
+    .map(s=>({...s,n:s.wallets.size,avgEntry:s.entryN?s.entrySum/s.entryN:s.avgEntry}))
+    .filter(s=>s.n>=2)
+    .sort((a,b)=>b.n-a.n||b.value-a.value)
+    .slice(0,12);
+  window.__lastSignals=sigs;
   $('sigStatus').style.display='none';
-  if(!signals.length){
-    $('sigGrid').innerHTML='<div class="empty">No qualifying smart-money signals right now. The bar is deliberately high: only wallets with ≥62% win rate over 15+ settled positions count, and stale or already-run entries are filtered out. Check back — fresh elite buys appear within minutes of happening.</div>';
+  if(!sigs.length){
+    $('sigGrid').innerHTML='<div class="empty">No overlapping positions among the top wallets right now — check individual wallets in Smart Money instead.</div>';
     return;
   }
-  $('sigGrid').innerHTML=signals.slice(0,18).map(s=>{
+  $('sigGrid').innerHTML=sigs.map(s=>{
     const sideY=/yes/i.test(s.outcome);
-    const run=s.entry>0&&s.cur>0?((s.cur-s.entry)/s.entry)*100:0;
-    const grade=s.cur<=0? 'C' : run<=3?'A':run<=8?'B':'C';
-    const gradeTxt={A:'A — copy window wide open (price ≈ their entry)',B:'B — slightly late, still reasonable',C:'C — price has run; most of the edge is gone'}[grade];
-    const gradeColor={A:'var(--yes)',B:'var(--amber)',C:'var(--no)'}[grade];
-    const typeChip={FRESH_BUY:'⚡ FRESH ELITE BUY',CONSENSUS:'★ ELITE CONSENSUS',BIG_POSITION:'💪 BIG CONVICTION'}[s.type]||s.type;
+    const edge=s.avgEntry>0?((s.cur-s.avgEntry)/s.avgEntry)*100:0;
+    const read=s.cur<=s.avgEntry*1.05?'Entry still close to smart-money average — copy window open':'Price has run '+edge.toFixed(0)+'% past their average entry — reduced edge';
     return `<div class="sig-card">
-      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
-        <span class="consensus">${typeChip}</span>
-        <span class="side-tag" style="background:rgba(255,255,255,.04);color:${gradeColor};border:1px solid ${gradeColor}">Copy grade ${grade}</span>
-      </div>
-      <div class="q">${esc(s.title)}</div>
-      <div><span class="side-tag ${sideY?'y':'n'}">${esc((s.outcome||'').toUpperCase())}</span> ${s.fresh?'<span class="vol-flag">'+esc(s.fresh)+'</span>':''}</div>
-      <div class="sig-stats">
-        <div class="cell"><div class="l">Their entry</div><div class="v">${cents(s.entry)}</div></div>
-        <div class="cell"><div class="l">Price now</div><div class="v">${s.cur>0?cents(s.cur):'—'}</div></div>
-        <div class="cell"><div class="l">${s.type==='CONSENSUS'?'Combined stake':'Their stake'}</div><div class="v">${fmtUSD(s.value)}</div></div>
-      </div>
-      <div class="holders-line"><b style="color:var(--text)">${esc(s.who)}</b></div>
-      <div class="holders-line">${esc(gradeTxt)} · payout if right: <b style="color:var(--yes)">${retLabel(s.cur>0?s.cur:s.entry)}</b></div>
-      <div class="actions" style="display:flex;gap:8px">
-        <a class="btn" target="_blank" rel="noopener" href="https://news.google.com/search?q=${encodeURIComponent(s.title)}">📰 News</a>
-        <a class="btn primary" target="_blank" rel="noopener" href="https://polymarket.com/event/${esc(s.slug||'')}">Trade ↗</a>
-      </div>
-    </div>`;
-  }).join('');
-}
-
-/* Research-backed smart-money signal builder:
-   1) vet a pool of elite wallets (>=62% win rate over >=15 settled, settlement-scalpers excluded), cached 24h
-   2) tier 1: FRESH BUYS by elite wallets in the last 24h
-   3) tier 2: CONSENSUS — 2+ elite wallets holding the same side
-   4) tier 3: BIG CONVICTION — an elite wallet with $10K+ on one outcome
-   Every signal graded A/B/C by how far price has run past their entry. */
-async function buildSmartSignals(){
-  /* --- elite pool (cached) --- */
-  let pool=null;
-  const cached=store.get('eb_elite');
-  if(cached && Date.now()-cached.updated<24*3600e3 && (cached.pool||[]).length) pool=cached.pool;
-  if(!pool){
-    const lb=await jget(`${DATA}/v1/leaderboard?category=OVERALL&timePeriod=MONTH&orderBy=PNL&limit=30`);
-    const top=(Array.isArray(lb)?lb:[]).slice(0,25);
-    const res=await Promise.allSettled(top.map(l=>jget(`${DATA}/positions?user=${l.proxyWallet}&sortBy=CURRENT&sortDirection=DESC&limit=100`)));
-    pool=[];
-    res.forEach((r,i)=>{
-      if(r.status!=='fulfilled'||!Array.isArray(r.value))return;
-      const pos=r.value;
-      const decided=pos.filter(p=>p.redeemable||Math.abs(Number(p.realizedPnl)||0)>1);
-      if(decided.length<15)return;
-      const wins=decided.filter(p=>(p.redeemable?(Number(p.currentValue)||0)-(Number(p.initialValue)||0):(Number(p.realizedPnl)||0))>0).length;
-      const winRate=wins/decided.length;
-      const scalpShare=pos.length?pos.filter(p=>(Number(p.avgPrice)||0)>=0.93).length/pos.length:1;
-      if(winRate>=0.62&&scalpShare<0.5)
-        pool.push({wallet:top[i].proxyWallet,name:top[i].userName||top[i].proxyWallet.slice(0,8),winRate:+winRate.toFixed(3),n:decided.length});
-    });
-    pool.sort((a,b)=>b.winRate*Math.log(1+b.n)-a.winRate*Math.log(1+a.n));
-    pool=pool.slice(0,12);
-    store.set('eb_elite',{updated:Date.now(),pool});
-  }
-  if(!pool.length) return [];
-  const cred=w=>`${w.name} — ${Math.round(w.winRate*100)}% win rate over ${w.n} settled positions`;
-
-  /* --- positions + activity for the pool --- */
-  const [posRes,actRes]=await Promise.all([
-    Promise.allSettled(pool.map(w=>jget(`${DATA}/positions?user=${w.wallet}&sortBy=CURRENT&sortDirection=DESC&limit=60`))),
-    Promise.allSettled(pool.map(w=>jget(`${DATA}/activity?user=${w.wallet}&limit=20&sortDirection=DESC`)))
-  ]);
-  const sigs=[]; const agg={};
-  const curOf={}; /* conditionId|outcome -> current price (from positions payloads) */
-  posRes.forEach((r,i)=>{
-    if(r.status!=='fulfilled'||!Array.isArray(r.value))return;
-    const w=pool[i];
-    r.value.filter(p=>!p.redeemable&&Number(p.currentValue)>100&&(Number(p.avgPrice)||1)<0.93).forEach(p=>{
-      const cur=Number(p.curPrice)||0, avg=Number(p.avgPrice)||0, val=Number(p.currentValue)||0;
-      curOf[(p.conditionId||p.title)+'|'+String(p.outcome).toLowerCase()]=cur;
-      /* consensus aggregation */
-      const k=p.title+'|'+p.outcome;
-      agg[k]=agg[k]||{title:p.title,outcome:p.outcome,slug:p.eventSlug||'',conditionId:p.conditionId||'',wallets:[],value:0,entrySum:0,entryN:0,cur};
-      agg[k].wallets.push(w); agg[k].value+=val; agg[k].entrySum+=avg; agg[k].entryN++; agg[k].cur=cur;
-      /* big conviction singles */
-      if(val>=10000 && cur>0.03 && cur<0.95){
-        sigs.push({type:'BIG_POSITION',title:p.title,outcome:p.outcome,slug:p.eventSlug||'',conditionId:p.conditionId||'',
-          entry:avg,cur,value:val,who:cred(w),score:2+Math.min(1,val/1e5)*w.winRate});
-      }
-    });
-  });
-  /* consensus tier */
-  Object.values(agg).filter(a=>a.wallets.length>=2).forEach(a=>{
-    sigs.push({type:'CONSENSUS',title:a.title,outcome:a.outcome,slug:a.slug,conditionId:a.conditionId,
-      entry:a.entryN?a.entrySum/a.entryN:0,cur:a.cur,value:a.value,n:a.wallets.length,
-      wallets:a.wallets.map(w=>w.name),
-      who:a.wallets.length+' elite wallets aligned: '+a.wallets.map(w=>w.name+' ('+Math.round(w.winRate*100)+'%)').join(', '),
-      score:2.5+a.wallets.length*0.3});
-  });
-  /* fresh buys tier */
-  actRes.forEach((r,i)=>{
-    if(r.status!=='fulfilled'||!Array.isArray(r.value))return;
-    const w=pool[i];
-    r.value.filter(a=>a.type==='TRADE'&&a.side==='BUY').forEach(a=>{
-      const ageH=(Date.now()-(Number(a.timestamp)||0)*1000)/3600e3;
-      const fill=Number(a.price)||0, usd=Number(a.usdcSize)||0;
-      if(ageH>24||ageH<0||usd<200||fill<0.05||fill>0.92)return;
-      const cur=curOf[(a.conditionId||a.title)+'|'+String(a.outcome).toLowerCase()]||0;
-      sigs.push({type:'FRESH_BUY',title:a.title,outcome:a.outcome,slug:a.eventSlug||a.slug||'',conditionId:a.conditionId||'',
-        entry:fill,cur,value:usd,who:cred(w),
-        fresh:ageH<1?Math.round(ageH*60)+' min ago':Math.round(ageH)+'h ago',
-        score:3.5-Math.min(1.5,ageH/16)+w.winRate});
-    });
-  });
-  /* --- longshot lab: tier L1 elite accumulation of cheap outcomes --- */
-  const longs=[];
-  posRes.forEach((r,i)=>{
-    if(r.status!=='fulfilled'||!Array.isArray(r.value))return;
-    const w=pool[i];
-    r.value.filter(p=>!p.redeemable&&(Number(p.avgPrice)||1)<=0.35&&Number(p.currentValue)>=2000&&(Number(p.curPrice)||0)>0.02&&(Number(p.curPrice)||1)<0.55).forEach(p=>{
-      const avg=Number(p.avgPrice)||0,cur=Number(p.curPrice)||0,val=Number(p.currentValue)||0;
-      longs.push({type:'ELITE_LONGSHOT',title:p.title,outcome:p.outcome,slug:p.eventSlug||'',
-        entry:avg,cur,value:val,mult:cur>0?1/cur:0,
-        who:cred(w),
-        hypothesis:`${w.name} (${Math.round(w.winRate*100)}% win rate) has $${Math.round(val/1000)}K on this at avg ${cents(avg)}${cur>avg*1.05?' — and the market is already moving their way ('+cents(cur)+' now)':' — entered before consensus, classic informed-accumulation shape'}. Historically, elite wallets' cheap entries are their highest-edge trades.`,
-        score:1+w.winRate+Math.min(1,val/3e4)});
-    });
-  });
-  /* --- tier L2: ignition — cheap outcome repricing fast on volume --- */
-  (typeof MARKETS!=='undefined'?MARKETS:[]).forEach(m=>{
-    const sides=[['Yes',m.yes,m.chg],['No',m.no,-m.chg]];
-    sides.forEach(([out,p,d])=>{
-      if(p>0.04&&p<=0.30&&d>=0.05&&m.vol24>=100000){
-        longs.push({type:'IGNITION',title:m.q,outcome:out,slug:m.eventSlug||m.slug||'',
-          entry:p,cur:p,value:m.vol24,mult:1/p,
-          who:'Market signal — no single wallet',
-          hypothesis:`This side has jumped ${(d*100).toFixed(1)} points in 24h on ${fmtUSD(m.vol24)} of volume while still cheap at ${cents(p)}. Cheap outcomes that reprice fast on heavy volume are often the first leg of a developing story — the bet is the story keeps developing. Payout ${(1/p).toFixed(1)}x if it completes.`,
-          score:0.8+d*4+Math.min(.5,m.vol24/3e6)});
-      }
-    });
-  });
-  const lseen={};
-  const longshots=longs.sort((a,b)=>b.score-a.score).filter(s=>{
-    const k=s.title+'|'+s.outcome; if(lseen[k])return false; lseen[k]=1; return true;
-  }).slice(0,8);
-
-  /* dedupe (same market+side keeps highest score) and rank */
-  const seen={};
-  const signals=sigs.sort((a,b)=>b.score-a.score).filter(s=>{
-    const k=s.title+'|'+s.outcome+'|'+s.type; if(seen[k])return false; seen[k]=1; return true;
-  });
-  return {signals,longshots};
-}
-function renderLongshots(longs){
-  const box=$('sigGrid2'); if(!box)return;
-  if(!longs.length){ box.innerHTML='<div class="empty">No longshot patterns firing right now — elite wallets aren\'t accumulating anything cheap, and nothing cheap is repricing on volume.</div>'; return; }
-  box.innerHTML=longs.map(s=>{
-    const sideY=/yes/i.test(s.outcome);
-    const chip=s.type==='ELITE_LONGSHOT'?'🧠 ELITE ACCUMULATION':'🔥 IGNITION';
-    return `<div class="sig-card" style="border-color:rgba(245,181,68,.35)">
-      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
-        <span class="consensus" style="background:var(--amber-soft);color:var(--amber)">${chip}</span>
-        <span class="vol-flag">HIGH RISK</span>
-      </div>
+      <span class="consensus">★ ${s.n} top traders aligned</span>
       <div class="q">${esc(s.title)}</div>
       <div><span class="side-tag ${sideY?'y':'n'}">${esc((s.outcome||'').toUpperCase())}</span></div>
       <div class="sig-stats">
-        <div class="cell"><div class="l">Price</div><div class="v">${cents(s.cur||s.entry)}</div></div>
-        <div class="cell"><div class="l">Pays if right</div><div class="v" style="color:var(--amber)">${s.mult?s.mult.toFixed(1)+'x':'—'}</div></div>
-        <div class="cell"><div class="l">${s.type==='ELITE_LONGSHOT'?'Elite stake':'24h volume'}</div><div class="v">${fmtUSD(s.value)}</div></div>
+        <div class="cell"><div class="l">Avg smart entry</div><div class="v">${cents(s.avgEntry)}</div></div>
+        <div class="cell"><div class="l">Price now</div><div class="v">${cents(s.cur)}</div></div>
+        <div class="cell"><div class="l">Combined stake</div><div class="v">${fmtUSD(s.value)}</div></div>
       </div>
-      <div class="holders-line"><b style="color:var(--text)">${esc(s.who)}</b></div>
-      <div class="holders-line">💡 ${esc(s.hypothesis)}</div>
-      <div class="holders-line" style="color:var(--no)">⚠ Implied odds say this loses ${Math.round((1-(s.cur||s.entry))*100)}% of the time — punt-sized stakes only.</div>
+      <div class="holders-line">Held by: <b style="color:var(--text)">${[...s.wallets].slice(0,4).map(esc).join(', ')}${s.wallets.size>4?' +'+(s.wallets.size-4):''}</b></div>
+      <div class="holders-line">${read} · payout if right: <b style="color:var(--yes)">${retLabel(s.cur)}</b></div>
       <div class="actions" style="display:flex;gap:8px">
         <a class="btn" target="_blank" rel="noopener" href="https://news.google.com/search?q=${encodeURIComponent(s.title)}">📰 News</a>
         <a class="btn primary" target="_blank" rel="noopener" href="https://polymarket.com/event/${esc(s.slug||'')}">Trade ↗</a>
@@ -1019,16 +791,6 @@ function renderLongshots(longs){
     </div>`;
   }).join('');
 }
-const DEMO_LONGSHOTS=[
-  {type:'ELITE_LONGSHOT',title:'Will OpenAI release GPT-6 before September 2026?',outcome:'Yes',slug:'',entry:.21,cur:.27,value:18000,mult:3.7,who:'gauchito — 64% win rate over 88 settled positions',hypothesis:'gauchito (64% win rate) has $18K on this at avg 21¢ — and the market is already moving their way (27¢ now). Historically, elite wallets\' cheap entries are their highest-edge trades.'},
-  {type:'IGNITION',title:'Will there be a US TikTok divest-or-ban enforcement before October?',outcome:'Yes',slug:'',entry:.18,cur:.18,value:860000,mult:5.6,who:'Market signal — no single wallet',hypothesis:'This side has jumped 6.4 points in 24h on $860.0K of volume while still cheap at 18¢. Cheap outcomes that reprice fast on heavy volume are often the first leg of a developing story. Payout 5.6x if it completes.'}
-];
-const DEMO_SMART_SIGNALS=[
-  {type:'FRESH_BUY',title:'Will the Fed cut rates at the July FOMC meeting?',outcome:'Yes',slug:'',entry:.58,cur:.59,value:14000,fresh:'22 min ago',who:'FedWatcherPro — 71% win rate over 64 settled positions',score:4},
-  {type:'CONSENSUS',title:'Will US CPI (YoY) come in below 2.5% for June?',outcome:'Yes',slug:'',entry:.52,cur:.55,value:96000,n:3,wallets:['FedWatcherPro','macro_anon','quietsize'],who:'3 elite wallets aligned: FedWatcherPro (71%), macro_anon (66%), quietsize (64%)',score:3.4},
-  {type:'BIG_POSITION',title:'Will the S&P 500 close above 7,000 by end of Q3?',outcome:'Yes',slug:'',entry:.44,cur:.48,value:52000,who:'DeepValue — 68% win rate over 41 settled positions',score:2.7},
-  {type:'FRESH_BUY',title:'Will OpenAI release GPT-6 before September 2026?',outcome:'Yes',slug:'',entry:.27,cur:.31,value:8000,fresh:'5h ago',who:'gauchito — 64% win rate over 88 settled positions',score:2.6}
-];
 
 /* ---------------- nav ---------------- */
 function showPage(p,btn){
@@ -1128,8 +890,7 @@ const STRATS={
   SHORT_FAVORITE:{label:'Short Favorite',desc:'78–94¢ favorites resolving ≤7d (favorite-longshot bias)',hold:8,target:null,stop:.45},
   MOMENTUM:{label:'Momentum',desc:'≥4pt 24h move on volume — ride trend, exit fast',hold:3,target:.18,stop:.20},
   SMART_CONSENSUS:{label:'Smart Consensus',desc:'2+ top wallets same side, price near their entry',hold:14,target:.30,stop:.30},
-  VOLUME_SPIKE:{label:'Volume Spike',desc:'Abnormal 24h volume vs lifetime — attention trade',hold:5,target:.22,stop:.25},
-  ELITE_FOLLOW:{label:'Elite Follow',desc:'Fresh buys from vetted wallets (≥62% win rate, scalpers excluded)',hold:10,target:.25,stop:.25}
+  VOLUME_SPIKE:{label:'Volume Spike',desc:'Abnormal 24h volume vs lifetime — attention trade',hold:5,target:.22,stop:.25}
 };
 
 const Bot={
@@ -1153,14 +914,9 @@ const Bot={
       clearInterval(this.timer);
       this.timer=setInterval(async()=>{
         try{const s=await jget(this.remoteUrl+(this.remoteUrl.includes('?')?'&':'?')+'_='+Date.now(),6000);
-          if(s&&Array.isArray(s.journal)){this.state=s;this.render();this.loadRunHistory();this.loadAnalyst();this.loadAudit();}}catch(e){}
+          if(s&&Array.isArray(s.journal)){this.state=s;this.render();}}catch(e){}
       },5*60*1000);
       this.render();
-      this.loadRunHistory();
-      this.loadAnalyst();
-      this.startCountdown();
-      this.renderOverview();
-      this.loadAudit();
       const el=$('botLog'); if(el) el.innerHTML='☁ Watching cloud journal: '+esc(this.remoteUrl)+'<br>'+(this.state.log||[]).map(esc).join('<br>');
       return;
     }
@@ -1176,172 +932,6 @@ const Bot={
 
   setRemote(){ const v=$('remoteUrl').value.trim(); if(!v)return; store.set('eh_remote',v); this.init(); },
   clearRemote(){ store.set('eh_remote',''); this.init(); },
-
-  /* ---- run history & next-run countdown (cloud mode) ---- */
-  deriveRepo(){
-    /* figure out owner/repo from the page host (GitHub Pages) or the raw URL */
-    try{
-      if(/\.github\.io$/.test(location.hostname)){
-        const owner=location.hostname.split('.')[0];
-        const repo=location.pathname.split('/').filter(Boolean)[0];
-        if(owner&&repo) return owner+'/'+repo;
-      }
-      const m=(this.remoteUrl||'').match(/raw\.githubusercontent\.com\/([^/]+)\/([^/]+)\//);
-      if(m) return m[1]+'/'+m[2];
-    }catch(e){}
-    return null;
-  },
-  async loadAudit(){
-    const box=$('ovAudit'); if(!box)return;
-    const base=(this.remoteUrl||'').match(/^(https:\/\/raw\.githubusercontent\.com\/[^/]+\/[^/]+\/[^/]+)\//);
-    const u=(f)=>base?base[1]+'/data/'+f:'data/'+f;
-    let audit=null, review=null;
-    try{ audit=await jget(u('audit.json')+'?_='+Date.now(),6000); }catch(e){}
-    try{ review=await jget(u('review.json')+'?_='+Date.now(),6000); }catch(e){}
-    if(!audit&&!review){ box.innerHTML=''; return; }
-    const health=(review&&review.overallHealth)||'healthy';
-    const hColor=health==='healthy'?'var(--yes)':health==='minor-issues'?'var(--amber)':'var(--no)';
-    const hLabel=health==='healthy'?'✓ All systems healthy':health==='minor-issues'?'⚠ Minor issues':'⚠ Needs attention';
-    const af=audit&&audit.summary?audit.summary.autoFixed:0;
-    const code=(review&&review.openCodeIssues)||[];
-    const detCode=(audit&&audit.openCodeIssues)||[];
-    box.innerHTML=`
-      <div style="background:var(--surface);border:1px solid var(--border-soft);border-left:3px solid ${hColor};border-radius:var(--radius);padding:14px 18px">
-        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px">
-          <span style="font-family:var(--display);font-weight:700;font-size:14px;color:${hColor}">${hLabel}</span>
-          <span style="font-family:var(--mono);font-size:10.5px;color:var(--faint)">self-audit runs every cycle · AI review every 2h</span>
-          ${af?`<span style="font-family:var(--mono);font-size:10.5px;color:var(--yes);background:var(--yes-soft);padding:2px 8px;border-radius:99px">${af} auto-fixed</span>`:''}
-        </div>
-        ${review&&review.headline?`<div style="font-size:12.5px;color:var(--text);margin-bottom:${code.length||detCode.length?'10px':'0'}">${esc(review.headline)}</div>`:''}
-        ${code.length?`<div style="font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin-bottom:6px">Open issues flagged for a fix</div>
-          <div style="display:flex;flex-direction:column;gap:6px">${code.slice(0,5).map(f=>`
-            <div style="background:var(--surface2);border-radius:8px;padding:8px 11px;font-size:12px">
-              <span style="color:${f.severity==='critical'?'var(--no)':f.severity==='warn'?'var(--amber)':'var(--muted)'};font-family:var(--mono);font-size:10px">[${esc(f.severity)}]</span>
-              <b style="color:var(--text)"> ${esc(f.title||f.area)}</b>
-              <div style="color:var(--muted);margin-top:3px">${esc(f.fix||f.diagnosis||'')}</div>
-            </div>`).join('')}</div>`
-        :(detCode.length?`<div style="color:var(--muted);font-size:12px">${detCode.length} item(s) flagged by invariant checks — see review for detail.</div>`
-        :`<div style="color:var(--yes);font-size:12px">No open code issues. Everything the auditor checked is consistent.</div>`)}
-        ${review&&review.ranAtIST?`<div class="mini-note" style="margin-top:10px">last AI review ${esc(review.ranAtIST)}</div>`:''}
-      </div>`;
-  },
-
-  async loadAnalyst(){
-    const box=$('analystPanel'); if(!box)return;
-    let url='data/analyst.json';
-    const m=(this.remoteUrl||'').match(/^(https:\/\/raw\.githubusercontent\.com\/[^/]+\/[^/]+\/[^/]+)\//);
-    if(m) url=m[1]+'/data/analyst.json';
-    try{
-      const a=await jget(url+'?_='+Date.now(),6000);
-      this.analyst=a;
-      $('analystStamp').textContent=a.updatedIST||a.updated||'';
-      if(a.status==='dormant'){ box.innerHTML='<div style="color:var(--amber)">⏳ '+esc(a.memo)+'</div>'; }
-      else if(a.status==='error'){ box.innerHTML='<div style="color:var(--no)">Analyst error last session: '+esc(a.error||'unknown')+'</div>'; }
-      else box.innerHTML=
-        '<div style="color:var(--text);margin-bottom:10px">'+esc(a.memo||'')+'</div>'+
-        ((a.observations||[]).length?'<div style="margin-bottom:10px">'+(a.observations||[]).map(o=>'• '+esc(o)).join('<br>')+'</div>':'')+
-        ((a.changesApplied||[]).length
-          ?'<div style="color:var(--brand)"><b>Changes applied:</b> '+(a.changesApplied||[]).map(esc).join(' · ')+'</div><div style="margin-top:6px">'+esc(a.changeReasoning||'')+'</div>'
-          :'<div style="color:var(--yes)">No parameter changes this session.</div>')+
-        ((a.riskFlags||[]).length?'<div style="margin-top:10px;color:var(--amber)"><b>⚠ Risk flags:</b> '+(a.riskFlags||[]).map(esc).join(' · ')+'</div>':'');
-      this.renderOverview();
-    }catch(e){ box.innerHTML='<div class="empty">No analyst memo yet — the supervisor hasn\'t run.</div>'; }
-  },
-
-  renderOverview(){
-    if(!$('ovStats')||!this.state)return;
-    const s=this.state, sm=s.summary||{};
-    const closed=(s.journal||[]).filter(t=>t.status==='closed');
-    const open=(s.journal||[]).filter(t=>t.status==='open');
-    const wins=closed.filter(t=>t.pnl>0).length;
-    const last=s.lastRun?Math.round((Date.now()-s.lastRun)/60000):null;
-    const alive=last!==null&&last<35;
-    /* global header readout (visible on every tab) */
-    const hb=$('hdrBot');
-    if(hb&&sm.equity!=null){
-      const ret=sm.returnPct||0;
-      hb.style.display='flex';
-      hb.innerHTML=`<span style="color:var(--faint)">🐕 BOT</span><span style="color:var(--text)">$${sm.equity.toLocaleString()}</span><span style="color:${ret>=0?'var(--yes)':'var(--no)'}">${ret>=0?'+':''}${ret}%</span><span style="width:6px;height:6px;border-radius:50%;background:${alive?'var(--yes)':'var(--amber)'};box-shadow:0 0 6px ${alive?'var(--yes)':'var(--amber)'}"></span>`;
-      hb.style.cursor='pointer';
-      hb.onclick=()=>showPage('bot',document.querySelector('[data-page=bot]'));
-    }
-    /* status strip */
-    const istToday=new Date(Date.now()+5.5*3600*1000).toISOString().slice(0,10);
-    const todayN=(s.journal||[]).filter(t=>t.date===istToday).length;
-    const integ=s.integrity;
-    $('ovStatus').innerHTML=
-      `<span class="status-pill ${alive?'live':'demo'}"><span class="dot"></span><span>${alive?'EDGEHOUND IS RUNNING':'EDGEHOUND '+(last===null?'WAITING FOR FIRST RUN':'DELAYED — last run '+last+'m ago')}</span></span>`+
-      (integ?(integ.ok
-        ?`<span class="status-pill live" title="Every trade and the bankroll re-verified against hard invariants on every run"><span class="dot"></span><span>✓ LEDGER VERIFIED (${integ.tradesChecked} trades)</span></span>`
-        :`<span class="status-pill" style="color:var(--no);border-color:var(--no)"><span class="dot" style="background:var(--no)"></span><span>🛑 DATA INTEGRITY FAILURE — TRADING FROZEN</span></span>`):'')+
-      `<span style="font-family:var(--mono);font-size:11.5px;color:var(--muted)">${last!==null?'last scan '+last+'m ago · ':''}scans every 15 min · ${todayN} trades today (target 10–20)</span>`+
-      (s.lastScan&&s.lastScan.placed===0&&todayN<3?`<div style="width:100%;color:var(--amber);font-size:11.5px;margin-top:6px;font-family:var(--mono)">⊘ Not trading: ${esc(s.lastScan.reason||'no qualifying setups')} · ${s.lastScan.rawCandidates||0} candidates seen, ${s.lastScan.clearedThreshold||0} cleared threshold</div>`:'')+
-      (integ&&!integ.ok?`<div style="width:100%;color:var(--no);font-size:12px;margin-top:6px">${(integ.errors||[]).slice(0,3).map(esc).join(' · ')}</div>`:'');
-    const ret=sm.returnPct;
-    $('ovStats').innerHTML=`
-      <div class="stat-card"><div class="lbl">Bankroll equity</div><div class="val">$${(sm.equity??10000).toLocaleString()}</div><div class="sub">started at $${(sm.bankStart??10000).toLocaleString()}</div></div>
-      <div class="stat-card"><div class="lbl">Return so far</div><div class="val ${ret>=0?'pos':'neg'}">${ret>=0?'+':''}${ret??0}%</div><div class="sub">${closed.length} bets settled</div></div>
-      <div class="stat-card"><div class="lbl">Win rate</div><div class="val">${closed.length?Math.round(wins/closed.length*100)+'%':'—'}</div><div class="sub">${wins}W / ${closed.length-wins}L</div></div>
-      <div class="stat-card"><div class="lbl">Open bets</div><div class="val">${open.length}</div><div class="sub">$${open.reduce((a,t)=>a+t.stake,0).toLocaleString()} at work</div></div>
-      <div class="stat-card"><div class="lbl">Forecast quality</div><div class="val">${sm.brier!=null?(sm.brier<0.21?'Good':sm.brier<0.25?'Fair':'Poor'):'—'}</div><div class="sub">${sm.brier!=null?'Brier '+sm.brier+' (lower is better)':'needs settled bets'}</div></div>`;
-    /* activity feed in plain sentences */
-    $('ovActivity').innerHTML=(s.log||[]).slice(0,7).map(l=>{
-      let t=esc(l).replace(/^[\d\- :]+IST — /,'');
-      t=t.replace(/Opened (YES|NO) \$(\d+) @ (\d+c) P=(\d+)% EV=[^ ]+ \[([^\]]+)\] &quot;(.+)&quot;/,
-        'Bet <b style="color:var(--text)">$$$2 on $1</b> at $3 on "<i>$6</i>" — $5 signal, $4% confident');
-      t=t.replace(/Closed (YES|NO) &quot;(.+)&quot; -&gt; \+\$(\d+) \((.+)\).*/,'<span class="pos">Won $$$3</span> on "<i>$2</i>" ($4)');
-      t=t.replace(/Closed (YES|NO) &quot;(.+)&quot; -&gt; \$-(\d+) \((.+)\).*/,'<span class="neg">Lost $$$3</span> on "<i>$2</i>" ($4)');
-      return '<div style="margin-bottom:4px">'+t+'</div>';
-    }).join('')||'<div class="empty">Nothing yet.</div>';
-    /* analyst summary */
-    const a=this.analyst;
-    if(a&&a.status==='ok'){
-      $('ovAnalyst').innerHTML='<div style="color:var(--text);margin-bottom:8px">'+esc((a.memo||'').split(/\n+/).filter(x=>x.trim()).slice(-1)[0]||a.memo||'')+'</div>'+
-        ((a.changesApplied||[]).length?'<div style="color:var(--brand)">Adjusted: '+(a.changesApplied||[]).map(esc).join(' · ')+'</div>':'<div style="color:var(--yes)">Verdict: no changes needed.</div>')+
-        ((a.riskFlags||[]).length?'<div style="margin-top:6px;color:var(--amber)">Watching '+a.riskFlags.length+' risk'+(a.riskFlags.length>1?'s':'')+': '+esc(a.riskFlags[0])+(a.riskFlags.length>1?' (+'+(a.riskFlags.length-1)+' more on the bot tab)':'')+'</div>':'')+
-        '<div class="mini-note" style="margin-top:8px">'+esc(a.updatedIST||'')+'</div>';
-    } else if(a&&a.status==='dormant'){ $('ovAnalyst').innerHTML='<div style="color:var(--amber)">Analyst installed, waiting for activation.</div>'; }
-    /* brain learnings */
-    const hyps=(s.brain&&s.brain.hypotheses)||[];
-    const v=hyps.filter(h=>h.status==='VALIDATED'),r=hyps.filter(h=>h.status==='REJECTED');
-    $('ovBrain').innerHTML=
-      `<div>Model trained on <b style="color:var(--text)">${s.brain?s.brain.nUpdates:0}</b> settled bets · <b style="color:var(--yes)">${v.length}</b> proven patterns · <b style="color:var(--no)">${r.length}</b> rejected patterns</div>`+
-      (hyps.length?'<div style="margin-top:8px">'+hyps.slice(0,4).map(h=>`<div style="margin-bottom:5px"><span class="side-tag ${h.status==='VALIDATED'?'y':h.status==='REJECTED'?'n':''}" style="${h.status==='FORMING'?'background:var(--surface2);color:var(--muted)':''}">${h.status}</span> ${esc(h.text.split('—')[0])}</div>`).join('')+'</div>'
-      :'<div style="margin-top:6px">Learnings appear here as bets settle — patterns get PROVEN, REJECTED, or stay FORMING until the evidence is in.</div>');
-  },
-
-  async loadRunHistory(){
-    const repo=this.deriveRepo(); const box=$('runHistory'); if(!box)return;
-    if(!repo){ box.innerHTML='<div class="empty">Open this dashboard from your GitHub Pages URL to see run history.</div>'; return; }
-    try{
-      const commits=await jget(`https://api.github.com/repos/${repo}/commits?path=data/state.json&per_page=15&_=${Date.now()}`,8000);
-      const runs=(Array.isArray(commits)?commits:[]).filter(c=>/edgehound run/i.test(c.commit.message));
-      if(!runs.length){ box.innerHTML='<div class="empty">No scheduled runs committed yet — waiting for GitHub\'s scheduler to start ticking.</div>'; return; }
-      box.innerHTML=runs.map((c,i)=>{
-        const d=new Date(c.commit.author.date);
-        const ago=Math.round((Date.now()-d)/60000);
-        const gap=i<runs.length-1?Math.round((d-new Date(runs[i+1].commit.author.date))/60000):null;
-        return `<div class="feed-item"><span class="side-tag y">RUN</span>
-          <span>${d.toLocaleString(undefined,{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'})}</span>
-          <span class="num" style="color:var(--muted)">${ago<60?ago+'m ago':Math.round(ago/60)+'h ago'}</span>
-          ${gap!==null?`<span class="num" style="color:var(--faint)">+${gap}m after previous</span>`:''}
-          <a class="t" href="https://github.com/${repo}/commit/${c.sha}" target="_blank" rel="noopener">${c.sha.slice(0,7)} ↗</a></div>`;
-      }).join('');
-    }catch(e){ box.innerHTML='<div class="empty">Couldn\'t load run history (GitHub API limit) — try again in a few minutes.</div>'; }
-  },
-  startCountdown(){
-    clearInterval(this._cd);
-    const tick=()=>{
-      const el=$('nextRun'); if(!el||!this.state)return;
-      const last=this.state.lastRun; if(!last){el.textContent='no runs yet';return;}
-      const since=(Date.now()-last)/60000;
-      const until=15-since;
-      if(until>0) el.textContent=`last run ${Math.round(since)}m ago · next expected in ~${Math.ceil(until)}m`;
-      else if(until>-15) el.textContent=`last run ${Math.round(since)}m ago · next run due any moment`;
-      else el.textContent=`last run ${Math.round(since)}m ago · OVERDUE — GitHub scheduler delay (usually self-resolves; check the Actions tab if >2h)`;
-    };
-    tick(); this._cd=setInterval(tick,30000);
-  },
 
   save(){ store.set('eh_state',this.state); },
   log(msg){
@@ -1579,7 +1169,7 @@ const Bot={
     $('botBadge').textContent=open.length+' open';
     $('botToggle').innerHTML=this.state.running?'⏸ Pause':'▶ Resume';
     ['botToggle'].forEach(id=>$(id).style.display=this.remote?'none':'');
-    (document.querySelectorAll('#page-bot .controls')[0]?.querySelectorAll('button,label')||[]).forEach(b=>{
+    document.querySelectorAll('#page-bot .controls')[0].querySelectorAll('button,label').forEach(b=>{
       if(b.id!=='botToggle'&&!b.textContent.includes('Export')) b.style.display=this.remote?'none':'';
     });
     $('simBtn').style.display=(this.remote||LIVE)?'none':'';
@@ -1603,18 +1193,16 @@ const Bot={
         <td><span class="num">${s.weight.toFixed(2)}×</span><div class="roi-bar"><i style="width:${s.weight/2.2*100}%"></i></div></td></tr>`;
     }).join('');
 
-    const sanePnl=(t,p)=>{const mx=t.stake*((1/Math.max(.001,t.entry))-1)+1; return (p>mx||p<-t.stake-1)?null:p;};
     $('openCount').textContent=open.length+' positions · '+fmtUSD(open.reduce((s,t)=>s+t.stake,0))+' at work';
     $('openBody').innerHTML=open.map(t=>{
-      const cur=t.cur??t.entry; let pnl=(t.stake/t.entry)*(cur-t.entry); const pp=((cur-t.entry)/t.entry)*100;
-      const bad=sanePnl(t,pnl)===null; if(bad)pnl=0;
+      const cur=t.cur??t.entry, pnl=(t.stake/t.entry)*(cur-t.entry), pp=((cur-t.entry)/t.entry)*100;
       const plan=[t.target?`target +${(t.target*100).toFixed(0)}%`:'hold to resolution',`stop −${(t.stop*100).toFixed(0)}%`,
         isFinite(t.holdUntil)?`out by ${new Date(t.holdUntil).toLocaleDateString(undefined,{month:'short',day:'numeric'})}`:''].filter(Boolean).join(' · ');
       return `<tr><td style="max-width:240px">${esc(t.title)}</td>
         <td><span class="side-tag ${t.side==='YES'?'y':'n'}">${t.side}</span></td>
         <td style="max-width:300px"><b style="font-size:12px">${STRATS[t.signal].label}</b><div style="color:var(--muted);font-size:11.5px">${esc(t.insight)}</div></td>
         <td class="num">${cents(t.entry)}</td><td class="num">${cents(cur)}</td><td class="num">$${t.stake}</td>
-        <td class="num ${pnl>=0?'pos':'neg'}">${bad?'<span style="color:var(--no)">⚠ data error</span>':(pnl>=0?'+':'')+'$'+pnl.toFixed(0)+' ('+(pp>=0?'+':'')+pp.toFixed(0)+'%)'}</td>
+        <td class="num ${pnl>=0?'pos':'neg'}">${pnl>=0?'+':''}$${pnl.toFixed(0)} (${pp>=0?'+':''}${pp.toFixed(0)}%)</td>
         <td style="font-size:11px;color:var(--muted)">${plan}</td></tr>`;
     }).join('')||'<tr><td colspan="8"><div class="empty">No open positions — next scan will hunt for entries.</div></td></tr>';
 
@@ -1626,7 +1214,7 @@ const Bot={
       <td style="font-size:12px">${STRATS[t.signal].label}</td>
       <td class="num">${cents(t.entry)} → ${cents(t.exit)}</td>
       <td class="num">$${t.stake}</td>
-      <td class="num ${t.pnl>=0?'pos':'neg'}">${sanePnl(t,t.pnl)===null?'<span style="color:var(--no)">⚠ data error</span>':(t.pnl>=0?'+':'')+'$'+t.pnl.toFixed(0)}</td>
+      <td class="num ${t.pnl>=0?'pos':'neg'}">${t.pnl>=0?'+':''}$${t.pnl.toFixed(0)}</td>
       <td style="font-size:11px;color:var(--muted)">${esc(t.exitReason)}</td></tr>`).join('')||'<tr><td colspan="8"><div class="empty">No settled trades yet.</div></td></tr>';
 
     /* equity curve */
@@ -1644,335 +1232,6 @@ const Bot={
                 y:{ticks:{color:'#5E6983',callback:v=>'$'+v,font:{family:'IBM Plex Mono',size:10}},grid:{color:'rgba(39,49,75,.5)'}}}}});
   }
 };
-
-/* =====================================================
-   ARB SCANNER — hunts mathematically guaranteed mispricings
-   Independent of EdgeHound. Three detectors:
-   1) MULTI-OUTCOME: mutually-exclusive event outcomes whose
-      YES prices sum below $1 (buy all -> one pays $1), or
-      above $1 on neg-risk events (buy all NOs).
-   2) BUY-BOTH: a binary market where YES ask + NO ask < $1.
-   3) DATE LADDER: "by <later date>" priced below "by <earlier
-      date>" in the same series — logically impossible, so
-      buying later-YES + earlier-NO locks a profit.
-===================================================== */
-const Arb={
-  opps:[], scanned:0, lastScan:null, timer:null,
-
-  async scan(){
-    $('arbList').innerHTML='<div class="loading"><span class="spinner"></span>Scanning for mispricings…</div>';
-    let events=[];
-    if(LIVE){
-      try{
-        const batches=await Promise.allSettled([
-          jget(`${GAMMA}/events?closed=false&active=true&order=volume24hr&ascending=false&limit=100`),
-          jget(`${GAMMA}/events?closed=false&active=true&order=volume24hr&ascending=false&limit=100&offset=100`)
-        ]);
-        batches.forEach(b=>{ if(b.status==='fulfilled'&&Array.isArray(b.value)) events.push(...b.value); });
-      }catch(e){}
-    }
-    if(!events.length) events=DEMO_ARB_EVENTS;
-    this.scanned=events.length; this.lastScan=Date.now();
-    const opps=[];
-
-    events.forEach(ev=>{
-      const mkts=(ev.markets||[]).filter(m=>m.active!==false&&!m.closed).map(m=>{
-        let prices=[],outs=[],tokens=[];
-        try{prices=JSON.parse(m.outcomePrices||'[]').map(Number);}catch(e){}
-        try{outs=JSON.parse(m.outcomes||'[]');}catch(e){}
-        let yi=outs.findIndex(o=>/^yes$/i.test(o)); if(yi<0)yi=0;
-        return {q:m.question||m.groupItemTitle||'',item:m.groupItemTitle||'',
-          yes:prices[yi]??NaN, bid:Number(m.bestBid)||null, ask:Number(m.bestAsk)||null,
-          liq:Number(m.liquidityNum||m.liquidity)||0, end:m.endDate};
-      }).filter(m=>!isNaN(m.yes)&&m.yes>0&&m.yes<1);
-      if(!mkts.length)return;
-      const evMeta={title:ev.title||'',slug:ev.slug||'',vol24:Number(ev.volume24hr)||0,liq:Number(ev.liquidity)||0,negRisk:!!(ev.negRisk||ev.enableNegRisk)};
-
-      /* 1 — MULTI-OUTCOME */
-      if(mkts.length>=3 && evMeta.negRisk){
-        const sum=mkts.reduce((s,m)=>s+m.yes,0);
-        const n=mkts.length;
-        if(sum<0.995){
-          const margin=(1-sum)/sum*100;
-          opps.push({type:'MULTI-OUTCOME',ev:evMeta,margin,cost:sum,payout:1,resolveBy:maxEnd(mkts),
-            why:`One of these ${n} outcomes MUST win and pay $1 — but buying ALL of them costs only $${sum.toFixed(2)}. Whatever happens, you collect more than you spent.`,
-            legs:mkts.map(m=>({label:'YES '+(m.item||m.q).slice(0,28),price:m.yes}))});
-        } else if(sum>1.02){
-          const cost=n-sum, payout=n-1, margin=(sum-1)/cost*100;
-          opps.push({type:'MULTI-OUTCOME',ev:evMeta,margin,cost,payout,resolveBy:maxEnd(mkts),
-            why:`These outcomes are collectively OVERPRICED (they sum to $${sum.toFixed(2)} when only one can win). So bet NO on all ${n}: exactly ${n-1} of those NOs win and pay $1 each — more than the $${cost.toFixed(2)} they cost.`,
-            legs:mkts.map(m=>({label:'NO '+(m.item||m.q).slice(0,28),price:1-m.yes}))});
-        }
-      }
-
-      /* 2 — BUY-BOTH (crossed book) per binary market */
-      mkts.forEach(m=>{
-        if(m.bid!==null&&m.ask!==null&&m.ask>0&&m.bid>0){
-          const both=m.ask+(1-m.bid);
-          if(both<0.995){
-            const margin=(1-both)/both*100;
-            opps.push({type:'BUY-BOTH',ev:{...evMeta,title:m.q||evMeta.title},margin,cost:both,payout:1,resolveBy:m.end?new Date(m.end).getTime():null,
-              why:`YES and NO together cost only $${both.toFixed(2)} — but one of them ALWAYS pays $1. Buy both sides and the profit is locked regardless of the outcome. These vanish in seconds.`,
-              legs:[{label:'YES',price:m.ask},{label:'NO',price:1-m.bid}]});
-          }
-        }
-      });
-
-      /* 3 — DATE LADDER: same condition, different deadlines only */
-      const dated=mkts.map(m=>({...m,d:parseDeadline(m.q||m.item),stem:deadlineStem(m.q||m.item)})).filter(m=>m.d&&m.stem);
-      const stems={};
-      dated.forEach(m=>{(stems[m.stem]=stems[m.stem]||[]).push(m);});
-      Object.values(stems).forEach(series=>{
-        if(series.length<2)return;
-        series.sort((a,b)=>a.d-b.d);
-        for(let i=0;i<series.length-1;i++){
-          const early=series[i],late=series[i+1];
-          if(late.d-early.d<864e5) continue;           /* must be genuinely different deadlines */
-          if(late.yes < early.yes-0.015){
-            const cost=late.yes+(1-early.yes);
-            if(cost<0.995){
-              const margin=(1-cost)/cost*100;
-              opps.push({type:'DATE LADDER',ev:evMeta,margin,cost,payout:1,resolveBy:(late.end?new Date(late.end).getTime():late.d),
-                why:`Same event, two deadlines: anything true "by ${new Date(early.d).toLocaleDateString(undefined,{month:'short',day:'numeric'})}" is automatically true "by ${new Date(late.d).toLocaleDateString(undefined,{month:'short',day:'numeric'})}" — yet the later deadline is priced CHEAPER. That's impossible, so this pair pays at least $1 in every possible scenario.`,
-                legs:[{label:'YES "'+late.q.slice(0,30)+'"',price:late.yes},{label:'NO "'+early.q.slice(0,30)+'"',price:1-early.yes}]});
-            }
-          }
-        }
-      });
-    });
-
-    /* dedupe & sort by edge */
-    this.opps=opps.sort((a,b)=>b.margin-a.margin).slice(0,40);
-    this.render();
-  },
-
-  render(){
-    const min=Number($('arbMin').value);
-    const days=Number($('arbDays')?$('arbDays').value:7)||7;
-    const horizon=Date.now()+days*864e5;
-    const show=this.opps.filter(o=>o.margin>=min)
-      .filter(o=>days>=9999 || (o.resolveBy && o.resolveBy<=horizon));
-    $('arbBadge').textContent=show.length||'';
-    const best=this.opps[0];
-    $('arbStats').innerHTML=`
-      <div class="stat-card"><div class="lbl">Events scanned</div><div class="val">${this.scanned}</div><div class="sub">${LIVE?'live Polymarket data':'sample data'} · ${this.lastScan?new Date(this.lastScan).toLocaleTimeString():''}</div></div>
-      <div class="stat-card"><div class="lbl">Opportunities ≥ ${min}%</div><div class="val" style="color:${show.length?'var(--yes)':'var(--muted)'}">${show.length}</div><div class="sub">of ${this.opps.length} total detected</div></div>
-      <div class="stat-card"><div class="lbl">Best locked edge</div><div class="val ${best?'pos':''}">${best?best.margin.toFixed(1)+'%':'—'}</div><div class="sub">${best?esc(best.ev.title.slice(0,40)):'no mispricings right now'}</div></div>
-      <div class="stat-card"><div class="lbl">Market reality</div><div class="val" style="font-size:15px;line-height:1.3;padding-top:4px">${show.length?'⚡ act-fast territory':'✓ prices consistent'}</div><div class="sub">arbs are normally rare & brief</div></div>`;
-    if(!show.length){
-      const hidden=this.opps.filter(o=>o.margin>=min).length;
-      $('arbList').innerHTML='<div class="empty" style="grid-column:1/-1">No opportunities above '+min+'% resolving within '+(days>=9999?'any horizon':days+' day'+(days>1?'s':''))+'.'+(hidden?' ('+hidden+' exist with longer lock-ups — widen the "Resolves within" filter to see them.)':' That\'s the normal state of an efficient market.')+'</div>';
-      return;
-    }
-    const stake=Math.max(1,Math.min(10000,Number($('arbStake').value)||10));
-    $('arbList').innerHTML=show.map(o=>{
-      const sets=stake/o.cost;
-      const back=sets*o.payout;
-      const profit=back-stake;
-      const sus=o.margin>15; /* real arbs are almost never this generous — flag, don't celebrate */
-      const legRows=(o.legs||[]).map(l=>{
-        const dollars=l.price*sets;
-        return `<div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border-soft)">
-          <span style="font-size:12px">${esc(l.label)}</span>
-          <span class="num" style="white-space:nowrap">$${dollars.toFixed(2)} <span style="color:var(--faint)">@ ${cents(l.price)}</span></span></div>`;
-      }).join('');
-      return `<div class="sig-card">
-        <span class="consensus" style="${o.margin>=2?'':'background:var(--surface2);color:var(--muted)'}">⚖ ${o.type}</span>
-        <div class="q">${esc(o.ev.title)}</div>
-        <div style="background:${sus?'var(--amber-soft)':'var(--yes-soft)'};border:1px solid ${sus?'rgba(245,181,68,.3)':'rgba(61,220,151,.25)'};border-radius:11px;padding:12px 14px">
-          <div style="font-family:var(--mono);font-size:15px;font-weight:600">Put in <b>$${stake.toFixed(0)}</b> → get back <b style="color:${sus?'var(--amber)':'var(--yes)'}">$${back.toFixed(2)}</b></div>
-          <div style="font-size:11.5px;color:${sus?'var(--amber)':'var(--yes)'};margin-top:3px">${sus?'⚠ '+o.margin.toFixed(1)+'% is implausibly large — likely stale prices, no real depth, or markets that aren\'t truly equivalent. Verify every leg manually before believing it.':'+$'+profit.toFixed(2)+' profit, guaranteed whatever happens (+'+o.margin.toFixed(1)+'%)'}</div>
-        </div>
-        <div>
-          <div style="font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:4px">Your $${stake.toFixed(0)} shopping list — buy ALL of these together:</div>
-          ${legRows}
-        </div>
-        <div class="holders-line">💡 ${esc(o.why)}</div>
-        <div class="holders-line" style="color:var(--faint)">💰 Capital back ${o.resolveBy?'in ~'+Math.max(0,Math.ceil((o.resolveBy-Date.now())/864e5))+'d ('+new Date(o.resolveBy).toLocaleDateString(undefined,{month:'short',day:'numeric'})+')':'at resolution (date unknown)'} · 24h volume ${fmtUSD(o.ev.vol24)}${o.resolveBy?' · ≈'+( (o.margin/Math.max(1,Math.ceil((o.resolveBy-Date.now())/864e5))*365).toFixed(0)+'% annualized'):''}</div>
-        <div class="actions" style="display:flex;gap:8px">
-          <a class="btn primary" target="_blank" rel="noopener" href="https://polymarket.com/event/${esc(o.ev.slug)}">Inspect on Polymarket ↗</a>
-        </div>
-      </div>`;
-    }).join('');
-  },
-
-  auto(){
-    clearInterval(this.timer);
-    if($('arbAuto').checked) this.timer=setInterval(()=>{ if($('page-arb').classList.contains('active')) this.scan(); },60000);
-  }
-};
-function maxEnd(mkts){
-  const ts=mkts.map(m=>m.end?new Date(m.end).getTime():null).filter(Boolean);
-  return ts.length?Math.max(...ts):null;
-}
-function parseDeadline(q){
-  const MONTHS={january:0,february:1,march:2,april:3,may:4,june:5,july:6,august:7,september:8,october:9,november:10,december:11};
-  const m=String(q||'').toLowerCase().match(/by\s+(january|february|march|april|may|june|july|august|september|october|november|december)\s+(\d{1,2})/);
-  if(!m)return null;
-  const now=new Date(); let y=now.getFullYear();
-  const d=new Date(y,MONTHS[m[1]],parseInt(m[2],10));
-  if(d<now-30*864e5) d.setFullYear(y+1); /* deadlines roll into next year */
-  return d.getTime();
-}
-/* the question with its deadline removed — two markets are a true ladder
-   ONLY if these stems match exactly (same condition, different date) */
-function deadlineStem(q){
-  return String(q||'').toLowerCase()
-    .replace(/by\s+(january|february|march|april|may|june|july|august|september|october|november|december)\s+\d{1,2}(,?\s*\d{4})?/,'')
-    .replace(/[^a-z0-9$]/g,'').trim()||null;
-}
-const DEMO_ARB_EVENTS=[
-  {title:'2026 NBA Champion',slug:'',volume24hr:2400000,liquidity:900000,negRisk:true,markets:[
-    {question:'Knicks',groupItemTitle:'Knicks',outcomes:'["Yes","No"]',outcomePrices:'["0.41","0.59"]',bestBid:.40,bestAsk:.42,liquidityNum:300000,endDate:new Date(Date.now()+5*864e5).toISOString()},
-    {question:'Spurs',groupItemTitle:'Spurs',outcomes:'["Yes","No"]',outcomePrices:'["0.36","0.64"]',bestBid:.35,bestAsk:.37,liquidityNum:280000,endDate:new Date(Date.now()+5*864e5).toISOString()},
-    {question:'Thunder',groupItemTitle:'Thunder',outcomes:'["Yes","No"]',outcomePrices:'["0.12","0.88"]',bestBid:.11,bestAsk:.13,liquidityNum:120000,endDate:new Date(Date.now()+5*864e5).toISOString()},
-    {question:'Field (any other team)',groupItemTitle:'Other',outcomes:'["Yes","No"]',outcomePrices:'["0.08","0.92"]',bestBid:.07,bestAsk:.09,liquidityNum:90000,endDate:new Date(Date.now()+5*864e5).toISOString()}]},
-  {title:'Will BTC hit $160K?',slug:'',volume24hr:1800000,liquidity:600000,negRisk:false,markets:[
-    {question:'Will BTC hit $160K by June 15?',outcomes:'["Yes","No"]',outcomePrices:'["0.22","0.78"]',bestBid:.21,bestAsk:.23,liquidityNum:200000,endDate:new Date(Date.now()+4*864e5).toISOString()},
-    {question:'Will BTC hit $160K by June 30?',outcomes:'["Yes","No"]',outcomePrices:'["0.19","0.81"]',bestBid:.18,bestAsk:.20,liquidityNum:180000,endDate:new Date(Date.now()+19*864e5).toISOString()}]},
-  {title:'Fed decision July',slug:'',volume24hr:900000,liquidity:400000,negRisk:false,markets:[
-    {question:'Will the Fed cut rates in July?',outcomes:'["Yes","No"]',outcomePrices:'["0.62","0.38"]',bestBid:.64,bestAsk:.61,liquidityNum:350000,endDate:new Date(Date.now()+2*864e5).toISOString()}]}
-];
-/* =====================================================
-   CRYPTO EDGE — Binance spot vs Polymarket Up/Down windows
-===================================================== */
-const BINANCE='https://data-api.binance.vision/api/v3';
-function normCdf(z){ /* Φ via Abramowitz-Stegun erf approx */
-  const t=1/(1+0.2316419*Math.abs(z));
-  const d=0.3989423*Math.exp(-z*z/2);
-  let p=d*t*(0.3193815+t*(-0.3565638+t*(1.781478+t*(-1.821256+t*1.330274))));
-  return z>0?1-p:p;
-}
-/* ============ Sniper Lab results loader ============ */
-const Sniper={
-  tmr:null,
-  start(){ this.load(); clearInterval(this.tmr); this.tmr=setInterval(()=>this.load(),60000); },
-  stop(){ clearInterval(this.tmr); this.tmr=null; },
-  async load(){
-    const box=$('sniperPanel'); if(!box)return;
-    let lab=null, freshest=null;
-    /* try all sources, keep the freshest copy (CDNs lag at different rates) */
-    const tries=[];
-    if(location.hostname.endsWith('github.io')) tries.push(jget('data/sniper.json?_='+Date.now(),7000));
-    tries.push(jget('https://raw.githubusercontent.com/beastxo-sudo/edgehound/main/data/sniper.json?_='+Date.now(),7000));
-    tries.push(jget('https://api.github.com/repos/beastxo-sudo/edgehound/contents/data/sniper.json?_='+Date.now(),8000)
-      .then(d=>JSON.parse(atob((d.content||'').replace(/\n/g,'')))));
-    const results=await Promise.allSettled(tries);
-    results.forEach(r=>{
-      if(r.status==='fulfilled'&&r.value&&r.value.summary){
-        const u=new Date(r.value.summary.updated||0).getTime();
-        if(!freshest||u>freshest){ freshest=u; lab=r.value; }
-      }
-    });
-    if(!lab||!lab.summary||!lab.summary.samples){
-      box.innerHTML='<div class="empty">No samples yet — the lab collects one sample per 5-minute window and commits in ~14-minute batches. If this persists beyond 30 minutes, the lab job may be failing.</div>'; return;
-    }
-    const ageMin=Math.round((Date.now()-new Date(lab.summary.updated).getTime())/60000);
-    const arch=lab.archive_5s; const ax=$('snip5sArchive');
-    if(arch&&ax) ax.innerHTML=` <br><span style="color:var(--faint)">For comparison — the earlier 5-second test: ${(arch.decidedAccuracy*100).toFixed(0)}% win rate but paid ${cents(arch.decidedAvgPaid)}, so every $10 returned about $${(10+arch.decidedEvPerTrade).toFixed(2)} — basically break-even. This 60s test is checking if an earlier, cheaper entry does better.</span>`;
-    const s=lab.summary;
-    const acc=s.decidedAccuracy??s.directionAccuracy, be=s.decidedAvgPaid??s.breakEvenAccuracy;
-    const ev=s.decidedEvPerTrade??s.evPerTrade;
-    const nDec=s.decidedSamples??s.pricedSamples??s.samples;
-    const perTen=s.perTenDollar!=null?s.perTenDollar:(ev!=null?10+ev:null);
-    const l50=s.last50||{}, allt=s.allTime||{};
-    const verdict=ev==null?'Collecting data…'
-      :nDec<30?'Too early to call — need 30+ trades for a real read'
-      :ev>0.5?'✅ WORTH IT: you reliably get back more than you put in'
-      :ev>0.05?'⚠ BARELY POSITIVE: technically up, but too thin to survive real fees & slippage'
-      :ev>-0.5?'➖ BREAK-EVEN: you get back about what you put in — no real edge'
-      :'❌ LOSES MONEY: the price you pay already cancels the high hit-rate';
-    const verdictColor=ev==null||nDec<30?'var(--muted)':ev>0.5?'var(--yes)':ev>0.05?'var(--amber)':ev>-0.5?'var(--muted)':'var(--no)';
-
-    const rows=(lab.samples||[]).filter(x=>x.priceSrc==='clob'&&x.verified===true).slice(-10).reverse().map(x=>{
-      const back=x.won?(10/x.paid):0;
-      const srcStr=x.polyConfirmed
-        ? '⬤ Polymarket'+((x.sources||[]).filter(sv=>sv.src!=='polymarket').length?' +'+(x.sources||[]).filter(sv=>sv.src!=='polymarket').length+' exch':'')
-        : (x.sources||[]).map(sv=>sv.src.replace('binance','bnc').replace('coinbase','cb')+'·'+sv.dir).join(' ');
-      const srcColor=x.polyConfirmed?'var(--yes)':'var(--amber)';
-      /* The bet is decided by candle OPEN vs CLOSE — show that, not bet-time→close.
-         (Bet-time→close was misleading: a bet can win on open→close while the
-         last 60s drifted the other way.) */
-      const openP=x.candleOpen, closeP=x.btcAtClose;
-      const decisiveChg=(openP!=null&&closeP!=null)?closeP-openP:null;
-      const decisivePct=(openP!=null&&closeP!=null&&openP)?((closeP-openP)/openP)*100:null;
-      const chgColor=decisiveChg>0?'var(--yes)':decisiveChg<0?'var(--no)':'var(--muted)';
-      const priceCell=(openP!=null)
-        ? `<span style="color:var(--faint)">open</span> $${openP.toLocaleString(undefined,{maximumFractionDigits:0})} <span style="color:var(--faint)">→ close</span> $${closeP!=null?closeP.toLocaleString(undefined,{maximumFractionDigits:0}):'—'}`
-        : '—';
-      const moveCell=decisiveChg!=null
-        ? `<span style="color:${chgColor}">${decisiveChg>0?'▲ UP':decisiveChg<0?'▼ DOWN':'■ flat'} $${Math.abs(decisiveChg).toFixed(0)}<span style="color:var(--faint)"> (${decisivePct>0?'+':''}${decisivePct.toFixed(3)}%)</span></span>`
-        : '—';
-      return `<tr><td class="num">${new Date(x.win).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}</td>
-      <td><span class="side-tag ${x.dir==='UP'?'y':'n'}">${x.dir}</span></td>
-      <td class="num" style="font-size:11px">${priceCell}</td>
-      <td class="num" style="font-size:11px">${moveCell}</td>
-      <td class="num">${cents(x.paid)}</td>
-      <td>${x.won?'<span class="pos">✓ won</span>':'<span class="neg">✗ lost</span>'}</td>
-      <td class="num ${x.won?'pos':'neg'}">${x.won?'+$'+(back-10).toFixed(2):'−$10.00'}</td>
-      <td style="font-family:var(--mono);font-size:10px;color:${srcColor}" title="${esc(x.settleNote||'')}">${x.polyConfirmed?'✓':'✓✓'} ${esc(srcStr)}</td></tr>`;
-    }).join('');
-
-    box.innerHTML=`
-      <!-- HERO: the plain-money answer -->
-      <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;background:linear-gradient(135deg,var(--surface2),var(--surface));border:1px solid var(--border);border-radius:14px;padding:18px 22px;margin-bottom:16px">
-        <div>
-          <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)">Every $10 bet returns on average</div>
-          <div style="font-family:var(--display);font-weight:800;font-size:34px;letter-spacing:-.02em;color:${perTen>=10?'var(--yes)':'var(--no)'};line-height:1.1">$${perTen!=null?perTen.toFixed(2):'—'}</div>
-          <div style="font-size:12px;color:${perTen>=10?'var(--yes)':'var(--no)'}">${perTen!=null?(perTen>=10?'+$'+(perTen-10).toFixed(2)+' profit':'−$'+(10-perTen).toFixed(2)+' loss')+' per $10':'gathering data'}</div>
-        </div>
-        <div style="flex:1;min-width:200px;text-align:right">
-          <div style="display:inline-block;text-align:left;background:var(--surface);border-radius:10px;padding:8px 14px;font-family:var(--mono);font-size:12.5px;color:${verdictColor}">${verdict}</div>
-        </div>
-      </div>
-
-      <!-- LAST 50 SCORECARD -->
-      <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:8px">Last ${l50.trades||0} trades · $10 each</div>
-      <div class="stat-row" style="margin-bottom:16px">
-        <div class="stat-card"><div class="lbl">Invested</div><div class="val">$${(l50.invested||0).toLocaleString()}</div><div class="sub">${l50.trades||0} bets @ $10</div></div>
-        <div class="stat-card"><div class="lbl">Got back</div><div class="val">$${(l50.returned||0).toLocaleString(undefined,{maximumFractionDigits:0})}</div><div class="sub">${l50.wins||0} winners paid out</div></div>
-        <div class="stat-card"><div class="lbl">Profit / loss</div><div class="val ${(l50.profit||0)>=0?'pos':'neg'}">${(l50.profit||0)>=0?'+':'−'}$${Math.abs(l50.profit||0).toFixed(0)}</div><div class="sub">net result</div></div>
-        <div class="stat-card"><div class="lbl">Return</div><div class="val ${(l50.returnPct||0)>=0?'pos':'neg'}">${(l50.returnPct||0)>=0?'+':''}${l50.returnPct!=null?l50.returnPct:'—'}%</div><div class="sub">on money risked</div></div>
-      </div>
-
-      <div class="mini-note" style="margin-bottom:6px">How it works: 60 seconds before each 5-min Bitcoin window closes, the bot bets $10 on whichever way the price is currently moving, paying the live Polymarket price. Win rate so far: <b style="color:var(--text)">${acc!=null?(acc*100).toFixed(0)+'%</b> of '+nDec+' bets':'—'} · average price paid <b style="color:var(--text)">${be?cents(be):'—'}</b> · all-time: invested $${(allt.invested||0).toLocaleString()}, got back $${(allt.returned||0).toLocaleString(undefined,{maximumFractionDigits:0})} (${(allt.returnPct||0)>=0?'+':''}${allt.returnPct!=null?allt.returnPct:'—'}%).</div>
-      ${(()=>{
-        const mp=s.mispricing; if(!mp) return '';
-        const beats=mp.modelBeatsMarket;
-        const per=mp.perTenDollar;
-        const verdict = mp.trades<20 ? 'Collecting — need 20+ disagreement windows to judge'
-          : per>10.5 ? '✅ EDGE FOUND: betting against the market overshoot returns more than $10'
-          : per>10.05 ? '⚠ THIN EDGE: positive but small — watch if it survives more samples'
-          : per>9.5 ? '➖ NO EDGE: the model and market price probability about equally well'
-          : '❌ MARKET WINS: the market prices these better than our model';
-        const vColor = mp.trades<20?'var(--muted)':per>10.5?'var(--yes)':per>10.05?'var(--amber)':per>9.5?'var(--muted)':'var(--no)';
-        return `
-        <div style="margin:18px 0 6px;padding:16px 18px;background:linear-gradient(135deg,var(--surface2),var(--surface));border:1px solid var(--border);border-radius:12px">
-          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px">
-            <span style="font-family:var(--display);font-weight:700;font-size:14px">🎯 The mispricing edge</span>
-            <span style="font-family:var(--mono);font-size:10px;color:var(--faint)">betting AGAINST overshoots, not with the move</span>
-          </div>
-          <div style="font-size:12px;color:var(--muted);margin-bottom:12px">When our volatility model says the market has over/under-priced a window by 5+ points, we bet the model's side at the market price. This is the only bet that can't be copied by just following the move.</div>
-          <div class="stat-row" style="margin-bottom:10px">
-            <div class="stat-card"><div class="lbl">Edge bets</div><div class="val">${mp.trades||0}</div><div class="sub">windows model disagreed 5+ pts</div></div>
-            <div class="stat-card"><div class="lbl">Win rate</div><div class="val">${mp.winRate!=null?(mp.winRate*100).toFixed(0)+'%':'—'}</div><div class="sub">avg price ${mp.avgEdgePaid?cents(mp.avgEdgePaid):'—'}</div></div>
-            <div class="stat-card"><div class="lbl">$10 → returns</div><div class="val ${per>=10?'pos':'neg'}">$${per!=null?per.toFixed(2):'—'}</div><div class="sub">${(mp.returnPct||0)>=0?'+':''}${mp.returnPct!=null?mp.returnPct:'—'}% on $${(mp.invested||0).toLocaleString()}</div></div>
-            <div class="stat-card"><div class="lbl">Model vs market</div><div class="val" style="font-size:15px;color:${beats===true?'var(--yes)':beats===false?'var(--no)':'var(--muted)'}">${beats===true?'model wins':beats===false?'market wins':'—'}</div><div class="sub">Brier ${mp.modelBrier??'—'} vs ${mp.marketBrier??'—'}</div></div>
-          </div>
-          <div style="background:var(--surface);border-radius:8px;padding:10px 14px;font-family:var(--mono);font-size:12px;color:${vColor}">${verdict}</div>
-          <div class="mini-note" style="margin-top:8px;color:var(--faint)">"Model vs market" compares calibration over ${mp.windowsCompared||0} windows — lower Brier = better probability estimates. If our model isn't beating the market's, no edge is possible.</div>
-        </div>`;
-      })()}
-      <div class="mini-note" style="margin-bottom:12px;color:var(--faint)">data ${ageMin<=1?'just updated':ageMin+' min old'} · updates every minute · only counts bets where we got the real live price</div>
-
-      <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:8px">Recent bets <span style="color:var(--yes)">· each double-verified</span></div>
-      <table class="tbl"><thead><tr><th>Time</th><th>Bet</th><th>BTC: open → close</th><th>Outcome move</th><th>Price paid</th><th>Result</th><th>Profit</th><th>Verified by</th></tr></thead><tbody>${rows||'<tr><td colspan=8 style="color:var(--faint);padding:14px">No verified bets yet.</td></tr>'}</tbody></table>
-      ${s.excludedUnverified?`<div class="mini-note" style="margin-top:8px;color:var(--amber)">⊘ ${s.excludedUnverified} bet${s.excludedUnverified>1?'s':''} excluded as unverified (exact ties where price closed = opened, or sources disagreed). These never count toward the stats above — only bets confirmed by 2+ independent price feeds are tallied.</div>`:''}`;
-  }
-};
-/* wire scanner into tab switching */
-const _origShowPage=showPage;
-showPage=function(p,btn){ _origShowPage(p,btn); if(p==='arb'){ if(!Arb.lastScan)Arb.scan(); Arb.auto(); Sniper.start(); } else { Sniper.stop(); } };
 
 boot();
 </script>

@@ -11,7 +11,7 @@
    "slug": "mlb-nym-cin-2026-06-15",
    "side": "NO",
    "entry": 0.825,
-   "cur": 0.825,
+   "cur": 0.895,
    "stake": 400,
    "signal": "SHORT_FAVORITE",
    "p": 0.575,
@@ -53,7 +53,7 @@
    "slug": "mlb-mia-phi-2026-06-15",
    "side": "NO",
    "entry": 0.795,
-   "cur": 0.795,
+   "cur": 0.865,
    "stake": 400,
    "signal": "SHORT_FAVORITE",
    "p": 0.57,
@@ -141,7 +141,7 @@
    "slug": "iran-agrees-to-end-enrichment-of-uranium-by-june-30",
    "side": "YES",
    "entry": 0.38,
-   "cur": 0.405,
+   "cur": 0.385,
    "stake": 300,
    "signal": "ELITE_FOLLOW",
    "p": 0.642,
@@ -445,7 +445,7 @@
    "slug": "fifwc-irn-nzl-2026-06-15",
    "side": "NO",
    "entry": 0.45499999999999996,
-   "cur": 0.45499999999999996,
+   "cur": 0.46499999999999997,
    "stake": 200,
    "signal": "VOLUME_SPIKE",
    "p": 0.57,
@@ -2243,7 +2243,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-15T23:51:09.497Z"
+    "updated": "2026-06-16T00:05:28.933Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -2255,7 +2255,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-15T23:51:09.497Z"
+    "updated": "2026-06-16T00:05:28.933Z"
    }
   ]
  },
@@ -2272,15 +2272,15 @@
   "staked": 15350,
   "bankStart": 10000,
   "cash": 7056,
-  "equity": 8782,
-  "returnPct": -12.18,
+  "equity": 8839,
+  "returnPct": -11.61,
   "modelUpdates": 37,
   "brier": 0.283,
   "hypotheses": 2,
   "integrityOk": true,
-  "updated": "2026-06-15T23:51:09.501Z"
+  "updated": "2026-06-16T00:05:28.935Z"
  },
- "lastRun": 1781567469501,
+ "lastRun": 1781568328936,
  "elite": {
   "updated": 1781545591279,
   "list": [
@@ -2310,15 +2310,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-15T23:51:09.501Z",
+  "checkedAt": "2026-06-16T00:05:28.935Z",
   "tradesChecked": 45
  },
  "lastScan": {
-  "at": "2026-06-15T23:51:09.501Z",
-  "marketsFetched": 68,
-  "rawCandidates": 18,
-  "clearedThreshold": 2,
-  "placed": 2,
+  "at": "2026-06-16T00:05:28.935Z",
+  "marketsFetched": 67,
+  "rawCandidates": 17,
+  "clearedThreshold": 0,
+  "placed": 0,
   "pMin": 0.57,
   "blocked": {
    "exposure": 0,
@@ -2326,6 +2326,6 @@
    "cash": 0,
    "sanity": 0
   },
-  "reason": "traded"
+  "reason": "no candidates cleared P(win)>=0.57 (engines produce ~0.58-0.64; lower pMin or wait for better setups)"
  }
 }

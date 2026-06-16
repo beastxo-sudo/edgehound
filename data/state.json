@@ -145,7 +145,7 @@
    "slug": "what-iranian-demands-will-trump-agree-to-by-june-30",
    "side": "YES",
    "entry": 0.1635,
-   "cur": 0.1555,
+   "cur": 0.154,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.589,
@@ -595,7 +595,7 @@
    "slug": "atp-perrica-moutet-2026-06-15",
    "side": "NO",
    "entry": 0.475,
-   "cur": 0.505,
+   "cur": 0.495,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.57,
@@ -683,7 +683,7 @@
    "slug": "fifwc-fra-sen-2026-06-16",
    "side": "NO",
    "entry": 0.33499999999999996,
-   "cur": 0.345,
+   "cur": 0.33499999999999996,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.579,
@@ -2531,7 +2531,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-16T11:15:57.777Z"
+    "updated": "2026-06-16T11:31:11.191Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -2543,7 +2543,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-16T11:15:57.777Z"
+    "updated": "2026-06-16T11:31:11.191Z"
    },
    {
     "key": "SHORT_FAVORITE|high|sport",
@@ -2555,7 +2555,7 @@
      99
     ],
     "text": "Short Favorite on high-priced sports markets: 5W/1L (posterior 75%, 90% CI 51-99%) — collecting evidence",
-    "updated": "2026-06-16T11:15:57.777Z"
+    "updated": "2026-06-16T11:31:11.191Z"
    }
   ]
  },
@@ -2572,15 +2572,15 @@
   "staked": 17250,
   "bankStart": 10000,
   "cash": 7695,
-  "equity": 9095,
-  "returnPct": -9.05,
+  "equity": 9089,
+  "returnPct": -9.11,
   "modelUpdates": 45,
   "brier": 0.274,
   "hypotheses": 3,
   "integrityOk": true,
-  "updated": "2026-06-16T11:15:57.777Z"
+  "updated": "2026-06-16T11:31:11.192Z"
  },
- "lastRun": 1781608557778,
+ "lastRun": 1781609471192,
  "elite": {
   "updated": 1781545591279,
   "list": [
@@ -2610,7 +2610,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-16T11:15:57.778Z",
+  "checkedAt": "2026-06-16T11:31:11.192Z",
   "tradesChecked": 51
  },
  "lastScan": {

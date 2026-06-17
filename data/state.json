@@ -11,7 +11,7 @@
    "slug": "mlb-cle-mil-2026-06-16",
    "side": "NO",
    "entry": 0.845,
-   "cur": 0.845,
+   "cur": 0.905,
    "stake": 450,
    "signal": "SHORT_FAVORITE",
    "p": 0.583,
@@ -53,7 +53,7 @@
    "slug": "mlb-sd-stl-2026-06-16",
    "side": "NO",
    "entry": 0.815,
-   "cur": 0.725,
+   "cur": 0.785,
    "stake": 400,
    "signal": "SHORT_FAVORITE",
    "p": 0.574,
@@ -141,7 +141,7 @@
    "slug": "mlb-nym-cin-2026-06-16",
    "side": "NO",
    "entry": 0.8049999999999999,
-   "cur": 0.925,
+   "cur": 0.9155,
    "stake": 450,
    "signal": "SHORT_FAVORITE",
    "p": 0.589,
@@ -183,7 +183,7 @@
    "slug": "what-iranian-demands-will-trump-agree-to-by-june-30",
    "side": "YES",
    "entry": 0.1995,
-   "cur": 0.19,
+   "cur": 0.188,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.608,
@@ -3169,7 +3169,7 @@
      81
     ],
     "text": "Short Favorite on high-priced sports markets: 6W/4L (posterior 58%, 90% CI 36-81%) — collecting evidence",
-    "updated": "2026-06-17T01:53:54.190Z"
+    "updated": "2026-06-17T02:08:17.441Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -3181,7 +3181,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-17T01:53:54.189Z"
+    "updated": "2026-06-17T02:08:17.441Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -3193,7 +3193,7 @@
      91
     ],
     "text": "Volume Spike on low-priced non-sports markets: 5W/2L (posterior 67%, 90% CI 42-91%) — collecting evidence",
-    "updated": "2026-06-17T01:53:54.190Z"
+    "updated": "2026-06-17T02:08:17.441Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -3205,7 +3205,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-17T01:53:54.190Z"
+    "updated": "2026-06-17T02:08:17.441Z"
    }
   ]
  },
@@ -3222,15 +3222,15 @@
   "staked": 21900,
   "bankStart": 10000,
   "cash": 5774,
-  "equity": 9275,
-  "returnPct": -7.25,
+  "equity": 9330,
+  "returnPct": -6.7,
   "modelUpdates": 56,
   "brier": 0.276,
   "hypotheses": 4,
   "integrityOk": true,
-  "updated": "2026-06-17T01:53:54.196Z"
+  "updated": "2026-06-17T02:08:17.444Z"
  },
- "lastRun": 1781661234196,
+ "lastRun": 1781662097444,
  "elite": {
   "updated": 1781632184277,
   "list": [
@@ -3274,22 +3274,22 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-17T01:53:54.196Z",
+  "checkedAt": "2026-06-17T02:08:17.444Z",
   "tradesChecked": 65
  },
  "lastScan": {
-  "at": "2026-06-17T01:53:54.195Z",
-  "marketsFetched": 60,
-  "rawCandidates": 19,
-  "clearedThreshold": 3,
-  "placed": 1,
+  "at": "2026-06-17T02:08:17.444Z",
+  "marketsFetched": 61,
+  "rawCandidates": 20,
+  "clearedThreshold": 2,
+  "placed": 0,
   "pMin": 0.57,
   "blocked": {
    "exposure": 1,
-   "event": 1,
+   "event": 0,
    "cash": 0,
    "sanity": 0
   },
-  "reason": "traded"
+  "reason": "exposure cap reached"
  }
 }

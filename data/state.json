@@ -11,7 +11,7 @@
    "slug": "iran-agrees-to-end-enrichment-of-uranium-by-june-30",
    "side": "YES",
    "entry": 0.355,
-   "cur": 0.355,
+   "cur": 0.325,
    "stake": 200,
    "signal": "ELITE_FOLLOW",
    "p": 0.589,
@@ -55,7 +55,7 @@
    "slug": "what-iranian-demands-will-trump-agree-to-by-june-30",
    "side": "YES",
    "entry": 0.445,
-   "cur": 0.52,
+   "cur": 0.55,
    "stake": 200,
    "signal": "ELITE_FOLLOW",
    "p": 0.585,
@@ -99,7 +99,7 @@
    "slug": "mlb-sd-stl-2026-06-17",
    "side": "YES",
    "entry": 0.795,
-   "cur": 0.945,
+   "cur": 0.993,
    "stake": 750,
    "signal": "SHORT_FAVORITE",
    "p": 0.628,
@@ -141,7 +141,7 @@
    "slug": "israel-x-iran-permanent-peace-deal-by",
    "side": "YES",
    "entry": 0.0985,
-   "cur": 0.0835,
+   "cur": 0.093,
    "stake": 550,
    "signal": "ELITE_FOLLOW",
    "p": 0.64,
@@ -185,7 +185,7 @@
    "slug": "what-iranian-demands-will-trump-agree-to-by-june-30",
    "side": "NO",
    "entry": 0.44499999999999995,
-   "cur": 0.48,
+   "cur": 0.44999999999999996,
    "stake": 550,
    "signal": "ELITE_FOLLOW",
    "p": 0.631,
@@ -3737,7 +3737,7 @@
      83
     ],
     "text": "Short Favorite on high-priced sports markets: 13W/6L (posterior 67%, 90% CI 50-83%) — collecting evidence",
-    "updated": "2026-06-17T20:45:48.848Z"
+    "updated": "2026-06-17T21:01:17.495Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -3749,7 +3749,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-17T20:45:48.848Z"
+    "updated": "2026-06-17T21:01:17.495Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -3761,7 +3761,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-17T20:45:48.848Z"
+    "updated": "2026-06-17T21:01:17.495Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -3773,7 +3773,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-17T20:45:48.848Z"
+    "updated": "2026-06-17T21:01:17.495Z"
    }
   ]
  },
@@ -3790,15 +3790,15 @@
   "staked": 27150,
   "bankStart": 10000,
   "cash": 6925,
-  "equity": 10294,
-  "returnPct": 2.94,
+  "equity": 10352,
+  "returnPct": 3.52,
   "modelUpdates": 70,
   "brier": 0.272,
   "hypotheses": 4,
   "integrityOk": true,
-  "updated": "2026-06-17T20:45:48.852Z"
+  "updated": "2026-06-17T21:01:17.499Z"
  },
- "lastRun": 1781729148852,
+ "lastRun": 1781730077499,
  "elite": {
   "updated": 1781719276357,
   "list": [
@@ -3835,15 +3835,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-17T20:45:48.852Z",
+  "checkedAt": "2026-06-17T21:01:17.499Z",
   "tradesChecked": 77
  },
  "lastScan": {
-  "at": "2026-06-17T20:45:48.852Z",
+  "at": "2026-06-17T21:01:17.498Z",
   "marketsFetched": 51,
   "rawCandidates": 15,
-  "clearedThreshold": 1,
-  "placed": 1,
+  "clearedThreshold": 0,
+  "placed": 0,
   "pMin": 0.57,
   "blocked": {
    "exposure": 0,
@@ -3851,6 +3851,6 @@
    "cash": 0,
    "sanity": 0
   },
-  "reason": "traded"
+  "reason": "no candidates cleared P(win)>=0.57 (engines produce ~0.58-0.64; lower pMin or wait for better setups)"
  }
 }

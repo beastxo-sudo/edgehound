@@ -2,6 +2,48 @@
  "running": true,
  "journal": [
   {
+   "id": "t17816595288526h0j",
+   "date": "2026-06-17",
+   "openedTs": 1781659528852,
+   "title": "San Diego Padres vs. St. Louis Cardinals",
+   "mid": "2490319",
+   "conditionId": "0x2bb049af08280cd21cb68e945fae78dd337266cd31a2aa257e567a7dd395f595",
+   "slug": "mlb-sd-stl-2026-06-16",
+   "side": "NO",
+   "entry": 0.815,
+   "cur": 0.815,
+   "stake": 400,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.574,
+   "pModel": 0.514,
+   "pBucket": 0.583,
+   "bucketN": 10,
+   "bk": "SHORT_FAVORITE|high|sport",
+   "ev": 0.1,
+   "kelly": 0.0458,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.815,
+    0.505,
+    1,
+    0.769,
+    0.592,
+    0.994,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 57% [model 51%, pattern 58% on n=10] · EV +0.10/$1 · 1/4-Kelly 4.6% of equity -> $400. 82c favorite resolving in 6.9d (favorite-longshot bias); +23% if it lands. Drivers: sports market -, 24h move size +, short time to resolution -",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1782258300000,
+   "status": "open"
+  },
+  {
    "id": "t17816569936091ajj",
    "date": "2026-06-17",
    "openedTs": 1781656993609,
@@ -57,7 +99,7 @@
    "slug": "mlb-nym-cin-2026-06-16",
    "side": "NO",
    "entry": 0.8049999999999999,
-   "cur": 0.795,
+   "cur": 0.785,
    "stake": 450,
    "signal": "SHORT_FAVORITE",
    "p": 0.589,
@@ -99,7 +141,7 @@
    "slug": "what-iranian-demands-will-trump-agree-to-by-june-30",
    "side": "YES",
    "entry": 0.1995,
-   "cur": 0.184,
+   "cur": 0.1885,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.608,
@@ -235,7 +277,7 @@
    "slug": "what-iranian-demands-will-trump-agree-to-by-june-30",
    "side": "NO",
    "entry": 0.30000000000000004,
-   "cur": 0.31499999999999995,
+   "cur": 0.32499999999999996,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.591,
@@ -771,7 +813,7 @@
    "slug": "mlb-kc-wsh-2026-06-15",
    "side": "NO",
    "entry": 0.935,
-   "cur": 0.9695,
+   "cur": 0.965,
    "stake": 400,
    "signal": "SHORT_FAVORITE",
    "p": 0.572,
@@ -2917,6 +2959,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-17 06:55 IST — Opened NO $400 @ 82c P=57% EV=+0.10 [Short Favorite] \"San Diego Padres vs. St. Louis Cardinals\"",
   "2026-06-17 06:41 IST — Closed NO \"Will Argentina vs. Algeria end in a draw?\" -> $-20 (Max hold reached — closed at market) · model said P(win)=68%",
   "2026-06-17 06:41 IST — Closed NO \"Miami Marlins vs. Philadelphia Phillies\" -> +$64 (Resolved in our favor) · model said P(win)=58%",
   "2026-06-17 06:41 IST — Closed YES \"Will Algeria win on 2026-06-16?\" -> $-7 (Max hold reached — closed at market) · model said P(win)=64%",
@@ -2929,8 +2972,7 @@
   "2026-06-17 04:45 IST — Opened YES $100 @ 43c P=61% EV=-0.01 [Elite Follow] \" Iran agrees to end enrichment of uranium by J\"",
   "2026-06-17 03:31 IST — Closed NO \"Will Iraq vs. Norway end in a draw?\" -> $-6 (Max hold reached — closed at market) · model said P(win)=68%",
   "2026-06-17 03:31 IST — Closed YES \"Spread: Norway (-2.5)\" -> +$6 (Max hold reached — closed at market) · model said P(win)=62%",
-  "2026-06-17 03:01 IST — Opened NO $100 @ 30c P=59% EV=+0.04 [Volume Spike] \"Will Trump agree to withdraw troops from the I\"",
-  "2026-06-17 01:15 IST — Closed YES \"Will Trump agree to Iranian transit fees i\" -> $-29 (Stop loss hit (-25%)) · model said P(win)=59%"
+  "2026-06-17 03:01 IST — Opened NO $100 @ 30c P=59% EV=+0.04 [Volume Spike] \"Will Trump agree to withdraw troops from the I\""
  ],
  "brain": {
   "w": [
@@ -3085,7 +3127,7 @@
      81
     ],
     "text": "Short Favorite on high-priced sports markets: 6W/4L (posterior 58%, 90% CI 36-81%) — collecting evidence",
-    "updated": "2026-06-17T01:11:21.684Z"
+    "updated": "2026-06-17T01:25:28.848Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -3097,7 +3139,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-17T01:11:21.684Z"
+    "updated": "2026-06-17T01:25:28.848Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -3109,7 +3151,7 @@
      91
     ],
     "text": "Volume Spike on low-priced non-sports markets: 5W/2L (posterior 67%, 90% CI 42-91%) — collecting evidence",
-    "updated": "2026-06-17T01:11:21.684Z"
+    "updated": "2026-06-17T01:25:28.848Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -3121,32 +3163,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-17T01:11:21.684Z"
+    "updated": "2026-06-17T01:25:28.848Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 6624.1311941253025,
+  "cash": 6224.1311941253025,
   "created": 1781162132851
  },
  "summary": {
   "realized": -825.87,
   "closed": 56,
   "wins": 25,
-  "open": 7,
-  "staked": 21050,
+  "open": 8,
+  "staked": 21450,
   "bankStart": 10000,
-  "cash": 6624,
-  "equity": 9245,
-  "returnPct": -7.55,
+  "cash": 6224,
+  "equity": 9243,
+  "returnPct": -7.57,
   "modelUpdates": 56,
   "brier": 0.276,
   "hypotheses": 4,
   "integrityOk": true,
-  "updated": "2026-06-17T01:11:21.689Z"
+  "updated": "2026-06-17T01:25:28.852Z"
  },
- "lastRun": 1781658681689,
+ "lastRun": 1781659528852,
  "elite": {
   "updated": 1781632184277,
   "list": [
@@ -3190,15 +3232,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-17T01:11:21.689Z",
-  "tradesChecked": 63
+  "checkedAt": "2026-06-17T01:25:28.852Z",
+  "tradesChecked": 64
  },
  "lastScan": {
-  "at": "2026-06-17T01:11:21.689Z",
-  "marketsFetched": 60,
-  "rawCandidates": 18,
-  "clearedThreshold": 1,
-  "placed": 0,
+  "at": "2026-06-17T01:25:28.852Z",
+  "marketsFetched": 63,
+  "rawCandidates": 19,
+  "clearedThreshold": 2,
+  "placed": 1,
   "pMin": 0.57,
   "blocked": {
    "exposure": 0,
@@ -3206,6 +3248,6 @@
    "cash": 0,
    "sanity": 0
   },
-  "reason": "all remaining candidates blocked by event-correlation guard"
+  "reason": "traded"
  }
 }

@@ -2,6 +2,136 @@
  "running": true,
  "journal": [
   {
+   "id": "t1781724667634ssnh",
+   "date": "2026-06-18",
+   "openedTs": 1781724667634,
+   "title": "San Diego Padres vs. St. Louis Cardinals",
+   "mid": "2505824",
+   "conditionId": "0x117bb7927fddce895e354fbfb3ea8db3290ea008bb9f6cf3694b4a8556d11239",
+   "slug": "mlb-sd-stl-2026-06-17",
+   "side": "YES",
+   "entry": 0.795,
+   "cur": 0.795,
+   "stake": 750,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.628,
+   "pModel": 0.463,
+   "pBucket": 0.65,
+   "bucketN": 18,
+   "bk": "SHORT_FAVORITE|high|sport",
+   "ev": 0.117,
+   "kelly": 0.0798,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.795,
+    0.504,
+    1,
+    0.78,
+    0.705,
+    0.999,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 63% [model 46%, pattern 65% on n=18] · EV +0.12/$1 · 1/4-Kelly 8.0% of equity -> $750. 80c favorite resolving in 6.9d (favorite-longshot bias); +26% if it lands. Drivers: 24h move size +, sports market -, favorite setup +",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1782324900000,
+   "status": "open"
+  },
+  {
+   "id": "t1781724667634763r",
+   "date": "2026-06-18",
+   "openedTs": 1781724667634,
+   "title": "Israel x Iran permanent peace deal by June 30, 2026?",
+   "mid": "2002564",
+   "conditionId": "0x5efa976ebe94080bbda7e45605333ff8f30156cc91604d66c41eb52fd3e25f3e",
+   "slug": "israel-x-iran-permanent-peace-deal-by",
+   "side": "YES",
+   "entry": 0.0985,
+   "cur": 0.0985,
+   "stake": 550,
+   "signal": "ELITE_FOLLOW",
+   "p": 0.64,
+   "pModel": 0.464,
+   "pBucket": 0.5,
+   "bucketN": 0,
+   "bk": "ELITE_FOLLOW|low|other",
+   "ev": 0.081,
+   "kelly": 0.0571,
+   "x": [
+    0,
+    0,
+    0,
+    0,
+    0.099,
+    0.13,
+    0.24,
+    0.857,
+    0.771,
+    0.141,
+    0,
+    0,
+    0
+   ],
+   "walletNames": [
+    "aenews2"
+   ],
+   "insight": "P(win) 64% [model 46%, pattern 50% on n=0] · EV +0.08/$1 · 1/4-Kelly 5.7% of equity -> $550. Elite wallet \"aenews2\" (83% win rate over 36 settled positions) bought Yes 14min ago at 10c — still copyable at 10c. Drivers: liquidity -, 24h move size +, 24h volume -",
+   "target": 0.25,
+   "stop": 0.25,
+   "holdUntil": 1782588667634,
+   "status": "open"
+  },
+  {
+   "id": "t17817246676339w90",
+   "date": "2026-06-18",
+   "openedTs": 1781724667633,
+   "title": "Will Trump agree to withdraw troops from the Iranian region by June 30?",
+   "mid": "2371796",
+   "conditionId": "0xfa08848205da5717b79e5bc21e7dbd31264fb01acc98bd1436b95870e8fec409",
+   "slug": "what-iranian-demands-will-trump-agree-to-by-june-30",
+   "side": "NO",
+   "entry": 0.44499999999999995,
+   "cur": 0.44499999999999995,
+   "stake": 550,
+   "signal": "ELITE_FOLLOW",
+   "p": 0.631,
+   "pModel": 0.477,
+   "pBucket": 0.6,
+   "bucketN": 3,
+   "bk": "ELITE_FOLLOW|mid|other",
+   "ev": 0.077,
+   "kelly": 0.0547,
+   "x": [
+    0,
+    0,
+    0,
+    0,
+    0.445,
+    0.13,
+    0.55,
+    0.797,
+    0.694,
+    0.459,
+    0,
+    0,
+    0
+   ],
+   "walletNames": [
+    "aenews2"
+   ],
+   "insight": "P(win) 63% [model 48%, pattern 60% on n=3] · EV +0.08/$1 · 1/4-Kelly 5.5% of equity -> $550. Elite wallet \"aenews2\" (83% win rate over 36 settled positions) bought No 15min ago at 44c — still copyable at 44c. Drivers: 24h move size +, liquidity -, 24h volume -",
+   "target": 0.25,
+   "stop": 0.25,
+   "holdUntil": 1782588667633,
+   "status": "open"
+  },
+  {
    "id": "t1781722871354dp6n",
    "date": "2026-06-18",
    "openedTs": 1781722871354,
@@ -11,7 +141,7 @@
    "slug": "mlb-sf-atl-2026-06-16",
    "side": "YES",
    "entry": 0.885,
-   "cur": 0.885,
+   "cur": 0.98,
    "stake": 750,
    "signal": "SHORT_FAVORITE",
    "p": 0.623,
@@ -3347,6 +3477,9 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-18 01:01 IST — Opened YES $750 @ 80c P=63% EV=+0.12 [Short Favorite] \"San Diego Padres vs. St. Louis Cardinals\"",
+  "2026-06-18 01:01 IST — Opened YES $550 @ 10c P=64% EV=+0.08 [Elite Follow] \"Israel x Iran permanent peace deal by June 30,\"",
+  "2026-06-18 01:01 IST — Opened NO $550 @ 44c P=63% EV=+0.08 [Elite Follow] \"Will Trump agree to withdraw troops from the I\"",
   "2026-06-18 00:31 IST — Opened YES $750 @ 89c P=62% EV=+0.12 [Short Favorite] \"San Francisco Giants vs. Atlanta Braves\"",
   "2026-06-18 00:31 IST — Closed NO \"Will Trump agree to withdraw troops from t\" -> $-28 (Stop loss hit (-25%)) · model said P(win)=59%",
   "2026-06-17 23:31 IST — Elite pool refreshed: 4 wallets qualify (>=58% win rate over >=10 settled, scalpers excluded): donthackme 87%, aenews2 83%, PatrocIus 65%, denizz 64%",
@@ -3357,10 +3490,7 @@
   "2026-06-17 10:45 IST — Opened YES $450 @ 33c P=63% EV=+0.28 [Volume Spike] \"Will the text of the US-Iran agreement be rele\"",
   "2026-06-17 10:01 IST — Closed YES \"Will the text of the US-Iran agreement be \" -> +$479 (Profit target hit (+22%)) · model said P(win)=61%",
   "2026-06-17 09:46 IST — Closed NO \"Tampa Bay Rays vs. Los Angeles Dodgers\" -> +$137 (Resolved in our favor) · model said P(win)=66%",
-  "2026-06-17 09:31 IST — Opened YES $150 @ 23c P=61% EV=+0.03 [Volume Spike] \"Will WTI Crude Oil (WTI) hit (LOW) $65 in June\"",
-  "2026-06-17 09:31 IST — Closed NO \"Will Austria vs. Jordan end in a draw?\" -> $-6 (Max hold reached — closed at market) · model said P(win)=68%",
-  "2026-06-17 09:03 IST — Opened NO $500 @ 79c P=66% EV=+0.12 [Short Favorite] \"Tampa Bay Rays vs. Los Angeles Dodgers\"",
-  "2026-06-17 09:03 IST — Opened YES $150 @ 13c P=61% EV=+0.03 [Volume Spike] \"Will the text of the US-Iran agreement be rele\""
+  "2026-06-17 09:31 IST — Opened YES $150 @ 23c P=61% EV=+0.03 [Volume Spike] \"Will WTI Crude Oil (WTI) hit (LOW) $65 in June\""
  ],
  "brain": {
   "w": [
@@ -3515,7 +3645,7 @@
      82
     ],
     "text": "Short Favorite on high-priced sports markets: 12W/6L (posterior 65%, 90% CI 48-82%) — collecting evidence",
-    "updated": "2026-06-17T19:15:52.906Z"
+    "updated": "2026-06-17T19:31:07.630Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -3527,7 +3657,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-17T19:15:52.906Z"
+    "updated": "2026-06-17T19:31:07.630Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -3539,7 +3669,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-17T19:15:52.906Z"
+    "updated": "2026-06-17T19:31:07.630Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -3551,32 +3681,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-17T19:15:52.906Z"
+    "updated": "2026-06-17T19:31:07.630Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 8327.694825567067,
+  "cash": 6477.694825567067,
   "created": 1781162132851
  },
  "summary": {
   "realized": -22.31,
   "closed": 69,
   "wins": 32,
-  "open": 3,
-  "staked": 24900,
+  "open": 6,
+  "staked": 26750,
   "bankStart": 10000,
-  "cash": 8328,
-  "equity": 10062,
-  "returnPct": 0.62,
+  "cash": 6478,
+  "equity": 10142,
+  "returnPct": 1.42,
   "modelUpdates": 69,
   "brier": 0.274,
   "hypotheses": 4,
   "integrityOk": true,
-  "updated": "2026-06-17T19:15:52.909Z"
+  "updated": "2026-06-17T19:31:07.634Z"
  },
- "lastRun": 1781723752909,
+ "lastRun": 1781724667634,
  "elite": {
   "updated": 1781719276357,
   "list": [
@@ -3613,15 +3743,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-17T19:15:52.909Z",
-  "tradesChecked": 72
+  "checkedAt": "2026-06-17T19:31:07.634Z",
+  "tradesChecked": 75
  },
  "lastScan": {
-  "at": "2026-06-17T19:15:52.909Z",
-  "marketsFetched": 47,
-  "rawCandidates": 19,
-  "clearedThreshold": 0,
-  "placed": 0,
+  "at": "2026-06-17T19:31:07.634Z",
+  "marketsFetched": 54,
+  "rawCandidates": 26,
+  "clearedThreshold": 3,
+  "placed": 3,
   "pMin": 0.57,
   "blocked": {
    "exposure": 0,
@@ -3629,6 +3759,6 @@
    "cash": 0,
    "sanity": 0
   },
-  "reason": "no candidates cleared P(win)>=0.57 (engines produce ~0.58-0.64; lower pMin or wait for better setups)"
+  "reason": "traded"
  }
 }

@@ -2,6 +2,48 @@
  "running": true,
  "journal": [
   {
+   "id": "t17816733462774r0t",
+   "date": "2026-06-17",
+   "openedTs": 1781673346277,
+   "title": "Will the text of the US-Iran agreement be released by June 16? ",
+   "mid": "2557368",
+   "conditionId": "0xfa40932295e57674d1988b9ec901f86e0a472c26e2d7baf232a84a13100708b5",
+   "slug": "us-iran-deal-text-released-byptptpt-20260615224044572",
+   "side": "YES",
+   "entry": 0.33,
+   "cur": 0.33,
+   "stake": 450,
+   "signal": "VOLUME_SPIKE",
+   "p": 0.628,
+   "pModel": 0.746,
+   "pBucket": 0.7,
+   "bucketN": 8,
+   "bk": "VOLUME_SPIKE|low|other",
+   "ev": 0.276,
+   "kelly": 0.0458,
+   "x": [
+    0,
+    0,
+    0,
+    1,
+    0.33,
+    0.932,
+    0.875,
+    0.775,
+    0.616,
+    0.963,
+    0,
+    0,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 63% [model 75%, pattern 70% on n=8] · EV +0.28/$1 · 1/4-Kelly 4.6% of equity -> $450. 96% of lifetime volume in 24h — attention precedes movement. Drivers: 24h move size +, 24h volume +, attention spike +",
+   "target": 0.22,
+   "stop": 0.25,
+   "holdUntil": 1781755140000,
+   "status": "open"
+  },
+  {
    "id": "t1781668908590ij9q",
    "date": "2026-06-17",
    "openedTs": 1781668908590,
@@ -11,7 +53,7 @@
    "slug": "what-price-will-wti-hit-in-june-2026",
    "side": "YES",
    "entry": 0.228,
-   "cur": 0.2315,
+   "cur": 0.2265,
    "stake": 150,
    "signal": "VOLUME_SPIKE",
    "p": 0.608,
@@ -421,7 +463,7 @@
    "slug": "what-iranian-demands-will-trump-agree-to-by-june-30",
    "side": "YES",
    "entry": 0.1995,
-   "cur": 0.1815,
+   "cur": 0.173,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.608,
@@ -3243,6 +3285,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-17 10:45 IST — Opened YES $450 @ 33c P=63% EV=+0.28 [Volume Spike] \"Will the text of the US-Iran agreement be rele\"",
   "2026-06-17 10:01 IST — Closed YES \"Will the text of the US-Iran agreement be \" -> +$479 (Profit target hit (+22%)) · model said P(win)=61%",
   "2026-06-17 09:46 IST — Closed NO \"Tampa Bay Rays vs. Los Angeles Dodgers\" -> +$137 (Resolved in our favor) · model said P(win)=66%",
   "2026-06-17 09:31 IST — Opened YES $150 @ 23c P=61% EV=+0.03 [Volume Spike] \"Will WTI Crude Oil (WTI) hit (LOW) $65 in June\"",
@@ -3255,8 +3298,7 @@
   "2026-06-17 08:06 IST — Closed NO \"San Diego Padres vs. St. Louis Cardinals\" -> +$91 (Resolved in our favor) · model said P(win)=57%",
   "2026-06-17 07:51 IST — Opened YES $500 @ 84c P=62% EV=+0.11 [Short Favorite] \"Colorado Rockies vs. Chicago Cubs\"",
   "2026-06-17 07:51 IST — Closed NO \"New York Mets vs. Cincinnati Reds\" -> +$109 (Resolved in our favor) · model said P(win)=59%",
-  "2026-06-17 07:51 IST — Closed NO \"Cleveland Guardians vs. Milwaukee Brewers\" -> +$83 (Resolved in our favor) · model said P(win)=58%",
-  "2026-06-17 07:23 IST — Opened NO $450 @ 85c P=58% EV=+0.10 [Short Favorite] \"Cleveland Guardians vs. Milwaukee Brewers\""
+  "2026-06-17 07:51 IST — Closed NO \"Cleveland Guardians vs. Milwaukee Brewers\" -> +$83 (Resolved in our favor) · model said P(win)=58%"
  ],
  "brain": {
   "w": [
@@ -3411,7 +3453,7 @@
      86
     ],
     "text": "Short Favorite on high-priced sports markets: 12W/5L (posterior 68%, 90% CI 51-86%) — collecting evidence",
-    "updated": "2026-06-17T05:01:08.209Z"
+    "updated": "2026-06-17T05:15:46.273Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -3423,7 +3465,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-17T05:01:08.208Z"
+    "updated": "2026-06-17T05:15:46.273Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -3435,7 +3477,7 @@
      93
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/2L (posterior 70%, 90% CI 47-93%) — collecting evidence",
-    "updated": "2026-06-17T05:01:08.209Z"
+    "updated": "2026-06-17T05:15:46.273Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -3447,32 +3489,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-17T05:01:08.209Z"
+    "updated": "2026-06-17T05:15:46.273Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 8473.594802782834,
+  "cash": 8023.594802782834,
   "created": 1781162132851
  },
  "summary": {
   "realized": 223.59,
   "closed": 64,
   "wins": 32,
-  "open": 6,
-  "staked": 23700,
+  "open": 7,
+  "staked": 24150,
   "bankStart": 10000,
-  "cash": 8474,
-  "equity": 10286,
-  "returnPct": 2.86,
+  "cash": 8024,
+  "equity": 10279,
+  "returnPct": 2.79,
   "modelUpdates": 64,
   "brier": 0.265,
   "hypotheses": 4,
   "integrityOk": true,
-  "updated": "2026-06-17T05:01:08.212Z"
+  "updated": "2026-06-17T05:15:46.277Z"
  },
- "lastRun": 1781672468212,
+ "lastRun": 1781673346278,
  "elite": {
   "updated": 1781632184277,
   "list": [
@@ -3516,22 +3558,22 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-17T05:01:08.212Z",
-  "tradesChecked": 70
+  "checkedAt": "2026-06-17T05:15:46.277Z",
+  "tradesChecked": 71
  },
  "lastScan": {
-  "at": "2026-06-17T05:01:08.212Z",
+  "at": "2026-06-17T05:15:46.277Z",
   "marketsFetched": 56,
   "rawCandidates": 12,
   "clearedThreshold": 1,
-  "placed": 0,
+  "placed": 1,
   "pMin": 0.57,
   "blocked": {
    "exposure": 0,
-   "event": 1,
+   "event": 0,
    "cash": 0,
    "sanity": 0
   },
-  "reason": "all remaining candidates blocked by event-correlation guard"
+  "reason": "traded"
  }
 }

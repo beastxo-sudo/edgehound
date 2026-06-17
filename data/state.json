@@ -607,7 +607,7 @@
    "slug": "what-iranian-demands-will-trump-agree-to-by-june-30",
    "side": "NO",
    "entry": 0.30000000000000004,
-   "cur": 0.30500000000000005,
+   "cur": 0.31499999999999995,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.591,
@@ -3461,7 +3461,7 @@
      86
     ],
     "text": "Short Favorite on high-priced sports markets: 12W/5L (posterior 68%, 90% CI 51-86%) — collecting evidence",
-    "updated": "2026-06-17T16:16:31.880Z"
+    "updated": "2026-06-17T16:31:05.209Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -3473,7 +3473,7 @@
      81
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/4L (posterior 58%, 90% CI 36-81%) — collecting evidence",
-    "updated": "2026-06-17T16:16:31.880Z"
+    "updated": "2026-06-17T16:31:05.209Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -3485,7 +3485,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-17T16:16:31.880Z"
+    "updated": "2026-06-17T16:31:05.209Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -3497,7 +3497,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-17T16:16:31.880Z"
+    "updated": "2026-06-17T16:31:05.209Z"
    }
   ]
  },
@@ -3514,15 +3514,15 @@
   "staked": 24150,
   "bankStart": 10000,
   "cash": 8445,
-  "equity": 10116,
-  "returnPct": 1.16,
+  "equity": 10119,
+  "returnPct": 1.19,
   "modelUpdates": 66,
   "brier": 0.269,
   "hypotheses": 4,
   "integrityOk": true,
-  "updated": "2026-06-17T16:16:31.880Z"
+  "updated": "2026-06-17T16:31:05.210Z"
  },
- "lastRun": 1781712991881,
+ "lastRun": 1781713865210,
  "elite": {
   "updated": 1781632184277,
   "list": [
@@ -3566,7 +3566,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-17T16:16:31.880Z",
+  "checkedAt": "2026-06-17T16:31:05.210Z",
   "tradesChecked": 71
  },
  "lastScan": {

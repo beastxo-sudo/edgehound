@@ -1,28 +1,31 @@
 {
  "status": "ok",
- "updated": "2026-06-16T19:01:00.667Z",
- "updatedIST": "2026-06-17 00:31 IST",
- "memo": "EdgeHound Performance Review — 2026-06-17\n\nPortfolio is down 8.1% since inception ($894 realized loss on $10K bank), with equity at $9,192 including $3,587 staked in open positions. The previous supervisor cycle correctly disabled MOMENTUM and SMART_CONSENSUS, and that intervention is already bearing fruit.\n\nSHORT_FAVORITE remains the only engine with a positive PnL (+$621, 7W/11T, 64% win rate). The hypothesis tracking confirms a strong edge in high-priced sports markets (75% win rate, CI 51-99%). The current open book is heavily weighted to SHORT_FAVORITE soccer/baseball positions, which is structurally sound.\n\nMOMENTUM's damage is clear: $1,019 loss across 21 trades (38% win rate). The pattern across losses is consistent — MOMENTUM was chasing geopolitical narrative markets (Iran deals, Strait of Hormuz, US invasion) where sentiment momentum does not predict resolution direction. These markets are driven by exogenous news shocks, not crowd wisdom. Disabling MOMENTUM remains the correct call.\n\nSMART_CONSENSUS took a single $385 loss on a CS:GO esports market — too small a sample but the loss size (1000 stake at 10% kelly suggests sizing was anomalous) warrants continued suspension.\n\nVOLUME_SPIKE is marginally negative (-$39 across 10 trades) but the recent stop-loss pattern on baseball YES-side positions suggests it is buying into temporary volume spikes on favorites that then revert. The small stake sizes ($100-200) are limiting damage appropriately.\n\nELITE_FOLLOW at 3 trades is insufficient to evaluate. The Iran enrichment trade was a high-conviction political call that stopped out. Keep enabled but watch sizing.\n\nNo parameter changes warranted this cycle. KellyMult at 0.10 and maxExposure at 0.40 are appropriately conservative during this drawdown phase. SHORT_FAVORITE's open book of $2,700 in soccer is within acceptable concentration given the short-resolution horizon.",
+ "updated": "2026-06-17T14:41:51.364Z",
+ "updatedIST": "2026-06-17 20:11 IST",
+ "memo": "EdgeHound Performance Review — 2026-06-17\n\nPortfolio is modestly profitable at +1.13% on $10K starting equity, with 66 closed trades and $45.13 realized P&L. The headline number understates signal-level divergence. SHORT_FAVORITE is the clear engine of value: 22 trades, 14 wins (63.6%), +$1,230 PnL — predominantly MLB and combat sports, with the hypothesis tracker confirming 68% win rate on high-price sports markets (CI 51-86%). This engine is the fund. MOMENTUM remains disabled from last cycle, correctly so: 21 trades, 8 wins (38%), -$1,019 — deeply negative and no hypothesis has turned constructive. VOLUME_SPIKE is marginally positive (+$258) but the pattern is noisy: wins come from large single-event bounces (Iran +$479) while losses are a string of -25% stop-outs on low-conviction event markets and baseball long-side bets. The recent wave of soccer World Cup volume-spike entries showed near-zero drift at expiry, suggesting the edge there is thin. ELITE_FOLLOW has only 4 trades — too small to evaluate. SMART_CONSENSUS disabled, one trade, -$385 — keep off.\n\nKey risk: maxEventExposure at $500 with SHORT_FAVORITE staking 400-500 per MLB game creates healthy concentration but is capped appropriately. kellyMult at 0.10 is conservative given demonstrated edge; a modest lift to 0.15 is warranted for SHORT_FAVORITE to capitalize. Brier score 0.269 suggests moderate calibration — acceptable but not tight.\n\nRecommendation: Raise kellyMult to 0.15 to harvest SHORT_FAVORITE edge more fully. Raise maxEventExposure to 750 to allow slightly larger single-game positions. No other changes. Continue monitoring VOLUME_SPIKE for structural edge decay.",
  "observations": [
-  "SHORT_FAVORITE: +$621 PnL, 64% win rate across 11 trades — sole profitable engine, hypothesis confirms edge in high-priced sports markets",
-  "MOMENTUM correctly disabled last cycle; $1,019 total loss driven by geopolitical narrative trades where momentum signal has no predictive validity",
-  "SMART_CONSENSUS correctly disabled; single $385 loss on esports with apparent oversizing — insufficient data to rehabilitate",
-  "VOLUME_SPIKE marginally negative (-$39); small stakes limiting damage but stop-loss pattern on baseball YES positions suggests signal is buying temporary volume spikes that revert pre-game",
-  "ELITE_FOLLOW: 3 trades, $-72 net — too small to evaluate; Iran enrichment stop-out was a political event trade with binary outcome risk",
-  "Open book: $2,700 in SHORT_FAVORITE soccer (5 positions), $900 in baseball/other — concentration in same-day World Cup matches is event correlation risk",
-  "Brier score 0.272 is mediocre; model's pPredicted values are consistently clustered around 0.57-0.62 regardless of market, suggesting limited true calibration differentiation",
-  "Cash position $5,606 on $9,192 equity — 61% idle, appropriate given current drawdown phase and conservative parameters",
-  "KellyMult at floor (0.10) and maxExposure at 0.40 are correctly defensive for an 8% drawdown scenario",
-  "Five open SHORT_FAVORITE soccer positions are all 'no-draw' bets on lopsided matchups — structurally correlated; a tournament draw wave could hit multiple simultaneously"
+  "SHORT_FAVORITE: 14W/8L (63.6%), +$1,230 — only profitable engine; sports markets driving virtually all alpha",
+  "MOMENTUM: disabled; historical record 8W/13L, -$1,019 — no evidence of recovery, remain off",
+  "VOLUME_SPIKE: 8W/10L, +$258 — positive only due to one large Iran outlier (+$479); ex-outlier is net negative",
+  "ELITE_FOLLOW: 4 trades, 2W/2L, -$38 — sample too small to evaluate; keep enabled at low stakes",
+  "SMART_CONSENSUS: 1 trade, 0W, -$385 — remain disabled",
+  "Soccer/World Cup VOLUME_SPIKE entries show minimal price drift to exit; edge appears structurally weak in this domain",
+  "pPredicted consistently 0.57-0.68 but many VOLUME_SPIKE trades hit stop-loss quickly — model may be miscalibrated on short-duration event markets",
+  "Brier score 0.269 is mediocre; calibration improvement needed especially on non-sports VOLUME_SPIKE signals",
+  "kellyMult at 0.10 (floor) is leaving profit on table given proven SHORT_FAVORITE edge",
+  "Cash $8,445 vs equity $10,113 — $1,668 in open positions, within maxExposure bounds"
  ],
- "changesApplied": [],
- "changeReasoning": "No parameter changes made this cycle. Evidence base fully supports current configuration. SHORT_FAVORITE and VOLUME_SPIKE continue with appropriate small-stake discipline. MOMENTUM and SMART_CONSENSUS remain disabled pending sufficient out-of-sample evidence of a genuine edge in non-geopolitical, non-esports contexts. KellyMult at floor and maxExposure at 0.40 are correct defensive posture during an active drawdown. Raising any parameter now would be noise-chasing on insufficient recovery evidence. Minimum 15 additional settled SHORT_FAVORITE trades needed before considering any relaxation of kelly or exposure limits.",
+ "changesApplied": [
+  "kellyMult: 0.1 -> 0.15",
+  "maxEventExposure: 500 -> 750"
+ ],
+ "changeReasoning": "kellyMult raised from 0.10 to 0.15: SHORT_FAVORITE has 22 trades with statistically meaningful positive edge (63.6% win rate, +$1,230); the floor setting is unnecessarily suppressing position sizing on the fund's best signal. A 50% increase in Kelly fraction remains conservative at 0.15. maxEventExposure raised from 500 to 750: current $500 cap is occasionally binding on SHORT_FAVORITE's highest-conviction sports entries; modest increase allows fuller expression without undue concentration risk on a single event. All other parameters held: pMin 0.57 appropriate, maxExposure 0.4 appropriate given modest equity base, MOMENTUM/SMART_CONSENSUS remain disabled pending evidence of positive expectancy.",
  "riskFlags": [
-  "EVENT CORRELATION: Five simultaneous SHORT_FAVORITE 'no-draw' positions on World Cup group stage matches — all resolve within hours of each other; a systemic draw-heavy day (common in group stages) could hit $2,300 in staked capital simultaneously",
-  "VOLUME_SPIKE geopolitical bleed: 'Trump/Iran Strait of Hormuz' VOLUME_SPIKE position still open at entry 0.1635 — this is the same category of narrative market that destroyed MOMENTUM; recommend manual review of whether VOLUME_SPIKE has adequate filters to avoid these",
-  "BRIER 0.272 suggests systematic overconfidence or poor signal discrimination; pPredicted clustering around 0.57-0.62 on ALL markets regardless of type implies the probability model is not meaningfully differentiating edge strength",
-  "Bank has declined from $10,000 to $9,192 equity with $894 realized loss; if drawdown reaches $8,500 equity (15%), a human override review of engine viability should be triggered",
-  "SMART_CONSENSUS $1,000 stake on a single esports trade appears to violate spirit of maxEventExposure=$500 — verify sizing logic is correctly applying per-event cap to SMART_CONSENSUS entries"
+  "VOLUME_SPIKE edge appears driven by one outlier trade (+$479 Iran); remove that trade and engine is net negative — consider raising pMin filter specifically for non-sports VOLUME_SPIKE or reducing stake on these",
+  "Multiple VOLUME_SPIKE soccer entries exited at near-zero drift after max hold — suggests bot is entering markets with insufficient liquidity or price discovery, wasting capital in low-information environments",
+  "SHORT_FAVORITE on 'draw' markets (soccer) has several max-hold exits near breakeven — these may not be true SHORT_FAVORITE opportunities; worth checking if signal is correctly identifying implied probability vs actual",
+  "SMART_CONSENSUS single trade -$385 is a large loss on minimal sample — verify position sizing logic didn't allow outsized stake on engine's debut trade",
+  "Wallet score 'donthackme' at 0.5 is the only mid-tier wallet; others at 0.33 suggest ELITE_FOLLOW signal quality is weak — monitor closely before increasing allocation"
  ],
  "configNow": {
   "comment": "EdgeHound tunable parameters. The AI Analyst may adjust these within hard rails enforced in code. Humans can edit too. [pMin lowered to match surviving engines after momentum block]",
@@ -34,10 +37,10 @@
    "ELITE_FOLLOW": true
   },
   "pMin": 0.57,
-  "kellyMult": 0.1,
+  "kellyMult": 0.15,
   "maxExposure": 0.4,
-  "maxEventExposure": 500,
+  "maxEventExposure": 750,
   "updatedBy": "analyst",
-  "updatedAt": "2026-06-16T19:01:00.666Z"
+  "updatedAt": "2026-06-17T14:41:51.364Z"
  }
 }

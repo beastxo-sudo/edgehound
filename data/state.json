@@ -11,7 +11,7 @@
    "slug": "mlb-sd-stl-2026-06-16",
    "side": "NO",
    "entry": 0.815,
-   "cur": 0.815,
+   "cur": 0.755,
    "stake": 400,
    "signal": "SHORT_FAVORITE",
    "p": 0.574,
@@ -99,7 +99,7 @@
    "slug": "mlb-nym-cin-2026-06-16",
    "side": "NO",
    "entry": 0.8049999999999999,
-   "cur": 0.785,
+   "cur": 0.845,
    "stake": 450,
    "signal": "SHORT_FAVORITE",
    "p": 0.589,
@@ -141,7 +141,7 @@
    "slug": "what-iranian-demands-will-trump-agree-to-by-june-30",
    "side": "YES",
    "entry": 0.1995,
-   "cur": 0.1885,
+   "cur": 0.187,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.608,
@@ -277,7 +277,7 @@
    "slug": "what-iranian-demands-will-trump-agree-to-by-june-30",
    "side": "NO",
    "entry": 0.30000000000000004,
-   "cur": 0.32499999999999996,
+   "cur": 0.31499999999999995,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.591,
@@ -3127,7 +3127,7 @@
      81
     ],
     "text": "Short Favorite on high-priced sports markets: 6W/4L (posterior 58%, 90% CI 36-81%) — collecting evidence",
-    "updated": "2026-06-17T01:25:28.848Z"
+    "updated": "2026-06-17T01:40:09.691Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -3139,7 +3139,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-17T01:25:28.848Z"
+    "updated": "2026-06-17T01:40:09.691Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -3151,7 +3151,7 @@
      91
     ],
     "text": "Volume Spike on low-priced non-sports markets: 5W/2L (posterior 67%, 90% CI 42-91%) — collecting evidence",
-    "updated": "2026-06-17T01:25:28.848Z"
+    "updated": "2026-06-17T01:40:09.691Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -3163,7 +3163,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-17T01:25:28.848Z"
+    "updated": "2026-06-17T01:40:09.691Z"
    }
   ]
  },
@@ -3186,9 +3186,9 @@
   "brier": 0.276,
   "hypotheses": 4,
   "integrityOk": true,
-  "updated": "2026-06-17T01:25:28.852Z"
+  "updated": "2026-06-17T01:40:09.694Z"
  },
- "lastRun": 1781659528852,
+ "lastRun": 1781660409694,
  "elite": {
   "updated": 1781632184277,
   "list": [
@@ -3232,15 +3232,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-17T01:25:28.852Z",
+  "checkedAt": "2026-06-17T01:40:09.694Z",
   "tradesChecked": 64
  },
  "lastScan": {
-  "at": "2026-06-17T01:25:28.852Z",
-  "marketsFetched": 63,
+  "at": "2026-06-17T01:40:09.694Z",
+  "marketsFetched": 60,
   "rawCandidates": 19,
-  "clearedThreshold": 2,
-  "placed": 1,
+  "clearedThreshold": 1,
+  "placed": 0,
   "pMin": 0.57,
   "blocked": {
    "exposure": 0,
@@ -3248,6 +3248,6 @@
    "cash": 0,
    "sanity": 0
   },
-  "reason": "traded"
+  "reason": "all remaining candidates blocked by event-correlation guard"
  }
 }

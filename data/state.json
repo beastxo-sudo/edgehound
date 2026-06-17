@@ -2,6 +2,48 @@
  "running": true,
  "journal": [
   {
+   "id": "t1781668908590ij9q",
+   "date": "2026-06-17",
+   "openedTs": 1781668908590,
+   "title": "Will WTI Crude Oil (WTI) hit (LOW) $65 in June?",
+   "mid": "2423577",
+   "conditionId": "0x05b00b6740784aeb0628e9a3cde308a9b70fa3616a55508c569ec9717dee1a91",
+   "slug": "what-price-will-wti-hit-in-june-2026",
+   "side": "YES",
+   "entry": 0.228,
+   "cur": 0.228,
+   "stake": 150,
+   "signal": "VOLUME_SPIKE",
+   "p": 0.608,
+   "pModel": 0.687,
+   "pBucket": 0.667,
+   "bucketN": 7,
+   "bk": "VOLUME_SPIKE|low|other",
+   "ev": 0.033,
+   "kelly": 0.0143,
+   "x": [
+    0,
+    0,
+    0,
+    1,
+    0.228,
+    0,
+    0.843,
+    0.768,
+    0.666,
+    0.454,
+    0,
+    0,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 61% [model 69%, pattern 67% on n=7] · EV +0.03/$1 · 1/4-Kelly 1.4% of equity -> $150. 45% of lifetime volume in 24h — attention precedes movement. Drivers: 24h move size +, 24h volume +, liquidity +",
+   "target": 0.22,
+   "stop": 0.25,
+   "holdUntil": 1782100908591,
+   "status": "open"
+  },
+  {
    "id": "t1781667200488nnko",
    "date": "2026-06-17",
    "openedTs": 1781667200488,
@@ -11,7 +53,7 @@
    "slug": "mlb-tb-lad-2026-06-16",
    "side": "NO",
    "entry": 0.785,
-   "cur": 0.815,
+   "cur": 0.865,
    "stake": 500,
    "signal": "SHORT_FAVORITE",
    "p": 0.658,
@@ -53,7 +95,7 @@
    "slug": "us-iran-deal-text-released-byptptpt-20260615224044572",
    "side": "YES",
    "entry": 0.13,
-   "cur": 0.11,
+   "cur": 0.1,
    "stake": 150,
    "signal": "VOLUME_SPIKE",
    "p": 0.61,
@@ -371,7 +413,7 @@
    "slug": "what-iranian-demands-will-trump-agree-to-by-june-30",
    "side": "YES",
    "entry": 0.1995,
-   "cur": 0.186,
+   "cur": 0.1825,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.608,
@@ -805,7 +847,11 @@
    "target": null,
    "stop": 0.45,
    "holdUntil": 1781668800000,
-   "status": "open"
+   "status": "closed",
+   "exit": 0.8049999999999999,
+   "exitTs": 1781668908586,
+   "exitReason": "Max hold reached — closed at market",
+   "pnl": -6.13496932515338
   },
   {
    "id": "t1781575836261r26j",
@@ -3157,9 +3203,9 @@
  ],
  "strat": {
   "SHORT_FAVORITE": {
-   "trades": 20,
+   "trades": 21,
    "wins": 13,
-   "pnl": 1099.13237868389,
+   "pnl": 1092.9974093587366,
    "weight": 1
   },
   "MOMENTUM": {
@@ -3189,6 +3235,8 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-17 09:31 IST — Opened YES $150 @ 23c P=61% EV=+0.03 [Volume Spike] \"Will WTI Crude Oil (WTI) hit (LOW) $65 in June\"",
+  "2026-06-17 09:31 IST — Closed NO \"Will Austria vs. Jordan end in a draw?\" -> $-6 (Max hold reached — closed at market) · model said P(win)=68%",
   "2026-06-17 09:03 IST — Opened NO $500 @ 79c P=66% EV=+0.12 [Short Favorite] \"Tampa Bay Rays vs. Los Angeles Dodgers\"",
   "2026-06-17 09:03 IST — Opened YES $150 @ 13c P=61% EV=+0.03 [Volume Spike] \"Will the text of the US-Iran agreement be rele\"",
   "2026-06-17 08:35 IST — Closed YES \"Colorado Rockies vs. Chicago Cubs\" -> +$99 (Resolved in our favor) · model said P(win)=62%",
@@ -3200,28 +3248,26 @@
   "2026-06-17 07:51 IST — Closed NO \"Cleveland Guardians vs. Milwaukee Brewers\" -> +$83 (Resolved in our favor) · model said P(win)=58%",
   "2026-06-17 07:23 IST — Opened NO $450 @ 85c P=58% EV=+0.10 [Short Favorite] \"Cleveland Guardians vs. Milwaukee Brewers\"",
   "2026-06-17 06:55 IST — Opened NO $400 @ 82c P=57% EV=+0.10 [Short Favorite] \"San Diego Padres vs. St. Louis Cardinals\"",
-  "2026-06-17 06:41 IST — Closed NO \"Will Argentina vs. Algeria end in a draw?\" -> $-20 (Max hold reached — closed at market) · model said P(win)=68%",
-  "2026-06-17 06:41 IST — Closed NO \"Miami Marlins vs. Philadelphia Phillies\" -> +$64 (Resolved in our favor) · model said P(win)=58%",
-  "2026-06-17 06:41 IST — Closed YES \"Will Algeria win on 2026-06-16?\" -> $-7 (Max hold reached — closed at market) · model said P(win)=64%"
+  "2026-06-17 06:41 IST — Closed NO \"Will Argentina vs. Algeria end in a draw?\" -> $-20 (Max hold reached — closed at market) · model said P(win)=68%"
  ],
  "brain": {
   "w": [
-   0.2491933365951809,
-   0.04871538882405323,
-   0.009396150676349845,
-   0.042303431119236165,
-   0.18818041266505933,
-   -0.03249870520161944,
-   0.3614675894244168,
-   0.21148630197305537,
-   0.1592976015607664,
-   0.1297151091138155,
-   0.003758460270539931,
-   -0.04624285797747392,
-   -0.07296037008889848
+   0.16475952758517318,
+   0.0486910311296412,
+   0.00939145260101167,
+   0.04228227940367655,
+   0.11937431440023306,
+   -0.11443101024516086,
+   0.3570713950126191,
+   0.1467997021683189,
+   0.0876394314818741,
+   0.05065251959507622,
+   0.003756581040404661,
+   -0.1305289488901953,
+   -0.07292388990385404
   ],
-  "b": 0.30671863959397394,
-  "nUpdates": 61,
+  "b": 0.2224094272522638,
+  "nUpdates": 62,
   "buckets": {
    "MOMENTUM|high|sport": {
     "a": 1,
@@ -3269,7 +3315,7 @@
    },
    "SHORT_FAVORITE|high|sport": {
     "a": 12,
-    "b": 5
+    "b": 6
    },
    "VOLUME_SPIKE|mid|other": {
     "a": 2,
@@ -3311,15 +3357,15 @@
    }
   },
   "brier": {
-   "sum": 16.260939000000008,
-   "n": 61
+   "sum": 16.72198000000001,
+   "n": 62
   },
   "payoff": {
    "SHORT_FAVORITE": {
     "wSum": 2.4269387482921005,
     "wN": 13,
-    "lSum": 0.08522648104750455,
-    "lN": 7
+    "lSum": 0.09749641969781131,
+    "lN": 8
    },
    "MOMENTUM": {
     "wSum": 2.701062968732154,
@@ -3350,14 +3396,14 @@
    {
     "key": "SHORT_FAVORITE|high|sport",
     "status": "FORMING",
-    "n": 15,
-    "winRate": 70.6,
+    "n": 16,
+    "winRate": 66.7,
     "ci": [
-     53,
-     88
+     49,
+     84
     ],
-    "text": "Short Favorite on high-priced sports markets: 11W/4L (posterior 71%, 90% CI 53-88%) — collecting evidence",
-    "updated": "2026-06-17T03:47:07.799Z"
+    "text": "Short Favorite on high-priced sports markets: 11W/5L (posterior 67%, 90% CI 49-84%) — collecting evidence",
+    "updated": "2026-06-17T04:01:48.587Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -3369,7 +3415,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-17T03:47:07.799Z"
+    "updated": "2026-06-17T04:01:48.587Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -3381,7 +3427,7 @@
      91
     ],
     "text": "Volume Spike on low-priced non-sports markets: 5W/2L (posterior 67%, 90% CI 42-91%) — collecting evidence",
-    "updated": "2026-06-17T03:47:07.799Z"
+    "updated": "2026-06-17T04:01:48.587Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -3393,32 +3439,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-17T03:47:07.799Z"
+    "updated": "2026-06-17T04:01:48.587Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 6863.940943102598,
+  "cash": 7207.805973777445,
   "created": 1781162132851
  },
  "summary": {
-  "realized": -386.06,
-  "closed": 61,
+  "realized": -392.19,
+  "closed": 62,
   "wins": 30,
   "open": 8,
-  "staked": 23550,
+  "staked": 23700,
   "bankStart": 10000,
-  "cash": 6864,
-  "equity": 9670,
-  "returnPct": -3.3,
-  "modelUpdates": 61,
-  "brier": 0.267,
+  "cash": 7208,
+  "equity": 9688,
+  "returnPct": -3.12,
+  "modelUpdates": 62,
+  "brier": 0.27,
   "hypotheses": 4,
   "integrityOk": true,
-  "updated": "2026-06-17T03:47:07.804Z"
+  "updated": "2026-06-17T04:01:48.593Z"
  },
- "lastRun": 1781668027804,
+ "lastRun": 1781668908593,
  "elite": {
   "updated": 1781632184277,
   "list": [
@@ -3462,22 +3508,22 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-17T03:47:07.804Z",
-  "tradesChecked": 69
+  "checkedAt": "2026-06-17T04:01:48.593Z",
+  "tradesChecked": 70
  },
  "lastScan": {
-  "at": "2026-06-17T03:47:07.803Z",
-  "marketsFetched": 59,
-  "rawCandidates": 25,
+  "at": "2026-06-17T04:01:48.592Z",
+  "marketsFetched": 58,
+  "rawCandidates": 17,
   "clearedThreshold": 2,
-  "placed": 0,
+  "placed": 1,
   "pMin": 0.57,
   "blocked": {
    "exposure": 0,
-   "event": 2,
+   "event": 1,
    "cash": 0,
    "sanity": 0
   },
-  "reason": "all remaining candidates blocked by event-correlation guard"
+  "reason": "traded"
  }
 }

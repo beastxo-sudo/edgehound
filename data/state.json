@@ -611,7 +611,7 @@
    "slug": "what-iranian-demands-will-trump-agree-to-by-june-30",
    "side": "NO",
    "entry": 0.30000000000000004,
-   "cur": 0.29500000000000004,
+   "cur": 0.255,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.591,
@@ -3301,6 +3301,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-17 23:31 IST — Elite pool refreshed: 4 wallets qualify (>=58% win rate over >=10 settled, scalpers excluded): donthackme 87%, aenews2 83%, PatrocIus 65%, denizz 64%",
   "2026-06-17 23:01 IST — Closed YES \"Will Trump agree to Iranian enrichment of \" -> $-39 (Stop loss hit (-25%)) · model said P(win)=61%",
   "2026-06-17 22:31 IST — Closed NO \"Will Portugal vs. DR Congo end in a draw?\" -> +$0 (Max hold reached — closed at market) · model said P(win)=68%",
   "2026-06-17 19:00 IST — Closed YES \"Will WTI Crude Oil (WTI) hit (LOW) $65 in \" -> $-42 (Stop loss hit (-25%)) · model said P(win)=61%",
@@ -3313,8 +3314,7 @@
   "2026-06-17 09:03 IST — Opened NO $500 @ 79c P=66% EV=+0.12 [Short Favorite] \"Tampa Bay Rays vs. Los Angeles Dodgers\"",
   "2026-06-17 09:03 IST — Opened YES $150 @ 13c P=61% EV=+0.03 [Volume Spike] \"Will the text of the US-Iran agreement be rele\"",
   "2026-06-17 08:35 IST — Closed YES \"Colorado Rockies vs. Chicago Cubs\" -> +$99 (Resolved in our favor) · model said P(win)=62%",
-  "2026-06-17 08:35 IST — Closed NO \"Detroit Tigers vs. Houston Astros\" -> +$59 (Resolved in our favor) · model said P(win)=63%",
-  "2026-06-17 08:20 IST — Opened NO $500 @ 90c P=63% EV=+0.12 [Short Favorite] \"Detroit Tigers vs. Houston Astros\""
+  "2026-06-17 08:35 IST — Closed NO \"Detroit Tigers vs. Houston Astros\" -> +$59 (Resolved in our favor) · model said P(win)=63%"
  ],
  "brain": {
   "w": [
@@ -3469,7 +3469,7 @@
      82
     ],
     "text": "Short Favorite on high-priced sports markets: 12W/6L (posterior 65%, 90% CI 48-82%) — collecting evidence",
-    "updated": "2026-06-17T17:45:48.788Z"
+    "updated": "2026-06-17T18:01:16.697Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -3481,7 +3481,7 @@
      76
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/5L (posterior 54%, 90% CI 32-76%) — collecting evidence",
-    "updated": "2026-06-17T17:45:48.788Z"
+    "updated": "2026-06-17T18:01:16.697Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -3493,7 +3493,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-17T17:45:48.788Z"
+    "updated": "2026-06-17T18:01:16.697Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -3505,7 +3505,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-17T17:45:48.788Z"
+    "updated": "2026-06-17T18:01:16.697Z"
    }
   ]
  },
@@ -3522,59 +3522,52 @@
   "staked": 24150,
   "bankStart": 10000,
   "cash": 9006,
-  "equity": 10088,
-  "returnPct": 0.88,
+  "equity": 10075,
+  "returnPct": 0.75,
   "modelUpdates": 68,
   "brier": 0.273,
   "hypotheses": 4,
   "integrityOk": true,
-  "updated": "2026-06-17T17:45:48.789Z"
+  "updated": "2026-06-17T18:01:16.698Z"
  },
- "lastRun": 1781718348789,
+ "lastRun": 1781719276698,
  "elite": {
-  "updated": 1781632184277,
+  "updated": 1781719276357,
   "list": [
    {
     "wallet": "0x03805a13a0b3e058f55f6c6af95389d4f431073d",
     "name": "donthackme",
-    "winRate": 0.833,
-    "n": 60,
-    "score": 3.426
+    "winRate": 0.869,
+    "n": 61,
+    "score": 3.586
    },
    {
     "wallet": "0x44c1dfe43260c94ed4f1d00de2e1f80fb113ebc1",
     "name": "aenews2",
-    "winRate": 0.744,
-    "n": 43,
-    "score": 2.816
+    "winRate": 0.833,
+    "n": 36,
+    "score": 3.009
    },
    {
     "wallet": "0xdf17f4a8dd01a4cfa6fc3da323a2baee5f8697d1",
     "name": "PatrocIus",
-    "winRate": 0.718,
-    "n": 39,
-    "score": 2.648
-   },
-   {
-    "wallet": "0xd218e474776403a330142299f7796e8ba32eb5c9",
-    "name": "cigarettes",
-    "winRate": 0.583,
-    "n": 72,
-    "score": 2.503
+    "winRate": 0.651,
+    "n": 43,
+    "score": 2.464
    },
    {
     "wallet": "0xbaa2bcb5439e985ce4ccf815b4700027d1b92c73",
     "name": "denizz",
-    "winRate": 0.632,
-    "n": 38,
-    "score": 2.314
+    "winRate": 0.641,
+    "n": 39,
+    "score": 2.365
    }
   ]
  },
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-17T17:45:48.789Z",
+  "checkedAt": "2026-06-17T18:01:16.698Z",
   "tradesChecked": 71
  },
  "lastScan": {

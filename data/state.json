@@ -421,7 +421,7 @@
    "slug": "what-iranian-demands-will-trump-agree-to-by-june-30",
    "side": "YES",
    "entry": 0.1995,
-   "cur": 0.186,
+   "cur": 0.183,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.608,
@@ -557,7 +557,7 @@
    "slug": "what-iranian-demands-will-trump-agree-to-by-june-30",
    "side": "NO",
    "entry": 0.30000000000000004,
-   "cur": 0.28500000000000003,
+   "cur": 0.275,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.591,
@@ -3411,7 +3411,7 @@
      86
     ],
     "text": "Short Favorite on high-priced sports markets: 12W/5L (posterior 68%, 90% CI 51-86%) — collecting evidence",
-    "updated": "2026-06-17T04:31:01.415Z"
+    "updated": "2026-06-17T04:45:48.375Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -3423,7 +3423,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-17T04:31:01.415Z"
+    "updated": "2026-06-17T04:45:48.375Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -3435,7 +3435,7 @@
      93
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/2L (posterior 70%, 90% CI 47-93%) — collecting evidence",
-    "updated": "2026-06-17T04:31:01.415Z"
+    "updated": "2026-06-17T04:45:48.375Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -3447,7 +3447,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-17T04:31:01.415Z"
+    "updated": "2026-06-17T04:45:48.375Z"
    }
   ]
  },
@@ -3464,15 +3464,15 @@
   "staked": 23700,
   "bankStart": 10000,
   "cash": 8474,
-  "equity": 10292,
-  "returnPct": 2.92,
+  "equity": 10287,
+  "returnPct": 2.87,
   "modelUpdates": 64,
   "brier": 0.265,
   "hypotheses": 4,
   "integrityOk": true,
-  "updated": "2026-06-17T04:31:01.420Z"
+  "updated": "2026-06-17T04:45:48.379Z"
  },
- "lastRun": 1781670661420,
+ "lastRun": 1781671548379,
  "elite": {
   "updated": 1781632184277,
   "list": [
@@ -3516,13 +3516,13 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-17T04:31:01.420Z",
+  "checkedAt": "2026-06-17T04:45:48.379Z",
   "tradesChecked": 70
  },
  "lastScan": {
-  "at": "2026-06-17T04:31:01.419Z",
+  "at": "2026-06-17T04:45:48.379Z",
   "marketsFetched": 58,
-  "rawCandidates": 16,
+  "rawCandidates": 12,
   "clearedThreshold": 1,
   "placed": 0,
   "pMin": 0.57,

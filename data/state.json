@@ -471,7 +471,7 @@
    "slug": "what-iranian-demands-will-trump-agree-to-by-june-30",
    "side": "YES",
    "entry": 0.1995,
-   "cur": 0.1725,
+   "cur": 0.1215,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.608,
@@ -501,7 +501,11 @@
    "target": 0.22,
    "stop": 0.25,
    "holdUntil": 1782084656276,
-   "status": "open"
+   "status": "closed",
+   "exit": 0.1215,
+   "exitTs": 1781717466582,
+   "exitReason": "Stop loss hit (-25%)",
+   "pnl": -39.09774436090226
   },
   {
    "id": "t17816517450471t7c",
@@ -607,7 +611,7 @@
    "slug": "what-iranian-demands-will-trump-agree-to-by-june-30",
    "side": "NO",
    "entry": 0.30000000000000004,
-   "cur": 0.28,
+   "cur": 0.22999999999999998,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.591,
@@ -3283,9 +3287,9 @@
    "weight": 0.49174311926605885
   },
   "VOLUME_SPIKE": {
-   "trades": 18,
+   "trades": 19,
    "wins": 8,
-   "pnl": 257.5893372847814,
+   "pnl": 218.49159292387913,
    "weight": 1
   },
   "ELITE_FOLLOW": {
@@ -3297,6 +3301,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-17 23:01 IST — Closed YES \"Will Trump agree to Iranian enrichment of \" -> $-39 (Stop loss hit (-25%)) · model said P(win)=61%",
   "2026-06-17 22:31 IST — Closed NO \"Will Portugal vs. DR Congo end in a draw?\" -> +$0 (Max hold reached — closed at market) · model said P(win)=68%",
   "2026-06-17 19:00 IST — Closed YES \"Will WTI Crude Oil (WTI) hit (LOW) $65 in \" -> $-42 (Stop loss hit (-25%)) · model said P(win)=61%",
   "2026-06-17 11:15 IST — Closed YES \"Will the text of the US-Iran agreement be \" -> $-136 (Stop loss hit (-25%)) · model said P(win)=63%",
@@ -3309,27 +3314,26 @@
   "2026-06-17 09:03 IST — Opened YES $150 @ 13c P=61% EV=+0.03 [Volume Spike] \"Will the text of the US-Iran agreement be rele\"",
   "2026-06-17 08:35 IST — Closed YES \"Colorado Rockies vs. Chicago Cubs\" -> +$99 (Resolved in our favor) · model said P(win)=62%",
   "2026-06-17 08:35 IST — Closed NO \"Detroit Tigers vs. Houston Astros\" -> +$59 (Resolved in our favor) · model said P(win)=63%",
-  "2026-06-17 08:20 IST — Opened NO $500 @ 90c P=63% EV=+0.12 [Short Favorite] \"Detroit Tigers vs. Houston Astros\"",
-  "2026-06-17 08:06 IST — Closed NO \"San Diego Padres vs. St. Louis Cardinals\" -> +$91 (Resolved in our favor) · model said P(win)=57%"
+  "2026-06-17 08:20 IST — Opened NO $500 @ 90c P=63% EV=+0.12 [Short Favorite] \"Detroit Tigers vs. Houston Astros\""
  ],
  "brain": {
   "w": [
-   0.13369634363346253,
-   0.04856942521854634,
-   0.009367997436404261,
-   -0.07435175259202188,
-   0.052775311906777575,
-   -0.19671907838654074,
-   0.25896333374256914,
-   0.03218663982393271,
-   -0.018796809127558232,
-   -0.05270196640487246,
-   0.003747198974561698,
-   -0.1608546495028904,
-   -0.0727417623976871
+   0.1336294954616458,
+   0.048545140505937064,
+   0.009363313437686059,
+   -0.12932262729892496,
+   0.041747314134184366,
+   -0.2004712823881714,
+   0.2576236749628675,
+   -0.010955765153207342,
+   -0.05613787706898663,
+   -0.06994814330479453,
+   0.003745325375074417,
+   -0.16077422217813897,
+   -0.07270539151648825
   ],
-  "b": 0.0752362210777789,
-  "nUpdates": 67,
+  "b": 0.020228170494579818,
+  "nUpdates": 68,
   "buckets": {
    "MOMENTUM|high|sport": {
     "a": 1,
@@ -3385,7 +3389,7 @@
    },
    "VOLUME_SPIKE|low|other": {
     "a": 7,
-    "b": 5
+    "b": 6
    },
    "VOLUME_SPIKE|low|sport": {
     "a": 1,
@@ -3419,8 +3423,8 @@
    }
   },
   "brier": {
-   "sum": 18.213421000000007,
-   "n": 67
+   "sum": 18.583085000000008,
+   "n": 68
   },
   "payoff": {
    "SHORT_FAVORITE": {
@@ -3444,8 +3448,8 @@
    "VOLUME_SPIKE": {
     "wSum": 4.818700942577256,
     "wN": 8,
-    "lSum": 2.783887580489087,
-    "lN": 10
+    "lSum": 3.17486502409811,
+    "lN": 11
    },
    "ELITE_FOLLOW": {
     "wSum": 0.4238210986874088,
@@ -3465,19 +3469,19 @@
      82
     ],
     "text": "Short Favorite on high-priced sports markets: 12W/6L (posterior 65%, 90% CI 48-82%) — collecting evidence",
-    "updated": "2026-06-17T17:15:54.364Z"
+    "updated": "2026-06-17T17:31:06.582Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
     "status": "FORMING",
-    "n": 10,
-    "winRate": 58.3,
+    "n": 11,
+    "winRate": 53.8,
     "ci": [
-     36,
-     81
+     32,
+     76
     ],
-    "text": "Volume Spike on low-priced non-sports markets: 6W/4L (posterior 58%, 90% CI 36-81%) — collecting evidence",
-    "updated": "2026-06-17T17:15:54.364Z"
+    "text": "Volume Spike on low-priced non-sports markets: 6W/5L (posterior 54%, 90% CI 32-76%) — collecting evidence",
+    "updated": "2026-06-17T17:31:06.582Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -3489,7 +3493,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-17T17:15:54.364Z"
+    "updated": "2026-06-17T17:31:06.582Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -3501,32 +3505,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-17T17:15:54.364Z"
+    "updated": "2026-06-17T17:31:06.582Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 8945.125903261303,
+  "cash": 9006.0281589004,
   "created": 1781162132851
  },
  "summary": {
-  "realized": 45.13,
-  "closed": 67,
+  "realized": 6.03,
+  "closed": 68,
   "wins": 32,
-  "open": 4,
+  "open": 3,
   "staked": 24150,
   "bankStart": 10000,
-  "cash": 8945,
-  "equity": 10109,
-  "returnPct": 1.09,
-  "modelUpdates": 67,
-  "brier": 0.272,
+  "cash": 9006,
+  "equity": 10067,
+  "returnPct": 0.67,
+  "modelUpdates": 68,
+  "brier": 0.273,
   "hypotheses": 4,
   "integrityOk": true,
-  "updated": "2026-06-17T17:15:54.364Z"
+  "updated": "2026-06-17T17:31:06.583Z"
  },
- "lastRun": 1781716554365,
+ "lastRun": 1781717466583,
  "elite": {
   "updated": 1781632184277,
   "list": [
@@ -3570,7 +3574,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-17T17:15:54.364Z",
+  "checkedAt": "2026-06-17T17:31:06.583Z",
   "tradesChecked": 71
  },
  "lastScan": {

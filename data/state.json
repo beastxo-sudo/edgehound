@@ -611,7 +611,7 @@
    "slug": "what-iranian-demands-will-trump-agree-to-by-june-30",
    "side": "NO",
    "entry": 0.30000000000000004,
-   "cur": 0.31999999999999995,
+   "cur": 0.275,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.591,
@@ -3469,7 +3469,7 @@
      82
     ],
     "text": "Short Favorite on high-priced sports markets: 12W/6L (posterior 65%, 90% CI 48-82%) — collecting evidence",
-    "updated": "2026-06-17T18:31:06.631Z"
+    "updated": "2026-06-17T18:45:52.475Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -3481,7 +3481,7 @@
      76
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/5L (posterior 54%, 90% CI 32-76%) — collecting evidence",
-    "updated": "2026-06-17T18:31:06.631Z"
+    "updated": "2026-06-17T18:45:52.475Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -3493,7 +3493,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-17T18:31:06.631Z"
+    "updated": "2026-06-17T18:45:52.474Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -3505,7 +3505,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-17T18:31:06.631Z"
+    "updated": "2026-06-17T18:45:52.475Z"
    }
   ]
  },
@@ -3522,15 +3522,15 @@
   "staked": 24150,
   "bankStart": 10000,
   "cash": 9006,
-  "equity": 10097,
-  "returnPct": 0.97,
+  "equity": 10082,
+  "returnPct": 0.82,
   "modelUpdates": 68,
   "brier": 0.273,
   "hypotheses": 4,
   "integrityOk": true,
-  "updated": "2026-06-17T18:31:06.634Z"
+  "updated": "2026-06-17T18:45:52.478Z"
  },
- "lastRun": 1781721066635,
+ "lastRun": 1781721952478,
  "elite": {
   "updated": 1781719276357,
   "list": [
@@ -3567,13 +3567,13 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-17T18:31:06.634Z",
+  "checkedAt": "2026-06-17T18:45:52.478Z",
   "tradesChecked": 71
  },
  "lastScan": {
-  "at": "2026-06-17T18:31:06.634Z",
-  "marketsFetched": 56,
-  "rawCandidates": 16,
+  "at": "2026-06-17T18:45:52.478Z",
+  "marketsFetched": 57,
+  "rawCandidates": 18,
   "clearedThreshold": 0,
   "placed": 0,
   "pMin": 0.57,

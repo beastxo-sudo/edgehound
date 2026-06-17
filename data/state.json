@@ -11,7 +11,7 @@
    "slug": "mlb-tb-lad-2026-06-16",
    "side": "NO",
    "entry": 0.785,
-   "cur": 0.785,
+   "cur": 0.815,
    "stake": 500,
    "signal": "SHORT_FAVORITE",
    "p": 0.658,
@@ -53,7 +53,7 @@
    "slug": "us-iran-deal-text-released-byptptpt-20260615224044572",
    "side": "YES",
    "entry": 0.13,
-   "cur": 0.13,
+   "cur": 0.11,
    "stake": 150,
    "signal": "VOLUME_SPIKE",
    "p": 0.61,
@@ -371,7 +371,7 @@
    "slug": "what-iranian-demands-will-trump-agree-to-by-june-30",
    "side": "YES",
    "entry": 0.1995,
-   "cur": 0.1865,
+   "cur": 0.186,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.608,
@@ -507,7 +507,7 @@
    "slug": "what-iranian-demands-will-trump-agree-to-by-june-30",
    "side": "NO",
    "entry": 0.30000000000000004,
-   "cur": 0.29500000000000004,
+   "cur": 0.28500000000000003,
    "stake": 100,
    "signal": "VOLUME_SPIKE",
    "p": 0.591,
@@ -3357,7 +3357,7 @@
      88
     ],
     "text": "Short Favorite on high-priced sports markets: 11W/4L (posterior 71%, 90% CI 53-88%) — collecting evidence",
-    "updated": "2026-06-17T03:33:20.482Z"
+    "updated": "2026-06-17T03:47:07.799Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -3369,7 +3369,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-17T03:33:20.482Z"
+    "updated": "2026-06-17T03:47:07.799Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -3381,7 +3381,7 @@
      91
     ],
     "text": "Volume Spike on low-priced non-sports markets: 5W/2L (posterior 67%, 90% CI 42-91%) — collecting evidence",
-    "updated": "2026-06-17T03:33:20.482Z"
+    "updated": "2026-06-17T03:47:07.799Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -3393,7 +3393,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-17T03:33:20.482Z"
+    "updated": "2026-06-17T03:47:07.799Z"
    }
   ]
  },
@@ -3410,15 +3410,15 @@
   "staked": 23550,
   "bankStart": 10000,
   "cash": 6864,
-  "equity": 9677,
-  "returnPct": -3.23,
+  "equity": 9670,
+  "returnPct": -3.3,
   "modelUpdates": 61,
   "brier": 0.267,
   "hypotheses": 4,
   "integrityOk": true,
-  "updated": "2026-06-17T03:33:20.489Z"
+  "updated": "2026-06-17T03:47:07.804Z"
  },
- "lastRun": 1781667200489,
+ "lastRun": 1781668027804,
  "elite": {
   "updated": 1781632184277,
   "list": [
@@ -3462,15 +3462,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-17T03:33:20.489Z",
+  "checkedAt": "2026-06-17T03:47:07.804Z",
   "tradesChecked": 69
  },
  "lastScan": {
-  "at": "2026-06-17T03:33:20.488Z",
+  "at": "2026-06-17T03:47:07.803Z",
   "marketsFetched": 59,
-  "rawCandidates": 27,
-  "clearedThreshold": 4,
-  "placed": 2,
+  "rawCandidates": 25,
+  "clearedThreshold": 2,
+  "placed": 0,
   "pMin": 0.57,
   "blocked": {
    "exposure": 0,
@@ -3478,6 +3478,6 @@
    "cash": 0,
    "sanity": 0
   },
-  "reason": "traded"
+  "reason": "all remaining candidates blocked by event-correlation guard"
  }
 }

@@ -1,10 +1,10 @@
 {
-  "ranAt": "2026-06-17T06:16:32.208Z",
-  "ranAtIST": "2026-06-17 11:46:32 IST",
+  "ranAt": "2026-06-17T06:31:02.374Z",
+  "ranAtIST": "2026-06-17 12:01:02 IST",
   "summary": {
-    "total": 3,
+    "total": 4,
     "critical": 0,
-    "warn": 3,
+    "warn": 4,
     "autoFixed": 0,
     "needsCodeReview": 0
   },
@@ -16,7 +16,7 @@
       "msg": "Sample 2026-06-16T14:00:00.000Z: Polymarket resolved UP but the Binance candle moved DOWN (open 66100.61 -> close 66093.63). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-17T06:16:32.207Z"
+      "at": "2026-06-17T06:31:02.373Z"
     },
     {
       "area": "sniper",
@@ -25,7 +25,7 @@
       "msg": "Sample 2026-06-16T19:50:00.000Z: Polymarket resolved UP but the Binance candle moved DOWN (open 65660.33 -> close 65658.06). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-17T06:16:32.207Z"
+      "at": "2026-06-17T06:31:02.373Z"
     },
     {
       "area": "sniper",
@@ -34,11 +34,27 @@
       "msg": "Sample 2026-06-17T02:20:00.000Z: Polymarket resolved DOWN but the Binance candle moved UP (open 65899.99 -> close 65900.23). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-17T06:16:32.207Z"
+      "at": "2026-06-17T06:31:02.373Z"
+    },
+    {
+      "area": "sniper",
+      "id": "poly_vs_candle",
+      "severity": "warn",
+      "msg": "Sample 2026-06-17T06:10:00.000Z: Polymarket resolved UP but the Binance candle moved DOWN (open 65844.06 -> close 65826.63). Kept Polymarket (it pays the bet) but flagging the divergence.",
+      "autoFixed": false,
+      "needsCode": false,
+      "at": "2026-06-17T06:31:02.374Z"
     }
   ],
   "openCodeIssues": [],
   "history": [
+    {
+      "at": "2026-06-17T06:31:02.374Z",
+      "critical": 0,
+      "warn": 4,
+      "autoFixed": 0,
+      "total": 4
+    },
     {
       "at": "2026-06-17T06:16:32.208Z",
       "critical": 0,
@@ -727,13 +743,6 @@
     },
     {
       "at": "2026-06-16T06:16:23.233Z",
-      "critical": 0,
-      "warn": 0,
-      "autoFixed": 0,
-      "total": 0
-    },
-    {
-      "at": "2026-06-16T06:01:10.091Z",
       "critical": 0,
       "warn": 0,
       "autoFixed": 0,

@@ -11,7 +11,7 @@
    "slug": "mlb-tb-lad-2026-06-17",
    "side": "NO",
    "entry": 0.825,
-   "cur": 0.815,
+   "cur": 0.9995,
    "stake": 750,
    "signal": "SHORT_FAVORITE",
    "p": 0.651,
@@ -41,7 +41,11 @@
    "target": null,
    "stop": 0.45,
    "holdUntil": 1782328200000,
-   "status": "open"
+   "status": "closed",
+   "exit": 1,
+   "exitTs": 1781734385759,
+   "exitReason": "Resolved in our favor",
+   "pnl": 159.09090909090915
   },
   {
    "id": "t178172914885132lm",
@@ -53,7 +57,7 @@
    "slug": "iran-agrees-to-end-enrichment-of-uranium-by-june-30",
    "side": "YES",
    "entry": 0.355,
-   "cur": 0.41,
+   "cur": 0.405,
    "stake": 200,
    "signal": "ELITE_FOLLOW",
    "p": 0.589,
@@ -191,7 +195,7 @@
    "slug": "israel-x-iran-permanent-peace-deal-by",
    "side": "YES",
    "entry": 0.0985,
-   "cur": 0.0855,
+   "cur": 0.094,
    "stake": 550,
    "signal": "ELITE_FOLLOW",
    "p": 0.64,
@@ -3591,9 +3595,9 @@
  ],
  "strat": {
   "SHORT_FAVORITE": {
-   "trades": 25,
-   "wins": 16,
-   "pnl": 1520.7939380517107,
+   "trades": 26,
+   "wins": 17,
+   "pnl": 1679.88484714262,
    "weight": 1
   },
   "MOMENTUM": {
@@ -3623,6 +3627,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-18 03:43 IST — Closed NO \"Tampa Bay Rays vs. Los Angeles Dodgers\" -> +$159 (Resolved in our favor) · model said P(win)=65%",
   "2026-06-18 03:00 IST — Opened NO $750 @ 83c P=65% EV=+0.12 [Short Favorite] \"Tampa Bay Rays vs. Los Angeles Dodgers\"",
   "2026-06-18 03:00 IST — Closed NO \"Will Trump agree to withdraw troops from t\" -> $-167 (Stop loss hit (-25%)) · model said P(win)=63%",
   "2026-06-18 03:00 IST — Closed YES \"Will Trump agree to withdraw troops from t\" -> +$110 (Profit target hit (+25%)) · model said P(win)=59%",
@@ -3635,27 +3640,26 @@
   "2026-06-18 01:01 IST — Opened NO $550 @ 44c P=63% EV=+0.08 [Elite Follow] \"Will Trump agree to withdraw troops from the I\"",
   "2026-06-18 00:31 IST — Opened YES $750 @ 89c P=62% EV=+0.12 [Short Favorite] \"San Francisco Giants vs. Atlanta Braves\"",
   "2026-06-18 00:31 IST — Closed NO \"Will Trump agree to withdraw troops from t\" -> $-28 (Stop loss hit (-25%)) · model said P(win)=59%",
-  "2026-06-17 23:31 IST — Elite pool refreshed: 4 wallets qualify (>=58% win rate over >=10 settled, scalpers excluded): donthackme 87%, aenews2 83%, PatrocIus 65%, denizz 64%",
-  "2026-06-17 23:01 IST — Closed YES \"Will Trump agree to Iranian enrichment of \" -> $-39 (Stop loss hit (-25%)) · model said P(win)=61%"
+  "2026-06-17 23:31 IST — Elite pool refreshed: 4 wallets qualify (>=58% win rate over >=10 settled, scalpers excluded): donthackme 87%, aenews2 83%, PatrocIus 65%, denizz 64%"
  ],
  "brain": {
   "w": [
-   0.23882214207800298,
-   0.04842389895685723,
-   0.00933992855067422,
-   -0.18569170141429014,
-   0.10398650909230875,
-   -0.1499759527818515,
-   0.3129425498622025,
-   0.01654469372051634,
-   -0.041625053587631584,
-   0.0023381749113708834,
-   0.003735971420269682,
-   -0.05484630190906375,
-   -0.07252380971031679
+   0.2785339004675153,
+   0.0483996870073788,
+   0.009335258586398883,
+   -0.185598855563583,
+   0.13679523064271742,
+   -0.12970656188896107,
+   0.3506256895747951,
+   0.05122936997379627,
+   -0.0120495133211087,
+   0.04212834411500595,
+   0.003734103434559547,
+   -0.01498770929755791,
+   -0.07248754780546163
   ],
-  "b": 0.04706840894723087,
-  "nUpdates": 73,
+  "b": 0.08689957840778217,
+  "nUpdates": 74,
   "buckets": {
    "MOMENTUM|high|sport": {
     "a": 1,
@@ -3702,7 +3706,7 @@
     "b": 2
    },
    "SHORT_FAVORITE|high|sport": {
-    "a": 15,
+    "a": 16,
     "b": 7
    },
    "VOLUME_SPIKE|mid|other": {
@@ -3749,13 +3753,13 @@
    }
   },
   "brier": {
-   "sum": 19.783265000000007,
-   "n": 73
+   "sum": 19.90506600000001,
+   "n": 74
   },
   "payoff": {
    "SHORT_FAVORITE": {
-    "wSum": 3.0886292366555557,
-    "wN": 16,
+    "wSum": 3.300750448776768,
+    "wN": 17,
     "lSum": 0.09749641969781131,
     "lN": 9
    },
@@ -3788,14 +3792,14 @@
    {
     "key": "SHORT_FAVORITE|high|sport",
     "status": "FORMING",
-    "n": 20,
-    "winRate": 68.2,
+    "n": 21,
+    "winRate": 69.6,
     "ci": [
-     52,
-     84
+     54,
+     85
     ],
-    "text": "Short Favorite on high-priced sports markets: 14W/6L (posterior 68%, 90% CI 52-84%) — collecting evidence",
-    "updated": "2026-06-17T21:58:35.731Z"
+    "text": "Short Favorite on high-priced sports markets: 15W/6L (posterior 70%, 90% CI 54-85%) — collecting evidence",
+    "updated": "2026-06-17T22:13:05.759Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -3807,7 +3811,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-17T21:58:35.731Z"
+    "updated": "2026-06-17T22:13:05.759Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -3819,7 +3823,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-17T21:58:35.731Z"
+    "updated": "2026-06-17T22:13:05.759Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -3831,32 +3835,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-17T21:58:35.731Z"
+    "updated": "2026-06-17T22:13:05.759Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 7811.807106067097,
+  "cash": 8720.898015158007,
   "created": 1781162132851
  },
  "summary": {
-  "realized": 211.81,
-  "closed": 73,
-  "wins": 35,
-  "open": 5,
+  "realized": 370.9,
+  "closed": 74,
+  "wins": 36,
+  "open": 4,
   "staked": 27900,
   "bankStart": 10000,
-  "cash": 7812,
-  "equity": 10245,
-  "returnPct": 2.45,
-  "modelUpdates": 73,
-  "brier": 0.271,
+  "cash": 8721,
+  "equity": 10458,
+  "returnPct": 4.58,
+  "modelUpdates": 74,
+  "brier": 0.269,
   "hypotheses": 4,
   "integrityOk": true,
-  "updated": "2026-06-17T21:58:35.734Z"
+  "updated": "2026-06-17T22:13:05.763Z"
  },
- "lastRun": 1781733515734,
+ "lastRun": 1781734385763,
  "elite": {
   "updated": 1781719276357,
   "list": [
@@ -3893,11 +3897,11 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-17T21:58:35.734Z",
+  "checkedAt": "2026-06-17T22:13:05.763Z",
   "tradesChecked": 78
  },
  "lastScan": {
-  "at": "2026-06-17T21:58:35.734Z",
+  "at": "2026-06-17T22:13:05.763Z",
   "marketsFetched": 47,
   "rawCandidates": 17,
   "clearedThreshold": 0,

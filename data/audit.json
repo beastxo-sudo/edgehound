@@ -1,6 +1,6 @@
 {
-  "ranAt": "2026-06-17T11:15:53.330Z",
-  "ranAtIST": "2026-06-17 16:45:53 IST",
+  "ranAt": "2026-06-17T11:30:59.764Z",
+  "ranAtIST": "2026-06-17 17:00:59 IST",
   "summary": {
     "total": 5,
     "critical": 0,
@@ -16,7 +16,7 @@
       "msg": "Sample 2026-06-16T14:00:00.000Z: Polymarket resolved UP but the Binance candle moved DOWN (open 66100.61 -> close 66093.63). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-17T11:15:53.329Z"
+      "at": "2026-06-17T11:30:59.763Z"
     },
     {
       "area": "sniper",
@@ -25,7 +25,7 @@
       "msg": "Sample 2026-06-16T19:50:00.000Z: Polymarket resolved UP but the Binance candle moved DOWN (open 65660.33 -> close 65658.06). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-17T11:15:53.329Z"
+      "at": "2026-06-17T11:30:59.764Z"
     },
     {
       "area": "sniper",
@@ -34,7 +34,7 @@
       "msg": "Sample 2026-06-17T02:20:00.000Z: Polymarket resolved DOWN but the Binance candle moved UP (open 65899.99 -> close 65900.23). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-17T11:15:53.329Z"
+      "at": "2026-06-17T11:30:59.764Z"
     },
     {
       "area": "sniper",
@@ -43,7 +43,7 @@
       "msg": "Sample 2026-06-17T06:10:00.000Z: Polymarket resolved UP but the Binance candle moved DOWN (open 65844.06 -> close 65826.63). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-17T11:15:53.329Z"
+      "at": "2026-06-17T11:30:59.764Z"
     },
     {
       "area": "sniper",
@@ -52,11 +52,18 @@
       "msg": "Sample 2026-06-17T10:10:00.000Z: Polymarket resolved UP but the Binance candle moved DOWN (open 64833.64 -> close 64819.19). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-17T11:15:53.329Z"
+      "at": "2026-06-17T11:30:59.764Z"
     }
   ],
   "openCodeIssues": [],
   "history": [
+    {
+      "at": "2026-06-17T11:30:59.764Z",
+      "critical": 0,
+      "warn": 5,
+      "autoFixed": 0,
+      "total": 5
+    },
     {
       "at": "2026-06-17T11:15:53.330Z",
       "critical": 0,
@@ -745,13 +752,6 @@
     },
     {
       "at": "2026-06-16T11:15:57.822Z",
-      "critical": 0,
-      "warn": 0,
-      "autoFixed": 0,
-      "total": 0
-    },
-    {
-      "at": "2026-06-16T11:01:16.147Z",
       "critical": 0,
       "warn": 0,
       "autoFixed": 0,

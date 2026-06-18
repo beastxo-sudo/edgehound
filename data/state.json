@@ -2,6 +2,48 @@
  "running": true,
  "journal": [
   {
+   "id": "t1781748070676uewv",
+   "date": "2026-06-18",
+   "openedTs": 1781748070676,
+   "title": "Toronto Blue Jays vs. Boston Red Sox",
+   "mid": "2505830",
+   "conditionId": "0x0b5ebfb0669c66c63f0723b2b04a4e1e2eb4038890fa0b93c7764726f6b0ed10",
+   "slug": "mlb-tor-bos-2026-06-17",
+   "side": "YES",
+   "entry": 0.915,
+   "cur": 0.915,
+   "stake": 750,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.666,
+   "pModel": 0.772,
+   "pBucket": 0.708,
+   "bucketN": 22,
+   "bk": "SHORT_FAVORITE|high|sport",
+   "ev": 0.119,
+   "kelly": 0.08,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.915,
+    0.51,
+    1,
+    0.805,
+    0.648,
+    0.999,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 67% [model 77%, pattern 71% on n=22] · EV +0.12/$1 · 1/4-Kelly 8.0% of equity -> $750. 92c favorite resolving in 6.9d (favorite-longshot bias); +9% if it lands. Drivers: 24h move size +, favorite setup +, price level +",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1782341100000,
+   "status": "open"
+  },
+  {
    "id": "t1781742898433xlou",
    "date": "2026-06-18",
    "openedTs": 1781742898433,
@@ -41,7 +83,11 @@
    "target": null,
    "stop": 0.45,
    "holdUntil": 1781748000000,
-   "status": "open"
+   "status": "closed",
+   "exit": 0.8049999999999999,
+   "exitTs": 1781748070671,
+   "exitReason": "Max hold reached — closed at market",
+   "pnl": 9.433962264150846
   },
   {
    "id": "t1781741182248bk5w",
@@ -3769,9 +3815,9 @@
  ],
  "strat": {
   "SHORT_FAVORITE": {
-   "trades": 26,
-   "wins": 17,
-   "pnl": 1679.88484714262,
+   "trades": 27,
+   "wins": 18,
+   "pnl": 1689.3188094067707,
    "weight": 1
   },
   "MOMENTUM": {
@@ -3801,6 +3847,9 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-18 07:31 IST — Opened YES $750 @ 92c P=67% EV=+0.12 [Short Favorite] \"Toronto Blue Jays vs. Boston Red Sox\"",
+  "2026-06-18 07:31 IST — Learning update: Short Favorite on high-priced sports markets: 16W/6L (posterior 71%, 90% CI 56-86%) — proven edge, prioritized",
+  "2026-06-18 07:31 IST — Closed NO \"Will Uzbekistan vs. Colombia end in a draw\" -> +$9 (Max hold reached — closed at market) · model said P(win)=68%",
   "2026-06-18 06:04 IST — Opened NO $750 @ 80c P=68% EV=+0.13 [Short Favorite] \"Will Uzbekistan vs. Colombia end in a draw?\"",
   "2026-06-18 05:36 IST — Opened YES $750 @ 88c P=66% EV=+0.12 [Short Favorite] \"San Francisco Giants vs. Atlanta Braves\"",
   "2026-06-18 05:08 IST — Opened NO $750 @ 80c P=66% EV=+0.12 [Short Favorite] \"Chicago White Sox vs. New York Yankees\"",
@@ -3811,29 +3860,26 @@
   "2026-06-18 03:00 IST — Closed NO \"Will Trump agree to withdraw troops from t\" -> $-167 (Stop loss hit (-25%)) · model said P(win)=63%",
   "2026-06-18 03:00 IST — Closed YES \"Will Trump agree to withdraw troops from t\" -> +$110 (Profit target hit (+25%)) · model said P(win)=59%",
   "2026-06-18 02:45 IST — Closed YES \"San Diego Padres vs. St. Louis Cardinals\" -> +$193 (Resolved in our favor) · model said P(win)=63%",
-  "2026-06-18 02:15 IST — Opened YES $200 @ 36c P=59% EV=+0.06 [Elite Follow] \" Iran agrees to end enrichment of uranium by J\"",
-  "2026-06-18 02:01 IST — Opened YES $200 @ 45c P=59% EV=+0.06 [Elite Follow] \"Will Trump agree to withdraw troops from the I\"",
-  "2026-06-18 01:46 IST — Closed YES \"San Francisco Giants vs. Atlanta Braves\" -> +$97 (Resolved in our favor) · model said P(win)=62%",
-  "2026-06-18 01:01 IST — Opened YES $750 @ 80c P=63% EV=+0.12 [Short Favorite] \"San Diego Padres vs. St. Louis Cardinals\""
+  "2026-06-18 02:15 IST — Opened YES $200 @ 36c P=59% EV=+0.06 [Elite Follow] \" Iran agrees to end enrichment of uranium by J\""
  ],
  "brain": {
   "w": [
-   0.27839463351728155,
-   0.04837548716387512,
-   0.009330590957105684,
-   -0.1855060561358012,
-   0.15348377447198397,
-   -0.1233637558977907,
-   0.3598909071213249,
-   0.09099559088821108,
-   0.021423191672771083,
-   0.050178933427524594,
-   0.0037322363828422673,
-   -0.014980215442909131,
-   -0.0724513040315589
+   0.3172243328592994,
+   0.048351299420293176,
+   0.009325925661627132,
+   -0.1854133031077333,
+   0.1843873054284753,
+   -0.0844890529477004,
+   0.36165940650070305,
+   0.12064439234675467,
+   0.05597789141326947,
+   0.08257596598091288,
+   0.003730370264650846,
+   0.02399617132358884,
+   -0.07241507837954313
   ],
-  "b": 0.13410223036436783,
-  "nUpdates": 75,
+  "b": 0.17307112702314434,
+  "nUpdates": 76,
   "buckets": {
    "MOMENTUM|high|sport": {
     "a": 1,
@@ -3880,7 +3926,7 @@
     "b": 2
    },
    "SHORT_FAVORITE|high|sport": {
-    "a": 16,
+    "a": 17,
     "b": 7
    },
    "VOLUME_SPIKE|mid|other": {
@@ -3931,13 +3977,13 @@
    }
   },
   "brier": {
-   "sum": 20.07398700000001,
-   "n": 75
+   "sum": 20.17767100000001,
+   "n": 76
   },
   "payoff": {
    "SHORT_FAVORITE": {
-    "wSum": 3.300750448776768,
-    "wN": 17,
+    "wSum": 3.3133290651289693,
+    "wN": 18,
     "lSum": 0.09749641969781131,
     "lN": 9
    },
@@ -3969,15 +4015,15 @@
   "hypotheses": [
    {
     "key": "SHORT_FAVORITE|high|sport",
-    "status": "FORMING",
-    "n": 21,
-    "winRate": 69.6,
+    "status": "VALIDATED",
+    "n": 22,
+    "winRate": 70.8,
     "ci": [
-     54,
-     85
+     56,
+     86
     ],
-    "text": "Short Favorite on high-priced sports markets: 15W/6L (posterior 70%, 90% CI 54-85%) — collecting evidence",
-    "updated": "2026-06-18T01:45:46.405Z"
+    "text": "Short Favorite on high-priced sports markets: 16W/6L (posterior 71%, 90% CI 56-86%) — proven edge, prioritized",
+    "updated": "2026-06-18T02:01:10.672Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -3989,7 +4035,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-18T01:45:46.405Z"
+    "updated": "2026-06-18T02:01:10.672Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -4001,7 +4047,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-18T01:45:46.405Z"
+    "updated": "2026-06-18T02:01:10.672Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -4013,7 +4059,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-18T01:45:46.405Z"
+    "updated": "2026-06-18T02:01:10.672Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -4025,32 +4071,32 @@
      89
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 4W/2L (posterior 63%, 90% CI 36-89%) — collecting evidence",
-    "updated": "2026-06-18T01:45:46.405Z"
+    "updated": "2026-06-18T02:01:10.672Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 6532.8698461439235,
+  "cash": 6542.3038084080745,
   "created": 1781162132851
  },
  "summary": {
-  "realized": 432.87,
-  "closed": 75,
-  "wins": 37,
+  "realized": 442.3,
+  "closed": 76,
+  "wins": 38,
   "open": 7,
-  "staked": 30350,
+  "staked": 31100,
   "bankStart": 10000,
-  "cash": 6533,
+  "cash": 6542,
   "equity": 10695,
   "returnPct": 6.95,
-  "modelUpdates": 75,
-  "brier": 0.268,
+  "modelUpdates": 76,
+  "brier": 0.265,
   "hypotheses": 5,
   "integrityOk": true,
-  "updated": "2026-06-18T01:45:46.409Z"
+  "updated": "2026-06-18T02:01:10.677Z"
  },
- "lastRun": 1781747146409,
+ "lastRun": 1781748070677,
  "elite": {
   "updated": 1781719276357,
   "list": [
@@ -4087,15 +4133,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-18T01:45:46.409Z",
-  "tradesChecked": 82
+  "checkedAt": "2026-06-18T02:01:10.677Z",
+  "tradesChecked": 83
  },
  "lastScan": {
-  "at": "2026-06-18T01:45:46.409Z",
-  "marketsFetched": 62,
-  "rawCandidates": 30,
-  "clearedThreshold": 3,
-  "placed": 0,
+  "at": "2026-06-18T02:01:10.676Z",
+  "marketsFetched": 63,
+  "rawCandidates": 22,
+  "clearedThreshold": 2,
+  "placed": 1,
   "pMin": 0.57,
   "blocked": {
    "exposure": 1,
@@ -4103,6 +4149,6 @@
    "cash": 0,
    "sanity": 0
   },
-  "reason": "exposure cap reached"
+  "reason": "traded"
  }
 }

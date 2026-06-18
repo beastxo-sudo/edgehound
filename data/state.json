@@ -465,7 +465,7 @@
    "slug": "israel-x-iran-permanent-peace-deal-by",
    "side": "YES",
    "entry": 0.0985,
-   "cur": 0.081,
+   "cur": 0.079,
    "stake": 550,
    "signal": "ELITE_FOLLOW",
    "p": 0.64,
@@ -4073,7 +4073,7 @@
      87
     ],
     "text": "Short Favorite on high-priced sports markets: 18W/6L (posterior 73%, 90% CI 59-87%) — proven edge, prioritized",
-    "updated": "2026-06-18T02:31:01.441Z"
+    "updated": "2026-06-18T02:45:42.393Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -4085,7 +4085,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-18T02:31:01.441Z"
+    "updated": "2026-06-18T02:45:42.393Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -4097,7 +4097,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-18T02:31:01.441Z"
+    "updated": "2026-06-18T02:45:42.393Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -4109,7 +4109,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-18T02:31:01.441Z"
+    "updated": "2026-06-18T02:45:42.393Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -4121,7 +4121,7 @@
      89
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 4W/2L (posterior 63%, 90% CI 36-89%) — collecting evidence",
-    "updated": "2026-06-18T02:31:01.441Z"
+    "updated": "2026-06-18T02:45:42.393Z"
    }
   ]
  },
@@ -4138,15 +4138,15 @@
   "staked": 31850,
   "bankStart": 10000,
   "cash": 7593,
-  "equity": 10763,
-  "returnPct": 7.63,
+  "equity": 10752,
+  "returnPct": 7.52,
   "modelUpdates": 78,
   "brier": 0.262,
   "hypotheses": 5,
   "integrityOk": true,
-  "updated": "2026-06-18T02:31:01.446Z"
+  "updated": "2026-06-18T02:45:42.396Z"
  },
- "lastRun": 1781749861446,
+ "lastRun": 1781750742396,
  "elite": {
   "updated": 1781719276357,
   "list": [
@@ -4183,15 +4183,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-18T02:31:01.446Z",
+  "checkedAt": "2026-06-18T02:45:42.396Z",
   "tradesChecked": 84
  },
  "lastScan": {
-  "at": "2026-06-18T02:31:01.445Z",
+  "at": "2026-06-18T02:45:42.396Z",
   "marketsFetched": 60,
-  "rawCandidates": 17,
-  "clearedThreshold": 1,
-  "placed": 1,
+  "rawCandidates": 15,
+  "clearedThreshold": 0,
+  "placed": 0,
   "pMin": 0.57,
   "blocked": {
    "exposure": 0,
@@ -4199,6 +4199,6 @@
    "cash": 0,
    "sanity": 0
   },
-  "reason": "traded"
+  "reason": "no candidates cleared P(win)>=0.57 (engines produce ~0.58-0.64; lower pMin or wait for better setups)"
  }
 }

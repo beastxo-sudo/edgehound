@@ -11,7 +11,7 @@
    "slug": "atp-marozsa-fritz-2026-06-18",
    "side": "NO",
    "entry": 0.855,
-   "cur": 0.9355,
+   "cur": 0.965,
    "stake": 750,
    "signal": "SHORT_FAVORITE",
    "p": 0.68,
@@ -4263,7 +4263,7 @@
      85
     ],
     "text": "Short Favorite on high-priced sports markets: 19W/7L (posterior 71%, 90% CI 58-85%) — proven edge, prioritized",
-    "updated": "2026-06-18T10:31:06.595Z"
+    "updated": "2026-06-18T10:45:46.980Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -4275,7 +4275,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-18T10:31:06.595Z"
+    "updated": "2026-06-18T10:45:46.980Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -4287,7 +4287,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-18T10:31:06.595Z"
+    "updated": "2026-06-18T10:45:46.980Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -4299,7 +4299,7 @@
      91
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 5W/2L (posterior 67%, 90% CI 42-91%) — collecting evidence",
-    "updated": "2026-06-18T10:31:06.595Z"
+    "updated": "2026-06-18T10:45:46.980Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -4311,7 +4311,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-18T10:31:06.595Z"
+    "updated": "2026-06-18T10:45:46.980Z"
    }
   ]
  },
@@ -4328,15 +4328,15 @@
   "staked": 34300,
   "bankStart": 10000,
   "cash": 6856,
-  "equity": 10410,
-  "returnPct": 4.1,
+  "equity": 10436,
+  "returnPct": 4.36,
   "modelUpdates": 82,
   "brier": 0.263,
   "hypotheses": 5,
   "integrityOk": true,
-  "updated": "2026-06-18T10:31:06.598Z"
+  "updated": "2026-06-18T10:45:46.983Z"
  },
- "lastRun": 1781778666598,
+ "lastRun": 1781779546983,
  "elite": {
   "updated": 1781719276357,
   "list": [
@@ -4373,12 +4373,12 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-18T10:31:06.598Z",
+  "checkedAt": "2026-06-18T10:45:46.983Z",
   "tradesChecked": 88
  },
  "lastScan": {
-  "at": "2026-06-18T10:31:06.598Z",
-  "marketsFetched": 59,
+  "at": "2026-06-18T10:45:46.983Z",
+  "marketsFetched": 60,
   "rawCandidates": 21,
   "clearedThreshold": 0,
   "placed": 0,

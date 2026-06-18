@@ -2,6 +2,48 @@
  "running": true,
  "journal": [
   {
+   "id": "t1781815524484r04z",
+   "date": "2026-06-19",
+   "openedTs": 1781815524484,
+   "title": "Cleveland Guardians vs. Milwaukee Brewers",
+   "mid": "2517164",
+   "conditionId": "0x3dd7aeeb38a291ad6f8c809a29d85c13d5d2fd2ab9f273ed726e173e7bc00235",
+   "slug": "mlb-cle-mil-2026-06-18",
+   "side": "YES",
+   "entry": 0.885,
+   "cur": 0.885,
+   "stake": 150,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.644,
+   "pModel": 0.533,
+   "pBucket": 0.667,
+   "bucketN": 34,
+   "bk": "SHORT_FAVORITE|high|sport",
+   "ev": 0.023,
+   "kelly": 0.0198,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.885,
+    0.508,
+    1,
+    0.802,
+    0.594,
+    0.999,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 64% [model 53%, pattern 67% on n=34] · EV +0.02/$1 · 1/4-Kelly 2.0% of equity -> $150. 89c favorite resolving in 6.9d (favorite-longshot bias); +13% if it lands. Drivers: 24h move size +, favorite setup +, sports market -",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1782411000000,
+   "status": "open"
+  },
+  {
    "id": "t1781814659863bc4q",
    "date": "2026-06-19",
    "openedTs": 1781814659863,
@@ -11,7 +53,7 @@
    "slug": "mlb-bal-sea-2026-06-18",
    "side": "NO",
    "entry": 0.835,
-   "cur": 0.835,
+   "cur": 0.895,
    "stake": 200,
    "signal": "SHORT_FAVORITE",
    "p": 0.649,
@@ -53,7 +95,7 @@
    "slug": "iran-agrees-to-end-enrichment-of-uranium-by-june-30",
    "side": "YES",
    "entry": 0.585,
-   "cur": 0.595,
+   "cur": 0.635,
    "stake": 450,
    "signal": "ELITE_FOLLOW",
    "p": 0.611,
@@ -97,7 +139,7 @@
    "slug": "crint-wst4-sco5-2026-06-18",
    "side": "YES",
    "entry": 0.875,
-   "cur": 0.895,
+   "cur": 0.8245,
    "stake": 250,
    "signal": "SHORT_FAVORITE",
    "p": 0.651,
@@ -4589,6 +4631,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-19 02:15 IST — Opened YES $150 @ 89c P=64% EV=+0.02 [Short Favorite] \"Cleveland Guardians vs. Milwaukee Brewers\"",
   "2026-06-19 02:00 IST — Opened NO $200 @ 84c P=65% EV=+0.02 [Short Favorite] \"Baltimore Orioles vs. Seattle Mariners\"",
   "2026-06-19 01:46 IST — Opened YES $450 @ 59c P=61% EV=+0.11 [Elite Follow] \" Iran agrees to end enrichment of uranium by J\"",
   "2026-06-19 01:46 IST — Closed YES \"Baltimore Orioles vs. Seattle Mariners\" -> $-377 (Stop loss hit (-45%)) · model said P(win)=69%",
@@ -4601,8 +4644,7 @@
   "2026-06-19 01:15 IST — Closed YES \"Toronto Blue Jays vs. Boston Red Sox\" -> $-402 (Stop loss hit (-45%)) · model said P(win)=67%",
   "2026-06-19 00:45 IST — Opened YES $400 @ 44c P=58% EV=+0.09 [Elite Follow] \" Iran agrees to end enrichment of uranium by J\"",
   "2026-06-19 00:45 IST — Closed YES \" Iran agrees to end enrichment of uranium \" -> $-54 (Stop loss hit (-25%)) · model said P(win)=62%",
-  "2026-06-19 00:45 IST — Closed YES \"Counter-Strike: FURIA vs 9z - Map 2 Winner\" -> +$37 (Resolved in our favor) · model said P(win)=67%",
-  "2026-06-19 00:31 IST — Opened YES $400 @ 92c P=67% EV=+0.05 [Short Favorite] \"Counter-Strike: FURIA vs 9z - Map 2 Winner\""
+  "2026-06-19 00:45 IST — Closed YES \"Counter-Strike: FURIA vs 9z - Map 2 Winner\" -> +$37 (Resolved in our favor) · model said P(win)=67%"
  ],
  "brain": {
   "w": [
@@ -4769,7 +4811,7 @@
      79
     ],
     "text": "Short Favorite on high-priced sports markets: 23W/11L (posterior 67%, 90% CI 54-79%) — collecting evidence",
-    "updated": "2026-06-18T20:30:59.860Z"
+    "updated": "2026-06-18T20:45:24.480Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -4781,7 +4823,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-18T20:30:59.860Z"
+    "updated": "2026-06-18T20:45:24.480Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -4793,7 +4835,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-18T20:30:59.860Z"
+    "updated": "2026-06-18T20:45:24.480Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -4805,7 +4847,7 @@
      86
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 6W/3L (posterior 64%, 90% CI 41-86%) — collecting evidence",
-    "updated": "2026-06-18T20:30:59.860Z"
+    "updated": "2026-06-18T20:45:24.480Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -4817,32 +4859,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-18T20:30:59.860Z"
+    "updated": "2026-06-18T20:45:24.480Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 6052.726560384477,
+  "cash": 5902.726560384477,
   "created": 1781162132851
  },
  "summary": {
   "realized": -1447.27,
   "closed": 92,
   "wins": 47,
-  "open": 7,
-  "staked": 39200,
+  "open": 8,
+  "staked": 39350,
   "bankStart": 10000,
-  "cash": 6053,
-  "equity": 8533,
-  "returnPct": -14.67,
+  "cash": 5903,
+  "equity": 8558,
+  "returnPct": -14.42,
   "modelUpdates": 92,
   "brier": 0.266,
   "hypotheses": 5,
   "integrityOk": true,
-  "updated": "2026-06-18T20:30:59.864Z"
+  "updated": "2026-06-18T20:45:24.484Z"
  },
- "lastRun": 1781814659864,
+ "lastRun": 1781815524485,
  "elite": {
   "updated": 1781805684647,
   "list": [
@@ -4879,13 +4921,13 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-18T20:30:59.864Z",
-  "tradesChecked": 99
+  "checkedAt": "2026-06-18T20:45:24.484Z",
+  "tradesChecked": 100
  },
  "lastScan": {
-  "at": "2026-06-18T20:30:59.863Z",
-  "marketsFetched": 68,
-  "rawCandidates": 24,
+  "at": "2026-06-18T20:45:24.484Z",
+  "marketsFetched": 64,
+  "rawCandidates": 23,
   "clearedThreshold": 1,
   "placed": 1,
   "pMin": 0.57,

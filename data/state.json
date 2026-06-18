@@ -11,7 +11,7 @@
    "slug": "mlb-bal-sea-2026-06-17",
    "side": "YES",
    "entry": 0.915,
-   "cur": 0.982,
+   "cur": 0.97,
    "stake": 750,
    "signal": "SHORT_FAVORITE",
    "p": 0.69,
@@ -4163,7 +4163,7 @@
      87
     ],
     "text": "Short Favorite on high-priced sports markets: 18W/6L (posterior 73%, 90% CI 59-87%) — proven edge, prioritized",
-    "updated": "2026-06-18T04:01:13.047Z"
+    "updated": "2026-06-18T04:16:32.373Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -4175,7 +4175,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-18T04:01:13.047Z"
+    "updated": "2026-06-18T04:16:32.373Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -4187,7 +4187,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-18T04:01:13.047Z"
+    "updated": "2026-06-18T04:16:32.373Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -4199,7 +4199,7 @@
      91
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 5W/2L (posterior 67%, 90% CI 42-91%) — collecting evidence",
-    "updated": "2026-06-18T04:01:13.047Z"
+    "updated": "2026-06-18T04:16:32.373Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -4211,7 +4211,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-18T04:01:13.047Z"
+    "updated": "2026-06-18T04:16:32.373Z"
    }
   ]
  },
@@ -4228,15 +4228,15 @@
   "staked": 32800,
   "bankStart": 10000,
   "cash": 6899,
-  "equity": 10880,
-  "returnPct": 8.8,
+  "equity": 10871,
+  "returnPct": 8.71,
   "modelUpdates": 79,
   "brier": 0.26,
   "hypotheses": 5,
   "integrityOk": true,
-  "updated": "2026-06-18T04:01:13.050Z"
+  "updated": "2026-06-18T04:16:32.376Z"
  },
- "lastRun": 1781755273051,
+ "lastRun": 1781756192377,
  "elite": {
   "updated": 1781719276357,
   "list": [
@@ -4273,22 +4273,22 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-18T04:01:13.051Z",
+  "checkedAt": "2026-06-18T04:16:32.377Z",
   "tradesChecked": 86
  },
  "lastScan": {
-  "at": "2026-06-18T04:01:13.050Z",
-  "marketsFetched": 50,
-  "rawCandidates": 13,
-  "clearedThreshold": 1,
+  "at": "2026-06-18T04:16:32.376Z",
+  "marketsFetched": 54,
+  "rawCandidates": 12,
+  "clearedThreshold": 0,
   "placed": 0,
   "pMin": 0.57,
   "blocked": {
-   "exposure": 1,
+   "exposure": 0,
    "event": 0,
    "cash": 0,
    "sanity": 0
   },
-  "reason": "exposure cap reached"
+  "reason": "no candidates cleared P(win)>=0.57 (engines produce ~0.58-0.64; lower pMin or wait for better setups)"
  }
 }

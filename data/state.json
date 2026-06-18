@@ -11,7 +11,7 @@
    "slug": "wta-golubic-sonmez-2026-06-18",
    "side": "NO",
    "entry": 0.8049999999999999,
-   "cur": 0.565,
+   "cur": 0.0004999999999999449,
    "stake": 750,
    "signal": "SHORT_FAVORITE",
    "p": 0.695,
@@ -41,7 +41,11 @@
    "target": null,
    "stop": 0.45,
    "holdUntil": 1782378000000,
-   "status": "open"
+   "status": "closed",
+   "exit": 0,
+   "exitTs": 1781787673971,
+   "exitReason": "Resolved against us",
+   "pnl": -750
   },
   {
    "id": "t1781784968548q2vo",
@@ -99,7 +103,7 @@
    "slug": "dota2-yb1-vg-2026-06-18",
    "side": "YES",
    "entry": 0.805,
-   "cur": 0.635,
+   "cur": 0.3,
    "stake": 750,
    "signal": "SHORT_FAVORITE",
    "p": 0.695,
@@ -129,7 +133,11 @@
    "target": null,
    "stop": 0.45,
    "holdUntil": 1781795700000,
-   "status": "open"
+   "status": "closed",
+   "exit": 0.3,
+   "exitTs": 1781787673971,
+   "exitReason": "Stop loss hit (-45%)",
+   "pnl": -470.49689440993797
   },
   {
    "id": "t1781776874709ufxp",
@@ -275,7 +283,7 @@
    "slug": "iran-agrees-to-end-enrichment-of-uranium-by-june-30",
    "side": "YES",
    "entry": 0.595,
-   "cur": 0.605,
+   "cur": 0.615,
    "stake": 200,
    "signal": "ELITE_FOLLOW",
    "p": 0.619,
@@ -4185,9 +4193,9 @@
  ],
  "strat": {
   "SHORT_FAVORITE": {
-   "trades": 33,
+   "trades": 35,
    "wins": 23,
-   "pnl": 1728.3765111533262,
+   "pnl": 507.8796167433882,
    "weight": 1
   },
   "MOMENTUM": {
@@ -4217,6 +4225,8 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-18 18:31 IST — Closed YES \"Dota 2: Yakult Brothers vs Vici Gaming (BO\" -> $-470 (Stop loss hit (-45%)) · model said P(win)=70%",
+  "2026-06-18 18:31 IST — Closed NO \"Nottingham Open: Viktorija Golubic vs Zeyn\" -> $-750 (Resolved against us) · model said P(win)=70%",
   "2026-06-18 18:01 IST — Opened NO $750 @ 81c P=70% EV=+0.10 [Short Favorite] \"Nottingham Open: Viktorija Golubic vs Zeynep S\"",
   "2026-06-18 18:01 IST — Closed NO \"HSBC Championships: Corentin Moutet vs Ale\" -> +$62 (Resolved in our favor) · model said P(win)=68%",
   "2026-06-18 17:46 IST — Opened NO $750 @ 92c P=68% EV=+0.10 [Short Favorite] \"HSBC Championships: Corentin Moutet vs Alejand\"",
@@ -4228,28 +4238,26 @@
   "2026-06-18 14:01 IST — Opened NO $750 @ 85c P=70% EV=+0.12 [Short Favorite] \"LoL: Dplus KIA Challengers vs T1 Academy (BO5)\"",
   "2026-06-18 10:01 IST — Closed YES \"Pittsburgh Pirates vs. Athletics\" -> +$52 (Resolved in our favor) · model said P(win)=69%",
   "2026-06-18 09:01 IST — Opened YES $750 @ 92c P=69% EV=+0.12 [Short Favorite] \"Baltimore Orioles vs. Seattle Mariners\"",
-  "2026-06-18 08:45 IST — Opened YES $200 @ 60c P=62% EV=+0.12 [Elite Follow] \" Iran agrees to end enrichment of uranium by J\"",
-  "2026-06-18 08:45 IST — Closed YES \" Iran agrees to end enrichment of uranium \" -> +$56 (Profit target hit (+25%)) · model said P(win)=60%",
-  "2026-06-18 08:01 IST — Opened YES $750 @ 94c P=69% EV=+0.12 [Short Favorite] \"Pittsburgh Pirates vs. Athletics\""
+  "2026-06-18 08:45 IST — Opened YES $200 @ 60c P=62% EV=+0.12 [Elite Follow] \" Iran agrees to end enrichment of uranium by J\""
  ],
  "brain": {
   "w": [
-   0.3545270109065147,
-   0.0481582323434603,
-   0.009288687175219558,
-   -0.18467294649134183,
-   0.22932427092480095,
-   -0.10591772626784474,
-   0.43811072848132565,
-   0.12875580587493643,
-   0.06719158212846686,
-   0.11617658977160139,
-   0.003715474870087817,
-   0.06246971147113092,
-   -0.07212592446498474
+   0.21008804663914685,
+   0.04811008615067493,
+   0.009279400810216132,
+   -0.18448831971308713,
+   0.11310696064493157,
+   -0.20885049225790497,
+   0.35503424927985366,
+   0.011768018040910419,
+   -0.028185555279975905,
+   -0.0280240836622368,
+   0.0037117603240864466,
+   -0.08167726851112639,
+   -0.07205381657200087
   ],
-  "b": 0.18347662740897888,
-  "nUpdates": 84,
+  "b": 0.03935076161181003,
+  "nUpdates": 86,
   "buckets": {
    "MOMENTUM|high|sport": {
     "a": 1,
@@ -4297,7 +4305,7 @@
    },
    "SHORT_FAVORITE|high|sport": {
     "a": 22,
-    "b": 8
+    "b": 10
    },
    "VOLUME_SPIKE|mid|other": {
     "a": 2,
@@ -4351,15 +4359,15 @@
    }
   },
   "brier": {
-   "sum": 21.77363600000001,
-   "n": 84
+   "sum": 22.739686000000013,
+   "n": 86
   },
   "payoff": {
    "SHORT_FAVORITE": {
     "wSum": 4.035994236085161,
     "wN": 23,
-    "lSum": 0.7680846549919289,
-    "lN": 10
+    "lSum": 2.3954138475385127,
+    "lN": 12
    },
    "MOMENTUM": {
     "wSum": 2.701062968732154,
@@ -4390,14 +4398,14 @@
    {
     "key": "SHORT_FAVORITE|high|sport",
     "status": "VALIDATED",
-    "n": 28,
-    "winRate": 73.3,
+    "n": 30,
+    "winRate": 68.8,
     "ci": [
-     60,
-     86
+     55,
+     82
     ],
-    "text": "Short Favorite on high-priced sports markets: 21W/7L (posterior 73%, 90% CI 60-86%) — proven edge, prioritized",
-    "updated": "2026-06-18T12:45:47.847Z"
+    "text": "Short Favorite on high-priced sports markets: 21W/9L (posterior 69%, 90% CI 55-82%) — proven edge, prioritized",
+    "updated": "2026-06-18T13:01:13.972Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -4409,7 +4417,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-18T12:45:47.848Z"
+    "updated": "2026-06-18T13:01:13.972Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -4421,7 +4429,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-18T12:45:47.847Z"
+    "updated": "2026-06-18T13:01:13.972Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -4433,7 +4441,7 @@
      91
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 5W/2L (posterior 67%, 90% CI 42-91%) — collecting evidence",
-    "updated": "2026-06-18T12:45:47.847Z"
+    "updated": "2026-06-18T13:01:13.972Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -4445,32 +4453,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-18T12:45:47.847Z"
+    "updated": "2026-06-18T13:01:13.972Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 6294.889701847223,
+  "cash": 6574.392807437284,
   "created": 1781162132851
  },
  "summary": {
-  "realized": 394.89,
-  "closed": 84,
+  "realized": -825.61,
+  "closed": 86,
   "wins": 44,
-  "open": 7,
+  "open": 5,
   "staked": 36550,
   "bankStart": 10000,
-  "cash": 6295,
-  "equity": 10145,
-  "returnPct": 1.45,
-  "modelUpdates": 84,
-  "brier": 0.259,
+  "cash": 6574,
+  "equity": 9310,
+  "returnPct": -6.9,
+  "modelUpdates": 86,
+  "brier": 0.264,
   "hypotheses": 5,
   "integrityOk": true,
-  "updated": "2026-06-18T12:45:47.849Z"
+  "updated": "2026-06-18T13:01:13.973Z"
  },
- "lastRun": 1781786747849,
+ "lastRun": 1781787673973,
  "elite": {
   "updated": 1781719276357,
   "list": [
@@ -4507,7 +4515,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-18T12:45:47.849Z",
+  "checkedAt": "2026-06-18T13:01:13.973Z",
   "tradesChecked": 91
  },
  "lastScan": {

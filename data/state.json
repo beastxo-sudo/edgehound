@@ -2,6 +2,48 @@
  "running": true,
  "journal": [
   {
+   "id": "t1781771470313caur",
+   "date": "2026-06-18",
+   "openedTs": 1781771470313,
+   "title": "LoL: Dplus KIA Challengers vs T1 Academy (BO5) - Asia Masters Playoffs",
+   "mid": "2584912",
+   "conditionId": "0xa78b899dbe4908134dc1319f032fe6534a0b00720c60f574f5356aaa8ff969bb",
+   "slug": "lol-dkc-t1a-2026-06-18",
+   "side": "NO",
+   "entry": 0.85,
+   "cur": 0.85,
+   "stake": 750,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.705,
+   "pModel": 0.784,
+   "pBucket": 0.741,
+   "bucketN": 25,
+   "bk": "SHORT_FAVORITE|high|sport",
+   "ev": 0.124,
+   "kelly": 0.08,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.85,
+    0.99,
+    0,
+    0.756,
+    0.609,
+    1,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 70% [model 78%, pattern 74% on n=25] · EV +0.12/$1 · 1/4-Kelly 8.0% of equity -> $750. 85c favorite resolving in 0.1d (favorite-longshot bias); +18% if it lands. Drivers: favorite setup +, price level +, 24h volume +",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1781784000000,
+   "status": "open"
+  },
+  {
    "id": "t1781753464772j70e",
    "date": "2026-06-18",
    "openedTs": 1781753464772,
@@ -53,7 +95,7 @@
    "slug": "iran-agrees-to-end-enrichment-of-uranium-by-june-30",
    "side": "YES",
    "entry": 0.595,
-   "cur": 0.525,
+   "cur": 0.515,
    "stake": 200,
    "signal": "ELITE_FOLLOW",
    "p": 0.619,
@@ -559,7 +601,7 @@
    "slug": "israel-x-iran-permanent-peace-deal-by",
    "side": "YES",
    "entry": 0.0985,
-   "cur": 0.079,
+   "cur": 0.077,
    "stake": 550,
    "signal": "ELITE_FOLLOW",
    "p": 0.64,
@@ -3991,6 +4033,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-18 14:01 IST — Opened NO $750 @ 85c P=70% EV=+0.12 [Short Favorite] \"LoL: Dplus KIA Challengers vs T1 Academy (BO5)\"",
   "2026-06-18 10:01 IST — Closed YES \"Pittsburgh Pirates vs. Athletics\" -> +$52 (Resolved in our favor) · model said P(win)=69%",
   "2026-06-18 09:01 IST — Opened YES $750 @ 92c P=69% EV=+0.12 [Short Favorite] \"Baltimore Orioles vs. Seattle Mariners\"",
   "2026-06-18 08:45 IST — Opened YES $200 @ 60c P=62% EV=+0.12 [Elite Follow] \" Iran agrees to end enrichment of uranium by J\"",
@@ -4003,8 +4046,7 @@
   "2026-06-18 07:31 IST — Closed NO \"Will Uzbekistan vs. Colombia end in a draw\" -> +$9 (Max hold reached — closed at market) · model said P(win)=68%",
   "2026-06-18 06:04 IST — Opened NO $750 @ 80c P=68% EV=+0.13 [Short Favorite] \"Will Uzbekistan vs. Colombia end in a draw?\"",
   "2026-06-18 05:36 IST — Opened YES $750 @ 88c P=66% EV=+0.12 [Short Favorite] \"San Francisco Giants vs. Atlanta Braves\"",
-  "2026-06-18 05:08 IST — Opened NO $750 @ 80c P=66% EV=+0.12 [Short Favorite] \"Chicago White Sox vs. New York Yankees\"",
-  "2026-06-18 04:25 IST — Opened YES $200 @ 47c P=60% EV=+0.11 [Elite Follow] \" Iran agrees to end enrichment of uranium by J\""
+  "2026-06-18 05:08 IST — Opened NO $750 @ 80c P=66% EV=+0.12 [Short Favorite] \"Chicago White Sox vs. New York Yankees\""
  ],
  "brain": {
   "w": [
@@ -4167,7 +4209,7 @@
      88
     ],
     "text": "Short Favorite on high-priced sports markets: 19W/6L (posterior 74%, 90% CI 60-88%) — proven edge, prioritized",
-    "updated": "2026-06-18T08:16:26.861Z"
+    "updated": "2026-06-18T08:31:10.309Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -4179,7 +4221,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-18T08:16:26.861Z"
+    "updated": "2026-06-18T08:31:10.309Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -4191,7 +4233,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-18T08:16:26.861Z"
+    "updated": "2026-06-18T08:31:10.309Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -4203,7 +4245,7 @@
      91
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 5W/2L (posterior 67%, 90% CI 42-91%) — collecting evidence",
-    "updated": "2026-06-18T08:16:26.861Z"
+    "updated": "2026-06-18T08:31:10.309Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -4215,32 +4257,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-18T08:16:26.861Z"
+    "updated": "2026-06-18T08:31:10.309Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 7700.895907893804,
+  "cash": 6950.895907893804,
   "created": 1781162132851
  },
  "summary": {
   "realized": 850.9,
   "closed": 80,
   "wins": 42,
-  "open": 6,
-  "staked": 32800,
+  "open": 7,
+  "staked": 33550,
   "bankStart": 10000,
-  "cash": 7701,
-  "equity": 10847,
-  "returnPct": 8.47,
+  "cash": 6951,
+  "equity": 10833,
+  "returnPct": 8.33,
   "modelUpdates": 80,
   "brier": 0.258,
   "hypotheses": 5,
   "integrityOk": true,
-  "updated": "2026-06-18T08:16:26.864Z"
+  "updated": "2026-06-18T08:31:10.313Z"
  },
- "lastRun": 1781770586864,
+ "lastRun": 1781771470313,
  "elite": {
   "updated": 1781719276357,
   "list": [
@@ -4277,15 +4319,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-18T08:16:26.864Z",
-  "tradesChecked": 86
+  "checkedAt": "2026-06-18T08:31:10.313Z",
+  "tradesChecked": 87
  },
  "lastScan": {
-  "at": "2026-06-18T08:16:26.864Z",
-  "marketsFetched": 61,
+  "at": "2026-06-18T08:31:10.313Z",
+  "marketsFetched": 59,
   "rawCandidates": 19,
-  "clearedThreshold": 0,
-  "placed": 0,
+  "clearedThreshold": 1,
+  "placed": 1,
   "pMin": 0.57,
   "blocked": {
    "exposure": 0,
@@ -4293,6 +4335,6 @@
    "cash": 0,
    "sanity": 0
   },
-  "reason": "no candidates cleared P(win)>=0.57 (engines produce ~0.58-0.64; lower pMin or wait for better setups)"
+  "reason": "traded"
  }
 }

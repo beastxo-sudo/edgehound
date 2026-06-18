@@ -239,7 +239,7 @@
    "slug": "atp-medjedo-humbert-2026-06-17",
    "side": "YES",
    "entry": 0.785,
-   "cur": 0.455,
+   "cur": 0.445,
    "stake": 300,
    "signal": "SHORT_FAVORITE",
    "p": 0.658,
@@ -4827,7 +4827,7 @@
      82
     ],
     "text": "Short Favorite on high-priced sports markets: 27W/11L (posterior 70%, 90% CI 58-82%) — proven edge, prioritized",
-    "updated": "2026-06-18T23:21:14.451Z"
+    "updated": "2026-06-18T23:35:26.771Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -4839,7 +4839,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-18T23:21:14.451Z"
+    "updated": "2026-06-18T23:35:26.771Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -4851,7 +4851,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-18T23:21:14.451Z"
+    "updated": "2026-06-18T23:35:26.771Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -4863,7 +4863,7 @@
      86
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 6W/3L (posterior 64%, 90% CI 41-86%) — collecting evidence",
-    "updated": "2026-06-18T23:21:14.451Z"
+    "updated": "2026-06-18T23:35:26.771Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -4875,7 +4875,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-18T23:21:14.451Z"
+    "updated": "2026-06-18T23:35:26.771Z"
    }
   ]
  },
@@ -4892,15 +4892,15 @@
   "staked": 39350,
   "bankStart": 10000,
   "cash": 7017,
-  "equity": 8632,
-  "returnPct": -13.68,
+  "equity": 8628,
+  "returnPct": -13.72,
   "modelUpdates": 96,
   "brier": 0.26,
   "hypotheses": 5,
   "integrityOk": true,
-  "updated": "2026-06-18T23:21:14.454Z"
+  "updated": "2026-06-18T23:35:26.774Z"
  },
- "lastRun": 1781824874454,
+ "lastRun": 1781825726775,
  "elite": {
   "updated": 1781805684647,
   "list": [
@@ -4937,12 +4937,12 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-18T23:21:14.454Z",
+  "checkedAt": "2026-06-18T23:35:26.775Z",
   "tradesChecked": 100
  },
  "lastScan": {
-  "at": "2026-06-18T23:21:14.454Z",
-  "marketsFetched": 62,
+  "at": "2026-06-18T23:35:26.774Z",
+  "marketsFetched": 61,
   "rawCandidates": 17,
   "clearedThreshold": 0,
   "placed": 0,

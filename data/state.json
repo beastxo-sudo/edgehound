@@ -283,7 +283,7 @@
    "slug": "iran-agrees-to-end-enrichment-of-uranium-by-june-30",
    "side": "YES",
    "entry": 0.595,
-   "cur": 0.63,
+   "cur": 0.655,
    "stake": 200,
    "signal": "ELITE_FOLLOW",
    "p": 0.619,
@@ -4405,7 +4405,7 @@
      82
     ],
     "text": "Short Favorite on high-priced sports markets: 21W/9L (posterior 69%, 90% CI 55-82%) — proven edge, prioritized",
-    "updated": "2026-06-18T15:31:05.607Z"
+    "updated": "2026-06-18T15:45:53.858Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -4417,7 +4417,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-18T15:31:05.607Z"
+    "updated": "2026-06-18T15:45:53.858Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -4429,7 +4429,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-18T15:31:05.607Z"
+    "updated": "2026-06-18T15:45:53.858Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -4441,7 +4441,7 @@
      91
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 5W/2L (posterior 67%, 90% CI 42-91%) — collecting evidence",
-    "updated": "2026-06-18T15:31:05.607Z"
+    "updated": "2026-06-18T15:45:53.858Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -4453,7 +4453,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-18T15:31:05.607Z"
+    "updated": "2026-06-18T15:45:53.858Z"
    }
   ]
  },
@@ -4470,15 +4470,15 @@
   "staked": 36550,
   "bankStart": 10000,
   "cash": 6574,
-  "equity": 9315,
-  "returnPct": -6.85,
+  "equity": 9323,
+  "returnPct": -6.77,
   "modelUpdates": 86,
   "brier": 0.264,
   "hypotheses": 5,
   "integrityOk": true,
-  "updated": "2026-06-18T15:31:05.608Z"
+  "updated": "2026-06-18T15:45:53.859Z"
  },
- "lastRun": 1781796665608,
+ "lastRun": 1781797553859,
  "elite": {
   "updated": 1781719276357,
   "list": [
@@ -4515,7 +4515,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-18T15:31:05.608Z",
+  "checkedAt": "2026-06-18T15:45:53.859Z",
   "tradesChecked": 91
  },
  "lastScan": {

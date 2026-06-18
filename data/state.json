@@ -11,7 +11,7 @@
    "slug": "wta-golubic-sonmez-2026-06-18",
    "side": "NO",
    "entry": 0.8049999999999999,
-   "cur": 0.8049999999999999,
+   "cur": 0.565,
    "stake": 750,
    "signal": "SHORT_FAVORITE",
    "p": 0.695,
@@ -99,7 +99,7 @@
    "slug": "dota2-yb1-vg-2026-06-18",
    "side": "YES",
    "entry": 0.805,
-   "cur": 0.89,
+   "cur": 0.635,
    "stake": 750,
    "signal": "SHORT_FAVORITE",
    "p": 0.695,
@@ -275,7 +275,7 @@
    "slug": "iran-agrees-to-end-enrichment-of-uranium-by-june-30",
    "side": "YES",
    "entry": 0.595,
-   "cur": 0.615,
+   "cur": 0.605,
    "stake": 200,
    "signal": "ELITE_FOLLOW",
    "p": 0.619,
@@ -4397,7 +4397,7 @@
      86
     ],
     "text": "Short Favorite on high-priced sports markets: 21W/7L (posterior 73%, 90% CI 60-86%) — proven edge, prioritized",
-    "updated": "2026-06-18T12:31:05.202Z"
+    "updated": "2026-06-18T12:45:47.847Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -4409,7 +4409,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-18T12:31:05.202Z"
+    "updated": "2026-06-18T12:45:47.848Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -4421,7 +4421,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-18T12:31:05.202Z"
+    "updated": "2026-06-18T12:45:47.847Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -4433,7 +4433,7 @@
      91
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 5W/2L (posterior 67%, 90% CI 42-91%) — collecting evidence",
-    "updated": "2026-06-18T12:31:05.202Z"
+    "updated": "2026-06-18T12:45:47.847Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -4445,7 +4445,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-18T12:31:05.202Z"
+    "updated": "2026-06-18T12:45:47.847Z"
    }
   ]
  },
@@ -4462,15 +4462,15 @@
   "staked": 36550,
   "bankStart": 10000,
   "cash": 6295,
-  "equity": 10610,
-  "returnPct": 6.1,
+  "equity": 10145,
+  "returnPct": 1.45,
   "modelUpdates": 84,
   "brier": 0.259,
   "hypotheses": 5,
   "integrityOk": true,
-  "updated": "2026-06-18T12:31:05.206Z"
+  "updated": "2026-06-18T12:45:47.849Z"
  },
- "lastRun": 1781785865206,
+ "lastRun": 1781786747849,
  "elite": {
   "updated": 1781719276357,
   "list": [
@@ -4507,7 +4507,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-18T12:31:05.206Z",
+  "checkedAt": "2026-06-18T12:45:47.849Z",
   "tradesChecked": 91
  },
  "lastScan": {

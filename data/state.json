@@ -53,7 +53,7 @@
    "slug": "mlb-sf-atl-2026-06-17",
    "side": "YES",
    "entry": 0.875,
-   "cur": 0.9,
+   "cur": 0.935,
    "stake": 750,
    "signal": "SHORT_FAVORITE",
    "p": 0.662,
@@ -95,7 +95,7 @@
    "slug": "mlb-cws-nyy-2026-06-17",
    "side": "NO",
    "entry": 0.795,
-   "cur": 0.73,
+   "cur": 0.645,
    "stake": 750,
    "signal": "SHORT_FAVORITE",
    "p": 0.662,
@@ -137,7 +137,7 @@
    "slug": "iran-agrees-to-end-enrichment-of-uranium-by-june-30",
    "side": "YES",
    "entry": 0.465,
-   "cur": 0.475,
+   "cur": 0.51,
    "stake": 200,
    "signal": "ELITE_FOLLOW",
    "p": 0.6,
@@ -369,7 +369,7 @@
    "slug": "israel-x-iran-permanent-peace-deal-by",
    "side": "YES",
    "entry": 0.0985,
-   "cur": 0.107,
+   "cur": 0.1105,
    "stake": 550,
    "signal": "ELITE_FOLLOW",
    "p": 0.64,
@@ -3977,7 +3977,7 @@
      85
     ],
     "text": "Short Favorite on high-priced sports markets: 15W/6L (posterior 70%, 90% CI 54-85%) — collecting evidence",
-    "updated": "2026-06-18T00:34:58.430Z"
+    "updated": "2026-06-18T00:48:34.011Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -3989,7 +3989,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-18T00:34:58.430Z"
+    "updated": "2026-06-18T00:48:34.011Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -4001,7 +4001,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-18T00:34:58.430Z"
+    "updated": "2026-06-18T00:48:34.011Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -4013,7 +4013,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-18T00:34:58.430Z"
+    "updated": "2026-06-18T00:48:34.011Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -4025,7 +4025,7 @@
      89
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 4W/2L (posterior 63%, 90% CI 36-89%) — collecting evidence",
-    "updated": "2026-06-18T00:34:58.430Z"
+    "updated": "2026-06-18T00:48:34.011Z"
    }
   ]
  },
@@ -4042,15 +4042,15 @@
   "staked": 30350,
   "bankStart": 10000,
   "cash": 6533,
-  "equity": 10529,
-  "returnPct": 5.29,
+  "equity": 10513,
+  "returnPct": 5.13,
   "modelUpdates": 75,
   "brier": 0.268,
   "hypotheses": 5,
   "integrityOk": true,
-  "updated": "2026-06-18T00:34:58.433Z"
+  "updated": "2026-06-18T00:48:34.015Z"
  },
- "lastRun": 1781742898433,
+ "lastRun": 1781743714015,
  "elite": {
   "updated": 1781719276357,
   "list": [
@@ -4087,22 +4087,22 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-18T00:34:58.433Z",
+  "checkedAt": "2026-06-18T00:48:34.015Z",
   "tradesChecked": 82
  },
  "lastScan": {
-  "at": "2026-06-18T00:34:58.433Z",
-  "marketsFetched": 64,
-  "rawCandidates": 18,
+  "at": "2026-06-18T00:48:34.015Z",
+  "marketsFetched": 65,
+  "rawCandidates": 20,
   "clearedThreshold": 1,
-  "placed": 1,
+  "placed": 0,
   "pMin": 0.57,
   "blocked": {
-   "exposure": 0,
+   "exposure": 1,
    "event": 0,
    "cash": 0,
    "sanity": 0
   },
-  "reason": "traded"
+  "reason": "exposure cap reached"
  }
 }

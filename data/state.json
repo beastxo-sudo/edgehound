@@ -2,6 +2,90 @@
  "running": true,
  "journal": [
   {
+   "id": "t1781784968548q2vo",
+   "date": "2026-06-18",
+   "openedTs": 1781784968548,
+   "title": "HSBC Championships: Corentin Moutet vs Alejandro Davidovich Fokina",
+   "mid": "2571220",
+   "conditionId": "0x89775bf659ea3316960354b9cca5c3c5d328ef9ddc56f4b51b48c9707b78d926",
+   "slug": "atp-moutet-fokina-2026-06-17",
+   "side": "NO",
+   "entry": 0.9235,
+   "cur": 0.9235,
+   "stake": 750,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.684,
+   "pModel": 0.782,
+   "pBucket": 0.724,
+   "bucketN": 27,
+   "bk": "SHORT_FAVORITE|high|sport",
+   "ev": 0.099,
+   "kelly": 0.08,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.923,
+    0.584,
+    1,
+    0.756,
+    0.622,
+    0.929,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 68% [model 78%, pattern 72% on n=27] · EV +0.10/$1 · 1/4-Kelly 8.0% of equity -> $750. 92c favorite resolving in 5.8d (favorite-longshot bias); +8% if it lands. Drivers: 24h move size +, favorite setup +, price level +",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1782288000000,
+   "status": "open"
+  },
+  {
+   "id": "t1781784968547er91",
+   "date": "2026-06-18",
+   "openedTs": 1781784968547,
+   "title": "Dota 2: Yakult Brothers vs Vici Gaming (BO3) - The International China Closed Qualifier Playoffs",
+   "mid": "2594160",
+   "conditionId": "0xc3b31a5dbec172a6f2e0251bfd524a748a0f94b56318d7ff7bce3d90fe725ac6",
+   "slug": "dota2-yb1-vg-2026-06-18",
+   "side": "YES",
+   "entry": 0.805,
+   "cur": 0.805,
+   "stake": 750,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.695,
+   "pModel": 0.689,
+   "pBucket": 0.724,
+   "bucketN": 27,
+   "bk": "SHORT_FAVORITE|high|sport",
+   "ev": 0.101,
+   "kelly": 0.08,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.805,
+    0.991,
+    0,
+    0.76,
+    0.607,
+    1,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 69% [model 69%, pattern 72% on n=27] · EV +0.10/$1 · 1/4-Kelly 8.0% of equity -> $750. 81c favorite resolving in 0.1d (favorite-longshot bias); +24% if it lands. Drivers: favorite setup +, price level +, short time to resolution -",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1781795700000,
+   "status": "open"
+  },
+  {
    "id": "t1781776874709ufxp",
    "date": "2026-06-18",
    "openedTs": 1781776874709,
@@ -145,7 +229,7 @@
    "slug": "iran-agrees-to-end-enrichment-of-uranium-by-june-30",
    "side": "YES",
    "entry": 0.595,
-   "cur": 0.675,
+   "cur": 0.655,
    "stake": 200,
    "signal": "ELITE_FOLLOW",
    "p": 0.619,
@@ -4087,6 +4171,8 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-18 17:46 IST — Opened NO $750 @ 92c P=68% EV=+0.10 [Short Favorite] \"HSBC Championships: Corentin Moutet vs Alejand\"",
+  "2026-06-18 17:46 IST — Opened YES $750 @ 81c P=69% EV=+0.10 [Short Favorite] \"Dota 2: Yakult Brothers vs Vici Gaming (BO3) -\"",
   "2026-06-18 16:31 IST — Closed NO \"Halle Open: Fabian Marozsan vs Taylor Frit\" -> +$127 (Resolved in our favor) · model said P(win)=68%",
   "2026-06-18 16:01 IST — Closed YES \"Israel x Iran permanent peace deal by June\" -> $-142 (Stop loss hit (-25%)) · model said P(win)=64%",
   "2026-06-18 15:31 IST — Opened NO $750 @ 86c P=68% EV=+0.10 [Short Favorite] \"Halle Open: Fabian Marozsan vs Taylor Fritz\"",
@@ -4098,9 +4184,7 @@
   "2026-06-18 08:45 IST — Closed YES \" Iran agrees to end enrichment of uranium \" -> +$56 (Profit target hit (+25%)) · model said P(win)=60%",
   "2026-06-18 08:01 IST — Opened YES $750 @ 94c P=69% EV=+0.12 [Short Favorite] \"Pittsburgh Pirates vs. Athletics\"",
   "2026-06-18 08:01 IST — Closed NO \"Chicago White Sox vs. New York Yankees\" -> +$193 (Resolved in our favor) · model said P(win)=66%",
-  "2026-06-18 08:01 IST — Closed YES \"San Francisco Giants vs. Atlanta Braves\" -> +$107 (Resolved in our favor) · model said P(win)=66%",
-  "2026-06-18 07:31 IST — Opened YES $750 @ 92c P=67% EV=+0.12 [Short Favorite] \"Toronto Blue Jays vs. Boston Red Sox\"",
-  "2026-06-18 07:31 IST — Learning update: Short Favorite on high-priced sports markets: 16W/6L (posterior 71%, 90% CI 56-86%) — proven edge, prioritized"
+  "2026-06-18 08:01 IST — Closed YES \"San Francisco Giants vs. Atlanta Braves\" -> +$107 (Resolved in our favor) · model said P(win)=66%"
  ],
  "brain": {
   "w": [
@@ -4267,7 +4351,7 @@
      86
     ],
     "text": "Short Favorite on high-priced sports markets: 20W/7L (posterior 72%, 90% CI 59-86%) — proven edge, prioritized",
-    "updated": "2026-06-18T12:00:31.632Z"
+    "updated": "2026-06-18T12:16:08.544Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -4279,7 +4363,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-18T12:00:31.632Z"
+    "updated": "2026-06-18T12:16:08.544Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -4291,7 +4375,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-18T12:00:31.632Z"
+    "updated": "2026-06-18T12:16:08.544Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -4303,7 +4387,7 @@
      91
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 5W/2L (posterior 67%, 90% CI 42-91%) — collecting evidence",
-    "updated": "2026-06-18T12:00:31.632Z"
+    "updated": "2026-06-18T12:16:08.544Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -4315,32 +4399,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-18T12:00:31.632Z"
+    "updated": "2026-06-18T12:16:08.544Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 7732.761927077326,
+  "cash": 6232.761927077326,
   "created": 1781162132851
  },
  "summary": {
   "realized": 332.76,
   "closed": 83,
   "wins": 43,
-  "open": 5,
-  "staked": 34300,
+  "open": 7,
+  "staked": 35800,
   "bankStart": 10000,
-  "cash": 7733,
-  "equity": 10489,
-  "returnPct": 4.89,
+  "cash": 6233,
+  "equity": 10482,
+  "returnPct": 4.82,
   "modelUpdates": 83,
   "brier": 0.261,
   "hypotheses": 5,
   "integrityOk": true,
-  "updated": "2026-06-18T12:00:31.635Z"
+  "updated": "2026-06-18T12:16:08.548Z"
  },
- "lastRun": 1781784031635,
+ "lastRun": 1781784968549,
  "elite": {
   "updated": 1781719276357,
   "list": [
@@ -4377,22 +4461,22 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-18T12:00:31.635Z",
-  "tradesChecked": 88
+  "checkedAt": "2026-06-18T12:16:08.548Z",
+  "tradesChecked": 90
  },
  "lastScan": {
-  "at": "2026-06-18T12:00:31.635Z",
+  "at": "2026-06-18T12:16:08.548Z",
   "marketsFetched": 63,
-  "rawCandidates": 22,
-  "clearedThreshold": 0,
-  "placed": 0,
+  "rawCandidates": 26,
+  "clearedThreshold": 3,
+  "placed": 2,
   "pMin": 0.57,
   "blocked": {
-   "exposure": 0,
+   "exposure": 1,
    "event": 0,
    "cash": 0,
    "sanity": 0
   },
-  "reason": "no candidates cleared P(win)>=0.57 (engines produce ~0.58-0.64; lower pMin or wait for better setups)"
+  "reason": "traded"
  }
 }

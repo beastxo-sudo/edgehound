@@ -1,26 +1,28 @@
 {
  "status": "ok",
- "updated": "2026-06-18T04:00:51.960Z",
- "updatedIST": "2026-06-18 09:30 IST",
- "memo": "EdgeHound Performance Review — June 18, 2026\n\nPortfolio is in solid shape: +8.35% on $10K since inception, 79 closed trades, Brier score 0.26 (acceptable for prediction markets). The fund's core edge remains intact and well-identified.\n\nSHORT_FAVORITE continues to be the franchise engine: 20W/9L, +$1,990 PnL, and the validated hypothesis on high-priced sports markets shows 73% win rate (90% CI: 59–87%). This is our alpha. The recent soccer draw markets (Portugal, Iraq, France, Austria, Algeria) are a concern — they closed at max hold with tiny losses or scratch, never resolving. These markets lack the clean binary resolution of MLB games. The feature set doesn't distinguish 'sports match outcome' from 'sports draw probability' — the draw shorts are diluting what is otherwise an excellent engine.\n\nMOMENTUM remains disabled: 21 trades, 8 wins, -$1,019. Correct call to keep it off.\n\nVOLUME_SPIKE is marginal: 20 trades, 8 wins, +$190. Wins are dominated by one outlier (+$479 Iran text agreement trade). Underlying hit rate ~40%. The engine is alive but not distinguishing signal from noise in geopolitical/speculative markets.\n\nELITE_FOLLOW is showing promise: 8 trades, 5W, +$23 net — but the $550 stake on Israel-Iran permanent peace deal is a red flag. That position ($550 at 9.85 cents) is a speculative long on a near-zero-probability event. High conviction needed here.\n\nSMART_CONSENSUS: 1 trade, 0 wins, -$385. Disabled. Correct.\n\nNo parameter changes warranted this session. Sample sizes on VOLUME_SPIKE and ELITE_FOLLOW remain below 15 for clean segmentation. SHORT_FAVORITE is performing; don't disrupt it.",
+ "updated": "2026-06-18T14:45:52.254Z",
+ "updatedIST": "2026-06-18 20:15 IST",
+ "memo": "EdgeHound Performance Review — 2026-06-18\n\nPortfolio is down 6.77% from inception with equity at $9,323 on an $10,000 start. Realized P&L is -$825 across 86 closed trades. The signal picture is now meaningfully differentiated: SHORT_FAVORITE is the clear profit engine (+$508, 23W/35T, 65.7% win rate) with a validated hypothesis showing 68.8% win rate on high-priced sports markets. VOLUME_SPIKE is marginally positive (+$190) but with wide dispersion — a single large win on the Iran agreement text release flatters the aggregate. MOMENTUM is the primary destroyer (-$1,019, 8W/21T, 38% win rate) and correctly remains disabled. SMART_CONSENSUS has one trade and a large loss (-$385), appropriately disabled. ELITE_FOLLOW is modestly negative (-$119) with a mixed record; the Iran-related trades show erratic sizing — a $550 stake on an Israel-Iran peace deal at 9.85 cents is a calibration failure that should not recur.\n\nKey concern this session: SHORT_FAVORITE is taking $750 stakes on esports (Dota 2, LoL) where two consecutive stop-losses of -$470 and -$503 hit within 1 hour. Esports favorites exhibit different variance profiles versus traditional sports — the validated hypothesis is sports-specific and esports may be contaminating the edge. The Brier score of 0.264 is weak, suggesting model probability estimates need tightening. kellyMult at 0.15 is conservative and appropriate given ongoing calibration uncertainty. No parameter changes are warranted this session — the sample on ELITE_FOLLOW and VOLUME_SPIKE remains too small to act on, and SHORT_FAVORITE's edge is confirmed. Flag esports exposure as a structural risk.",
  "observations": [
-  "SHORT_FAVORITE validated: 73% win rate on high-priced sports, CI 59–87%, dominant PnL contributor (+$1,990)",
-  "Soccer draw shorts (6 recent trades) all exited via max-hold with scratch/tiny losses — market structure differs from MLB binary outcomes, feature blind spot",
-  "MOMENTUM correctly disabled: 8/21 wins, -$1,019 cumulative, no rehabilitation signal",
-  "VOLUME_SPIKE marginally positive (+$190) but driven by one outlier; base hit rate ~40%, insufficient edge across geopolitical markets",
-  "ELITE_FOLLOW improving: 5/8 wins, but $550 stake on Israel-Iran permanent peace deal at 9.85 cents is outsized for a near-zero resolution probability",
-  "Open book is baseball-heavy and well-structured; $3,101 staked against ~$10,835 equity (~28.6% deployed), within limits",
-  "Brier score 0.26 — model is somewhat miscalibrated; predicted pPredicted values often 0.57–0.68 on SHORT_FAVORITE entries where true edge is structural, not probabilistic",
-  "SMART_CONSENSUS remains correctly disabled; single trade, -$385, no recovery path",
-  "No parameter changes warranted: insufficient new settled trades since last adjustment to justify noise-chasing"
+  "SHORT_FAVORITE: validated edge on sports, 68.8% win rate, +$508 PnL — the portfolio's only reliable alpha source",
+  "MOMENTUM: correctly disabled, was responsible for -$1,019; no evidence of edge recovery",
+  "SMART_CONSENSUS: disabled, single large loss (-$385), insufficient data to reinstate",
+  "ELITE_FOLLOW: net -$119 across 9 trades; positive on small Iran momentum trades but two large-stake disasters ($550 on Israel-Iran peace at 0.0985 entry, -$142; $550 on Trump troops withdrawal, -$167) — sizing discipline failure",
+  "VOLUME_SPIKE: +$190 headline number flatters a 40% win rate; one outlier trade (+$479) is masking consistent small losses on political markets",
+  "Esports contamination risk: two SHORT_FAVORITE stop-losses in esports (Dota2 -$470, LoL -$503) within 1-hour holds — esports favorite pricing does not share the same mean-reversion profile as traditional sports",
+  "Brier score 0.264 is poor; predicted probabilities (pPredicted 0.57-0.70) are not well-calibrated against outcomes",
+  "Soccer 'draw' markets being traded as SHORT_FAVORITE with max-hold exits near entry — no edge observed, P&L breakeven but consuming capital and exposure slots",
+  "Current equity $9,323 with 5 open positions totaling $2,600 staked — exposure is manageable",
+  "kellyMult 0.15 and maxExposure 0.40 are appropriately conservative given calibration uncertainty"
  ],
  "changesApplied": [],
- "changeReasoning": "No changes. SHORT_FAVORITE is performing well and parameters are calibrated for it. VOLUME_SPIKE and ELITE_FOLLOW have insufficient settled trades (<15 clean segments) to justify tuning. The soccer draw market blind spot is a signal-selection issue, not a parameter issue — flagged for human review on market type filtering. Raising kellyMult or maxExposure without cleaner edge evidence on secondary engines would increase variance without improving EV. Hold steady.",
+ "changeReasoning": "No parameter changes made this session. SHORT_FAVORITE is the only validated engine and current settings (pMin 0.57, kellyMult 0.15) are already conservative and appropriate. ELITE_FOLLOW and VOLUME_SPIKE have fewer than 15 settled trades each in their forming hypotheses — adjusting based on current data would be noise-chasing. The sizing failures in ELITE_FOLLOW (large stakes on ultra-low-probability political markets) appear to be a model miscalibration issue rather than a parameter fix — the pMin filter should be catching 0.0985 entry prices, suggesting the pPredicted estimate of 0.64 on the Israel-Iran peace deal was grossly miscalibrated. This warrants monitoring but not a mechanical parameter change. Maintaining current conservative posture until Brier score improves and ELITE_FOLLOW/VOLUME_SPIKE accumulate 15+ settled trades per hypothesis.",
  "riskFlags": [
-  "CRITICAL: $550 ELITE_FOLLOW stake on 'Israel x Iran permanent peace deal by June 30' at 9.85 cents — this is a near-impossibility; position sizing is disproportionate to realistic resolution probability, manual review recommended",
-  "Soccer draw market SHORT_FAVORITEs are structurally different from MLB match outcomes — draws are not binary favorites, and the model appears to be misapplying the sports edge to a different market type; consider filtering draw markets from SHORT_FAVORITE eligibility",
-  "VOLUME_SPIKE geopolitical trades (Iran enrichment, Hormuz fees, Algeria win) show consistent stop-loss exits — engine may be reacting to news-driven volume that lacks directional predictive value",
-  "Brier 0.26 with 79 model updates suggests systematic overconfidence; predicted win probabilities on SHORT_FAVORITE entries (0.62–0.69) may be inflating Kelly stake sizes relative to true edge"
+  "CRITICAL: Esports markets being traded under SHORT_FAVORITE hypothesis validated only on traditional sports — two consecutive max stop-losses suggest the edge does not transfer; recommend adding market-category filter or blacklisting esports from SHORT_FAVORITE",
+  "CALIBRATION FAILURE: ELITE_FOLLOW placed $550 stake on Israel-Iran peace deal at 0.0985 market price with pPredicted=0.64 — a 55-point gap between model and market is a red flag for model overfitting or data contamination; review ELITE_FOLLOW scoring logic",
+  "VOLUME_SPIKE edge is not confirmed — 50% win rate with wide CI; the +$190 PnL is driven by a single outlier; consider reducing VOLUME_SPIKE maxEventExposure if next 5 trades continue losing",
+  "Soccer draw markets generating flat/negative P&L with max-hold exits — consuming exposure slots without edge; review whether draw markets should be excluded from SHORT_FAVORITE signal",
+  "Brier score 0.264 indicates systematic probability miscalibration; predicted win probabilities are not matching outcomes — model needs recalibration before kellyMult increases are considered"
  ],
  "configNow": {
   "comment": "EdgeHound tunable parameters. The AI Analyst may adjust these within hard rails enforced in code. Humans can edit too. [pMin lowered to match surviving engines after momentum block]",
@@ -36,6 +38,6 @@
   "maxExposure": 0.4,
   "maxEventExposure": 750,
   "updatedBy": "analyst",
-  "updatedAt": "2026-06-18T04:00:51.959Z"
+  "updatedAt": "2026-06-18T14:45:52.254Z"
  }
 }

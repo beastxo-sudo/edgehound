@@ -3977,7 +3977,7 @@
      85
     ],
     "text": "Short Favorite on high-priced sports markets: 15W/6L (posterior 70%, 90% CI 54-85%) — collecting evidence",
-    "updated": "2026-06-18T01:31:28.564Z"
+    "updated": "2026-06-18T01:45:46.405Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -3989,7 +3989,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-18T01:31:28.564Z"
+    "updated": "2026-06-18T01:45:46.405Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -4001,7 +4001,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-18T01:31:28.564Z"
+    "updated": "2026-06-18T01:45:46.405Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -4013,7 +4013,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-18T01:31:28.564Z"
+    "updated": "2026-06-18T01:45:46.405Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -4025,7 +4025,7 @@
      89
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 4W/2L (posterior 63%, 90% CI 36-89%) — collecting evidence",
-    "updated": "2026-06-18T01:31:28.564Z"
+    "updated": "2026-06-18T01:45:46.405Z"
    }
   ]
  },
@@ -4048,9 +4048,9 @@
   "brier": 0.268,
   "hypotheses": 5,
   "integrityOk": true,
-  "updated": "2026-06-18T01:31:28.569Z"
+  "updated": "2026-06-18T01:45:46.409Z"
  },
- "lastRun": 1781746288569,
+ "lastRun": 1781747146409,
  "elite": {
   "updated": 1781719276357,
   "list": [
@@ -4087,14 +4087,14 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-18T01:31:28.569Z",
+  "checkedAt": "2026-06-18T01:45:46.409Z",
   "tradesChecked": 82
  },
  "lastScan": {
-  "at": "2026-06-18T01:31:28.569Z",
+  "at": "2026-06-18T01:45:46.409Z",
   "marketsFetched": 62,
-  "rawCandidates": 28,
-  "clearedThreshold": 2,
+  "rawCandidates": 30,
+  "clearedThreshold": 3,
   "placed": 0,
   "pMin": 0.57,
   "blocked": {

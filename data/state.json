@@ -2,6 +2,90 @@
  "running": true,
  "journal": [
   {
+   "id": "t1781812872602ksk2",
+   "date": "2026-06-19",
+   "openedTs": 1781812872602,
+   "title": "ICC T20 World Cup, Women: West Indies vs Scotland",
+   "mid": "2532468",
+   "conditionId": "0x88400234ff8cce1baf4d0918289175e9a32f1cb8e1c98888221a3586aa647374",
+   "slug": "crint-wst4-sco5-2026-06-18",
+   "side": "YES",
+   "entry": 0.875,
+   "cur": 0.875,
+   "stake": 250,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.651,
+   "pModel": 0.515,
+   "pBucket": 0.676,
+   "bucketN": 32,
+   "bk": "SHORT_FAVORITE|high|sport",
+   "ev": 0.033,
+   "kelly": 0.0289,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.875,
+    0.519,
+    0.825,
+    0.772,
+    0.611,
+    0.974,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 65% [model 51%, pattern 68% on n=32] · EV +0.03/$1 · 1/4-Kelly 2.9% of equity -> $250. 88c favorite resolving in 6.7d (favorite-longshot bias); +14% if it lands. Drivers: 24h move size +, favorite setup +, short time to resolution -",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1782394200000,
+   "status": "open"
+  },
+  {
+   "id": "t1781812872601o4vd",
+   "date": "2026-06-19",
+   "openedTs": 1781812872601,
+   "title": "Toronto Blue Jays vs. Boston Red Sox",
+   "mid": "2517162",
+   "conditionId": "0x09b5319e9123d5135190a021b1828a92bfd6ca7597aab9d2a404f2f932a7adbc",
+   "slug": "mlb-tor-bos-2026-06-18",
+   "side": "YES",
+   "entry": 0.875,
+   "cur": 0.875,
+   "stake": 250,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.654,
+   "pModel": 0.525,
+   "pBucket": 0.676,
+   "bucketN": 32,
+   "bk": "SHORT_FAVORITE|high|sport",
+   "ev": 0.035,
+   "kelly": 0.0302,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.875,
+    0.507,
+    1,
+    0.846,
+    0.692,
+    0.999,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 65% [model 52%, pattern 68% on n=32] · EV +0.03/$1 · 1/4-Kelly 3.0% of equity -> $250. 88c favorite resolving in 6.9d (favorite-longshot bias); +14% if it lands. Drivers: 24h move size +, favorite setup +, short time to resolution -",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1782408900000,
+   "status": "open"
+  },
+  {
    "id": "t1781811944084p4fj",
    "date": "2026-06-19",
    "openedTs": 1781811944084,
@@ -11,7 +95,7 @@
    "slug": "atp-medjedo-humbert-2026-06-17",
    "side": "YES",
    "entry": 0.785,
-   "cur": 0.785,
+   "cur": 0.435,
    "stake": 300,
    "signal": "SHORT_FAVORITE",
    "p": 0.658,
@@ -4407,6 +4491,8 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-19 01:31 IST — Opened YES $250 @ 88c P=65% EV=+0.03 [Short Favorite] \"ICC T20 World Cup, Women: West Indies vs Scotl\"",
+  "2026-06-19 01:31 IST — Opened YES $250 @ 88c P=65% EV=+0.03 [Short Favorite] \"Toronto Blue Jays vs. Boston Red Sox\"",
   "2026-06-19 01:15 IST — Opened YES $300 @ 79c P=66% EV=+0.04 [Short Favorite] \"HSBC Championships: Hamad Medjedovic vs Ugo Hu\"",
   "2026-06-19 01:15 IST — Learning update: Short Favorite on high-priced sports markets: 22W/10L (posterior 68%, 90% CI 55-81%) — collecting evidence",
   "2026-06-19 01:15 IST — Closed YES \"Toronto Blue Jays vs. Boston Red Sox\" -> $-402 (Stop loss hit (-45%)) · model said P(win)=67%",
@@ -4418,9 +4504,7 @@
   "2026-06-18 23:31 IST — Elite pool refreshed: 4 wallets qualify (>=58% win rate over >=10 settled, scalpers excluded): aenews2 85%, PatrocIus 68%, denizz 66%, Arbguy 58%",
   "2026-06-18 18:31 IST — Closed YES \"Dota 2: Yakult Brothers vs Vici Gaming (BO\" -> $-470 (Stop loss hit (-45%)) · model said P(win)=70%",
   "2026-06-18 18:31 IST — Closed NO \"Nottingham Open: Viktorija Golubic vs Zeyn\" -> $-750 (Resolved against us) · model said P(win)=70%",
-  "2026-06-18 18:01 IST — Opened NO $750 @ 81c P=70% EV=+0.10 [Short Favorite] \"Nottingham Open: Viktorija Golubic vs Zeynep S\"",
-  "2026-06-18 18:01 IST — Closed NO \"HSBC Championships: Corentin Moutet vs Ale\" -> +$62 (Resolved in our favor) · model said P(win)=68%",
-  "2026-06-18 17:46 IST — Opened NO $750 @ 92c P=68% EV=+0.10 [Short Favorite] \"HSBC Championships: Corentin Moutet vs Alejand\""
+  "2026-06-18 18:01 IST — Opened NO $750 @ 81c P=70% EV=+0.10 [Short Favorite] \"Nottingham Open: Viktorija Golubic vs Zeynep S\""
  ],
  "brain": {
   "w": [
@@ -4587,7 +4671,7 @@
      81
     ],
     "text": "Short Favorite on high-priced sports markets: 22W/10L (posterior 68%, 90% CI 55-81%) — collecting evidence",
-    "updated": "2026-06-18T19:45:44.080Z"
+    "updated": "2026-06-18T20:01:12.598Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -4599,7 +4683,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-18T19:45:44.080Z"
+    "updated": "2026-06-18T20:01:12.598Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -4611,7 +4695,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-18T19:45:44.080Z"
+    "updated": "2026-06-18T20:01:12.598Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -4623,7 +4707,7 @@
      84
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 5W/3L (posterior 60%, 90% CI 36-84%) — collecting evidence",
-    "updated": "2026-06-18T19:45:44.080Z"
+    "updated": "2026-06-18T20:01:12.598Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -4635,32 +4719,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-18T19:45:44.080Z"
+    "updated": "2026-06-18T20:01:12.598Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 6006.130420515303,
+  "cash": 5506.130420515303,
   "created": 1781162132851
  },
  "summary": {
   "realized": -1243.87,
   "closed": 89,
   "wins": 45,
-  "open": 6,
-  "staked": 38050,
+  "open": 8,
+  "staked": 38550,
   "bankStart": 10000,
-  "cash": 6006,
-  "equity": 8876,
-  "returnPct": -11.24,
+  "cash": 5506,
+  "equity": 8742,
+  "returnPct": -12.58,
   "modelUpdates": 89,
   "brier": 0.266,
   "hypotheses": 5,
   "integrityOk": true,
-  "updated": "2026-06-18T19:45:44.084Z"
+  "updated": "2026-06-18T20:01:12.602Z"
  },
- "lastRun": 1781811944085,
+ "lastRun": 1781812872603,
  "elite": {
   "updated": 1781805684647,
   "list": [
@@ -4697,15 +4781,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-18T19:45:44.085Z",
-  "tradesChecked": 95
+  "checkedAt": "2026-06-18T20:01:12.602Z",
+  "tradesChecked": 97
  },
  "lastScan": {
-  "at": "2026-06-18T19:45:44.084Z",
-  "marketsFetched": 68,
-  "rawCandidates": 26,
-  "clearedThreshold": 1,
-  "placed": 1,
+  "at": "2026-06-18T20:01:12.602Z",
+  "marketsFetched": 70,
+  "rawCandidates": 24,
+  "clearedThreshold": 2,
+  "placed": 2,
   "pMin": 0.57,
   "blocked": {
    "exposure": 0,

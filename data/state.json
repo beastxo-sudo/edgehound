@@ -4405,7 +4405,7 @@
      82
     ],
     "text": "Short Favorite on high-priced sports markets: 21W/9L (posterior 69%, 90% CI 55-82%) — proven edge, prioritized",
-    "updated": "2026-06-18T13:01:13.972Z"
+    "updated": "2026-06-18T13:15:49.359Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -4417,7 +4417,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-18T13:01:13.972Z"
+    "updated": "2026-06-18T13:15:49.359Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -4429,7 +4429,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-18T13:01:13.972Z"
+    "updated": "2026-06-18T13:15:49.359Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -4441,7 +4441,7 @@
      91
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 5W/2L (posterior 67%, 90% CI 42-91%) — collecting evidence",
-    "updated": "2026-06-18T13:01:13.972Z"
+    "updated": "2026-06-18T13:15:49.359Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -4453,7 +4453,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-18T13:01:13.972Z"
+    "updated": "2026-06-18T13:15:49.359Z"
    }
   ]
  },
@@ -4476,9 +4476,9 @@
   "brier": 0.264,
   "hypotheses": 5,
   "integrityOk": true,
-  "updated": "2026-06-18T13:01:13.973Z"
+  "updated": "2026-06-18T13:15:49.360Z"
  },
- "lastRun": 1781787673973,
+ "lastRun": 1781788549360,
  "elite": {
   "updated": 1781719276357,
   "list": [
@@ -4515,7 +4515,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-18T13:01:13.973Z",
+  "checkedAt": "2026-06-18T13:15:49.360Z",
   "tradesChecked": 91
  },
  "lastScan": {

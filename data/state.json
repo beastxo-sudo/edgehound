@@ -103,7 +103,7 @@
    "slug": "iran-agrees-to-end-enrichment-of-uranium-by-june-30",
    "side": "YES",
    "entry": 0.585,
-   "cur": 0.615,
+   "cur": 0.605,
    "stake": 450,
    "signal": "ELITE_FOLLOW",
    "p": 0.611,
@@ -239,7 +239,7 @@
    "slug": "atp-medjedo-humbert-2026-06-17",
    "side": "YES",
    "entry": 0.785,
-   "cur": 0.45,
+   "cur": 0.455,
    "stake": 300,
    "signal": "SHORT_FAVORITE",
    "p": 0.658,
@@ -4827,7 +4827,7 @@
      82
     ],
     "text": "Short Favorite on high-priced sports markets: 27W/11L (posterior 70%, 90% CI 58-82%) — proven edge, prioritized",
-    "updated": "2026-06-18T22:52:54.784Z"
+    "updated": "2026-06-18T23:06:34.569Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -4839,7 +4839,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-18T22:52:54.784Z"
+    "updated": "2026-06-18T23:06:34.569Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -4851,7 +4851,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-18T22:52:54.784Z"
+    "updated": "2026-06-18T23:06:34.569Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -4863,7 +4863,7 @@
      86
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 6W/3L (posterior 64%, 90% CI 41-86%) — collecting evidence",
-    "updated": "2026-06-18T22:52:54.784Z"
+    "updated": "2026-06-18T23:06:34.569Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -4875,7 +4875,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-18T22:52:54.784Z"
+    "updated": "2026-06-18T23:06:34.569Z"
    }
   ]
  },
@@ -4892,15 +4892,15 @@
   "staked": 39350,
   "bankStart": 10000,
   "cash": 7017,
-  "equity": 8646,
-  "returnPct": -13.54,
+  "equity": 8640,
+  "returnPct": -13.6,
   "modelUpdates": 96,
   "brier": 0.26,
   "hypotheses": 5,
   "integrityOk": true,
-  "updated": "2026-06-18T22:52:54.788Z"
+  "updated": "2026-06-18T23:06:34.572Z"
  },
- "lastRun": 1781823174788,
+ "lastRun": 1781823994572,
  "elite": {
   "updated": 1781805684647,
   "list": [
@@ -4937,13 +4937,13 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-18T22:52:54.788Z",
+  "checkedAt": "2026-06-18T23:06:34.572Z",
   "tradesChecked": 100
  },
  "lastScan": {
-  "at": "2026-06-18T22:52:54.787Z",
+  "at": "2026-06-18T23:06:34.572Z",
   "marketsFetched": 62,
-  "rawCandidates": 19,
+  "rawCandidates": 18,
   "clearedThreshold": 0,
   "placed": 0,
   "pMin": 0.57,

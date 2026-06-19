@@ -5347,7 +5347,7 @@
      81
     ],
     "text": "Short Favorite on high-priced sports markets: 29W/12L (posterior 70%, 90% CI 58-81%) — proven edge, prioritized",
-    "updated": "2026-06-19T10:45:50.255Z"
+    "updated": "2026-06-19T11:01:17.204Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -5359,7 +5359,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 9W/7L (posterior 56%, 90% CI 37-74%) — collecting evidence",
-    "updated": "2026-06-19T10:45:50.255Z"
+    "updated": "2026-06-19T11:01:17.203Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -5371,7 +5371,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-19T10:45:50.255Z"
+    "updated": "2026-06-19T11:01:17.204Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -5383,7 +5383,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-19T10:45:50.255Z"
+    "updated": "2026-06-19T11:01:17.203Z"
    },
    {
     "key": "wallet|aenews2",
@@ -5395,7 +5395,7 @@
      59
     ],
     "text": "Copying wallet \"aenews2\": 3W/6L when followed (posterior 36%) — still evaluating",
-    "updated": "2026-06-19T10:45:50.255Z"
+    "updated": "2026-06-19T11:01:17.204Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -5407,7 +5407,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-19T10:45:50.255Z"
+    "updated": "2026-06-19T11:01:17.203Z"
    }
   ]
  },
@@ -5430,9 +5430,9 @@
   "brier": 0.261,
   "hypotheses": 6,
   "integrityOk": true,
-  "updated": "2026-06-19T10:45:50.255Z"
+  "updated": "2026-06-19T11:01:17.204Z"
  },
- "lastRun": 1781865950256,
+ "lastRun": 1781866877205,
  "elite": {
   "updated": 1781805684647,
   "list": [
@@ -5469,7 +5469,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-19T10:45:50.256Z",
+  "checkedAt": "2026-06-19T11:01:17.204Z",
   "tradesChecked": 111
  },
  "lastScan": {

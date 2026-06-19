@@ -2,6 +2,50 @@
  "running": true,
  "journal": [
   {
+   "id": "t1781896384762z3dl",
+   "date": "2026-06-20",
+   "openedTs": 1781896384762,
+   "title": " Iran agrees to end enrichment of uranium by June 30?",
+   "mid": "1370652",
+   "conditionId": "0x9d3f02264a94bafc676afd7add8b11442e6ec72dabaa69cefef835f0672275c7",
+   "slug": "iran-agrees-to-end-enrichment-of-uranium-by-june-30",
+   "side": "NO",
+   "entry": 0.63,
+   "cur": 0.63,
+   "stake": 250,
+   "signal": "ELITE_FOLLOW",
+   "p": 0.588,
+   "pModel": 0.463,
+   "pBucket": 0.556,
+   "bucketN": 16,
+   "bk": "ELITE_FOLLOW|mid|other",
+   "ev": 0.101,
+   "kelly": 0.0431,
+   "x": [
+    0,
+    0,
+    0,
+    0,
+    0.63,
+    0.271,
+    0.375,
+    0.913,
+    0.734,
+    0.311,
+    0,
+    0,
+    0
+   ],
+   "walletNames": [
+    "aenews2"
+   ],
+   "insight": "P(win) 59% [model 46%, pattern 56% on n=16] · EV +0.10/$1 · 1/4-Kelly 4.3% of equity -> $250. Elite wallet \"aenews2\" (78% win rate over 36 settled positions) bought No 3min ago at 68c — still copyable at 63c. Drivers: short time to resolution -, 24h move size +, 24h volume -",
+   "target": 0.25,
+   "stop": 0.25,
+   "holdUntil": 1782760384762,
+   "status": "open"
+  },
+  {
    "id": "t1781894690069bvqn",
    "date": "2026-06-20",
    "openedTs": 1781894690069,
@@ -11,7 +55,7 @@
    "slug": "atp-tiafoe-augeral-2026-06-19",
    "side": "NO",
    "entry": 0.835,
-   "cur": 0.88,
+   "cur": 0.785,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.665,
@@ -53,7 +97,7 @@
    "slug": "iran-agrees-to-end-enrichment-of-uranium-by-june-30",
    "side": "YES",
    "entry": 0.44,
-   "cur": 0.45,
+   "cur": 0.37,
    "stake": 350,
    "signal": "ELITE_FOLLOW",
    "p": 0.588,
@@ -5257,6 +5301,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-20 00:43 IST — Opened NO $250 @ 63c P=59% EV=+0.10 [Elite Follow] \" Iran agrees to end enrichment of uranium by J\"",
   "2026-06-20 00:14 IST — Opened NO $100 @ 84c P=66% EV=+0.01 [Short Favorite] \"Halle Open: Frances Tiafoe vs Felix Auger-Alia\"",
   "2026-06-20 00:00 IST — Opened YES $350 @ 44c P=59% EV=+0.10 [Elite Follow] \" Iran agrees to end enrichment of uranium by J\"",
   "2026-06-19 23:31 IST — Elite pool refreshed: 4 wallets qualify (>=58% win rate over >=10 settled, scalpers excluded): aenews2 78%, PatrocIus 67%, denizz 68%, Arbguy 58%",
@@ -5269,8 +5314,7 @@
   "2026-06-19 07:31 IST — Closed YES \"New York Mets vs. Philadelphia Phillies\" -> +$39 (Resolved in our favor) · model said P(win)=68%",
   "2026-06-19 07:15 IST — Closed NO \"Dota 2: LGD Gaming vs PlayTime (BO3) - The\" -> $-169 (Stop loss hit (-45%)) · model said P(win)=68%",
   "2026-06-19 07:01 IST — Opened NO $300 @ 83c P=68% EV=+0.03 [Short Favorite] \"Dota 2: LGD Gaming vs PlayTime (BO3) - The Int\"",
-  "2026-06-19 07:01 IST — Opened NO $300 @ 92c P=69% EV=+0.04 [Short Favorite] \"Will Brazil vs. Haiti end in a draw?\"",
-  "2026-06-19 06:31 IST — Opened YES $250 @ 87c P=68% EV=+0.03 [Short Favorite] \"New York Mets vs. Philadelphia Phillies\""
+  "2026-06-19 07:01 IST — Opened NO $300 @ 92c P=69% EV=+0.04 [Short Favorite] \"Will Brazil vs. Haiti end in a draw?\""
  ],
  "brain": {
   "w": [
@@ -5437,7 +5481,7 @@
      80
     ],
     "text": "Short Favorite on high-priced sports markets: 29W/13L (posterior 68%, 90% CI 57-80%) — proven edge, prioritized",
-    "updated": "2026-06-19T18:58:35.354Z"
+    "updated": "2026-06-19T19:13:04.758Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -5449,7 +5493,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 9W/7L (posterior 56%, 90% CI 37-74%) — collecting evidence",
-    "updated": "2026-06-19T18:58:35.354Z"
+    "updated": "2026-06-19T19:13:04.758Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -5461,7 +5505,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-19T18:58:35.354Z"
+    "updated": "2026-06-19T19:13:04.758Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -5473,7 +5517,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-19T18:58:35.354Z"
+    "updated": "2026-06-19T19:13:04.758Z"
    },
    {
     "key": "wallet|aenews2",
@@ -5485,7 +5529,7 @@
      59
     ],
     "text": "Copying wallet \"aenews2\": 3W/6L when followed (posterior 36%) — still evaluating",
-    "updated": "2026-06-19T18:58:35.354Z"
+    "updated": "2026-06-19T19:13:04.758Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -5497,32 +5541,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-19T18:58:35.354Z"
+    "updated": "2026-06-19T19:13:04.758Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 6871.937771012729,
+  "cash": 6621.937771012729,
   "created": 1781162132851
  },
  "summary": {
   "realized": -1478.06,
   "closed": 108,
   "wins": 56,
-  "open": 5,
-  "staked": 43100,
+  "open": 6,
+  "staked": 43350,
   "bankStart": 10000,
-  "cash": 6872,
-  "equity": 8621,
-  "returnPct": -13.79,
+  "cash": 6622,
+  "equity": 8546,
+  "returnPct": -14.54,
   "modelUpdates": 108,
   "brier": 0.263,
   "hypotheses": 6,
   "integrityOk": true,
-  "updated": "2026-06-19T18:58:35.358Z"
+  "updated": "2026-06-19T19:13:04.762Z"
  },
- "lastRun": 1781895515358,
+ "lastRun": 1781896384762,
  "elite": {
   "updated": 1781892085787,
   "list": [
@@ -5559,15 +5603,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-19T18:58:35.358Z",
-  "tradesChecked": 113
+  "checkedAt": "2026-06-19T19:13:04.762Z",
+  "tradesChecked": 114
  },
  "lastScan": {
-  "at": "2026-06-19T18:58:35.358Z",
-  "marketsFetched": 66,
-  "rawCandidates": 39,
-  "clearedThreshold": 0,
-  "placed": 0,
+  "at": "2026-06-19T19:13:04.762Z",
+  "marketsFetched": 67,
+  "rawCandidates": 26,
+  "clearedThreshold": 1,
+  "placed": 1,
   "pMin": 0.57,
   "blocked": {
    "exposure": 0,
@@ -5575,6 +5619,6 @@
    "cash": 0,
    "sanity": 0
   },
-  "reason": "no candidates cleared P(win)>=0.57 (engines produce ~0.58-0.64; lower pMin or wait for better setups)"
+  "reason": "traded"
  }
 }

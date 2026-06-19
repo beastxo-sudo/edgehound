@@ -8,9 +8,9 @@
     "ELITE_FOLLOW": true
   },
   "pMin": 0.57,
-  "kellyMult": 0.15,
-  "maxExposure": 0.4,
-  "maxEventExposure": 750,
+  "kellyMult": 0.12,
+  "maxExposure": 0.38,
+  "maxEventExposure": 600,
   "updatedBy": "analyst",
-  "updatedAt": "2026-06-18T14:45:52.254Z"
+  "updatedAt": "2026-06-19T04:00:52.261Z"
 }

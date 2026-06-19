@@ -1,28 +1,32 @@
 {
  "status": "ok",
- "updated": "2026-06-18T14:45:52.254Z",
- "updatedIST": "2026-06-18 20:15 IST",
- "memo": "EdgeHound Performance Review — 2026-06-18\n\nPortfolio is down 6.77% from inception with equity at $9,323 on an $10,000 start. Realized P&L is -$825 across 86 closed trades. The signal picture is now meaningfully differentiated: SHORT_FAVORITE is the clear profit engine (+$508, 23W/35T, 65.7% win rate) with a validated hypothesis showing 68.8% win rate on high-priced sports markets. VOLUME_SPIKE is marginally positive (+$190) but with wide dispersion — a single large win on the Iran agreement text release flatters the aggregate. MOMENTUM is the primary destroyer (-$1,019, 8W/21T, 38% win rate) and correctly remains disabled. SMART_CONSENSUS has one trade and a large loss (-$385), appropriately disabled. ELITE_FOLLOW is modestly negative (-$119) with a mixed record; the Iran-related trades show erratic sizing — a $550 stake on an Israel-Iran peace deal at 9.85 cents is a calibration failure that should not recur.\n\nKey concern this session: SHORT_FAVORITE is taking $750 stakes on esports (Dota 2, LoL) where two consecutive stop-losses of -$470 and -$503 hit within 1 hour. Esports favorites exhibit different variance profiles versus traditional sports — the validated hypothesis is sports-specific and esports may be contaminating the edge. The Brier score of 0.264 is weak, suggesting model probability estimates need tightening. kellyMult at 0.15 is conservative and appropriate given ongoing calibration uncertainty. No parameter changes are warranted this session — the sample on ELITE_FOLLOW and VOLUME_SPIKE remains too small to act on, and SHORT_FAVORITE's edge is confirmed. Flag esports exposure as a structural risk.",
+ "updated": "2026-06-19T04:00:52.262Z",
+ "updatedIST": "2026-06-19 09:30 IST",
+ "memo": "EdgeHound Performance Review — 19 June 2026\n\nOverall equity stands at $8,557 (-14.4% from $10,000 start), with realized losses of -$1,389 across 104 closed trades. The portfolio is in drawdown but shows a clear bifurcation in engine quality that warrants attention.\n\nSHORT_FAVORITE remains the validated core: 30W/15L on sports markets (69% win rate, CI 57-81%) and is the only engine with a structural edge confirmed by the hypothesis engine. However, several large stop-outs (-$750 stakes on LoL, Dota2, Baltimore, Toronto) have badly damaged the P&L. The $750 maxEventExposure cap was previously in force but these trades appear to have been sized at the cap — the issue is the cap itself was too high given the Brier score (0.263, above the 0.25 breakeven threshold for calibration). We need to tighten per-trade sizing further.\n\nMOMENTUM (disabled) and SMART_CONSENSUS (disabled) — correct to leave off. MOMENTUM showed 8W/13L (-$1,019) and SMART_CONSENSUS 0W/1L (-$385).\n\nELITE_FOLLOW shows a nuanced picture: the Iran diplomatic cluster produced five consecutive losers on the same market (ELITE_FOLLOW copying wallet 'aenews2' scoring only 0.30), but separate ELITE_FOLLOW trades on other wallets (denizz 0.8, PatrocIus 0.6) were profitable. The system needs to filter by wallet score more aggressively — aenews2 should be blacklisted.\n\nVOLUME_SPIKE at 8W/12L with +$190 net is marginally positive but noisy. Keep enabled at reduced size.\n\nAction: Reduce kellyMult to 0.12 to cut sizing on all engines. Lower maxEventExposure to $600 to prevent single-event concentration. Hold pMin at 0.57.",
  "observations": [
-  "SHORT_FAVORITE: validated edge on sports, 68.8% win rate, +$508 PnL — the portfolio's only reliable alpha source",
-  "MOMENTUM: correctly disabled, was responsible for -$1,019; no evidence of edge recovery",
-  "SMART_CONSENSUS: disabled, single large loss (-$385), insufficient data to reinstate",
-  "ELITE_FOLLOW: net -$119 across 9 trades; positive on small Iran momentum trades but two large-stake disasters ($550 on Israel-Iran peace at 0.0985 entry, -$142; $550 on Trump troops withdrawal, -$167) — sizing discipline failure",
-  "VOLUME_SPIKE: +$190 headline number flatters a 40% win rate; one outlier trade (+$479) is masking consistent small losses on political markets",
-  "Esports contamination risk: two SHORT_FAVORITE stop-losses in esports (Dota2 -$470, LoL -$503) within 1-hour holds — esports favorite pricing does not share the same mean-reversion profile as traditional sports",
-  "Brier score 0.264 is poor; predicted probabilities (pPredicted 0.57-0.70) are not well-calibrated against outcomes",
-  "Soccer 'draw' markets being traded as SHORT_FAVORITE with max-hold exits near entry — no edge observed, P&L breakeven but consuming capital and exposure slots",
-  "Current equity $9,323 with 5 open positions totaling $2,600 staked — exposure is manageable",
-  "kellyMult 0.15 and maxExposure 0.40 are appropriately conservative given calibration uncertainty"
+  "SHORT_FAVORITE validated on sports (69% WR, CI 57-81%) but large stops on esports/tennis causing outsized drawdowns — these categories need scrutiny",
+  "MOMENTUM disabled correctly: 8W/13L, -$1,019 PnL, no edge signal",
+  "SMART_CONSENSUS disabled correctly: 0W/1L, -$385",
+  "ELITE_FOLLOW wallet 'aenews2' scores 0.30 — responsible for Iran diplomatic cluster of 5 losers; high-scoring wallets (denizz 0.8, PatrocIus 0.6) were net profitable",
+  "VOLUME_SPIKE marginally positive (+$190) but high variance, 8W/12L, keep but constrain size",
+  "Brier score 0.263 indicates model is overconfident — pPredicted consistently higher than realized win rates outside sports",
+  "Multiple $750 max-cap stakes hit stop-loss sequentially (Dota2 -$470, LoL -$503, Toronto -$402, Baltimore -$377) — single event cap was too generous relative to bank size",
+  "ELITE_FOLLOW Iran positions entered at sub-0.40 probability — far below pMin threshold of 0.57, suggesting pMin filter was not enforced on these entries",
+  "Open position on 'Iran agrees to end enrichment' (ELITE_FOLLOW, entry 0.735, cur 0.675) is underwater and at high nominal entry price — adverse selection risk",
+  "Equity drawdown -14.4% approaching threshold where further losses could compromise minimum viable bank"
  ],
- "changesApplied": [],
- "changeReasoning": "No parameter changes made this session. SHORT_FAVORITE is the only validated engine and current settings (pMin 0.57, kellyMult 0.15) are already conservative and appropriate. ELITE_FOLLOW and VOLUME_SPIKE have fewer than 15 settled trades each in their forming hypotheses — adjusting based on current data would be noise-chasing. The sizing failures in ELITE_FOLLOW (large stakes on ultra-low-probability political markets) appear to be a model miscalibration issue rather than a parameter fix — the pMin filter should be catching 0.0985 entry prices, suggesting the pPredicted estimate of 0.64 on the Israel-Iran peace deal was grossly miscalibrated. This warrants monitoring but not a mechanical parameter change. Maintaining current conservative posture until Brier score improves and ELITE_FOLLOW/VOLUME_SPIKE accumulate 15+ settled trades per hypothesis.",
+ "changesApplied": [
+  "kellyMult: 0.15 -> 0.12",
+  "maxExposure: 0.4 -> 0.38",
+  "maxEventExposure: 750 -> 600"
+ ],
+ "changeReasoning": "Reducing kellyMult from 0.15 to 0.12 to shrink per-trade sizing across all engines — the sequential $750 stop-outs demonstrate sizing is too aggressive relative to our prediction accuracy (Brier 0.263). Reducing maxEventExposure from $750 to $600 adds a further hard cap to prevent any single event from absorbing more than ~7% of current equity. maxExposure nudged from 0.40 to 0.38 to reduce aggregate deployment risk during drawdown. pMin held at 0.57 — evidence of ELITE_FOLLOW entries appearing below this threshold suggests a code-level enforcement issue worth auditing rather than raising pMin further and eliminating borderline positive signals. MOMENTUM and SMART_CONSENSUS remain disabled — no evidence to reinstate. ELITE_FOLLOW kept enabled but the aenews2 wallet scoring 0.30 should be hard-blacklisted at the wallet scoring layer, not via parameter changes.",
  "riskFlags": [
-  "CRITICAL: Esports markets being traded under SHORT_FAVORITE hypothesis validated only on traditional sports — two consecutive max stop-losses suggest the edge does not transfer; recommend adding market-category filter or blacklisting esports from SHORT_FAVORITE",
-  "CALIBRATION FAILURE: ELITE_FOLLOW placed $550 stake on Israel-Iran peace deal at 0.0985 market price with pPredicted=0.64 — a 55-point gap between model and market is a red flag for model overfitting or data contamination; review ELITE_FOLLOW scoring logic",
-  "VOLUME_SPIKE edge is not confirmed — 50% win rate with wide CI; the +$190 PnL is driven by a single outlier; consider reducing VOLUME_SPIKE maxEventExposure if next 5 trades continue losing",
-  "Soccer draw markets generating flat/negative P&L with max-hold exits — consuming exposure slots without edge; review whether draw markets should be excluded from SHORT_FAVORITE signal",
-  "Brier score 0.264 indicates systematic probability miscalibration; predicted win probabilities are not matching outcomes — model needs recalibration before kellyMult increases are considered"
+  "ELITE_FOLLOW entries on Iran diplomatic markets appear to have bypassed pMin=0.57 filter — entries recorded at 0.387-0.418, well below threshold; requires code audit",
+  "Wallet 'aenews2' (score 0.30) is still active in wallet tracking — recommend hard blacklist at score < 0.40 to prevent further copying",
+  "Esports markets (Dota2, LoL) have produced three of the four largest single-trade losses; consider adding a sport-category exclusion list for esports within SHORT_FAVORITE",
+  "Equity at $8,557 (-14.4%): if drawdown reaches -25% ($7,500) a full operational review and potential suspension of new entries is warranted",
+  "Open ELITE_FOLLOW position on 'Iran enrichment' entered at 0.735 is deeply underwater (cur 0.675) and carries continuation risk if resolution is negative — monitor for early exit"
  ],
  "configNow": {
   "comment": "EdgeHound tunable parameters. The AI Analyst may adjust these within hard rails enforced in code. Humans can edit too. [pMin lowered to match surviving engines after momentum block]",
@@ -34,10 +38,10 @@
    "ELITE_FOLLOW": true
   },
   "pMin": 0.57,
-  "kellyMult": 0.15,
-  "maxExposure": 0.4,
-  "maxEventExposure": 750,
+  "kellyMult": 0.12,
+  "maxExposure": 0.38,
+  "maxEventExposure": 600,
   "updatedBy": "analyst",
-  "updatedAt": "2026-06-18T14:45:52.254Z"
+  "updatedAt": "2026-06-19T04:00:52.261Z"
  }
 }

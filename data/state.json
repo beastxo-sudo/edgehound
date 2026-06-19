@@ -11,7 +11,7 @@
    "slug": "atp-tiafoe-augeral-2026-06-19",
    "side": "NO",
    "entry": 0.835,
-   "cur": 0.835,
+   "cur": 0.88,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.665,
@@ -53,7 +53,7 @@
    "slug": "iran-agrees-to-end-enrichment-of-uranium-by-june-30",
    "side": "YES",
    "entry": 0.44,
-   "cur": 0.455,
+   "cur": 0.45,
    "stake": 350,
    "signal": "ELITE_FOLLOW",
    "p": 0.588,
@@ -237,7 +237,7 @@
    "slug": "fifwc-bra-hai-2026-06-19",
    "side": "NO",
    "entry": 0.9165,
-   "cur": 0.9265,
+   "cur": 0.9235,
    "stake": 300,
    "signal": "SHORT_FAVORITE",
    "p": 0.686,
@@ -5437,7 +5437,7 @@
      80
     ],
     "text": "Short Favorite on high-priced sports markets: 29W/13L (posterior 68%, 90% CI 57-80%) — proven edge, prioritized",
-    "updated": "2026-06-19T18:44:50.065Z"
+    "updated": "2026-06-19T18:58:35.354Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -5449,7 +5449,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 9W/7L (posterior 56%, 90% CI 37-74%) — collecting evidence",
-    "updated": "2026-06-19T18:44:50.065Z"
+    "updated": "2026-06-19T18:58:35.354Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -5461,7 +5461,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-19T18:44:50.065Z"
+    "updated": "2026-06-19T18:58:35.354Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -5473,7 +5473,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-19T18:44:50.065Z"
+    "updated": "2026-06-19T18:58:35.354Z"
    },
    {
     "key": "wallet|aenews2",
@@ -5485,7 +5485,7 @@
      59
     ],
     "text": "Copying wallet \"aenews2\": 3W/6L when followed (posterior 36%) — still evaluating",
-    "updated": "2026-06-19T18:44:50.065Z"
+    "updated": "2026-06-19T18:58:35.354Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -5497,7 +5497,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-19T18:44:50.065Z"
+    "updated": "2026-06-19T18:58:35.354Z"
    }
   ]
  },
@@ -5520,9 +5520,9 @@
   "brier": 0.263,
   "hypotheses": 6,
   "integrityOk": true,
-  "updated": "2026-06-19T18:44:50.070Z"
+  "updated": "2026-06-19T18:58:35.358Z"
  },
- "lastRun": 1781894690070,
+ "lastRun": 1781895515358,
  "elite": {
   "updated": 1781892085787,
   "list": [
@@ -5559,15 +5559,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-19T18:44:50.070Z",
+  "checkedAt": "2026-06-19T18:58:35.358Z",
   "tradesChecked": 113
  },
  "lastScan": {
-  "at": "2026-06-19T18:44:50.070Z",
-  "marketsFetched": 65,
-  "rawCandidates": 38,
-  "clearedThreshold": 1,
-  "placed": 1,
+  "at": "2026-06-19T18:58:35.358Z",
+  "marketsFetched": 66,
+  "rawCandidates": 39,
+  "clearedThreshold": 0,
+  "placed": 0,
   "pMin": 0.57,
   "blocked": {
    "exposure": 0,
@@ -5575,6 +5575,6 @@
    "cash": 0,
    "sanity": 0
   },
-  "reason": "traded"
+  "reason": "no candidates cleared P(win)>=0.57 (engines produce ~0.58-0.64; lower pMin or wait for better setups)"
  }
 }

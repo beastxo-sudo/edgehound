@@ -2,6 +2,94 @@
  "running": true,
  "journal": [
   {
+   "id": "t1781910076322227p",
+   "date": "2026-06-20",
+   "openedTs": 1781910076322,
+   "title": "US x Iran diplomatic meeting by June 30, 2026?",
+   "mid": "2109450",
+   "conditionId": "0x6fa13f31cceaf10ed3190df6e2aca0a93ab0d6fb46fd279003f17d4cdccee164",
+   "slug": "us-x-iran-diplomatic-meeting-by-329",
+   "side": "YES",
+   "entry": 0.7655,
+   "cur": 0.7655,
+   "stake": 300,
+   "signal": "ELITE_FOLLOW",
+   "p": 0.575,
+   "pModel": 0.407,
+   "pBucket": 0.25,
+   "bucketN": 2,
+   "bk": "ELITE_FOLLOW|high|other",
+   "ev": 0.083,
+   "kelly": 0.0356,
+   "x": [
+    0,
+    0,
+    0,
+    0,
+    0.765,
+    1,
+    0.325,
+    0.802,
+    0.669,
+    0.068,
+    0,
+    0,
+    0
+   ],
+   "walletNames": [
+    "aenews2"
+   ],
+   "insight": "P(win) 57% [model 41%, pattern 25% on n=2] · EV +0.08/$1 · 1/4-Kelly 3.6% of equity -> $300. Elite wallet \"aenews2\" (78% win rate over 36 settled positions) bought Yes 2min ago at 78c — still copyable at 77c. Drivers: short time to resolution -, price level +, 24h volume -",
+   "target": 0.25,
+   "stop": 0.25,
+   "holdUntil": 1778803200000,
+   "status": "open"
+  },
+  {
+   "id": "t1781910076321m9yc",
+   "date": "2026-06-20",
+   "openedTs": 1781910076321,
+   "title": "US x Iran diplomatic meeting by June 21, 2026?",
+   "mid": "2413560",
+   "conditionId": "0x3088733a3d7f03d026035f6dd7df44a82c59eeb95545dda3889b65baa9a36e82",
+   "slug": "us-x-iran-diplomatic-meeting-by-329",
+   "side": "YES",
+   "entry": 0.4205,
+   "cur": 0.4205,
+   "stake": 300,
+   "signal": "ELITE_FOLLOW",
+   "p": 0.582,
+   "pModel": 0.429,
+   "pBucket": 0.55,
+   "bucketN": 18,
+   "bk": "ELITE_FOLLOW|mid|other",
+   "ev": 0.086,
+   "kelly": 0.037,
+   "x": [
+    0,
+    0,
+    0,
+    0,
+    0.42,
+    0.926,
+    0.92,
+    0.799,
+    0.632,
+    0.244,
+    0,
+    0,
+    0
+   ],
+   "walletNames": [
+    "aenews2"
+   ],
+   "insight": "P(win) 58% [model 43%, pattern 55% on n=18] · EV +0.09/$1 · 1/4-Kelly 3.7% of equity -> $300. Elite wallet \"aenews2\" (78% win rate over 36 settled positions) bought Yes 1min ago at 45c — still copyable at 42c. Drivers: short time to resolution -, 24h move size +, 24h volume -",
+   "target": 0.25,
+   "stop": 0.25,
+   "holdUntil": 1782000000000,
+   "status": "open"
+  },
+  {
    "id": "t17819040253146b2r",
    "date": "2026-06-20",
    "openedTs": 1781904025314,
@@ -5407,6 +5495,8 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-20 04:31 IST — Opened YES $300 @ 77c P=57% EV=+0.08 [Elite Follow] \"US x Iran diplomatic meeting by June 30, 2026?\"",
+  "2026-06-20 04:31 IST — Opened YES $300 @ 42c P=58% EV=+0.09 [Elite Follow] \"US x Iran diplomatic meeting by June 21, 2026?\"",
   "2026-06-20 03:32 IST — Closed YES \"Counter-Strike: Vitality vs Team Falcons -\" -> +$18 (Resolved in our favor) · model said P(win)=66%",
   "2026-06-20 02:50 IST — Opened YES $100 @ 85c P=66% EV=+0.01 [Short Favorite] \"Counter-Strike: Vitality vs Team Falcons - Map\"",
   "2026-06-20 02:21 IST — Closed NO \" Iran agrees to end enrichment of uranium \" -> +$65 (Profit target hit (+25%)) · model said P(win)=59%",
@@ -5418,9 +5508,7 @@
   "2026-06-20 00:14 IST — Opened NO $100 @ 84c P=66% EV=+0.01 [Short Favorite] \"Halle Open: Frances Tiafoe vs Felix Auger-Alia\"",
   "2026-06-20 00:00 IST — Opened YES $350 @ 44c P=59% EV=+0.10 [Elite Follow] \" Iran agrees to end enrichment of uranium by J\"",
   "2026-06-19 23:31 IST — Elite pool refreshed: 4 wallets qualify (>=58% win rate over >=10 settled, scalpers excluded): aenews2 78%, PatrocIus 67%, denizz 68%, Arbguy 58%",
-  "2026-06-19 17:31 IST — Closed YES \"HSBC Championships: Hamad Medjedovic vs Ug\" -> $-136 (Stop loss hit (-45%)) · model said P(win)=66%",
-  "2026-06-19 14:45 IST — Closed YES \" Iran agrees to end enrichment of uranium \" -> $-68 (Stop loss hit (-25%)) · model said P(win)=57%",
-  "2026-06-19 14:45 IST — Closed NO \" Iran agrees to end enrichment of uranium \" -> +$102 (Profit target hit (+25%)) · model said P(win)=57%"
+  "2026-06-19 17:31 IST — Closed YES \"HSBC Championships: Hamad Medjedovic vs Ug\" -> $-136 (Stop loss hit (-45%)) · model said P(win)=66%"
  ],
  "brain": {
   "w": [
@@ -5587,7 +5675,7 @@
      79
     ],
     "text": "Short Favorite on high-priced sports markets: 30W/14L (posterior 67%, 90% CI 56-79%) — proven edge, prioritized",
-    "updated": "2026-06-19T22:45:52.295Z"
+    "updated": "2026-06-19T23:01:16.318Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -5599,7 +5687,7 @@
      73
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 10W/8L (posterior 55%, 90% CI 37-73%) — collecting evidence",
-    "updated": "2026-06-19T22:45:52.295Z"
+    "updated": "2026-06-19T23:01:16.318Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -5611,7 +5699,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-19T22:45:52.295Z"
+    "updated": "2026-06-19T23:01:16.318Z"
    },
    {
     "key": "wallet|aenews2",
@@ -5623,7 +5711,7 @@
      56
     ],
     "text": "Copying wallet \"aenews2\": 4W/8L when followed (posterior 36%) — still evaluating",
-    "updated": "2026-06-19T22:45:52.295Z"
+    "updated": "2026-06-19T23:01:16.318Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -5635,7 +5723,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-19T22:45:52.295Z"
+    "updated": "2026-06-19T23:01:16.318Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -5647,32 +5735,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-19T22:45:52.295Z"
+    "updated": "2026-06-19T23:01:16.318Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 7133.337185449729,
+  "cash": 6533.337185449729,
   "created": 1781162132851
  },
  "summary": {
   "realized": -1666.66,
   "closed": 113,
   "wins": 58,
-  "open": 3,
-  "staked": 43800,
+  "open": 5,
+  "staked": 44400,
   "bankStart": 10000,
-  "cash": 7133,
+  "cash": 6533,
   "equity": 8419,
   "returnPct": -15.81,
   "modelUpdates": 113,
   "brier": 0.264,
   "hypotheses": 6,
   "integrityOk": true,
-  "updated": "2026-06-19T22:45:52.298Z"
+  "updated": "2026-06-19T23:01:16.322Z"
  },
- "lastRun": 1781909152298,
+ "lastRun": 1781910076322,
  "elite": {
   "updated": 1781892085787,
   "list": [
@@ -5709,15 +5797,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-19T22:45:52.298Z",
-  "tradesChecked": 116
+  "checkedAt": "2026-06-19T23:01:16.322Z",
+  "tradesChecked": 118
  },
  "lastScan": {
-  "at": "2026-06-19T22:45:52.298Z",
-  "marketsFetched": 68,
-  "rawCandidates": 24,
-  "clearedThreshold": 0,
-  "placed": 0,
+  "at": "2026-06-19T23:01:16.322Z",
+  "marketsFetched": 67,
+  "rawCandidates": 26,
+  "clearedThreshold": 2,
+  "placed": 2,
   "pMin": 0.57,
   "blocked": {
    "exposure": 0,
@@ -5725,6 +5813,6 @@
    "cash": 0,
    "sanity": 0
   },
-  "reason": "no candidates cleared P(win)>=0.57 (engines produce ~0.58-0.64; lower pMin or wait for better setups)"
+  "reason": "traded"
  }
 }

@@ -11,7 +11,7 @@
    "slug": "cs2-vit-fal2-2026-06-19",
    "side": "YES",
    "entry": 0.845,
-   "cur": 0.845,
+   "cur": 0.835,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.659,
@@ -5583,7 +5583,7 @@
      78
     ],
     "text": "Short Favorite on high-priced sports markets: 29W/14L (posterior 67%, 90% CI 55-78%) — proven edge, prioritized",
-    "updated": "2026-06-19T21:20:25.311Z"
+    "updated": "2026-06-19T21:34:43.324Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -5595,7 +5595,7 @@
      73
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 10W/8L (posterior 55%, 90% CI 37-73%) — collecting evidence",
-    "updated": "2026-06-19T21:20:25.311Z"
+    "updated": "2026-06-19T21:34:43.324Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -5607,7 +5607,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-19T21:20:25.311Z"
+    "updated": "2026-06-19T21:34:43.324Z"
    },
    {
     "key": "wallet|aenews2",
@@ -5619,7 +5619,7 @@
      56
     ],
     "text": "Copying wallet \"aenews2\": 4W/8L when followed (posterior 36%) — still evaluating",
-    "updated": "2026-06-19T21:20:25.311Z"
+    "updated": "2026-06-19T21:34:43.324Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -5631,7 +5631,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-19T21:20:25.311Z"
+    "updated": "2026-06-19T21:34:43.324Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -5643,7 +5643,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-19T21:20:25.311Z"
+    "updated": "2026-06-19T21:34:43.324Z"
    }
   ]
  },
@@ -5660,15 +5660,15 @@
   "staked": 43800,
   "bankStart": 10000,
   "cash": 7015,
-  "equity": 8400,
-  "returnPct": -16,
+  "equity": 8399,
+  "returnPct": -16.01,
   "modelUpdates": 112,
   "brier": 0.265,
   "hypotheses": 6,
   "integrityOk": true,
-  "updated": "2026-06-19T21:20:25.314Z"
+  "updated": "2026-06-19T21:34:43.327Z"
  },
- "lastRun": 1781904025314,
+ "lastRun": 1781904883327,
  "elite": {
   "updated": 1781892085787,
   "list": [
@@ -5705,15 +5705,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-19T21:20:25.314Z",
+  "checkedAt": "2026-06-19T21:34:43.327Z",
   "tradesChecked": 116
  },
  "lastScan": {
-  "at": "2026-06-19T21:20:25.314Z",
-  "marketsFetched": 51,
-  "rawCandidates": 20,
-  "clearedThreshold": 1,
-  "placed": 1,
+  "at": "2026-06-19T21:34:43.327Z",
+  "marketsFetched": 66,
+  "rawCandidates": 27,
+  "clearedThreshold": 0,
+  "placed": 0,
   "pMin": 0.57,
   "blocked": {
    "exposure": 0,
@@ -5721,6 +5721,6 @@
    "cash": 0,
    "sanity": 0
   },
-  "reason": "traded"
+  "reason": "no candidates cleared P(win)>=0.57 (engines produce ~0.58-0.64; lower pMin or wait for better setups)"
  }
 }

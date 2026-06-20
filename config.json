@@ -7,10 +7,10 @@
     "VOLUME_SPIKE": true,
     "ELITE_FOLLOW": true
   },
-  "pMin": 0.57,
+  "pMin": 0.58,
   "kellyMult": 0.12,
   "maxExposure": 0.38,
-  "maxEventExposure": 600,
+  "maxEventExposure": 500,
   "updatedBy": "analyst",
-  "updatedAt": "2026-06-19T04:00:52.261Z"
+  "updatedAt": "2026-06-20T04:00:52.272Z"
 }

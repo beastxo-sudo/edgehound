@@ -1,32 +1,32 @@
 {
  "status": "ok",
- "updated": "2026-06-19T04:00:52.262Z",
- "updatedIST": "2026-06-19 09:30 IST",
- "memo": "EdgeHound Performance Review — 19 June 2026\n\nOverall equity stands at $8,557 (-14.4% from $10,000 start), with realized losses of -$1,389 across 104 closed trades. The portfolio is in drawdown but shows a clear bifurcation in engine quality that warrants attention.\n\nSHORT_FAVORITE remains the validated core: 30W/15L on sports markets (69% win rate, CI 57-81%) and is the only engine with a structural edge confirmed by the hypothesis engine. However, several large stop-outs (-$750 stakes on LoL, Dota2, Baltimore, Toronto) have badly damaged the P&L. The $750 maxEventExposure cap was previously in force but these trades appear to have been sized at the cap — the issue is the cap itself was too high given the Brier score (0.263, above the 0.25 breakeven threshold for calibration). We need to tighten per-trade sizing further.\n\nMOMENTUM (disabled) and SMART_CONSENSUS (disabled) — correct to leave off. MOMENTUM showed 8W/13L (-$1,019) and SMART_CONSENSUS 0W/1L (-$385).\n\nELITE_FOLLOW shows a nuanced picture: the Iran diplomatic cluster produced five consecutive losers on the same market (ELITE_FOLLOW copying wallet 'aenews2' scoring only 0.30), but separate ELITE_FOLLOW trades on other wallets (denizz 0.8, PatrocIus 0.6) were profitable. The system needs to filter by wallet score more aggressively — aenews2 should be blacklisted.\n\nVOLUME_SPIKE at 8W/12L with +$190 net is marginally positive but noisy. Keep enabled at reduced size.\n\nAction: Reduce kellyMult to 0.12 to cut sizing on all engines. Lower maxEventExposure to $600 to prevent single-event concentration. Hold pMin at 0.57.",
+ "updated": "2026-06-20T04:00:52.272Z",
+ "updatedIST": "2026-06-20 09:30 IST",
+ "memo": "EdgeHound Portfolio Review — 20 June 2026\n\nThe fund sits at -12.75% return on $10K starting capital, with equity at $8,725. The core SHORT_FAVORITE engine on sports markets remains the one validated edge: 72.2% win rate (38W/14L, CI 62-82%) across 52 qualified trades. This is the portfolio's only reliable alpha source and must be protected.\n\nThe critical problem is stake sizing volatility. Recent logs show $750 stakes on individual trades — Dota 2 Yakult Brothers (-$470), LoL Dplus KIA (-$503), Nottingham Open Golubic (-$750) — which are catastrophic single-event losses. The maxEventExposure was $600 at config time yet $750 trades appear, suggesting earlier configs allowed these sizes. The bank has absorbed ~$1,700+ in losses from three esports/tennis upset events, likely non-sports contexts where the validated edge does NOT apply. SHORT_FAVORITE's validated hypothesis is specifically 'high-priced sports markets' — esports and tennis upsets are structurally different from MLB/mainstream sports favorites and are eroding the validated alpha.\n\nELITE_FOLLOW on the Iran nuclear/diplomatic cluster shows a dangerous pattern: repeated same-event entries averaging $300-$500 per leg, with mixed outcomes and clear overconcentration on a single geopolitical narrative. The aenews2 wallet score (44%) warrants skepticism.\n\nMOMENTUM remains disabled correctly (-$1,019, 21 trades, 38% win rate). SMART_CONSENSUS has only 1 trade — keep disabled. VOLUME_SPIKE is marginally positive ($190, 8/20 wins) — insufficient evidence to expand.\n\nRecommendation: Hold kellyMult conservative, tighten maxEventExposure to protect against single large losses, keep pMin stable. No engine changes warranted.",
  "observations": [
-  "SHORT_FAVORITE validated on sports (69% WR, CI 57-81%) but large stops on esports/tennis causing outsized drawdowns — these categories need scrutiny",
-  "MOMENTUM disabled correctly: 8W/13L, -$1,019 PnL, no edge signal",
-  "SMART_CONSENSUS disabled correctly: 0W/1L, -$385",
-  "ELITE_FOLLOW wallet 'aenews2' scores 0.30 — responsible for Iran diplomatic cluster of 5 losers; high-scoring wallets (denizz 0.8, PatrocIus 0.6) were net profitable",
-  "VOLUME_SPIKE marginally positive (+$190) but high variance, 8W/12L, keep but constrain size",
-  "Brier score 0.263 indicates model is overconfident — pPredicted consistently higher than realized win rates outside sports",
-  "Multiple $750 max-cap stakes hit stop-loss sequentially (Dota2 -$470, LoL -$503, Toronto -$402, Baltimore -$377) — single event cap was too generous relative to bank size",
-  "ELITE_FOLLOW Iran positions entered at sub-0.40 probability — far below pMin threshold of 0.57, suggesting pMin filter was not enforced on these entries",
-  "Open position on 'Iran agrees to end enrichment' (ELITE_FOLLOW, entry 0.735, cur 0.675) is underwater and at high nominal entry price — adverse selection risk",
-  "Equity drawdown -14.4% approaching threshold where further losses could compromise minimum viable bank"
+  "SHORT_FAVORITE validated edge (72.2% win rate) is sports-specific; esports upsets (Dota 2, LoL) are distorting the signal and producing 3 of the largest single losses",
+  "Three trades at $750 stake each drove outsized drawdown: Dota2 Yakult -$470, LoL Dplus -$503, Nottingham tennis -$750 — all non-mainstream-sports contexts",
+  "ELITE_FOLLOW overconcentrated on Iran nuclear/diplomatic event cluster across multiple sequential legs; net result mixed but concentration risk is structural",
+  "MOMENTUM correctly disabled; -$1,019 across 21 trades, 38% win rate confirms no edge",
+  "SMART_CONSENSUS 1 trade, -$385 — remains correctly disabled",
+  "VOLUME_SPIKE marginally positive ($190) but 8/20 wins = 40% — not yet profitable enough to expand; hypothesis still FORMING",
+  "aenews2 wallet 44% win rate (6W/8L) is below breakeven; ELITE_FOLLOW following this wallet should be deprioritized",
+  "Brier score 0.252 is mediocre; model is overconfident on pPredicted vs actual outcomes especially in esports and geopolitical markets",
+  "Open positions all SHORT_FAVORITE on MLB games — appropriate and consistent with validated edge",
+  "Bank has declined from $10,000 to $8,725 equity; capital preservation is now a priority",
+  "denizz wallet score 0.8 is the only high-scored wallet — ELITE_FOLLOW should be filtered to follow denizz signals only if possible"
  ],
  "changesApplied": [
-  "kellyMult: 0.15 -> 0.12",
-  "maxExposure: 0.4 -> 0.38",
-  "maxEventExposure: 750 -> 600"
+  "pMin: 0.57 -> 0.58",
+  "maxEventExposure: 600 -> 500"
  ],
- "changeReasoning": "Reducing kellyMult from 0.15 to 0.12 to shrink per-trade sizing across all engines — the sequential $750 stop-outs demonstrate sizing is too aggressive relative to our prediction accuracy (Brier 0.263). Reducing maxEventExposure from $750 to $600 adds a further hard cap to prevent any single event from absorbing more than ~7% of current equity. maxExposure nudged from 0.40 to 0.38 to reduce aggregate deployment risk during drawdown. pMin held at 0.57 — evidence of ELITE_FOLLOW entries appearing below this threshold suggests a code-level enforcement issue worth auditing rather than raising pMin further and eliminating borderline positive signals. MOMENTUM and SMART_CONSENSUS remain disabled — no evidence to reinstate. ELITE_FOLLOW kept enabled but the aenews2 wallet scoring 0.30 should be hard-blacklisted at the wallet scoring layer, not via parameter changes.",
+ "changeReasoning": "Tightening maxEventExposure from $600 to the floor of $500 to hard-cap single-event loss exposure — the three largest losses all resulted from oversized stakes on volatile esports/tennis markets. Raising pMin marginally from 0.57 to 0.58 to further filter low-conviction SHORT_FAVORITE entries in non-mainstream-sports contexts. KellyMult held at 0.12 (conservative) given ongoing drawdown. MaxExposure held at 0.38. No engine toggles — MOMENTUM and SMART_CONSENSUS remain correctly disabled. VOLUME_SPIKE and ELITE_FOLLOW remain on but with tighter per-event cap to prevent repeat Iran-style overconcentration. Core rationale: protect remaining capital while the validated SHORT_FAVORITE sports edge continues to compound.",
  "riskFlags": [
-  "ELITE_FOLLOW entries on Iran diplomatic markets appear to have bypassed pMin=0.57 filter — entries recorded at 0.387-0.418, well below threshold; requires code audit",
-  "Wallet 'aenews2' (score 0.30) is still active in wallet tracking — recommend hard blacklist at score < 0.40 to prevent further copying",
-  "Esports markets (Dota2, LoL) have produced three of the four largest single-trade losses; consider adding a sport-category exclusion list for esports within SHORT_FAVORITE",
-  "Equity at $8,557 (-14.4%): if drawdown reaches -25% ($7,500) a full operational review and potential suspension of new entries is warranted",
-  "Open ELITE_FOLLOW position on 'Iran enrichment' entered at 0.735 is deeply underwater (cur 0.675) and carries continuation risk if resolution is negative — monitor for early exit"
+  "Esports (Dota 2, LoL, CS) markets are generating SHORT_FAVORITE signals but behave differently from mainstream sports — consider filtering esports titles out of SHORT_FAVORITE universe entirely",
+  "ELITE_FOLLOW repeatedly entered the same Iran nuclear/diplomatic event from multiple angles; a per-event concentration rule should be enforced at the code level beyond maxEventExposure",
+  "aenews2 wallet (44% win rate, 14 trades) is below breakeven — continued following may be net negative; flag for disabling in next session if no improvement",
+  "Brier score 0.252 suggests systematic model overconfidence; pPredicted values of 0.57-0.71 on losing trades indicate the probability estimates need recalibration for non-sports events",
+  "Bank at $8,725 — another 10% drawdown would trigger serious capital impairment; position sizing discipline is critical this session"
  ],
  "configNow": {
   "comment": "EdgeHound tunable parameters. The AI Analyst may adjust these within hard rails enforced in code. Humans can edit too. [pMin lowered to match surviving engines after momentum block]",
@@ -37,11 +37,11 @@
    "VOLUME_SPIKE": true,
    "ELITE_FOLLOW": true
   },
-  "pMin": 0.57,
+  "pMin": 0.58,
   "kellyMult": 0.12,
   "maxExposure": 0.38,
-  "maxEventExposure": 600,
+  "maxEventExposure": 500,
   "updatedBy": "analyst",
-  "updatedAt": "2026-06-19T04:00:52.261Z"
+  "updatedAt": "2026-06-20T04:00:52.272Z"
  }
 }

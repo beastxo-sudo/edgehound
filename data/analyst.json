@@ -1,31 +1,29 @@
 {
  "status": "ok",
- "updated": "2026-06-21T04:00:53.241Z",
- "updatedIST": "2026-06-21 09:30 IST",
- "memo": "EdgeHound Performance Review — 21 June 2026\n\nEquity stands at $8,547 (-14.5% from $10,000 start), with realized losses of -$1,557 across 141 closed trades. The picture is mixed but improving in clarity.\n\nSHORT_FAVORITE on sports remains the only validated edge: 69.4% win rate (90% CI 61-78%), though PnL is -$419 due to oversized losing trades (stop-losses at -45% on high-entry positions) overwhelming small wins (~$10-30 each). The asymmetry is the problem — we win often but collect thin premiums, then occasionally lose large when a heavy favorite fails. MOMENTUM is clearly negative (-$1,019, 8W/21T = 38%) and correctly disabled. SMART_CONSENSUS has one trade and -$385 — a catastrophic single entry, correctly disabled. ELITE_FOLLOW is marginally positive (+$76) but highly volatile, driven by concentrated Iran-deal speculation trades with erratic outcomes.\n\nKey concern: SHORT_FAVORITE stake sizing has crept up to $250-500 on individual trades (visible in recent closes), which is inconsistent with kellyMult=0.12. This appears to be the primary driver of outsized losses. VOLUME_SPIKE is lightly positive (+$190, 40% win rate) — intriguing but sample is too small to act on.\n\nRecommendation: Hold current engine configuration. Tighten maxEventExposure to control Iran-style concentration risk. Slightly raise pMin to improve entry quality on SHORT_FAVORITE. Keep kellyMult conservative. No re-enabling of disabled engines warranted.",
+ "updated": "2026-06-21T12:10:05.553Z",
+ "updatedIST": "2026-06-21 17:40 IST",
+ "memo": "EdgeHound Performance Review — 21 June 2026\n\nThe portfolio sits at -13.93% return on $10K start (equity $8,607), with realized P&L of -$1,477 across 147 settled trades. The loss is concentrated and attribution is clear: MOMENTUM (-$1,019, 8W/21T = 38% win rate) and SMART_CONSENSUS (-$385, 0W/1T) are responsible for the bulk of damage. Both correctly remain disabled per prior session.\n\nSHORT_FAVORITE on high-priced sports markets remains the validated edge: 71% win rate (90% CI 62–79%), VALIDATED hypothesis, positive directional PnL on most individual resolved trades. The net -$339 in SHORT_FAVORITE PnL is driven by a handful of large stop-loss events (e.g., -$123, -$100, -$80, -$64) against a background of many small wins ($7–$29). This is structurally expected in a short-vig strategy — catastrophic individual losses offset many small wins. The Brier score of 0.248 is acceptable.\n\nVOLUME_SPIKE (+$190, 8W/20T) and ELITE_FOLLOW (+$76, 12W/24T) are both marginally positive and worth retaining, though sample sizes remain small. ELITE_FOLLOW's Iran nuclear trade series showed both large wins and large losses — the $300–$350 stakes on geopolitical events are outsized for the current bank.\n\nKey concern: open position Minnesota Twins at $500 stake is disproportionately large relative to the ~$8,600 equity base (~5.8%). With maxEventExposure at $750 and open Kansas City at $400, concentration in SHORT_FAVORITE sports at high stakes warrants monitoring. No parameter changes are warranted this session given recent adjustments and insufficient new settled data to justify further tuning.",
  "observations": [
-  "SHORT_FAVORITE win rate 69.4% validated but PnL -$419 — thin win premiums (avg ~$15) cannot absorb occasional full-loss events at high entries (0.90+)",
-  "Stake sizes of $150-$500 appearing on SHORT_FAVORITE trades suggest kelly sizing is not being respected or signal confidence is inflating stakes inappropriately",
-  "MOMENTUM correctly disabled: 38% win rate on 21 trades is well below breakeven and statistically significant as negative",
-  "SMART_CONSENSUS: single -$385 trade is an outlier but reinforces the disable decision",
-  "ELITE_FOLLOW +$76 on 24 trades hides high variance — Iran-deal trades show repeated flip-flopping (YES then NO then YES), raising concerns about signal chasing on event-specific momentum",
-  "VOLUME_SPIKE mildly positive (+$190) on 20 trades — not enough evidence to expand allocation but watch",
-  "Brier score 0.252 is mediocre; model is overconfident on losing trades (predicted 0.67-0.70, market resolved opposite)",
-  "Wallet 'denizz' scores 0.8 but no trades tracked — worth monitoring whether ELITE_FOLLOW is copying this wallet effectively",
-  "Open positions concentrated in SHORT_FAVORITE sports, which is appropriate, but $500 and $400 stakes on single games exceed conservative sizing intent",
-  "No integrity errors — systems healthy"
+  "MOMENTUM disabled — correct, 38% win rate on 21 trades is well below edge threshold, -$1,019 PnL",
+  "SMART_CONSENSUS disabled — correct, 0/1 with -$385; single sample but no evidence of edge",
+  "SHORT_FAVORITE VALIDATED: 71% win rate (CI 62–79%) on sports, core engine performing structurally as expected",
+  "SHORT_FAVORITE net PnL negative (-$339) due to several large stop-loss events; small-win/large-loss profile is structural to shorting heavy favorites",
+  "VOLUME_SPIKE marginally positive (+$190) with 40% win rate — small sample, edge unclear but not negative enough to disable",
+  "ELITE_FOLLOW marginally positive (+$76) but individual trades show $300–$350 stakes on geopolitical events — concentration risk given current bank",
+  "Minnesota Twins open position at $500 stake = ~5.8% of equity; largest single-market exposure in active book",
+  "aenews2 wallet score 0.44 and 43.8% win rate — underperforming, should not be copied aggressively",
+  "denizz wallet score 0.80 — highest scored wallet, worth monitoring for ELITE_FOLLOW quality",
+  "Brier score 0.248 is borderline; well-calibrated models target <0.20, suggesting moderate overconfidence in predictions",
+  "No new engines have sufficient settled trades to justify re-enabling; current disabled state appropriate"
  ],
- "changesApplied": [
-  "pMin: 0.58 -> 0.6",
-  "maxEventExposure: 500 -> 750"
- ],
- "changeReasoning": "Raising pMin from 0.58 to 0.60 to tighten SHORT_FAVORITE entry quality — at very high market prices (0.90+), the Kelly edge is minimal and losses are catastrophic. A marginally higher pMin threshold will filter marginal entries without blocking the core validated edge. Raising maxEventExposure from 500 to 750 acknowledges that the $500 floor was already being breached on open positions and provides a small controlled increase while still limiting Iran-style concentration blowups (previously $1,050+ in notional on single event). All other parameters unchanged — kellyMult stays at 0.12 (conservative is correct given drawdown), maxExposure at 0.38 is appropriate. No engine changes warranted: evidence does not support re-enabling MOMENTUM or SMART_CONSENSUS, and ELITE_FOLLOW/VOLUME_SPIKE remain enabled with small allocations.",
+ "changesApplied": [],
+ "changeReasoning": "No parameter changes from prior session. The current config was set earlier today and there is insufficient new settled data since that adjustment to justify further tuning. SHORT_FAVORITE sports edge remains validated; kellyMult at 0.12 and maxExposure at 0.38 are appropriately conservative given the -13.93% drawdown. Raising maxEventExposure could reduce concentration on individual events but the current $750 cap is already being approached with open positions; holding steady is prudent. Will reassess if VOLUME_SPIKE or ELITE_FOLLOW accumulate 15+ more settled trades with sustained positive expectancy.",
  "riskFlags": [
-  "SHORT_FAVORITE stake sizes ($150-$500) appearing in recent trades may indicate the sizing engine is not respecting kellyMult=0.12 — recommend audit of stake calculation logic",
-  "ELITE_FOLLOW Iran-deal trades show pattern of entering both YES and NO on same event within hours — possible signal oscillation or adversarial market behavior; consider adding per-event cooldown for ELITE_FOLLOW",
-  "Brier 0.252 suggests systematic overconfidence — predicted probabilities ~0.67-0.70 but resolving against us at meaningful rates; recalibration of pPredicted model warranted",
-  "At -14.5% drawdown with $8,547 equity, another concentrated losing streak could breach -25% threshold; human oversight on any single stake exceeding $300 recommended",
-  "Wallet 'aenews2' scoring 0.44 posterior (below 50%) — ELITE_FOLLOW may be actively losing money copying this wallet; consider wallet-level disable if per-wallet PnL tracking supports it"
+  "Minnesota Twins open stake $500 on ~$8,600 equity (~5.8%) — approaches concentration threshold even within maxEventExposure rails; worth monitoring manually",
+  "SHORT_FAVORITE net PnL is negative despite high win rate — large individual stop-loss events (-$80 to -$123) are a structural drag; consider whether stop-loss threshold is too wide for this payoff profile",
+  "ELITE_FOLLOW placing $300–$350 stakes on binary geopolitical events (Iran nuclear deal) introduces tail risk disproportionate to current bank; engine size limits should be reviewed if this pattern recurs",
+  "Brier score 0.248 suggests model is moderately overconfident; predicted P(win) may be overstated, which could cause Kelly to oversize positions",
+  "Overall equity down 13.93% — continued drawdown without MOMENTUM recovery path means surviving engines must outperform to recover; risk budget is tighter than starting parameters assumed"
  ],
  "configNow": {
   "comment": "EdgeHound tunable parameters. The AI Analyst may adjust these within hard rails enforced in code. Humans can edit too. [pMin lowered to match surviving engines after momentum block]",
@@ -41,6 +39,6 @@
   "maxExposure": 0.38,
   "maxEventExposure": 750,
   "updatedBy": "analyst",
-  "updatedAt": "2026-06-21T04:00:53.241Z"
+  "updatedAt": "2026-06-21T12:10:05.553Z"
  }
 }

@@ -7021,6 +7021,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-21 23:41 IST — Elite pool refreshed: 3 wallets qualify (>=58% win rate over >=10 settled, scalpers excluded): aenews2 76%, ocean322 74%, denizz 63%",
   "2026-06-21 21:31 IST — Closed NO \"Will Spain vs. Saudi Arabia end in a draw?\" -> +$1 (Max hold reached — closed at market) · model said P(win)=69%",
   "2026-06-21 15:31 IST — Closed NO \"LoL: Dplus KIA Challengers vs T1 Academy -\" -> +$7 (Resolved in our favor) · model said P(win)=69%",
   "2026-06-21 15:15 IST — Opened NO $100 @ 94c P=69% EV=+0.01 [Short Favorite] \"LoL: Dplus KIA Challengers vs T1 Academy - Gam\"",
@@ -7033,8 +7034,7 @@
   "2026-06-21 09:31 IST — Closed NO \"Will Tunisia vs. Japan end in a draw?\" -> $-1 (Max hold reached — closed at market) · model said P(win)=68%",
   "2026-06-21 09:31 IST — Closed YES \"Minnesota Twins vs. Arizona Diamondbacks\" -> +$26 (Resolved in our favor) · model said P(win)=68%",
   "2026-06-21 09:01 IST — Opened NO $100 @ 80c P=68% EV=+0.00 [Short Favorite] \"Pittsburgh Pirates vs. Colorado Rockies\"",
-  "2026-06-21 08:45 IST — Opened YES $100 @ 80c P=68% EV=-0.00 [Short Favorite] \"Minnesota Twins vs. Arizona Diamondbacks\"",
-  "2026-06-21 06:45 IST — Closed YES \"Cleveland Guardians vs. Houston Astros\" -> +$27 (Resolved in our favor) · model said P(win)=67%"
+  "2026-06-21 08:45 IST — Opened YES $100 @ 80c P=68% EV=-0.00 [Short Favorite] \"Minnesota Twins vs. Arizona Diamondbacks\""
  ],
  "brain": {
   "w": [
@@ -7201,7 +7201,7 @@
      79
     ],
     "text": "Short Favorite on high-priced sports markets: 55W/22L (posterior 71%, 90% CI 63-79%) — proven edge, prioritized",
-    "updated": "2026-06-21T17:56:55.053Z"
+    "updated": "2026-06-21T18:11:17.168Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -7213,7 +7213,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-06-21T17:56:55.053Z"
+    "updated": "2026-06-21T18:11:17.168Z"
    },
    {
     "key": "wallet|aenews2",
@@ -7225,7 +7225,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-06-21T17:56:55.053Z"
+    "updated": "2026-06-21T18:11:17.168Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -7237,7 +7237,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-21T17:56:55.053Z"
+    "updated": "2026-06-21T18:11:17.168Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -7249,7 +7249,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-21T17:56:55.052Z"
+    "updated": "2026-06-21T18:11:17.168Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -7261,7 +7261,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-21T17:56:55.052Z"
+    "updated": "2026-06-21T18:11:17.168Z"
    }
   ]
  },
@@ -7284,39 +7284,39 @@
   "brier": 0.247,
   "hypotheses": 6,
   "integrityOk": true,
-  "updated": "2026-06-21T17:56:55.054Z"
+  "updated": "2026-06-21T18:11:17.169Z"
  },
- "lastRun": 1782064615054,
+ "lastRun": 1782065477169,
  "elite": {
-  "updated": 1781978897891,
+  "updated": 1782065476838,
   "list": [
    {
     "wallet": "0x44c1dfe43260c94ed4f1d00de2e1f80fb113ebc1",
     "name": "aenews2",
-    "winRate": 0.763,
-    "n": 38,
-    "score": 2.796
+    "winRate": 0.757,
+    "n": 37,
+    "score": 2.753
    },
    {
     "wallet": "0xdf17f4a8dd01a4cfa6fc3da323a2baee5f8697d1",
-    "name": "PatrocIus",
-    "winRate": 0.75,
-    "n": 40,
-    "score": 2.785
+    "name": "ocean322",
+    "winRate": 0.737,
+    "n": 38,
+    "score": 2.699
    },
    {
     "wallet": "0xbaa2bcb5439e985ce4ccf815b4700027d1b92c73",
     "name": "denizz",
-    "winRate": 0.645,
-    "n": 31,
-    "score": 2.236
+    "winRate": 0.629,
+    "n": 35,
+    "score": 2.252
    }
   ]
  },
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-21T17:56:55.054Z",
+  "checkedAt": "2026-06-21T18:11:17.169Z",
   "tradesChecked": 151
  },
  "lastScan": {

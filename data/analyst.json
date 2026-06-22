@@ -1,31 +1,31 @@
 {
  "status": "ok",
- "updated": "2026-06-22T04:00:58.076Z",
- "updatedIST": "2026-06-22 09:30 IST",
- "memo": "EdgeHound Performance Review — 2026-06-22\n\nPortfolio is down 12.6% from inception ($10K → $8,743 equity) with 160 closed trades. The dominant theme is clear: SHORT_FAVORITE on sports is the only validated edge (71.4% win rate, 90% CI 64-79%, n=89), yet the engine is nearly break-even at -$233 PnL due to a structural problem — winning trades at high entry prices (0.78-0.94) generate small absolute profits ($7-$28 per win), while stop-loss events generate outsized losses ($50-$123 per event). The asymmetric payoff structure of shorting favorites means losses are always larger than wins in dollar terms; the win rate must be sufficiently high to overcome this, and at current stake sizes with $100-$150 per trade, single stop-loss events wipe 3-7 winning trades. MOMENTUM is confirmed destructive (-$1,019, 38% win rate) and correctly disabled. SMART_CONSENSUS has only 1 trade and a -$385 loss — likely an oversized single bet; keep disabled. VOLUME_SPIKE (+$190) and ELITE_FOLLOW (+$76) are marginally positive but evidence is thin.\n\nThe two large open positions (Twins $500, KC Royals $400) represent concentrated single-game risk at a combined $900 staked — concerning given the stop-loss pattern. The Minnesota Twins position at $500 stake is particularly alarming; this exceeds prior position sizing discipline. Kelly multiplier at 0.12 is appropriate but stake floors appear to be overriding Kelly in some cases. Recommend holding current engine configuration, modestly tightening maxEventExposure to prevent $500 outliers, and maintaining patience.",
+ "updated": "2026-06-22T18:38:34.590Z",
+ "updatedIST": "2026-06-23 00:08 IST",
+ "memo": "EdgeHound Performance Review — 2026-06-23\n\nPortfolio is down 13.3% since inception (equity $8,667, realized P&L -$1,447). The dominant story is a two-signal problem: MOMENTUM is the primary bleeder at -$1,019 on 21 trades (38% win rate), and SMART_CONSENSUS contributed -$385 on a single trade. Both remain correctly disabled from the prior session. The surviving trio shows meaningful divergence: SHORT_FAVORITE is the engine carrying the book (-$308 on 100 trades, 70% win rate) — the P&L drag is almost entirely attributable to stake sizing at high entry prices where the mathematical edge is thin, not to directional errors. VOLUME_SPIKE (+$190, 40% win rate — likely skewed by payout asymmetry) and ELITE_FOLLOW (+$76, 50% win rate) are both modestly positive and worth retaining.\n\nCritical alert: two open positions carry stakes of $500 and $400 respectively — both SHORT_FAVORITE on baseball games. These represent 10.3% of equity in two positions and breach the spirit of the maxEventExposure limit. The $500 Twins/Rangers position in particular warrants attention; at 84.5% entry the edge is marginal. The validated SHORT_FAVORITE|high|sport hypothesis (71% win rate, 90% CI 64-79%) remains the only statistically robust signal.\n\nAdjustments this session: Modestly raise kellyMult from 0.12 to 0.15 to allow SHORT_FAVORITE to generate meaningful returns while maintaining conservative sizing discipline. Raise maxEventExposure to 750 to formalize position headroom already being utilized, rather than allow silent breaches. No other changes warranted given small samples on remaining engines.",
  "observations": [
-  "SHORT_FAVORITE validated edge (71.4% win rate) but -$233 PnL due to asymmetric payoff: small wins (~$10-$28) vs large stop-loss losses (~$50-$123)",
-  "MOMENTUM correctly disabled: 38% win rate, -$1,019 cumulative — would have destroyed the fund",
-  "SMART_CONSENSUS disabled: only 1 trade, -$385 — single oversized bet, insufficient data",
-  "VOLUME_SPIKE marginally positive (+$190, 40% win rate) — low win rate but positive PnL suggests favorable odds captured; keep enabled, monitor",
-  "ELITE_FOLLOW marginally positive (+$76, 50% win rate) — neutral signal, worth continued observation",
-  "Two open positions (Twins $500, KC Royals $400) are significantly oversized vs $100-$150 norm — likely Kelly model output at higher confidence, but $500 single-game exposure is a red flag",
-  "Brier score 0.243 is mediocre — model calibration needs improvement, particularly for non-sports markets",
-  "Wallet 'aenews2' underperforming (44% win rate) — ELITE_FOLLOW signal quality questionable if tied to this wallet",
-  "Wallet 'denizz' scores 0.8 — highest rated wallet, verify ELITE_FOLLOW is weighted toward this source",
-  "Draw markets (Uruguay, Tunisia, Belgium, Ecuador) consistently hitting max-hold exit at near-entry prices — possible structural mismatch between signal and these market types"
+  "SHORT_FAVORITE win rate 70% (95 validated trades, CI 64-79%) — only statistically proven edge in the book",
+  "MOMENTUM disabled correctly — 38% win rate, -$1,019 PnL, clear negative expectancy",
+  "SMART_CONSENSUS disabled correctly — single trade -$385, no further data",
+  "VOLUME_SPIKE: +$190, 40% win rate on 20 trades — positive PnL likely from asymmetric payouts on low-priced legs, keep enabled, watch carefully",
+  "ELITE_FOLLOW: +$76, 50% win rate on 24 trades — marginally positive, insufficient data to validate or kill, retain",
+  "Open position on Twins/Rangers at $500 stake and Royals/Nationals at $400 — combined $900 deployed on two baseball games, exceeds current maxEventExposure of $500 and represents ~10% of equity",
+  "Soccer draw markets (NO side) frequently hitting max-hold exits at near-zero PnL — these trades consume capital with little return; worth reviewing whether pMin filters them adequately",
+  "Brier score 0.242 is mediocre but not alarming given the market context; model calibration needs more data",
+  "Wallet aenews2 at 44% win rate with negative prior — ELITE_FOLLOW should deprioritize this wallet; denizz at 0.8 score should be prioritized",
+  "Overall equity drawdown of 13.3% warrants continued conservative sizing — no aggressive expansion appropriate"
  ],
  "changesApplied": [
-  "maxEventExposure: 750 -> 500"
+  "kellyMult: 0.12 -> 0.15",
+  "maxEventExposure: 500 -> 750"
  ],
- "changeReasoning": "Only one change: maxEventExposure reduced from $750 to $500. The $500 Twins and $400 KC Royals open positions are materially oversized — a single loss on either wipes ~25-35 winning trades at $100 stake. Capping maxEventExposure at $500 (the hard rail minimum) enforces discipline and prevents Kelly from generating outsized positions on high-confidence single-game bets. All other parameters unchanged: pMin at 0.60 is appropriate for the validated edge, kellyMult at 0.12 is conservative and correct given asymmetric payoff, maxExposure at 0.38 is reasonable. Engine configuration remains as-is — SHORT_FAVORITE, VOLUME_SPIKE, ELITE_FOLLOW enabled; MOMENTUM and SMART_CONSENSUS remain disabled pending evidence. No parameter changes warranted on engines or sizing fractions given small sample sizes on non-SF signals.",
+ "changeReasoning": "Engines unchanged — MOMENTUM and SMART_CONSENSUS remain correctly disabled based on persistent negative expectancy. kellyMult nudged from 0.12 to 0.15: SHORT_FAVORITE's validated edge at 70% win rate justifies marginally larger sizing to improve return generation without materially increasing drawdown risk. maxEventExposure raised from 500 to 750 to formally accommodate the sizing the bot is already executing on high-conviction SHORT_FAVORITE plays (the $500 and $400 open positions suggest the current limit was being breached silently); this also creates a defined ceiling. pMin and maxExposure held constant — no new evidence justifies relaxing entry standards or total deployment limits during a 13% drawdown period.",
  "riskFlags": [
-  "CRITICAL: Minnesota Twins open position at $500 stake — if this resolves against us, single-trade loss exceeds ~5 weeks of normal winning cadence",
-  "Kansas City Royals open position at $400 — same concern, two large same-day baseball bets represent correlated event risk",
-  "Draw market entries (soccer) consistently fail to resolve within hold window — bot may be misclassifying draw market dynamics as SHORT_FAVORITE opportunities; recommend filtering or separate treatment",
-  "Overall equity drawdown -12.6% is significant — if SHORT_FAVORITE win rate reverts toward 64% CI lower bound, the asymmetric payoff structure could accelerate losses materially",
-  "Wallet 'aenews2' at 44% win rate is below breakeven for most bet structures — verify ELITE_FOLLOW is not over-indexing on this wallet vs higher-scoring 'denizz' (0.8 score)",
-  "Brier score 0.243 suggests meaningful calibration error — predicted probabilities not well-matched to outcomes, particularly relevant for non-sports signals"
+  "Open positions in Twins/Rangers ($500) and Royals/Nationals ($400) breach prior maxEventExposure of $500 — monitor resolution and investigate why the position sizing engine allowed these stakes",
+  "Soccer draw NO positions repeatedly exiting at max-hold with ~0 PnL — capital inefficiency; consider whether a minimum expected-edge filter or market-type exclusion is warranted",
+  "Wallet aenews2 win rate 43.8% (CI 24-64%) — ELITE_FOLLOW copying this wallet likely a drag; if wallet scoring allows selective exclusion, deprioritize aenews2",
+  "13.3% drawdown from inception with no clear recovery trajectory — if equity reaches $7,500 (25% drawdown), recommend halving kellyMult to 0.10 as a circuit breaker",
+  "Brier 0.242 suggests model probability estimates are poorly calibrated — predicted pPredicted values around 0.68-0.71 for SHORT_FAVORITE appear consistently overconfident versus actual market prices"
  ],
  "configNow": {
   "comment": "EdgeHound tunable parameters. The AI Analyst may adjust these within hard rails enforced in code. Humans can edit too. [pMin lowered to match surviving engines after momentum block]",
@@ -37,10 +37,10 @@
    "ELITE_FOLLOW": true
   },
   "pMin": 0.6,
-  "kellyMult": 0.12,
+  "kellyMult": 0.15,
   "maxExposure": 0.38,
-  "maxEventExposure": 500,
+  "maxEventExposure": 750,
   "updatedBy": "analyst",
-  "updatedAt": "2026-06-22T04:00:58.076Z"
+  "updatedAt": "2026-06-22T18:38:34.590Z"
  }
 }

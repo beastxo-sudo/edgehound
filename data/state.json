@@ -11,7 +11,7 @@
    "slug": "wta-eala-mertens-2026-06-21",
    "side": "NO",
    "entry": 0.925,
-   "cur": 0.9299999999999999,
+   "cur": 0.9995,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.701,
@@ -41,7 +41,11 @@
    "target": null,
    "stop": 0.45,
    "holdUntil": 1782637200000,
-   "status": "open"
+   "status": "closed",
+   "exit": 1,
+   "exitTs": 1782156678939,
+   "exitReason": "Resolved in our favor",
+   "pnl": 8.108108108108102
   },
   {
    "id": "t1782134152451mesc",
@@ -7943,9 +7947,9 @@
  ],
  "strat": {
   "SHORT_FAVORITE": {
-   "trades": 100,
-   "wins": 70,
-   "pnl": -308.4977642583973,
+   "trades": 101,
+   "wins": 71,
+   "pnl": -300.38965615028917,
    "weight": 1
   },
   "MOMENTUM": {
@@ -7975,6 +7979,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-23 01:01 IST — Closed NO \"Bad Homburg Open: Alexandra Eala vs Elise \" -> +$8 (Resolved in our favor) · model said P(win)=70%",
   "2026-06-23 00:31 IST — Opened NO $100 @ 93c P=70% EV=+0.01 [Short Favorite] \"Bad Homburg Open: Alexandra Eala vs Elise Mert\"",
   "2026-06-22 23:53 IST — Elite pool refreshed: 4 wallets qualify (>=58% win rate over >=10 settled, scalpers excluded): donthackme 87%, AnonymousUsername 77%, aenews2 75%, denizz 67%",
   "2026-06-22 22:41 IST — Closed NO \"Will Argentina vs. Austria end in a draw?\" -> $-2 (Max hold reached — closed at market) · model said P(win)=71%",
@@ -7987,27 +7992,26 @@
   "2026-06-22 16:31 IST — Closed YES \"Bad Homburg Open: Clara Tauson vs Diana Sh\" -> +$21 (Resolved in our favor) · model said P(win)=71%",
   "2026-06-22 16:01 IST — Opened YES $150 @ 88c P=71% EV=+0.02 [Short Favorite] \"Bad Homburg Open: Clara Tauson vs Diana Shnaid\"",
   "2026-06-22 14:01 IST — Opened NO $150 @ 79c P=71% EV=+0.02 [Short Favorite] \"Will Argentina vs. Austria end in a draw?\"",
-  "2026-06-22 11:31 IST — Closed YES \"Dota 2: Execration vs Mentality Monster (B\" -> +$10 (Resolved in our favor) · model said P(win)=71%",
-  "2026-06-22 11:15 IST — Opened YES $150 @ 94c P=70% EV=+0.02 [Short Favorite] \"Dota 2: Execration vs Mentality Monster (BO3) \""
+  "2026-06-22 11:31 IST — Closed YES \"Dota 2: Execration vs Mentality Monster (B\" -> +$10 (Resolved in our favor) · model said P(win)=71%"
  ],
  "brain": {
   "w": [
-   0.358785427832388,
-   0.04622320030182603,
-   0.00891546111533059,
-   -0.17725265610079796,
-   0.24431375309131081,
-   -0.27391870768972754,
-   0.5386634475010242,
-   0.062325882359922175,
-   -0.06335707311785463,
-   0.07240648641538733,
-   0.0035661844461322293,
-   0.07846319849613306,
-   -0.06922785350015237
+   0.376808300461065,
+   0.046200088701675114,
+   0.008911003384772924,
+   -0.17716402977274756,
+   0.26102869165666387,
+   -0.2628421868649842,
+   0.5565963811198669,
+   0.07638327279390934,
+   -0.049837515962434145,
+   0.08980805337038392,
+   0.0035644013539091633,
+   0.0966262322394782,
+   -0.06919323957340229
   ],
-  "b": 0.10327953266701573,
-  "nUpdates": 166,
+  "b": 0.12148179800960893,
+  "nUpdates": 167,
   "buckets": {
    "MOMENTUM|high|sport": {
     "a": 1,
@@ -8054,7 +8058,7 @@
     "b": 3
    },
    "SHORT_FAVORITE|high|sport": {
-    "a": 69,
+    "a": 70,
     "b": 28
    },
    "VOLUME_SPIKE|mid|other": {
@@ -8109,13 +8113,13 @@
    }
   },
   "brier": {
-   "sum": 40.18974000000001,
-   "n": 166
+   "sum": 40.27914100000001,
+   "n": 167
   },
   "payoff": {
    "SHORT_FAVORITE": {
-    "wSum": 11.119233215559758,
-    "wN": 70,
+    "wSum": 11.200314296640839,
+    "wN": 71,
     "lSum": 9.783531896143137,
     "lN": 30
    },
@@ -8148,14 +8152,14 @@
    {
     "key": "SHORT_FAVORITE|high|sport",
     "status": "VALIDATED",
-    "n": 95,
-    "winRate": 71.1,
+    "n": 96,
+    "winRate": 71.4,
     "ci": [
      64,
      79
     ],
-    "text": "Short Favorite on high-priced sports markets: 68W/27L (posterior 71%, 90% CI 64-79%) — proven edge, prioritized",
-    "updated": "2026-06-22T19:15:55.989Z"
+    "text": "Short Favorite on high-priced sports markets: 69W/27L (posterior 71%, 90% CI 64-79%) — proven edge, prioritized",
+    "updated": "2026-06-22T19:31:18.940Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -8167,7 +8171,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-06-22T19:15:55.989Z"
+    "updated": "2026-06-22T19:31:18.940Z"
    },
    {
     "key": "wallet|aenews2",
@@ -8179,7 +8183,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-06-22T19:15:55.989Z"
+    "updated": "2026-06-22T19:31:18.940Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -8191,7 +8195,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-22T19:15:55.989Z"
+    "updated": "2026-06-22T19:31:18.940Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -8203,7 +8207,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-22T19:15:55.989Z"
+    "updated": "2026-06-22T19:31:18.940Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -8215,32 +8219,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-22T19:15:55.989Z"
+    "updated": "2026-06-22T19:31:18.940Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 7153.41899053225,
+  "cash": 7261.527098640358,
   "created": 1781162132851
  },
  "summary": {
-  "realized": -1446.58,
-  "closed": 166,
-  "wins": 98,
-  "open": 6,
+  "realized": -1438.47,
+  "closed": 167,
+  "wins": 99,
+  "open": 5,
   "staked": 50350,
   "bankStart": 10000,
-  "cash": 7153,
-  "equity": 8667,
-  "returnPct": -13.33,
-  "modelUpdates": 166,
-  "brier": 0.242,
+  "cash": 7262,
+  "equity": 8675,
+  "returnPct": -13.25,
+  "modelUpdates": 167,
+  "brier": 0.241,
   "hypotheses": 6,
   "integrityOk": true,
-  "updated": "2026-06-22T19:15:55.992Z"
+  "updated": "2026-06-22T19:31:18.943Z"
  },
- "lastRun": 1782155755993,
+ "lastRun": 1782156678943,
  "elite": {
   "updated": 1782152619591,
   "list": [
@@ -8277,13 +8281,13 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-22T19:15:55.993Z",
+  "checkedAt": "2026-06-22T19:31:18.943Z",
   "tradesChecked": 172
  },
  "lastScan": {
-  "at": "2026-06-22T19:15:55.992Z",
-  "marketsFetched": 47,
-  "rawCandidates": 20,
+  "at": "2026-06-22T19:31:18.943Z",
+  "marketsFetched": 58,
+  "rawCandidates": 29,
   "clearedThreshold": 0,
   "placed": 0,
   "pMin": 0.6,

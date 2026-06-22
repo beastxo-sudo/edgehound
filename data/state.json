@@ -57,7 +57,7 @@
    "slug": "atp-marozsa-molcan-2026-06-22",
    "side": "NO",
    "entry": 0.825,
-   "cur": 0.785,
+   "cur": 0.645,
    "stake": 150,
    "signal": "SHORT_FAVORITE",
    "p": 0.711,
@@ -8105,7 +8105,7 @@
      80
     ],
     "text": "Short Favorite on high-priced sports markets: 68W/25L (posterior 73%, 90% CI 65-80%) — proven edge, prioritized",
-    "updated": "2026-06-22T13:45:53.087Z"
+    "updated": "2026-06-22T14:01:31.049Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -8117,7 +8117,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-06-22T13:45:53.087Z"
+    "updated": "2026-06-22T14:01:31.049Z"
    },
    {
     "key": "wallet|aenews2",
@@ -8129,7 +8129,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-06-22T13:45:53.087Z"
+    "updated": "2026-06-22T14:01:31.049Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -8141,7 +8141,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-22T13:45:53.087Z"
+    "updated": "2026-06-22T14:01:31.049Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -8153,7 +8153,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-22T13:45:53.087Z"
+    "updated": "2026-06-22T14:01:31.049Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -8165,7 +8165,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-22T13:45:53.087Z"
+    "updated": "2026-06-22T14:01:31.049Z"
    }
   ]
  },
@@ -8182,15 +8182,15 @@
   "staked": 50250,
   "bankStart": 10000,
   "cash": 7105,
-  "equity": 8811,
-  "returnPct": -11.89,
+  "equity": 8786,
+  "returnPct": -12.14,
   "modelUpdates": 164,
   "brier": 0.239,
   "hypotheses": 6,
   "integrityOk": true,
-  "updated": "2026-06-22T13:45:53.087Z"
+  "updated": "2026-06-22T14:01:31.050Z"
  },
- "lastRun": 1782135953088,
+ "lastRun": 1782136891050,
  "elite": {
   "updated": 1782065476838,
   "list": [
@@ -8220,7 +8220,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-22T13:45:53.088Z",
+  "checkedAt": "2026-06-22T14:01:31.050Z",
   "tradesChecked": 171
  },
  "lastScan": {

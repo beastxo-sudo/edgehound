@@ -11,7 +11,7 @@
    "slug": "dota2-rnx-og-2026-06-22",
    "side": "YES",
    "entry": 0.845,
-   "cur": 0.845,
+   "cur": 0.65,
    "stake": 150,
    "signal": "SHORT_FAVORITE",
    "p": 0.711,
@@ -8013,7 +8013,7 @@
      80
     ],
     "text": "Short Favorite on high-priced sports markets: 66W/25L (posterior 72%, 90% CI 64-80%) — proven edge, prioritized",
-    "updated": "2026-06-22T11:45:50.021Z"
+    "updated": "2026-06-22T12:01:18.257Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -8025,7 +8025,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-06-22T11:45:50.021Z"
+    "updated": "2026-06-22T12:01:18.257Z"
    },
    {
     "key": "wallet|aenews2",
@@ -8037,7 +8037,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-06-22T11:45:50.021Z"
+    "updated": "2026-06-22T12:01:18.257Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -8049,7 +8049,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-22T11:45:50.021Z"
+    "updated": "2026-06-22T12:01:18.257Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -8061,7 +8061,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-22T11:45:50.021Z"
+    "updated": "2026-06-22T12:01:18.257Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -8073,7 +8073,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-22T11:45:50.021Z"
+    "updated": "2026-06-22T12:01:18.257Z"
    }
   ]
  },
@@ -8090,15 +8090,15 @@
   "staked": 49950,
   "bankStart": 10000,
   "cash": 7060,
-  "equity": 8774,
-  "returnPct": -12.26,
+  "equity": 8739,
+  "returnPct": -12.61,
   "modelUpdates": 162,
   "brier": 0.241,
   "hypotheses": 6,
   "integrityOk": true,
-  "updated": "2026-06-22T11:45:50.026Z"
+  "updated": "2026-06-22T12:01:18.260Z"
  },
- "lastRun": 1782128750026,
+ "lastRun": 1782129678260,
  "elite": {
   "updated": 1782065476838,
   "list": [
@@ -8128,15 +8128,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-22T11:45:50.026Z",
+  "checkedAt": "2026-06-22T12:01:18.260Z",
   "tradesChecked": 169
  },
  "lastScan": {
-  "at": "2026-06-22T11:45:50.025Z",
-  "marketsFetched": 58,
-  "rawCandidates": 25,
-  "clearedThreshold": 1,
-  "placed": 1,
+  "at": "2026-06-22T12:01:18.260Z",
+  "marketsFetched": 57,
+  "rawCandidates": 23,
+  "clearedThreshold": 0,
+  "placed": 0,
   "pMin": 0.6,
   "blocked": {
    "exposure": 0,
@@ -8144,6 +8144,6 @@
    "cash": 0,
    "sanity": 0
   },
-  "reason": "traded"
+  "reason": "no candidates cleared P(win)>=0.60 (engines produce ~0.58-0.64; lower pMin or wait for better setups)"
  }
 }

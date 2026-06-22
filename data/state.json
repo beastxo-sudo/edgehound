@@ -195,7 +195,7 @@
    "slug": "fifwc-arg-aut-2026-06-22",
    "side": "NO",
    "entry": 0.785,
-   "cur": 0.795,
+   "cur": 0.785,
    "stake": 150,
    "signal": "SHORT_FAVORITE",
    "p": 0.71,
@@ -8109,7 +8109,7 @@
      79
     ],
     "text": "Short Favorite on high-priced sports markets: 68W/26L (posterior 72%, 90% CI 64-79%) — proven edge, prioritized",
-    "updated": "2026-06-22T15:45:56.656Z"
+    "updated": "2026-06-22T16:00:25.721Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -8121,7 +8121,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-06-22T15:45:56.656Z"
+    "updated": "2026-06-22T16:00:25.721Z"
    },
    {
     "key": "wallet|aenews2",
@@ -8133,7 +8133,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-06-22T15:45:56.656Z"
+    "updated": "2026-06-22T16:00:25.721Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -8145,7 +8145,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-22T15:45:56.656Z"
+    "updated": "2026-06-22T16:00:25.721Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -8157,7 +8157,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-22T15:45:56.656Z"
+    "updated": "2026-06-22T16:00:25.721Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -8169,7 +8169,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-22T15:45:56.656Z"
+    "updated": "2026-06-22T16:00:25.721Z"
    }
   ]
  },
@@ -8186,15 +8186,15 @@
   "staked": 50250,
   "bankStart": 10000,
   "cash": 7105,
-  "equity": 8671,
-  "returnPct": -13.29,
+  "equity": 8669,
+  "returnPct": -13.31,
   "modelUpdates": 165,
   "brier": 0.241,
   "hypotheses": 6,
   "integrityOk": true,
-  "updated": "2026-06-22T15:45:56.657Z"
+  "updated": "2026-06-22T16:00:25.722Z"
  },
- "lastRun": 1782143156658,
+ "lastRun": 1782144025723,
  "elite": {
   "updated": 1782065476838,
   "list": [
@@ -8224,7 +8224,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-22T15:45:56.658Z",
+  "checkedAt": "2026-06-22T16:00:25.722Z",
   "tradesChecked": 171
  },
  "lastScan": {

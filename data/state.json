@@ -57,7 +57,7 @@
    "slug": "atp-marozsa-molcan-2026-06-22",
    "side": "NO",
    "entry": 0.825,
-   "cur": 0.645,
+   "cur": 0.0004999999999999449,
    "stake": 150,
    "signal": "SHORT_FAVORITE",
    "p": 0.711,
@@ -87,7 +87,11 @@
    "target": null,
    "stop": 0.45,
    "holdUntil": 1782732600000,
-   "status": "open"
+   "status": "closed",
+   "exit": 0,
+   "exitTs": 1782137792891,
+   "exitReason": "Resolved against us",
+   "pnl": -150
   },
   {
    "id": "t178212875002594q4",
@@ -7893,9 +7897,9 @@
  ],
  "strat": {
   "SHORT_FAVORITE": {
-   "trades": 98,
+   "trades": 99,
    "wins": 70,
-   "pnl": -156.58693623291958,
+   "pnl": -306.5869362329196,
    "weight": 1
   },
   "MOMENTUM": {
@@ -7925,6 +7929,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-22 19:46 IST — Closed NO \"Mallorca Championships: Fabian Marozsan vs\" -> $-150 (Resolved against us) · model said P(win)=71%",
   "2026-06-22 19:15 IST — Closed NO \"Dota 2: REKONIX vs OG (BO3) - The Internat\" -> +$18 (Resolved in our favor) · model said P(win)=71%",
   "2026-06-22 18:45 IST — Opened NO $150 @ 90c P=71% EV=+0.02 [Short Favorite] \"Dota 2: REKONIX vs OG (BO3) - The Internationa\"",
   "2026-06-22 18:01 IST — Opened NO $150 @ 83c P=71% EV=+0.02 [Short Favorite] \"Mallorca Championships: Fabian Marozsan vs Ale\"",
@@ -7937,27 +7942,26 @@
   "2026-06-22 11:15 IST — Opened YES $150 @ 94c P=70% EV=+0.02 [Short Favorite] \"Dota 2: Execration vs Mentality Monster (BO3) \"",
   "2026-06-22 09:01 IST — Opened NO $150 @ 93c P=71% EV=+0.02 [Short Favorite] \"Will France vs. Iraq end in a draw?\"",
   "2026-06-22 05:21 IST — Opened NO $150 @ 83c P=70% EV=+0.02 [Short Favorite] \"New York Mets vs. Philadelphia Phillies\"",
-  "2026-06-22 04:38 IST — Closed YES \"Baltimore Orioles vs. Los Angeles Dodgers\" -> +$17 (Resolved in our favor) · model said P(win)=70%",
-  "2026-06-22 04:10 IST — Closed NO \"Boston Red Sox vs. Seattle Mariners\" -> +$27 (Resolved in our favor) · model said P(win)=70%"
+  "2026-06-22 04:38 IST — Closed YES \"Baltimore Orioles vs. Los Angeles Dodgers\" -> +$17 (Resolved in our favor) · model said P(win)=70%"
  ],
  "brain": {
   "w": [
-   0.4804571107286088,
-   0.046269458192654135,
-   0.008924383267502275,
-   -0.17743004178507257,
-   0.3423572749790619,
-   -0.18622263683372905,
-   0.5420573820752783,
-   0.15696985841091643,
-   0.032039554398657376,
-   0.18505568285212448,
-   0.0035697533070009036,
-   0.19985434878109684,
-   -0.06929713330917821
+   0.41603369881227875,
+   0.04624632346355781,
+   0.008919921075868524,
+   -0.17734132676418005,
+   0.28923497006877563,
+   -0.21841366674587795,
+   0.5417863533842406,
+   0.10875398596098668,
+   -0.01425254058179825,
+   0.12077997164973268,
+   0.003567968430347403,
+   0.13557123824574058,
+   -0.06926248474252363
   ],
-  "b": 0.2245029701584661,
-  "nUpdates": 164,
+  "b": 0.16031978679750036,
+  "nUpdates": 165,
   "buckets": {
    "MOMENTUM|high|sport": {
     "a": 1,
@@ -8005,7 +8009,7 @@
    },
    "SHORT_FAVORITE|high|sport": {
     "a": 69,
-    "b": 26
+    "b": 27
    },
    "VOLUME_SPIKE|mid|other": {
     "a": 2,
@@ -8059,15 +8063,15 @@
    }
   },
   "brier": {
-   "sum": 39.180119000000005,
-   "n": 164
+   "sum": 39.68564000000001,
+   "n": 165
   },
   "payoff": {
    "SHORT_FAVORITE": {
     "wSum": 11.119233215559758,
     "wN": 70,
-    "lSum": 8.770793042639951,
-    "lN": 28
+    "lSum": 9.770793042639951,
+    "lN": 29
    },
    "MOMENTUM": {
     "wSum": 2.701062968732154,
@@ -8098,14 +8102,14 @@
    {
     "key": "SHORT_FAVORITE|high|sport",
     "status": "VALIDATED",
-    "n": 93,
-    "winRate": 72.6,
+    "n": 94,
+    "winRate": 71.9,
     "ci": [
-     65,
-     80
+     64,
+     79
     ],
-    "text": "Short Favorite on high-priced sports markets: 68W/25L (posterior 73%, 90% CI 65-80%) — proven edge, prioritized",
-    "updated": "2026-06-22T14:01:31.049Z"
+    "text": "Short Favorite on high-priced sports markets: 68W/26L (posterior 72%, 90% CI 64-79%) — proven edge, prioritized",
+    "updated": "2026-06-22T14:16:32.892Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -8117,7 +8121,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-06-22T14:01:31.049Z"
+    "updated": "2026-06-22T14:16:32.892Z"
    },
    {
     "key": "wallet|aenews2",
@@ -8129,7 +8133,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-06-22T14:01:31.049Z"
+    "updated": "2026-06-22T14:16:32.892Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -8141,7 +8145,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-22T14:01:31.049Z"
+    "updated": "2026-06-22T14:16:32.892Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -8153,7 +8157,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-22T14:01:31.049Z"
+    "updated": "2026-06-22T14:16:32.892Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -8165,7 +8169,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-22T14:01:31.049Z"
+    "updated": "2026-06-22T14:16:32.892Z"
    }
   ]
  },
@@ -8175,22 +8179,22 @@
   "created": 1781162132851
  },
  "summary": {
-  "realized": -1294.67,
-  "closed": 164,
+  "realized": -1444.67,
+  "closed": 165,
   "wins": 98,
-  "open": 7,
+  "open": 6,
   "staked": 50250,
   "bankStart": 10000,
   "cash": 7105,
-  "equity": 8786,
-  "returnPct": -12.14,
-  "modelUpdates": 164,
-  "brier": 0.239,
+  "equity": 8669,
+  "returnPct": -13.31,
+  "modelUpdates": 165,
+  "brier": 0.241,
   "hypotheses": 6,
   "integrityOk": true,
-  "updated": "2026-06-22T14:01:31.050Z"
+  "updated": "2026-06-22T14:16:32.893Z"
  },
- "lastRun": 1782136891050,
+ "lastRun": 1782137792893,
  "elite": {
   "updated": 1782065476838,
   "list": [
@@ -8220,7 +8224,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-22T14:01:31.050Z",
+  "checkedAt": "2026-06-22T14:16:32.893Z",
   "tradesChecked": 171
  },
  "lastScan": {

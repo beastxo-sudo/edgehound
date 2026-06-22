@@ -11,7 +11,7 @@
    "slug": "dota2-rnx-og-2026-06-22",
    "side": "NO",
    "entry": 0.895,
-   "cur": 0.895,
+   "cur": 0.775,
    "stake": 150,
    "signal": "SHORT_FAVORITE",
    "p": 0.714,
@@ -53,7 +53,7 @@
    "slug": "atp-marozsa-molcan-2026-06-22",
    "side": "NO",
    "entry": 0.825,
-   "cur": 0.575,
+   "cur": 0.605,
    "stake": 150,
    "signal": "SHORT_FAVORITE",
    "p": 0.711,
@@ -8101,7 +8101,7 @@
      80
     ],
     "text": "Short Favorite on high-priced sports markets: 67W/25L (posterior 72%, 90% CI 65-80%) — proven edge, prioritized",
-    "updated": "2026-06-22T13:15:52.446Z"
+    "updated": "2026-06-22T13:31:12.251Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -8113,7 +8113,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-06-22T13:15:52.446Z"
+    "updated": "2026-06-22T13:31:12.251Z"
    },
    {
     "key": "wallet|aenews2",
@@ -8125,7 +8125,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-06-22T13:15:52.446Z"
+    "updated": "2026-06-22T13:31:12.251Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -8137,7 +8137,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-22T13:15:52.446Z"
+    "updated": "2026-06-22T13:31:12.251Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -8149,7 +8149,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-22T13:15:52.446Z"
+    "updated": "2026-06-22T13:31:12.251Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -8161,7 +8161,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-22T13:15:52.446Z"
+    "updated": "2026-06-22T13:31:12.251Z"
    }
   ]
  },
@@ -8178,15 +8178,15 @@
   "staked": 50250,
   "bankStart": 10000,
   "cash": 6938,
-  "equity": 8756,
-  "returnPct": -12.44,
+  "equity": 8741,
+  "returnPct": -12.59,
   "modelUpdates": 163,
   "brier": 0.24,
   "hypotheses": 6,
   "integrityOk": true,
-  "updated": "2026-06-22T13:15:52.451Z"
+  "updated": "2026-06-22T13:31:12.252Z"
  },
- "lastRun": 1782134152452,
+ "lastRun": 1782135072252,
  "elite": {
   "updated": 1782065476838,
   "list": [
@@ -8216,7 +8216,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-22T13:15:52.451Z",
+  "checkedAt": "2026-06-22T13:31:12.252Z",
   "tradesChecked": 171
  },
  "lastScan": {

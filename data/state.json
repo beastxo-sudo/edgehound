@@ -2,6 +2,48 @@
  "running": true,
  "journal": [
   {
+   "id": "t1782241868661jmne",
+   "date": "2026-06-24",
+   "openedTs": 1782241868661,
+   "title": "Spread: England (-3.5)",
+   "mid": "2585309",
+   "conditionId": "0xd80220c4a12bca764f43bea0f8d481382a0501b9aea7dc148ff4d0076050732a",
+   "slug": "fifwc-eng-gha-2026-06-23-more-markets",
+   "side": "NO",
+   "entry": 0.785,
+   "cur": 0.785,
+   "stake": 100,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.626,
+   "pModel": 0.779,
+   "pBucket": 0.6,
+   "bucketN": 8,
+   "bk": "SHORT_FAVORITE|high|other",
+   "ev": -0.041,
+   "kelly": 0.005,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.785,
+    0.998,
+    0.25,
+    0.779,
+    0.822,
+    0.999,
+    0,
+    0,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 63% [model 78%, pattern 60% on n=8] · EV -0.04/$1 · 1/4-Kelly 0.5% of equity -> $100. 79c favorite resolving in 0.0d (favorite-longshot bias); +27% if it lands. Drivers: favorite setup +, price level +, short time to resolution -",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1782244800000,
+   "status": "open"
+  },
+  {
    "id": "t17821926660519g0e",
    "date": "2026-06-23",
    "openedTs": 1782192666051,
@@ -8853,6 +8895,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-24 00:41 IST — Opened NO $100 @ 79c P=63% EV=-0.04 [Short Favorite] \"Spread: England (-3.5)\"",
   "2026-06-23 23:56 IST — Elite pool refreshed: 4 wallets qualify (>=58% win rate over >=10 settled, scalpers excluded): AnonymousUsername 83%, donthackme 88%, aenews2 74%, denizz 67%",
   "2026-06-23 22:31 IST — Closed YES \"Will Portugal win on 2026-06-23?\" -> +$4 (Max hold reached — closed at market) · model said P(win)=60%",
   "2026-06-23 22:31 IST — Closed NO \"Will Portugal vs. Uzbekistan end in a draw\" -> +$1 (Max hold reached — closed at market) · model said P(win)=72%",
@@ -8865,8 +8908,7 @@
   "2026-06-23 08:31 IST — Closed NO \"Will Jordan win on 2026-06-22?\" -> +$1 (Max hold reached — closed at market) · model said P(win)=57%",
   "2026-06-23 08:31 IST — Closed YES \"Cleveland Guardians vs. Chicago White Sox\" -> $-100 (Resolved against us) · model said P(win)=72%",
   "2026-06-23 08:31 IST — Closed NO \"Will Jordan vs. Algeria end in a draw?\" -> +$2 (Max hold reached — closed at market) · model said P(win)=72%",
-  "2026-06-23 08:31 IST — Closed NO \"Will Jordan vs. Algeria end in a draw?\" -> +$6 (Max hold reached — closed at market) · model said P(win)=61%",
-  "2026-06-23 08:15 IST — Opened NO $500 @ 79c P=61% EV=+0.10 [Elite Follow] \"Will Jordan vs. Algeria end in a draw?\""
+  "2026-06-23 08:31 IST — Closed NO \"Will Jordan vs. Algeria end in a draw?\" -> +$6 (Max hold reached — closed at market) · model said P(win)=61%"
  ],
  "brain": {
   "w": [
@@ -9041,7 +9083,7 @@
      80
     ],
     "text": "Short Favorite on high-priced sports markets: 80W/29L (posterior 73%, 90% CI 66-80%) — proven edge, prioritized",
-    "updated": "2026-06-23T18:55:45.031Z"
+    "updated": "2026-06-23T19:11:08.657Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -9053,7 +9095,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-06-23T18:55:45.031Z"
+    "updated": "2026-06-23T19:11:08.657Z"
    },
    {
     "key": "wallet|aenews2",
@@ -9065,7 +9107,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-06-23T18:55:45.031Z"
+    "updated": "2026-06-23T19:11:08.657Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -9077,7 +9119,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-23T18:55:45.031Z"
+    "updated": "2026-06-23T19:11:08.657Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -9089,7 +9131,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-23T18:55:45.031Z"
+    "updated": "2026-06-23T19:11:08.657Z"
    },
    {
     "key": "SHORT_FAVORITE|high|other",
@@ -9101,7 +9143,7 @@
      84
     ],
     "text": "Short Favorite on high-priced non-sports markets: 5W/3L (posterior 60%, 90% CI 36-84%) — collecting evidence",
-    "updated": "2026-06-23T18:55:45.031Z"
+    "updated": "2026-06-23T19:11:08.657Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -9113,32 +9155,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-23T18:55:45.031Z"
+    "updated": "2026-06-23T19:11:08.657Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 7205.90973797883,
+  "cash": 7105.90973797883,
   "created": 1781162132851
  },
  "summary": {
   "realized": -1444.09,
   "closed": 185,
   "wins": 114,
-  "open": 6,
-  "staked": 53400,
+  "open": 7,
+  "staked": 53500,
   "bankStart": 10000,
-  "cash": 7206,
+  "cash": 7106,
   "equity": 8674,
   "returnPct": -13.26,
   "modelUpdates": 185,
   "brier": 0.234,
   "hypotheses": 7,
   "integrityOk": true,
-  "updated": "2026-06-23T18:55:45.034Z"
+  "updated": "2026-06-23T19:11:08.661Z"
  },
- "lastRun": 1782240945035,
+ "lastRun": 1782241868662,
  "elite": {
   "updated": 1782239208464,
   "list": [
@@ -9175,15 +9217,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-23T18:55:45.035Z",
-  "tradesChecked": 191
+  "checkedAt": "2026-06-23T19:11:08.661Z",
+  "tradesChecked": 192
  },
  "lastScan": {
-  "at": "2026-06-23T18:55:45.034Z",
-  "marketsFetched": 52,
-  "rawCandidates": 23,
-  "clearedThreshold": 0,
-  "placed": 0,
+  "at": "2026-06-23T19:11:08.661Z",
+  "marketsFetched": 45,
+  "rawCandidates": 26,
+  "clearedThreshold": 1,
+  "placed": 1,
   "pMin": 0.6,
   "blocked": {
    "exposure": 0,
@@ -9191,6 +9233,6 @@
    "cash": 0,
    "sanity": 0
   },
-  "reason": "no candidates cleared P(win)>=0.60 (engines produce ~0.58-0.64; lower pMin or wait for better setups)"
+  "reason": "traded"
  }
 }

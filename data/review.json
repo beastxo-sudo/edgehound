@@ -1,5 +1,5 @@
 {
   "status": "error",
-  "ranAt": "2026-06-23T10:16:10.384Z",
-  "error": "Unterminated string in JSON at position 7340 (line 45 column 651)"
+  "ranAt": "2026-06-23T14:15:21.467Z",
+  "error": "Anthropic API 529: {\"type\":\"error\",\"error\":{\"type\":\"overloaded_error\",\"message\":\"Overloaded\"},\"request_id\":\"req_011CcLLDbVzLZNA7GHDGTWMV\"}"
 }

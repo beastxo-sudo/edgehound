@@ -11,7 +11,7 @@
    "slug": "mlb-hou-tor-2026-06-22",
    "side": "NO",
    "entry": 0.895,
-   "cur": 0.895,
+   "cur": 0.945,
    "stake": 150,
    "signal": "SHORT_FAVORITE",
    "p": 0.717,
@@ -53,7 +53,7 @@
    "slug": "mlb-lad-min-2026-06-22",
    "side": "YES",
    "entry": 0.795,
-   "cur": 0.785,
+   "cur": 0.885,
    "stake": 150,
    "signal": "SHORT_FAVORITE",
    "p": 0.714,
@@ -141,7 +141,7 @@
    "slug": "mlb-ari-stl-2026-06-22",
    "side": "NO",
    "entry": 0.895,
-   "cur": 0.775,
+   "cur": 0.875,
    "stake": 150,
    "signal": "SHORT_FAVORITE",
    "p": 0.711,
@@ -367,7 +367,7 @@
    "slug": "fifwc-jor-alg-2026-06-22",
    "side": "NO",
    "entry": 0.855,
-   "cur": 0.855,
+   "cur": 0.865,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.57,
@@ -8617,7 +8617,7 @@
      80
     ],
     "text": "Short Favorite on high-priced sports markets: 74W/27L (posterior 73%, 90% CI 66-80%) — proven edge, prioritized",
-    "updated": "2026-06-23T01:48:28.271Z"
+    "updated": "2026-06-23T02:03:00.758Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -8629,7 +8629,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-06-23T01:48:28.271Z"
+    "updated": "2026-06-23T02:03:00.758Z"
    },
    {
     "key": "wallet|aenews2",
@@ -8641,7 +8641,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-06-23T01:48:28.271Z"
+    "updated": "2026-06-23T02:03:00.758Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -8653,7 +8653,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-23T01:48:28.271Z"
+    "updated": "2026-06-23T02:03:00.758Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -8665,7 +8665,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-23T01:48:28.271Z"
+    "updated": "2026-06-23T02:03:00.758Z"
    },
    {
     "key": "SHORT_FAVORITE|high|other",
@@ -8677,7 +8677,7 @@
      77
     ],
     "text": "Short Favorite on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-23T01:48:28.271Z"
+    "updated": "2026-06-23T02:03:00.758Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -8689,7 +8689,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-23T01:48:28.271Z"
+    "updated": "2026-06-23T02:03:00.758Z"
    }
   ]
  },
@@ -8706,15 +8706,15 @@
   "staked": 52000,
   "bankStart": 10000,
   "cash": 6957,
-  "equity": 8748,
-  "returnPct": -12.52,
+  "equity": 8793,
+  "returnPct": -12.07,
   "modelUpdates": 174,
   "brier": 0.237,
   "hypotheses": 7,
   "integrityOk": true,
-  "updated": "2026-06-23T01:48:28.274Z"
+  "updated": "2026-06-23T02:03:00.761Z"
  },
- "lastRun": 1782179308274,
+ "lastRun": 1782180180761,
  "elite": {
   "updated": 1782152619591,
   "list": [
@@ -8751,15 +8751,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-23T01:48:28.274Z",
+  "checkedAt": "2026-06-23T02:03:00.761Z",
   "tradesChecked": 182
  },
  "lastScan": {
-  "at": "2026-06-23T01:48:28.273Z",
-  "marketsFetched": 55,
+  "at": "2026-06-23T02:03:00.761Z",
+  "marketsFetched": 54,
   "rawCandidates": 16,
-  "clearedThreshold": 1,
-  "placed": 1,
+  "clearedThreshold": 0,
+  "placed": 0,
   "pMin": 0.6,
   "blocked": {
    "exposure": 0,
@@ -8767,6 +8767,6 @@
    "cash": 0,
    "sanity": 0
   },
-  "reason": "traded"
+  "reason": "no candidates cleared P(win)>=0.60 (engines produce ~0.58-0.64; lower pMin or wait for better setups)"
  }
 }

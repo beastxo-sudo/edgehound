@@ -1,28 +1,27 @@
 {
  "status": "ok",
- "updated": "2026-06-23T04:00:49.508Z",
- "updatedIST": "2026-06-23 09:30 IST",
- "memo": "EdgeHound Portfolio Review — 2026-06-23\n\nPortfolio is down 13.6% from inception ($10K → $8,637 equity) on 182 settled trades. The performance picture is highly bifurcated by engine. SHORT_FAVORITE remains the structural anchor: 114 trades, 72% win rate on sports/high-price markets, validated hypothesis with tight CI (65–79%). Its -$345 PnL at 72% win rate signals that sizing on losses (flat $100–150 per trade) is roughly breaking even after occasional bad resolutions like the CWS double-hit this session. The edge is real and should be protected.\n\nMOMENTUM is the primary bleeder: 21 trades, 38% win rate, -$1,019. This engine was correctly disabled in the prior session. SMART_CONSENSUS has 1 trade and -$385 — appears to have taken a single oversized position on weak signal. Both remain correctly disabled.\n\nVOLUME_SPIKE is marginally profitable (+$190, 8/20) but hypothesis CI is wide (29–71%) — insufficient evidence to draw strong conclusions. ELITE_FOLLOW is slightly positive (+$82, 13/26) with a forming mid-other hypothesis at 57% win rate. Both are acceptable to maintain at current exposure levels.\n\nBrier score of 0.236 is acceptable but not strong — model calibration needs monitoring. The aenews2 wallet at 44% win rate (forming hypothesis) warrants continued skepticism. denizz at 0.8 score and donthackme at 0.6 are the highest-quality ELITE_FOLLOW sources.\n\nNo parameter changes warranted this session. SHORT_FAVORITE configuration is working. Current conservative posture (kellyMult 0.15, maxExposure 0.38) is appropriate given the drawdown. Patience is the correct posture while the validated engine continues to compound.",
+ "updated": "2026-06-23T13:50:48.076Z",
+ "updatedIST": "2026-06-23 19:20 IST",
+ "memo": "EdgeHound Performance Review — 2026-06-23\n\nPortfolio has declined 13.3% from inception (equity $8,673 vs $10,000 start) across 183 closed trades. The damage is concentrated in two engines now correctly disabled: MOMENTUM (-$1,019, 8W/21T = 38%) and SMART_CONSENSUS (-$385, 0W/1T). The surviving active lineup tells a very different story.\n\nSHORT_FAVORITE on high-priced sports markets remains the fund's only validated edge: 79W/29L (73% win rate, 90% CI 66-80%) with a statistically robust n=108. This hypothesis is carrying the book. The engine's overall PnL of -$317 across 115 trades reflects legacy losses before tighter parameterization and some basis risk from non-sports markets where the edge is unproven (n=7, 56% win rate, CI too wide to act on).\n\nVOLUME_SPIKE is modestly profitable (+$190, 8W/20T = 40% win rate). Win rate looks low but PnL is positive, suggesting favorable payoff asymmetry. Still sub-threshold for parameter changes.\n\nELITE_FOLLOW is marginally positive (+$82, 13W/26T = 50%). Wallet 'denizz' scores 0.8 and should be monitored for concentration. Wallet 'aenews2' at 44% win rate warrants watching for removal.\n\nOpen book looks clean: 8 positions, all SHORT_FAVORITE sports, small-to-mid sizing. Minnesota Twins ($500) and Kansas City Royals ($400) are notable concentrations but within maxEventExposure.\n\nNo parameter changes warranted this session. Current config (pMin 0.60, kellyMult 0.15, maxExposure 0.38) is appropriately conservative while the bot rebuilds from its validated edge. Resist the temptation to re-enable MOMENTUM — evidence remains strongly negative.",
  "observations": [
-  "SHORT_FAVORITE validated at 72.5% win rate on high-priced sports (n=107, CI 65–79%) — the core edge is intact",
-  "MOMENTUM disabled correctly — 38% win rate, -$1,019 over 21 trades is structural not noise",
-  "SMART_CONSENSUS disabled correctly — single -$385 trade, no sample base",
-  "VOLUME_SPIKE marginally positive (+$190) but 50% win rate on non-sports with wide CI — watch, don't expand",
-  "ELITE_FOLLOW slightly positive (+$82) — denizz (0.8) and donthackme (0.6) wallet scores are strongest signals",
-  "aenews2 wallet at 44% win rate (n=14) — ELITE_FOLLOW should be selective; this wallet is likely diluting returns",
-  "CWS double-entry (both YES and NO on same game) appears in recent trades — potential logic bug in deduplication or opposite-side entries on same market; warrants investigation",
-  "Brier score 0.236 is borderline — model is not well-calibrated, pPredicted values frequently diverge from outcomes",
-  "Open position: Minnesota Twins (stake $500) is oversized relative to typical $100–150 SHORT_FAVORITE trade — verify this is intentional sizing, not a parameter drift",
-  "Total equity at $8,637 — drawdown warrants continued conservative sizing, no loosening of maxExposure"
+  "Total equity -13.3% ($8,673); bulk of losses attributable to MOMENTUM (-$1,019) and SMART_CONSENSUS (-$385), both now disabled",
+  "SHORT_FAVORITE sports hypothesis VALIDATED: 73% win rate (n=108, 90% CI 66-80%) — clear positive expected value edge",
+  "SHORT_FAVORITE overall PnL still -$317 due to non-sports trades and legacy sizing; sports-specific edge is real",
+  "VOLUME_SPIKE: +$190 PnL despite only 40% win rate — payoff structure appears favorable; too few trades to adjust",
+  "ELITE_FOLLOW: marginally positive +$82, 50% win rate; wallet 'denizz' (score 0.8) is best-performing signal source",
+  "Wallet 'aenews2' at 44% posterior win rate (6W/8L) — below breakeven; candidate for disabling if trend continues",
+  "Open positions: 8 trades all SHORT_FAVORITE sports; MN Twins $500 and KC Royals $400 are largest open exposures",
+  "Brier score 0.235 is reasonable but not exceptional — model calibration has room to improve",
+  "No anomalous patterns in recent closed trades; recent SHORT_FAVORITE sports results predominantly positive"
  ],
  "changesApplied": [],
- "changeReasoning": "No parameter changes warranted. SHORT_FAVORITE is the only validated edge engine and current conservative sizing (kellyMult 0.15, maxExposure 0.38) is appropriate during a drawdown period. MOMENTUM and SMART_CONSENSUS remain disabled — sample evidence is decisively negative for MOMENTUM and insufficient for SMART_CONSENSUS. VOLUME_SPIKE and ELITE_FOLLOW remain enabled with insufficient evidence to either expand or cut. Raising pMin or cutting kellyMult further would reduce trade frequency on the one working engine without clear benefit. Maintaining status quo is the disciplined choice.",
+ "changeReasoning": "No changes made. Current configuration is appropriate: disabled engines (MOMENTUM, SMART_CONSENSUS) have clear negative evidence. Active engines are net positive or validated. Kelly at 0.15 and maxExposure at 0.38 are correctly conservative during recovery phase. Increasing aggression requires sustained positive PnL trajectory not yet established. Insufficient settled trades in VOLUME_SPIKE (20) and ELITE_FOLLOW (26) to justify loosening pMin or raising kellyMult for those signals specifically — the architecture applies parameters globally. Patience is the correct stance.",
  "riskFlags": [
-  "SAME-GAME DOUBLE-ENTRY: Recent trades show both YES ($100) and NO ($150) on 'Cleveland Guardians vs. Chicago White Sox' and similar patterns — if this is the bot taking both sides of a market, it is guaranteed to lose on one leg and needs immediate logic review",
-  "OVERSIZED OPEN: Minnesota Twins position at $500 stake is 3-5x the typical SHORT_FAVORITE trade size — confirm this is within maxEventExposure logic and not a Kelly calculation error with a bloated bank estimate",
-  "EQUITY EROSION: At -13.6% from start, continued drawdown of similar magnitude would approach a point where position sizing materially compresses — monitor closely",
-  "aenews2 WALLET: 44% win rate follower is likely a net drag on ELITE_FOLLOW PnL; recommend the bot's wallet-scoring logic consider deprecating or zero-weighting this source if it reaches n=20 without improvement",
-  "BRIER CALIBRATION: Score of 0.236 suggests systematic overconfidence in pPredicted — if the model consistently predicts 0.70+ but true win rate is ~72% only on sports, non-sports model outputs are likely poorly calibrated"
+  "Wallet 'aenews2' at 44% win rate (posterior) — monitor closely; disable if it reaches 15+ trades below 45%",
+  "SHORT_FAVORITE being applied to non-sports markets (n=7) where edge is unconfirmed — consider adding market-type filter if architecture supports it",
+  "Two open positions (MN Twins $500, KC Royals $400) represent meaningful concentration given $8,673 equity; combined ~$900 = ~10% of equity in two bets",
+  "Overall equity drawdown of 13.3% is significant — bot needs sustained profitability before any parameter liberalization",
+  "ELITE_FOLLOW $500 stakes on individual trades (e.g., Jordan vs Algeria) appear oversized relative to current bank; review stake-sizing logic for this engine"
  ],
  "configNow": {
   "comment": "EdgeHound tunable parameters. The AI Analyst may adjust these within hard rails enforced in code. Humans can edit too. [pMin lowered to match surviving engines after momentum block]",
@@ -38,6 +37,6 @@
   "maxExposure": 0.38,
   "maxEventExposure": 750,
   "updatedBy": "analyst",
-  "updatedAt": "2026-06-23T04:00:49.508Z"
+  "updatedAt": "2026-06-23T13:50:48.076Z"
  }
 }

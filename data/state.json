@@ -2,6 +2,48 @@
  "running": true,
  "journal": [
   {
+   "id": "t1782249635333lnq8",
+   "date": "2026-06-24",
+   "openedTs": 1782249635333,
+   "title": "Houston Astros vs. Toronto Blue Jays",
+   "mid": "2581623",
+   "conditionId": "0xd1a333e72b4618fee21c080f6761a3998c0cc15b00a45cc2f532e4f0a3f801e0",
+   "slug": "mlb-hou-tor-2026-06-23",
+   "side": "YES",
+   "entry": 0.865,
+   "cur": 0.865,
+   "stake": 100,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.707,
+   "pModel": 0.745,
+   "pBucket": 0.717,
+   "bucketN": 111,
+   "bk": "SHORT_FAVORITE|high|sport",
+   "ev": 0.009,
+   "kelly": 0.0091,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.865,
+    0.504,
+    1,
+    0.778,
+    0.708,
+    0.998,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 71% [model 74%, pattern 72% on n=111] · EV +0.01/$1 · 1/4-Kelly 0.9% of equity -> $100. 87c favorite resolving in 6.9d (favorite-longshot bias); +16% if it lands. Drivers: 24h move size +, favorite setup +, price level +",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1782850020000,
+   "status": "open"
+  },
+  {
    "id": "t1782244529520w9dl",
    "date": "2026-06-24",
    "openedTs": 1782244529520,
@@ -9175,6 +9217,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-24 02:50 IST — Opened YES $100 @ 87c P=71% EV=+0.01 [Short Favorite] \"Houston Astros vs. Toronto Blue Jays\"",
   "2026-06-24 01:39 IST — Closed YES \"Will England win on 2026-06-23?\" -> +$2 (Max hold reached — closed at market) · model said P(win)=60%",
   "2026-06-24 01:39 IST — Closed NO \"Will England vs. Ghana end in a draw?\" -> +$0 (Max hold reached — closed at market) · model said P(win)=72%",
   "2026-06-24 01:39 IST — Closed NO \"Spread: England (-3.5)\" -> +$4 (Max hold reached — closed at market) · model said P(win)=63%",
@@ -9187,8 +9230,7 @@
   "2026-06-24 01:10 IST — Opened YES $100 @ 85c P=72% EV=+0.01 [Short Favorite] \"England vs. Ghana: O/U 1.5\"",
   "2026-06-24 00:55 IST — Opened NO $100 @ 88c P=63% EV=-0.04 [Short Favorite] \"Will Panama win on 2026-06-23?\"",
   "2026-06-24 00:55 IST — Opened NO $100 @ 93c P=63% EV=-0.04 [Short Favorite] \"Exact Score: England 3 - 1 Ghana?\"",
-  "2026-06-24 00:55 IST — Opened NO $100 @ 80c P=72% EV=+0.01 [Short Favorite] \"Will Panama vs. Croatia end in a draw?\"",
-  "2026-06-24 00:41 IST — Opened NO $100 @ 79c P=63% EV=-0.04 [Short Favorite] \"Spread: England (-3.5)\""
+  "2026-06-24 00:55 IST — Opened NO $100 @ 80c P=72% EV=+0.01 [Short Favorite] \"Will Panama vs. Croatia end in a draw?\""
  ],
  "brain": {
   "w": [
@@ -9363,7 +9405,7 @@
      79
     ],
     "text": "Short Favorite on high-priced sports markets: 80W/31L (posterior 72%, 90% CI 65-79%) — proven edge, prioritized",
-    "updated": "2026-06-23T21:06:12.521Z"
+    "updated": "2026-06-23T21:20:35.328Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -9375,7 +9417,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-06-23T21:06:12.521Z"
+    "updated": "2026-06-23T21:20:35.328Z"
    },
    {
     "key": "wallet|aenews2",
@@ -9387,7 +9429,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-06-23T21:06:12.521Z"
+    "updated": "2026-06-23T21:20:35.328Z"
    },
    {
     "key": "SHORT_FAVORITE|high|other",
@@ -9399,7 +9441,7 @@
      80
     ],
     "text": "Short Favorite on high-priced non-sports markets: 8W/5L (posterior 60%, 90% CI 40-80%) — collecting evidence",
-    "updated": "2026-06-23T21:06:12.521Z"
+    "updated": "2026-06-23T21:20:35.328Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -9411,7 +9453,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-23T21:06:12.521Z"
+    "updated": "2026-06-23T21:20:35.328Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -9423,7 +9465,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-23T21:06:12.521Z"
+    "updated": "2026-06-23T21:20:35.328Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -9435,32 +9477,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-23T21:06:12.521Z"
+    "updated": "2026-06-23T21:20:35.328Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 7206.85676612086,
+  "cash": 7106.85676612086,
   "created": 1781162132851
  },
  "summary": {
   "realized": -1443.14,
   "closed": 192,
   "wins": 117,
-  "open": 6,
-  "staked": 54100,
+  "open": 7,
+  "staked": 54200,
   "bankStart": 10000,
-  "cash": 7207,
+  "cash": 7107,
   "equity": 8671,
   "returnPct": -13.29,
   "modelUpdates": 192,
   "brier": 0.237,
   "hypotheses": 7,
   "integrityOk": true,
-  "updated": "2026-06-23T21:06:12.524Z"
+  "updated": "2026-06-23T21:20:35.333Z"
  },
- "lastRun": 1782248772525,
+ "lastRun": 1782249635334,
  "elite": {
   "updated": 1782239208464,
   "list": [
@@ -9497,15 +9539,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-23T21:06:12.525Z",
-  "tradesChecked": 198
+  "checkedAt": "2026-06-23T21:20:35.333Z",
+  "tradesChecked": 199
  },
  "lastScan": {
-  "at": "2026-06-23T21:06:12.524Z",
+  "at": "2026-06-23T21:20:35.333Z",
   "marketsFetched": 64,
   "rawCandidates": 21,
-  "clearedThreshold": 0,
-  "placed": 0,
+  "clearedThreshold": 1,
+  "placed": 1,
   "pMin": 0.6,
   "blocked": {
    "exposure": 0,
@@ -9513,6 +9555,6 @@
    "cash": 0,
    "sanity": 0
   },
-  "reason": "no candidates cleared P(win)>=0.60 (engines produce ~0.58-0.64; lower pMin or wait for better setups)"
+  "reason": "traded"
  }
 }

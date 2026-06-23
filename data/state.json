@@ -8853,6 +8853,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-23 23:56 IST — Elite pool refreshed: 4 wallets qualify (>=58% win rate over >=10 settled, scalpers excluded): AnonymousUsername 83%, donthackme 88%, aenews2 74%, denizz 67%",
   "2026-06-23 22:31 IST — Closed YES \"Will Portugal win on 2026-06-23?\" -> +$4 (Max hold reached — closed at market) · model said P(win)=60%",
   "2026-06-23 22:31 IST — Closed NO \"Will Portugal vs. Uzbekistan end in a draw\" -> +$1 (Max hold reached — closed at market) · model said P(win)=72%",
   "2026-06-23 11:01 IST — Opened NO $100 @ 87c P=72% EV=+0.01 [Short Favorite] \"Will England vs. Ghana end in a draw?\"",
@@ -8865,8 +8866,7 @@
   "2026-06-23 08:31 IST — Closed YES \"Cleveland Guardians vs. Chicago White Sox\" -> $-100 (Resolved against us) · model said P(win)=72%",
   "2026-06-23 08:31 IST — Closed NO \"Will Jordan vs. Algeria end in a draw?\" -> +$2 (Max hold reached — closed at market) · model said P(win)=72%",
   "2026-06-23 08:31 IST — Closed NO \"Will Jordan vs. Algeria end in a draw?\" -> +$6 (Max hold reached — closed at market) · model said P(win)=61%",
-  "2026-06-23 08:15 IST — Opened NO $500 @ 79c P=61% EV=+0.10 [Elite Follow] \"Will Jordan vs. Algeria end in a draw?\"",
-  "2026-06-23 08:15 IST — Opened NO $150 @ 79c P=72% EV=+0.02 [Short Favorite] \"Will Jordan vs. Algeria end in a draw?\""
+  "2026-06-23 08:15 IST — Opened NO $500 @ 79c P=61% EV=+0.10 [Elite Follow] \"Will Jordan vs. Algeria end in a draw?\""
  ],
  "brain": {
   "w": [
@@ -9041,7 +9041,7 @@
      80
     ],
     "text": "Short Favorite on high-priced sports markets: 80W/29L (posterior 73%, 90% CI 66-80%) — proven edge, prioritized",
-    "updated": "2026-06-23T18:12:19.669Z"
+    "updated": "2026-06-23T18:26:48.865Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -9053,7 +9053,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-06-23T18:12:19.669Z"
+    "updated": "2026-06-23T18:26:48.865Z"
    },
    {
     "key": "wallet|aenews2",
@@ -9065,7 +9065,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-06-23T18:12:19.669Z"
+    "updated": "2026-06-23T18:26:48.865Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -9077,7 +9077,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-23T18:12:19.669Z"
+    "updated": "2026-06-23T18:26:48.865Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -9089,7 +9089,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-23T18:12:19.669Z"
+    "updated": "2026-06-23T18:26:48.865Z"
    },
    {
     "key": "SHORT_FAVORITE|high|other",
@@ -9101,7 +9101,7 @@
      84
     ],
     "text": "Short Favorite on high-priced non-sports markets: 5W/3L (posterior 60%, 90% CI 36-84%) — collecting evidence",
-    "updated": "2026-06-23T18:12:19.669Z"
+    "updated": "2026-06-23T18:26:48.865Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -9113,7 +9113,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-23T18:12:19.669Z"
+    "updated": "2026-06-23T18:26:48.865Z"
    }
   ]
  },
@@ -9136,32 +9136,32 @@
   "brier": 0.234,
   "hypotheses": 7,
   "integrityOk": true,
-  "updated": "2026-06-23T18:12:19.669Z"
+  "updated": "2026-06-23T18:26:48.866Z"
  },
- "lastRun": 1782238339670,
+ "lastRun": 1782239208866,
  "elite": {
-  "updated": 1782152619591,
+  "updated": 1782239208464,
   "list": [
-   {
-    "wallet": "0x03805a13a0b3e058f55f6c6af95389d4f431073d",
-    "name": "donthackme",
-    "winRate": 0.873,
-    "n": 63,
-    "score": 3.631
-   },
    {
     "wallet": "0x9703676286b93c2eca71ca96e8757104519a69c2",
     "name": "AnonymousUsername",
-    "winRate": 0.773,
-    "n": 97,
-    "score": 3.545
+    "winRate": 0.83,
+    "n": 94,
+    "score": 3.779
+   },
+   {
+    "wallet": "0x03805a13a0b3e058f55f6c6af95389d4f431073d",
+    "name": "donthackme",
+    "winRate": 0.875,
+    "n": 64,
+    "score": 3.653
    },
    {
     "wallet": "0x44c1dfe43260c94ed4f1d00de2e1f80fb113ebc1",
     "name": "aenews2",
-    "winRate": 0.75,
-    "n": 36,
-    "score": 2.708
+    "winRate": 0.743,
+    "n": 35,
+    "score": 2.662
    },
    {
     "wallet": "0xbaa2bcb5439e985ce4ccf815b4700027d1b92c73",
@@ -9175,7 +9175,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-23T18:12:19.670Z",
+  "checkedAt": "2026-06-23T18:26:48.866Z",
   "tradesChecked": 191
  },
  "lastScan": {

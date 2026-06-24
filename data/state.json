@@ -2,6 +2,48 @@
  "running": true,
  "journal": [
   {
+   "id": "t17823351703463jlk",
+   "date": "2026-06-25",
+   "openedTs": 1782335170346,
+   "title": "Will Haiti win on 2026-06-24?",
+   "mid": "1897281",
+   "conditionId": "0x060f4b969fc1f6b09682c1e7d9ae218273fe3f197977d1db22ccea01f42d895b",
+   "slug": "fifwc-mar-hai-2026-06-24",
+   "side": "NO",
+   "entry": 0.935,
+   "cur": 0.935,
+   "stake": 100,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.621,
+   "pModel": 0.528,
+   "pBucket": 0.611,
+   "bucketN": 16,
+   "bk": "SHORT_FAVORITE|high|other",
+   "ev": -0.035,
+   "kelly": 0.005,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.935,
+    0.997,
+    0.1,
+    0.888,
+    0.874,
+    0.934,
+    0,
+    0,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 62% [model 53%, pattern 61% on n=16] · EV -0.04/$1 · 1/4-Kelly 0.5% of equity -> $100. 94c favorite resolving in 0.0d (favorite-longshot bias); +7% if it lands. Drivers: short time to resolution -, favorite setup +, price level +",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1782338400000,
+   "status": "open"
+  },
+  {
    "id": "t17823343084729a3j",
    "date": "2026-06-25",
    "openedTs": 1782334308472,
@@ -11,7 +53,7 @@
    "slug": "fifwc-mar-hai-2026-06-24",
    "side": "NO",
    "entry": 0.875,
-   "cur": 0.875,
+   "cur": 0.865,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.691,
@@ -99,7 +141,7 @@
    "slug": "fifwc-mar-hai-2026-06-24",
    "side": "YES",
    "entry": 0.835,
-   "cur": 0.825,
+   "cur": 0.805,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.643,
@@ -10123,6 +10165,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-25 02:36 IST — Opened NO $100 @ 94c P=62% EV=-0.04 [Short Favorite] \"Will Haiti win on 2026-06-24?\"",
   "2026-06-25 02:21 IST — Opened NO $100 @ 88c P=69% EV=-0.00 [Short Favorite] \"Will Morocco vs. Haiti end in a draw?\"",
   "2026-06-25 00:55 IST — Closed NO \"Wimbledon, Qualification WTA: Xiyu Wang vs\" -> +$20 (Resolved in our favor) · model said P(win)=68%",
   "2026-06-25 00:41 IST — Opened NO $100 @ 83c P=68% EV=-0.01 [Short Favorite] \"Wimbledon, Qualification WTA: Xiyu Wang vs Mar\"",
@@ -10135,8 +10178,7 @@
   "2026-06-25 00:11 IST — Opened NO $100 @ 83c P=69% EV=-0.00 [Short Favorite] \"Will Bosnia and Herzegovina vs. Qatar end in a\"",
   "2026-06-25 00:11 IST — Opened NO $100 @ 84c P=69% EV=-0.00 [Short Favorite] \"Will Scotland vs. Brazil end in a draw?\"",
   "2026-06-25 00:11 IST — Elite pool refreshed: 3 wallets qualify (>=58% win rate over >=10 settled, scalpers excluded): AnonymousUsername 72%, aenews2 81%, denizz 68%",
-  "2026-06-24 08:31 IST — Closed YES \"Los Angeles Dodgers vs. Minnesota Twins\" -> +$12 (Resolved in our favor) · model said P(win)=69%",
-  "2026-06-24 07:31 IST — Closed NO \"Will DR Congo win on 2026-06-23?\" -> +$1 (Max hold reached — closed at market) · model said P(win)=63%"
+  "2026-06-24 08:31 IST — Closed YES \"Los Angeles Dodgers vs. Minnesota Twins\" -> +$12 (Resolved in our favor) · model said P(win)=69%"
  ],
  "brain": {
   "w": [
@@ -10311,7 +10353,7 @@
      76
     ],
     "text": "Short Favorite on high-priced sports markets: 86W/37L (posterior 70%, 90% CI 63-76%) — proven edge, prioritized",
-    "updated": "2026-06-24T20:51:48.469Z"
+    "updated": "2026-06-24T21:06:10.343Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -10323,7 +10365,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-06-24T20:51:48.469Z"
+    "updated": "2026-06-24T21:06:10.343Z"
    },
    {
     "key": "SHORT_FAVORITE|high|other",
@@ -10335,7 +10377,7 @@
      80
     ],
     "text": "Short Favorite on high-priced non-sports markets: 10W/6L (posterior 61%, 90% CI 43-80%) — collecting evidence",
-    "updated": "2026-06-24T20:51:48.469Z"
+    "updated": "2026-06-24T21:06:10.343Z"
    },
    {
     "key": "wallet|aenews2",
@@ -10347,7 +10389,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-06-24T20:51:48.469Z"
+    "updated": "2026-06-24T21:06:10.343Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -10359,7 +10401,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-24T20:51:48.469Z"
+    "updated": "2026-06-24T21:06:10.343Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -10371,7 +10413,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-24T20:51:48.469Z"
+    "updated": "2026-06-24T21:06:10.343Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -10383,32 +10425,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-24T20:51:48.469Z"
+    "updated": "2026-06-24T21:06:10.343Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 6553.859033566436,
+  "cash": 6453.859033566436,
   "created": 1781162132851
  },
  "summary": {
   "realized": -1596.14,
   "closed": 208,
   "wins": 125,
-  "open": 11,
-  "staked": 56550,
+  "open": 12,
+  "staked": 56650,
   "bankStart": 10000,
-  "cash": 6554,
-  "equity": 8516,
-  "returnPct": -14.84,
+  "cash": 6454,
+  "equity": 8512,
+  "returnPct": -14.88,
   "modelUpdates": 208,
   "brier": 0.241,
   "hypotheses": 7,
   "integrityOk": true,
-  "updated": "2026-06-24T20:51:48.473Z"
+  "updated": "2026-06-24T21:06:10.347Z"
  },
- "lastRun": 1782334308473,
+ "lastRun": 1782335170347,
  "elite": {
   "updated": 1782326474153,
   "list": [
@@ -10438,13 +10480,13 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-24T20:51:48.473Z",
-  "tradesChecked": 219
+  "checkedAt": "2026-06-24T21:06:10.347Z",
+  "tradesChecked": 220
  },
  "lastScan": {
-  "at": "2026-06-24T20:51:48.473Z",
-  "marketsFetched": 60,
-  "rawCandidates": 22,
+  "at": "2026-06-24T21:06:10.347Z",
+  "marketsFetched": 49,
+  "rawCandidates": 24,
   "clearedThreshold": 1,
   "placed": 1,
   "pMin": 0.6,

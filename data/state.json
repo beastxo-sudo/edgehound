@@ -925,7 +925,7 @@
    "slug": "israeli-parliament-dissolved-by-october-31",
    "side": "NO",
    "entry": 0.9,
-   "cur": 0.92,
+   "cur": 0.915,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.606,
@@ -10419,7 +10419,7 @@
      75
     ],
     "text": "Short Favorite on high-priced sports markets: 86W/39L (posterior 69%, 90% CI 62-75%) — proven edge, prioritized",
-    "updated": "2026-06-24T22:04:11.444Z"
+    "updated": "2026-06-24T22:18:38.649Z"
    },
    {
     "key": "SHORT_FAVORITE|high|other",
@@ -10431,7 +10431,7 @@
      67
     ],
     "text": "Short Favorite on high-priced non-sports markets: 10W/10L (posterior 50%, 90% CI 33-67%) — collecting evidence",
-    "updated": "2026-06-24T22:04:11.444Z"
+    "updated": "2026-06-24T22:18:38.649Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -10443,7 +10443,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-06-24T22:04:11.444Z"
+    "updated": "2026-06-24T22:18:38.649Z"
    },
    {
     "key": "wallet|aenews2",
@@ -10455,7 +10455,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-06-24T22:04:11.444Z"
+    "updated": "2026-06-24T22:18:38.649Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -10467,7 +10467,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-24T22:04:11.444Z"
+    "updated": "2026-06-24T22:18:38.649Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -10479,7 +10479,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-24T22:04:11.444Z"
+    "updated": "2026-06-24T22:18:38.649Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -10491,7 +10491,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-24T22:04:11.444Z"
+    "updated": "2026-06-24T22:18:38.649Z"
    }
   ]
  },
@@ -10508,15 +10508,15 @@
   "staked": 56750,
   "bankStart": 10000,
   "cash": 6938,
-  "equity": 8501,
-  "returnPct": -14.99,
+  "equity": 8500,
+  "returnPct": -15,
   "modelUpdates": 214,
   "brier": 0.246,
   "hypotheses": 7,
   "integrityOk": true,
-  "updated": "2026-06-24T22:04:11.447Z"
+  "updated": "2026-06-24T22:18:38.652Z"
  },
- "lastRun": 1782338651447,
+ "lastRun": 1782339518652,
  "elite": {
   "updated": 1782326474153,
   "list": [
@@ -10546,13 +10546,13 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-24T22:04:11.447Z",
+  "checkedAt": "2026-06-24T22:18:38.652Z",
   "tradesChecked": 221
  },
  "lastScan": {
-  "at": "2026-06-24T22:04:11.447Z",
-  "marketsFetched": 63,
-  "rawCandidates": 13,
+  "at": "2026-06-24T22:18:38.651Z",
+  "marketsFetched": 64,
+  "rawCandidates": 12,
   "clearedThreshold": 0,
   "placed": 0,
   "pMin": 0.6,

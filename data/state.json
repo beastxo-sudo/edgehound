@@ -2,6 +2,90 @@
  "running": true,
  "journal": [
   {
+   "id": "t1782347460199ndn4",
+   "date": "2026-06-25",
+   "openedTs": 1782347460199,
+   "title": "New York Yankees vs. Detroit Tigers",
+   "mid": "2595588",
+   "conditionId": "0xd1b84389768a326c133c297e29b11979fcb2da025ac18ece69cd8cfb7e1ed7c7",
+   "slug": "mlb-nyy-det-2026-06-24",
+   "side": "YES",
+   "entry": 0.835,
+   "cur": 0.835,
+   "stake": 100,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.673,
+   "pModel": 0.369,
+   "pBucket": 0.68,
+   "bucketN": 126,
+   "bk": "SHORT_FAVORITE|high|sport",
+   "ev": 0,
+   "kelly": 0.005,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.835,
+    0.506,
+    1,
+    0.792,
+    0.697,
+    0.999,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 67% [model 37%, pattern 68% on n=126] · EV +0.00/$1 · 1/4-Kelly 0.5% of equity -> $100. 84c favorite resolving in 6.9d (favorite-longshot bias); +20% if it lands. Drivers: 24h move size +, short time to resolution -, attention spike -",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1782945600000,
+   "status": "open"
+  },
+  {
+   "id": "t1782347460198ks2g",
+   "date": "2026-06-25",
+   "openedTs": 1782347460198,
+   "title": "Milwaukee Brewers vs. Cincinnati Reds",
+   "mid": "2595598",
+   "conditionId": "0x96a6c6a13291cc65ab14e43344eeeb32f84b7af70c533338e9dc5431e2fb03de",
+   "slug": "mlb-mil-cin-2026-06-24",
+   "side": "YES",
+   "entry": 0.88,
+   "cur": 0.88,
+   "stake": 100,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.671,
+   "pModel": 0.376,
+   "pBucket": 0.68,
+   "bucketN": 126,
+   "bk": "SHORT_FAVORITE|high|sport",
+   "ev": 0,
+   "kelly": 0.005,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.88,
+    0.504,
+    1,
+    0.77,
+    0.606,
+    0.999,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 67% [model 38%, pattern 68% on n=126] · EV -0.00/$1 · 1/4-Kelly 0.5% of equity -> $100. 88c favorite resolving in 6.9d (favorite-longshot bias); +14% if it lands. Drivers: 24h move size +, short time to resolution -, attention spike -",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1782947400000,
+   "status": "open"
+  },
+  {
    "id": "t1782345676352sk09",
    "date": "2026-06-25",
    "openedTs": 1782345676352,
@@ -11,7 +95,7 @@
    "slug": "mlb-sea-pit-2026-06-24",
    "side": "NO",
    "entry": 0.905,
-   "cur": 0.94,
+   "cur": 0.935,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.673,
@@ -375,7 +459,7 @@
    "slug": "fifwc-rsa-kr-2026-06-24",
    "side": "NO",
    "entry": 0.845,
-   "cur": 0.835,
+   "cur": 0.825,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.643,
@@ -1013,7 +1097,7 @@
    "slug": "israeli-parliament-dissolved-by-october-31",
    "side": "NO",
    "entry": 0.9,
-   "cur": 0.925,
+   "cur": 0.935,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.606,
@@ -10319,6 +10403,8 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-25 06:01 IST — Opened YES $100 @ 84c P=67% EV=+0.00 [Short Favorite] \"New York Yankees vs. Detroit Tigers\"",
+  "2026-06-25 06:01 IST — Opened YES $100 @ 88c P=67% EV=-0.00 [Short Favorite] \"Milwaukee Brewers vs. Cincinnati Reds\"",
   "2026-06-25 05:31 IST — Opened NO $100 @ 91c P=67% EV=+0.00 [Short Favorite] \"Seattle Mariners vs. Pittsburgh Pirates\"",
   "2026-06-25 04:31 IST — Closed YES \"Baltimore Orioles vs. Los Angeles Angels\" -> $-51 (Stop loss hit (-45%)) · model said P(win)=68%",
   "2026-06-25 04:02 IST — Opened YES $100 @ 94c P=68% EV=+0.00 [Short Favorite] \"Baltimore Orioles vs. Los Angeles Angels\"",
@@ -10330,9 +10416,7 @@
   "2026-06-25 03:34 IST — Closed NO \"Spread: Morocco (-3.5)\" -> +$0 (Max hold reached — closed at market) · model said P(win)=62%",
   "2026-06-25 03:05 IST — Opened NO $100 @ 84c P=62% EV=-0.04 [Short Favorite] \"Spread: Morocco (-3.5)\"",
   "2026-06-25 02:36 IST — Opened NO $100 @ 94c P=62% EV=-0.04 [Short Favorite] \"Will Haiti win on 2026-06-24?\"",
-  "2026-06-25 02:21 IST — Opened NO $100 @ 88c P=69% EV=-0.00 [Short Favorite] \"Will Morocco vs. Haiti end in a draw?\"",
-  "2026-06-25 00:55 IST — Closed NO \"Wimbledon, Qualification WTA: Xiyu Wang vs\" -> +$20 (Resolved in our favor) · model said P(win)=68%",
-  "2026-06-25 00:41 IST — Opened NO $100 @ 83c P=68% EV=-0.01 [Short Favorite] \"Wimbledon, Qualification WTA: Xiyu Wang vs Mar\""
+  "2026-06-25 02:21 IST — Opened NO $100 @ 88c P=69% EV=-0.00 [Short Favorite] \"Will Morocco vs. Haiti end in a draw?\""
  ],
  "brain": {
   "w": [
@@ -10507,7 +10591,7 @@
      75
     ],
     "text": "Short Favorite on high-priced sports markets: 86W/40L (posterior 68%, 90% CI 61-75%) — proven edge, prioritized",
-    "updated": "2026-06-25T00:16:20.201Z"
+    "updated": "2026-06-25T00:31:00.195Z"
    },
    {
     "key": "SHORT_FAVORITE|high|other",
@@ -10519,7 +10603,7 @@
      67
     ],
     "text": "Short Favorite on high-priced non-sports markets: 10W/10L (posterior 50%, 90% CI 33-67%) — collecting evidence",
-    "updated": "2026-06-25T00:16:20.201Z"
+    "updated": "2026-06-25T00:31:00.195Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -10531,7 +10615,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-06-25T00:16:20.201Z"
+    "updated": "2026-06-25T00:31:00.195Z"
    },
    {
     "key": "wallet|aenews2",
@@ -10543,7 +10627,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-06-25T00:16:20.202Z"
+    "updated": "2026-06-25T00:31:00.195Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -10555,7 +10639,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-25T00:16:20.201Z"
+    "updated": "2026-06-25T00:31:00.195Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -10567,7 +10651,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-25T00:16:20.201Z"
+    "updated": "2026-06-25T00:31:00.195Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -10579,32 +10663,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-25T00:16:20.201Z"
+    "updated": "2026-06-25T00:31:00.195Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 6786.176083195215,
+  "cash": 6586.176083195215,
   "created": 1781162132851
  },
  "summary": {
   "realized": -1663.82,
   "closed": 215,
   "wins": 125,
-  "open": 8,
-  "staked": 56950,
+  "open": 10,
+  "staked": 57150,
   "bankStart": 10000,
-  "cash": 6786,
-  "equity": 8453,
-  "returnPct": -15.47,
+  "cash": 6586,
+  "equity": 8452,
+  "returnPct": -15.48,
   "modelUpdates": 215,
   "brier": 0.247,
   "hypotheses": 7,
   "integrityOk": true,
-  "updated": "2026-06-25T00:16:20.205Z"
+  "updated": "2026-06-25T00:31:00.199Z"
  },
- "lastRun": 1782346580205,
+ "lastRun": 1782347460200,
  "elite": {
   "updated": 1782326474153,
   "list": [
@@ -10634,15 +10718,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-25T00:16:20.205Z",
-  "tradesChecked": 223
+  "checkedAt": "2026-06-25T00:31:00.199Z",
+  "tradesChecked": 225
  },
  "lastScan": {
-  "at": "2026-06-25T00:16:20.204Z",
-  "marketsFetched": 50,
-  "rawCandidates": 25,
-  "clearedThreshold": 0,
-  "placed": 0,
+  "at": "2026-06-25T00:31:00.199Z",
+  "marketsFetched": 62,
+  "rawCandidates": 32,
+  "clearedThreshold": 2,
+  "placed": 2,
   "pMin": 0.6,
   "blocked": {
    "exposure": 0,
@@ -10650,6 +10734,6 @@
    "cash": 0,
    "sanity": 0
   },
-  "reason": "no candidates cleared P(win)>=0.60 (engines produce ~0.58-0.64; lower pMin or wait for better setups)"
+  "reason": "traded"
  }
 }

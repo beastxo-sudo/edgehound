@@ -2,6 +2,50 @@
  "running": true,
  "journal": [
   {
+   "id": "t1782431816167lbfa",
+   "date": "2026-06-26",
+   "openedTs": 1782431816167,
+   "title": "Will Paraguay vs. Australia end in a draw?",
+   "mid": "1897347",
+   "conditionId": "0x73cdf481e0d213e3ad3b2c096ad9dfea604b6587900419d0a214aac966c68988",
+   "slug": "fifwc-par-aus-2026-06-25",
+   "side": "NO",
+   "entry": 0.575,
+   "cur": 0.575,
+   "stake": 450,
+   "signal": "ELITE_FOLLOW",
+   "p": 0.637,
+   "pModel": 0.268,
+   "pBucket": 0.5,
+   "bucketN": 0,
+   "bk": "ELITE_FOLLOW|mid|sport",
+   "ev": 0.107,
+   "kelly": 0.054,
+   "x": [
+    0,
+    0,
+    0,
+    0,
+    0.575,
+    0.994,
+    0,
+    0.785,
+    0.879,
+    0.484,
+    0,
+    1,
+    0
+   ],
+   "walletNames": [
+    "AnonymousUsername"
+   ],
+   "insight": "P(win) 64% [model 27%, pattern 50% on n=0] · EV +0.11/$1 · 1/4-Kelly 5.4% of equity -> $450. Elite wallet \"AnonymousUsername\" (83% win rate over 93 settled positions) bought No 1min ago at 57c — still copyable at 57c. Drivers: short time to resolution -, liquidity -, 24h volume -",
+   "target": 0.25,
+   "stop": 0.25,
+   "holdUntil": 1782439200000,
+   "status": "open"
+  },
+  {
    "id": "t1782429264778apex",
    "date": "2026-06-26",
    "openedTs": 1782429264778,
@@ -11,7 +55,7 @@
    "slug": "mlb-phi-wsh-2026-06-25",
    "side": "NO",
    "entry": 0.815,
-   "cur": 0.845,
+   "cur": 0.895,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.667,
@@ -11005,6 +11049,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-26 05:26 IST — Opened NO $450 @ 57c P=64% EV=+0.11 [Elite Follow] \"Will Paraguay vs. Australia end in a draw?\"",
   "2026-06-26 04:44 IST — Opened NO $100 @ 82c P=67% EV=+0.00 [Short Favorite] \"Philadelphia Phillies vs. Washington Nationals\"",
   "2026-06-26 04:30 IST — Opened NO $100 @ 79c P=67% EV=+0.00 [Short Favorite] \"Will Türkiye vs. United States end in a draw?\"",
   "2026-06-26 04:30 IST — Closed NO \"Will Tunisia vs. Netherlands end in a draw\" -> $-1 (Max hold reached — closed at market) · model said P(win)=69%",
@@ -11017,8 +11062,7 @@
   "2026-06-26 00:04 IST — Opened NO $100 @ 82c P=68% EV=+0.01 [Short Favorite] \"Seattle Mariners vs. Pittsburgh Pirates\"",
   "2026-06-26 00:04 IST — Opened NO $100 @ 88c P=69% EV=+0.01 [Short Favorite] \"Will Curaçao vs. Côte d'Ivoire end in a draw?\"",
   "2026-06-26 00:04 IST — Opened NO $100 @ 80c P=69% EV=+0.01 [Short Favorite] \"Will Ecuador vs. Germany end in a draw?\"",
-  "2026-06-26 00:04 IST — Opened NO $100 @ 92c P=69% EV=+0.01 [Short Favorite] \"Will Tunisia vs. Netherlands end in a draw?\"",
-  "2026-06-25 09:01 IST — Closed NO \"Atlanta Braves vs. San Diego Padres\" -> +$24 (Resolved in our favor) · model said P(win)=68%"
+  "2026-06-26 00:04 IST — Opened NO $100 @ 92c P=69% EV=+0.01 [Short Favorite] \"Will Tunisia vs. Netherlands end in a draw?\""
  ],
  "brain": {
   "w": [
@@ -11193,7 +11237,7 @@
      74
     ],
     "text": "Short Favorite on high-priced sports markets: 94W/45L (posterior 67%, 90% CI 61-74%) — proven edge, prioritized",
-    "updated": "2026-06-25T23:42:32.032Z"
+    "updated": "2026-06-25T23:56:56.163Z"
    },
    {
     "key": "SHORT_FAVORITE|high|other",
@@ -11205,7 +11249,7 @@
      65
     ],
     "text": "Short Favorite on high-priced non-sports markets: 10W/11L (posterior 48%, 90% CI 31-65%) — collecting evidence",
-    "updated": "2026-06-25T23:42:32.032Z"
+    "updated": "2026-06-25T23:56:56.163Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -11217,7 +11261,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-06-25T23:42:32.032Z"
+    "updated": "2026-06-25T23:56:56.163Z"
    },
    {
     "key": "wallet|aenews2",
@@ -11229,7 +11273,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-06-25T23:42:32.032Z"
+    "updated": "2026-06-25T23:56:56.163Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -11241,7 +11285,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-25T23:42:32.032Z"
+    "updated": "2026-06-25T23:56:56.163Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -11253,7 +11297,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-25T23:42:32.032Z"
+    "updated": "2026-06-25T23:56:56.163Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -11265,32 +11309,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-25T23:42:32.032Z"
+    "updated": "2026-06-25T23:56:56.163Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 6665.142884809751,
+  "cash": 6215.142884809751,
   "created": 1781162132851
  },
  "summary": {
   "realized": -1684.86,
   "closed": 229,
   "wins": 133,
-  "open": 9,
-  "staked": 58450,
+  "open": 10,
+  "staked": 58900,
   "bankStart": 10000,
-  "cash": 6665,
-  "equity": 8451,
-  "returnPct": -15.49,
+  "cash": 6215,
+  "equity": 8457,
+  "returnPct": -15.43,
   "modelUpdates": 229,
   "brier": 0.248,
   "hypotheses": 7,
   "integrityOk": true,
-  "updated": "2026-06-25T23:42:32.036Z"
+  "updated": "2026-06-25T23:56:56.167Z"
  },
- "lastRun": 1782430952036,
+ "lastRun": 1782431816167,
  "elite": {
   "updated": 1782413307164,
   "list": [
@@ -11320,15 +11364,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-25T23:42:32.036Z",
-  "tradesChecked": 238
+  "checkedAt": "2026-06-25T23:56:56.167Z",
+  "tradesChecked": 239
  },
  "lastScan": {
-  "at": "2026-06-25T23:42:32.035Z",
-  "marketsFetched": 66,
-  "rawCandidates": 23,
-  "clearedThreshold": 0,
-  "placed": 0,
+  "at": "2026-06-25T23:56:56.167Z",
+  "marketsFetched": 65,
+  "rawCandidates": 22,
+  "clearedThreshold": 1,
+  "placed": 1,
   "pMin": 0.6,
   "blocked": {
    "exposure": 0,
@@ -11336,6 +11380,6 @@
    "cash": 0,
    "sanity": 0
   },
-  "reason": "no candidates cleared P(win)>=0.60 (engines produce ~0.58-0.64; lower pMin or wait for better setups)"
+  "reason": "traded"
  }
 }

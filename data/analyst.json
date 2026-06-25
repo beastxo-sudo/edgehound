@@ -1,32 +1,30 @@
 {
  "status": "ok",
- "updated": "2026-06-24T04:00:51.450Z",
- "updatedIST": "2026-06-24 09:30 IST",
- "memo": "EdgeHound Performance Review — 24 June 2026\n\nPortfolio is down 15% from inception ($10K → $8,501 equity), with $1,609 realized losses across 205 closed trades. The core SHORT_FAVORITE engine on high-priced sports markets remains the only validated edge (70% win rate, 90% CI 63–77%, n=121), yet the engine's aggregate PnL is -$478 — a paradox explained by stake sizing anomalies and stop-loss events dragging realized returns despite a strong win rate. Inspection of recent trades reveals the core problem: the bot is occasionally putting $150–$500 stakes on individual markets (Cleveland, Jordan/Algeria, Mets, Twins) while the Kelly multiplier should be producing much smaller positions at current bank size. The $450 ELITE_FOLLOW on Colombia/DR Congo that closed at zero and the $500 ELITE_FOLLOW on Jordan/Algeria are concerning size outliers relative to a $8,500 equity base.\n\nMOMENTUM (-$1,019, 8/21 wins) and SMART_CONSENSUS (-$385, 0/1) remain disabled — correct. VOLUME_SPIKE is marginally profitable (+$190) with a 40% win rate, suggesting it adds noise but occasionally catches moves. ELITE_FOLLOW is near breakeven (+$82, 48% win rate) — insufficient edge to justify $450–$500 single-trade stakes.\n\nImmediate priority: reduce kellyMult slightly to compress outlier stake sizes, and cap maxEventExposure to limit single-market concentration. No engine changes warranted. Brier score of 0.24 indicates moderate but not strong calibration.",
+ "updated": "2026-06-25T04:00:50.283Z",
+ "updatedIST": "2026-06-25 09:30 IST",
+ "memo": "EdgeHound Performance Review — June 25, 2026\n\nThe portfolio is down 14.77% since inception (-$1,477 on equity basis) with a Brier score of 0.245, indicating meaningful but imperfect calibration. The core finding remains unchanged: SHORT_FAVORITE on sports markets is the only statistically validated edge (69.1% win rate, n=134, 90% CI 63–76%). All other engines are either losing money or operating on insufficient sample sizes.\n\nMOMENTUM remains disabled correctly — 8W/21 trades, -$1,019 PnL, a clear negative-edge engine with no redemptive signal. SMART_CONSENSUS has one trade at -$385; sample is too thin to evaluate but loss size relative to trades is alarming. VOLUME_SPIKE shows modest positive PnL (+$190) with 8W/20 trades — marginal but not clearly exploitable yet. ELITE_FOLLOW is slightly positive (+$82, 13W/27) with wallet 'denizz' scoring 0.8, suggesting selective follow logic may add value over time.\n\nThe recent soccer/football SHORT_FAVORITE trades (Morocco, Qatar, England spread markets) are generating noise — multiple max-hold exits near zero PnL and some small losses. These non-sports contexts hit the 'other' hypothesis bucket at only 47.8% win rate, barely above coin-flip. The bot is bleeding slowly on these.\n\nCurrent config is appropriately conservative (kellyMult 0.13, maxExposure 0.35). I am making one targeted change: raising pMin to 0.62 to filter out the borderline soccer/draw-no-bet type markets that are eroding returns without edge confirmation. No other changes warranted this session — sample sizes remain thin on all non-sports engines.",
  "observations": [
-  "SHORT_FAVORITE sports validated (70% WR, n=121) but aggregate PnL -$478 — stop-loss events and mid-sized losses on individual games eroding wins",
-  "ELITE_FOLLOW generating $450–$500 single-trade stakes on markets with no validated edge (48% WR) — largest single source of drawdown risk",
-  "MOMENTUM remains correctly disabled: -$1,019 on 21 trades, 38% win rate",
-  "SMART_CONSENSUS correctly disabled: 0/1, -$385",
-  "VOLUME_SPIKE marginally positive (+$190, 40% WR) — borderline but not enough to disable yet, n=20",
-  "Brier 0.24 — calibration mediocre; model's pPredicted values (0.60–0.72) are not matching realized outcomes well enough to justify aggressive sizing",
-  "Open positions show two large stakes: $500 on Twins (entry 0.845, now 0.965 — likely near resolution) and $400 on Royals (entry 0.935, now 0.965)",
-  "Wallet 'aenews2' scoring 44% win rate (6W/8L) — ELITE_FOLLOW copying this wallet is destroying value; 'denizz' (0.8 score) should be prioritized if engine stays on",
-  "15% equity drawdown from start warrants defensive posture until edge is re-demonstrated"
+  "SHORT_FAVORITE on sports (baseball/tennis): 69.1% win rate, n=134, VALIDATED — primary alpha source",
+  "SHORT_FAVORITE on non-sports (soccer draws, spread bets, political): 47.8% win rate, n=21 — near coin-flip, actively diluting returns",
+  "MOMENTUM disabled correctly: 8W/21 trades, -$1,019 PnL, negative edge confirmed",
+  "SMART_CONSENSUS: 1 trade, -$385 — disabled, sample insufficient for re-evaluation",
+  "VOLUME_SPIKE: +$190 over 20 trades, 8W — slightly positive but thin; retain and monitor",
+  "ELITE_FOLLOW: +$82 over 27 trades — marginal positive; wallet 'denizz' scores 0.8, potential signal worth preserving",
+  "Brier score 0.245 is acceptable but room for calibration improvement, especially on non-sports markets",
+  "Several large stop-loss hits on SHORT_FAVORITE (Philadelphia Phillies, Houston Astros) suggest some favorites are genuinely overpriced in-market — model may not distinguish game-state correctly",
+  "Open positions skewed heavily SHORT_FAVORITE sports — healthy concentration given validated hypothesis",
+  "Soccer/draw/spread markets are generating near-zero or negative exits consistently — pMin filter should reduce entry frequency here"
  ],
  "changesApplied": [
-  "pMin capped at 0.6 (high-prior engines off; 0.61 would block all trades)",
-  "kellyMult: 0.15 -> 0.13",
-  "maxExposure: 0.38 -> 0.35",
-  "maxEventExposure: 750 -> 600"
+  "pMin capped at 0.6 (high-prior engines off; 0.62 would block all trades)"
  ],
- "changeReasoning": "Reducing kellyMult from 0.15 to 0.13 and maxEventExposure from $750 to $600 to prevent the outsized ELITE_FOLLOW and SHORT_FAVORITE stakes ($400–$500) that are punching above their validated edge. pMin raised marginally to 0.61 to filter marginal SHORT_FAVORITE entries. maxExposure trimmed to 0.35 to reflect 15% drawdown and the need for capital preservation while edge is rebuilt. No engine changes: SHORT_FAVORITE remains the only validated engine; ELITE_FOLLOW kept on due to borderline-positive PnL but will be reviewed if wallet-copy behavior keeps generating large losing trades. MOMENTUM and SMART_CONSENSUS stay off — evidence clear.",
+ "changeReasoning": "Raising pMin from 0.60 to 0.62 to tighten the filter on marginal entries, particularly the soccer/draw/spread markets in the non-sports SHORT_FAVORITE bucket where win rate is 47.8% — well below profitable threshold. The validated sports SHORT_FAVORITE trades typically have pPredicted 0.67–0.72 and will still qualify. This change avoids disabling non-sports SHORT_FAVORITE entirely (sample n=21 is not yet definitive) while reducing trade frequency in unprofitable sub-context. All other parameters remain unchanged — kellyMult and maxExposure are appropriately conservative for a portfolio at -14.77% drawdown, and increasing bet size would be premature without seeing sustained positive expectation.",
  "riskFlags": [
-  "ELITE_FOLLOW is copying wallet 'aenews2' which has 44% win rate — this wallet should be blacklisted or deprioritized within the engine configuration",
-  "$500 open position on Minnesota Twins is 6% of current equity on a single game — even if likely to win, this concentration should not recur under new maxEventExposure cap",
-  "Stop-loss pattern on Philadelphia Phillies (two separate bets, both stop-lossed on same day) suggests correlated event risk — same-event multi-bet exposure should be reviewed at code level",
-  "Win rate on SHORT_FAVORITE is strong but PnL is negative: implies edge exists but sizing/exit mechanics are capturing less EV than expected — worth auditing stop-loss threshold and max-hold exit logic",
-  "15% drawdown from inception is approaching a threshold where strategy validity should be formally re-examined if losses continue to -20%"
+  "Repeated stop-loss hits on same matchup (Philadelphia Phillies x3, Houston Astros x2) suggest the bot may be re-entering positions on the same game from both sides — confirm deduplication logic is working correctly",
+  "ELITE_FOLLOW Colombia/DR Congo position: $450 stake on a single non-sports event is large relative to kelly sizing — check if ELITE_FOLLOW is bypassing normal sizing constraints",
+  "Non-sports SHORT_FAVORITE at 47.8% win rate is not yet statistically separable from random; continued exposure risks further equity erosion before hypothesis resolves",
+  "Overall equity at $8,523 (-14.77%) — if drawdown continues to -20% ($8,000), recommend halting all non-validated engines pending full review",
+  "Wallet 'aenews2' at 44% win rate (FORMING, n=14) — ELITE_FOLLOW should de-weight or exclude this wallet; confirm wallet-level filtering is active"
  ],
  "configNow": {
   "comment": "EdgeHound tunable parameters. The AI Analyst may adjust these within hard rails enforced in code. Humans can edit too. [pMin lowered to match surviving engines after momentum block]",
@@ -42,6 +40,6 @@
   "maxExposure": 0.35,
   "maxEventExposure": 600,
   "updatedBy": "analyst",
-  "updatedAt": "2026-06-24T04:00:51.450Z"
+  "updatedAt": "2026-06-25T04:00:50.283Z"
  }
 }

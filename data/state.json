@@ -41,7 +41,11 @@
    "target": null,
    "stop": 0.45,
    "holdUntil": 1782500400000,
-   "status": "open"
+   "status": "closed",
+   "exit": 0.875,
+   "exitTs": 1782500998864,
+   "exitReason": "Max hold reached — closed at market",
+   "pnl": 1.156069364161851
   },
   {
    "id": "t1782482473650efu5",
@@ -329,7 +333,7 @@
    "slug": "fifwc-nor-fra-2026-06-26",
    "side": "NO",
    "entry": 0.8049999999999999,
-   "cur": 0.845,
+   "cur": 0.835,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.671,
@@ -359,7 +363,11 @@
    "target": null,
    "stop": 0.45,
    "holdUntil": 1782500400000,
-   "status": "open"
+   "status": "closed",
+   "exit": 0.835,
+   "exitTs": 1782500998864,
+   "exitReason": "Max hold reached — closed at market",
+   "pnl": 3.726708074534165
   },
   {
    "id": "t17824378330217l1o",
@@ -2253,7 +2261,7 @@
    "slug": "fifwc-nor-fra-2026-06-26",
    "side": "NO",
    "entry": 0.815,
-   "cur": 0.885,
+   "cur": 0.905,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.621,
@@ -2283,7 +2291,11 @@
    "target": null,
    "stop": 0.45,
    "holdUntil": 1782500400000,
-   "status": "open"
+   "status": "closed",
+   "exit": 0.905,
+   "exitTs": 1782500998864,
+   "exitReason": "Max hold reached — closed at market",
+   "pnl": 11.042944785276084
   },
   {
    "id": "t1782258348645o195",
@@ -11615,9 +11627,9 @@
  ],
  "strat": {
   "SHORT_FAVORITE": {
-   "trades": 172,
-   "wins": 113,
-   "pnl": -544.359542109155,
+   "trades": 175,
+   "wins": 116,
+   "pnl": -528.433819885183,
    "weight": 1
   },
   "MOMENTUM": {
@@ -11647,6 +11659,9 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-27 00:39 IST — Closed NO \"Will Norway win on 2026-06-26?\" -> +$11 (Max hold reached — closed at market) · model said P(win)=62%",
+  "2026-06-27 00:39 IST — Closed NO \"Will Norway vs. France end in a draw?\" -> +$4 (Max hold reached — closed at market) · model said P(win)=67%",
+  "2026-06-27 00:39 IST — Closed NO \"Will Senegal vs. Iraq end in a draw?\" -> +$1 (Max hold reached — closed at market) · model said P(win)=68%",
   "2026-06-27 00:25 IST — Elite pool refreshed: 2 wallets qualify (>=58% win rate over >=10 settled, scalpers excluded): aenews2 85%, denizz 65%",
   "2026-06-27 00:11 IST — Opened NO $100 @ 87c P=68% EV=+0.00 [Short Favorite] \"Will Senegal vs. Iraq end in a draw?\"",
   "2026-06-26 21:15 IST — Closed YES \"Dota 2: Yellow Submarine vs MODUS (BO3) - \" -> +$21 (Resolved in our favor) · model said P(win)=68%",
@@ -11657,29 +11672,26 @@
   "2026-06-26 18:01 IST — Closed NO \"Bad Homburg Open: Xinyu Wang vs Naomi Osak\" -> +$10 (Resolved in our favor) · model said P(win)=67%",
   "2026-06-26 17:26 IST — Opened NO $100 @ 91c P=67% EV=+0.00 [Short Favorite] \"Bad Homburg Open: Xinyu Wang vs Naomi Osaka\"",
   "2026-06-26 17:11 IST — Opened YES $100 @ 80c P=67% EV=+0.00 [Short Favorite] \"Dota 2: Natus Vincere vs MOUZ (BO3) - The Inte\"",
-  "2026-06-26 16:43 IST — Closed YES \"Targu Mures: Felix Balshaw vs Andrej Nedic\" -> +$21 (Resolved in our favor) · model said P(win)=67%",
-  "2026-06-26 16:01 IST — Opened YES $100 @ 83c P=67% EV=-0.00 [Short Favorite] \"Targu Mures: Felix Balshaw vs Andrej Nedic\"",
-  "2026-06-26 15:46 IST — Closed NO \"Dota 2: Enjoy vs HULIGANI - Game 2 Winner\" -> +$11 (Resolved in our favor) · model said P(win)=67%",
-  "2026-06-26 15:31 IST — Opened NO $100 @ 90c P=67% EV=+0.00 [Short Favorite] \"Dota 2: Enjoy vs HULIGANI - Game 2 Winner\""
+  "2026-06-26 16:43 IST — Closed YES \"Targu Mures: Felix Balshaw vs Andrej Nedic\" -> +$21 (Resolved in our favor) · model said P(win)=67%"
  ],
  "brain": {
   "w": [
-   0.3511639139732645,
-   0.04449925021412034,
-   0.00858294822415582,
-   -0.17064180419016195,
-   0.2070251151163356,
-   -0.3552672549882817,
-   0.6848817378500938,
-   0.05347081554316043,
-   -0.08738540261626887,
-   0.06591487828710568,
-   0.0034331792896623203,
-   0.14963938997757403,
-   -0.06664591708437052
+   0.42145749498297963,
+   0.04443253470767441,
+   0.008570080237957885,
+   -0.1703859694438996,
+   0.2654914191084857,
+   -0.2893014601988176,
+   0.6895911560394526,
+   0.10739759416213909,
+   -0.027499911954090305,
+   0.12222597680757485,
+   0.0034280320951831466,
+   0.19828286622648938,
+   -0.06654599818485105
   ],
-  "b": 0.10808983645212537,
-  "nUpdates": 242,
+  "b": 0.17894725081365928,
+  "nUpdates": 245,
   "buckets": {
    "MOMENTUM|high|sport": {
     "a": 1,
@@ -11702,7 +11714,7 @@
     "b": 2
    },
    "SHORT_FAVORITE|high|other": {
-    "a": 11,
+    "a": 12,
     "b": 12
    },
    "SMART_CONSENSUS|low|sport": {
@@ -11726,7 +11738,7 @@
     "b": 3
    },
    "SHORT_FAVORITE|high|sport": {
-    "a": 104,
+    "a": 106,
     "b": 49
    },
    "VOLUME_SPIKE|mid|other": {
@@ -11793,13 +11805,13 @@
    }
   },
   "brier": {
-   "sum": 59.227641000000034,
-   "n": 242
+   "sum": 59.583852000000036,
+   "n": 245
   },
   "payoff": {
    "SHORT_FAVORITE": {
-    "wSum": 16.89029542744369,
-    "wN": 113,
+    "wSum": 17.04955264968341,
+    "wN": 116,
     "lSum": 17.9595250076627,
     "lN": 59
    },
@@ -11832,26 +11844,26 @@
    {
     "key": "SHORT_FAVORITE|high|sport",
     "status": "VALIDATED",
-    "n": 151,
-    "winRate": 68,
+    "n": 153,
+    "winRate": 68.4,
     "ci": [
      62,
-     74
+     75
     ],
-    "text": "Short Favorite on high-priced sports markets: 103W/48L (posterior 68%, 90% CI 62-74%) — proven edge, prioritized",
-    "updated": "2026-06-26T18:55:24.865Z"
+    "text": "Short Favorite on high-priced sports markets: 105W/48L (posterior 68%, 90% CI 62-75%) — proven edge, prioritized",
+    "updated": "2026-06-26T19:09:58.865Z"
    },
    {
     "key": "SHORT_FAVORITE|high|other",
     "status": "FORMING",
-    "n": 21,
-    "winRate": 47.8,
+    "n": 22,
+    "winRate": 50,
     "ci": [
-     31,
-     65
+     34,
+     66
     ],
-    "text": "Short Favorite on high-priced non-sports markets: 10W/11L (posterior 48%, 90% CI 31-65%) — collecting evidence",
-    "updated": "2026-06-26T18:55:24.865Z"
+    "text": "Short Favorite on high-priced non-sports markets: 11W/11L (posterior 50%, 90% CI 34-66%) — collecting evidence",
+    "updated": "2026-06-26T19:09:58.865Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -11863,7 +11875,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-06-26T18:55:24.865Z"
+    "updated": "2026-06-26T19:09:58.865Z"
    },
    {
     "key": "wallet|aenews2",
@@ -11875,7 +11887,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-06-26T18:55:24.865Z"
+    "updated": "2026-06-26T19:09:58.865Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -11887,7 +11899,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-26T18:55:24.865Z"
+    "updated": "2026-06-26T19:09:58.865Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -11899,7 +11911,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-26T18:55:24.865Z"
+    "updated": "2026-06-26T19:09:58.865Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -11911,32 +11923,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-26T18:55:24.865Z"
+    "updated": "2026-06-26T19:09:58.865Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 6597.404900302647,
+  "cash": 6913.330622526619,
   "created": 1781162132851
  },
  "summary": {
-  "realized": -1652.6,
-  "closed": 242,
-  "wins": 143,
-  "open": 10,
+  "realized": -1636.67,
+  "closed": 245,
+  "wins": 146,
+  "open": 7,
   "staked": 60200,
   "bankStart": 10000,
-  "cash": 6597,
-  "equity": 8498,
-  "returnPct": -15.02,
-  "modelUpdates": 242,
-  "brier": 0.245,
+  "cash": 6913,
+  "equity": 8500,
+  "returnPct": -15,
+  "modelUpdates": 245,
+  "brier": 0.243,
   "hypotheses": 7,
   "integrityOk": true,
-  "updated": "2026-06-26T18:55:24.871Z"
+  "updated": "2026-06-26T19:09:58.868Z"
  },
- "lastRun": 1782500124872,
+ "lastRun": 1782500998869,
  "elite": {
   "updated": 1782500124319,
   "list": [
@@ -11959,13 +11971,13 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-26T18:55:24.871Z",
+  "checkedAt": "2026-06-26T19:09:58.869Z",
   "tradesChecked": 252
  },
  "lastScan": {
-  "at": "2026-06-26T18:55:24.871Z",
-  "marketsFetched": 65,
-  "rawCandidates": 50,
+  "at": "2026-06-26T19:09:58.868Z",
+  "marketsFetched": 67,
+  "rawCandidates": 19,
   "clearedThreshold": 0,
   "placed": 0,
   "pMin": 0.6,

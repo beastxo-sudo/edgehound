@@ -11,7 +11,7 @@
    "slug": "atp-balshaw-nedic-2026-06-26",
    "side": "YES",
    "entry": 0.825,
-   "cur": 0.955,
+   "cur": 0.9605,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.67,
@@ -11609,7 +11609,7 @@
      74
     ],
     "text": "Short Favorite on high-priced sports markets: 99W/47L (posterior 68%, 90% CI 61-74%) — proven edge, prioritized",
-    "updated": "2026-06-26T10:45:25.058Z"
+    "updated": "2026-06-26T10:59:53.534Z"
    },
    {
     "key": "SHORT_FAVORITE|high|other",
@@ -11621,7 +11621,7 @@
      65
     ],
     "text": "Short Favorite on high-priced non-sports markets: 10W/11L (posterior 48%, 90% CI 31-65%) — collecting evidence",
-    "updated": "2026-06-26T10:45:25.058Z"
+    "updated": "2026-06-26T10:59:53.534Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -11633,7 +11633,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-06-26T10:45:25.058Z"
+    "updated": "2026-06-26T10:59:53.534Z"
    },
    {
     "key": "wallet|aenews2",
@@ -11645,7 +11645,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-06-26T10:45:25.058Z"
+    "updated": "2026-06-26T10:59:53.535Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -11657,7 +11657,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-26T10:45:25.058Z"
+    "updated": "2026-06-26T10:59:53.534Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -11669,7 +11669,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-26T10:45:25.058Z"
+    "updated": "2026-06-26T10:59:53.534Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -11681,7 +11681,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-26T10:45:25.058Z"
+    "updated": "2026-06-26T10:59:53.534Z"
    }
   ]
  },
@@ -11704,9 +11704,9 @@
   "brier": 0.246,
   "hypotheses": 7,
   "integrityOk": true,
-  "updated": "2026-06-26T10:45:25.062Z"
+  "updated": "2026-06-26T10:59:53.538Z"
  },
- "lastRun": 1782470725062,
+ "lastRun": 1782471593539,
  "elite": {
   "updated": 1782413307164,
   "list": [
@@ -11736,13 +11736,13 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-26T10:45:25.062Z",
+  "checkedAt": "2026-06-26T10:59:53.538Z",
   "tradesChecked": 247
  },
  "lastScan": {
-  "at": "2026-06-26T10:45:25.062Z",
-  "marketsFetched": 60,
-  "rawCandidates": 38,
+  "at": "2026-06-26T10:59:53.538Z",
+  "marketsFetched": 62,
+  "rawCandidates": 43,
   "clearedThreshold": 0,
   "placed": 0,
   "pMin": 0.6,

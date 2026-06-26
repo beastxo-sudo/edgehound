@@ -11,7 +11,7 @@
    "slug": "fifwc-sen-irq-2026-06-26",
    "side": "NO",
    "entry": 0.865,
-   "cur": 0.865,
+   "cur": 0.875,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.677,
@@ -2253,7 +2253,7 @@
    "slug": "fifwc-nor-fra-2026-06-26",
    "side": "NO",
    "entry": 0.815,
-   "cur": 0.875,
+   "cur": 0.885,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.621,
@@ -11647,6 +11647,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-27 00:25 IST — Elite pool refreshed: 2 wallets qualify (>=58% win rate over >=10 settled, scalpers excluded): aenews2 85%, denizz 65%",
   "2026-06-27 00:11 IST — Opened NO $100 @ 87c P=68% EV=+0.00 [Short Favorite] \"Will Senegal vs. Iraq end in a draw?\"",
   "2026-06-26 21:15 IST — Closed YES \"Dota 2: Yellow Submarine vs MODUS (BO3) - \" -> +$21 (Resolved in our favor) · model said P(win)=68%",
   "2026-06-26 21:01 IST — Closed NO \"T20 Series Ireland vs India: Ireland vs In\" -> $-53 (Stop loss hit (-45%)) · model said P(win)=68%",
@@ -11659,8 +11660,7 @@
   "2026-06-26 16:43 IST — Closed YES \"Targu Mures: Felix Balshaw vs Andrej Nedic\" -> +$21 (Resolved in our favor) · model said P(win)=67%",
   "2026-06-26 16:01 IST — Opened YES $100 @ 83c P=67% EV=-0.00 [Short Favorite] \"Targu Mures: Felix Balshaw vs Andrej Nedic\"",
   "2026-06-26 15:46 IST — Closed NO \"Dota 2: Enjoy vs HULIGANI - Game 2 Winner\" -> +$11 (Resolved in our favor) · model said P(win)=67%",
-  "2026-06-26 15:31 IST — Opened NO $100 @ 90c P=67% EV=+0.00 [Short Favorite] \"Dota 2: Enjoy vs HULIGANI - Game 2 Winner\"",
-  "2026-06-26 10:01 IST — Opened NO $100 @ 81c P=67% EV=+0.00 [Short Favorite] \"Will Norway vs. France end in a draw?\""
+  "2026-06-26 15:31 IST — Opened NO $100 @ 90c P=67% EV=+0.00 [Short Favorite] \"Dota 2: Enjoy vs HULIGANI - Game 2 Winner\""
  ],
  "brain": {
   "w": [
@@ -11839,7 +11839,7 @@
      74
     ],
     "text": "Short Favorite on high-priced sports markets: 103W/48L (posterior 68%, 90% CI 62-74%) — proven edge, prioritized",
-    "updated": "2026-06-26T18:41:11.290Z"
+    "updated": "2026-06-26T18:55:24.865Z"
    },
    {
     "key": "SHORT_FAVORITE|high|other",
@@ -11851,7 +11851,7 @@
      65
     ],
     "text": "Short Favorite on high-priced non-sports markets: 10W/11L (posterior 48%, 90% CI 31-65%) — collecting evidence",
-    "updated": "2026-06-26T18:41:11.290Z"
+    "updated": "2026-06-26T18:55:24.865Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -11863,7 +11863,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-06-26T18:41:11.290Z"
+    "updated": "2026-06-26T18:55:24.865Z"
    },
    {
     "key": "wallet|aenews2",
@@ -11875,7 +11875,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-06-26T18:41:11.290Z"
+    "updated": "2026-06-26T18:55:24.865Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -11887,7 +11887,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-26T18:41:11.290Z"
+    "updated": "2026-06-26T18:55:24.865Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -11899,7 +11899,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-26T18:41:11.290Z"
+    "updated": "2026-06-26T18:55:24.865Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -11911,7 +11911,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-26T18:41:11.290Z"
+    "updated": "2026-06-26T18:55:24.865Z"
    }
   ]
  },
@@ -11928,53 +11928,46 @@
   "staked": 60200,
   "bankStart": 10000,
   "cash": 6597,
-  "equity": 8496,
-  "returnPct": -15.04,
+  "equity": 8498,
+  "returnPct": -15.02,
   "modelUpdates": 242,
   "brier": 0.245,
   "hypotheses": 7,
   "integrityOk": true,
-  "updated": "2026-06-26T18:41:11.296Z"
+  "updated": "2026-06-26T18:55:24.871Z"
  },
- "lastRun": 1782499271297,
+ "lastRun": 1782500124872,
  "elite": {
-  "updated": 1782413307164,
+  "updated": 1782500124319,
   "list": [
-   {
-    "wallet": "0x9703676286b93c2eca71ca96e8757104519a69c2",
-    "name": "AnonymousUsername",
-    "winRate": 0.828,
-    "n": 93,
-    "score": 3.762
-   },
    {
     "wallet": "0x44c1dfe43260c94ed4f1d00de2e1f80fb113ebc1",
     "name": "aenews2",
-    "winRate": 0.818,
-    "n": 33,
-    "score": 2.885
+    "winRate": 0.853,
+    "n": 34,
+    "score": 3.033
    },
    {
     "wallet": "0xbaa2bcb5439e985ce4ccf815b4700027d1b92c73",
     "name": "denizz",
-    "winRate": 0.656,
-    "n": 32,
-    "score": 2.295
+    "winRate": 0.645,
+    "n": 31,
+    "score": 2.236
    }
   ]
  },
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-26T18:41:11.296Z",
+  "checkedAt": "2026-06-26T18:55:24.871Z",
   "tradesChecked": 252
  },
  "lastScan": {
-  "at": "2026-06-26T18:41:11.295Z",
+  "at": "2026-06-26T18:55:24.871Z",
   "marketsFetched": 65,
-  "rawCandidates": 51,
-  "clearedThreshold": 1,
-  "placed": 1,
+  "rawCandidates": 50,
+  "clearedThreshold": 0,
+  "placed": 0,
   "pMin": 0.6,
   "blocked": {
    "exposure": 0,
@@ -11982,6 +11975,6 @@
    "cash": 0,
    "sanity": 0
   },
-  "reason": "traded"
+  "reason": "no candidates cleared P(win)>=0.60 (engines produce ~0.58-0.64; lower pMin or wait for better setups)"
  }
 }

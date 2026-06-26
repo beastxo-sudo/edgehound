@@ -11705,7 +11705,7 @@
      74
     ],
     "text": "Short Favorite on high-priced sports markets: 102W/47L (posterior 68%, 90% CI 62-74%) — proven edge, prioritized",
-    "updated": "2026-06-26T12:45:48.007Z"
+    "updated": "2026-06-26T13:01:17.787Z"
    },
    {
     "key": "SHORT_FAVORITE|high|other",
@@ -11717,7 +11717,7 @@
      65
     ],
     "text": "Short Favorite on high-priced non-sports markets: 10W/11L (posterior 48%, 90% CI 31-65%) — collecting evidence",
-    "updated": "2026-06-26T12:45:48.007Z"
+    "updated": "2026-06-26T13:01:17.787Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -11729,7 +11729,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-06-26T12:45:48.007Z"
+    "updated": "2026-06-26T13:01:17.787Z"
    },
    {
     "key": "wallet|aenews2",
@@ -11741,7 +11741,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-06-26T12:45:48.007Z"
+    "updated": "2026-06-26T13:01:17.787Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -11753,7 +11753,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-26T12:45:48.007Z"
+    "updated": "2026-06-26T13:01:17.787Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -11765,7 +11765,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-26T12:45:48.007Z"
+    "updated": "2026-06-26T13:01:17.787Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -11777,7 +11777,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-26T12:45:48.007Z"
+    "updated": "2026-06-26T13:01:17.787Z"
    }
   ]
  },
@@ -11800,9 +11800,9 @@
   "brier": 0.244,
   "hypotheses": 7,
   "integrityOk": true,
-  "updated": "2026-06-26T12:45:48.011Z"
+  "updated": "2026-06-26T13:01:17.790Z"
  },
- "lastRun": 1782477948011,
+ "lastRun": 1782478877791,
  "elite": {
   "updated": 1782413307164,
   "list": [
@@ -11832,12 +11832,12 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-26T12:45:48.011Z",
+  "checkedAt": "2026-06-26T13:01:17.791Z",
   "tradesChecked": 249
  },
  "lastScan": {
-  "at": "2026-06-26T12:45:48.011Z",
-  "marketsFetched": 59,
+  "at": "2026-06-26T13:01:17.790Z",
+  "marketsFetched": 58,
   "rawCandidates": 42,
   "clearedThreshold": 0,
   "placed": 0,

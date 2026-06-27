@@ -3081,7 +3081,7 @@
    "slug": "israeli-parliament-dissolved-by-october-31",
    "side": "NO",
    "entry": 0.9,
-   "cur": 0.935,
+   "cur": 0.94,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.606,
@@ -12579,7 +12579,7 @@
      76
     ],
     "text": "Short Favorite on high-priced sports markets: 117W/50L (posterior 70%, 90% CI 64-76%) — proven edge, prioritized",
-    "updated": "2026-06-27T08:01:09.662Z"
+    "updated": "2026-06-27T08:15:25.917Z"
    },
    {
     "key": "SHORT_FAVORITE|high|other",
@@ -12591,7 +12591,7 @@
      66
     ],
     "text": "Short Favorite on high-priced non-sports markets: 11W/11L (posterior 50%, 90% CI 34-66%) — collecting evidence",
-    "updated": "2026-06-27T08:01:09.662Z"
+    "updated": "2026-06-27T08:15:25.916Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -12603,7 +12603,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-06-27T08:01:09.662Z"
+    "updated": "2026-06-27T08:15:25.916Z"
    },
    {
     "key": "wallet|aenews2",
@@ -12615,7 +12615,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-06-27T08:01:09.662Z"
+    "updated": "2026-06-27T08:15:25.917Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -12627,7 +12627,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-27T08:01:09.662Z"
+    "updated": "2026-06-27T08:15:25.917Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -12639,7 +12639,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-27T08:01:09.662Z"
+    "updated": "2026-06-27T08:15:25.916Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -12651,7 +12651,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-27T08:01:09.662Z"
+    "updated": "2026-06-27T08:15:25.916Z"
    }
   ]
  },
@@ -12674,9 +12674,9 @@
   "brier": 0.238,
   "hypotheses": 7,
   "integrityOk": true,
-  "updated": "2026-06-27T08:01:09.666Z"
+  "updated": "2026-06-27T08:15:25.920Z"
  },
- "lastRun": 1782547269667,
+ "lastRun": 1782548125920,
  "elite": {
   "updated": 1782500124319,
   "list": [
@@ -12699,15 +12699,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-27T08:01:09.667Z",
+  "checkedAt": "2026-06-27T08:15:25.920Z",
   "tradesChecked": 268
  },
  "lastScan": {
-  "at": "2026-06-27T08:01:09.666Z",
+  "at": "2026-06-27T08:15:25.920Z",
   "marketsFetched": 65,
-  "rawCandidates": 35,
-  "clearedThreshold": 1,
-  "placed": 1,
+  "rawCandidates": 38,
+  "clearedThreshold": 0,
+  "placed": 0,
   "pMin": 0.6,
   "blocked": {
    "exposure": 0,
@@ -12715,6 +12715,6 @@
    "cash": 0,
    "sanity": 0
   },
-  "reason": "traded"
+  "reason": "no candidates cleared P(win)>=0.60 (engines produce ~0.58-0.64; lower pMin or wait for better setups)"
  }
 }

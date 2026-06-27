@@ -1,5 +1,5 @@
 {
   "status": "error",
-  "ranAt": "2026-06-27T06:16:07.588Z",
-  "error": "Unterminated string in JSON at position 7208 (line 55 column 171)"
+  "ranAt": "2026-06-27T12:15:19.485Z",
+  "error": "Anthropic API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"You have reached your specified API usage limits. You will regain access on 2026-07-01 at 00:00 UTC.\"},\"request_id\":\"req_011CcTkJSPmA"
 }

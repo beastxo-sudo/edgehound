@@ -1,5 +1,45 @@
 {
- "status": "error",
- "error": "Unterminated string in JSON at position 5212 (line 36 column 137)",
- "updated": "2026-06-27T04:00:55.257Z"
+ "status": "ok",
+ "updated": "2026-06-27T11:05:50.924Z",
+ "updatedIST": "2026-06-27 16:35 IST",
+ "memo": "EdgeHound Supervisory Review — 27 June 2026\n\nPortfolio is down 14.05% from inception (equity $8,595 vs $10,000 start), with realized losses of -$1,538 across 259 closed trades. The headline concern remains MOMENTUM (-$1,019, 8W/21T, 38% win rate) and SMART_CONSENSUS (-$385, 0W/1T), both correctly disabled in the prior session. The active engine mix is now SHORT_FAVORITE, VOLUME_SPIKE, and ELITE_FOLLOW.\n\nThe core SHORT_FAVORITE thesis on sports markets remains the portfolio's only validated edge: 117W/50L at 70% win rate (90% CI 64-76%), statistically robust at n=167. The non-sports SHORT_FAVORITE cohort sits at 50% with wide CIs (n=22) — no edge confirmed, but also not yet condemned. VOLUME_SPIKE shows modest positive PnL (+$190) and ELITE_FOLLOW is marginally positive (+$106), both with insufficient settled trades to draw strong conclusions.\n\nA structural concern: stop-loss events on SHORT_FAVORITE are generating outsized losses when they occur. In the recent log, Athletics/SF Giants lost -$95 on a $100 stake, and Philadelphia Phillies lost -$80, suggesting some bets at very high entry prices (0.88-0.91) are experiencing catastrophic reversals. These are not small edge erosions — they are tail events. The bot should be cautious entering SHORT_FAVORITE positions above 0.90 entry price, as the asymmetric loss profile at those levels is severe.\n\nNo parameter changes warranted at this time. KellyMult at 0.13 is appropriately conservative. Current configuration is defensible pending more settled data on VOLUME_SPIKE and ELITE_FOLLOW.",
+ "observations": [
+  "SHORT_FAVORITE sports hypothesis VALIDATED at 70% win rate, n=167, CI [64-76%] — the only confirmed edge in the book",
+  "MOMENTUM disabled correctly; -$1,019 PnL on 21 trades (38% win rate) confirmed as non-viable signal",
+  "SMART_CONSENSUS disabled correctly; 0W/1T, -$385 PnL",
+  "VOLUME_SPIKE marginally positive (+$190, 8W/20T, 40% win rate) — too small a sample to conclude edge exists, but not bleeding",
+  "ELITE_FOLLOW breakeven-positive (+$106, 14W/28T, 50% win rate) — insufficient evidence of durable edge",
+  "Stop-loss tail events on SHORT_FAVORITE at high entry prices (0.88-0.91) producing -$50 to -$95 losses per $100 staked — structural asymmetry risk",
+  "Brier score 0.238 is mediocre; model is not well-calibrated, particularly on non-sports markets",
+  "Open book is 100% SHORT_FAVORITE concentrated; one large position ($500, Minnesota Twins) represents ~5.8% of current equity",
+  "Non-sports SHORT_FAVORITE at 50% win rate (n=22, CI 34-66%) — no edge, but insufficient data to disable the segment",
+  "Wallet follower 'aenews2' at 44% win rate (n=14) — below breakeven, approaching threshold for dismissal",
+  "Wallet 'denizz' has highest score (0.8) but limited trade history visible — worth monitoring for ELITE_FOLLOW signal quality"
+ ],
+ "changesApplied": [],
+ "changeReasoning": "No changes warranted this session. The validated edge in SHORT_FAVORITE sports markets is intact and the conservative sizing (kellyMult 0.13) is appropriate given the -14% drawdown and the presence of tail-loss events on high-entry-price bets. VOLUME_SPIKE and ELITE_FOLLOW need more settled trades before any sizing adjustment is justified. Disabling additional engines would over-concentrate the book into SHORT_FAVORITE only, removing diversification from the two modestly positive signals. Raising pMin above 0.60 could filter out the validated sports edge if it inadvertently excludes entries in the 0.60-0.68 zone where the hypothesis operates. Patience is the correct posture here.",
+ "riskFlags": [
+  "Stop-loss events at entry prices above 0.88 generate severe asymmetric losses (-$50 to -$95 per $100 stake); consider whether a maximum entry price cap for SHORT_FAVORITE should be implemented in engine logic",
+  "Open position Minnesota Twins $500 stake represents ~5.8% of current equity — concentration at the high end of acceptable single-trade exposure given drawdown context",
+  "Portfolio down 14% from inception; further significant drawdown could impair the bot's ability to recover meaningfully with small kelly fractions",
+  "Non-sports SHORT_FAVORITE (soccer O/U, draw markets) showing 50% win rate at n=22 — if this cohort continues without edge confirmation it should be selectively filtered from the engine",
+  "Wallet 'aenews2' at 44% win rate (n=14) is approaching the point where ELITE_FOLLOW should de-weight or exclude this wallet; human review recommended",
+  "Brier score 0.238 suggests systematic model miscalibration — pPredicted estimates may be systematically overconfident, inflating perceived edge"
+ ],
+ "configNow": {
+  "comment": "EdgeHound tunable parameters. The AI Analyst may adjust these within hard rails enforced in code. Humans can edit too. [pMin lowered to match surviving engines after momentum block]",
+  "engines": {
+   "SHORT_FAVORITE": true,
+   "MOMENTUM": false,
+   "SMART_CONSENSUS": false,
+   "VOLUME_SPIKE": true,
+   "ELITE_FOLLOW": true
+  },
+  "pMin": 0.6,
+  "kellyMult": 0.13,
+  "maxExposure": 0.35,
+  "maxEventExposure": 600,
+  "updatedBy": "analyst",
+  "updatedAt": "2026-06-27T11:05:50.924Z"
+ }
 }

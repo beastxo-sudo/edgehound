@@ -11,7 +11,7 @@
    "slug": "mlb-tex-tor-2026-06-27",
    "side": "YES",
    "entry": 0.925,
-   "cur": 0.955,
+   "cur": 0.9565,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.692,
@@ -3449,7 +3449,7 @@
    "slug": "israeli-parliament-dissolved-by-october-31",
    "side": "NO",
    "entry": 0.9,
-   "cur": 0.968,
+   "cur": 0.9685,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.606,
@@ -12947,7 +12947,7 @@
      75
     ],
     "text": "Short Favorite on high-priced sports markets: 121W/54L (posterior 69%, 90% CI 63-75%) — proven edge, prioritized",
-    "updated": "2026-06-27T22:01:14.298Z"
+    "updated": "2026-06-27T22:15:48.029Z"
    },
    {
     "key": "SHORT_FAVORITE|high|other",
@@ -12959,7 +12959,7 @@
      66
     ],
     "text": "Short Favorite on high-priced non-sports markets: 11W/11L (posterior 50%, 90% CI 34-66%) — collecting evidence",
-    "updated": "2026-06-27T22:01:14.298Z"
+    "updated": "2026-06-27T22:15:48.029Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -12971,7 +12971,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-06-27T22:01:14.298Z"
+    "updated": "2026-06-27T22:15:48.029Z"
    },
    {
     "key": "wallet|aenews2",
@@ -12983,7 +12983,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-06-27T22:01:14.298Z"
+    "updated": "2026-06-27T22:15:48.029Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -12995,7 +12995,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-27T22:01:14.298Z"
+    "updated": "2026-06-27T22:15:48.029Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -13007,7 +13007,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-27T22:01:14.298Z"
+    "updated": "2026-06-27T22:15:48.029Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -13019,7 +13019,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-27T22:01:14.298Z"
+    "updated": "2026-06-27T22:15:48.029Z"
    }
   ]
  },
@@ -13042,9 +13042,9 @@
   "brier": 0.24,
   "hypotheses": 7,
   "integrityOk": true,
-  "updated": "2026-06-27T22:01:14.302Z"
+  "updated": "2026-06-27T22:15:48.033Z"
  },
- "lastRun": 1782597674303,
+ "lastRun": 1782598548033,
  "elite": {
   "updated": 1782587204342,
   "list": [
@@ -13067,13 +13067,13 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-27T22:01:14.303Z",
+  "checkedAt": "2026-06-27T22:15:48.033Z",
   "tradesChecked": 276
  },
  "lastScan": {
-  "at": "2026-06-27T22:01:14.302Z",
-  "marketsFetched": 62,
-  "rawCandidates": 30,
+  "at": "2026-06-27T22:15:48.032Z",
+  "marketsFetched": 63,
+  "rawCandidates": 26,
   "clearedThreshold": 0,
   "placed": 0,
   "pMin": 0.6,

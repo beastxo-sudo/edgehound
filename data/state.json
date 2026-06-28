@@ -2,6 +2,90 @@
  "running": true,
  "journal": [
   {
+   "id": "t1782621071224oazm",
+   "date": "2026-06-28",
+   "openedTs": 1782621071224,
+   "title": "LoL: Karmine Corp vs Deep Cross Gaming (BO5) - Mid-Season Invitational Play-In",
+   "mid": "2554160",
+   "conditionId": "0xd2b8c1d221459643be62410c1159f8e5dbd424b759727dadcf9497120316dc54",
+   "slug": "lol-kc-dcg-2026-06-27",
+   "side": "YES",
+   "entry": 0.895,
+   "cur": 0.895,
+   "stake": 100,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.694,
+   "pModel": 0.656,
+   "pBucket": 0.697,
+   "bucketN": 186,
+   "bk": "SHORT_FAVORITE|high|sport",
+   "ev": 0.005,
+   "kelly": 0.005,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.895,
+    0.972,
+    0.05,
+    0.73,
+    0.73,
+    0.733,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 69% [model 66%, pattern 70% on n=186] · EV +0.00/$1 · 1/4-Kelly 0.5% of equity -> $100. 90c favorite resolving in 0.4d (favorite-longshot bias); +12% if it lands. Drivers: favorite setup +, short time to resolution -, price level +",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1782655200000,
+   "status": "open"
+  },
+  {
+   "id": "t17826210712237s8v",
+   "date": "2026-06-28",
+   "openedTs": 1782621071223,
+   "title": "LoL: T1 vs Team Liquid (BO5) - Mid-Season Invitational Play-In",
+   "mid": "2554199",
+   "conditionId": "0x66f677ca220360d883192d65e447e398166d4c1340e54792722894ba0db904c0",
+   "slug": "lol-t1-tl2-2026-06-28",
+   "side": "YES",
+   "entry": 0.923,
+   "cur": 0.923,
+   "stake": 100,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.693,
+   "pModel": 0.668,
+   "pBucket": 0.697,
+   "bucketN": 186,
+   "bk": "SHORT_FAVORITE|high|sport",
+   "ev": 0.004,
+   "kelly": 0.005,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.923,
+    0.986,
+    0.11,
+    0.789,
+    0.686,
+    0.757,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 69% [model 67%, pattern 70% on n=186] · EV +0.00/$1 · 1/4-Kelly 0.5% of equity -> $100. 92c favorite resolving in 0.2d (favorite-longshot bias); +8% if it lands. Drivers: favorite setup +, short time to resolution -, price level +",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1782637800000,
+   "status": "open"
+  },
+  {
    "id": "t1782619388241bfe5",
    "date": "2026-06-28",
    "openedTs": 1782619388241,
@@ -11,7 +95,7 @@
    "slug": "mlb-oak-laa-2026-06-27",
    "side": "NO",
    "entry": 0.865,
-   "cur": 0.964,
+   "cur": 0.9995,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.69,
@@ -41,7 +125,11 @@
    "target": null,
    "stop": 0.45,
    "holdUntil": 1783215480000,
-   "status": "open"
+   "status": "closed",
+   "exit": 1,
+   "exitTs": 1782621071219,
+   "exitReason": "Resolved in our favor",
+   "pnl": 15.606936416184974
   },
   {
    "id": "t1782612610977uncq",
@@ -13099,9 +13187,9 @@
  ],
  "strat": {
   "SHORT_FAVORITE": {
-   "trades": 207,
-   "wins": 140,
-   "pnl": -511.23035264662144,
+   "trades": 208,
+   "wins": 141,
+   "pnl": -495.6234162304365,
    "weight": 1
   },
   "MOMENTUM": {
@@ -13131,6 +13219,9 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-28 10:01 IST — Opened YES $100 @ 90c P=69% EV=+0.00 [Short Favorite] \"LoL: Karmine Corp vs Deep Cross Gaming (BO5) -\"",
+  "2026-06-28 10:01 IST — Opened YES $100 @ 92c P=69% EV=+0.00 [Short Favorite] \"LoL: T1 vs Team Liquid (BO5) - Mid-Season Invi\"",
+  "2026-06-28 10:01 IST — Closed NO \"Athletics vs. Los Angeles Angels\" -> +$16 (Resolved in our favor) · model said P(win)=69%",
   "2026-06-28 09:33 IST — Opened NO $100 @ 87c P=69% EV=+0.00 [Short Favorite] \"Athletics vs. Los Angeles Angels\"",
   "2026-06-28 07:53 IST — Closed YES \"Washington Nationals vs. Baltimore Orioles\" -> +$27 (Resolved in our favor) · model said P(win)=69%",
   "2026-06-28 07:53 IST — Closed YES \"Colorado Rockies vs. Minnesota Twins\" -> +$7 (Resolved in our favor) · model said P(win)=69%",
@@ -13141,29 +13232,26 @@
   "2026-06-28 07:25 IST — Closed NO \"Seattle Mariners vs. Cleveland Guardians\" -> +$14 (Resolved in our favor) · model said P(win)=69%",
   "2026-06-28 07:11 IST — Closed YES \"Chicago Cubs vs. Milwaukee Brewers\" -> +$12 (Resolved in our favor) · model said P(win)=69%",
   "2026-06-28 06:14 IST — Opened YES $100 @ 90c P=69% EV=-0.00 [Short Favorite] \"Chicago Cubs vs. Milwaukee Brewers\"",
-  "2026-06-28 06:00 IST — Opened NO $100 @ 88c P=69% EV=-0.00 [Short Favorite] \"Seattle Mariners vs. Cleveland Guardians\"",
-  "2026-06-28 05:45 IST — Closed NO \"Philadelphia Phillies vs. New York Mets\" -> +$7 (Resolved in our favor) · model said P(win)=68%",
-  "2026-06-28 05:31 IST — Closed YES \"Cincinnati Reds vs. Pittsburgh Pirates\" -> +$12 (Resolved in our favor) · model said P(win)=68%",
-  "2026-06-28 05:15 IST — Opened YES $100 @ 89c P=68% EV=-0.00 [Short Favorite] \"Cincinnati Reds vs. Pittsburgh Pirates\""
+  "2026-06-28 06:00 IST — Opened NO $100 @ 88c P=69% EV=-0.00 [Short Favorite] \"Seattle Mariners vs. Cleveland Guardians\""
  ],
  "brain": {
   "w": [
-   0.36016937357507095,
-   0.04372709633806699,
-   0.008434016349857763,
-   -0.1676808165355798,
-   0.22065692434770368,
-   -0.3563090547637307,
-   0.7054046254308337,
-   0.06689234953672213,
-   -0.06952068935970646,
-   0.08098925694572692,
-   0.003373606539943099,
-   0.14053800309280498,
-   -0.06548947280829377
+   0.37232940720749885,
+   0.043705232789897956,
+   0.008429799341682835,
+   -0.16759697612731203,
+   0.23122079823165118,
+   -0.3498744602485066,
+   0.7173920414373337,
+   0.07713822192186023,
+   -0.061316770687705975,
+   0.09326420039983108,
+   0.003371919736673127,
+   0.15280785241047404,
+   -0.06545672807188962
   ],
-  "b": 0.1238069909264879,
-  "nUpdates": 277,
+  "b": 0.13614710924570336,
+  "nUpdates": 278,
   "buckets": {
    "MOMENTUM|high|sport": {
     "a": 1,
@@ -13210,7 +13298,7 @@
     "b": 3
    },
    "SHORT_FAVORITE|high|sport": {
-    "a": 130,
+    "a": 131,
     "b": 57
    },
    "VOLUME_SPIKE|mid|other": {
@@ -13277,13 +13365,13 @@
    }
   },
   "brier": {
-   "sum": 65.76508000000005,
-   "n": 277
+   "sum": 65.86118000000006,
+   "n": 278
   },
   "payoff": {
    "SHORT_FAVORITE": {
-    "wSum": 20.278318131852956,
-    "wN": 140,
+    "wSum": 20.434387496014807,
+    "wN": 141,
     "lSum": 21.016255817446634,
     "lN": 67
    },
@@ -13316,14 +13404,14 @@
    {
     "key": "SHORT_FAVORITE|high|sport",
     "status": "VALIDATED",
-    "n": 185,
-    "winRate": 69.5,
+    "n": 186,
+    "winRate": 69.7,
     "ci": [
      64,
      75
     ],
-    "text": "Short Favorite on high-priced sports markets: 129W/56L (posterior 70%, 90% CI 64-75%) — proven edge, prioritized",
-    "updated": "2026-06-28T04:16:42.352Z"
+    "text": "Short Favorite on high-priced sports markets: 130W/56L (posterior 70%, 90% CI 64-75%) — proven edge, prioritized",
+    "updated": "2026-06-28T04:31:11.220Z"
    },
    {
     "key": "SHORT_FAVORITE|high|other",
@@ -13335,7 +13423,7 @@
      66
     ],
     "text": "Short Favorite on high-priced non-sports markets: 11W/11L (posterior 50%, 90% CI 34-66%) — collecting evidence",
-    "updated": "2026-06-28T04:16:42.352Z"
+    "updated": "2026-06-28T04:31:11.220Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -13347,7 +13435,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-06-28T04:16:42.352Z"
+    "updated": "2026-06-28T04:31:11.220Z"
    },
    {
     "key": "wallet|aenews2",
@@ -13359,7 +13447,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-06-28T04:16:42.352Z"
+    "updated": "2026-06-28T04:31:11.220Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -13371,7 +13459,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-28T04:16:42.352Z"
+    "updated": "2026-06-28T04:31:11.220Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -13383,7 +13471,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-28T04:16:42.352Z"
+    "updated": "2026-06-28T04:31:11.220Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -13395,32 +13483,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-28T04:16:42.352Z"
+    "updated": "2026-06-28T04:31:11.220Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 6930.53408976518,
+  "cash": 6846.141026181365,
   "created": 1781162132851
  },
  "summary": {
-  "realized": -1619.47,
-  "closed": 277,
-  "wins": 170,
-  "open": 7,
-  "staked": 63400,
+  "realized": -1603.86,
+  "closed": 278,
+  "wins": 171,
+  "open": 8,
+  "staked": 63600,
   "bankStart": 10000,
-  "cash": 6931,
-  "equity": 8529,
-  "returnPct": -14.71,
-  "modelUpdates": 277,
+  "cash": 6846,
+  "equity": 8533,
+  "returnPct": -14.67,
+  "modelUpdates": 278,
   "brier": 0.237,
   "hypotheses": 7,
   "integrityOk": true,
-  "updated": "2026-06-28T04:16:42.355Z"
+  "updated": "2026-06-28T04:31:11.224Z"
  },
- "lastRun": 1782620202355,
+ "lastRun": 1782621071226,
  "elite": {
   "updated": 1782587204342,
   "list": [
@@ -13443,15 +13531,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-28T04:16:42.355Z",
-  "tradesChecked": 284
+  "checkedAt": "2026-06-28T04:31:11.226Z",
+  "tradesChecked": 286
  },
  "lastScan": {
-  "at": "2026-06-28T04:16:42.354Z",
-  "marketsFetched": 41,
-  "rawCandidates": 14,
-  "clearedThreshold": 0,
-  "placed": 0,
+  "at": "2026-06-28T04:31:11.224Z",
+  "marketsFetched": 48,
+  "rawCandidates": 22,
+  "clearedThreshold": 2,
+  "placed": 2,
   "pMin": 0.6,
   "blocked": {
    "exposure": 0,
@@ -13459,6 +13547,6 @@
    "cash": 0,
    "sanity": 0
   },
-  "reason": "no candidates cleared P(win)>=0.60 (engines produce ~0.58-0.64; lower pMin or wait for better setups)"
+  "reason": "traded"
  }
 }

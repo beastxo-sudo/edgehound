@@ -2,6 +2,48 @@
  "running": true,
  "journal": [
   {
+   "id": "t1782671622401bvtv",
+   "date": "2026-06-29",
+   "openedTs": 1782671622401,
+   "title": "South Africa vs. Canada: O/U 3.5",
+   "mid": "2680428",
+   "conditionId": "0x0af97753cd18611b0044752905b726a7eb00bf0473e1289d21c0baee011b8481",
+   "slug": "fifwc-rsa-can-2026-06-28-more-markets",
+   "side": "NO",
+   "entry": 0.785,
+   "cur": 0.785,
+   "stake": 100,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.7,
+   "pModel": 0.712,
+   "pBucket": 0.703,
+   "bucketN": 193,
+   "bk": "SHORT_FAVORITE|high|sport",
+   "ev": 0.006,
+   "kelly": 0.005,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.785,
+    0.999,
+    0,
+    0.784,
+    0.804,
+    1,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 70% [model 71%, pattern 70% on n=193] · EV +0.01/$1 · 1/4-Kelly 0.5% of equity -> $100. 79c favorite resolving in 0.0d (favorite-longshot bias); +27% if it lands. Drivers: favorite setup +, short time to resolution -, price level +",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1782673200000,
+   "status": "open"
+  },
+  {
    "id": "t1782647148435d522",
    "date": "2026-06-28",
    "openedTs": 1782647148435,
@@ -4151,7 +4193,7 @@
    "slug": "israeli-parliament-dissolved-by-october-31",
    "side": "NO",
    "entry": 0.9,
-   "cur": 0.985,
+   "cur": 0.9725,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.606,
@@ -13457,6 +13499,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-29 00:03 IST — Opened NO $100 @ 79c P=70% EV=+0.01 [Short Favorite] \"South Africa vs. Canada: O/U 3.5\"",
   "2026-06-28 17:31 IST — Closed YES \"Dota 2: Virtus.pro vs HULIGANI - Game 1 Wi\" -> +$18 (Resolved in our favor) · model said P(win)=70%",
   "2026-06-28 17:31 IST — Closed YES \"Lexus Eastbourne Open: Zizou Bergs vs Ugo \" -> +$16 (Resolved in our favor) · model said P(win)=70%",
   "2026-06-28 17:15 IST — Opened YES $100 @ 87c P=69% EV=+0.00 [Short Favorite] \"Lexus Eastbourne Open: Zizou Bergs vs Ugo Humb\"",
@@ -13469,8 +13512,7 @@
   "2026-06-28 11:02 IST — Closed YES \"LoL: T1 vs Team Liquid - Game 3 Winner\" -> +$13 (Resolved in our favor) · model said P(win)=69%",
   "2026-06-28 10:33 IST — Opened YES $100 @ 89c P=69% EV=+0.00 [Short Favorite] \"LoL: T1 vs Team Liquid - Game 3 Winner\"",
   "2026-06-28 10:16 IST — Opened YES $100 @ 85c P=69% EV=+0.00 [Short Favorite] \"Game Handicap: T1 (-2.5) vs Team Liquid (+2.5)\"",
-  "2026-06-28 10:01 IST — Opened YES $100 @ 90c P=69% EV=+0.00 [Short Favorite] \"LoL: Karmine Corp vs Deep Cross Gaming (BO5) -\"",
-  "2026-06-28 10:01 IST — Opened YES $100 @ 92c P=69% EV=+0.00 [Short Favorite] \"LoL: T1 vs Team Liquid (BO5) - Mid-Season Invi\""
+  "2026-06-28 10:01 IST — Opened YES $100 @ 90c P=69% EV=+0.00 [Short Favorite] \"LoL: Karmine Corp vs Deep Cross Gaming (BO5) -\""
  ],
  "brain": {
   "w": [
@@ -13649,7 +13691,7 @@
      76
     ],
     "text": "Short Favorite on high-priced sports markets: 136W/57L (posterior 70%, 90% CI 65-76%) — proven edge, prioritized",
-    "updated": "2026-06-28T18:20:02.348Z"
+    "updated": "2026-06-28T18:33:42.397Z"
    },
    {
     "key": "SHORT_FAVORITE|high|other",
@@ -13661,7 +13703,7 @@
      66
     ],
     "text": "Short Favorite on high-priced non-sports markets: 11W/11L (posterior 50%, 90% CI 34-66%) — collecting evidence",
-    "updated": "2026-06-28T18:20:02.348Z"
+    "updated": "2026-06-28T18:33:42.397Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -13673,7 +13715,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-06-28T18:20:02.348Z"
+    "updated": "2026-06-28T18:33:42.397Z"
    },
    {
     "key": "wallet|aenews2",
@@ -13685,7 +13727,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-06-28T18:20:02.348Z"
+    "updated": "2026-06-28T18:33:42.397Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -13697,7 +13739,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-28T18:20:02.348Z"
+    "updated": "2026-06-28T18:33:42.397Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -13709,7 +13751,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-28T18:20:02.348Z"
+    "updated": "2026-06-28T18:33:42.397Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -13721,32 +13763,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-28T18:20:02.348Z"
+    "updated": "2026-06-28T18:33:42.397Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 7064.339706540482,
+  "cash": 6964.339706540482,
   "created": 1781162132851
  },
  "summary": {
   "realized": -1585.66,
   "closed": 285,
   "wins": 177,
-  "open": 6,
-  "staked": 64100,
+  "open": 7,
+  "staked": 64200,
   "bankStart": 10000,
-  "cash": 7064,
-  "equity": 8553,
-  "returnPct": -14.47,
+  "cash": 6964,
+  "equity": 8551,
+  "returnPct": -14.49,
   "modelUpdates": 285,
   "brier": 0.235,
   "hypotheses": 7,
   "integrityOk": true,
-  "updated": "2026-06-28T18:20:02.348Z"
+  "updated": "2026-06-28T18:33:42.402Z"
  },
- "lastRun": 1782670802349,
+ "lastRun": 1782671622402,
  "elite": {
   "updated": 1782587204342,
   "list": [
@@ -13769,13 +13811,13 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-28T18:20:02.349Z",
-  "tradesChecked": 291
+  "checkedAt": "2026-06-28T18:33:42.402Z",
+  "tradesChecked": 292
  },
  "lastScan": {
-  "at": "2026-06-28T11:45:48.435Z",
-  "marketsFetched": 58,
-  "rawCandidates": 33,
+  "at": "2026-06-28T18:33:42.402Z",
+  "marketsFetched": 68,
+  "rawCandidates": 37,
   "clearedThreshold": 1,
   "placed": 1,
   "pMin": 0.6,

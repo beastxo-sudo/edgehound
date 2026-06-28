@@ -11,7 +11,7 @@
    "slug": "lol-t1-tl2-2026-06-28",
    "side": "YES",
    "entry": 0.885,
-   "cur": 0.885,
+   "cur": 0.915,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.694,
@@ -53,7 +53,7 @@
    "slug": "lol-t1-tl2-2026-06-28",
    "side": "YES",
    "entry": 0.845,
-   "cur": 0.845,
+   "cur": 0.925,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.693,
@@ -95,7 +95,7 @@
    "slug": "lol-kc-dcg-2026-06-27",
    "side": "YES",
    "entry": 0.895,
-   "cur": 0.895,
+   "cur": 0.885,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.694,
@@ -137,7 +137,7 @@
    "slug": "lol-t1-tl2-2026-06-28",
    "side": "YES",
    "entry": 0.923,
-   "cur": 0.9815,
+   "cur": 0.991,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.693,
@@ -3997,7 +3997,7 @@
    "slug": "israeli-parliament-dissolved-by-october-31",
    "side": "NO",
    "entry": 0.9,
-   "cur": 0.9735,
+   "cur": 0.97,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.606,
@@ -13495,7 +13495,7 @@
      75
     ],
     "text": "Short Favorite on high-priced sports markets: 130W/56L (posterior 70%, 90% CI 64-75%) — proven edge, prioritized",
-    "updated": "2026-06-28T05:03:06.484Z"
+    "updated": "2026-06-28T05:17:10.976Z"
    },
    {
     "key": "SHORT_FAVORITE|high|other",
@@ -13507,7 +13507,7 @@
      66
     ],
     "text": "Short Favorite on high-priced non-sports markets: 11W/11L (posterior 50%, 90% CI 34-66%) — collecting evidence",
-    "updated": "2026-06-28T05:03:06.484Z"
+    "updated": "2026-06-28T05:17:10.976Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -13519,7 +13519,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-06-28T05:03:06.484Z"
+    "updated": "2026-06-28T05:17:10.976Z"
    },
    {
     "key": "wallet|aenews2",
@@ -13531,7 +13531,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-06-28T05:03:06.484Z"
+    "updated": "2026-06-28T05:17:10.976Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -13543,7 +13543,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-28T05:03:06.484Z"
+    "updated": "2026-06-28T05:17:10.976Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -13555,7 +13555,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-28T05:03:06.484Z"
+    "updated": "2026-06-28T05:17:10.976Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -13567,7 +13567,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-28T05:03:06.484Z"
+    "updated": "2026-06-28T05:17:10.976Z"
    }
   ]
  },
@@ -13584,15 +13584,15 @@
   "staked": 63800,
   "bankStart": 10000,
   "cash": 6646,
-  "equity": 8540,
-  "returnPct": -14.6,
+  "equity": 8552,
+  "returnPct": -14.48,
   "modelUpdates": 278,
   "brier": 0.237,
   "hypotheses": 7,
   "integrityOk": true,
-  "updated": "2026-06-28T05:03:06.488Z"
+  "updated": "2026-06-28T05:17:10.979Z"
  },
- "lastRun": 1782622986488,
+ "lastRun": 1782623830980,
  "elite": {
   "updated": 1782587204342,
   "list": [
@@ -13615,15 +13615,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-28T05:03:06.488Z",
+  "checkedAt": "2026-06-28T05:17:10.980Z",
   "tradesChecked": 288
  },
  "lastScan": {
-  "at": "2026-06-28T05:03:06.488Z",
-  "marketsFetched": 53,
+  "at": "2026-06-28T05:17:10.979Z",
+  "marketsFetched": 54,
   "rawCandidates": 22,
-  "clearedThreshold": 1,
-  "placed": 1,
+  "clearedThreshold": 0,
+  "placed": 0,
   "pMin": 0.6,
   "blocked": {
    "exposure": 0,
@@ -13631,6 +13631,6 @@
    "cash": 0,
    "sanity": 0
   },
-  "reason": "traded"
+  "reason": "no candidates cleared P(win)>=0.60 (engines produce ~0.58-0.64; lower pMin or wait for better setups)"
  }
 }

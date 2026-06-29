@@ -11,7 +11,7 @@
    "slug": "atp-jong-hijikat-2026-06-29",
    "side": "NO",
    "entry": 0.8049999999999999,
-   "cur": 0.84,
+   "cur": 0.835,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.704,
@@ -53,7 +53,7 @@
    "slug": "atp-wu-djokovi-2026-06-29",
    "side": "NO",
    "entry": 0.9085,
-   "cur": 0.765,
+   "cur": 0.8375,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.702,
@@ -263,7 +263,11 @@
    "target": null,
    "stop": 0.45,
    "holdUntil": 1782765000000,
-   "status": "open"
+   "status": "closed",
+   "exit": 0.865,
+   "exitTs": 1782765055898,
+   "exitReason": "Max hold reached — closed at market",
+   "pnl": 1.1695906432748548
   },
   {
    "id": "t1782711942519ackq",
@@ -489,7 +493,11 @@
    "target": null,
    "stop": 0.45,
    "holdUntil": 1782765000000,
-   "status": "open"
+   "status": "closed",
+   "exit": 0.815,
+   "exitTs": 1782765055898,
+   "exitReason": "Max hold reached — closed at market",
+   "pnl": 0
   },
   {
    "id": "t17826948719855yzn",
@@ -5331,7 +5339,7 @@
    "slug": "israeli-parliament-dissolved-by-october-31",
    "side": "NO",
    "entry": 0.9,
-   "cur": 0.979,
+   "cur": 0.9795,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.606,
@@ -14605,9 +14613,9 @@
  ],
  "strat": {
   "SHORT_FAVORITE": {
-   "trades": 237,
-   "wins": 164,
-   "pnl": -505.6097572820065,
+   "trades": 239,
+   "wins": 165,
+   "pnl": -504.4401666387317,
    "weight": 1
   },
   "MOMENTUM": {
@@ -14637,6 +14645,8 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-30 02:00 IST — Closed NO \"Will Germany vs. Paraguay end in a draw?\" -> +$0 (Max hold reached — closed at market) · model said P(win)=71%",
+  "2026-06-30 02:00 IST — Closed YES \"Germany vs. Paraguay: Team to Advance\" -> +$1 (Max hold reached — closed at market) · model said P(win)=71%",
   "2026-06-30 01:31 IST — Closed YES \"Wimbledon WTA: Solana Sierra vs Anna Bonda\" -> +$27 (Resolved in our favor) · model said P(win)=70%",
   "2026-06-30 01:15 IST — Opened NO $100 @ 81c P=70% EV=+0.00 [Short Favorite] \"Wimbledon ATP: Jesper de Jong vs Rinky Hijikat\"",
   "2026-06-30 01:15 IST — Closed YES \"Wimbledon WTA: Dayana Yastremska vs Aoi It\" -> +$6 (Resolved in our favor) · model said P(win)=70%",
@@ -14648,28 +14658,26 @@
   "2026-06-30 00:45 IST — Opened NO $100 @ 82c P=71% EV=+0.01 [Short Favorite] \"Wimbledon WTA: Dayana Yastremska vs Aoi Ito\"",
   "2026-06-30 00:01 IST — Opened YES $100 @ 86c P=71% EV=+0.01 [Short Favorite] \"Germany vs. Paraguay: Team to Advance\"",
   "2026-06-29 13:31 IST — Closed NO \"LoL: Deep Cross Gaming vs Team Liquid (BO5\" -> +$23 (Resolved in our favor) · model said P(win)=71%",
-  "2026-06-29 11:15 IST — Opened NO $100 @ 82c P=71% EV=+0.01 [Short Favorite] \"LoL: Deep Cross Gaming vs Team Liquid (BO5) - \"",
-  "2026-06-29 11:01 IST — Closed YES \"LoL: T1 vs Karmine Corp (BO5) - Mid-Season\" -> +$18 (Resolved in our favor) · model said P(win)=70%",
-  "2026-06-29 11:01 IST — Closed YES \"LoL: T1 vs Karmine Corp - Game 3 Winner\" -> +$11 (Resolved in our favor) · model said P(win)=70%"
+  "2026-06-29 11:15 IST — Opened NO $100 @ 82c P=71% EV=+0.01 [Short Favorite] \"LoL: Deep Cross Gaming vs Team Liquid (BO5) - \""
  ],
  "brain": {
   "w": [
-   0.39162153136938016,
-   0.04307592309792335,
-   0.008308419038033057,
-   -0.16518375476479064,
-   0.2604750193727557,
-   -0.2662209086162227,
-   0.6129613486540725,
-   0.08182469764807933,
-   -0.05020720827184847,
-   0.10576670670076016,
-   0.003323367615213215,
-   0.1752608576205174,
-   -0.06451421957230995
+   0.36594231779551056,
+   0.04303285794380621,
+   0.008300112696099784,
+   -0.16501861230596454,
+   0.24035377965382806,
+   -0.2888905367121165,
+   0.6101483591868426,
+   0.06415853151079007,
+   -0.0733364079155506,
+   0.08816849025112222,
+   0.0033200450784399054,
+   0.14979795063022822,
+   -0.06444972148129252
   ],
-  "b": 0.16112470903418552,
-  "nUpdates": 307,
+  "b": 0.1358463817362426,
+  "nUpdates": 309,
   "buckets": {
    "MOMENTUM|high|sport": {
     "a": 1,
@@ -14716,8 +14724,8 @@
     "b": 3
    },
    "SHORT_FAVORITE|high|sport": {
-    "a": 154,
-    "b": 63
+    "a": 155,
+    "b": 64
    },
    "VOLUME_SPIKE|mid|other": {
     "a": 2,
@@ -14783,15 +14791,15 @@
    }
   },
   "brier": {
-   "sum": 70.91941200000008,
-   "n": 307
+   "sum": 71.50652500000008,
+   "n": 309
   },
   "payoff": {
    "SHORT_FAVORITE": {
-    "wSum": 24.630376689250195,
-    "wN": 164,
+    "wSum": 24.642072595682944,
+    "wN": 165,
     "lSum": 25.31210842119771,
-    "lN": 73
+    "lN": 74
    },
    "MOMENTUM": {
     "wSum": 2.701062968732154,
@@ -14822,14 +14830,14 @@
    {
     "key": "SHORT_FAVORITE|high|sport",
     "status": "VALIDATED",
-    "n": 215,
-    "winRate": 71,
+    "n": 217,
+    "winRate": 70.8,
     "ci": [
      66,
      76
     ],
-    "text": "Short Favorite on high-priced sports markets: 153W/62L (posterior 71%, 90% CI 66-76%) — proven edge, prioritized",
-    "updated": "2026-06-29T20:15:44.028Z"
+    "text": "Short Favorite on high-priced sports markets: 154W/63L (posterior 71%, 90% CI 66-76%) — proven edge, prioritized",
+    "updated": "2026-06-29T20:30:55.899Z"
    },
    {
     "key": "SHORT_FAVORITE|high|other",
@@ -14841,7 +14849,7 @@
      66
     ],
     "text": "Short Favorite on high-priced non-sports markets: 11W/11L (posterior 50%, 90% CI 34-66%) — collecting evidence",
-    "updated": "2026-06-29T20:15:44.028Z"
+    "updated": "2026-06-29T20:30:55.899Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -14853,7 +14861,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-06-29T20:15:44.028Z"
+    "updated": "2026-06-29T20:30:55.899Z"
    },
    {
     "key": "wallet|aenews2",
@@ -14865,7 +14873,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-06-29T20:15:44.028Z"
+    "updated": "2026-06-29T20:30:55.899Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -14877,7 +14885,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-29T20:15:44.028Z"
+    "updated": "2026-06-29T20:30:55.899Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -14889,7 +14897,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-29T20:15:44.028Z"
+    "updated": "2026-06-29T20:30:55.899Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -14901,32 +14909,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-29T20:15:44.028Z"
+    "updated": "2026-06-29T20:30:55.899Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 6636.154685129794,
+  "cash": 6837.3242757730695,
   "created": 1781162132851
  },
  "summary": {
-  "realized": -1613.85,
-  "closed": 307,
-  "wins": 194,
-  "open": 10,
+  "realized": -1612.68,
+  "closed": 309,
+  "wins": 195,
+  "open": 8,
   "staked": 66700,
   "bankStart": 10000,
-  "cash": 6636,
-  "equity": 8514,
-  "returnPct": -14.86,
-  "modelUpdates": 307,
+  "cash": 6837,
+  "equity": 8521,
+  "returnPct": -14.79,
+  "modelUpdates": 309,
   "brier": 0.231,
   "hypotheses": 7,
   "integrityOk": true,
-  "updated": "2026-06-29T20:15:44.032Z"
+  "updated": "2026-06-29T20:30:55.903Z"
  },
- "lastRun": 1782764144032,
+ "lastRun": 1782765055903,
  "elite": {
   "updated": 1782761460273,
   "list": [
@@ -14949,13 +14957,13 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-29T20:15:44.032Z",
+  "checkedAt": "2026-06-29T20:30:55.903Z",
   "tradesChecked": 317
  },
  "lastScan": {
-  "at": "2026-06-29T20:15:44.031Z",
-  "marketsFetched": 64,
-  "rawCandidates": 41,
+  "at": "2026-06-29T20:30:55.902Z",
+  "marketsFetched": 65,
+  "rawCandidates": 20,
   "clearedThreshold": 0,
   "placed": 0,
   "pMin": 0.6,

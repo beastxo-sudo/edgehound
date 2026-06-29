@@ -2,6 +2,132 @@
  "running": true,
  "journal": [
   {
+   "id": "t1782761460865r095",
+   "date": "2026-06-30",
+   "openedTs": 1782761460865,
+   "title": "Wimbledon ATP: Yibing Wu vs Novak Djokovic",
+   "mid": "2702157",
+   "conditionId": "0xf1d18b8f8296cfb295c8b9414157291aefb665ad94f384e3ec870e7a15fd9b1c",
+   "slug": "atp-wu-djokovi-2026-06-29",
+   "side": "NO",
+   "entry": 0.9085,
+   "cur": 0.9085,
+   "stake": 100,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.702,
+   "pModel": 0.704,
+   "pBucket": 0.707,
+   "bucketN": 213,
+   "bk": "SHORT_FAVORITE|high|sport",
+   "ev": 0.002,
+   "kelly": 0.005,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.908,
+    0.528,
+    0.133,
+    0.779,
+    0.713,
+    0.984,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 70% [model 70%, pattern 71% on n=213] · EV +0.00/$1 · 1/4-Kelly 0.5% of equity -> $100. 91c favorite resolving in 6.6d (favorite-longshot bias); +10% if it lands. Drivers: favorite setup +, price level +, short time to resolution -",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1783332000000,
+   "status": "open"
+  },
+  {
+   "id": "t1782761460865tstd",
+   "date": "2026-06-30",
+   "openedTs": 1782761460865,
+   "title": "Wimbledon WTA: Dayana Yastremska vs Aoi Ito",
+   "mid": "2702075",
+   "conditionId": "0x1955392f25a40ec04323182027650204a0cf90b1357022d747bb4d0576bd24e8",
+   "slug": "wta-yastrem-ito-2026-06-29",
+   "side": "YES",
+   "entry": 0.94,
+   "cur": 0.94,
+   "stake": 100,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.702,
+   "pModel": 0.763,
+   "pBucket": 0.707,
+   "bucketN": 213,
+   "bk": "SHORT_FAVORITE|high|sport",
+   "ev": 0.002,
+   "kelly": 0.005,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.94,
+    0.528,
+    0.625,
+    0.801,
+    0.702,
+    0.995,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 70% [model 76%, pattern 71% on n=213] · EV +0.00/$1 · 1/4-Kelly 0.5% of equity -> $100. 94c favorite resolving in 6.6d (favorite-longshot bias); +6% if it lands. Drivers: 24h move size +, favorite setup +, price level +",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1783332000000,
+   "status": "open"
+  },
+  {
+   "id": "t17827614608640tea",
+   "date": "2026-06-30",
+   "openedTs": 1782761460864,
+   "title": "Wimbledon WTA: Solana Sierra vs Anna Bondar",
+   "mid": "2702146",
+   "conditionId": "0x8faca6c0593a20a28b7b17d4fa991953d3dd50e9e7c5e3b0e1af62f4b33370fe",
+   "slug": "wta-sierra-bondar-2026-06-29",
+   "side": "YES",
+   "entry": 0.785,
+   "cur": 0.785,
+   "stake": 100,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.702,
+   "pModel": 0.769,
+   "pBucket": 0.707,
+   "bucketN": 213,
+   "bk": "SHORT_FAVORITE|high|sport",
+   "ev": 0.002,
+   "kelly": 0.005,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.785,
+    0.528,
+    0.75,
+    0.756,
+    0.706,
+    0.996,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 70% [model 77%, pattern 71% on n=213] · EV +0.00/$1 · 1/4-Kelly 0.5% of equity -> $100. 79c favorite resolving in 6.6d (favorite-longshot bias); +27% if it lands. Drivers: 24h move size +, favorite setup +, price level +",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1783332000000,
+   "status": "open"
+  },
+  {
    "id": "t17827605424418dp3",
    "date": "2026-06-30",
    "openedTs": 1782760542441,
@@ -11,7 +137,7 @@
    "slug": "wta-yastrem-ito-2026-06-29",
    "side": "NO",
    "entry": 0.815,
-   "cur": 0.815,
+   "cur": 0.06000000000000005,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.705,
@@ -41,7 +167,11 @@
    "target": null,
    "stop": 0.45,
    "holdUntil": 1783332000000,
-   "status": "open"
+   "status": "closed",
+   "exit": 0.06000000000000005,
+   "exitTs": 1782761460859,
+   "exitReason": "Stop loss hit (-45%)",
+   "pnl": -92.63803680981594
   },
   {
    "id": "t1782757912839ongf",
@@ -53,7 +183,7 @@
    "slug": "fifwc-ger-par-2026-06-29-more-markets",
    "side": "YES",
    "entry": 0.855,
-   "cur": 0.855,
+   "cur": 0.865,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.707,
@@ -5151,7 +5281,7 @@
    "slug": "israeli-parliament-dissolved-by-october-31",
    "side": "NO",
    "entry": 0.9,
-   "cur": 0.9805,
+   "cur": 0.9775,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.606,
@@ -14425,9 +14555,9 @@
  ],
  "strat": {
   "SHORT_FAVORITE": {
-   "trades": 234,
+   "trades": 235,
    "wins": 162,
-   "pnl": -446.7432342274419,
+   "pnl": -539.3812710372579,
    "weight": 1
   },
   "MOMENTUM": {
@@ -14457,6 +14587,11 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-06-30 01:01 IST — Opened NO $100 @ 91c P=70% EV=+0.00 [Short Favorite] \"Wimbledon ATP: Yibing Wu vs Novak Djokovic\"",
+  "2026-06-30 01:01 IST — Opened YES $100 @ 94c P=70% EV=+0.00 [Short Favorite] \"Wimbledon WTA: Dayana Yastremska vs Aoi Ito\"",
+  "2026-06-30 01:01 IST — Opened YES $100 @ 79c P=70% EV=+0.00 [Short Favorite] \"Wimbledon WTA: Solana Sierra vs Anna Bondar\"",
+  "2026-06-30 01:01 IST — Closed NO \"Wimbledon WTA: Dayana Yastremska vs Aoi It\" -> $-93 (Stop loss hit (-45%)) · model said P(win)=71%",
+  "2026-06-30 01:01 IST — Elite pool refreshed: 2 wallets qualify (>=58% win rate over >=10 settled, scalpers excluded): aenews2 86%, denizz 63%",
   "2026-06-30 00:45 IST — Opened NO $100 @ 82c P=71% EV=+0.01 [Short Favorite] \"Wimbledon WTA: Dayana Yastremska vs Aoi Ito\"",
   "2026-06-30 00:01 IST — Opened YES $100 @ 86c P=71% EV=+0.01 [Short Favorite] \"Germany vs. Paraguay: Team to Advance\"",
   "2026-06-29 13:31 IST — Closed NO \"LoL: Deep Cross Gaming vs Team Liquid (BO5\" -> +$23 (Resolved in our favor) · model said P(win)=71%",
@@ -14465,31 +14600,26 @@
   "2026-06-29 11:01 IST — Closed YES \"LoL: T1 vs Karmine Corp - Game 3 Winner\" -> +$11 (Resolved in our favor) · model said P(win)=70%",
   "2026-06-29 10:45 IST — Opened YES $100 @ 90c P=70% EV=+0.00 [Short Favorite] \"LoL: T1 vs Karmine Corp - Game 3 Winner\"",
   "2026-06-29 10:15 IST — Closed YES \"LoL: T1 vs Karmine Corp - Game 2 Winner\" -> +$27 (Resolved in our favor) · model said P(win)=70%",
-  "2026-06-29 09:31 IST — Opened YES $100 @ 79c P=70% EV=+0.00 [Short Favorite] \"LoL: T1 vs Karmine Corp - Game 2 Winner\"",
-  "2026-06-29 08:01 IST — Closed YES \"New York Yankees vs. Boston Red Sox\" -> $-100 (Resolved against us) · model said P(win)=70%",
-  "2026-06-29 07:45 IST — Opened YES $100 @ 80c P=70% EV=+0.01 [Short Favorite] \"New York Yankees vs. Boston Red Sox\"",
-  "2026-06-29 07:45 IST — Closed NO \"New York Yankees vs. Boston Red Sox\" -> $-75 (Stop loss hit (-45%)) · model said P(win)=71%",
-  "2026-06-29 07:01 IST — Opened NO $100 @ 82c P=71% EV=+0.01 [Short Favorite] \"Will Germany vs. Paraguay end in a draw?\"",
-  "2026-06-29 06:31 IST — Opened NO $100 @ 84c P=71% EV=+0.01 [Short Favorite] \"New York Yankees vs. Boston Red Sox\""
+  "2026-06-29 09:31 IST — Opened YES $100 @ 79c P=70% EV=+0.00 [Short Favorite] \"LoL: T1 vs Karmine Corp - Game 2 Winner\""
  ],
  "brain": {
   "w": [
-   0.4166812736153828,
-   0.0431406016503402,
-   0.008320894139611982,
-   -0.1654317783792046,
-   0.27938655812322216,
-   -0.253699570413408,
-   0.6470942428826664,
-   0.1017235663176921,
-   -0.03472086961906478,
-   0.13020957388113485,
-   0.003328357655844785,
-   0.19999573404423232,
-   -0.06461108775370109
+   0.3643373326920806,
+   0.04311903134951503,
+   0.008316733692542176,
+   -0.16534906249001502,
+   0.2367563506106675,
+   -0.28110031757947046,
+   0.5946350954747305,
+   0.06032917350734306,
+   -0.06973863257677959,
+   0.0783216824094187,
+   0.0033266934770168626,
+   0.14776013589071563,
+   -0.06457878220982423
   ],
-  "b": 0.1856045983857041,
-  "nUpdates": 304,
+  "b": 0.13346899809920953,
+  "nUpdates": 305,
   "buckets": {
    "MOMENTUM|high|sport": {
     "a": 1,
@@ -14537,7 +14667,7 @@
    },
    "SHORT_FAVORITE|high|sport": {
     "a": 152,
-    "b": 62
+    "b": 63
    },
    "VOLUME_SPIKE|mid|other": {
     "a": 2,
@@ -14603,15 +14733,15 @@
    }
   },
   "brier": {
-   "sum": 70.2447790000001,
-   "n": 304
+   "sum": 70.74180400000009,
+   "n": 305
   },
   "payoff": {
    "SHORT_FAVORITE": {
     "wSum": 24.29266155169768,
     "wN": 162,
-    "lSum": 24.38572805309955,
-    "lN": 72
+    "lSum": 25.31210842119771,
+    "lN": 73
    },
    "MOMENTUM": {
     "wSum": 2.701062968732154,
@@ -14642,14 +14772,14 @@
    {
     "key": "SHORT_FAVORITE|high|sport",
     "status": "VALIDATED",
-    "n": 212,
-    "winRate": 71,
+    "n": 213,
+    "winRate": 70.7,
     "ci": [
      66,
      76
     ],
-    "text": "Short Favorite on high-priced sports markets: 151W/61L (posterior 71%, 90% CI 66-76%) — proven edge, prioritized",
-    "updated": "2026-06-29T19:15:42.437Z"
+    "text": "Short Favorite on high-priced sports markets: 151W/62L (posterior 71%, 90% CI 66-76%) — proven edge, prioritized",
+    "updated": "2026-06-29T19:31:00.860Z"
    },
    {
     "key": "SHORT_FAVORITE|high|other",
@@ -14661,7 +14791,7 @@
      66
     ],
     "text": "Short Favorite on high-priced non-sports markets: 11W/11L (posterior 50%, 90% CI 34-66%) — collecting evidence",
-    "updated": "2026-06-29T19:15:42.436Z"
+    "updated": "2026-06-29T19:31:00.860Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -14673,7 +14803,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-06-29T19:15:42.436Z"
+    "updated": "2026-06-29T19:31:00.860Z"
    },
    {
     "key": "wallet|aenews2",
@@ -14685,7 +14815,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-06-29T19:15:42.437Z"
+    "updated": "2026-06-29T19:31:00.860Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -14697,7 +14827,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-29T19:15:42.437Z"
+    "updated": "2026-06-29T19:31:00.860Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -14709,7 +14839,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-29T19:15:42.436Z"
+    "updated": "2026-06-29T19:31:00.860Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -14721,34 +14851,34 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-29T19:15:42.436Z"
+    "updated": "2026-06-29T19:31:00.860Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 6795.021208184359,
+  "cash": 6502.383171374543,
   "created": 1781162132851
  },
  "summary": {
-  "realized": -1554.98,
-  "closed": 304,
+  "realized": -1647.62,
+  "closed": 305,
   "wins": 192,
-  "open": 9,
-  "staked": 66300,
+  "open": 11,
+  "staked": 66600,
   "bankStart": 10000,
-  "cash": 6795,
-  "equity": 8583,
-  "returnPct": -14.17,
-  "modelUpdates": 304,
-  "brier": 0.231,
+  "cash": 6502,
+  "equity": 8491,
+  "returnPct": -15.09,
+  "modelUpdates": 305,
+  "brier": 0.232,
   "hypotheses": 7,
   "integrityOk": true,
-  "updated": "2026-06-29T19:15:42.441Z"
+  "updated": "2026-06-29T19:31:00.865Z"
  },
- "lastRun": 1782760542442,
+ "lastRun": 1782761460866,
  "elite": {
-  "updated": 1782674175812,
+  "updated": 1782761460273,
   "list": [
    {
     "wallet": "0x44c1dfe43260c94ed4f1d00de2e1f80fb113ebc1",
@@ -14760,24 +14890,24 @@
    {
     "wallet": "0xbaa2bcb5439e985ce4ccf815b4700027d1b92c73",
     "name": "denizz",
-    "winRate": 0.645,
-    "n": 31,
-    "score": 2.236
+    "winRate": 0.625,
+    "n": 32,
+    "score": 2.185
    }
   ]
  },
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-29T19:15:42.442Z",
-  "tradesChecked": 313
+  "checkedAt": "2026-06-29T19:31:00.866Z",
+  "tradesChecked": 316
  },
  "lastScan": {
-  "at": "2026-06-29T19:15:42.441Z",
-  "marketsFetched": 46,
-  "rawCandidates": 21,
-  "clearedThreshold": 1,
-  "placed": 1,
+  "at": "2026-06-29T19:31:00.865Z",
+  "marketsFetched": 62,
+  "rawCandidates": 37,
+  "clearedThreshold": 3,
+  "placed": 3,
   "pMin": 0.6,
   "blocked": {
    "exposure": 0,

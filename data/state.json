@@ -647,7 +647,7 @@
    "slug": "atp-jong-hijikat-2026-06-29",
    "side": "NO",
    "entry": 0.8049999999999999,
-   "cur": 0.835,
+   "cur": 0.825,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.704,
@@ -15481,7 +15481,7 @@
      76
     ],
     "text": "Short Favorite on high-priced sports markets: 165W/65L (posterior 72%, 90% CI 67-76%) — proven edge, prioritized",
-    "updated": "2026-06-30T09:28:46.103Z"
+    "updated": "2026-06-30T09:43:18.869Z"
    },
    {
     "key": "SHORT_FAVORITE|high|other",
@@ -15493,7 +15493,7 @@
      68
     ],
     "text": "Short Favorite on high-priced non-sports markets: 12W/11L (posterior 52%, 90% CI 36-68%) — collecting evidence",
-    "updated": "2026-06-30T09:28:46.103Z"
+    "updated": "2026-06-30T09:43:18.869Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -15505,7 +15505,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-06-30T09:28:46.103Z"
+    "updated": "2026-06-30T09:43:18.869Z"
    },
    {
     "key": "wallet|aenews2",
@@ -15517,7 +15517,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-06-30T09:28:46.103Z"
+    "updated": "2026-06-30T09:43:18.869Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -15529,7 +15529,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-06-30T09:28:46.103Z"
+    "updated": "2026-06-30T09:43:18.869Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -15541,7 +15541,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-06-30T09:28:46.103Z"
+    "updated": "2026-06-30T09:43:18.869Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -15553,7 +15553,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-06-30T09:28:46.103Z"
+    "updated": "2026-06-30T09:43:18.869Z"
    }
   ]
  },
@@ -15570,15 +15570,15 @@
   "staked": 68100,
   "bankStart": 10000,
   "cash": 6909,
-  "equity": 8608,
-  "returnPct": -13.92,
+  "equity": 8607,
+  "returnPct": -13.93,
   "modelUpdates": 323,
   "brier": 0.228,
   "hypotheses": 7,
   "integrityOk": true,
-  "updated": "2026-06-30T09:28:46.104Z"
+  "updated": "2026-06-30T09:43:18.870Z"
  },
- "lastRun": 1782811726105,
+ "lastRun": 1782812598871,
  "elite": {
   "updated": 1782761460273,
   "list": [
@@ -15601,7 +15601,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-06-30T09:28:46.105Z",
+  "checkedAt": "2026-06-30T09:43:18.871Z",
   "tradesChecked": 331
  },
  "lastScan": {

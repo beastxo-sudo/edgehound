@@ -1,5 +1,5 @@
 {
   "status": "error",
-  "ranAt": "2026-06-30T08:15:25.871Z",
-  "error": "Anthropic API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"You have reached your specified API usage limits. You will regain access on 2026-07-01 at 00:00 UTC.\"},\"request_id\":\"req_011CcZ7SBLLH"
+  "ranAt": "2026-06-30T12:30:23.106Z",
+  "error": "Anthropic API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"You have reached your specified API usage limits. You will regain access on 2026-07-01 at 00:00 UTC.\"},\"request_id\":\"req_011CcZSsnZoo"
 }

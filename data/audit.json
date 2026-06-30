@@ -1,6 +1,6 @@
 {
-  "ranAt": "2026-06-30T06:15:43.259Z",
-  "ranAtIST": "2026-06-30 11:45:43 IST",
+  "ranAt": "2026-06-30T06:31:02.545Z",
+  "ranAtIST": "2026-06-30 12:01:02 IST",
   "summary": {
     "total": 42,
     "critical": 0,
@@ -16,7 +16,7 @@
       "msg": "Sample 2026-06-16T14:00:00.000Z: Polymarket resolved UP but the Binance candle moved DOWN (open 66100.61 -> close 66093.63). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.257Z"
+      "at": "2026-06-30T06:31:02.543Z"
     },
     {
       "area": "sniper",
@@ -25,7 +25,7 @@
       "msg": "Sample 2026-06-16T19:50:00.000Z: Polymarket resolved UP but the Binance candle moved DOWN (open 65660.33 -> close 65658.06). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.257Z"
+      "at": "2026-06-30T06:31:02.543Z"
     },
     {
       "area": "sniper",
@@ -34,7 +34,7 @@
       "msg": "Sample 2026-06-17T02:20:00.000Z: Polymarket resolved DOWN but the Binance candle moved UP (open 65899.99 -> close 65900.23). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -43,7 +43,7 @@
       "msg": "Sample 2026-06-17T06:10:00.000Z: Polymarket resolved UP but the Binance candle moved DOWN (open 65844.06 -> close 65826.63). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -52,7 +52,7 @@
       "msg": "Sample 2026-06-17T10:10:00.000Z: Polymarket resolved UP but the Binance candle moved DOWN (open 64833.64 -> close 64819.19). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -61,7 +61,7 @@
       "msg": "Sample 2026-06-17T17:30:00.000Z: Polymarket resolved UP but the Binance candle moved DOWN (open 65999.72 -> close 65966.88). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -70,7 +70,7 @@
       "msg": "Sample 2026-06-18T01:00:00.000Z: Polymarket resolved UP but the Binance candle moved DOWN (open 64514.47 -> close 64477.06). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -79,7 +79,7 @@
       "msg": "Sample 2026-06-18T01:35:00.000Z: Polymarket resolved DOWN but the Binance candle moved UP (open 64678.44 -> close 64683.56). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -88,7 +88,7 @@
       "msg": "Sample 2026-06-18T01:55:00.000Z: Polymarket resolved DOWN but the Binance candle moved UP (open 64527 -> close 64529.57). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -97,7 +97,7 @@
       "msg": "Sample 2026-06-18T05:30:00.000Z: Polymarket resolved UP but the Binance candle moved DOWN (open 63971.68 -> close 63943.16). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -106,7 +106,7 @@
       "msg": "Sample 2026-06-18T17:50:00.000Z: Polymarket resolved DOWN but the Binance candle moved UP (open 62626.13 -> close 62651.66). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -115,7 +115,7 @@
       "msg": "Sample 2026-06-19T12:25:00.000Z: Polymarket resolved DOWN but the Binance candle moved UP (open 62535.49 -> close 62548.79). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -124,7 +124,7 @@
       "msg": "Sample 2026-06-19T14:50:00.000Z: Polymarket resolved UP but the Binance candle moved DOWN (open 63319.02 -> close 63314.55). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -133,7 +133,7 @@
       "msg": "Sample 2026-06-19T19:25:00.000Z: Polymarket resolved DOWN but the Binance candle moved UP (open 62996.8 -> close 63001.1). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -142,7 +142,7 @@
       "msg": "Sample 2026-06-20T00:10:00.000Z: Polymarket resolved DOWN but the Binance candle moved UP (open 63491.39 -> close 63537.42). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -151,7 +151,7 @@
       "msg": "Sample 2026-06-20T10:00:00.000Z: Polymarket resolved DOWN but the Binance candle moved UP (open 63757.33 -> close 63758.27). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -160,7 +160,7 @@
       "msg": "Sample 2026-06-21T00:35:00.000Z: Polymarket resolved UP but the Binance candle moved DOWN (open 64262.29 -> close 64253.48). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -169,7 +169,7 @@
       "msg": "Sample 2026-06-21T01:10:00.000Z: Polymarket resolved UP but the Binance candle moved DOWN (open 64273.65 -> close 64271.24). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -178,7 +178,7 @@
       "msg": "Sample 2026-06-21T08:55:00.000Z: Polymarket resolved UP but the Binance candle moved DOWN (open 63985.15 -> close 63959.61). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -187,7 +187,7 @@
       "msg": "Sample 2026-06-21T12:35:00.000Z: Polymarket resolved DOWN but the Binance candle moved UP (open 64018.46 -> close 64048.76). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -196,7 +196,7 @@
       "msg": "Sample 2026-06-21T18:50:00.000Z: Polymarket resolved DOWN but the Binance candle moved UP (open 64182.49 -> close 64206.23). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -205,7 +205,7 @@
       "msg": "Sample 2026-06-22T05:30:00.000Z: Polymarket resolved DOWN but the Binance candle moved UP (open 64238.2 -> close 64258.36). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -214,7 +214,7 @@
       "msg": "Sample 2026-06-22T21:45:00.000Z: Polymarket resolved UP but the Binance candle moved DOWN (open 64212.72 -> close 64176.61). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -223,7 +223,7 @@
       "msg": "Sample 2026-06-24T07:55:00.000Z: Polymarket resolved UP but the Binance candle moved DOWN (open 62677.34 -> close 62655.93). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -232,7 +232,7 @@
       "msg": "Sample 2026-06-25T00:50:00.000Z: Polymarket resolved UP but the Binance candle moved DOWN (open 60861.24 -> close 60848.41). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -241,7 +241,7 @@
       "msg": "Sample 2026-06-25T07:15:00.000Z: Polymarket resolved DOWN but the Binance candle moved UP (open 61730.46 -> close 61766.63). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -250,7 +250,7 @@
       "msg": "Sample 2026-06-25T22:40:00.000Z: Polymarket resolved UP but the Binance candle moved DOWN (open 59792.99 -> close 59785.95). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -259,7 +259,7 @@
       "msg": "Sample 2026-06-26T00:45:00.000Z: Polymarket resolved UP but the Binance candle moved DOWN (open 59825.54 -> close 59789.2). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -268,7 +268,7 @@
       "msg": "Sample 2026-06-26T04:15:00.000Z: Polymarket resolved UP but the Binance candle moved DOWN (open 59978.36 -> close 59951.26). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -277,7 +277,7 @@
       "msg": "Sample 2026-06-26T05:10:00.000Z: Polymarket resolved DOWN but the Binance candle moved UP (open 59840 -> close 59884.04). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -286,7 +286,7 @@
       "msg": "Sample 2026-06-26T20:45:00.000Z: Polymarket resolved DOWN but the Binance candle moved UP (open 59640.04 -> close 59658.99). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -295,7 +295,7 @@
       "msg": "Sample 2026-06-26T21:15:00.000Z: Polymarket resolved UP but the Binance candle moved DOWN (open 59757.37 -> close 59749.34). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -304,7 +304,7 @@
       "msg": "Sample 2026-06-27T15:35:00.000Z: Polymarket resolved DOWN but the Binance candle moved UP (open 60803.38 -> close 60818.11). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -313,7 +313,7 @@
       "msg": "Sample 2026-06-27T20:40:00.000Z: Polymarket resolved UP but the Binance candle moved DOWN (open 60273.72 -> close 60261.67). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -322,7 +322,7 @@
       "msg": "Sample 2026-06-27T21:35:00.000Z: Polymarket resolved DOWN but the Binance candle moved UP (open 60437.67 -> close 60465.54). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -331,7 +331,7 @@
       "msg": "Sample 2026-06-28T06:30:00.000Z: Polymarket resolved DOWN but the Binance candle moved UP (open 59907.73 -> close 59921.67). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -340,7 +340,7 @@
       "msg": "Sample 2026-06-28T14:35:00.000Z: Polymarket resolved UP but the Binance candle moved DOWN (open 60159.51 -> close 60140.8). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -349,7 +349,7 @@
       "msg": "Sample 2026-06-28T17:35:00.000Z: Polymarket resolved DOWN but the Binance candle moved UP (open 59619.69 -> close 59643.71). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -358,7 +358,7 @@
       "msg": "Sample 2026-06-28T18:25:00.000Z: Polymarket resolved DOWN but the Binance candle moved UP (open 59625.07 -> close 59655.9). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -367,7 +367,7 @@
       "msg": "Sample 2026-06-28T20:00:00.000Z: Polymarket resolved DOWN but the Binance candle moved UP (open 59456.15 -> close 59480.42). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -376,7 +376,7 @@
       "msg": "Sample 2026-06-28T21:15:00.000Z: Polymarket resolved DOWN but the Binance candle moved UP (open 59691.79 -> close 59697.99). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     },
     {
       "area": "sniper",
@@ -385,11 +385,18 @@
       "msg": "Sample 2026-06-29T13:10:00.000Z: Polymarket resolved DOWN but the Binance candle moved UP (open 60112.6 -> close 60225.13). Kept Polymarket (it pays the bet) but flagging the divergence.",
       "autoFixed": false,
       "needsCode": false,
-      "at": "2026-06-30T06:15:43.258Z"
+      "at": "2026-06-30T06:31:02.544Z"
     }
   ],
   "openCodeIssues": [],
   "history": [
+    {
+      "at": "2026-06-30T06:31:02.545Z",
+      "critical": 0,
+      "warn": 42,
+      "autoFixed": 0,
+      "total": 42
+    },
     {
       "at": "2026-06-30T06:15:43.259Z",
       "critical": 0,
@@ -1078,13 +1085,6 @@
     },
     {
       "at": "2026-06-29T06:15:47.891Z",
-      "critical": 0,
-      "warn": 41,
-      "autoFixed": 0,
-      "total": 41
-    },
-    {
-      "at": "2026-06-29T06:01:11.976Z",
       "critical": 0,
       "warn": 41,
       "autoFixed": 0,

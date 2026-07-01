@@ -559,7 +559,7 @@
    "slug": "atp-navone-cobolli-2026-06-29",
    "side": "NO",
    "entry": 0.885,
-   "cur": 0.675,
+   "cur": 0.775,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.712,
@@ -739,7 +739,7 @@
    "slug": "atp-tiafoe-atmane-2026-06-29",
    "side": "YES",
    "entry": 0.88,
-   "cur": 0.86,
+   "cur": 0.853,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.708,
@@ -16397,7 +16397,7 @@
      77
     ],
     "text": "Short Favorite on high-priced sports markets: 180W/69L (posterior 72%, 90% CI 67-77%) — proven edge, prioritized",
-    "updated": "2026-07-01T12:40:03.578Z"
+    "updated": "2026-07-01T12:53:53.512Z"
    },
    {
     "key": "SHORT_FAVORITE|high|other",
@@ -16409,7 +16409,7 @@
      68
     ],
     "text": "Short Favorite on high-priced non-sports markets: 12W/11L (posterior 52%, 90% CI 36-68%) — collecting evidence",
-    "updated": "2026-07-01T12:40:03.578Z"
+    "updated": "2026-07-01T12:53:53.512Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -16421,7 +16421,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-07-01T12:40:03.578Z"
+    "updated": "2026-07-01T12:53:53.512Z"
    },
    {
     "key": "wallet|aenews2",
@@ -16433,7 +16433,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-07-01T12:40:03.578Z"
+    "updated": "2026-07-01T12:53:53.512Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -16445,7 +16445,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-07-01T12:40:03.578Z"
+    "updated": "2026-07-01T12:53:53.512Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -16457,7 +16457,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-07-01T12:40:03.578Z"
+    "updated": "2026-07-01T12:53:53.512Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -16469,7 +16469,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-07-01T12:40:03.578Z"
+    "updated": "2026-07-01T12:53:53.512Z"
    }
   ]
  },
@@ -16486,15 +16486,15 @@
   "staked": 70100,
   "bankStart": 10000,
   "cash": 6952,
-  "equity": 8719,
-  "returnPct": -12.81,
+  "equity": 8730,
+  "returnPct": -12.7,
   "modelUpdates": 342,
   "brier": 0.225,
   "hypotheses": 7,
   "integrityOk": true,
-  "updated": "2026-07-01T12:40:03.579Z"
+  "updated": "2026-07-01T12:53:53.513Z"
  },
- "lastRun": 1782909603580,
+ "lastRun": 1782910433513,
  "elite": {
   "updated": 1782848126500,
   "list": [
@@ -16517,7 +16517,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-07-01T12:40:03.580Z",
+  "checkedAt": "2026-07-01T12:53:53.513Z",
   "tradesChecked": 351
  },
  "lastScan": {

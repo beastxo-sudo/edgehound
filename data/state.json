@@ -743,7 +743,7 @@
    "slug": "atp-tiafoe-atmane-2026-06-29",
    "side": "YES",
    "entry": 0.88,
-   "cur": 0.8575,
+   "cur": 0.8555,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.708,
@@ -16401,7 +16401,7 @@
      77
     ],
     "text": "Short Favorite on high-priced sports markets: 181W/69L (posterior 72%, 90% CI 68-77%) — proven edge, prioritized",
-    "updated": "2026-07-01T13:08:21.246Z"
+    "updated": "2026-07-01T13:21:57.382Z"
    },
    {
     "key": "SHORT_FAVORITE|high|other",
@@ -16413,7 +16413,7 @@
      68
     ],
     "text": "Short Favorite on high-priced non-sports markets: 12W/11L (posterior 52%, 90% CI 36-68%) — collecting evidence",
-    "updated": "2026-07-01T13:08:21.246Z"
+    "updated": "2026-07-01T13:21:57.382Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -16425,7 +16425,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-07-01T13:08:21.246Z"
+    "updated": "2026-07-01T13:21:57.382Z"
    },
    {
     "key": "wallet|aenews2",
@@ -16437,7 +16437,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-07-01T13:08:21.246Z"
+    "updated": "2026-07-01T13:21:57.382Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -16449,7 +16449,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-07-01T13:08:21.246Z"
+    "updated": "2026-07-01T13:21:57.382Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -16461,7 +16461,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-07-01T13:08:21.246Z"
+    "updated": "2026-07-01T13:21:57.382Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -16473,7 +16473,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-07-01T13:08:21.246Z"
+    "updated": "2026-07-01T13:21:57.382Z"
    }
   ]
  },
@@ -16496,9 +16496,9 @@
   "brier": 0.224,
   "hypotheses": 7,
   "integrityOk": true,
-  "updated": "2026-07-01T13:08:21.247Z"
+  "updated": "2026-07-01T13:21:57.383Z"
  },
- "lastRun": 1782911301247,
+ "lastRun": 1782912117384,
  "elite": {
   "updated": 1782848126500,
   "list": [
@@ -16521,7 +16521,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-07-01T13:08:21.247Z",
+  "checkedAt": "2026-07-01T13:21:57.384Z",
   "tradesChecked": 351
  },
  "lastScan": {

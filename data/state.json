@@ -2,6 +2,174 @@
  "running": true,
  "journal": [
   {
+   "id": "t1782931303478mah1",
+   "date": "2026-07-02",
+   "openedTs": 1782931303478,
+   "title": "United States vs. Bosnia and Herzegovina: Team to Advance",
+   "mid": "2721770",
+   "conditionId": "0xfbeedee62416c560b2bb1306a36bb3ba460697f2f56de3e63f1076303e349a82",
+   "slug": "fifwc-usa-bih-2026-07-01-more-markets",
+   "side": "YES",
+   "entry": 0.835,
+   "cur": 0.835,
+   "stake": 100,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.718,
+   "pModel": 0.708,
+   "pBucket": 0.72,
+   "bucketN": 252,
+   "bk": "SHORT_FAVORITE|high|sport",
+   "ev": 0.012,
+   "kelly": 0.0106,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.835,
+    0.984,
+    0.05,
+    0.808,
+    0.849,
+    0.93,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 72% [model 71%, pattern 72% on n=252] · EV +0.01/$1 · 1/4-Kelly 1.1% of equity -> $100. 84c favorite resolving in 0.2d (favorite-longshot bias); +20% if it lands. Drivers: favorite setup +, short time to resolution -, price level +",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1782950400000,
+   "status": "open"
+  },
+  {
+   "id": "t17829313034774ipl",
+   "date": "2026-07-02",
+   "openedTs": 1782931303477,
+   "title": "Texas Rangers vs. Cleveland Guardians",
+   "mid": "2681778",
+   "conditionId": "0x405ad8b0b07bc4296631721c78e94677f65e6f2b2ebd1d550b0e25894752fcff",
+   "slug": "mlb-tex-cle-2026-07-01",
+   "side": "NO",
+   "entry": 0.905,
+   "cur": 0.905,
+   "stake": 100,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.716,
+   "pModel": 0.856,
+   "pBucket": 0.72,
+   "bucketN": 252,
+   "bk": "SHORT_FAVORITE|high|sport",
+   "ev": 0.012,
+   "kelly": 0.0101,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.905,
+    0.505,
+    1,
+    0.817,
+    0.722,
+    0.999,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 72% [model 86%, pattern 72% on n=252] · EV +0.01/$1 · 1/4-Kelly 1.0% of equity -> $100. 91c favorite resolving in 6.9d (favorite-longshot bias); +10% if it lands. Drivers: 24h move size +, favorite setup +, price level +",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1783530600000,
+   "status": "open"
+  },
+  {
+   "id": "t17829313034774x46",
+   "date": "2026-07-02",
+   "openedTs": 1782931303477,
+   "title": "Argentina vs. Cabo Verde: Team to Advance",
+   "mid": "2721765",
+   "conditionId": "0x4a0aa5a56b98476ffbab967ba0eb70d35794ad0f154fbce5b976d6053bb47808",
+   "slug": "fifwc-arg-cvi-2026-07-03-more-markets",
+   "side": "YES",
+   "entry": 0.905,
+   "cur": 0.905,
+   "stake": 100,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.717,
+   "pModel": 0.715,
+   "pBucket": 0.72,
+   "bucketN": 252,
+   "bk": "SHORT_FAVORITE|high|sport",
+   "ev": 0.012,
+   "kelly": 0.0104,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.905,
+    0.847,
+    0.05,
+    0.781,
+    0.754,
+    0.685,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 72% [model 72%, pattern 72% on n=252] · EV +0.01/$1 · 1/4-Kelly 1.0% of equity -> $100. 91c favorite resolving in 2.1d (favorite-longshot bias); +10% if it lands. Drivers: favorite setup +, short time to resolution -, price level +",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1783116000000,
+   "status": "open"
+  },
+  {
+   "id": "t1782931303476w6z2",
+   "date": "2026-07-02",
+   "openedTs": 1782931303476,
+   "title": "Wimbledon WTA: Ekaterina Alexandrova vs Lanlana Tararudee",
+   "mid": "2735947",
+   "conditionId": "0xa5f86311db681e5bb7f248fec11f5455d3b98cce68b307b3cd8d8067a65dff6d",
+   "slug": "wta-alexand-tararud-2026-07-01",
+   "side": "YES",
+   "entry": 0.9175,
+   "cur": 0.9175,
+   "stake": 100,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.716,
+   "pModel": 0.805,
+   "pBucket": 0.72,
+   "bucketN": 252,
+   "bk": "SHORT_FAVORITE|high|sport",
+   "ev": 0.012,
+   "kelly": 0.01,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.917,
+    0.526,
+    0.512,
+    0.795,
+    0.726,
+    1,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 72% [model 80%, pattern 72% on n=252] · EV +0.01/$1 · 1/4-Kelly 1.0% of equity -> $100. 92c favorite resolving in 6.6d (favorite-longshot bias); +9% if it lands. Drivers: favorite setup +, 24h move size +, price level +",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1783504800000,
+   "status": "open"
+  },
+  {
    "id": "t17828696256180gcj",
    "date": "2026-07-01",
    "openedTs": 1782869625618,
@@ -16217,6 +16385,10 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-07-02 00:11 IST — Opened YES $100 @ 84c P=72% EV=+0.01 [Short Favorite] \"United States vs. Bosnia and Herzegovina: Team\"",
+  "2026-07-02 00:11 IST — Opened NO $100 @ 91c P=72% EV=+0.01 [Short Favorite] \"Texas Rangers vs. Cleveland Guardians\"",
+  "2026-07-02 00:11 IST — Opened YES $100 @ 91c P=72% EV=+0.01 [Short Favorite] \"Argentina vs. Cabo Verde: Team to Advance\"",
+  "2026-07-02 00:11 IST — Opened YES $100 @ 92c P=72% EV=+0.01 [Short Favorite] \"Wimbledon WTA: Ekaterina Alexandrova vs Lanlan\"",
   "2026-07-01 21:31 IST — Closed NO \"Will England vs. DR Congo end in a draw?\" -> $-1 (Max hold reached — closed at market) · model said P(win)=71%",
   "2026-07-01 20:31 IST — Closed YES \"Wimbledon ATP: Frances Tiafoe vs Terence A\" -> +$14 (Resolved in our favor) · model said P(win)=71%",
   "2026-07-01 18:38 IST — Closed NO \"Wimbledon ATP: Mariano Navone vs Flavio Co\" -> +$13 (Resolved in our favor) · model said P(win)=71%",
@@ -16226,11 +16398,7 @@
   "2026-07-01 07:46 IST — Closed NO \"Cincinnati Reds vs. Milwaukee Brewers\" -> +$11 (Resolved in our favor) · model said P(win)=71%",
   "2026-07-01 07:46 IST — Closed YES \"Washington Nationals vs. Boston Red Sox\" -> +$8 (Resolved in our favor) · model said P(win)=71%",
   "2026-07-01 07:31 IST — Closed YES \"New York Mets vs. Toronto Blue Jays\" -> +$24 (Resolved in our favor) · model said P(win)=71%",
-  "2026-07-01 07:03 IST — Opened YES $100 @ 93c P=71% EV=+0.01 [Short Favorite] \"Washington Nationals vs. Boston Red Sox\"",
-  "2026-07-01 07:03 IST — Closed YES \"Detroit Tigers vs. New York Yankees\" -> +$21 (Resolved in our favor) · model said P(win)=71%",
-  "2026-07-01 06:50 IST — Opened NO $100 @ 90c P=71% EV=+0.01 [Short Favorite] \"Cincinnati Reds vs. Milwaukee Brewers\"",
-  "2026-07-01 06:50 IST — Closed NO \"Pittsburgh Pirates vs. Philadelphia Philli\" -> +$16 (Resolved in our favor) · model said P(win)=71%",
-  "2026-07-01 06:50 IST — Closed YES \"Chicago White Sox vs. Baltimore Orioles\" -> +$7 (Resolved in our favor) · model said P(win)=71%"
+  "2026-07-01 07:03 IST — Opened YES $100 @ 93c P=71% EV=+0.01 [Short Favorite] \"Washington Nationals vs. Boston Red Sox\""
  ],
  "brain": {
   "w": [
@@ -16409,7 +16577,7 @@
      77
     ],
     "text": "Short Favorite on high-priced sports markets: 182W/70L (posterior 72%, 90% CI 67-77%) — proven edge, prioritized",
-    "updated": "2026-07-01T18:28:02.595Z"
+    "updated": "2026-07-01T18:41:43.471Z"
    },
    {
     "key": "SHORT_FAVORITE|high|other",
@@ -16421,7 +16589,7 @@
      68
     ],
     "text": "Short Favorite on high-priced non-sports markets: 12W/11L (posterior 52%, 90% CI 36-68%) — collecting evidence",
-    "updated": "2026-07-01T18:28:02.595Z"
+    "updated": "2026-07-01T18:41:43.471Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -16433,7 +16601,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-07-01T18:28:02.595Z"
+    "updated": "2026-07-01T18:41:43.471Z"
    },
    {
     "key": "wallet|aenews2",
@@ -16445,7 +16613,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-07-01T18:28:02.595Z"
+    "updated": "2026-07-01T18:41:43.471Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -16457,7 +16625,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-07-01T18:28:02.595Z"
+    "updated": "2026-07-01T18:41:43.471Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -16469,7 +16637,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-07-01T18:28:02.595Z"
+    "updated": "2026-07-01T18:41:43.471Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -16481,32 +16649,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-07-01T18:28:02.595Z"
+    "updated": "2026-07-01T18:41:43.471Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 7277.264227909584,
+  "cash": 6877.264227909584,
   "created": 1781162132851
  },
  "summary": {
   "realized": -1372.74,
   "closed": 345,
   "wins": 224,
-  "open": 6,
-  "staked": 70100,
+  "open": 10,
+  "staked": 70500,
   "bankStart": 10000,
-  "cash": 7277,
+  "cash": 6877,
   "equity": 8772,
   "returnPct": -12.28,
   "modelUpdates": 345,
   "brier": 0.225,
   "hypotheses": 7,
   "integrityOk": true,
-  "updated": "2026-07-01T18:28:02.596Z"
+  "updated": "2026-07-01T18:41:43.478Z"
  },
- "lastRun": 1782930482596,
+ "lastRun": 1782931303479,
  "elite": {
   "updated": 1782848126500,
   "list": [
@@ -16529,15 +16697,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-07-01T18:28:02.596Z",
-  "tradesChecked": 351
+  "checkedAt": "2026-07-01T18:41:43.478Z",
+  "tradesChecked": 355
  },
  "lastScan": {
-  "at": "2026-07-01T01:33:45.619Z",
-  "marketsFetched": 68,
-  "rawCandidates": 16,
-  "clearedThreshold": 1,
-  "placed": 1,
+  "at": "2026-07-01T18:41:43.478Z",
+  "marketsFetched": 72,
+  "rawCandidates": 44,
+  "clearedThreshold": 4,
+  "placed": 4,
   "pMin": 0.6,
   "blocked": {
    "exposure": 0,

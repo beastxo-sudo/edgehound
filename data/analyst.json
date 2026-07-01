@@ -1,5 +1,5 @@
 {
  "status": "error",
- "error": "Anthropic API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"You have reached your specified API usage limits. You will regain access on 2026-07-01 at 00:00 UTC.\"},\"request_id\":\"req_011CcZQw425w",
- "updated": "2026-06-30T12:04:53.529Z"
+ "error": "Unterminated string in JSON at position 5097 (line 39 column 48)",
+ "updated": "2026-07-01T04:00:53.782Z"
 }

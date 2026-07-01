@@ -2,6 +2,90 @@
  "running": true,
  "journal": [
   {
+   "id": "t1782865380368jqay",
+   "date": "2026-07-01",
+   "openedTs": 1782865380368,
+   "title": "Tampa Bay Rays vs. Kansas City Royals",
+   "mid": "2666744",
+   "conditionId": "0x21e9d9dc86727d9992bb3242da3e69f11d2f80cc6a578164c1d1b5a4b640abcb",
+   "slug": "mlb-tb-kc-2026-06-30",
+   "side": "YES",
+   "entry": 0.893,
+   "cur": 0.893,
+   "stake": 100,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.708,
+   "pModel": 0.797,
+   "pBucket": 0.713,
+   "bucketN": 238,
+   "bk": "SHORT_FAVORITE|high|sport",
+   "ev": 0.006,
+   "kelly": 0.005,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.893,
+    0.502,
+    1,
+    0.762,
+    0.714,
+    0.999,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 71% [model 80%, pattern 71% on n=238] · EV +0.01/$1 · 1/4-Kelly 0.5% of equity -> $100. 89c favorite resolving in 7.0d (favorite-longshot bias); +12% if it lands. Drivers: 24h move size +, favorite setup +, price level +",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1783467600000,
+   "status": "open"
+  },
+  {
+   "id": "t1782865380366unqm",
+   "date": "2026-07-01",
+   "openedTs": 1782865380366,
+   "title": "Chicago White Sox vs. Baltimore Orioles",
+   "mid": "2666721",
+   "conditionId": "0x4ea9c62efe1ef142a0999c239d94a390ff21768a51673db077d8f26e54627c91",
+   "slug": "mlb-cws-bal-2026-06-30",
+   "side": "YES",
+   "entry": 0.934,
+   "cur": 0.934,
+   "stake": 100,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.708,
+   "pModel": 0.799,
+   "pBucket": 0.713,
+   "bucketN": 238,
+   "bk": "SHORT_FAVORITE|high|sport",
+   "ev": 0.006,
+   "kelly": 0.005,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.934,
+    0.505,
+    1,
+    0.779,
+    0.687,
+    0.992,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 71% [model 80%, pattern 71% on n=238] · EV +0.01/$1 · 1/4-Kelly 0.5% of equity -> $100. 93c favorite resolving in 6.9d (favorite-longshot bias); +7% if it lands. Drivers: 24h move size +, favorite setup +, price level +",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1783463700000,
+   "status": "open"
+  },
+  {
    "id": "t1782862827051zejc",
    "date": "2026-07-01",
    "openedTs": 1782862827051,
@@ -11,7 +95,7 @@
    "slug": "mlb-det-nyy-2026-06-30",
    "side": "YES",
    "entry": 0.8245,
-   "cur": 0.9295,
+   "cur": 0.9385,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.708,
@@ -95,7 +179,7 @@
    "slug": "mlb-pit-phi-2026-06-30",
    "side": "NO",
    "entry": 0.865,
-   "cur": 0.81,
+   "cur": 0.895,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.708,
@@ -15825,6 +15909,8 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-07-01 05:53 IST — Opened YES $100 @ 89c P=71% EV=+0.01 [Short Favorite] \"Tampa Bay Rays vs. Kansas City Royals\"",
+  "2026-07-01 05:53 IST — Opened YES $100 @ 93c P=71% EV=+0.01 [Short Favorite] \"Chicago White Sox vs. Baltimore Orioles\"",
   "2026-07-01 05:10 IST — Opened YES $100 @ 82c P=71% EV=+0.01 [Short Favorite] \"Detroit Tigers vs. New York Yankees\"",
   "2026-07-01 04:56 IST — Opened YES $100 @ 94c P=71% EV=+0.01 [Short Favorite] \"LoL: T1 vs Team Liquid (BO5) - Mid-Season Invi\"",
   "2026-07-01 04:56 IST — Opened NO $100 @ 87c P=71% EV=+0.01 [Short Favorite] \"Pittsburgh Pirates vs. Philadelphia Phillies\"",
@@ -15836,9 +15922,7 @@
   "2026-07-01 01:33 IST — Opened NO $100 @ 89c P=71% EV=+0.00 [Short Favorite] \"Wimbledon ATP: Mariano Navone vs Flavio Coboll\"",
   "2026-07-01 01:33 IST — Opened NO $100 @ 88c P=71% EV=+0.00 [Short Favorite] \"Wimbledon ATP: Stan Wawrinka vs Matteo Berrett\"",
   "2026-07-01 01:20 IST — Closed NO \"Quito: Mwendwa Mbithi vs Matias Soto\" -> +$14 (Resolved in our favor) · model said P(win)=71%",
-  "2026-07-01 01:20 IST — Closed YES \"Wimbledon WTA: Ashlyn Krueger vs Donna Vek\" -> +$12 (Resolved in our favor) · model said P(win)=71%",
-  "2026-07-01 01:05 IST — Opened YES $100 @ 89c P=71% EV=+0.00 [Short Favorite] \"Wimbledon WTA: Ashlyn Krueger vs Donna Vekic\"",
-  "2026-07-01 01:05 IST — Closed NO \"Wimbledon ATP: Dane Sweeny vs Grigor Dimit\" -> +$14 (Resolved in our favor) · model said P(win)=71%"
+  "2026-07-01 01:20 IST — Closed YES \"Wimbledon WTA: Ashlyn Krueger vs Donna Vek\" -> +$12 (Resolved in our favor) · model said P(win)=71%"
  ],
  "brain": {
   "w": [
@@ -16017,7 +16101,7 @@
      76
     ],
     "text": "Short Favorite on high-priced sports markets: 170W/68L (posterior 71%, 90% CI 66-76%) — proven edge, prioritized",
-    "updated": "2026-07-01T00:08:38.974Z"
+    "updated": "2026-07-01T00:23:00.362Z"
    },
    {
     "key": "SHORT_FAVORITE|high|other",
@@ -16029,7 +16113,7 @@
      68
     ],
     "text": "Short Favorite on high-priced non-sports markets: 12W/11L (posterior 52%, 90% CI 36-68%) — collecting evidence",
-    "updated": "2026-07-01T00:08:38.974Z"
+    "updated": "2026-07-01T00:23:00.362Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -16041,7 +16125,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-07-01T00:08:38.974Z"
+    "updated": "2026-07-01T00:23:00.362Z"
    },
    {
     "key": "wallet|aenews2",
@@ -16053,7 +16137,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-07-01T00:08:38.974Z"
+    "updated": "2026-07-01T00:23:00.362Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -16065,7 +16149,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-07-01T00:08:38.974Z"
+    "updated": "2026-07-01T00:23:00.362Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -16077,7 +16161,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-07-01T00:08:38.974Z"
+    "updated": "2026-07-01T00:23:00.362Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -16089,32 +16173,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-07-01T00:08:38.974Z"
+    "updated": "2026-07-01T00:23:00.362Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 6514.406570776094,
+  "cash": 6314.406570776094,
   "created": 1781162132851
  },
  "summary": {
   "realized": -1535.59,
   "closed": 331,
   "wins": 212,
-  "open": 12,
-  "staked": 69300,
+  "open": 14,
+  "staked": 69500,
   "bankStart": 10000,
-  "cash": 6514,
-  "equity": 8612,
-  "returnPct": -13.88,
+  "cash": 6314,
+  "equity": 8623,
+  "returnPct": -13.77,
   "modelUpdates": 331,
   "brier": 0.228,
   "hypotheses": 7,
   "integrityOk": true,
-  "updated": "2026-07-01T00:08:38.977Z"
+  "updated": "2026-07-01T00:23:00.369Z"
  },
- "lastRun": 1782864518977,
+ "lastRun": 1782865380369,
  "elite": {
   "updated": 1782848126500,
   "list": [
@@ -16137,15 +16221,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-07-01T00:08:38.977Z",
-  "tradesChecked": 343
+  "checkedAt": "2026-07-01T00:23:00.369Z",
+  "tradesChecked": 345
  },
  "lastScan": {
-  "at": "2026-07-01T00:08:38.976Z",
+  "at": "2026-07-01T00:23:00.368Z",
   "marketsFetched": 71,
   "rawCandidates": 42,
-  "clearedThreshold": 0,
-  "placed": 0,
+  "clearedThreshold": 2,
+  "placed": 2,
   "pMin": 0.6,
   "blocked": {
    "exposure": 0,
@@ -16153,6 +16237,6 @@
    "cash": 0,
    "sanity": 0
   },
-  "reason": "no candidates cleared P(win)>=0.60 (engines produce ~0.58-0.64; lower pMin or wait for better setups)"
+  "reason": "traded"
  }
 }

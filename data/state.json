@@ -2,6 +2,48 @@
  "running": true,
  "journal": [
   {
+   "id": "t1783028153181oy23",
+   "date": "2026-07-03",
+   "openedTs": 1783028153181,
+   "title": "Colombia vs. Ghana: Team to Advance",
+   "mid": "2721758",
+   "conditionId": "0x8c9757e6d49e9243a45ed4c6042d5a3e98cdcce0619495db5d377e510327b769",
+   "slug": "fifwc-col-gha-2026-07-03-more-markets",
+   "side": "YES",
+   "entry": 0.795,
+   "cur": 0.795,
+   "stake": 100,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.713,
+   "pModel": 0.592,
+   "pBucket": 0.716,
+   "bucketN": 280,
+   "bk": "SHORT_FAVORITE|high|sport",
+   "ev": 0.013,
+   "kelly": 0.0112,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.795,
+    0.917,
+    0.05,
+    0.757,
+    0.738,
+    0.948,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 71% [model 59%, pattern 72% on n=280] · EV +0.01/$1 · 1/4-Kelly 1.1% of equity -> $100. 80c favorite resolving in 1.2d (favorite-longshot bias); +26% if it lands. Drivers: short time to resolution -, favorite setup +, price level +",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1783128600000,
+   "status": "open"
+  },
+  {
    "id": "t17830227719018z5v",
    "date": "2026-07-03",
    "openedTs": 1783022771901,
@@ -17505,6 +17547,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-07-03 03:05 IST — Opened YES $100 @ 80c P=71% EV=+0.01 [Short Favorite] \"Colombia vs. Ghana: Team to Advance\"",
   "2026-07-03 02:20 IST — Closed YES \"Cincinnati Reds vs. Milwaukee Brewers\" -> +$14 (Resolved in our favor) · model said P(win)=71%",
   "2026-07-03 01:50 IST — Closed NO \"Wimbledon ATP: Jakub Mensik vs Grigor Dimi\" -> +$9 (Resolved in our favor) · model said P(win)=71%",
   "2026-07-03 01:36 IST — Opened NO $100 @ 92c P=71% EV=+0.01 [Short Favorite] \"Wimbledon ATP: Jakub Mensik vs Grigor Dimitrov\"",
@@ -17517,8 +17560,7 @@
   "2026-07-03 00:39 IST — Closed NO \"Will Spain vs. Austria end in a draw?\" -> $-3 (Max hold reached — closed at market) · model said P(win)=72%",
   "2026-07-03 00:39 IST — Closed YES \"Spain vs. Austria: Team to Advance\" -> $-3 (Max hold reached — closed at market) · model said P(win)=72%",
   "2026-07-03 00:25 IST — Opened YES $100 @ 86c P=72% EV=+0.01 [Short Favorite] \"Wimbledon ATP: Frances Tiafoe vs Jan Choinski\"",
-  "2026-07-03 00:25 IST — Closed YES \"Wimbledon WTA: Jasmine Paolini vs Viktorij\" -> +$8 (Resolved in our favor) · model said P(win)=72%",
-  "2026-07-03 00:10 IST — Opened YES $100 @ 87c P=72% EV=+0.01 [Short Favorite] \"Spain vs. Austria: Team to Advance\""
+  "2026-07-03 00:25 IST — Closed YES \"Wimbledon WTA: Jasmine Paolini vs Viktorij\" -> +$8 (Resolved in our favor) · model said P(win)=72%"
  ],
  "brain": {
   "w": [
@@ -17697,7 +17739,7 @@
      76
     ],
     "text": "Short Favorite on high-priced sports markets: 201W/79L (posterior 72%, 90% CI 67-76%) — proven edge, prioritized",
-    "updated": "2026-07-02T21:20:35.411Z"
+    "updated": "2026-07-02T21:35:53.176Z"
    },
    {
     "key": "SHORT_FAVORITE|high|other",
@@ -17709,7 +17751,7 @@
      68
     ],
     "text": "Short Favorite on high-priced non-sports markets: 12W/11L (posterior 52%, 90% CI 36-68%) — collecting evidence",
-    "updated": "2026-07-02T21:20:35.411Z"
+    "updated": "2026-07-02T21:35:53.176Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -17721,7 +17763,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-07-02T21:20:35.411Z"
+    "updated": "2026-07-02T21:35:53.176Z"
    },
    {
     "key": "wallet|aenews2",
@@ -17733,7 +17775,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-07-02T21:20:35.411Z"
+    "updated": "2026-07-02T21:35:53.176Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -17745,7 +17787,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-07-02T21:20:35.411Z"
+    "updated": "2026-07-02T21:35:53.176Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -17757,7 +17799,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-07-02T21:20:35.411Z"
+    "updated": "2026-07-02T21:35:53.176Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -17769,32 +17811,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-07-02T21:20:35.411Z"
+    "updated": "2026-07-02T21:35:53.176Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 7341.767123218567,
+  "cash": 7241.767123218567,
   "created": 1781162132851
  },
  "summary": {
   "realized": -1308.23,
   "closed": 373,
   "wins": 243,
-  "open": 6,
-  "staked": 72900,
+  "open": 7,
+  "staked": 73000,
   "bankStart": 10000,
-  "cash": 7342,
+  "cash": 7242,
   "equity": 8822,
   "returnPct": -11.78,
   "modelUpdates": 373,
   "brier": 0.225,
   "hypotheses": 7,
   "integrityOk": true,
-  "updated": "2026-07-02T21:20:35.415Z"
+  "updated": "2026-07-02T21:35:53.181Z"
  },
- "lastRun": 1783027235415,
+ "lastRun": 1783028153182,
  "elite": {
   "updated": 1783021902889,
   "list": [
@@ -17824,15 +17866,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-07-02T21:20:35.415Z",
-  "tradesChecked": 379
+  "checkedAt": "2026-07-02T21:35:53.182Z",
+  "tradesChecked": 380
  },
  "lastScan": {
-  "at": "2026-07-02T21:20:35.414Z",
-  "marketsFetched": 44,
-  "rawCandidates": 28,
-  "clearedThreshold": 0,
-  "placed": 0,
+  "at": "2026-07-02T21:35:53.181Z",
+  "marketsFetched": 63,
+  "rawCandidates": 44,
+  "clearedThreshold": 1,
+  "placed": 1,
   "pMin": 0.6,
   "blocked": {
    "exposure": 0,
@@ -17840,6 +17882,6 @@
    "cash": 0,
    "sanity": 0
   },
-  "reason": "no candidates cleared P(win)>=0.60 (engines produce ~0.58-0.64; lower pMin or wait for better setups)"
+  "reason": "traded"
  }
 }

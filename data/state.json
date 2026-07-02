@@ -2,6 +2,50 @@
  "running": true,
  "journal": [
   {
+   "id": "t1783029851459imew",
+   "date": "2026-07-03",
+   "openedTs": 1783029851459,
+   "title": "Portugal vs. Croatia: Both Teams to Score",
+   "mid": "2719280",
+   "conditionId": "0xbf2f8d3f411619df4a02c6a32ade1e4da4b71cee9ea49b85c9c154a70dd46424",
+   "slug": "fifwc-prt-hrv-2026-07-02-more-markets",
+   "side": "NO",
+   "entry": 0.42500000000000004,
+   "cur": 0.42500000000000004,
+   "stake": 450,
+   "signal": "ELITE_FOLLOW",
+   "p": 0.633,
+   "pModel": 0.527,
+   "pBucket": 0.667,
+   "bucketN": 1,
+   "bk": "ELITE_FOLLOW|mid|sport",
+   "ev": 0.096,
+   "kelly": 0.0514,
+   "x": [
+    0,
+    0,
+    0,
+    0,
+    0.425,
+    0.997,
+    0.3,
+    0.845,
+    0.811,
+    0.981,
+    0,
+    1,
+    0
+   ],
+   "walletNames": [
+    "AnonymousUsername"
+   ],
+   "insight": "P(win) 63% [model 53%, pattern 67% on n=1] · EV +0.10/$1 · 1/4-Kelly 5.1% of equity -> $450. Elite wallet \"AnonymousUsername\" (77% win rate over 73 settled positions) bought No 1min ago at 42c — still copyable at 43c. Drivers: short time to resolution -, 24h move size +, sports market +",
+   "target": 0.25,
+   "stop": 0.25,
+   "holdUntil": 1783033200000,
+   "status": "open"
+  },
+  {
    "id": "t1783028153181oy23",
    "date": "2026-07-03",
    "openedTs": 1783028153181,
@@ -17547,6 +17591,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-07-03 03:34 IST — Opened NO $450 @ 43c P=63% EV=+0.10 [Elite Follow] \"Portugal vs. Croatia: Both Teams to Score\"",
   "2026-07-03 03:05 IST — Opened YES $100 @ 80c P=71% EV=+0.01 [Short Favorite] \"Colombia vs. Ghana: Team to Advance\"",
   "2026-07-03 02:20 IST — Closed YES \"Cincinnati Reds vs. Milwaukee Brewers\" -> +$14 (Resolved in our favor) · model said P(win)=71%",
   "2026-07-03 01:50 IST — Closed NO \"Wimbledon ATP: Jakub Mensik vs Grigor Dimi\" -> +$9 (Resolved in our favor) · model said P(win)=71%",
@@ -17559,8 +17604,7 @@
   "2026-07-03 00:39 IST — Closed YES \"Spain vs. Austria: O/U 1.5\" -> $-3 (Max hold reached — closed at market) · model said P(win)=72%",
   "2026-07-03 00:39 IST — Closed NO \"Will Spain vs. Austria end in a draw?\" -> $-3 (Max hold reached — closed at market) · model said P(win)=72%",
   "2026-07-03 00:39 IST — Closed YES \"Spain vs. Austria: Team to Advance\" -> $-3 (Max hold reached — closed at market) · model said P(win)=72%",
-  "2026-07-03 00:25 IST — Opened YES $100 @ 86c P=72% EV=+0.01 [Short Favorite] \"Wimbledon ATP: Frances Tiafoe vs Jan Choinski\"",
-  "2026-07-03 00:25 IST — Closed YES \"Wimbledon WTA: Jasmine Paolini vs Viktorij\" -> +$8 (Resolved in our favor) · model said P(win)=72%"
+  "2026-07-03 00:25 IST — Opened YES $100 @ 86c P=72% EV=+0.01 [Short Favorite] \"Wimbledon ATP: Frances Tiafoe vs Jan Choinski\""
  ],
  "brain": {
   "w": [
@@ -17739,7 +17783,7 @@
      76
     ],
     "text": "Short Favorite on high-priced sports markets: 201W/79L (posterior 72%, 90% CI 67-76%) — proven edge, prioritized",
-    "updated": "2026-07-02T21:50:24.874Z"
+    "updated": "2026-07-02T22:04:11.455Z"
    },
    {
     "key": "SHORT_FAVORITE|high|other",
@@ -17751,7 +17795,7 @@
      68
     ],
     "text": "Short Favorite on high-priced non-sports markets: 12W/11L (posterior 52%, 90% CI 36-68%) — collecting evidence",
-    "updated": "2026-07-02T21:50:24.874Z"
+    "updated": "2026-07-02T22:04:11.455Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -17763,7 +17807,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-07-02T21:50:24.874Z"
+    "updated": "2026-07-02T22:04:11.455Z"
    },
    {
     "key": "wallet|aenews2",
@@ -17775,7 +17819,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-07-02T21:50:24.874Z"
+    "updated": "2026-07-02T22:04:11.455Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -17787,7 +17831,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-07-02T21:50:24.874Z"
+    "updated": "2026-07-02T22:04:11.455Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -17799,7 +17843,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-07-02T21:50:24.874Z"
+    "updated": "2026-07-02T22:04:11.455Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -17811,32 +17855,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-07-02T21:50:24.874Z"
+    "updated": "2026-07-02T22:04:11.455Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 7241.767123218567,
+  "cash": 6791.767123218567,
   "created": 1781162132851
  },
  "summary": {
   "realized": -1308.23,
   "closed": 373,
   "wins": 243,
-  "open": 7,
-  "staked": 73000,
+  "open": 8,
+  "staked": 73450,
   "bankStart": 10000,
-  "cash": 7242,
+  "cash": 6792,
   "equity": 8822,
   "returnPct": -11.78,
   "modelUpdates": 373,
   "brier": 0.225,
   "hypotheses": 7,
   "integrityOk": true,
-  "updated": "2026-07-02T21:50:24.879Z"
+  "updated": "2026-07-02T22:04:11.459Z"
  },
- "lastRun": 1783029024879,
+ "lastRun": 1783029851461,
  "elite": {
   "updated": 1783021902889,
   "list": [
@@ -17866,15 +17910,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-07-02T21:50:24.879Z",
-  "tradesChecked": 380
+  "checkedAt": "2026-07-02T22:04:11.461Z",
+  "tradesChecked": 381
  },
  "lastScan": {
-  "at": "2026-07-02T21:50:24.879Z",
+  "at": "2026-07-02T22:04:11.459Z",
   "marketsFetched": 63,
-  "rawCandidates": 42,
-  "clearedThreshold": 0,
-  "placed": 0,
+  "rawCandidates": 43,
+  "clearedThreshold": 1,
+  "placed": 1,
   "pMin": 0.6,
   "blocked": {
    "exposure": 0,
@@ -17882,6 +17926,6 @@
    "cash": 0,
    "sanity": 0
   },
-  "reason": "no candidates cleared P(win)>=0.60 (engines produce ~0.58-0.64; lower pMin or wait for better setups)"
+  "reason": "traded"
  }
 }

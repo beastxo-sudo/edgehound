@@ -11,7 +11,7 @@
    "slug": "mlb-stl-atl-2026-07-01",
    "side": "NO",
    "entry": 0.825,
-   "cur": 0.825,
+   "cur": 0.925,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.707,
@@ -53,7 +53,7 @@
    "slug": "mlb-min-hou-2026-07-01",
    "side": "YES",
    "entry": 0.795,
-   "cur": 0.75,
+   "cur": 0.805,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.71,
@@ -95,7 +95,7 @@
    "slug": "mlb-tb-kc-2026-07-01",
    "side": "YES",
    "entry": 0.805,
-   "cur": 0.875,
+   "cur": 0.925,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.71,
@@ -183,7 +183,7 @@
    "slug": "mlb-pit-phi-2026-07-01",
    "side": "NO",
    "entry": 0.865,
-   "cur": 0.9425,
+   "cur": 0.944,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.717,
@@ -685,7 +685,7 @@
    "slug": "fifwc-arg-cvi-2026-07-03-more-markets",
    "side": "YES",
    "entry": 0.905,
-   "cur": 0.915,
+   "cur": 0.905,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.717,
@@ -17175,7 +17175,7 @@
      76
     ],
     "text": "Short Favorite on high-priced sports markets: 189W/76L (posterior 71%, 90% CI 67-76%) — proven edge, prioritized",
-    "updated": "2026-07-02T01:06:56.119Z"
+    "updated": "2026-07-02T01:21:19.399Z"
    },
    {
     "key": "SHORT_FAVORITE|high|other",
@@ -17187,7 +17187,7 @@
      68
     ],
     "text": "Short Favorite on high-priced non-sports markets: 12W/11L (posterior 52%, 90% CI 36-68%) — collecting evidence",
-    "updated": "2026-07-02T01:06:56.119Z"
+    "updated": "2026-07-02T01:21:19.399Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -17199,7 +17199,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-07-02T01:06:56.119Z"
+    "updated": "2026-07-02T01:21:19.399Z"
    },
    {
     "key": "wallet|aenews2",
@@ -17211,7 +17211,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-07-02T01:06:56.119Z"
+    "updated": "2026-07-02T01:21:19.399Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -17223,7 +17223,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-07-02T01:06:56.119Z"
+    "updated": "2026-07-02T01:21:19.399Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -17235,7 +17235,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-07-02T01:06:56.119Z"
+    "updated": "2026-07-02T01:21:19.399Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -17247,7 +17247,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-07-02T01:06:56.119Z"
+    "updated": "2026-07-02T01:21:19.399Z"
    }
   ]
  },
@@ -17264,15 +17264,15 @@
   "staked": 71800,
   "bankStart": 10000,
   "cash": 6761,
-  "equity": 8653,
-  "returnPct": -13.47,
+  "equity": 8677,
+  "returnPct": -13.23,
   "modelUpdates": 358,
   "brier": 0.227,
   "hypotheses": 7,
   "integrityOk": true,
-  "updated": "2026-07-02T01:06:56.124Z"
+  "updated": "2026-07-02T01:21:19.403Z"
  },
- "lastRun": 1782954416124,
+ "lastRun": 1782955279403,
  "elite": {
   "updated": 1782934732914,
   "list": [
@@ -17309,15 +17309,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-07-02T01:06:56.124Z",
+  "checkedAt": "2026-07-02T01:21:19.403Z",
   "tradesChecked": 368
  },
  "lastScan": {
-  "at": "2026-07-02T01:06:56.123Z",
+  "at": "2026-07-02T01:21:19.403Z",
   "marketsFetched": 68,
-  "rawCandidates": 31,
-  "clearedThreshold": 1,
-  "placed": 1,
+  "rawCandidates": 34,
+  "clearedThreshold": 0,
+  "placed": 0,
   "pMin": 0.6,
   "blocked": {
    "exposure": 0,
@@ -17325,6 +17325,6 @@
    "cash": 0,
    "sanity": 0
   },
-  "reason": "traded"
+  "reason": "no candidates cleared P(win)>=0.60 (engines produce ~0.58-0.64; lower pMin or wait for better setups)"
  }
 }

@@ -11,7 +11,7 @@
    "slug": "atp-mensik-dimitro-2026-07-02",
    "side": "NO",
    "entry": 0.915,
-   "cur": 0.915,
+   "cur": 0.9995,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.711,
@@ -41,7 +41,11 @@
    "target": null,
    "stop": 0.45,
    "holdUntil": 1783591200000,
-   "status": "open"
+   "status": "closed",
+   "exit": 1,
+   "exitTs": 1783023641690,
+   "exitReason": "Resolved in our favor",
+   "pnl": 9.289617486338795
   },
   {
    "id": "t1783019350229ratv",
@@ -53,7 +57,7 @@
    "slug": "mlb-cin-mil-2026-07-02",
    "side": "YES",
    "entry": 0.875,
-   "cur": 0.925,
+   "cur": 0.965,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.708,
@@ -17465,9 +17469,9 @@
  ],
  "strat": {
   "SHORT_FAVORITE": {
-   "trades": 301,
-   "wins": 211,
-   "pnl": -223.5726509652906,
+   "trades": 302,
+   "wins": 212,
+   "pnl": -214.2830334789518,
    "weight": 1
   },
   "MOMENTUM": {
@@ -17497,6 +17501,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-07-03 01:50 IST — Closed NO \"Wimbledon ATP: Jakub Mensik vs Grigor Dimi\" -> +$9 (Resolved in our favor) · model said P(win)=71%",
   "2026-07-03 01:36 IST — Opened NO $100 @ 92c P=71% EV=+0.01 [Short Favorite] \"Wimbledon ATP: Jakub Mensik vs Grigor Dimitrov\"",
   "2026-07-03 01:21 IST — Elite pool refreshed: 3 wallets qualify (>=58% win rate over >=10 settled, scalpers excluded): AnonymousUsername 77%, ndb1 82%, mooseborzoi 67%",
   "2026-07-03 01:07 IST — Closed YES \"Wimbledon ATP: Frances Tiafoe vs Jan Choin\" -> +$17 (Resolved in our favor) · model said P(win)=72%",
@@ -17509,27 +17514,26 @@
   "2026-07-03 00:25 IST — Opened YES $100 @ 86c P=72% EV=+0.01 [Short Favorite] \"Wimbledon ATP: Frances Tiafoe vs Jan Choinski\"",
   "2026-07-03 00:25 IST — Closed YES \"Wimbledon WTA: Jasmine Paolini vs Viktorij\" -> +$8 (Resolved in our favor) · model said P(win)=72%",
   "2026-07-03 00:10 IST — Opened YES $100 @ 87c P=72% EV=+0.01 [Short Favorite] \"Spain vs. Austria: Team to Advance\"",
-  "2026-07-03 00:10 IST — Opened NO $100 @ 82c P=72% EV=+0.01 [Short Favorite] \"Will Spain vs. Austria end in a draw?\"",
-  "2026-07-03 00:10 IST — Opened YES $100 @ 93c P=72% EV=+0.01 [Short Favorite] \"Wimbledon WTA: Jasmine Paolini vs Viktorija Go\""
+  "2026-07-03 00:10 IST — Opened NO $100 @ 82c P=72% EV=+0.01 [Short Favorite] \"Will Spain vs. Austria end in a draw?\""
  ],
  "brain": {
   "w": [
-   0.30612767458264317,
-   0.04171898118499835,
-   0.008046694129730525,
-   -0.15998027346817098,
-   0.2222298811109453,
-   -0.46822524035485874,
-   0.7546816589208047,
-   0.015719653963815514,
-   -0.1464406670792122,
-   0.04928962039526059,
-   0.0032186776518922026,
-   0.07996246140528424,
-   -0.06248194626923286
+   0.3196052226363879,
+   0.04169812169440585,
+   0.00804267078266566,
+   -0.15990028333143688,
+   0.23459077605068782,
+   -0.4607669034324322,
+   0.7679349299823804,
+   0.027611318317708078,
+   -0.1362807939463059,
+   0.06284106502853487,
+   0.0032170683130662565,
+   0.09355309206561764,
+   -0.062450705296098245
   ],
-  "b": 0.08733642321660308,
-  "nUpdates": 371,
+  "b": 0.10096703510763913,
+  "nUpdates": 372,
   "buckets": {
    "MOMENTUM|high|sport": {
     "a": 1,
@@ -17576,7 +17580,7 @@
     "b": 3
    },
    "SHORT_FAVORITE|high|sport": {
-    "a": 200,
+    "a": 201,
     "b": 80
    },
    "VOLUME_SPIKE|mid|other": {
@@ -17643,13 +17647,13 @@
    }
   },
   "brier": {
-   "sum": 83.57731000000008,
-   "n": 371
+   "sum": 83.66083100000009,
+   "n": 372
   },
   "payoff": {
    "SHORT_FAVORITE": {
-    "wSum": 31.222824144239627,
-    "wN": 211,
+    "wSum": 31.315720319103015,
+    "wN": 212,
     "lSum": 29.084184813019977,
     "lN": 90
    },
@@ -17682,14 +17686,14 @@
    {
     "key": "SHORT_FAVORITE|high|sport",
     "status": "VALIDATED",
-    "n": 278,
-    "winRate": 71.4,
+    "n": 279,
+    "winRate": 71.5,
     "ci": [
      67,
      76
     ],
-    "text": "Short Favorite on high-priced sports markets: 199W/79L (posterior 71%, 90% CI 67-76%) — proven edge, prioritized",
-    "updated": "2026-07-02T20:06:11.897Z"
+    "text": "Short Favorite on high-priced sports markets: 200W/79L (posterior 72%, 90% CI 67-76%) — proven edge, prioritized",
+    "updated": "2026-07-02T20:20:41.691Z"
    },
    {
     "key": "SHORT_FAVORITE|high|other",
@@ -17701,7 +17705,7 @@
      68
     ],
     "text": "Short Favorite on high-priced non-sports markets: 12W/11L (posterior 52%, 90% CI 36-68%) — collecting evidence",
-    "updated": "2026-07-02T20:06:11.897Z"
+    "updated": "2026-07-02T20:20:41.691Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -17713,7 +17717,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-07-02T20:06:11.897Z"
+    "updated": "2026-07-02T20:20:41.691Z"
    },
    {
     "key": "wallet|aenews2",
@@ -17725,7 +17729,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-07-02T20:06:11.897Z"
+    "updated": "2026-07-02T20:20:41.691Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -17737,7 +17741,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-07-02T20:06:11.897Z"
+    "updated": "2026-07-02T20:20:41.691Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -17749,7 +17753,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-07-02T20:06:11.897Z"
+    "updated": "2026-07-02T20:20:41.691Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -17761,32 +17765,32 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-07-02T20:06:11.897Z"
+    "updated": "2026-07-02T20:20:41.691Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 7118.191791446513,
+  "cash": 7227.481408932852,
   "created": 1781162132851
  },
  "summary": {
-  "realized": -1331.81,
-  "closed": 371,
-  "wins": 241,
-  "open": 8,
+  "realized": -1322.52,
+  "closed": 372,
+  "wins": 242,
+  "open": 7,
   "staked": 72900,
   "bankStart": 10000,
-  "cash": 7118,
-  "equity": 8804,
-  "returnPct": -11.96,
-  "modelUpdates": 371,
+  "cash": 7227,
+  "equity": 8818,
+  "returnPct": -11.82,
+  "modelUpdates": 372,
   "brier": 0.225,
   "hypotheses": 7,
   "integrityOk": true,
-  "updated": "2026-07-02T20:06:11.901Z"
+  "updated": "2026-07-02T20:20:41.695Z"
  },
- "lastRun": 1783022771901,
+ "lastRun": 1783023641696,
  "elite": {
   "updated": 1783021902889,
   "list": [
@@ -17816,15 +17820,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-07-02T20:06:11.901Z",
+  "checkedAt": "2026-07-02T20:20:41.696Z",
   "tradesChecked": 379
  },
  "lastScan": {
-  "at": "2026-07-02T20:06:11.901Z",
-  "marketsFetched": 65,
-  "rawCandidates": 36,
-  "clearedThreshold": 1,
-  "placed": 1,
+  "at": "2026-07-02T20:20:41.695Z",
+  "marketsFetched": 64,
+  "rawCandidates": 33,
+  "clearedThreshold": 0,
+  "placed": 0,
   "pMin": 0.6,
   "blocked": {
    "exposure": 0,
@@ -17832,6 +17836,6 @@
    "cash": 0,
    "sanity": 0
   },
-  "reason": "traded"
+  "reason": "no candidates cleared P(win)>=0.60 (engines produce ~0.58-0.64; lower pMin or wait for better setups)"
  }
 }

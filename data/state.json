@@ -19173,7 +19173,7 @@
      75
     ],
     "text": "Short Favorite on high-priced sports markets: 220W/90L (posterior 71%, 90% CI 67-75%) — proven edge, prioritized",
-    "updated": "2026-07-04T08:15:42.598Z"
+    "updated": "2026-07-04T08:31:04.800Z"
    },
    {
     "key": "SHORT_FAVORITE|high|other",
@@ -19185,7 +19185,7 @@
      68
     ],
     "text": "Short Favorite on high-priced non-sports markets: 12W/11L (posterior 52%, 90% CI 36-68%) — collecting evidence",
-    "updated": "2026-07-04T08:15:42.598Z"
+    "updated": "2026-07-04T08:31:04.800Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -19197,7 +19197,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-07-04T08:15:42.598Z"
+    "updated": "2026-07-04T08:31:04.800Z"
    },
    {
     "key": "wallet|aenews2",
@@ -19209,7 +19209,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-07-04T08:15:42.598Z"
+    "updated": "2026-07-04T08:31:04.800Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -19221,7 +19221,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-07-04T08:15:42.598Z"
+    "updated": "2026-07-04T08:31:04.800Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -19233,7 +19233,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-07-04T08:15:42.598Z"
+    "updated": "2026-07-04T08:31:04.800Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -19245,7 +19245,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-07-04T08:15:42.598Z"
+    "updated": "2026-07-04T08:31:04.800Z"
    },
    {
     "key": "wallet|AnonymousUsername",
@@ -19257,7 +19257,7 @@
      72
     ],
     "text": "Copying wallet \"AnonymousUsername\": 2W/3L when followed (posterior 43%) — still evaluating",
-    "updated": "2026-07-04T08:15:42.598Z"
+    "updated": "2026-07-04T08:31:04.800Z"
    }
   ]
  },
@@ -19280,9 +19280,9 @@
   "brier": 0.226,
   "hypotheses": 8,
   "integrityOk": true,
-  "updated": "2026-07-04T08:15:42.599Z"
+  "updated": "2026-07-04T08:31:04.801Z"
  },
- "lastRun": 1783152942600,
+ "lastRun": 1783153864802,
  "elite": {
   "updated": 1783108875615,
   "list": [
@@ -19305,7 +19305,7 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-07-04T08:15:42.600Z",
+  "checkedAt": "2026-07-04T08:31:04.802Z",
   "tradesChecked": 411
  },
  "lastScan": {

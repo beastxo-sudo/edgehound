@@ -2,6 +2,48 @@
  "running": true,
  "journal": [
   {
+   "id": "t17831979422571fuo",
+   "date": "2026-07-05",
+   "openedTs": 1783197942257,
+   "title": "Wimbledon ATP: Grigor Dimitrov vs Matteo Berrettini",
+   "mid": "2775166",
+   "conditionId": "0x005e6b48f6531902c66785a93c0f849fdaf840ca859f5a08b51187d5f9f73467",
+   "slug": "atp-dimitro-berrett-2026-07-04",
+   "side": "YES",
+   "entry": 0.845,
+   "cur": 0.845,
+   "stake": 100,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.704,
+   "pModel": 0.734,
+   "pBucket": 0.707,
+   "bucketN": 312,
+   "bk": "SHORT_FAVORITE|high|sport",
+   "ev": 0.008,
+   "kelly": 0.007,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.845,
+    0.532,
+    1,
+    0.842,
+    0.764,
+    0.966,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 70% [model 73%, pattern 71% on n=312] · EV +0.01/$1 · 1/4-Kelly 0.7% of equity -> $100. 85c favorite resolving in 6.6d (favorite-longshot bias); +18% if it lands. Drivers: 24h move size +, favorite setup +, short time to resolution -",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1783764000000,
+   "status": "open"
+  },
+  {
    "id": "t17831970642989u4d",
    "date": "2026-07-05",
    "openedTs": 1783197064298,
@@ -11,7 +53,7 @@
    "slug": "atp-tiafoe-bublik-2026-07-04",
    "side": "NO",
    "entry": 0.815,
-   "cur": 0.815,
+   "cur": 0.825,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.704,
@@ -53,7 +95,7 @@
    "slug": "mlb-min-nyy-2026-07-04",
    "side": "YES",
    "entry": 0.825,
-   "cur": 0.955,
+   "cur": 0.985,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.706,
@@ -141,7 +183,7 @@
    "slug": "fifwc-par-fra-2026-07-04-more-markets",
    "side": "YES",
    "entry": 0.825,
-   "cur": 0.815,
+   "cur": 0.805,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.706,
@@ -19241,6 +19283,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-07-05 02:15 IST — Opened YES $100 @ 85c P=70% EV=+0.01 [Short Favorite] \"Wimbledon ATP: Grigor Dimitrov vs Matteo Berre\"",
   "2026-07-05 02:01 IST — Opened NO $100 @ 82c P=70% EV=+0.01 [Short Favorite] \"Wimbledon ATP: Frances Tiafoe vs Alexander Bub\"",
   "2026-07-05 02:01 IST — Closed YES \"Wimbledon ATP: Grigor Dimitrov vs Matteo B\" -> $-46 (Stop loss hit (-45%)) · model said P(win)=71%",
   "2026-07-05 01:45 IST — Opened YES $100 @ 83c P=71% EV=+0.01 [Short Favorite] \"Minnesota Twins vs. New York Yankees\"",
@@ -19253,8 +19296,7 @@
   "2026-07-04 11:01 IST — Closed YES \"Milwaukee Brewers vs. Arizona Diamondbacks\" -> +$21 (Resolved in our favor) · model said P(win)=71%",
   "2026-07-04 10:15 IST — Closed YES \"Toronto Blue Jays vs. Seattle Mariners\" -> +$27 (Resolved in our favor) · model said P(win)=71%",
   "2026-07-04 10:01 IST — Closed YES \"Boston Red Sox vs. Los Angeles Angels\" -> +$13 (Resolved in our favor) · model said P(win)=70%",
-  "2026-07-04 10:01 IST — Closed YES \"Miami Marlins vs. Athletics\" -> +$23 (Resolved in our favor) · model said P(win)=71%",
-  "2026-07-04 09:31 IST — Opened NO $100 @ 93c P=70% EV=+0.01 [Short Favorite] \"Paraguay vs. France: Team to Advance\""
+  "2026-07-04 10:01 IST — Closed YES \"Miami Marlins vs. Athletics\" -> +$23 (Resolved in our favor) · model said P(win)=71%"
  ],
  "brain": {
   "w": [
@@ -19433,7 +19475,7 @@
      75
     ],
     "text": "Short Favorite on high-priced sports markets: 221W/91L (posterior 71%, 90% CI 66-75%) — proven edge, prioritized",
-    "updated": "2026-07-04T20:31:04.292Z"
+    "updated": "2026-07-04T20:45:42.253Z"
    },
    {
     "key": "SHORT_FAVORITE|high|other",
@@ -19445,7 +19487,7 @@
      68
     ],
     "text": "Short Favorite on high-priced non-sports markets: 12W/11L (posterior 52%, 90% CI 36-68%) — collecting evidence",
-    "updated": "2026-07-04T20:31:04.292Z"
+    "updated": "2026-07-04T20:45:42.253Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -19457,7 +19499,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-07-04T20:31:04.292Z"
+    "updated": "2026-07-04T20:45:42.253Z"
    },
    {
     "key": "wallet|aenews2",
@@ -19469,7 +19511,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-07-04T20:31:04.292Z"
+    "updated": "2026-07-04T20:45:42.253Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -19481,7 +19523,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-07-04T20:31:04.292Z"
+    "updated": "2026-07-04T20:45:42.253Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -19493,7 +19535,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-07-04T20:31:04.292Z"
+    "updated": "2026-07-04T20:45:42.253Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -19505,7 +19547,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-07-04T20:31:04.292Z"
+    "updated": "2026-07-04T20:45:42.253Z"
    },
    {
     "key": "wallet|AnonymousUsername",
@@ -19517,32 +19559,32 @@
      72
     ],
     "text": "Copying wallet \"AnonymousUsername\": 2W/3L when followed (posterior 43%) — still evaluating",
-    "updated": "2026-07-04T20:31:04.292Z"
+    "updated": "2026-07-04T20:45:42.253Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 6856.980622930148,
+  "cash": 6756.980622930148,
   "created": 1781162132851
  },
  "summary": {
   "realized": -1393.02,
   "closed": 407,
   "wins": 264,
-  "open": 10,
-  "staked": 77350,
+  "open": 11,
+  "staked": 77450,
   "bankStart": 10000,
-  "cash": 6857,
-  "equity": 8749,
-  "returnPct": -12.51,
+  "cash": 6757,
+  "equity": 8753,
+  "returnPct": -12.47,
   "modelUpdates": 407,
   "brier": 0.226,
   "hypotheses": 8,
   "integrityOk": true,
-  "updated": "2026-07-04T20:31:04.299Z"
+  "updated": "2026-07-04T20:45:42.258Z"
  },
- "lastRun": 1783197064300,
+ "lastRun": 1783197942258,
  "elite": {
   "updated": 1783196141685,
   "list": [
@@ -19565,13 +19607,13 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-07-04T20:31:04.299Z",
-  "tradesChecked": 417
+  "checkedAt": "2026-07-04T20:45:42.258Z",
+  "tradesChecked": 418
  },
  "lastScan": {
-  "at": "2026-07-04T20:31:04.299Z",
-  "marketsFetched": 77,
-  "rawCandidates": 48,
+  "at": "2026-07-04T20:45:42.258Z",
+  "marketsFetched": 76,
+  "rawCandidates": 50,
   "clearedThreshold": 1,
   "placed": 1,
   "pMin": 0.6,

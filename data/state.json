@@ -57,7 +57,7 @@
    "slug": "atp-tiafoe-bublik-2026-07-04",
    "side": "NO",
    "entry": 0.815,
-   "cur": 0.605,
+   "cur": 0.9995,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.704,
@@ -87,7 +87,11 @@
    "target": null,
    "stop": 0.45,
    "holdUntil": 1783764000000,
-   "status": "open"
+   "status": "closed",
+   "exit": 1,
+   "exitTs": 1783200664479,
+   "exitReason": "Resolved in our favor",
+   "pnl": 22.69938650306749
   },
   {
    "id": "t1783196142483oach",
@@ -19271,9 +19275,9 @@
  ],
  "strat": {
   "SHORT_FAVORITE": {
-   "trades": 340,
-   "wins": 235,
-   "pnl": -267.6191319821263,
+   "trades": 341,
+   "wins": 236,
+   "pnl": -244.9197454790588,
    "weight": 1
   },
   "MOMENTUM": {
@@ -19303,6 +19307,7 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-07-05 03:01 IST — Closed NO \"Wimbledon ATP: Frances Tiafoe vs Alexander\" -> +$23 (Resolved in our favor) · model said P(win)=70%",
   "2026-07-05 02:45 IST — Closed YES \"Minnesota Twins vs. New York Yankees\" -> +$21 (Resolved in our favor) · model said P(win)=71%",
   "2026-07-05 02:31 IST — Closed NO \"Paraguay vs. France: Team to Advance\" -> +$0 (Max hold reached — closed at market) · model said P(win)=70%",
   "2026-07-05 02:31 IST — Closed NO \"Will Paraguay vs. France end in a draw?\" -> $-1 (Max hold reached — closed at market) · model said P(win)=71%",
@@ -19315,27 +19320,26 @@
   "2026-07-05 01:45 IST — Elite pool refreshed: 2 wallets qualify (>=58% win rate over >=10 settled, scalpers excluded): ndb1 83%, mooseborzoi 73%",
   "2026-07-05 00:45 IST — Closed YES \"Wimbledon ATP: Taylor Fritz vs Lorenzo Son\" -> +$10 (Resolved in our favor) · model said P(win)=71%",
   "2026-07-05 00:16 IST — Opened YES $100 @ 89c P=71% EV=+0.01 [Short Favorite] \"Wimbledon ATP: Grigor Dimitrov vs Matteo Berre\"",
-  "2026-07-05 00:03 IST — Opened YES $100 @ 83c P=71% EV=+0.01 [Short Favorite] \"Paraguay vs. France: O/U 1.5\"",
-  "2026-07-05 00:03 IST — Opened YES $100 @ 91c P=71% EV=+0.01 [Short Favorite] \"Wimbledon ATP: Taylor Fritz vs Lorenzo Sonego\""
+  "2026-07-05 00:03 IST — Opened YES $100 @ 83c P=71% EV=+0.01 [Short Favorite] \"Paraguay vs. France: O/U 1.5\""
  ],
  "brain": {
   "w": [
-   0.24034464386776602,
-   0.04087223913438735,
-   0.007883375800890387,
-   -0.15673326165325985,
-   0.17426443916350012,
-   -0.5887158177079959,
-   0.7803077089494468,
-   -0.02419652356782488,
-   -0.20047221035206103,
-   0.004219123020433939,
-   0.0031533503203561458,
-   0.022810603794047826,
-   -0.06121379230651816
+   0.25754812128196974,
+   0.04085180301482016,
+   0.007879434112989941,
+   -0.1566548950224332,
+   0.18829608147887053,
+   -0.5792226017892528,
+   0.7972412048311097,
+   -0.00899158448744828,
+   -0.18744853154372634,
+   0.021488692245852925,
+   0.003151773645195968,
+   0.04012284822828842,
+   -0.0611831854103649
   ],
-  "b": 0.03131078606544186,
-  "nUpdates": 412,
+  "b": 0.04863443580157947,
+  "nUpdates": 413,
   "buckets": {
    "MOMENTUM|high|sport": {
     "a": 1,
@@ -19382,7 +19386,7 @@
     "b": 3
    },
    "SHORT_FAVORITE|high|sport": {
-    "a": 224,
+    "a": 225,
     "b": 95
    },
    "VOLUME_SPIKE|mid|other": {
@@ -19449,13 +19453,13 @@
    }
   },
   "brier": {
-   "sum": 93.72195600000003,
-   "n": 412
+   "sum": 93.80957200000003,
+   "n": 413
   },
   "payoff": {
    "SHORT_FAVORITE": {
-    "wSum": 34.893542480606854,
-    "wN": 235,
+    "wSum": 35.12053634563753,
+    "wN": 236,
     "lSum": 33.19536795955555,
     "lN": 105
    },
@@ -19488,14 +19492,14 @@
    {
     "key": "SHORT_FAVORITE|high|sport",
     "status": "VALIDATED",
-    "n": 317,
-    "winRate": 70.2,
+    "n": 318,
+    "winRate": 70.3,
     "ci": [
      66,
-     74
+     75
     ],
-    "text": "Short Favorite on high-priced sports markets: 223W/94L (posterior 70%, 90% CI 66-74%) — proven edge, prioritized",
-    "updated": "2026-07-04T21:15:39.372Z"
+    "text": "Short Favorite on high-priced sports markets: 224W/94L (posterior 70%, 90% CI 66-75%) — proven edge, prioritized",
+    "updated": "2026-07-04T21:31:04.480Z"
    },
    {
     "key": "SHORT_FAVORITE|high|other",
@@ -19507,7 +19511,7 @@
      68
     ],
     "text": "Short Favorite on high-priced non-sports markets: 12W/11L (posterior 52%, 90% CI 36-68%) — collecting evidence",
-    "updated": "2026-07-04T21:15:39.372Z"
+    "updated": "2026-07-04T21:31:04.480Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -19519,7 +19523,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-07-04T21:15:39.372Z"
+    "updated": "2026-07-04T21:31:04.480Z"
    },
    {
     "key": "wallet|aenews2",
@@ -19531,7 +19535,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-07-04T21:15:39.372Z"
+    "updated": "2026-07-04T21:31:04.480Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -19543,7 +19547,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-07-04T21:15:39.372Z"
+    "updated": "2026-07-04T21:31:04.480Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -19555,7 +19559,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-07-04T21:15:39.372Z"
+    "updated": "2026-07-04T21:31:04.480Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -19567,7 +19571,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-07-04T21:15:39.372Z"
+    "updated": "2026-07-04T21:31:04.480Z"
    },
    {
     "key": "wallet|AnonymousUsername",
@@ -19579,32 +19583,32 @@
      72
     ],
     "text": "Copying wallet \"AnonymousUsername\": 2W/3L when followed (posterior 43%) — still evaluating",
-    "updated": "2026-07-04T21:15:39.372Z"
+    "updated": "2026-07-04T21:31:04.480Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 7292.968839841442,
+  "cash": 7415.668226344509,
   "created": 1781162132851
  },
  "summary": {
-  "realized": -1357.03,
-  "closed": 412,
-  "wins": 266,
-  "open": 6,
+  "realized": -1334.33,
+  "closed": 413,
+  "wins": 267,
+  "open": 5,
   "staked": 77450,
   "bankStart": 10000,
-  "cash": 7293,
-  "equity": 8746,
-  "returnPct": -12.54,
-  "modelUpdates": 412,
+  "cash": 7416,
+  "equity": 8795,
+  "returnPct": -12.05,
+  "modelUpdates": 413,
   "brier": 0.227,
   "hypotheses": 8,
   "integrityOk": true,
-  "updated": "2026-07-04T21:15:39.376Z"
+  "updated": "2026-07-04T21:31:04.484Z"
  },
- "lastRun": 1783199739376,
+ "lastRun": 1783200664484,
  "elite": {
   "updated": 1783196141685,
   "list": [
@@ -19627,13 +19631,13 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-07-04T21:15:39.376Z",
+  "checkedAt": "2026-07-04T21:31:04.484Z",
   "tradesChecked": 418
  },
  "lastScan": {
-  "at": "2026-07-04T21:15:39.375Z",
+  "at": "2026-07-04T21:31:04.484Z",
   "marketsFetched": 77,
-  "rawCandidates": 13,
+  "rawCandidates": 12,
   "clearedThreshold": 0,
   "placed": 0,
   "pMin": 0.6,

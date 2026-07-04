@@ -2,6 +2,90 @@
  "running": true,
  "journal": [
   {
+   "id": "t1783132264474igsy",
+   "date": "2026-07-04",
+   "openedTs": 1783132264474,
+   "title": "Boston Red Sox vs. Los Angeles Angels",
+   "mid": "2709288",
+   "conditionId": "0x0ac69ee42788534297ba1b5afcbff51ff7d90759624a662a0d1a3a5127b487a8",
+   "slug": "mlb-bos-laa-2026-07-03",
+   "side": "YES",
+   "entry": 0.885,
+   "cur": 0.885,
+   "stake": 100,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.704,
+   "pModel": 0.772,
+   "pBucket": 0.707,
+   "bucketN": 302,
+   "bk": "SHORT_FAVORITE|high|sport",
+   "ev": 0.01,
+   "kelly": 0.0092,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.885,
+    0.503,
+    1,
+    0.769,
+    0.694,
+    0.998,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 70% [model 77%, pattern 71% on n=302] · EV +0.01/$1 · 1/4-Kelly 0.9% of equity -> $100. 89c favorite resolving in 7.0d (favorite-longshot bias); +13% if it lands. Drivers: 24h move size +, favorite setup +, short time to resolution -",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1783733880000,
+   "status": "open"
+  },
+  {
+   "id": "t17831322644730fk5",
+   "date": "2026-07-04",
+   "openedTs": 1783132264473,
+   "title": "Tampa Bay Rays vs. Houston Astros",
+   "mid": "2709286",
+   "conditionId": "0x49c1fc564811c5bc7b5fb72ec8abc2371a86d1f33b925f39c267f0bf1f8c7a43",
+   "slug": "mlb-tb-hou-2026-07-03",
+   "side": "YES",
+   "entry": 0.935,
+   "cur": 0.935,
+   "stake": 100,
+   "signal": "SHORT_FAVORITE",
+   "p": 0.704,
+   "pModel": 0.774,
+   "pBucket": 0.707,
+   "bucketN": 302,
+   "bk": "SHORT_FAVORITE|high|sport",
+   "ev": 0.01,
+   "kelly": 0.0092,
+   "x": [
+    1,
+    0,
+    0,
+    0,
+    0.935,
+    0.507,
+    1,
+    0.786,
+    0.693,
+    0.998,
+    0,
+    1,
+    0
+   ],
+   "walletNames": null,
+   "insight": "P(win) 70% [model 77%, pattern 71% on n=302] · EV +0.01/$1 · 1/4-Kelly 0.9% of equity -> $100. 94c favorite resolving in 6.9d (favorite-longshot bias); +7% if it lands. Drivers: 24h move size +, favorite setup +, short time to resolution -",
+   "target": null,
+   "stop": 0.45,
+   "holdUntil": 1783728900000,
+   "status": "open"
+  },
+  {
    "id": "t1783127741027h1hq",
    "date": "2026-07-04",
    "openedTs": 1783127741027,
@@ -11,7 +95,7 @@
    "slug": "mlb-min-nyy-2026-07-03",
    "side": "NO",
    "entry": 0.8049999999999999,
-   "cur": 0.925,
+   "cur": 0.985,
    "stake": 100,
    "signal": "SHORT_FAVORITE",
    "p": 0.703,
@@ -18613,6 +18697,8 @@
  },
  "created": 1781161817640,
  "log": [
+  "2026-07-04 08:01 IST — Opened YES $100 @ 89c P=70% EV=+0.01 [Short Favorite] \"Boston Red Sox vs. Los Angeles Angels\"",
+  "2026-07-04 08:01 IST — Opened YES $100 @ 94c P=70% EV=+0.01 [Short Favorite] \"Tampa Bay Rays vs. Houston Astros\"",
   "2026-07-04 07:31 IST — Closed NO \"New York Mets vs. Atlanta Braves\" -> +$14 (Resolved in our favor) · model said P(win)=70%",
   "2026-07-04 07:15 IST — Closed YES \"Baltimore Orioles vs. Cincinnati Reds\" -> +$23 (Resolved in our favor) · model said P(win)=70%",
   "2026-07-04 07:01 IST — Closed YES \"Colombia vs. Ghana: Team to Advance\" -> +$1 (Max hold reached — closed at market) · model said P(win)=71%",
@@ -18624,9 +18710,7 @@
   "2026-07-04 05:46 IST — Opened NO $100 @ 79c P=70% EV=+0.01 [Short Favorite] \"Will Colombia vs. Ghana end in a draw?\"",
   "2026-07-04 05:18 IST — Opened NO $100 @ 89c P=70% EV=+0.01 [Short Favorite] \"Pittsburgh Pirates vs. Washington Nationals\"",
   "2026-07-04 03:53 IST — Closed YES \"St. Louis Cardinals vs. Chicago Cubs\" -> +$10 (Resolved in our favor) · model said P(win)=71%",
-  "2026-07-04 03:39 IST — Closed YES \"Argentina vs. Cabo Verde: Team to Advance\" -> +$3 (Max hold reached — closed at market) · model said P(win)=72%",
-  "2026-07-04 03:39 IST — Closed NO \"Will Argentina vs. Cabo Verde end in a dra\" -> $-1 (Max hold reached — closed at market) · model said P(win)=71%",
-  "2026-07-04 03:39 IST — Closed YES \"Argentina vs. Cabo Verde: O/U 1.5\" -> $-2 (Max hold reached — closed at market) · model said P(win)=71%"
+  "2026-07-04 03:39 IST — Closed YES \"Argentina vs. Cabo Verde: Team to Advance\" -> +$3 (Max hold reached — closed at market) · model said P(win)=72%"
  ],
  "brain": {
   "w": [
@@ -18805,7 +18889,7 @@
      75
     ],
     "text": "Short Favorite on high-priced sports markets: 214W/88L (posterior 71%, 90% CI 66-75%) — proven edge, prioritized",
-    "updated": "2026-07-04T02:15:39.248Z"
+    "updated": "2026-07-04T02:31:04.469Z"
    },
    {
     "key": "SHORT_FAVORITE|high|other",
@@ -18817,7 +18901,7 @@
      68
     ],
     "text": "Short Favorite on high-priced non-sports markets: 12W/11L (posterior 52%, 90% CI 36-68%) — collecting evidence",
-    "updated": "2026-07-04T02:15:39.248Z"
+    "updated": "2026-07-04T02:31:04.469Z"
    },
    {
     "key": "ELITE_FOLLOW|mid|other",
@@ -18829,7 +18913,7 @@
      74
     ],
     "text": "Elite Follow on mid-priced non-sports markets: 11W/8L (posterior 57%, 90% CI 40-74%) — collecting evidence",
-    "updated": "2026-07-04T02:15:39.248Z"
+    "updated": "2026-07-04T02:31:04.469Z"
    },
    {
     "key": "wallet|aenews2",
@@ -18841,7 +18925,7 @@
      64
     ],
     "text": "Copying wallet \"aenews2\": 6W/8L when followed (posterior 44%) — still evaluating",
-    "updated": "2026-07-04T02:15:39.248Z"
+    "updated": "2026-07-04T02:31:04.469Z"
    },
    {
     "key": "VOLUME_SPIKE|low|other",
@@ -18853,7 +18937,7 @@
      71
     ],
     "text": "Volume Spike on low-priced non-sports markets: 6W/6L (posterior 50%, 90% CI 29-71%) — collecting evidence",
-    "updated": "2026-07-04T02:15:39.248Z"
+    "updated": "2026-07-04T02:31:04.469Z"
    },
    {
     "key": "MOMENTUM|low|other",
@@ -18865,7 +18949,7 @@
      69
     ],
     "text": "Momentum on low-priced non-sports markets: 4W/5L (posterior 45%, 90% CI 22-69%) — collecting evidence",
-    "updated": "2026-07-04T02:15:39.248Z"
+    "updated": "2026-07-04T02:31:04.469Z"
    },
    {
     "key": "MOMENTUM|high|other",
@@ -18877,7 +18961,7 @@
      77
     ],
     "text": "Momentum on high-priced non-sports markets: 3W/3L (posterior 50%, 90% CI 23-77%) — collecting evidence",
-    "updated": "2026-07-04T02:15:39.248Z"
+    "updated": "2026-07-04T02:31:04.469Z"
    },
    {
     "key": "wallet|AnonymousUsername",
@@ -18889,32 +18973,32 @@
      72
     ],
     "text": "Copying wallet \"AnonymousUsername\": 2W/3L when followed (posterior 43%) — still evaluating",
-    "updated": "2026-07-04T02:15:39.248Z"
+    "updated": "2026-07-04T02:31:04.469Z"
    }
   ]
  },
  "bank": {
   "start": 10000,
-  "cash": 7335.617041216421,
+  "cash": 7135.617041216421,
   "created": 1781162132851
  },
  "summary": {
   "realized": -1314.38,
   "closed": 397,
   "wins": 257,
-  "open": 6,
-  "staked": 75950,
+  "open": 8,
+  "staked": 76150,
   "bankStart": 10000,
-  "cash": 7336,
-  "equity": 8829,
-  "returnPct": -11.71,
+  "cash": 7136,
+  "equity": 8837,
+  "returnPct": -11.63,
   "modelUpdates": 397,
   "brier": 0.227,
   "hypotheses": 8,
   "integrityOk": true,
-  "updated": "2026-07-04T02:15:39.251Z"
+  "updated": "2026-07-04T02:31:04.474Z"
  },
- "lastRun": 1783131339251,
+ "lastRun": 1783132264474,
  "elite": {
   "updated": 1783108875615,
   "list": [
@@ -18937,15 +19021,15 @@
  "integrity": {
   "ok": true,
   "errors": [],
-  "checkedAt": "2026-07-04T02:15:39.251Z",
-  "tradesChecked": 403
+  "checkedAt": "2026-07-04T02:31:04.474Z",
+  "tradesChecked": 405
  },
  "lastScan": {
-  "at": "2026-07-04T02:15:39.251Z",
+  "at": "2026-07-04T02:31:04.474Z",
   "marketsFetched": 66,
-  "rawCandidates": 16,
-  "clearedThreshold": 0,
-  "placed": 0,
+  "rawCandidates": 17,
+  "clearedThreshold": 2,
+  "placed": 2,
   "pMin": 0.6,
   "blocked": {
    "exposure": 0,
@@ -18953,6 +19037,6 @@
    "cash": 0,
    "sanity": 0
   },
-  "reason": "no candidates cleared P(win)>=0.60 (engines produce ~0.58-0.64; lower pMin or wait for better setups)"
+  "reason": "traded"
  }
 }

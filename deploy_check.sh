@@ -9,8 +9,8 @@ API="https://api.github.com/repos/beastxo-sudo/edgehound/contents"
 LOCAL="${1:-/home/claude/polyscope/index.html}"
 
 # required structural markers — the things that must always be present
-REQUIRED_TABS=("overview" "markets" "smart" "signals" "bot" "arb")
-REQUIRED_PANELS=("ovAudit" "sniperPanel" "imbalancePanel" "ovStats")
+REQUIRED_TABS=("overview" "markets" "smart" "signals" "arb")
+REQUIRED_PANELS=("ovAudit" "sniperPanel" "strategyPanel")
 
 fail=0
 echo "── DEPLOY CHECK ──"
@@ -27,8 +27,8 @@ echo "live: $LIVE_LINES lines / $LIVE_BYTES bytes  ·  local: $LOCAL_LINES lines
 
 # 2. size sanity: absolute floor (the full dashboard is ~2000 lines / ~140KB).
 #    A truncated live file — the exact bug — falls below this no matter what.
-MIN_LINES=1800
-MIN_BYTES=130000
+MIN_LINES=1500
+MIN_BYTES=100000
 if [ "$LIVE_LINES" -lt "$MIN_LINES" ] || [ "$LIVE_BYTES" -lt "$MIN_BYTES" ]; then
   echo "✗ LIVE TOO SMALL: $LIVE_LINES lines / $LIVE_BYTES bytes (floor: $MIN_LINES lines / $MIN_BYTES bytes) — truncation"; fail=1
 else echo "✓ live above size floor"; fi
@@ -54,7 +54,7 @@ if [ -s /tmp/_live.js ] && node --check /tmp/_live.js 2>/dev/null; then echo "�
 
 # 6. balanced structure (open/close section count sanity)
 SECTIONS=$(grep -c 'class="page' /tmp/_live.html)
-if [ "$SECTIONS" -ge 6 ]; then echo "✓ $SECTIONS page sections"; else echo "✗ only $SECTIONS page sections (expect ≥6)"; fail=1; fi
+if [ "$SECTIONS" -ge 5 ]; then echo "✓ $SECTIONS page sections"; else echo "✗ only $SECTIONS page sections (expect ≥5)"; fail=1; fi
 
 if [ "$fail" -eq 0 ]; then
   echo "── ✅ DEPLOY VERIFIED: live dashboard is complete and valid ──"

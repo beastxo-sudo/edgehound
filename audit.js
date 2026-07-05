@@ -141,62 +141,7 @@ function audit() {
     add({ area: 'sniper', id: 'missing', severity: 'info', msg: 'No sniper data file to audit yet.', autoFixed: false, needsCode: false });
   }
 
-  /* ===================== BOT INVARIANTS ===================== */
-  if (state) {
-    const sm = state.summary || {};
-    const journal = state.journal || [];
-    const closed = journal.filter(t => t.status === 'closed');
-
-    /* INVARIANT: closed-trade pnl must recompute from entry/exit/stake. */
-    let pnlMismatch = 0;
-    for (const t of closed) {
-      if (t.entry > 0 && t.exit != null && t.stake > 0) {
-        const shares = t.stake / t.entry;
-        const expect = round(shares * t.exit - t.stake, 2);
-        if (Math.abs(expect - (t.pnl || 0)) > Math.max(1, Math.abs(expect) * 0.02)) pnlMismatch++;
-      }
-    }
-    if (pnlMismatch) add({ area: 'bot', id: 'pnl_mismatch', severity: 'warn',
-      msg: `${pnlMismatch} closed trade(s) have a pnl that doesn't recompute from entry/exit/stake — investigate settlement math.`, autoFixed: false, needsCode: true });
-
-    /* HEALTH: the pessimism-deadlock detector. If recent runs keep finding
-       candidates but clearing zero, the model/threshold is strangling trading —
-       the exact failure we hit. Track a streak in audit state. */
-    const ls = state.lastScan;
-    if (ls && ls.rawCandidates >= 5 && ls.clearedThreshold === 0) {
-      add({ area: 'bot', id: 'possible_deadlock', severity: 'warn',
-        msg: `Last scan saw ${ls.rawCandidates} candidates but 0 cleared P(win) >= ${ls.pMin}. If this persists, the model is over-suppressing (pessimism deadlock) or pMin is set above what active engines produce. Check Brier (${sm.brier}) and consider lowering pMin or down-weighting the model.`,
-        autoFixed: false, needsCode: false });
-    }
-
-    /* HEALTH: engine bleed detector. Flag any engine deeply negative over
-       enough trades — this is how Momentum's -$1k would surface automatically. */
-    const byEngine = {};
-    for (const t of closed) {
-      const e = byEngine[t.signal] || { n: 0, pnl: 0, w: 0 };
-      e.n++; e.pnl += t.pnl || 0; if (t.pnl > 0) e.w++;
-      byEngine[t.signal] = e;
-    }
-    for (const [sig, e] of Object.entries(byEngine)) {
-      const on = state.config && state.config.engines && state.config.engines[sig];
-      if (on && e.n >= 8 && e.pnl < -300 && e.w / e.n < 0.42) {
-        add({ area: 'bot', id: 'engine_bleed_' + sig, severity: 'warn',
-          msg: `Engine ${sig} is bleeding: ${e.n} trades, ${round(e.w / e.n * 100, 0)}% win, ${round(e.pnl, 0)} pnl, yet still enabled. Recommend the Analyst disable it or tighten its entry.`,
-          autoFixed: false, needsCode: false });
-      }
-    }
-
-    /* INVARIANT: config pMin shouldn't exceed what active engines can produce. */
-    const cfg = state.config || {};
-    const hiPrior = cfg.engines && (cfg.engines.MOMENTUM || cfg.engines.SMART_CONSENSUS);
-    if (cfg.pMin != null && !hiPrior && cfg.pMin > 0.61) {
-      add({ area: 'bot', id: 'pmin_too_high', severity: 'warn',
-        msg: `pMin is ${cfg.pMin} but the high-prior engines are off, so active engines top out ~0.61 — this likely blocks all trades. The Analyst guardrail should cap this at 0.60.`,
-        autoFixed: false, needsCode: false });
-    }
-  } else {
-    add({ area: 'bot', id: 'missing', severity: 'info', msg: 'No bot state file to audit yet.', autoFixed: false, needsCode: false });
-  }
+  /* Bot decommissioned 2026-07 — audit now covers the sniper lab only. */
 
   /* ===================== WRITE FINDINGS ===================== */
   const prev = load(OUT) || { history: [] };

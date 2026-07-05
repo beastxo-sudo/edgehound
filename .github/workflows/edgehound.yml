@@ -1,4 +1,4 @@
-name: EdgeHound paper-trading bot
+name: Sniper Lab (cheap-underdog strategy)
 
 on:
   schedule:
@@ -14,117 +14,6 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  run:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Run EdgeHound
-        run: node edgehound.js
-
-      - name: Self-audit (invariant checks + auto-fix safe classes)
-        run: node audit.js || echo "audit completed with findings"
-
-      - name: Commit journal
-        run: |
-          git config user.name "edgehound-bot"
-          git config user.email "actions@users.noreply.github.com"
-          git add data/
-          if git diff --cached --quiet; then
-            echo "No changes to commit."
-          else
-            git commit -m "EdgeHound run $(date -u +'%Y-%m-%d %H:%M UTC')"
-            for i in 1 2 3 4 5; do
-              git pull --rebase origin ${GITHUB_REF_NAME} || { git rebase --abort 2>/dev/null || true; }
-              if git push; then break; fi
-              echo "push failed, retry $i"; sleep $((i*3))
-            done
-          fi
-
-
-      - name: Trigger daily Analyst (reliable, piggybacks 15-min cadence)
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          # IST = UTC + 5:30. Analyst should run once per day after 09:07 IST (03:37 UTC).
-          NOW_UTC_MIN=$(( $(date -u +%H) * 60 + $(date -u +%M) ))
-          TRIGGER_MIN=$(( 3 * 60 + 37 ))   # 03:37 UTC
-          TODAY=$(date -u +%Y-%m-%d)
-          MARKER="data/.analyst-last-run"
-          LAST=$(cat "$MARKER" 2>/dev/null || echo "none")
-          if [ "$NOW_UTC_MIN" -ge "$TRIGGER_MIN" ] && [ "$LAST" != "$TODAY" ]; then
-            echo "Triggering Analyst for $TODAY (last ran: $LAST)"
-            HTTP=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
-              -H "Authorization: Bearer $GH_TOKEN" \
-              -H "Accept: application/vnd.github+json" \
-              "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/workflows/analyst.yml/dispatches" \
-              -d '{"ref":"main"}')
-            if [ "$HTTP" = "204" ]; then
-              echo "$TODAY" > "$MARKER"
-              git add "$MARKER"
-              git -c user.name=edgehound-bot -c user.email=bot@edgehound commit -m "Analyst triggered $TODAY" || true
-              for i in 1 2 3 4 5; do
-                git pull --rebase origin ${GITHUB_REF_NAME} || { git rebase --abort 2>/dev/null || true; }
-                if git push; then break; fi
-                sleep $((i*3))
-              done
-            else
-              echo "Dispatch returned HTTP $HTTP — will retry next cycle"
-            fi
-          else
-            echo "Analyst trigger skipped (now=${NOW_UTC_MIN}min UTC, trigger=${TRIGGER_MIN}min, last=$LAST)"
-          fi
-
-      - name: Verify ledger integrity
-        run: |
-          node -e "
-          const s=require('./data/state.json');
-          if(s.integrity&&s.integrity.ok===false){
-            console.error('LEDGER INTEGRITY FAILURE:');
-            s.integrity.errors.forEach(e=>console.error(' -',e));
-            process.exit(1);
-          }
-          console.log('Ledger integrity OK —',(s.integrity&&s.integrity.tradesChecked)||0,'trades verified.');
-          "
-
-      - name: Trigger AI Reviewer every ~2 hours (piggybacks 15-min cadence)
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          # Run on even hours (00,02,04,...). Marker stores the last YYYY-MM-DD-HH bucket
-          # so it fires once per 2-hour window even though the bot runs every 15 min.
-          HOUR=$(date -u +%H); HOUR=$((10#$HOUR))
-          BUCKET="$(date -u +%Y-%m-%d)-$((HOUR/2))"
-          MARKER="data/.reviewer-last-run"
-          LAST=$(cat "$MARKER" 2>/dev/null || echo "none")
-          if [ $((HOUR % 2)) -eq 0 ] && [ "$LAST" != "$BUCKET" ]; then
-            echo "Triggering reviewer for bucket $BUCKET (last: $LAST)"
-            HTTP=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
-              -H "Authorization: Bearer $GH_TOKEN" \
-              -H "Accept: application/vnd.github+json" \
-              "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/workflows/reviewer.yml/dispatches" \
-              -d '{"ref":"main"}')
-            if [ "$HTTP" = "204" ]; then
-              echo "$BUCKET" > "$MARKER"
-              git add "$MARKER"
-              git -c user.name=edgehound-bot -c user.email=bot@edgehound commit -m "Reviewer triggered $BUCKET" || true
-              for i in 1 2 3 4 5; do
-                git pull --rebase origin ${GITHUB_REF_NAME} || { git rebase --abort 2>/dev/null || true; }
-                if git push; then break; fi
-                sleep $((i*3))
-              done
-            else
-              echo "Reviewer dispatch returned HTTP $HTTP — retry next cycle"
-            fi
-          else
-            echo "Reviewer trigger skipped (hour=$HOUR, bucket=$BUCKET, last=$LAST)"
-          fi
-
-
   sniper:
     runs-on: ubuntu-latest
     timeout-minutes: 15
@@ -136,42 +25,17 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: 24
-      - name: Run Sniper Lab (last-5s hypothesis)
+      - name: Run Sniper Lab (60s cheap-underdog)
         run: node sniper.js
+      - name: Self-audit sniper data
+        run: node audit.js || echo "audit completed with findings"
       - name: Commit lab results
         run: |
           git config user.name "edgehound-bot"
           git config user.email "bot@edgehound"
-          git add data/sniper.json
+          git add data/sniper.json data/audit.json
           if ! git diff --cached --quiet; then
             git commit -m "Sniper Lab samples $(date -u +'%Y-%m-%d %H:%M UTC')"
-            for i in 1 2 3 4 5; do
-              git pull --rebase origin ${GITHUB_REF_NAME} || { git rebase --abort 2>/dev/null || true; }
-              if git push; then break; fi
-              echo "push failed, retry $i"; sleep $((i*3))
-            done
-          fi
-
-  imbalance:
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    concurrency:
-      group: imbalance-lab
-      cancel-in-progress: false
-    steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
-        with:
-          node-version: 24
-      - name: Run Imbalance Lab (order-book-leads-price hypothesis)
-        run: node imbalance.js
-      - name: Commit lab results
-        run: |
-          git config user.name "edgehound-bot"
-          git config user.email "bot@edgehound"
-          git add data/imbalance.json
-          if ! git diff --cached --quiet; then
-            git commit -m "Imbalance Lab probes $(date -u +'%Y-%m-%d %H:%M UTC')"
             for i in 1 2 3 4 5; do
               git pull --rebase origin ${GITHUB_REF_NAME} || { git rebase --abort 2>/dev/null || true; }
               if git push; then break; fi

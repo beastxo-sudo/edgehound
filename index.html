@@ -197,7 +197,6 @@ footer{max-width:1280px;margin:0 auto;padding:0 24px 40px;color:var(--faint);fon
   <div class="head-inner">
     <div class="logo"><span class="mark">▲</span>EdgeBook <small>Polymarket Intel</small></div>
     <div class="status-pill demo" id="statusPill"><span class="dot"></span><span id="statusTxt">CONNECTING…</span></div>
-    <div id="hdrBot" style="display:none;align-items:center;gap:8px;font-family:var(--mono);font-size:11.5px;padding:5px 11px;border:1px solid var(--border-soft);border-radius:8px"></div>
     <div class="head-spacer"></div>
     <button class="refresh-btn" onclick="boot(true)">↻ Refresh data</button>
   </div>
@@ -210,7 +209,6 @@ footer{max-width:1280px;margin:0 auto;padding:0 24px 40px;color:var(--faint);fon
   <button class="tab" data-page="markets" onclick="showPage('markets',this)">Markets</button>
   <button class="tab" data-page="smart" onclick="showPage('smart',this)">Smart Money <span class="badge" id="walletCount"></span></button>
   <button class="tab" data-page="signals" onclick="showPage('signals',this)">Copy Signals</button>
-  <button class="tab" data-page="bot" onclick="showPage('bot',this)">🐕 EdgeHound Bot <span class="badge" id="botBadge"></span></button>
   <button class="tab" data-page="arb" onclick="showPage('arb',this)">⚖ Arb Scanner <span class="badge" id="arbBadge"></span></button>
 </nav>
 
@@ -218,28 +216,10 @@ footer{max-width:1280px;margin:0 auto;padding:0 24px 40px;color:var(--faint);fon
 
 <!-- ================= OVERVIEW ================= -->
 <section class="page active" id="page-overview">
-  <div id="ovStatus" style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px 18px;margin-bottom:14px">
-    <span class="status-pill demo"><span class="dot"></span><span>LOADING…</span></span>
-  </div>
-  <div class="stat-row" id="ovStats"></div>
+  <div class="section-h">🎯 The Cheap-Underdog Strategy <small>bet $10 on the T−60s direction only when its price is under 70¢ · settled by Polymarket's own resolutions</small></div>
+  <div class="help-tip"><b>What this is:</b> across thousands of 5-minute BTC windows, one slice beat the market — when the visible direction 60s before close was priced <b>under 70¢</b> (the market called it roughly a coin-flip), that direction won far more often than the price implied. Every result below is settled by <b>Polymarket's own resolution feed</b> — the thing that actually pays. The open question is <b>fillability</b>: the lab now snapshots the live order book on every signal to measure how many real dollars could have been filled at these prices.</div>
+  <div id="strategyPanel" style="background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px 18px;margin-bottom:14px"><div class="empty">Loading verified strategy results…</div></div>
   <div id="ovAudit" style="margin-bottom:14px"></div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px">
-    <div style="background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px 18px">
-      <div class="section-h" style="margin:0 0 10px">What just happened</div>
-      <div id="ovActivity" style="font-size:12.5px;line-height:1.8;color:var(--muted)"><div class="empty">Waiting for data…</div></div>
-    </div>
-    <div style="background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px 18px">
-      <div class="section-h" style="margin:0 0 10px">The Analyst's latest word</div>
-      <div id="ovAnalyst" style="font-size:12.5px;line-height:1.7;color:var(--muted)"><div class="empty">No memo yet.</div></div>
-    </div>
-    <div style="background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px 18px">
-      <div class="section-h" style="margin:0 0 10px">What the brain has learned</div>
-      <div id="ovBrain" style="font-size:12.5px;line-height:1.8;color:var(--muted)"><div class="empty">Still gathering evidence.</div></div>
-    </div>
-  </div>
-  <div class="mini-note" style="margin-top:16px;line-height:1.7">
-    How this works: <b style="color:var(--text)">EdgeHound</b> scans Polymarket every 15 minutes and places 10–20 paper bets a day from a $10,000 virtual bankroll, each with a calculated win probability. Its <b style="color:var(--text)">brain</b> learns from every settled bet. Each morning at 09:07 IST the <b style="color:var(--text)">AI Analyst</b> (Claude) reviews everything like a fund manager and tunes the strategy within safety limits. No real money is involved.
-  </div>
 </section>
 
 <!-- ================= MARKETS ================= -->
@@ -305,62 +285,7 @@ footer{max-width:1280px;margin:0 auto;padding:0 24px 40px;color:var(--faint);fon
 </section>
 
 <!-- ================= EDGEHOUND BOT ================= -->
-<section class="page" id="page-bot">
-  <div class="help-tip"><b>EdgeHound</b> is a self-managed paper-trading bot. It scans every active market on a cycle, scores them across four signal engines, places 10–20 simulated bets a day ($100–$1000 each, sized by confidence), manages exits with targets / stops / max-hold, and reweights its own signals based on what actually wins. No real money ever moves — this is a live hypothesis tracker.</div>
 
-  <div class="stat-row" id="botStats"></div>
-
-  <div class="controls">
-    <button class="btn primary" style="flex:0 0 auto;padding:9px 18px" id="botToggle" onclick="Bot.toggle()">⏸ Pause</button>
-    <button class="btn" style="flex:0 0 auto;padding:9px 18px" onclick="Bot.scan(true)">🔍 Scan now</button>
-    <button class="btn" style="flex:0 0 auto;padding:9px 18px" id="simBtn" onclick="Bot.simulateDay()" title="Fast-forward one synthetic trading day (sample mode)">⏩ Simulate 1 day</button>
-    <div class="head-spacer"></div>
-    <button class="btn" style="flex:0 0 auto;padding:9px 14px" onclick="Bot.exportJournal()">⬇ Export journal</button>
-    <label class="btn" style="flex:0 0 auto;padding:9px 14px;cursor:pointer">⬆ Import<input type="file" accept=".json" style="display:none" onchange="Bot.importJournal(this)"></label>
-    <button class="btn" style="flex:0 0 auto;padding:9px 14px;color:var(--no)" onclick="Bot.reset()">Reset</button>
-  </div>
-
-  <div id="botLog" class="mini-note" style="margin-bottom:8px;font-family:var(--mono)"></div>
-
-  <div class="controls" id="remoteRow" style="margin-bottom:16px">
-    <input class="search" id="remoteUrl" placeholder="Optional: paste your repo's raw data/state.json URL to watch the cloud bot from anywhere" style="font-family:var(--mono);font-size:11.5px">
-    <button class="btn" style="flex:0 0 auto;padding:9px 16px" onclick="Bot.setRemote()">Connect</button>
-    <button class="btn" style="flex:0 0 auto;padding:9px 16px" onclick="Bot.clearRemote()">Local mode</button>
-  </div>
-
-  <div class="section-h">AI Analyst <small id="analystStamp">supervisor memos</small></div>
-  <div id="analystPanel" style="background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px 18px;margin-bottom:4px;font-size:12.5px;line-height:1.65;color:var(--muted)">
-    <div class="empty">Analyst memos appear here once the supervisor runs.</div>
-  </div>
-
-  <div class="section-h">Bot run history <small id="nextRun">—</small></div>
-  <div class="feed" id="runHistory" style="margin-bottom:4px"><div class="empty">Run history appears here when watching the cloud bot.</div></div>
-
-  <div class="section-h">Equity curve <small>cumulative realized P&L</small></div>
-  <div style="background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px"><div class="chart-box" style="margin:0;height:220px"><canvas id="equityChart"></canvas></div></div>
-
-  <div class="section-h">Signal engines <small>the learning layer — weights shift toward what wins</small></div>
-  <div class="tbl-wrap"><table>
-    <thead><tr><th>Signal</th><th>What it hunts</th><th>Trades</th><th>Win rate</th><th>P&L</th><th>Weight</th></tr></thead>
-    <tbody id="stratBody"></tbody>
-  </table></div>
-
-  <div class="section-h">Open paper positions <small id="openCount"></small></div>
-  <div class="tbl-wrap"><table>
-    <thead><tr><th>Market</th><th>Side</th><th>Signal &amp; insight</th><th>Entry</th><th>Now</th><th>Stake</th><th>P&L</th><th>Exit plan</th></tr></thead>
-    <tbody id="openBody"></tbody>
-  </table></div>
-
-  <div class="section-h">Trade journal <small id="closedCount"></small></div>
-  <div class="tbl-wrap"><table>
-    <thead><tr><th>Closed</th><th>Market</th><th>Side</th><th>Signal</th><th>Entry → Exit</th><th>Stake</th><th>Result</th><th>Why it exited</th></tr></thead>
-    <tbody id="closedBody"></tbody>
-  </table></div>
-
-  <div class="mini-note" style="margin-top:18px;line-height:1.7">
-    Honest caveats: paper fills assume you get the shown price — real trading has spread and slippage, especially on thin markets. The short-favorite engine wins often but loses big when a favorite flips, so judge it on long-run P&L, not win rate. Signal weights need ~30+ settled trades each before they mean much. The bot trades only while this page is open; on every visit it catches up on settlements and exits since you left.
-  </div>
-</section>
 
 <!-- ================= ARB SCANNER ================= -->
 <section class="page" id="page-arb">
@@ -394,9 +319,7 @@ footer{max-width:1280px;margin:0 auto;padding:0 24px 40px;color:var(--faint);fon
   <span id="snip5sArchive"></span></div>
   <div id="sniperPanel" style="background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px 18px;margin-bottom:18px"><div class="empty">Loading lab results…</div></div>
 
-  <div class="section-h" style="margin-top:6px">📊 Order-Book Imbalance Lab <small>does liquidity lead price, or is that thread hype?</small></div>
-  <div class="help-tip"><b>The hypothesis (from the viral thread):</b> when order-book depth piles up on one side while price stays flat, price follows <b>seconds later</b> — "bots see liquidity, retail sees price." We test it directly: snapshot the book, measure which side is heavier, wait ${'8'} seconds, and check if price moved that way. The honest part is the <b>baseline</b>: we also measure how often price follows a <i>balanced</i> book. If a lopsided book doesn't predict better than a balanced one, the signal is noise. And we flag whether the move even beat the spread you'd have to cross — a real lead that's smaller than the spread is untradeable.</div>
-  <div id="imbalancePanel" style="background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius);padding:16px 18px;margin-bottom:18px"><div class="empty">Loading imbalance probes…</div></div>
+  
 
   <div class="section-h">Locked-profit scanner</div>
   <div id="arbList" class="sig-grid"><div class="loading"><span class="spinner"></span>Scanning for mispricings…</div></div>
@@ -1575,6 +1498,7 @@ const Bot={
 
   /* ---------- render ---------- */
   render(){
+    if(!$('botBadge'))return; /* bot page removed — decommissioned 2026-07 */
     const closed=this.closed(), open=this.open();
     const realized=closed.reduce((s,t)=>s+t.pnl,0);
     const unreal=open.reduce((s,t)=>s+(t.stake/t.entry)*((t.cur??t.entry)-t.entry),0);
@@ -1847,48 +1771,56 @@ function normCdf(z){ /* Φ via Abramowitz-Stegun erf approx */
   let p=d*t*(0.3193815+t*(-0.3565638+t*(1.781478+t*(-1.821256+t*1.330274))));
   return z>0?1-p:p;
 }
-/* ============ Imbalance Lab loader ============ */
-const Imbalance={
+/* ============ Cheap-Underdog Strategy loader ============ */
+const Strategy={
   tmr:null,
   start(){ this.load(); clearInterval(this.tmr); this.tmr=setInterval(()=>this.load(),60000); },
-  stop(){ clearInterval(this.tmr); this.tmr=null; },
   async load(){
-    const box=$('imbalancePanel'); if(!box)return;
-    const base=(Bot.remoteUrl||'').match(/^(https:\/\/raw\.githubusercontent\.com\/[^/]+\/[^/]+\/[^/]+)\//);
-    const u=base?base[1]+'/data/imbalance.json':'data/imbalance.json';
-    let lab; try{ lab=await jget(u+'?_='+Date.now(),6000); }catch(e){ box.innerHTML='<div class="empty">No imbalance data yet — the lab populates every cycle.</div>'; return; }
-    const s=lab.summary||{};
-    if((lab.probes||[]).length===0){
-      const d=s.diag;
-      box.innerHTML=`<div class="empty">No probes recorded yet.${d?` <br><span style="font-family:var(--mono);font-size:11px;color:var(--faint)">diagnostic: ${d.attempts||0} attempts · ${d.ok||0} ok · ${d.noMarket||0} no-market · ${d.bookFail||0} book-fetch-failed · ${d.emptyBook||0} empty-book</span>`:' Waiting for the first run to complete.'}</div>`;
-      return;
+    const box=$('strategyPanel'); if(!box)return;
+    let lab;
+    try{ lab=await jget('https://raw.githubusercontent.com/beastxo-sudo/edgehound/main/data/sniper.json?_='+Date.now(),12000); }
+    catch(e){ box.innerHTML='<div class="empty">Could not load lab data — retrying…</div>'; return; }
+    const cu=(lab.summary||{}).cheapUnderdog;
+    if(!cu||!cu.bets){ box.innerHTML='<div class="empty">No verified strategy results yet.</div>'; return; }
+    const daily=cu.daily||[];
+    const upDays=daily.filter(d=>d.pnl>0).length;
+    /* equity curve as inline SVG */
+    let curve='';
+    if(daily.length>1){
+      const W=680,H=120,P=6;
+      const max=Math.max(...daily.map(d=>d.cum),1), min=Math.min(...daily.map(d=>d.cum),0);
+      const xs=i=>P+i*(W-2*P)/(daily.length-1);
+      const ys=v=>H-P-(v-min)*(H-2*P)/(max-min||1);
+      const pts=daily.map((d,i)=>`${xs(i).toFixed(1)},${ys(d.cum).toFixed(1)}`).join(' ');
+      curve=`<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:120px;display:block;margin:10px 0">
+        <polyline points="${pts}" fill="none" stroke="var(--yes)" stroke-width="2.5"/>
+        <line x1="${P}" y1="${ys(0)}" x2="${W-P}" y2="${ys(0)}" stroke="var(--border)" stroke-dasharray="3 4"/>
+      </svg>`;
     }
-    const lopHit=s.lopsidedHitRate, balHit=s.balancedHitRate, edge=s.edgeVsBaselinePts, trHit=s.tradeableHitRate;
-    const n=s.lopsidedProbes||0;
-    const verdict = n<30 ? 'Collecting — need 30+ lopsided-book probes to judge'
-      : edge==null ? 'Collecting…'
-      : edge>8 && trHit!=null && trHit>0.55 ? '✅ SIGNAL HOLDS: a lopsided book predicts price better than chance, and the move beats the spread'
-      : edge>8 ? '⚠ PREDICTS BUT NOT TRADEABLE: the book leads price, but the move is smaller than the spread you\u2019d cross'
-      : edge>3 ? '➖ WEAK: a small lead over baseline — likely too thin to trade after costs'
-      : '❌ NO EDGE: a lopsided book predicts price no better than a balanced one — the thread is hype';
-    const vColor=n<30?'var(--muted)':edge>8&&trHit>0.55?'var(--yes)':edge>8?'var(--amber)':edge>3?'var(--muted)':'var(--no)';
-    const rows=(lab.probes||[]).filter(p=>p.followed!=null).slice(-10).reverse().map(p=>`
-      <tr><td class="num">${new Date(p.t).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit',second:'2-digit'})}</td>
-      <td class="num">${(p.imbalance*100).toFixed(0)}% ${p.imbalance>=0.5?'bid':'ask'}${p.lopsided?' <span style="color:var(--amber)">●</span>':''}</td>
-      <td class="num">${(p.spread*100).toFixed(1)}c</td>
-      <td class="num ${p.move>0?'pos':p.move<0?'neg':''}">${p.move>0?'+':''}${(p.move*100).toFixed(2)}c</td>
-      <td>${p.followed?'<span class="pos">✓ followed</span>':'<span class="neg">✗ against</span>'}</td>
-      <td>${p.tradeable?'<span class="pos">yes</span>':'<span style="color:var(--faint)">no</span>'}</td></tr>`).join('');
+    const f=cu.fill;
+    const rows=daily.slice(-10).reverse().map(d=>`<tr><td class="num">${d.d}</td><td class="num">${d.bets}</td><td class="num">${Math.round(d.wins/d.bets*100)}%</td><td class="num ${d.pnl>=0?'pos':'neg'}">${d.pnl>=0?'+':''}$${Math.round(d.pnl)}</td><td class="num ${d.cum>=0?'pos':'neg'}">$${Math.round(d.cum)}</td></tr>`).join('');
     box.innerHTML=`
-      <div class="stat-row" style="margin-bottom:12px">
-        <div class="stat-card"><div class="lbl">Lopsided book → price follows</div><div class="val">${lopHit!=null?(lopHit*100).toFixed(0)+'%':'—'}</div><div class="sub">over ${n} lopsided probes</div></div>
-        <div class="stat-card"><div class="lbl">Balanced book (baseline)</div><div class="val">${balHit!=null?(balHit*100).toFixed(0)+'%':'—'}</div><div class="sub">price follows anyway this often</div></div>
-        <div class="stat-card"><div class="lbl">Edge over baseline</div><div class="val ${edge>0?'pos':'neg'}">${edge!=null?(edge>0?'+':'')+edge+'pts':'—'}</div><div class="sub">signal minus baseline</div></div>
-        <div class="stat-card"><div class="lbl">Tradeable hit rate</div><div class="val">${trHit!=null?(trHit*100).toFixed(0)+'%':'—'}</div><div class="sub">move beat the spread, ${s.tradeableProbes||0} times</div></div>
+      <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;background:linear-gradient(135deg,var(--surface2),var(--surface));border:1px solid var(--border);border-radius:14px;padding:18px 22px;margin-bottom:14px">
+        <div>
+          <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)">Every $10 bet returned</div>
+          <div style="font-family:var(--display);font-weight:800;font-size:34px;color:${cu.perTen>=10?'var(--yes)':'var(--no)'};line-height:1.1">$${cu.perTen.toFixed(2)}</div>
+          <div style="font-size:12px;color:var(--muted)">${cu.returnPct>=0?'+':''}${cu.returnPct}% on $${cu.staked.toLocaleString()} staked · verified by Polymarket resolutions</div>
+        </div>
+        <div style="flex:1;min-width:230px">
+          <div class="stat-row">
+            <div class="stat-card"><div class="lbl">Bets</div><div class="val">${cu.bets}</div><div class="sub">${upDays}/${daily.length} days profitable</div></div>
+            <div class="stat-card"><div class="lbl">Win rate</div><div class="val">${(cu.winRate*100).toFixed(0)}%</div><div class="sub">market priced ${(cu.marketImplied*100).toFixed(0)}%</div></div>
+            <div class="stat-card"><div class="lbl">Significance</div><div class="val">z=${cu.zScore}</div><div class="sub">${cu.zScore>4?'not chance':'collecting'}</div></div>
+          </div>
+        </div>
       </div>
-      <div style="background:var(--surface2);border-radius:8px;padding:10px 14px;font-family:var(--mono);font-size:12px;margin-bottom:10px;color:${vColor}">${verdict}</div>
-      <div class="mini-note" style="margin-bottom:10px">avg spread ${s.avgSpread!=null?(s.avgSpread*100).toFixed(1)+'c':'—'} · avg move ${s.avgAbsMove!=null?(s.avgAbsMove*100).toFixed(2)+'c':'—'} · lag ${s.lagSeconds||8}s · ${s.totalProbes||0} total probes · imbalance can be spoofed, so this measures prediction, not intent</div>
-      <table class="tbl"><thead><tr><th>Time</th><th>Book imbalance</th><th>Spread</th><th>Price moved</th><th>Followed?</th><th>Tradeable</th></tr></thead><tbody>${rows||'<tr><td colspan=6 style="color:var(--faint);padding:14px">No probes with price movement yet.</td></tr>'}</tbody></table>`;
+      ${curve}
+      ${f?`<div style="background:var(--surface2);border-radius:10px;padding:12px 16px;margin-bottom:12px">
+        <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:6px">Fillability (live book snapshots on ${f.samples} signals)</div>
+        <div style="font-size:12.5px;color:var(--text)">Median <b>$${f.medianUsdAtAsk}</b> fillable at the quoted price · <b>$${f.medianUsdWithin3c}</b> within 3¢ · a $10 bet fills at quote <b>${f.pctFillable10}%</b> of the time · $100 within 3¢ <b>${f.pctFillable100}%</b> · avg spread ${(f.avgSpread*100).toFixed(1)}¢</div>
+      </div>`:`<div class="mini-note" style="margin-bottom:12px">📡 Order-book snapshots now recording on every signal — fillability stats appear as data accrues.</div>`}
+      <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:8px">Recent days</div>
+      <table class="tbl"><thead><tr><th>Date</th><th>Bets</th><th>Win%</th><th>Day P&L</th><th>Cumulative</th></tr></thead><tbody>${rows}</tbody></table>`;
   }
 };
 /* ============ Sniper Lab results loader ============ */
@@ -2020,9 +1952,9 @@ const Sniper={
 };
 /* wire scanner into tab switching */
 const _origShowPage=showPage;
-showPage=function(p,btn){ _origShowPage(p,btn); if(p==='arb'){ if(!Arb.lastScan)Arb.scan(); Arb.auto(); Sniper.start(); Imbalance.start(); } else { Sniper.stop(); Imbalance.stop(); } };
+showPage=function(p,btn){ _origShowPage(p,btn); if(p==='arb'){ if(!Arb.lastScan)Arb.scan(); Arb.auto(); Sniper.start(); } else { Sniper.stop(); } };
 
-boot();
+boot(); Strategy.start();
 </script>
 </body>
 </html>

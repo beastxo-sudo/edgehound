@@ -1,8 +1,6 @@
 name: EdgeHound AI Analyst
 
 on:
-  schedule:
-    - cron: '37 3 * * *'    # daily at 03:37 UTC = 09:07 IST
   workflow_dispatch:
 
 permissions:

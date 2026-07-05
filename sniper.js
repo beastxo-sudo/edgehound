@@ -119,6 +119,57 @@ function summarize(lab) {
        bet the model's side at the market price — did it win, and did $10 flat
        come back as more than $10? Also: is the model better CALIBRATED than the
        market (lower Brier vs actual outcome)? */
+    /* === THE CHEAP-UNDERDOG STRATEGY (the surviving anomaly) ===
+       Strategy: bet $10 on the T-60s visible direction ONLY when its ask is
+       under 70c. Settled by Polymarket's own resolution ONLY. This block is
+       the verified record: daily equity curve, per-band stats, significance,
+       and — as book snapshots accrue — how many dollars were actually
+       fillable at those prices (the question paper P&L can't answer). */
+    cheapUnderdog: (() => {
+      const cu = lab.samples.filter(x => x.polyConfirmed === true && x.priceSrc === 'clob' && x.paid > 0 && x.paid < 0.70 && x.actual != null);
+      const wins = cu.filter(x => x.won).length;
+      const expWins = cu.reduce((a, x) => a + x.paid, 0);
+      const varSum = cu.reduce((a, x) => a + x.paid * (1 - x.paid), 0);
+      const z = varSum > 0 ? (wins - expWins) / Math.sqrt(varSum) : null;
+      const pnlOf = (x) => x.won ? 10 * (1 - x.paid) / x.paid : -10;
+      const pnl = cu.reduce((a, x) => a + pnlOf(x), 0);
+      /* daily equity curve */
+      const byDay = {};
+      for (const x of cu) {
+        const d = (x.t || '').slice(0, 10);
+        if (!byDay[d]) byDay[d] = { bets: 0, wins: 0, pnl: 0 };
+        byDay[d].bets++; if (x.won) byDay[d].wins++;
+        byDay[d].pnl = +(byDay[d].pnl + pnlOf(x)).toFixed(2);
+      }
+      let cum = 0;
+      const daily = Object.keys(byDay).sort().map(d => {
+        cum = +(cum + byDay[d].pnl).toFixed(2);
+        return { d, ...byDay[d], cum };
+      });
+      /* fillability (samples with a book snapshot) */
+      const wb = cu.filter(x => x.book && x.book.usdAtAsk != null);
+      const fill = wb.length ? {
+        samples: wb.length,
+        medianUsdAtAsk: +wb.map(x => x.book.usdAtAsk).sort((a, b) => a - b)[Math.floor(wb.length / 2)].toFixed(0),
+        medianUsdWithin3c: +wb.map(x => x.book.usdWithin3c).sort((a, b) => a - b)[Math.floor(wb.length / 2)].toFixed(0),
+        pctFillable10: +(wb.filter(x => x.book.usdAtAsk >= 10).length / wb.length * 100).toFixed(0),
+        pctFillable100: +(wb.filter(x => x.book.usdWithin3c >= 100).length / wb.length * 100).toFixed(0),
+        avgSpread: +(wb.reduce((a, x) => a + (x.book.spread || 0), 0) / wb.length).toFixed(4)
+      } : null;
+      return {
+        bets: cu.length, wins,
+        winRate: cu.length ? +(wins / cu.length).toFixed(4) : null,
+        marketImplied: cu.length ? +(expWins / cu.length).toFixed(4) : null,
+        edgePts: cu.length ? +((wins - expWins) / cu.length * 100).toFixed(1) : null,
+        zScore: z != null ? +z.toFixed(2) : null,
+        staked: cu.length * 10,
+        pnl: +pnl.toFixed(2),
+        returnPct: cu.length ? +(pnl / (cu.length * 10) * 100).toFixed(1) : null,
+        perTen: cu.length ? +(10 + pnl / cu.length).toFixed(2) : null,
+        daily,
+        fill
+      };
+    })(),
     mispricing: (() => {
       const edge = lab.samples.filter(x => x.actual != null && x.edgeSide && x.edgePaid > 0 && x.edgePaid < 1);
       const wins = edge.filter(x => x.edgeWon).length;
@@ -229,7 +280,7 @@ async function sampleBoundary(B, lab) {
       fairUp = 0.5 * (1 + erf(z / Math.SQRT2));
     }
 
-    let paid = 0, mktTitle = '', mktNote = 'not found', priceSrc = null, mktObj = null, mktImpliedUp = null;
+    let paid = 0, mktTitle = '', mktNote = 'not found', priceSrc = null, mktObj = null, mktImpliedUp = null, book = null;
     try {
       const mkt = await findWindowMarket(B);
       mktObj = mkt;
@@ -246,6 +297,33 @@ async function sampleBoundary(B, lab) {
         const fb = dir === 'UP' ? mkt.upPrice : mkt.downPrice;
         const ask = await bestAsk(tok, fb);
         paid = ask.price; priceSrc = ask.source;
+        /* === FILLABILITY CAPTURE (the unresolved variable) ===
+           On CHEAP-UNDERDOG signals (<70c — the anomaly slice), snapshot the
+           full L2 book for the token we'd buy. This records how many DOLLARS
+           could actually be filled at/near the quoted ask — the one thing the
+           paper P&L can't tell us. sizeAtAsk/depth3c are in SHARES; multiply
+           by price for approx $ fillable. */
+        if (ask.source === 'clob' && paid > 0 && paid < 0.70 && tok) {
+          try {
+            const bk = await jget(`${CLOB}/book?token_id=${tok}`, 5000);
+            const asks = (bk.asks || []).map(a => ({ p: +a.price, s: +a.size })).filter(a => a.p > 0 && a.s > 0).sort((a, b) => a.p - b.p);
+            const bids = (bk.bids || []).map(b2 => ({ p: +b2.price, s: +b2.size })).filter(b2 => b2.p > 0 && b2.s > 0).sort((a, b) => b.p - a.p);
+            if (asks.length) {
+              const best = asks[0];
+              const near = asks.filter(a => a.p <= best.p + 0.03);
+              book = {
+                bestAsk: best.p,
+                sizeAtAsk: Math.round(best.s),
+                usdAtAsk: +(best.s * best.p).toFixed(2),          /* $ fillable at the touch */
+                depth3c: Math.round(near.reduce((a, x) => a + x.s, 0)),
+                usdWithin3c: +near.reduce((a, x) => a + x.s * x.p, 0).toFixed(2), /* $ fillable within 3c of ask */
+                bestBid: bids.length ? bids[0].p : null,
+                spread: bids.length ? +(best.p - bids[0].p).toFixed(4) : null,
+                levels: asks.slice(0, 5).map(a => [a.p, Math.round(a.s)])
+              };
+            }
+          } catch (e) {}
+        }
         /* GUARD: at T-60s the visible-direction side is the favorite but only
            mildly so — it can legitimately price anywhere from ~0.50 to ~0.95.
            A price below ~0.20 means we grabbed the wrong token or a market that
@@ -359,6 +437,7 @@ async function sampleBoundary(B, lab) {
     lab.samples.push({
       win: candleStart, t: new Date(B).toISOString(), dir, leadPct: +leadPct.toFixed(4),
       marketId: mktObj && mktObj.id ? mktObj.id : null,
+      book,
       btcAtBet: +spot.toFixed(2), btcAtClose: closePrice != null ? +closePrice.toFixed(2) : null,
       btcChange: priceChange != null ? +priceChange.toFixed(2) : null,
       btcChangePct: priceChangePct != null ? +priceChangePct.toFixed(4) : null,

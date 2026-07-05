@@ -478,6 +478,48 @@ async function sampleBoundary(B, lab) {
   }
 }
 
+
+/* === STRATEGY DIGEST ===
+   Compact data/strategy.json for the dashboard: the cheapUnderdog block plus
+   band/hourly breakdowns and the last 40 verified bets with per-row
+   verification detail. Keeps the page load tiny vs the full sample ledger. */
+function writeDigest(lab) {
+  const cu = (lab.summary || {}).cheapUnderdog;
+  const all = lab.samples.filter(x => x.actual != null);
+  const slice = lab.samples.filter(x => x.polyConfirmed === true && x.priceSrc === 'clob' && x.paid > 0 && x.paid < 0.70 && x.actual != null);
+  const pnlOf = (x) => x.won ? 10 * (1 - x.paid) / x.paid : -10;
+  const bands = [];
+  for (let lo = 0.20; lo < 0.70; lo += 0.10) {
+    const arr = slice.filter(x => x.paid >= lo - 1e-9 && x.paid < lo + 0.10);
+    if (!arr.length) continue;
+    const w = arr.filter(x => x.won).length;
+    bands.push({ band: Math.round(lo * 100) + '\u2013' + Math.round((lo + 0.10) * 100) + '\u00a2', n: arr.length, wins: w,
+      winRate: +(w / arr.length).toFixed(3), breakEven: +(arr.reduce((a, x) => a + x.paid, 0) / arr.length).toFixed(3),
+      pnl: +arr.reduce((a, x) => a + pnlOf(x), 0).toFixed(0) });
+  }
+  const hourly = [];
+  for (let h = 0; h < 24; h += 4) {
+    const arr = slice.filter(x => { const hh = +(x.t || '').slice(11, 13); return hh >= h && hh < h + 4; });
+    if (arr.length) hourly.push({ h, n: arr.length, wins: arr.filter(x => x.won).length, pnl: +arr.reduce((a, x) => a + pnlOf(x), 0).toFixed(0) });
+  }
+  const exchCheck = (x) => {
+    const ex = (x.sources || []).filter(s => s.src !== 'polymarket' && s.dir && s.dir !== 'TIE');
+    if (!ex.length) return 'poly-only';
+    return ex.every(s => s.dir === x.actual) ? 'agree' : 'diverged';
+  };
+  const recent = slice.slice(-40).map(x => ({
+    t: x.t, dir: x.dir, paid: x.paid, actual: x.actual, won: x.won,
+    pnl: +pnlOf(x).toFixed(2), open: x.candleOpen, close: x.btcAtClose,
+    exch: exchCheck(x),
+    book: x.book ? { usdAtAsk: x.book.usdAtAsk, usdWithin3c: x.book.usdWithin3c, spread: x.book.spread } : null
+  }));
+  fs.writeFileSync(path.join(__dirname, 'data', 'strategy.json'), JSON.stringify({
+    updated: new Date().toISOString(),
+    totals: { samples: lab.samples.length, settled: all.length, polyConfirmed: all.filter(x => x.polyConfirmed).length },
+    strategy: cu || null, bands, hourly, recent
+  }));
+}
+
 (async () => {
   fs.mkdirSync(path.dirname(OUT_FILE), { recursive: true });
   const lab = loadLab();
@@ -522,5 +564,6 @@ async function sampleBoundary(B, lab) {
   }
   summarize(lab);
   fs.writeFileSync(OUT_FILE, JSON.stringify(lab));
+  writeDigest(lab);
   log(`Lab run done. ${JSON.stringify(lab.summary)}`);
 })();

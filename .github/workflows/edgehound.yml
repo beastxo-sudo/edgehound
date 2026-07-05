@@ -33,7 +33,7 @@ jobs:
         run: |
           git config user.name "edgehound-bot"
           git config user.email "bot@edgehound"
-          git add data/sniper.json data/audit.json
+          git add data/sniper.json data/audit.json data/strategy.json
           if ! git diff --cached --quiet; then
             git commit -m "Sniper Lab samples $(date -u +'%Y-%m-%d %H:%M UTC')"
             for i in 1 2 3 4 5; do

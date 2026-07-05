@@ -18,6 +18,7 @@
    Paper only. No orders are ever placed.
    ============================================================ */
 const fs = require('fs');
+const { execSync } = require('child_process');
 const path = require('path');
 
 const GAMMA = 'https://gamma-api.polymarket.com';
@@ -26,7 +27,7 @@ const BIN_HOSTS = ['https://api.binance.com/api/v3', 'https://api.binance.us/api
 let BIN = BIN_HOSTS[0];
 const OUT_FILE = path.join(__dirname, 'data', 'sniper.json');
 
-const DURATION_MS = Number(process.env.SNIPER_DURATION_MS || 13.5 * 60e3);
+const DURATION_MS = Number(process.env.SNIPER_DURATION_MS || 54 * 60e3); /* long-lived runs; pings keep the next one queued for back-to-back coverage */
 const LEAD_MS = 60000;    /* sample 60s before the boundary */
 const SETTLE_DELAY = 8000;/* read the closed candle 8s after */
 
@@ -520,14 +521,29 @@ function writeDigest(lab) {
   }));
 }
 
-(async () => {
-  fs.mkdirSync(path.dirname(OUT_FILE), { recursive: true });
-  const lab = loadLab();
+/* persist everything and push immediately (GitHub Actions only) so data is
+   near-live and nothing is lost if a long run is killed mid-flight. */
+function persist(lab, msg) {
+  summarize(lab);
+  fs.writeFileSync(OUT_FILE, JSON.stringify(lab));
+  writeDigest(lab);
+  if (!process.env.GITHUB_ACTIONS) return;
+  const opt = { cwd: __dirname, stdio: 'ignore', shell: '/bin/bash' };
+  try {
+    execSync('git config user.name edgehound-bot; git config user.email bot@edgehound', opt);
+    execSync('git add data/sniper.json data/strategy.json data/audit.json 2>/dev/null; git add data/sniper.json data/strategy.json', opt);
+    execSync(`git commit -m "${msg}"`, opt);
+  } catch (e) { return; /* nothing to commit */ }
+  for (let i = 0; i < 4; i++) {
+    try { execSync('git pull --rebase origin main && git push origin HEAD:main', opt); return; }
+    catch (e) { try { execSync('git rebase --abort', opt); } catch (_) {} }
+  }
+  log('push failed after retries — end-of-run commit is the backup');
+}
 
-  /* UPGRADE PASS: any committed sample not yet Polymarket-confirmed gets one
-     more shot at the ground-truth resolution now (the market has since settled).
-     This is how exchange-verified samples become Polymarket-confirmed without
-     ever blocking the time-critical sampling loop. */
+/* one settlement-upgrade sweep: pending samples get another shot at
+   Polymarket's resolved outcome. Runs at start and periodically mid-run. */
+async function upgradePending(lab) {
   const pending = lab.samples.filter(x => x.actual !== null && !x.polyConfirmed && x.marketId).slice(-40);
   let upgraded = 0;
   for (const x of pending) {
@@ -543,27 +559,44 @@ function writeDigest(lab) {
         const exchAgree = x.actual === polyActual;
         x.actual = polyActual;
         x.won = x.dir === polyActual;
-        x.verified = true;
         x.polyConfirmed = true;
-        x.settleNote = exchAgree ? 'resolved by Polymarket (exchanges agreed)' : 'resolved by Polymarket (corrected from exchange guess)';
+        x.verified = true;
         (x.sources = x.sources || []).push({ src: 'polymarket', dir: polyActual });
+        if (!exchAgree) x.settleNote = 'poly overrode exchange consensus';
         upgraded++;
       }
     } catch (e) {}
   }
-  if (upgraded) { summarize(lab); fs.writeFileSync(OUT_FILE, JSON.stringify(lab)); log(`Upgraded ${upgraded} sample(s) to Polymarket-confirmed.`); }
+  if (upgraded) log(`upgrade pass: ${upgraded} sample(s) now Polymarket-confirmed`);
+  return upgraded;
+}
 
+(async () => {
+  fs.mkdirSync(path.dirname(OUT_FILE), { recursive: true });
+  const lab = loadLab();
   const endAt = Date.now() + DURATION_MS;
   log(`Sniper Lab alive for ${(DURATION_MS / 60000).toFixed(1)} min. Samples so far: ${lab.samples.length}.`);
+
+  if (await upgradePending(lab)) persist(lab, 'settlement upgrades');
+  let lastUpgrade = Date.now();
+
   while (Date.now() < endAt) {
     const nextB = (Math.floor(Date.now() / 300000) + 1) * 300000;
     const wake = nextB - LEAD_MS;
     if (wake > endAt) break;
+    /* idle time before the next boundary? use it for settlement upgrades */
+    if (wake - Date.now() > 90000 && Date.now() - lastUpgrade > 8 * 60000) {
+      if (await upgradePending(lab)) persist(lab, 'settlement upgrades');
+      lastUpgrade = Date.now();
+    }
     await sleep(Math.max(0, wake - Date.now()));
+    /* dedupe guard: never double-record a window (protects against overlap) */
+    const iso = new Date(nextB).toISOString();
+    if (lab.samples.some(x => x.t === iso)) { await sleep(65000); continue; }
     await sampleBoundary(nextB, lab);
+    persist(lab, `sample ${iso.slice(5, 16)}Z`);
   }
-  summarize(lab);
-  fs.writeFileSync(OUT_FILE, JSON.stringify(lab));
-  writeDigest(lab);
-  log(`Lab run done. ${JSON.stringify(lab.summary)}`);
+  await upgradePending(lab);
+  persist(lab, 'run end');
+  log(`Lab run done. samples=${lab.samples.length}`);
 })();

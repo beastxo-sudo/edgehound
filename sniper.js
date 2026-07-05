@@ -528,15 +528,26 @@ function persist(lab, msg) {
   fs.writeFileSync(OUT_FILE, JSON.stringify(lab));
   writeDigest(lab);
   if (!process.env.GITHUB_ACTIONS) return;
-  const opt = { cwd: __dirname, stdio: 'ignore', shell: '/bin/bash' };
+  const opt = { cwd: __dirname, shell: '/bin/bash', stdio: 'pipe' };
+  const sh = (cmd) => execSync(cmd, opt).toString();
   try {
-    execSync('git config user.name edgehound-bot; git config user.email bot@edgehound', opt);
-    execSync('git add data/sniper.json data/strategy.json data/audit.json 2>/dev/null; git add data/sniper.json data/strategy.json', opt);
-    execSync(`git commit -m "${msg}"`, opt);
-  } catch (e) { return; /* nothing to commit */ }
+    sh('git config user.name edgehound-bot; git config user.email bot@edgehound');
+    sh('git add -A data/');
+    const st = sh('git status --porcelain data/');
+    if (!st.trim()) return;                      /* genuinely nothing new */
+    sh(`git commit -m "${msg}"`);
+  } catch (e) {
+    log('persist commit error: ' + ((e.stderr || e.stdout || e.message) + '').toString().slice(0, 200));
+    return;
+  }
   for (let i = 0; i < 4; i++) {
-    try { execSync('git pull --rebase origin main && git push origin HEAD:main', opt); return; }
-    catch (e) { try { execSync('git rebase --abort', opt); } catch (_) {} }
+    try {
+      sh('git fetch origin main && git rebase origin/main && git push origin HEAD:main');
+      return;
+    } catch (e) {
+      log('persist push attempt ' + (i + 1) + ' failed: ' + ((e.stderr || e.message) + '').toString().slice(0, 200));
+      try { sh('git rebase --abort'); } catch (_) {}
+    }
   }
   log('push failed after retries — end-of-run commit is the backup');
 }

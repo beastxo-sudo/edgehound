@@ -36,12 +36,23 @@ async function jget(url, ms = 8000, tries = 3) {
   }
 }
 
-/* Binance 1m klines over the whole lookback — gives spot open + T-60s price per window */
+/* Binance 1m klines over the whole lookback — gives spot open + T-60s price per window.
+   Fails over across hosts (GitHub's US runners are often geo-blocked by binance.com). */
+const BIN_HOSTS = ['https://api.binance.com/api/v3', 'https://api.binance.us/api/v3', 'https://data-api.binance.vision/api/v3'];
+let binHost = null;
+async function binKlines(q) {
+  const hosts = binHost ? [binHost, ...BIN_HOSTS.filter(h => h !== binHost)] : BIN_HOSTS;
+  for (const h of hosts) {
+    try { const r = await jget(h + q, 9000, 2); binHost = h; return r; }
+    catch (e) {}
+  }
+  throw new Error('all binance hosts failed');
+}
 async function binanceMap(startMs, endMs) {
   const px = new Map(); /* minute-ts -> {open, close} */
   let cur = startMs;
   while (cur < endMs) {
-    const k = await jget(`https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1m&startTime=${cur}&endTime=${Math.min(cur + 999 * 60000, endMs)}&limit=1000`);
+    const k = await binKlines(`/klines?symbol=BTCUSDT&interval=1m&startTime=${cur}&endTime=${Math.min(cur + 999 * 60000, endMs)}&limit=1000`);
     for (const c of k) px.set(Number(c[0]), { open: Number(c[1]), close: Number(c[4]) });
     if (!k.length) break;
     cur = Number(k[k.length - 1][0]) + 60000;

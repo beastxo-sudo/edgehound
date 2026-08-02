@@ -16,25 +16,27 @@ async function jget(url, ms=15000, tries=3){
   }
 }
 async function fetchPoly(){
-  const out=[];
-  for(let off=0;off<1500;off+=500){
-    const d=await jget(`https://gamma-api.polymarket.com/markets?closed=false&active=true&limit=500&offset=${off}&order=volume24hr&ascending=false`);
-    if(!Array.isArray(d)||!d.length)break;
-    for(const m of d){
+  const out=[];const seen=new Set();
+  for(let off=0;off<600;off+=100){
+    const evs=await jget(`https://gamma-api.polymarket.com/events?closed=false&active=true&limit=100&offset=${off}&order=volume24hr&ascending=false`);
+    if(!Array.isArray(evs)||!evs.length)break;
+    for(const ev of evs) for(const m of (ev.markets||[])){
+      if(m.closed||seen.has(m.id))continue;
+      seen.add(m.id);
       const ba=+m.bestAsk, bb=+m.bestBid;
       if(!(ba>0&&ba<1))continue;
-      out.push({id:m.id,slug:m.slug,title:(m.question||'').trim(),yesAsk:ba,
-        noAsk:(bb>0&&bb<1)?+(1-bb).toFixed(4):null,end:m.endDate,vol:+m.volume24hr||0});
+      out.push({id:m.id,slug:m.slug||ev.slug,title:(m.question||ev.title||'').trim(),yesAsk:ba,
+        noAsk:(bb>0&&bb<1)?+(1-bb).toFixed(4):null,end:m.endDate||ev.endDate,vol:+m.volume24hr||+ev.volume24hr||0});
     }
-    if(d.length<500)break;
-    await sleep(200);
+    if(evs.length<100)break;
+    await sleep(180);
   }
   return out;
 }
 let kalshiDiag=null;
 async function fetchKalshi(){
   const out=[];let cursor='';
-  for(let p=0;p<8;p++){
+  for(let p=0;p<30;p++){
     const d=await jget(`https://api.elections.kalshi.com/trade-api/v2/markets?limit=1000&status=open${cursor?'&cursor='+cursor:''}`);
     if(p===0) kalshiDiag={keys:Object.keys(d||{}),n:(d.markets||[]).length,sample:(d.markets||[])[0]||null};
     for(const m of (d.markets||[])){

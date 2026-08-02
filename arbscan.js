@@ -19,18 +19,21 @@ async function fetchPoly(){
     if(!Array.isArray(d)||!d.length)break;
     for(const m of d){
       const ba=+m.bestAsk, bb=+m.bestBid;
-      if(!(ba>0&&ba<1)||!(bb>0&&bb<1))continue;
-      out.push({id:m.id,slug:m.slug,title:(m.question||'').trim(),yesAsk:ba,noAsk:+(1-bb).toFixed(4),end:m.endDate,vol:+m.volume24hr||0});
+      if(!(ba>0&&ba<1))continue;
+      out.push({id:m.id,slug:m.slug,title:(m.question||'').trim(),yesAsk:ba,
+        noAsk:(bb>0&&bb<1)?+(1-bb).toFixed(4):null,end:m.endDate,vol:+m.volume24hr||0});
     }
     if(d.length<500)break;
     await sleep(200);
   }
   return out;
 }
+let kalshiDiag=null;
 async function fetchKalshi(){
   const out=[];let cursor='';
   for(let p=0;p<8;p++){
     const d=await jget(`https://api.elections.kalshi.com/trade-api/v2/markets?limit=1000&status=open${cursor?'&cursor='+cursor:''}`);
+    if(p===0) kalshiDiag={keys:Object.keys(d||{}),n:(d.markets||[]).length,sample:(d.markets||[])[0]||null};
     for(const m of (d.markets||[])){
       const ya=m.yes_ask,na=m.no_ask;
       if(!(ya>0&&ya<100)||!(na>0&&na<100))continue;
@@ -69,7 +72,18 @@ const fee=p=>Math.min(0.07*p*(1-p),0.02);
   log('fetching Polymarket…');
   const poly=await fetchPoly(); log(`poly: ${poly.length} markets`);
   log('fetching Kalshi…');
-  const kalshi=await fetchKalshi(); log(`kalshi: ${kalshi.length} markets`);
+  let kalshi=await fetchKalshi(); log(`kalshi: ${kalshi.length} markets`);
+  if(!kalshi.length){
+    log('retrying Kalshi without status filter…');
+    const d=await jget('https://api.elections.kalshi.com/trade-api/v2/markets?limit=1000');
+    kalshiDiag={...(kalshiDiag||{}),retryKeys:Object.keys(d||{}),retryN:(d.markets||[]).length,retrySample:(d.markets||[])[0]||null};
+    for(const m of (d.markets||[])){
+      const ya=m.yes_ask,na=m.no_ask;
+      if(!(ya>0&&ya<100)||!(na>0&&na<100))continue;
+      kalshi.push({id:m.ticker,event:m.event_ticker,title:((m.title||'')+' '+(m.yes_sub_title||m.subtitle||'')).trim(),yesAsk:ya/100,noAsk:na/100,end:m.close_time,vol:+m.volume_24h||0});
+    }
+    log(`kalshi retry: ${kalshi.length}`);
+  }
   const kf=kalshi.map(k=>({k,f:feats(k.title)}));
   const byK={};
   let scanned=0;
@@ -86,7 +100,7 @@ const fee=p=>Math.min(0.07*p*(1-p),0.02);
   }
   const pairs=Object.values(byK).map(({p,k,s})=>{
     const d1=p.yesAsk+k.noAsk+fee(k.noAsk);
-    const d2=k.yesAsk+fee(k.yesAsk)+p.noAsk;
+    const d2=p.noAsk!=null? k.yesAsk+fee(k.yesAsk)+p.noAsk : Infinity;
     const best=Math.min(d1,d2);
     return {s:+s.toFixed(2),cost:+best.toFixed(4),
       dir:d1<=d2?'YES@poly + NO@kalshi':'YES@kalshi + NO@poly',
@@ -97,6 +111,7 @@ const fee=p=>Math.min(0.07*p*(1-p),0.02);
   fs.mkdirSync('data',{recursive:true});
   fs.writeFileSync('data/arbscan.json',JSON.stringify({
     ranAt:new Date().toISOString(),
+    kalshiDiag,
     counts:{poly:poly.length,kalshi:kalshi.length,pairs:pairs.length,
       under1:pairs.filter(x=>x.cost<1).length,under1_02:pairs.filter(x=>x.cost<1.02).length},
     pairs:pairs.slice(0,80)

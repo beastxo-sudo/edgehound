@@ -35,20 +35,32 @@ async function fetchPoly(){
 }
 let kalshiDiag=null;
 async function fetchKalshi(){
-  const out=[];let cursor='';
-  for(let p=0;p<30;p++){
-    const d=await jget(`https://api.elections.kalshi.com/trade-api/v2/markets?limit=1000&status=open${cursor?'&cursor='+cursor:''}`);
-    if(p===0) kalshiDiag={keys:Object.keys(d||{}),n:(d.markets||[]).length,sample:(d.markets||[])[0]||null};
-    for(const m of (d.markets||[])){
-      const ya=m.yes_ask,na=m.no_ask;
-      if(!(ya>0&&ya<100)||!(na>0&&na<100))continue;
-      out.push({id:m.ticker,event:m.event_ticker,title:((m.title||'')+' '+(m.yes_sub_title||m.subtitle||'')).trim(),
-        yesAsk:ya/100,noAsk:na/100,end:m.close_time,vol:+m.volume_24h||0});
+  const out=[];const now=Math.floor(Date.now()/1000);
+  const diag={pages:[],quotedSamples:[]};
+  /* liquid markets close soon: sweep the next 72h close-window, then 30d */
+  for(const [tag,maxTs] of [['72h',now+72*3600],['30d',now+30*86400]]){
+    let cursor='';
+    for(let p=0;p<25;p++){
+      const d=await jget(`https://api.elections.kalshi.com/trade-api/v2/markets?limit=1000&status=open&min_close_ts=${now}&max_close_ts=${maxTs}${cursor?'&cursor='+cursor:''}`);
+      const ms=d.markets||[];
+      let quoted=0;
+      for(const m of ms){
+        const ya=m.yes_ask,na=m.no_ask;
+        if(!(ya>0&&ya<100)||!(na>0&&na<100))continue;
+        quoted++;
+        if(diag.quotedSamples.length<2)diag.quotedSamples.push({t:m.ticker,ya,na,vol:m.volume_24h});
+        if(out.some(x=>x.id===m.ticker))continue;
+        out.push({id:m.ticker,event:m.event_ticker,title:((m.title||'')+' '+(m.yes_sub_title||m.subtitle||'')).trim(),
+          yesAsk:ya/100,noAsk:na/100,end:m.close_time,vol:+m.volume_24h||0});
+      }
+      diag.pages.push({tag,p,n:ms.length,quoted});
+      cursor=d.cursor||'';
+      if(!cursor)break;
+      await sleep(220);
     }
-    cursor=d.cursor||'';
-    if(!cursor)break;
-    await sleep(250);
+    if(out.length>1500)break;
   }
+  kalshiDiag=diag;
   return out;
 }
 const STOP=new Set(['will','the','be','a','an','of','on','in','at','to','by','for','or','and','vs','win','before','after','above','below','than','more','less','over','under','is','does','do','what']);
@@ -82,17 +94,6 @@ const fee=p=>Math.min(0.07*p*(1-p),0.02);
   let kalshi=[];
   try{ kalshi=await fetchKalshi(); }catch(e){ kalshiDiag={error:e.message,...lastHttp}; }
   log(`kalshi: ${kalshi.length} markets`);
-  if(!kalshi.length){
-    log('retrying Kalshi without status filter…');
-    const d=await jget('https://api.elections.kalshi.com/trade-api/v2/markets?limit=1000');
-    kalshiDiag={...(kalshiDiag||{}),retryKeys:Object.keys(d||{}),retryN:(d.markets||[]).length,retrySample:(d.markets||[])[0]||null};
-    for(const m of (d.markets||[])){
-      const ya=m.yes_ask,na=m.no_ask;
-      if(!(ya>0&&ya<100)||!(na>0&&na<100))continue;
-      kalshi.push({id:m.ticker,event:m.event_ticker,title:((m.title||'')+' '+(m.yes_sub_title||m.subtitle||'')).trim(),yesAsk:ya/100,noAsk:na/100,end:m.close_time,vol:+m.volume_24h||0});
-    }
-    log(`kalshi retry: ${kalshi.length}`);
-  }
   const kf=kalshi.map(k=>({k,f:feats(k.title)}));
   const byK={};
   let scanned=0;

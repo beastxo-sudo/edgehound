@@ -1,5 +1,5 @@
 {
- "ranAt": "2026-08-02T20:23:38.068Z",
+ "ranAt": "2026-08-02T20:29:22.832Z",
  "kalshiDiag": {
   "keys": [
    "cursor",
@@ -8,53 +8,48 @@
   "n": 1000,
   "sample": {
    "can_close_early": true,
-   "close_time": "2026-08-05T18:10:00Z",
-   "created_time": "2026-08-02T20:23:14.767301Z",
+   "close_time": "2026-08-05T20:05:00Z",
+   "created_time": "2026-08-02T20:28:48.786614Z",
    "custom_strike": {
-    "Associated Events": "KXMLBGAME-26AUG021340PITCIN,KXMLBGAME-26AUG021410TEXHOU,KXWNBASPREAD-26AUG02LAPDX,KXWNBATOTAL-26AUG02LAPDX",
-    "Associated Market Sides": "yes,yes,no,no",
-    "Associated Markets": "KXMLBGAME-26AUG021340PITCIN-CIN,KXMLBGAME-26AUG021410TEXHOU-HOU,KXWNBASPREAD-26AUG02LAPDX-PDX7,KXWNBATOTAL-26AUG02LAPDX-203",
-    "Multivariate Event Ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S20264046188C5F8"
+    "Associated Events": "KXMLBHR-26AUG021335PHIBAL,KXMLBHR-26AUG021510KCCOL,KXMLBHR-26AUG021605DETATH",
+    "Associated Market Sides": "yes,yes,yes",
+    "Associated Markets": "KXMLBHR-26AUG021335PHIBAL-PHITTURNER7-1,KXMLBHR-26AUG021510KCCOL-COLWCASTRO3-1,KXMLBHR-26AUG021605DETATH-ATHJHEIM15-1",
+    "Multivariate Event Ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S20265A40F6E3C25"
    },
-   "event_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S20264046188C5F8",
+   "event_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S20265A40F6E3C25",
    "exchange_index": 0,
-   "expected_expiration_time": "2026-08-03T01:30:00Z",
-   "expiration_time": "2026-08-05T18:10:00Z",
+   "expected_expiration_time": "2026-08-03T02:05:00Z",
+   "expiration_time": "2026-08-05T20:05:00Z",
    "expiration_value": "",
    "is_provisional": true,
    "last_price_dollars": "0.0000",
-   "latest_expiration_time": "2026-08-05T18:10:00Z",
+   "latest_expiration_time": "2026-08-05T20:05:00Z",
    "liquidity_dollars": "0.0000",
    "market_type": "binary",
    "mve_collection_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-R",
    "mve_selected_legs": [
     {
-     "event_ticker": "KXMLBGAME-26AUG021340PITCIN",
-     "market_ticker": "KXMLBGAME-26AUG021340PITCIN-CIN",
+     "event_ticker": "KXMLBHR-26AUG021335PHIBAL",
+     "market_ticker": "KXMLBHR-26AUG021335PHIBAL-PHITTURNER7-1",
      "side": "yes"
     },
     {
-     "event_ticker": "KXMLBGAME-26AUG021410TEXHOU",
-     "market_ticker": "KXMLBGAME-26AUG021410TEXHOU-HOU",
+     "event_ticker": "KXMLBHR-26AUG021510KCCOL",
+     "market_ticker": "KXMLBHR-26AUG021510KCCOL-COLWCASTRO3-1",
      "side": "yes"
     },
     {
-     "event_ticker": "KXWNBASPREAD-26AUG02LAPDX",
-     "market_ticker": "KXWNBASPREAD-26AUG02LAPDX-PDX7",
-     "side": "no"
-    },
-    {
-     "event_ticker": "KXWNBATOTAL-26AUG02LAPDX",
-     "market_ticker": "KXWNBATOTAL-26AUG02LAPDX-203",
-     "side": "no"
+     "event_ticker": "KXMLBHR-26AUG021605DETATH",
+     "market_ticker": "KXMLBHR-26AUG021605DETATH-ATHJHEIM15-1",
+     "side": "yes"
     }
    ],
    "no_ask_dollars": "1.0000",
    "no_bid_dollars": "1.0000",
-   "no_sub_title": "yes Cincinnati,yes Houston,no Portland wins by over 6.5 points,no Over 202.5 points scored",
+   "no_sub_title": "yes Trea Turner: 1+,yes Willi Castro: 1+,yes Jonah Heim: 1+",
    "notional_value_dollars": "1.0000",
    "open_interest_fp": "0.00",
-   "open_time": "2026-08-02T20:23:14Z",
+   "open_time": "2026-08-02T20:28:48Z",
    "previous_price_dollars": "0.0000",
    "previous_yes_ask_dollars": "0.0000",
    "previous_yes_bid_dollars": "0.0000",
@@ -72,16 +67,16 @@
    "settlement_timer_seconds": 5,
    "status": "active",
    "strike_type": "custom",
-   "ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S20264046188C5F8-9042D5532B0",
-   "title": "yes Cincinnati,yes Houston,no Portland wins by over 6.5 points,no Over 202.5 points scored",
-   "updated_time": "2026-08-02T20:23:14.877319Z",
+   "ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S20265A40F6E3C25-FE589ED0A41",
+   "title": "yes Trea Turner: 1+,yes Willi Castro: 1+,yes Jonah Heim: 1+",
+   "updated_time": "2026-08-02T20:28:48.883853Z",
    "volume_24h_fp": "0.00",
    "volume_fp": "0.00",
    "yes_ask_dollars": "0.0000",
    "yes_ask_size_fp": "0.00",
    "yes_bid_dollars": "0.0000",
    "yes_bid_size_fp": "0.00",
-   "yes_sub_title": "yes Cincinnati,yes Houston,no Portland wins by over 6.5 points,no Over 202.5 points scored"
+   "yes_sub_title": "yes Trea Turner: 1+,yes Willi Castro: 1+,yes Jonah Heim: 1+"
   },
   "retryKeys": [
    "cursor",
@@ -90,63 +85,63 @@
   "retryN": 1000,
   "retrySample": {
    "can_close_early": true,
-   "close_time": "2026-08-07T01:40:00Z",
-   "created_time": "2026-08-02T20:23:08.840419Z",
+   "close_time": "2026-08-05T23:20:00Z",
+   "created_time": "2026-08-02T20:29:16.57574Z",
    "custom_strike": {
-    "Associated Events": "KXMLBGAME-26AUG031940PITMIL,KXMLBGAME-26AUG032005LADCHC,KXMLBGAME-26AUG032005SFTEX,KXMLBGAME-26AUG032010TORHOU,KXMLBGAME-26AUG032040TBCOL,KXMLBGAME-26AUG032140SDAZ",
+    "Associated Events": "KXMLBGAME-26AUG021920BOSLAD,KXWNBAGAME-26AUG02CONNDAL,KXWNBAGAME-26AUG02TORGS,KXWNBAPTS-26AUG02CONNDAL,KXWNBAPTS-26AUG02CONNDAL,KXWNBAREB-26AUG02CONNDAL",
     "Associated Market Sides": "yes,yes,yes,yes,yes,yes",
-    "Associated Markets": "KXMLBGAME-26AUG031940PITMIL-MIL,KXMLBGAME-26AUG032005LADCHC-LAD,KXMLBGAME-26AUG032005SFTEX-SF,KXMLBGAME-26AUG032010TORHOU-TOR,KXMLBGAME-26AUG032040TBCOL-TB,KXMLBGAME-26AUG032140SDAZ-AZ",
-    "Multivariate Event Ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S2026D0A45622E29"
+    "Associated Markets": "KXMLBGAME-26AUG021920BOSLAD-LAD,KXWNBAGAME-26AUG02CONNDAL-DAL,KXWNBAGAME-26AUG02TORGS-GS,KXWNBAPTS-26AUG02CONNDAL-DALAFUDD35-10,KXWNBAPTS-26AUG02CONNDAL-DALAOGUNBOWALE24-10,KXWNBAREB-26AUG02CONNDAL-DALJSHEPARD32-10",
+    "Multivariate Event Ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S20268A4C97DBBCE"
    },
-   "event_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S2026D0A45622E29",
+   "event_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S20268A4C97DBBCE",
    "exchange_index": 0,
-   "expected_expiration_time": "2026-08-04T07:40:00Z",
-   "expiration_time": "2026-08-07T01:40:00Z",
+   "expected_expiration_time": "2026-08-03T06:30:00Z",
+   "expiration_time": "2026-08-05T23:20:00Z",
    "expiration_value": "",
    "is_provisional": true,
    "last_price_dollars": "0.0000",
-   "latest_expiration_time": "2026-08-07T01:40:00Z",
+   "latest_expiration_time": "2026-08-05T23:20:00Z",
    "liquidity_dollars": "0.0000",
    "market_type": "binary",
    "mve_collection_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-R",
    "mve_selected_legs": [
     {
-     "event_ticker": "KXMLBGAME-26AUG031940PITMIL",
-     "market_ticker": "KXMLBGAME-26AUG031940PITMIL-MIL",
+     "event_ticker": "KXMLBGAME-26AUG021920BOSLAD",
+     "market_ticker": "KXMLBGAME-26AUG021920BOSLAD-LAD",
      "side": "yes"
     },
     {
-     "event_ticker": "KXMLBGAME-26AUG032005LADCHC",
-     "market_ticker": "KXMLBGAME-26AUG032005LADCHC-LAD",
+     "event_ticker": "KXWNBAGAME-26AUG02CONNDAL",
+     "market_ticker": "KXWNBAGAME-26AUG02CONNDAL-DAL",
      "side": "yes"
     },
     {
-     "event_ticker": "KXMLBGAME-26AUG032005SFTEX",
-     "market_ticker": "KXMLBGAME-26AUG032005SFTEX-SF",
+     "event_ticker": "KXWNBAGAME-26AUG02TORGS",
+     "market_ticker": "KXWNBAGAME-26AUG02TORGS-GS",
      "side": "yes"
     },
     {
-     "event_ticker": "KXMLBGAME-26AUG032010TORHOU",
-     "market_ticker": "KXMLBGAME-26AUG032010TORHOU-TOR",
+     "event_ticker": "KXWNBAPTS-26AUG02CONNDAL",
+     "market_ticker": "KXWNBAPTS-26AUG02CONNDAL-DALAFUDD35-10",
      "side": "yes"
     },
     {
-     "event_ticker": "KXMLBGAME-26AUG032040TBCOL",
-     "market_ticker": "KXMLBGAME-26AUG032040TBCOL-TB",
+     "event_ticker": "KXWNBAPTS-26AUG02CONNDAL",
+     "market_ticker": "KXWNBAPTS-26AUG02CONNDAL-DALAOGUNBOWALE24-10",
      "side": "yes"
     },
     {
-     "event_ticker": "KXMLBGAME-26AUG032140SDAZ",
-     "market_ticker": "KXMLBGAME-26AUG032140SDAZ-AZ",
+     "event_ticker": "KXWNBAREB-26AUG02CONNDAL",
+     "market_ticker": "KXWNBAREB-26AUG02CONNDAL-DALJSHEPARD32-10",
      "side": "yes"
     }
    ],
    "no_ask_dollars": "1.0000",
    "no_bid_dollars": "1.0000",
-   "no_sub_title": "yes Milwaukee,yes Los Angeles D,yes San Francisco,yes Toronto,yes Tampa Bay,yes Arizona",
+   "no_sub_title": "yes Los Angeles D,yes Dallas,yes Golden State,yes Azzi Fudd: 10+,yes Arike Ogunbowale: 10+,yes Jessica Shepard: 10+",
    "notional_value_dollars": "1.0000",
    "open_interest_fp": "0.00",
-   "open_time": "2026-08-02T20:23:08Z",
+   "open_time": "2026-08-02T20:29:16Z",
    "previous_price_dollars": "0.0000",
    "previous_yes_ask_dollars": "0.0000",
    "previous_yes_bid_dollars": "0.0000",
@@ -164,20 +159,25 @@
    "settlement_timer_seconds": 5,
    "status": "active",
    "strike_type": "custom",
-   "ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S2026D0A45622E29-167B72C6851",
-   "title": "yes Milwaukee,yes Los Angeles D,yes San Francisco,yes Toronto,yes Tampa Bay,yes Arizona",
-   "updated_time": "2026-08-02T20:23:08.840465Z",
+   "ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S20268A4C97DBBCE-303358A322F",
+   "title": "yes Los Angeles D,yes Dallas,yes Golden State,yes Azzi Fudd: 10+,yes Arike Ogunbowale: 10+,yes Jessica Shepard: 10+",
+   "updated_time": "2026-08-02T20:29:16.575781Z",
    "volume_24h_fp": "0.00",
    "volume_fp": "0.00",
    "yes_ask_dollars": "0.0000",
    "yes_ask_size_fp": "0.00",
    "yes_bid_dollars": "0.0000",
    "yes_bid_size_fp": "0.00",
-   "yes_sub_title": "yes Milwaukee,yes Los Angeles D,yes San Francisco,yes Toronto,yes Tampa Bay,yes Arizona"
+   "yes_sub_title": "yes Los Angeles D,yes Dallas,yes Golden State,yes Azzi Fudd: 10+,yes Arike Ogunbowale: 10+,yes Jessica Shepard: 10+"
   }
  },
+ "polyDiag": {
+  "url": "https://gamma-api.polymarket.com/events?closed=false&active=true&limit=100&offset=500&orde",
+  "status": 200,
+  "body": "[{\"id\":\"784719\",\"ticker\":\"highest-temperature-in-singapore-on-august-4-2026\",\"slug\":\"highest-temperature-in-singapore-on-august-4-2026\",\"title\":\"Highest temperature in Singapore on August 4?\",\"descrip"
+ },
  "counts": {
-  "poly": 86,
+  "poly": 6601,
   "kalshi": 0,
   "pairs": 0,
   "under1": 0,

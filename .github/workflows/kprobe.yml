@@ -1,0 +1,20 @@
+name: Kalshi probe
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+      - run: node kprobe.js
+      - run: |
+          git config user.name probe && git config user.email p@p
+          git add data/kprobe.json
+          git commit -m "kalshi probe" || exit 0
+          for i in 1 2 3; do git fetch origin main && git rebase origin/main || git rebase --abort; git push origin HEAD:main && break; sleep 3; done

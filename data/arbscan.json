@@ -1,7 +1,183 @@
 {
- "ranAt": "2026-08-02T20:14:53.011Z",
+ "ranAt": "2026-08-02T20:23:38.068Z",
+ "kalshiDiag": {
+  "keys": [
+   "cursor",
+   "markets"
+  ],
+  "n": 1000,
+  "sample": {
+   "can_close_early": true,
+   "close_time": "2026-08-05T18:10:00Z",
+   "created_time": "2026-08-02T20:23:14.767301Z",
+   "custom_strike": {
+    "Associated Events": "KXMLBGAME-26AUG021340PITCIN,KXMLBGAME-26AUG021410TEXHOU,KXWNBASPREAD-26AUG02LAPDX,KXWNBATOTAL-26AUG02LAPDX",
+    "Associated Market Sides": "yes,yes,no,no",
+    "Associated Markets": "KXMLBGAME-26AUG021340PITCIN-CIN,KXMLBGAME-26AUG021410TEXHOU-HOU,KXWNBASPREAD-26AUG02LAPDX-PDX7,KXWNBATOTAL-26AUG02LAPDX-203",
+    "Multivariate Event Ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S20264046188C5F8"
+   },
+   "event_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S20264046188C5F8",
+   "exchange_index": 0,
+   "expected_expiration_time": "2026-08-03T01:30:00Z",
+   "expiration_time": "2026-08-05T18:10:00Z",
+   "expiration_value": "",
+   "is_provisional": true,
+   "last_price_dollars": "0.0000",
+   "latest_expiration_time": "2026-08-05T18:10:00Z",
+   "liquidity_dollars": "0.0000",
+   "market_type": "binary",
+   "mve_collection_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-R",
+   "mve_selected_legs": [
+    {
+     "event_ticker": "KXMLBGAME-26AUG021340PITCIN",
+     "market_ticker": "KXMLBGAME-26AUG021340PITCIN-CIN",
+     "side": "yes"
+    },
+    {
+     "event_ticker": "KXMLBGAME-26AUG021410TEXHOU",
+     "market_ticker": "KXMLBGAME-26AUG021410TEXHOU-HOU",
+     "side": "yes"
+    },
+    {
+     "event_ticker": "KXWNBASPREAD-26AUG02LAPDX",
+     "market_ticker": "KXWNBASPREAD-26AUG02LAPDX-PDX7",
+     "side": "no"
+    },
+    {
+     "event_ticker": "KXWNBATOTAL-26AUG02LAPDX",
+     "market_ticker": "KXWNBATOTAL-26AUG02LAPDX-203",
+     "side": "no"
+    }
+   ],
+   "no_ask_dollars": "1.0000",
+   "no_bid_dollars": "1.0000",
+   "no_sub_title": "yes Cincinnati,yes Houston,no Portland wins by over 6.5 points,no Over 202.5 points scored",
+   "notional_value_dollars": "1.0000",
+   "open_interest_fp": "0.00",
+   "open_time": "2026-08-02T20:23:14Z",
+   "previous_price_dollars": "0.0000",
+   "previous_yes_ask_dollars": "0.0000",
+   "previous_yes_bid_dollars": "0.0000",
+   "price_level_structure": "deci_cent",
+   "price_ranges": [
+    {
+     "end": "1.0000",
+     "start": "0.0000",
+     "step": "0.0010"
+    }
+   ],
+   "result": "",
+   "rules_primary": "",
+   "rules_secondary": "Kalshi is not affiliated, associated, authorized, endorsed by, or in any way officially connected with the Governing League. All trademarks, logos, and brand names are the property of their respective owners.",
+   "settlement_timer_seconds": 5,
+   "status": "active",
+   "strike_type": "custom",
+   "ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S20264046188C5F8-9042D5532B0",
+   "title": "yes Cincinnati,yes Houston,no Portland wins by over 6.5 points,no Over 202.5 points scored",
+   "updated_time": "2026-08-02T20:23:14.877319Z",
+   "volume_24h_fp": "0.00",
+   "volume_fp": "0.00",
+   "yes_ask_dollars": "0.0000",
+   "yes_ask_size_fp": "0.00",
+   "yes_bid_dollars": "0.0000",
+   "yes_bid_size_fp": "0.00",
+   "yes_sub_title": "yes Cincinnati,yes Houston,no Portland wins by over 6.5 points,no Over 202.5 points scored"
+  },
+  "retryKeys": [
+   "cursor",
+   "markets"
+  ],
+  "retryN": 1000,
+  "retrySample": {
+   "can_close_early": true,
+   "close_time": "2026-08-07T01:40:00Z",
+   "created_time": "2026-08-02T20:23:08.840419Z",
+   "custom_strike": {
+    "Associated Events": "KXMLBGAME-26AUG031940PITMIL,KXMLBGAME-26AUG032005LADCHC,KXMLBGAME-26AUG032005SFTEX,KXMLBGAME-26AUG032010TORHOU,KXMLBGAME-26AUG032040TBCOL,KXMLBGAME-26AUG032140SDAZ",
+    "Associated Market Sides": "yes,yes,yes,yes,yes,yes",
+    "Associated Markets": "KXMLBGAME-26AUG031940PITMIL-MIL,KXMLBGAME-26AUG032005LADCHC-LAD,KXMLBGAME-26AUG032005SFTEX-SF,KXMLBGAME-26AUG032010TORHOU-TOR,KXMLBGAME-26AUG032040TBCOL-TB,KXMLBGAME-26AUG032140SDAZ-AZ",
+    "Multivariate Event Ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S2026D0A45622E29"
+   },
+   "event_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S2026D0A45622E29",
+   "exchange_index": 0,
+   "expected_expiration_time": "2026-08-04T07:40:00Z",
+   "expiration_time": "2026-08-07T01:40:00Z",
+   "expiration_value": "",
+   "is_provisional": true,
+   "last_price_dollars": "0.0000",
+   "latest_expiration_time": "2026-08-07T01:40:00Z",
+   "liquidity_dollars": "0.0000",
+   "market_type": "binary",
+   "mve_collection_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-R",
+   "mve_selected_legs": [
+    {
+     "event_ticker": "KXMLBGAME-26AUG031940PITMIL",
+     "market_ticker": "KXMLBGAME-26AUG031940PITMIL-MIL",
+     "side": "yes"
+    },
+    {
+     "event_ticker": "KXMLBGAME-26AUG032005LADCHC",
+     "market_ticker": "KXMLBGAME-26AUG032005LADCHC-LAD",
+     "side": "yes"
+    },
+    {
+     "event_ticker": "KXMLBGAME-26AUG032005SFTEX",
+     "market_ticker": "KXMLBGAME-26AUG032005SFTEX-SF",
+     "side": "yes"
+    },
+    {
+     "event_ticker": "KXMLBGAME-26AUG032010TORHOU",
+     "market_ticker": "KXMLBGAME-26AUG032010TORHOU-TOR",
+     "side": "yes"
+    },
+    {
+     "event_ticker": "KXMLBGAME-26AUG032040TBCOL",
+     "market_ticker": "KXMLBGAME-26AUG032040TBCOL-TB",
+     "side": "yes"
+    },
+    {
+     "event_ticker": "KXMLBGAME-26AUG032140SDAZ",
+     "market_ticker": "KXMLBGAME-26AUG032140SDAZ-AZ",
+     "side": "yes"
+    }
+   ],
+   "no_ask_dollars": "1.0000",
+   "no_bid_dollars": "1.0000",
+   "no_sub_title": "yes Milwaukee,yes Los Angeles D,yes San Francisco,yes Toronto,yes Tampa Bay,yes Arizona",
+   "notional_value_dollars": "1.0000",
+   "open_interest_fp": "0.00",
+   "open_time": "2026-08-02T20:23:08Z",
+   "previous_price_dollars": "0.0000",
+   "previous_yes_ask_dollars": "0.0000",
+   "previous_yes_bid_dollars": "0.0000",
+   "price_level_structure": "deci_cent",
+   "price_ranges": [
+    {
+     "end": "1.0000",
+     "start": "0.0000",
+     "step": "0.0010"
+    }
+   ],
+   "result": "",
+   "rules_primary": "",
+   "rules_secondary": "Kalshi is not affiliated, associated, authorized, endorsed by, or in any way officially connected with the Governing League. All trademarks, logos, and brand names are the property of their respective owners.",
+   "settlement_timer_seconds": 5,
+   "status": "active",
+   "strike_type": "custom",
+   "ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S2026D0A45622E29-167B72C6851",
+   "title": "yes Milwaukee,yes Los Angeles D,yes San Francisco,yes Toronto,yes Tampa Bay,yes Arizona",
+   "updated_time": "2026-08-02T20:23:08.840465Z",
+   "volume_24h_fp": "0.00",
+   "volume_fp": "0.00",
+   "yes_ask_dollars": "0.0000",
+   "yes_ask_size_fp": "0.00",
+   "yes_bid_dollars": "0.0000",
+   "yes_bid_size_fp": "0.00",
+   "yes_sub_title": "yes Milwaukee,yes Los Angeles D,yes San Francisco,yes Toronto,yes Tampa Bay,yes Arizona"
+  }
+ },
  "counts": {
-  "poly": 65,
+  "poly": 86,
   "kalshi": 0,
   "pairs": 0,
   "under1": 0,

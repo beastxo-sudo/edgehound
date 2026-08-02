@@ -1,183 +1,317 @@
 {
- "ranAt": "2026-08-02T20:29:22.832Z",
+ "ranAt": "2026-08-02T20:35:17.162Z",
  "kalshiDiag": {
-  "keys": [
-   "cursor",
-   "markets"
-  ],
-  "n": 1000,
-  "sample": {
-   "can_close_early": true,
-   "close_time": "2026-08-05T20:05:00Z",
-   "created_time": "2026-08-02T20:28:48.786614Z",
-   "custom_strike": {
-    "Associated Events": "KXMLBHR-26AUG021335PHIBAL,KXMLBHR-26AUG021510KCCOL,KXMLBHR-26AUG021605DETATH",
-    "Associated Market Sides": "yes,yes,yes",
-    "Associated Markets": "KXMLBHR-26AUG021335PHIBAL-PHITTURNER7-1,KXMLBHR-26AUG021510KCCOL-COLWCASTRO3-1,KXMLBHR-26AUG021605DETATH-ATHJHEIM15-1",
-    "Multivariate Event Ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S20265A40F6E3C25"
+  "pages": [
+   {
+    "tag": "72h",
+    "p": 0,
+    "n": 1000,
+    "quoted": 0
    },
-   "event_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S20265A40F6E3C25",
-   "exchange_index": 0,
-   "expected_expiration_time": "2026-08-03T02:05:00Z",
-   "expiration_time": "2026-08-05T20:05:00Z",
-   "expiration_value": "",
-   "is_provisional": true,
-   "last_price_dollars": "0.0000",
-   "latest_expiration_time": "2026-08-05T20:05:00Z",
-   "liquidity_dollars": "0.0000",
-   "market_type": "binary",
-   "mve_collection_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-R",
-   "mve_selected_legs": [
-    {
-     "event_ticker": "KXMLBHR-26AUG021335PHIBAL",
-     "market_ticker": "KXMLBHR-26AUG021335PHIBAL-PHITTURNER7-1",
-     "side": "yes"
-    },
-    {
-     "event_ticker": "KXMLBHR-26AUG021510KCCOL",
-     "market_ticker": "KXMLBHR-26AUG021510KCCOL-COLWCASTRO3-1",
-     "side": "yes"
-    },
-    {
-     "event_ticker": "KXMLBHR-26AUG021605DETATH",
-     "market_ticker": "KXMLBHR-26AUG021605DETATH-ATHJHEIM15-1",
-     "side": "yes"
-    }
-   ],
-   "no_ask_dollars": "1.0000",
-   "no_bid_dollars": "1.0000",
-   "no_sub_title": "yes Trea Turner: 1+,yes Willi Castro: 1+,yes Jonah Heim: 1+",
-   "notional_value_dollars": "1.0000",
-   "open_interest_fp": "0.00",
-   "open_time": "2026-08-02T20:28:48Z",
-   "previous_price_dollars": "0.0000",
-   "previous_yes_ask_dollars": "0.0000",
-   "previous_yes_bid_dollars": "0.0000",
-   "price_level_structure": "deci_cent",
-   "price_ranges": [
-    {
-     "end": "1.0000",
-     "start": "0.0000",
-     "step": "0.0010"
-    }
-   ],
-   "result": "",
-   "rules_primary": "",
-   "rules_secondary": "Kalshi is not affiliated, associated, authorized, endorsed by, or in any way officially connected with the Governing League. All trademarks, logos, and brand names are the property of their respective owners.",
-   "settlement_timer_seconds": 5,
-   "status": "active",
-   "strike_type": "custom",
-   "ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S20265A40F6E3C25-FE589ED0A41",
-   "title": "yes Trea Turner: 1+,yes Willi Castro: 1+,yes Jonah Heim: 1+",
-   "updated_time": "2026-08-02T20:28:48.883853Z",
-   "volume_24h_fp": "0.00",
-   "volume_fp": "0.00",
-   "yes_ask_dollars": "0.0000",
-   "yes_ask_size_fp": "0.00",
-   "yes_bid_dollars": "0.0000",
-   "yes_bid_size_fp": "0.00",
-   "yes_sub_title": "yes Trea Turner: 1+,yes Willi Castro: 1+,yes Jonah Heim: 1+"
-  },
-  "retryKeys": [
-   "cursor",
-   "markets"
-  ],
-  "retryN": 1000,
-  "retrySample": {
-   "can_close_early": true,
-   "close_time": "2026-08-05T23:20:00Z",
-   "created_time": "2026-08-02T20:29:16.57574Z",
-   "custom_strike": {
-    "Associated Events": "KXMLBGAME-26AUG021920BOSLAD,KXWNBAGAME-26AUG02CONNDAL,KXWNBAGAME-26AUG02TORGS,KXWNBAPTS-26AUG02CONNDAL,KXWNBAPTS-26AUG02CONNDAL,KXWNBAREB-26AUG02CONNDAL",
-    "Associated Market Sides": "yes,yes,yes,yes,yes,yes",
-    "Associated Markets": "KXMLBGAME-26AUG021920BOSLAD-LAD,KXWNBAGAME-26AUG02CONNDAL-DAL,KXWNBAGAME-26AUG02TORGS-GS,KXWNBAPTS-26AUG02CONNDAL-DALAFUDD35-10,KXWNBAPTS-26AUG02CONNDAL-DALAOGUNBOWALE24-10,KXWNBAREB-26AUG02CONNDAL-DALJSHEPARD32-10",
-    "Multivariate Event Ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S20268A4C97DBBCE"
+   {
+    "tag": "72h",
+    "p": 1,
+    "n": 1000,
+    "quoted": 0
    },
-   "event_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S20268A4C97DBBCE",
-   "exchange_index": 0,
-   "expected_expiration_time": "2026-08-03T06:30:00Z",
-   "expiration_time": "2026-08-05T23:20:00Z",
-   "expiration_value": "",
-   "is_provisional": true,
-   "last_price_dollars": "0.0000",
-   "latest_expiration_time": "2026-08-05T23:20:00Z",
-   "liquidity_dollars": "0.0000",
-   "market_type": "binary",
-   "mve_collection_ticker": "KXMVESPORTSMULTIGAMEEXTENDED-R",
-   "mve_selected_legs": [
-    {
-     "event_ticker": "KXMLBGAME-26AUG021920BOSLAD",
-     "market_ticker": "KXMLBGAME-26AUG021920BOSLAD-LAD",
-     "side": "yes"
-    },
-    {
-     "event_ticker": "KXWNBAGAME-26AUG02CONNDAL",
-     "market_ticker": "KXWNBAGAME-26AUG02CONNDAL-DAL",
-     "side": "yes"
-    },
-    {
-     "event_ticker": "KXWNBAGAME-26AUG02TORGS",
-     "market_ticker": "KXWNBAGAME-26AUG02TORGS-GS",
-     "side": "yes"
-    },
-    {
-     "event_ticker": "KXWNBAPTS-26AUG02CONNDAL",
-     "market_ticker": "KXWNBAPTS-26AUG02CONNDAL-DALAFUDD35-10",
-     "side": "yes"
-    },
-    {
-     "event_ticker": "KXWNBAPTS-26AUG02CONNDAL",
-     "market_ticker": "KXWNBAPTS-26AUG02CONNDAL-DALAOGUNBOWALE24-10",
-     "side": "yes"
-    },
-    {
-     "event_ticker": "KXWNBAREB-26AUG02CONNDAL",
-     "market_ticker": "KXWNBAREB-26AUG02CONNDAL-DALJSHEPARD32-10",
-     "side": "yes"
-    }
-   ],
-   "no_ask_dollars": "1.0000",
-   "no_bid_dollars": "1.0000",
-   "no_sub_title": "yes Los Angeles D,yes Dallas,yes Golden State,yes Azzi Fudd: 10+,yes Arike Ogunbowale: 10+,yes Jessica Shepard: 10+",
-   "notional_value_dollars": "1.0000",
-   "open_interest_fp": "0.00",
-   "open_time": "2026-08-02T20:29:16Z",
-   "previous_price_dollars": "0.0000",
-   "previous_yes_ask_dollars": "0.0000",
-   "previous_yes_bid_dollars": "0.0000",
-   "price_level_structure": "deci_cent",
-   "price_ranges": [
-    {
-     "end": "1.0000",
-     "start": "0.0000",
-     "step": "0.0010"
-    }
-   ],
-   "result": "",
-   "rules_primary": "",
-   "rules_secondary": "Kalshi is not affiliated, associated, authorized, endorsed by, or in any way officially connected with the Governing League. All trademarks, logos, and brand names are the property of their respective owners.",
-   "settlement_timer_seconds": 5,
-   "status": "active",
-   "strike_type": "custom",
-   "ticker": "KXMVESPORTSMULTIGAMEEXTENDED-S20268A4C97DBBCE-303358A322F",
-   "title": "yes Los Angeles D,yes Dallas,yes Golden State,yes Azzi Fudd: 10+,yes Arike Ogunbowale: 10+,yes Jessica Shepard: 10+",
-   "updated_time": "2026-08-02T20:29:16.575781Z",
-   "volume_24h_fp": "0.00",
-   "volume_fp": "0.00",
-   "yes_ask_dollars": "0.0000",
-   "yes_ask_size_fp": "0.00",
-   "yes_bid_dollars": "0.0000",
-   "yes_bid_size_fp": "0.00",
-   "yes_sub_title": "yes Los Angeles D,yes Dallas,yes Golden State,yes Azzi Fudd: 10+,yes Arike Ogunbowale: 10+,yes Jessica Shepard: 10+"
-  }
+   {
+    "tag": "72h",
+    "p": 2,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "72h",
+    "p": 3,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "72h",
+    "p": 4,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "72h",
+    "p": 5,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "72h",
+    "p": 6,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "72h",
+    "p": 7,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "72h",
+    "p": 8,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "72h",
+    "p": 9,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "72h",
+    "p": 10,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "72h",
+    "p": 11,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "72h",
+    "p": 12,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "72h",
+    "p": 13,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "72h",
+    "p": 14,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "72h",
+    "p": 15,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "72h",
+    "p": 16,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "72h",
+    "p": 17,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "72h",
+    "p": 18,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "72h",
+    "p": 19,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "72h",
+    "p": 20,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "72h",
+    "p": 21,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "72h",
+    "p": 22,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "72h",
+    "p": 23,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "72h",
+    "p": 24,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "30d",
+    "p": 0,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "30d",
+    "p": 1,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "30d",
+    "p": 2,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "30d",
+    "p": 3,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "30d",
+    "p": 4,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "30d",
+    "p": 5,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "30d",
+    "p": 6,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "30d",
+    "p": 7,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "30d",
+    "p": 8,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "30d",
+    "p": 9,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "30d",
+    "p": 10,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "30d",
+    "p": 11,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "30d",
+    "p": 12,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "30d",
+    "p": 13,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "30d",
+    "p": 14,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "30d",
+    "p": 15,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "30d",
+    "p": 16,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "30d",
+    "p": 17,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "30d",
+    "p": 18,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "30d",
+    "p": 19,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "30d",
+    "p": 20,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "30d",
+    "p": 21,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "30d",
+    "p": 22,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "30d",
+    "p": 23,
+    "n": 1000,
+    "quoted": 0
+   },
+   {
+    "tag": "30d",
+    "p": 24,
+    "n": 1000,
+    "quoted": 0
+   }
+  ],
+  "quotedSamples": []
  },
  "polyDiag": {
   "url": "https://gamma-api.polymarket.com/events?closed=false&active=true&limit=100&offset=500&orde",
   "status": 200,
-  "body": "[{\"id\":\"784719\",\"ticker\":\"highest-temperature-in-singapore-on-august-4-2026\",\"slug\":\"highest-temperature-in-singapore-on-august-4-2026\",\"title\":\"Highest temperature in Singapore on August 4?\",\"descrip"
+  "body": "[{\"id\":\"725981\",\"ticker\":\"mex-tol-nec-2026-08-02-exact-score\",\"slug\":\"mex-tol-nec-2026-08-02-exact-score\",\"title\":\"Deportivo Toluca FC vs. Club Necaxa - Exact Score\",\"description\":\"In the upcoming Lig"
  },
  "counts": {
-  "poly": 6601,
+  "poly": 6590,
   "kalshi": 0,
   "pairs": 0,
   "under1": 0,

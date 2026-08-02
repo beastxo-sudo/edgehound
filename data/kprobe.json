@@ -1,0 +1,97 @@
+{
+ "ranAt": "2026-08-02T20:58:30.906Z",
+ "tests": [
+  {
+   "name": "elections: KXBTCD series markets",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=KXBTCD&status=open&limit=5",
+   "status": 200,
+   "body": "{\"cursor\":\"CgwIr4680wYQoLXIogMSGktYQlRDRC0yNkFVRzAzMTctVDcxNzQ5Ljk5\",\"markets\":[{\"can_close_early\":true,\"close_time\":\"2026-08-03T21:00:00Z\",\"created_time\":\"2026-08-02T09:00:31.877796Z\",\"event_ticker\":\"KXBTCD-26AUG0317\",\"exchange_index\":0,\"expected_expiration_time\":\"2026-08-03T21:05:00Z\",\"expiration_time\":\"2026-08-10T21:00:00Z\",\"expiration_value\":\"\",\"floor_strike\":72749.99,\"last_price_dollars\":\"0.0000\",\"latest_expiration_time\":\"2026-08-10T21:00:00Z\",\"liquidity_dollars\":\"0.0000\",\"market_type\":\"binary\",\"no_ask_dollars\":\"1.0000\",\"no_bid_dollars\":\"0.9900\",\"no_sub_title\":\"$72,750 or above\",\"notional_value_dollars\":\"1.0000\",\"occurrence_datetime\":\"2026-08-03T21:05:00Z\",\"open_interest_fp\":\"0.00\",\"open_time\":\"2026-08-02T20:00:00Z\",\"previous_price_dollars\":\"0.0000\",\"previous_yes_ask_dollars\":\"0.0000\",\"previous_yes_bid_dollars\":\"0.0000\",\"price_level_structure\":\"linear_cent\",\"price_ranges\":[{\"end\":\"1"
+  },
+  {
+   "name": "trading-api host: same",
+   "url": "https://trading-api.kalshi.com/trade-api/v2/markets?series_ticker=KXBTCD&status=open&limit=5",
+   "status": 401,
+   "body": "API has been moved to https://api.elections.kalshi.com/\nPlease check our docs on how to migrate."
+  },
+  {
+   "name": "elections: KXETH series",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=KXETHD&status=open&limit=3",
+   "status": 200,
+   "body": "{\"cursor\":\"CgwIsI680wYQyIWhzQISGUtYRVRIRC0yNkFVRzAzMTctVDI1MjkuOTk\",\"markets\":[{\"can_close_early\":true,\"close_time\":\"2026-08-03T21:00:00Z\",\"created_time\":\"2026-08-02T09:00:32.698893Z\",\"event_ticker\":\"KXETHD-26AUG0317\",\"exchange_index\":0,\"expected_expiration_time\":\"2026-08-03T21:05:00Z\",\"expiration_time\":\"2026-08-10T21:00:00Z\",\"expiration_value\":\"\",\"floor_strike\":2609.99,\"last_price_dollars\":\"0.0000\",\"latest_expiration_time\":\"2026-08-10T21:00:00Z\",\"liquidity_dollars\":\"0.0000\",\"market_type\":\"binary\",\"no_ask_dollars\":\"1.0000\",\"no_bid_dollars\":\"0.9900\",\"no_sub_title\":\"$2,610 or above\",\"notional_value_dollars\":\"1.0000\",\"occurrence_datetime\":\"2026-08-03T21:05:00Z\",\"open_interest_fp\":\"0.00\",\"open_time\":\"2026-08-02T20:00:00Z\",\"previous_price_dollars\":\"0.0000\",\"previous_yes_ask_dollars\":\"0.0000\",\"previous_yes_bid_dollars\":\"0.0000\",\"price_level_structure\":\"linear_cent\",\"price_ranges\":[{\"end\":\"1.00"
+  },
+  {
+   "name": "orderbook (elections)",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/markets/KXBTCD-26AUG0317-T72749.99/orderbook",
+   "status": 200,
+   "body": "{\"orderbook_fp\":{\"no_dollars\":[[\"0.0100\",\"6166.00\"],[\"0.0200\",\"68399.00\"],[\"0.1000\",\"616.00\"],[\"0.3000\",\"424.00\"],[\"0.3100\",\"3152.00\"],[\"0.5000\",\"123.00\"],[\"0.7000\",\"88.00\"],[\"0.8000\",\"77.00\"],[\"0.9000\",\"68.00\"],[\"0.9500\",\"64.00\"],[\"0.9800\",\"62.00\"],[\"0.9900\",\"8200.00\"]],\"yes_dollars\":[]}}"
+  },
+  {
+   "name": "orderbook (trading-api)",
+   "url": "https://trading-api.kalshi.com/trade-api/v2/markets/KXBTCD-26AUG0317-T72749.99/orderbook",
+   "status": 401,
+   "body": "API has been moved to https://api.elections.kalshi.com/\nPlease check our docs on how to migrate."
+  },
+  {
+   "name": "single market (elections)",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/markets/KXBTCD-26AUG0317-T72749.99",
+   "status": 200,
+   "body": "{\"market\":{\"can_close_early\":true,\"close_time\":\"2026-08-03T21:00:00Z\",\"created_time\":\"2026-08-02T09:00:31.877796Z\",\"event_ticker\":\"KXBTCD-26AUG0317\",\"exchange_index\":0,\"expected_expiration_time\":\"2026-08-03T21:05:00Z\",\"expiration_time\":\"2026-08-10T21:00:00Z\",\"expiration_value\":\"\",\"floor_strike\":72749.99,\"last_price_dollars\":\"0.0000\",\"latest_expiration_time\":\"2026-08-10T21:00:00Z\",\"liquidity_dollars\":\"0.0000\",\"market_type\":\"binary\",\"no_ask_dollars\":\"1.0000\",\"no_bid_dollars\":\"0.9900\",\"no_sub_title\":\"$72,750 or above\",\"notional_value_dollars\":\"1.0000\",\"occurrence_datetime\":\"2026-08-03T21:05:00Z\",\"open_interest_fp\":\"0.00\",\"open_time\":\"2026-08-02T20:00:00Z\",\"previous_price_dollars\":\"0.0000\",\"previous_yes_ask_dollars\":\"0.0000\",\"previous_yes_bid_dollars\":\"0.0000\",\"price_level_structure\":\"linear_cent\",\"price_ranges\":[{\"end\":\"1.0000\",\"start\":\"0.0000\",\"step\":\"0.0100\"}],\"result\":\"\",\"rules_primary\":"
+  },
+  {
+   "name": "events nested",
+   "url": "https://api.elections.kalshi.com/trade-api/v2/events?status=open&limit=2&with_nested_markets=true&series_ticke",
+   "status": 200,
+   "body": "{\"cursor\":\"CgYI_ITE0wYSEEtYQlRDRC0yNkFVRzAzMTc\",\"events\":[{\"available_on_brokers\":true,\"category\":\"Crypto\",\"collateral_return_type\":\"DIRECNET\",\"event_ticker\":\"KXBTCD-26AUG0217\",\"exchange_index\":0,\"last_updated_ts\":\"2026-08-02T20:00:06.445102Z\",\"markets\":[{\"can_close_early\":true,\"close_time\":\"2026-08-02T21:00:00Z\",\"created_time\":\"2026-08-01T09:00:38.911379Z\",\"event_ticker\":\"KXBTCD-26AUG0217\",\"exchange_index\":0,\"expected_expiration_time\":\"2026-08-02T21:05:00Z\",\"expiration_time\":\"2026-08-09T21:00:00Z\",\"expiration_value\":\"\",\"floor_strike\":52999.99,\"last_price_dollars\":\"0.9900\",\"latest_expiration_time\":\"2026-08-09T21:00:00Z\",\"liquidity_dollars\":\"0.0000\",\"market_type\":\"binary\",\"no_ask_dollars\":\"0.0100\",\"no_bid_dollars\":\"0.0000\",\"no_sub_title\":\"$53,000 or above\",\"notional_value_dollars\":\"1.0000\",\"occurrence_datetime\":\"2026-08-02T21:05:00Z\",\"open_interest_fp\":\"93.51\",\"open_time\":\"2026-08-01T20:0"
+  }
+ ],
+ "sampleMarketFull": {
+  "can_close_early": true,
+  "close_time": "2026-08-03T21:00:00Z",
+  "created_time": "2026-08-02T09:00:31.877796Z",
+  "event_ticker": "KXBTCD-26AUG0317",
+  "exchange_index": 0,
+  "expected_expiration_time": "2026-08-03T21:05:00Z",
+  "expiration_time": "2026-08-10T21:00:00Z",
+  "expiration_value": "",
+  "floor_strike": 72749.99,
+  "last_price_dollars": "0.0000",
+  "latest_expiration_time": "2026-08-10T21:00:00Z",
+  "liquidity_dollars": "0.0000",
+  "market_type": "binary",
+  "no_ask_dollars": "1.0000",
+  "no_bid_dollars": "0.9900",
+  "no_sub_title": "$72,750 or above",
+  "notional_value_dollars": "1.0000",
+  "occurrence_datetime": "2026-08-03T21:05:00Z",
+  "open_interest_fp": "0.00",
+  "open_time": "2026-08-02T20:00:00Z",
+  "previous_price_dollars": "0.0000",
+  "previous_yes_ask_dollars": "0.0000",
+  "previous_yes_bid_dollars": "0.0000",
+  "price_level_structure": "linear_cent",
+  "price_ranges": [
+   {
+    "end": "1.0000",
+    "start": "0.0000",
+    "step": "0.0100"
+   }
+  ],
+  "result": "",
+  "rules_primary": "If the simple average of the sixty seconds of CF Benchmarks' Bitcoin Real-Time Index (BRTI) before 5 PM EDT is above 72749.99 at 5 PM EDT on Aug 3, 2026, then the market resolves to Yes.",
+  "rules_secondary": "Not all cryptocurrency price data is the same. While checking a source like Google or Coinbase may help guide your decision, the price used to determine this market is based on CF Benchmarks' corresponding Real Time Index (RTI). At the last minute before expiration, 60 RTI prices are collected. The official and final value is the average of these prices.",
+  "settlement_timer_seconds": 60,
+  "status": "active",
+  "strike_type": "greater",
+  "subtitle": "$72,750 or above",
+  "ticker": "KXBTCD-26AUG0317-T72749.99",
+  "title": "Bitcoin price on Aug 3, 2026?",
+  "updated_time": "2026-08-02T20:00:01.014925Z",
+  "volume_24h_fp": "0.00",
+  "volume_fp": "0.00",
+  "yes_ask_dollars": "0.0100",
+  "yes_ask_size_fp": "8200.00",
+  "yes_bid_dollars": "0.0000",
+  "yes_bid_size_fp": "0.00",
+  "yes_sub_title": "$72,750 or above"
+ }
+}

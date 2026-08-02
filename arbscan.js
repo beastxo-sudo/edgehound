@@ -2,13 +2,16 @@
 const fs = require('fs');
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const log = m => console.log(new Date().toISOString().slice(11,19)+'  '+m);
+let lastHttp={};
 async function jget(url, ms=15000, tries=3){
   for(let i=0;i<tries;i++){
     try{
       const r=await fetch(url,{headers:{accept:'application/json','user-agent':'arb-scan/1.0'},signal:AbortSignal.timeout(ms)});
       if(r.status===429){await sleep(1500*(i+1));continue;}
+      const txt=await r.text();
+      lastHttp={url:url.slice(0,90),status:r.status,body:txt.slice(0,200)};
       if(!r.ok)throw new Error('HTTP '+r.status);
-      return await r.json();
+      return JSON.parse(txt);
     }catch(e){if(i===tries-1)throw e;await sleep(600*(i+1));}
   }
 }
@@ -70,9 +73,13 @@ function sim(a,b){
 const fee=p=>Math.min(0.07*p*(1-p),0.02);
 (async()=>{
   log('fetching Polymarket…');
+  let polyDiag=null;
   const poly=await fetchPoly(); log(`poly: ${poly.length} markets`);
+  polyDiag=lastHttp;
   log('fetching Kalshi…');
-  let kalshi=await fetchKalshi(); log(`kalshi: ${kalshi.length} markets`);
+  let kalshi=[];
+  try{ kalshi=await fetchKalshi(); }catch(e){ kalshiDiag={error:e.message,...lastHttp}; }
+  log(`kalshi: ${kalshi.length} markets`);
   if(!kalshi.length){
     log('retrying Kalshi without status filter…');
     const d=await jget('https://api.elections.kalshi.com/trade-api/v2/markets?limit=1000');
@@ -111,7 +118,7 @@ const fee=p=>Math.min(0.07*p*(1-p),0.02);
   fs.mkdirSync('data',{recursive:true});
   fs.writeFileSync('data/arbscan.json',JSON.stringify({
     ranAt:new Date().toISOString(),
-    kalshiDiag,
+    kalshiDiag, polyDiag,
     counts:{poly:poly.length,kalshi:kalshi.length,pairs:pairs.length,
       under1:pairs.filter(x=>x.cost<1).length,under1_02:pairs.filter(x=>x.cost<1.02).length},
     pairs:pairs.slice(0,80)
